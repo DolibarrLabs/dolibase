@@ -1,6 +1,5 @@
 ### Dolibase Framework
 ------
-------
 
 #### 1.0.0 - APR18
 

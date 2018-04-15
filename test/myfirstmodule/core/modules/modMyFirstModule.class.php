@@ -51,7 +51,7 @@ class modMyFirstModule extends DolibarrModules
 		global $conf;
 
 		// Create Module using Dolibase
-		$module = new Module($this, $db);
+		$module = new Module($this);
 
 		$module->addConstant("MY_FIRST_MODULE_CONST", "test");
 		$module->addConstant("MY_FIRST_MODULE_SECOND_CONST", "test2");

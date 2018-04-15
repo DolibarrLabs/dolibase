@@ -36,9 +36,9 @@ class Module
 	 * @param     $mod        Dolibarr module object
 	 * @param     $db         Database handler
 	 */
-	public function __construct(&$mod, $db)
+	public function __construct(&$mod)
 	{
-		global $dolibase_config;
+		global $dolibase_config, $db;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');

@@ -54,7 +54,7 @@ class MyBox extends ModeleBoxes
 	public function __construct($db, $param = '')
 	{
 		// Create Widget using Dolibase
-		$this->widget = new Widget($this, $db, "MyWidget", "mywidget.png");
+		$this->widget = new Widget($this, "MyWidget", "mywidget.png");
 	}
 
 	/**

@@ -37,9 +37,9 @@ class Widget
 	 * @param     $enabled    Enable or disable widget
 	 * @param     $param      More widget options
 	 */
-	public function __construct(&$box, $db, $name, $picture, $position = 1, $enabled = 1, $param = '')
+	public function __construct(&$box, $name, $picture, $position = 1, $enabled = 1, $param = '')
 	{
-		global $dolibase_config, $langs;
+		global $dolibase_config, $db, $langs;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Widget::Error module configuration not found.');
