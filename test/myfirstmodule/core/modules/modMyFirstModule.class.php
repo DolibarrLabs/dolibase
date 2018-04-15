@@ -36,7 +36,7 @@ dol_include_once('/myfirstmodule/config.php');
 dolibase_include_once('/core/class/module.php');
 
 /**
- *	Class to describe and enable module Expedition
+ *	Class to describe and enable module
  */
 class modMyFirstModule extends DolibarrModules
 {
@@ -117,6 +117,8 @@ class modMyFirstModule extends DolibarrModules
 	 */
 	private function loadTables()
 	{
+		global $dolibase_config;
+
 		return $this->_load_tables('/'.$dolibase_config['module_folder'].'/sql/');
 	}
 
