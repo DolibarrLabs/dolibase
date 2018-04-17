@@ -30,9 +30,9 @@ class Page
 	 */
 	protected $title;
 	/**
-	 * @var boolean Page is admin only
+	 * @var string Access permission
 	 */
-	protected $admin_only = false;
+	protected $access_permission = '';
 	/**
 	 * @var array Page tabs
 	 */
@@ -45,18 +45,73 @@ class Page
 	 * @var string Active page tab
 	 */
 	protected $active_tab = '';
+	/**
+	 * @var boolean used to close opened form
+	 */
+	protected $close_form = false;
+	/**
+	 * @var boolean used to close opened HTML table
+	 */
+	protected $close_table = false;
 
 	/**
 	 * Constructor
 	 * 
 	 * @param     $page_title     HTML page title
-	 * @param     $admin_only     page is admin only or not
+	 * @param     $access_perm    Access permission
 	 */
-	public function __construct($page_title, $admin_only = false)
+	public function __construct($page_title, $access_perm = '')
 	{
+		global $langs, $user, $dolibase_config;
+
 		// Set page attributes
+		$this->title             = $page_title;
+		$this->access_permission = $access_perm;
+
+		// Load translations
+		$langs->load($dolibase_config['lang_files'][0]);
+
+		// Access control
+		if (! empty($this->access_permission) && ! verifCond($this->access_permission)) {
+			accessforbidden();
+		}
+
+		// Load default actions
+		$this->loadDefaultActions();
+	}
+
+	/**
+	 * Set page title
+	 *
+	 * @param     $page_title     Page title
+	 */
+	public function setTitle($page_title)
+	{
 		$this->title = $page_title;
-		$this->admin_only = $admin_only;
+	}
+
+	/**
+	 * Add js file to page head
+	 *
+	 * @param     $js_file     Javascript file
+	 */
+	public function addJsFile($js_file)
+	{
+		global $dolibase_config;
+
+		$this->head.= '<script type="text/javascript" src="'.DOL_URL_ROOT.$dolibase_config['module_folder'].'/js/'.$js_file.'"></script>'."\n";
+	}
+
+	/**
+	 * Add css file to page head
+	 *
+	 * @param     $css_file     CSS file
+	 */
+	public function addCssFile($css_file)
+	{
+		global $dolibase_config;
+
+		$this->head.= '<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.$dolibase_config['module_folder'].'/css/'.$css_file.'">'."\n";
 	}
 
 	/**
@@ -130,33 +185,122 @@ class Page
 	{
 		global $langs;
 
+		$this->closeTable(); // close last opened table if true
+
 		print load_fiche_titre($langs->trans($title), $morehtmlright, $picture);
 	}
 
 	/**
-	 * Generate page begining
+	 * Open a form only if not already opened
+	 *
+	 * @param     $action     form action
+	 */
+	public function openForm($action = 'create')
+	{
+		// i.: HTML form inside another never works, so better not allow it
+		if (! $this->close_form)
+		{
+			print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
+		    print '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+		    print '<input type="hidden" name="action" value="'.$action.'">';
+
+			$this->close_form = true;
+		}
+	}
+
+	/**
+	 * Close an opened form
 	 *
 	 */
-	public function begin()
+	public function closeForm()
 	{
-		global $langs, $user, $dolibase_config;
+		if ($this->close_form)
+		{
+			print '</form>';
 
-		// Load translations
-		$langs->load($dolibase_config['lang_files'][0]);
-
-		// Access control
-		if ($this->admin_only && ! $user->admin) {
-			accessforbidden();
+			$this->close_form = false;
 		}
 
-		// Load default actions
-		$this->loadDefaultActions();
+		if (DOLIBASE_ALLOW_FUNC_CHAINING) return $this;
+	}
 
-		// Page Header (Dolibarr header, menus, ...)
-		llxHeader($this->head, $langs->trans($this->title));
+	/**
+	 * Opens a new html table
+	 *
+	 * @param   $header_columns   table header columns, e.: array(
+			 												array('name' => 'Column1', 'attr' => 'align="center"'),
+			 												array('name' => 'Column2', 'attr' => 'align="center" width="20"')
+		 												)
+	 * @param   $attr             table attributes
+	 * @param   $print_fiche_head print Dolibarr fiche head
+	 * @param   $summary          table summary
+	 */
+	public function openTable($header_columns = array(), $attr = 'class="noborder allwidth"', $print_fiche_head = false, $summary = '')
+	{
+		global $langs;
 
-		// Generate page
-		$this->generate();
+		// Close last opened table if true
+		$this->closeTable();
+
+		// Print dolibarr fiche head
+		if ($print_fiche_head) {
+			dol_fiche_head();
+		}
+
+		// Print table summary
+		if (! empty($summary)) {
+			print $langs->trans($summary);
+		}
+
+		// Open table
+		print '<table '.$attr.'>'."\n";
+		if (! empty($header_columns))
+		{
+			print '<tr class="liste_titre">'."\n";
+			foreach ($header_columns as $col) {
+				print '<td'.(! empty($col['attr']) ? ' '.$col['attr'] : '').'>'.$langs->trans($col['name']).'</td>'."\n";
+			}
+			print '</tr>'."\n";
+		}
+
+		$this->close_table = true; // a table have been opened & should be closed
+	}
+
+	/**
+	 * Close an opened html table
+	 *
+	 * @param   $print_fiche_end   print Dolibarr fiche end
+	 */
+	public function closeTable($print_fiche_end = false)
+	{
+		if ($this->close_table)
+		{
+			// Close table
+			print "</table>\n";
+
+			// Print dolibarr fiche end
+			if ($print_fiche_end) {
+				dol_fiche_end();
+			}
+
+			$this->close_table = false;
+		}
+
+		if (DOLIBASE_ALLOW_FUNC_CHAINING) return $this;
+	}
+
+	/**
+	 * Add a line break (or many)
+	 *
+	 * @param   $repeat   repeat line breaks
+	 */
+	public function addLineBreak($repeat = 0)
+	{
+		$repeat = $repeat < 0 ? 0 : $repeat;
+
+		for ($i = 0; $i <= $repeat; $i++) {
+			print "<br>\n";
+		}
 	}
 
 	/**
@@ -166,6 +310,21 @@ class Page
 	protected function loadDefaultActions()
 	{
 		// Put your default actions here
+	}
+
+	/**
+	 * Generate page begining
+	 *
+	 */
+	public function begin()
+	{
+		global $langs;
+		
+		// Load Page Header (Dolibarr header, menus, ...)
+		llxHeader($this->head, $langs->trans($this->title));
+
+		// Generate page
+		$this->generate();
 	}
 
 	/**
@@ -185,6 +344,8 @@ class Page
 	public function end()
 	{
 		// Page end
+		$this->closeTable();
+		$this->closeForm();
 		if (! empty($this->tabs)) dol_fiche_end();
 		llxFooter();
 	}

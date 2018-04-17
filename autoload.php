@@ -16,7 +16,7 @@
  */
 
 // Load Dolibase constants
-include_once __DIR__ . '/const.php';
+require_once __DIR__ . '/const.php';
 
 // Load Dolibase functions
-include_once __DIR__ . '/core/lib/functions.php';
+require_once __DIR__ . '/core/lib/functions.php';

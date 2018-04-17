@@ -16,6 +16,7 @@
  */
 
 dolibase_include_once('/core/class/page.php');
+include_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
 
 /**
  * SetupPage class
@@ -28,17 +29,21 @@ class SetupPage extends Page
 	 */
 	protected $title = "Setup";
 	/**
-	 * @var boolean Page is admin only
+	 * @var string Access permission
 	 */
-	protected $admin_only = true;
+	protected $access_permission = '$user->admin';
 	/**
-	 * @var boolean used to colorise options table rows (odd | peer)
+	 * @var boolean used to colorise options rows (odd | peer)
 	 */
 	protected $odd = true;
 	/**
-	 * @var boolean used to close opened options table
+	 * @var object used to call Dolibarr form functions
 	 */
-	protected $close_table = false;
+	public $form;
+	/**
+	 * @var object used to call Dolibarr color picker functions
+	 */
+	public $formother;
 
 	/**
 	 * Constructor
@@ -46,7 +51,11 @@ class SetupPage extends Page
 	 */
 	public function __construct()
 	{
-		//parent::__construct($this->title, $this->admin_only);
+		global $db;
+
+		// Initialise form objects
+		$this->form = new Form($db);
+		$this->formother = new FormOther($db);
 
 		// Add some custom css
 		$this->head = "<style>
@@ -62,6 +71,8 @@ class SetupPage extends Page
 	                        pointer-events: none;
 	                    }
 	                </style>";
+
+		parent::__construct($this->title, $this->access_permission);
 	}
 
 	/**
@@ -120,13 +131,13 @@ class SetupPage extends Page
 		$langs->load("admin");
 		$langs->load("setup_page@".$dolibase_config['module_folder']);
 
-		// Add default tabs
-		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url'], true);
-		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']);
-
 		// Add sub title
 		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
 		$this->addSubTitle($this->title, 'title_setup.png', $linkback);
+
+		// Add default tabs
+		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url'], true);
+		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']);
 
 		// Generate tabs
 		$this->generateTabs();
@@ -138,19 +149,43 @@ class SetupPage extends Page
 	 */
 	public function newOptionsTable()
 	{
-		global $langs;
+		$options_table_cols = array(
+								array('name' => 'Option', 'attr' => ''),
+								array('name' => '&nbsp;', 'attr' => 'align="center" width="20"'),
+								array('name' => 'Value', 'attr' => 'align="center" width="100"')
+							);
 
-		// Close last opened table if true
-		if ($this->close_table) $this->closeTable();
+		$this->openTable($options_table_cols);
+	}
 
-		print '<table class="noborder allwidth">'."\n";
-		print '<tr class="liste_titre">'."\n";
-		print '<td>'.$langs->trans("Option").'</td>'."\n";
-		print '<td align="center" width="20">&nbsp;</td>';
-		print '<td align="center" width="100">'.$langs->trans("Value").'</td>'."\n";
-		print '</tr>'."\n";
+	/**
+	 * Add a new option
+	 *
+	 * @param     $option_desc       Option description
+	 * @param     $option_content    Option content, it can be HTML or even a string
+	 * @param     $const_name        Option constant name
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
+	 * @param     $width             Option last column/td width
+	 */
+	public function addOption($option_desc, $option_content, $const_name = '', $morehtmlright = '', $width = 250)
+	{
+		global $conf, $langs, $bc;
 
-		$this->close_table = true; // a table have been opened & should be closed
+		$this->odd = !$this->odd;
+
+		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
+		print '<td align="center">&nbsp;</td>'."\n";
+		print '<td width="'.$width.'" align="right">'."\n";
+		if (! empty($const_name)) {
+			print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+			print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
+			print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
+		}
+		print $option_content."\n";
+		if (! empty($const_name)) {
+			print '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
+		}
+		print "</form>\n</td>\n</tr>\n";
 	}
 
 	/**
@@ -159,7 +194,7 @@ class SetupPage extends Page
 	 * @param     $option_desc       Option description
 	 * @param     $const_name        Option constant name
 	 * @param     $disabled          disable option or not
-	 * @param     $morehtmlright     more HTML to add on the right of the option
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 */
 	public function addSwitchOption($option_desc, $const_name, $disabled = false, $morehtmlright = '')
 	{
@@ -187,10 +222,11 @@ class SetupPage extends Page
 	 *
 	 * @param     $option_desc       Option description
 	 * @param     $const_name        Option constant name
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $size              Option textbox size
 	 * @param     $width             Option last column/td width
 	 */
-	public function addTextOption($option_desc, $const_name, $size = 16, $width = 250)
+	public function addTextOption($option_desc, $const_name, $morehtmlright = '', $size = 16, $width = 250)
 	{
 		global $conf, $langs, $bc;
 
@@ -214,9 +250,10 @@ class SetupPage extends Page
 	 * @param     $const_name        Option constant name
 	 * @param     $min               Option minimum number
 	 * @param     $max               Option maximum number
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addNumberOption($option_desc, $const_name, $min = 0, $max = 100, $width = 250)
+	public function addNumberOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 250)
 	{
 		global $conf, $langs, $bc;
 
@@ -239,9 +276,10 @@ class SetupPage extends Page
 	 * @param     $option_desc       Option description
 	 * @param     $const_name        Option constant name
 	 * @param     $list              Options list array
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addListOption($option_desc, $const_name, $list, $width = 250)
+	public function addListOption($option_desc, $const_name, $list, $morehtmlright = '', $width = 250)
 	{
 		global $conf, $langs, $bc, $db;
 
@@ -255,10 +293,9 @@ class SetupPage extends Page
 		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
 		// Translate list options
 		foreach ($list as $key => $value) {
-			$list[$key] = $langs->trans($list[$key]);
+			$list[$key] = $langs->trans($value);
 		}
-		$form = new Form($db);
-		print $form->selectarray($const_name, $list, $conf->global->$const_name);
+		print $this->form->selectarray($const_name, $list, $conf->global->$const_name);
 		print '&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
 		print "</form>\n</td>\n</tr>\n";
 	}
@@ -268,13 +305,12 @@ class SetupPage extends Page
 	 *
 	 * @param     $option_desc       Option description
 	 * @param     $const_name        Option constant name
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addColorOption($option_desc, $const_name, $width = 250)
+	public function addColorOption($option_desc, $const_name, $morehtmlright = '', $width = 250)
 	{
 		global $conf, $langs, $bc, $db;
-
-		include_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
 
 		$this->odd = !$this->odd;
 
@@ -284,43 +320,8 @@ class SetupPage extends Page
 		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
 		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
 		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
-		$formother = new FormOther($db);
-		print $formother->selectColor(colorArrayToHex(colorStringToArray($conf->global->$const_name, array()), ''), $const_name, 'formcolor', 1);
+		print $this->formother->selectColor(colorArrayToHex(colorStringToArray($conf->global->$const_name, array()), ''), $const_name, 'formcolor', 1);
 		print '&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
 		print "</form>\n</td>\n</tr>\n";
-	}
-
-	/**
-	 * Close html table
-	 *
-	 */
-	protected function closeTable()
-	{
-		print "</table><br>\n";
-
-		$this->close_table = false;
-	}
-
-	/**
-	 * Add a subtitle
-	 *
-	 * @param    $title             subtitle title
-	 * @param    $picture           subtitle picture
-	 * @param    $morehtmlright     more HTML to show on the right
-	 */
-	public function addSubTitle($title, $picture = 'title_generic.png', $morehtmlright = '')
-	{
-		if ($this->close_table) $this->closeTable();
-		parent::addSubTitle($title, $picture, $morehtmlright);
-	}
-
-	/**
-	 * Generate page end
-	 *
-	 */
-	public function end()
-	{
-		if ($this->close_table) $this->closeTable();
-		parent::end();
 	}
 }

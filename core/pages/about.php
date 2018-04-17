@@ -28,9 +28,9 @@ class AboutPage extends Page
 	 */
 	protected $title = "About";
 	/**
-	 * @var boolean Page is admin only
+	 * @var string Access permission
 	 */
-	protected $admin_only = true;
+	protected $access_permission = '$user->admin';
 
 	/**
 	 * Constructor
@@ -38,7 +38,7 @@ class AboutPage extends Page
 	 */
 	public function __construct()
 	{
-		//parent::__construct($this->title, $this->admin_only);
+		parent::__construct($this->title, $this->access_permission);
 	}
 
 	/**
@@ -53,13 +53,13 @@ class AboutPage extends Page
 		$langs->load("admin");
 		$langs->load("about_page@".$dolibase_config['module_folder']);
 
-		// Add default tabs
-		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']);
-		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url'], true);
-
 		// Add sub title
 		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
 		$this->addSubTitle($this->title, 'title_generic.png', $linkback);
+
+		// Add default tabs
+		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']);
+		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url'], true);
 
 		// Generate tabs
 		$this->generateTabs();

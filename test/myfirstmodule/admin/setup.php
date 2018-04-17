@@ -51,6 +51,8 @@ $page->addTextOption("My text option", "MY_FIRST_MODULE_CONST");
 
 $page->addNumberOption("My number option", "MY_FIRST_MODULE_NUMBER_OPTION");
 
+$page->closeTable()->addLineBreak();
+
 $page->addSubtitle("Other Options", 'title_setup.png');
 
 $page->newOptionsTable();

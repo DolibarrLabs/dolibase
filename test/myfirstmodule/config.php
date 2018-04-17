@@ -14,7 +14,7 @@ $dolibase_config['module_version']  = '1.0.0'; // Possible values: 'development'
 
 $dolibase_config['module_number']   = '550000'; // e.: 550000 (avoid small numbers because they are used for core modules)
 
-$dolibase_config['module_family']   = 'other'; // Possible values: 'crm', 'financial', 'hr', 'projects', 'products', 'ecm', 'technic', 'other'
+$dolibase_config['module_family']   = 'Dolibase modules'; // Possible values: 'crm', 'financial', 'hr', 'projects', 'products', 'ecm', 'technic', 'other'
 
 $dolibase_config['module_position'] = 500;
 
@@ -68,6 +68,6 @@ $dolibase_config['top_menu_name']   = str_replace('_', '', $dolibase_config['mod
  * Load Dolibase
  */
 
-if (false === (@include DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
+if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
 	dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/autoload.php'); // From module directory
 }

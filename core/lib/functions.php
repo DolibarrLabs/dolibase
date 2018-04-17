@@ -60,7 +60,53 @@ function dolibase_include_once($component_path)
 
 	$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-	if (false === (@include DOL_DOCUMENT_ROOT.'/dolibase/'.$path)) { // From htdocs directory
+	if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/'.$path)) { // From htdocs directory
 		dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/'.$path); // From module directory
 	}
+}
+
+/**
+ * Returns posted date
+ *
+ * @param      $date_input_name       date input name
+ * @param      $convert_to_db_format  should convert the date to database format or not
+ * @return     string                 date in your db format, null if error/empty
+ */
+function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
+{
+	$date = dol_mktime(12, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
+
+	if ($convert_to_db_format) {
+		global $db;
+
+		return empty($date) ? null : $db->idate($date);
+	}
+	else {
+		return $date;
+	}
+}
+
+/**
+ * Convert empty values to null
+ *
+ * @return     null|string     null or initial value
+ */
+function empty_to_null($value)
+{
+	return empty($value) ? null : $value;
+}
+
+/**
+ * Returns current date & time
+ *
+ * @param      $convert_to_db_format  should convert the date to database format or not
+ * @return     string                 current date in your db format
+ */
+function dolibase_now($convert_to_db_format = false)
+{
+	global $db;
+
+	$now = dol_now();
+
+	return $convert_to_db_format ? $db->idate($now) : $now;
 }
