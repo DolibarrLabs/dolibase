@@ -53,8 +53,6 @@ class modBooks extends DolibarrModules
 		// Create Module using Dolibase
 		$module = new Module($this);
 
-		//$module->addConstant("MY_FIRST_MODULE_CONST", "test");
-
 		$module->addPermission("read", "Read permission", "r");
 		$module->addPermission("create", "Create permission", "c");
 		$module->addPermission("modify", "Modify permission", "m");

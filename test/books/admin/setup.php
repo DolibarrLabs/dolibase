@@ -39,6 +39,13 @@ $page = new SetupPage();
 
 $page->begin();
 
+$page->addSubtitle("NumberingModels");
+
+$page->printNumModels();
+
+/*
+$page->closeTable()->addBreakLine();
+
 $page->addSubtitle("General Options");
 
 $page->newOptionsTable();
@@ -48,25 +55,6 @@ global $conf;
 $company_select = $page->form->select_company($conf->global->BOOKS_COMPANY_NAME, 'BOOKS_COMPANY_NAME');
 
 $page->addOption('My company', $company_select, 'BOOKS_COMPANY_NAME');
-
-/*
-$page->addSwitchOption("My first option", "MY_FIRST_MODULE_FIRST_OPTION");
-
-$page->addSwitchOption("My second option", "MY_FIRST_MODULE_SECOND_OPTION", true);
-
-$page->addTextOption("My text option", "MY_FIRST_MODULE_CONST");
-
-$page->addNumberOption("My number option", "MY_FIRST_MODULE_NUMBER_OPTION");
-
-$page->closeTable()->addBreakLine();
-
-$page->addSubtitle("Other Options", 'title_setup.png');
-
-$page->newOptionsTable();
-
-$page->addListOption("My list option", "MY_FIRST_MODULE_LIST_OPTION", array('option1' => "Option 1", 'option2' => "Option 2"));
-
-$page->addColorOption("My color option", "MY_FIRST_MODULE_COLOR_OPTION");
 */
 
 $page->end();

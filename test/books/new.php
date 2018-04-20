@@ -16,43 +16,41 @@ dol_include_once('/books/class/book.class.php');
 $page = new CreatePage("New book", '$user->rights->books->create');
 
 // Set fields
-$page->fields[] = new Field('book_ref', 'Ref', 'required');
-$page->fields[] = new Field('book_name', 'Name', 'required');
-$page->fields[] = new Field('book_type', 'Type', 'required');
-$page->fields[] = new Field('book_qty', 'Qty', 'numeric|required');
-$page->fields[] = new Field('book_price', 'Price', 'numeric');
+$page->fields[] = new Field('name', 'Name', 'required');
+$page->fields[] = new Field('type', 'Type', 'required');
+$page->fields[] = new Field('qty', 'Qty', 'numeric|required');
+$page->fields[] = new Field('price', 'Price', 'numeric');
 
 // Set actions
 $action = GETPOST('action', 'alpha');
 
 if ($action == 'create' && $page->checkFields())
 {
-	global $db;
-
 	$book = new Book();
 
-	$data = array('ref' => GETPOST('book_ref'),
-				  'name' => GETPOST('book_name'),
-				  'desc' => GETPOST('book_desc'),
-				  'type' => GETPOST('book_type'),
-				  'qty' => GETPOST('book_qty'),
-				  'price' => empty_to_null(GETPOST('book_price')),
-				  'publication_date' => GETPOSTDATE('book_pub_date', true),
-				  'creation_date' => dolibase_now(true),
-				  'created_by' => $user->id
-				);
+	$ref = $book->getNextNumRef();
 
-	$id = $book->create($data);
+	if (! empty($ref))
+	{
+		$data = array('ref' => $ref,
+					  'name' => str_escape(GETPOST('name')),
+					  'desc' => str_escape(GETPOST('desc')),
+					  'type' => GETPOST('type'),
+					  'qty' => GETPOST('qty'),
+					  'price' => empty_to_null(GETPOST('price')),
+					  'publication_date' => GETPOSTDATE('publication_date', true),
+					  'creation_date' => dolibase_now(true),
+					  'created_by' => $user->id
+					);
 
-	if ($id > 0) {
-        // Creation OK
-        header('Location: card.php?id=' . $id);
-        exit();
-    }
-    else {
-        // Creation KO
-        setEventMessage($book->error, 'errors');
-    }
+		$id = $book->create($data);
+
+		if ($id > 0) {
+	        // Creation OK
+	        header('Location: card.php?id=' . $id);
+	        exit();
+	    }
+	}
 }
 
 $page->begin();
@@ -65,19 +63,24 @@ $page->openForm();
 
 $page->openTable(array(), 'class="border" width="100%"', true, 'Use this form to add a new book<br><br>');
 
-$page->addTextField('Ref.', 'book_ref', GETPOST('book_ref'), true);
+$page->addTextField('Name', 'name', GETPOST('name'), true, 'This is a field summary');
 
-$page->addTextField('Name', 'book_name', GETPOST('book_name'), true);
+$page->addTextAreaField('Description', 'desc', GETPOST('desc'));
 
-$page->addTextAreaField('Description', 'book_desc', GETPOST('book_desc'));
+$list = array('sc'   => 'Science & nature',
+			  'his'  => 'History',
+			  'cook' => 'Cooking',
+			  'med'  => 'Medecine',
+			  'psy'  => 'Psychology'
+			);
 
-$page->addRadioListField('Type', 'book_type', array('sc' => 'Science & nature', 'his' => 'History', 'cook' => 'Cooking', 'med' => 'Medecine', 'psy' => 'Psychology'), GETPOST('book_type'), true);
+$page->addRadioListField('Type', 'type', $list, GETPOST('type'), true);
 
-$page->addNumberField('Qty', 'book_qty', GETPOST('book_qty'), true);
+$page->addNumberField('Qty', 'qty', GETPOST('qty'), true);
 
-$page->addTextField('Price', 'book_price', GETPOST('book_price'));
+$page->addTextField('Price', 'price', GETPOST('price'));
 
-$page->addDateField('Publication Date', 'book_pub_date', GETPOSTDATE('book_pub_date'));
+$page->addDateField('Publication Date', 'publication_date', GETPOSTDATE('publication_date'));
 
 $page->closeTable(true);
 

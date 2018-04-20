@@ -40,9 +40,8 @@ function dolibarrVersionGreatherThan($version)
 	$your_version = explode('.', $version);
 
 	return $dol_version[0] > $your_version[0] || 
-			($dol_version[0] == $your_version[0] && $dol_version[1] > $your_version[1]) || 
-			($dol_version[0] == $your_version[0] && $dol_version[1] == $your_version[1] && $dol_version[2] > $your_version[2]) 
-			? 1 : 0;
+	(isset($your_version[1]) && $dol_version[0] == $your_version[0] && $dol_version[1] > $your_version[1]) || 
+	(isset($your_version[2]) && $dol_version[0] == $your_version[0] && $dol_version[1] == $your_version[1] && $dol_version[2] > $your_version[2]) ? 1 : 0;
 }
 
 /**
@@ -89,6 +88,7 @@ function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
 /**
  * Convert empty values to null
  *
+ * @param      $value          value to convert
  * @return     null|string     null or initial value
  */
 function empty_to_null($value)
@@ -109,4 +109,17 @@ function dolibase_now($convert_to_db_format = false)
 	$now = dol_now();
 
 	return $convert_to_db_format ? $db->idate($now) : $now;
+}
+
+/**
+ * Escape a string from ' or " to avoid errors when dealing with database
+ *
+ * @param      $str       string to escape
+ * @return     string     escaped string
+ */
+function str_escape($str)
+{
+	global $db;
+
+	return $db->escape($str);
 }

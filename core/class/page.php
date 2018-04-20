@@ -54,6 +54,7 @@ class Page
 	 */
 	protected $close_table = false;
 
+
 	/**
 	 * Constructor
 	 * 
@@ -290,6 +291,39 @@ class Page
 	}
 
 	/**
+	 * Open a table row
+	 *
+	 * @param   $odd         row is odd or peer
+	 * @param   $more_attr   more attributes to add
+	 */
+	public function openRow($odd = true, $more_attr = '')
+	{
+		global $bc;
+
+		print '<tr '.$bc[$odd].(! empty($more_attr) ? ' '.$more_attr : '').'>';
+	}
+
+	/**
+	 * Close a table row
+	 *
+	 */
+	public function closeRow()
+	{
+		print '</tr>';
+	}
+
+	/**
+	 * Add a table column
+	 *
+	 * @param   $content   column content
+	 * @param   $attr      column attributes
+	 */
+	public function addColumn($content, $attr = '')
+	{
+		print '<td'.(! empty($attr) ? ' '.$attr : '').'>'.$content.'</td>';
+	}
+
+	/**
 	 * Add a line break (or many)
 	 *
 	 * @param   $repeat   repeat line breaks
@@ -338,6 +372,17 @@ class Page
 	}
 
 	/**
+	 * Calculate & show page loading time
+	 *
+	 */
+	protected function showLoadTime()
+	{
+		$load_time  = round((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 4); // PHP 5.4+ only
+
+		print '<br>Page loaded in ' . $load_time . ' seconds.';
+	}
+
+	/**
 	 * Generate page end
 	 *
 	 */
@@ -347,6 +392,7 @@ class Page
 		$this->closeTable();
 		$this->closeForm();
 		if (! empty($this->tabs)) dol_fiche_end();
+		if (DOLIBASE_DEBUG_MODE) $this->showLoadTime();
 		llxFooter();
 	}
 }

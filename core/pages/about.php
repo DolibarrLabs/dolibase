@@ -24,21 +24,14 @@ dolibase_include_once('/core/class/page.php');
 class AboutPage extends Page
 {
 	/**
-	 * @var string Page title
-	 */
-	protected $title = "About";
-	/**
-	 * @var string Access permission
-	 */
-	protected $access_permission = '$user->admin';
-
-	/**
 	 * Constructor
 	 * 
+	 * @param     $page_title     HTML page title
+	 * @param     $access_perm    Access permission
 	 */
-	public function __construct()
+	public function __construct($page_title = 'About', $access_perm = '$user->admin')
 	{
-		parent::__construct($this->title, $this->access_permission);
+		parent::__construct($page_title, $access_perm);
 	}
 
 	/**
@@ -58,8 +51,10 @@ class AboutPage extends Page
 		$this->addSubTitle($this->title, 'title_generic.png', $linkback);
 
 		// Add default tabs
-		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']);
-		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url'], true);
+		if (empty($this->tabs)) {
+			$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']."?mainmenu=home");
+			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home", true);
+		}
 
 		// Generate tabs
 		$this->generateTabs();

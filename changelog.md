@@ -4,6 +4,8 @@
 #### 1.0.0 - APR18
 
 *   NEW: 
+*   NEW: Add Numbering models.
+*   NEW: Add Create/Card/Index/List pages.
 *   NEW: Add About page.
 *   NEW: Add Setup page.
 *   NEW: Add Page class.

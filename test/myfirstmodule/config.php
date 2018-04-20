@@ -28,9 +28,9 @@ $dolibase_config['module_depends']  = array(); // Modules class name(s) to activ
 
 $dolibase_config['module_dirs']     = array(); // Directories to create when activating the module, e.: array('/'.$dolibase_config['module_folder'].'/temp');
 
-$dolibase_config['need_dolibarr']   = array(); // Minimum Dolibarr version, e.: array(6, 0);
+$dolibase_config['need_dolibarr']   = array(3, 8); // Minimum Dolibarr version, e.: array(6, 0);
 
-$dolibase_config['need_php']        = array(); // Minimum PHP version, e.: array(4, 0);
+$dolibase_config['need_php']        = array(5, 0); // Minimum PHP version, e.: array(4, 0);
 
 $dolibase_config['required_by']     = array(); // Modules class name(s) to disable if this one is disabled, e.: array('modFacture');
 

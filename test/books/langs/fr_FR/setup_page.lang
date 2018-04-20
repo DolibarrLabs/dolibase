@@ -1,6 +1,6 @@
-# PRODUCT RETURNS MODULE - fr_FR
+# Dolibase Setup Page - fr_FR
 #
-# Copyright (C) 2017 AXeL
+# Copyright (C) 2018 AXeL
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,3 +23,4 @@ Settings = Paramètres
 About = À propos
 Option = Option
 Value = Valeur
+NumberingModels = Modèles de numérotation

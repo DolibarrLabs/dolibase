@@ -24,18 +24,7 @@ class Book extends CustomObject
 	 */
 	public function __construct()
 	{
-		$this->fetch_fields = array('id'               => 'rowid',
-									'ref'              => 'ref',
-									'name'             => 'name',
-									'description'      => 'desc',
-									'type'             => 'type',
-									'qty'              => 'qty',
-									'price'            => 'price',
-									'ref'              => 'ref',
-									'publication_date' => 'publication_date',
-									'creation_date'    => 'creation_date',
-									'created_by'       => 'created_by'
-								);
+		$this->fetch_fields = array('rowid', 'ref', 'name', 'desc', 'type', 'qty', 'price', 'ref', 'publication_date', 'creation_date', 'created_by');
 
 		parent::__construct();
 	}

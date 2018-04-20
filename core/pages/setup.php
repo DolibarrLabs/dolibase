@@ -15,47 +15,36 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
-include_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
+dolibase_include_once('/core/class/form_page.php');
 
 /**
  * SetupPage class
  */
 
-class SetupPage extends Page
+class SetupPage extends FormPage
 {
-	/**
-	 * @var string Page title
-	 */
-	protected $title = "Setup";
-	/**
-	 * @var string Access permission
-	 */
-	protected $access_permission = '$user->admin';
 	/**
 	 * @var boolean used to colorise options rows (odd | peer)
 	 */
 	protected $odd = true;
 	/**
-	 * @var object used to call Dolibarr form functions
+	 * @var string numbering model const name
 	 */
-	public $form;
-	/**
-	 * @var object used to call Dolibarr color picker functions
-	 */
-	public $formother;
+	protected $num_model_const_name;
+	
 
 	/**
 	 * Constructor
 	 * 
+	 * @param     $page_title     HTML page title
+	 * @param     $access_perm    Access permission
 	 */
-	public function __construct()
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin')
 	{
-		global $db;
+		global $dolibase_config;
 
-		// Initialise form objects
-		$this->form = new Form($db);
-		$this->formother = new FormOther($db);
+		// Set numbering model constant name
+		$this->num_model_const_name = strtoupper($dolibase_config['rights_class']) . '_ADDON';
 
 		// Add some custom css
 		$this->head = "<style>
@@ -72,7 +61,7 @@ class SetupPage extends Page
 	                    }
 	                </style>";
 
-		parent::__construct($this->title, $this->access_permission);
+		parent::__construct($page_title, $access_perm);
 	}
 
 	/**
@@ -81,7 +70,7 @@ class SetupPage extends Page
 	 */
 	protected function loadDefaultActions()
 	{
-		global $conf, $db;
+		global $conf, $db, $langs, $dolibase_config;
 
 		// Libraries
 		require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
@@ -104,6 +93,7 @@ class SetupPage extends Page
 				dol_print_error($db);
 			}
 		}
+
 		else if (preg_match('/del_(.*)/', $action, $reg))
 		{
 			$code = $reg[1];
@@ -116,6 +106,30 @@ class SetupPage extends Page
 			{
 				dol_print_error($db);
 			}
+		}
+
+		else if ($action == 'updateMask')
+		{
+			$maskconst = GETPOST('maskconst','alpha');
+			$mask = GETPOST('mask','alpha');
+
+			if ($maskconst) $res = dolibarr_set_const($db, $maskconst, $mask,'chaine', 0, '', $conf->entity);
+
+			if (! $res > 0) $error++;
+
+		 	if (! $error)
+		    {
+		        setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
+		    }
+		    else
+		    {
+		        setEventMessages($langs->trans("Error"), null, 'errors');
+		    }
+		}
+
+		else if ($action == 'setmod')
+		{
+			dolibarr_set_const($db, $this->num_model_const_name, $value, 'chaine', 0, '', $conf->entity);
 		}
 	}
 
@@ -136,8 +150,10 @@ class SetupPage extends Page
 		$this->addSubTitle($this->title, 'title_setup.png', $linkback);
 
 		// Add default tabs
-		$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url'], true);
-		$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']);
+		if (empty($this->tabs)) {
+			$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']."?mainmenu=home", true);
+			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home");
+		}
 
 		// Generate tabs
 		$this->generateTabs();
@@ -323,5 +339,117 @@ class SetupPage extends Page
 		print $this->formother->selectColor(colorArrayToHex(colorStringToArray($conf->global->$const_name, array()), ''), $const_name, 'formcolor', 1);
 		print '&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
 		print "</form>\n</td>\n</tr>\n";
+	}
+
+	/**
+	 * Print numbering models
+	 *
+	 */
+	public function printNumModels()
+	{
+		global $conf, $langs, $dolibase_config;
+
+		$const_name = $this->num_model_const_name;
+
+		print '<table class="noborder" width="100%">';
+		print '<tr class="liste_titre">';
+		print '<td>'.$langs->trans("Name").'</td>';
+		print '<td>'.$langs->trans("Description").'</td>';
+		print '<td class="nowrap">'.$langs->trans("Example").'</td>';
+		print '<td align="center" width="60">'.$langs->trans("Status").'</td>';
+		print '<td align="center" width="16">'.$langs->trans("ShortInfo").'</td>';
+		print '</tr>'."\n";
+
+		clearstatcache();
+
+		$dirmodels = array_merge(array('/'),(array) $conf->modules_parts['models']);
+
+		foreach ($dirmodels as $reldir)
+		{
+			$dir = dol_buildpath($reldir."/dolibase/core/num_models/");
+			$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module_folder']."/dolibase/core/num_models/");
+
+			$dir = ! is_dir($dir) ? $mod_dir : $dir;
+
+			if (is_dir($dir))
+			{
+				$handle = opendir($dir);
+				if (is_resource($handle))
+				{
+					$var = true;
+
+					while (($file = readdir($handle))!==false)
+					{
+						if (substr($file, dol_strlen($file)-3, 3) == 'php')
+						{
+							$file = substr($file, 0, dol_strlen($file)-4);
+
+							require_once $dir.$file.'.php';
+
+							$classname = 'NumModel'.ucfirst($file);
+
+							$module = new $classname();
+
+							// Show modules according to features level
+							if ($module->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) continue;
+							if ($module->version == 'experimental' && $conf->global->MAIN_FEATURES_LEVEL < 1) continue;
+
+							if ($module->isEnabled())
+							{
+								$var=!$var;
+								print '<tr '.$bc[$var].'><td>'.$module->nom."</td><td>\n";
+								print $module->info();
+								print '</td>';
+
+								// Show example of numbering model
+								print '<td class="nowrap">';
+								$tmp=$module->getExample();
+								if (preg_match('/^Error/',$tmp)) print '<div class="error">'.$langs->trans($tmp).'</div>';
+								elseif ($tmp=='NotConfigured') print $langs->trans($tmp);
+								else print $tmp;
+								print '</td>'."\n";
+
+								print '<td align="center">';
+								if ($conf->global->$const_name == $file)
+								{
+									print img_picto($langs->trans("Activated"),'switch_on');
+								}
+								else
+								{
+									print '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
+									print img_picto($langs->trans("Disabled"),'switch_off');
+									print '</a>';
+								}
+								print '</td>';
+
+								// Info
+								$htmltooltip='';
+								$htmltooltip.=''.$langs->trans("Version").': <b>'.$module->getVersion().'</b><br>';
+								$nextval=$module->getNextValue();
+								if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
+									$htmltooltip.=''.$langs->trans("NextValue").': ';
+									if ($nextval) {
+										if (preg_match('/^Error/',$nextval) || $nextval=='NotConfigured') {
+											$nextval = $langs->trans($nextval);
+										}
+										$htmltooltip.=$nextval.'<br>';
+									} else {
+										$htmltooltip.=$langs->trans($module->error).'<br>';
+									}
+								}
+
+								print '<td align="center">';
+								print $this->form->textwithpicto('',$htmltooltip,1,0);
+								print '</td>';
+
+								print "</tr>\n";
+							}
+						}
+					}
+					closedir($handle);
+				}
+			}
+		}
+		print "</table><br>\n";
 	}
 }
