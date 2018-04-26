@@ -41,13 +41,17 @@ class SetupPage extends FormPage
 	 */
 	public function __construct($page_title = 'Setup', $access_perm = '$user->admin')
 	{
-		global $dolibase_config;
+		global $langs, $dolibase_config;
+
+		// Load lang files
+		$langs->load("admin");
+		$langs->load("setup_page@".$dolibase_config['module_folder']);
 
 		// Set numbering model constant name
 		$this->num_model_const_name = strtoupper($dolibase_config['rights_class']) . '_ADDON';
 
 		// Add some custom css
-		$this->head = "<style>
+		$this->head.= "<style>
 						.disabled {
 	                        cursor: not-allowed !important;
 	                        opacity: 0.4;
@@ -141,10 +145,6 @@ class SetupPage extends FormPage
 	{
 		global $langs, $dolibase_config;
 
-		// Load lang files
-		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_config['module_folder']);
-
 		// Add sub title
 		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
 		$this->addSubTitle($this->title, 'title_setup.png', $linkback);
@@ -154,19 +154,19 @@ class SetupPage extends FormPage
 			$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']."?mainmenu=home", true);
 			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home");
 		}
-
-		// Generate tabs
-		$this->generateTabs();
+		
+		parent::generate();
 	}
 
 	/**
 	 * Create a new table for options
 	 *
+	 * @param     $first_column_name     First column name
 	 */
-	public function newOptionsTable()
+	public function newOptionsTable($first_column_name = 'Option')
 	{
 		$options_table_cols = array(
-								array('name' => 'Option', 'attr' => ''),
+								array('name' => $first_column_name, 'attr' => ''),
 								array('name' => '&nbsp;', 'attr' => 'align="center" width="20"'),
 								array('name' => 'Value', 'attr' => 'align="center" width="100"')
 							);
@@ -244,19 +244,11 @@ class SetupPage extends FormPage
 	 */
 	public function addTextOption($option_desc, $const_name, $morehtmlright = '', $size = 16, $width = 250)
 	{
-		global $conf, $langs, $bc;
+		global $conf;
 
-		$this->odd = !$this->odd;
+		$option_content = $this->form->textInput($const_name, $conf->global->$const_name, $size);
 
-		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td align="center">&nbsp;</td>'."\n";
-		print '<td width="'.$width.'" align="right">'."\n";
-		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
-		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
-		print '<input type="text" size="'.$size.'" class="flat" name="'.$const_name.'" value="'.$conf->global->$const_name.'">'."\n";
-		print '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
-		print "</form>\n</td>\n</tr>\n";
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 	}
 
 	/**
@@ -271,19 +263,11 @@ class SetupPage extends FormPage
 	 */
 	public function addNumberOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 250)
 	{
-		global $conf, $langs, $bc;
+		global $conf;
 
-		$this->odd = !$this->odd;
+		$option_content = $this->form->numberInput($const_name, $conf->global->$const_name, $min, $max);
 
-		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td align="center">&nbsp;</td>'."\n";
-		print '<td width="'.$width.'" align="right">'."\n";
-		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
-		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
-		print '<input type="number" min="'.$min.'" max="'.$max.'" class="flat" name="'.$const_name.'" value="'.$conf->global->$const_name.'">'."\n";
-		print '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
-		print "</form>\n</td>\n</tr>\n";
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 	}
 
 	/**
@@ -297,23 +281,11 @@ class SetupPage extends FormPage
 	 */
 	public function addListOption($option_desc, $const_name, $list, $morehtmlright = '', $width = 250)
 	{
-		global $conf, $langs, $bc, $db;
+		global $conf;
 
-		$this->odd = !$this->odd;
+		$option_content = $this->form->listInput($const_name, $list, $conf->global->$const_name);
 
-		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td align="center">&nbsp;</td>'."\n";
-		print '<td width="'.$width.'" align="right">'."\n";
-		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
-		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
-		// Translate list options
-		foreach ($list as $key => $value) {
-			$list[$key] = $langs->trans($value);
-		}
-		print $this->form->selectarray($const_name, $list, $conf->global->$const_name);
-		print '&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
-		print "</form>\n</td>\n</tr>\n";
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 	}
 
 	/**
@@ -326,19 +298,11 @@ class SetupPage extends FormPage
 	 */
 	public function addColorOption($option_desc, $const_name, $morehtmlright = '', $width = 250)
 	{
-		global $conf, $langs, $bc, $db;
+		global $conf;
 
-		$this->odd = !$this->odd;
+		$option_content = $this->form->colorInput($const_name, $conf->global->$const_name);
 
-		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td align="center">&nbsp;</td>'."\n";
-		print '<td width="'.$width.'" align="right">'."\n";
-		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
-		print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
-		print $this->formother->selectColor(colorArrayToHex(colorStringToArray($conf->global->$const_name, array()), ''), $const_name, 'formcolor', 1);
-		print '&nbsp;&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
-		print "</form>\n</td>\n</tr>\n";
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 	}
 
 	/**

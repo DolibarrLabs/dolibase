@@ -15,13 +15,13 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('/core/class/form_page.php');
 
 /**
  * IndexPage class
  */
 
-class IndexPage extends Page
+class IndexPage extends FormPage
 {
 	/**
 	 * @var int Statistics id (used to generate stats HTML id)
@@ -112,11 +112,9 @@ class IndexPage extends Page
 		print '<form method="post" action="'.dol_buildpath($url, 1).'">';
 		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
 		print '<table class="noborder nohover" width="100%">';
-		print '<tr class="liste_titre"><td colspan="3">'.$langs->trans($title);
-		if (! empty($summary)) {
-			print '&nbsp;<div style="display: inline-block; vertical-align: middle">';
-			print info_admin($langs->trans($summary), 1) . '</div>';
-		}
+		print '<tr class="liste_titre"><td colspan="3">';
+		$title = $langs->trans($title);
+		print (! empty($summary) ? $this->form->textwithpicto($title, $langs->trans($summary)) : $title);
 		print '</td></tr>';
 		$count = 0;
 		foreach ($fields as $key => $value) {

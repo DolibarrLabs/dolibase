@@ -29,12 +29,12 @@ function getDolibarrVersion()
 }
 
 /**
- * Check if Dolibarr version if greather than another
+ * Check if Dolibarr version if greater than another
  *
  * @param     $version     Dolibarr version to compare with
  * @return    int          1 or 0
  */
-function dolibarrVersionGreatherThan($version)
+function dolibarrVersionGreaterThan($version)
 {
 	$dol_version = explode('.', DOL_VERSION);
 	$your_version = explode('.', $version);
@@ -47,20 +47,30 @@ function dolibarrVersionGreatherThan($version)
 /**
  * Include Dolibase components
  *
+ * Use it only to include Dolibase components otherwise it will not work
+ *
  * @param     $component_path     Dolibase component path
  */
 function dolibase_include_once($component_path)
 {
-	global $dolibase_config;
-
-	if (empty($dolibase_config) || empty($dolibase_config['module_folder'])) {
-		die('Dolibase::Functions::Error cannot include component "'.$component_path.'" (module folder not found).');
-	}
-
 	$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-	if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/'.$path)) { // From htdocs directory
-		dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/'.$path); // From module directory
+	@include_once DOL_DOCUMENT_ROOT.DOLIBASE_DOCUMENT_ROOT.'/'.$path; // @ is used to skip warnings..
+}
+
+/**
+ * Load Dolibase tables
+ *
+ * @param      $module       module object
+ */
+function dolibase_load_tables(&$module)
+{
+	// Load Dolibase tables
+	// PS: if you wanna add more sql tables & separate them from each others, just create new folder(s) inside sql folder
+	// & update the code below to fit your needs
+
+	if (DOLIBASE_ENABLE_LOGS) {
+		$module->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/');
 	}
 }
 
@@ -89,11 +99,12 @@ function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
  * Convert empty values to null
  *
  * @param      $value          value to convert
+ * @param      $minus_one_also consider -1 also as an empty value
  * @return     null|string     null or initial value
  */
-function empty_to_null($value)
+function empty_to_null($value, $minus_one_also = false)
 {
-	return empty($value) ? null : $value;
+	return empty($value) || ($minus_one_also && $value == -1) ? null : $value;
 }
 
 /**

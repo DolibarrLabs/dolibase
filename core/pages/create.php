@@ -17,7 +17,6 @@
 
 dolibase_include_once('/core/class/form_page.php');
 dolibase_include_once('/core/class/field.php');
-include_once DOL_DOCUMENT_ROOT . '/core/class/doleditor.class.php';
 
 /**
  * CreatePage class
@@ -39,14 +38,6 @@ class CreatePage extends FormPage
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
-		// Add some custom css
-		$this->head = "<style>
-						.dolibase_radio {
-							height: 26px !important;
-	                        vertical-align: middle;
-	                    }
-	                </style>";
-
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -97,15 +88,25 @@ class CreatePage extends FormPage
 			}
 		}
 
+		$validation_rules = explode('|', $field_validation_rules);
+
 		// required
-		if (preg_match('/\brequired\b/', $field_validation_rules) && $field_value == '') {
-            setEventMessage($langs->transnoentities("ErrorFieldRequired",$langs->transnoentities($field_trans)), 'errors');
+		$is_required = in_array('required', $validation_rules);
+		if ($is_required && $field_value == '') {
+            setEventMessage($langs->transnoentities("ErrorFieldRequired", $langs->transnoentities($field_trans)), 'errors');
             $error++;
         }
 
-        // numeric
-        else if (preg_match('/\bnumeric\b/', $field_validation_rules) && ! $field_value == '' && ! is_numeric($field_value)) {
-            setEventMessage($langs->transnoentities("ErrorFieldFormat",$langs->transnoentities($field_trans)), 'errors');
+        // numeric (escape if empty)
+        else if (in_array('numeric', $validation_rules) && $field_value != '' && ! is_numeric($field_value)) {
+            setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+            $error++;
+		}
+
+		// greaterThanZero
+        else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && (! is_numeric($field_value) || $field_value <= 0)) {
+        	$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
+            setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
             $error++;
 		}
 
@@ -149,10 +150,7 @@ class CreatePage extends FormPage
 		print '<tr>';
 		print '<td width="25%"'.($is_required ? ' class="fieldrequired"' : '').$more_attr.'>' . $langs->trans($field_name) . '</td>';
 		print '<td colspan="2">' . $field_content;
-		if (! empty($field_summary)) {
-			print '&nbsp;<div style="display: inline-block; vertical-align: middle">';
-			print info_admin($langs->trans($field_summary), 1) . '</div>';
-		}
+		if (! empty($field_summary)) print $this->form->textwithpicto(' ', $langs->trans($field_summary));
 		print '</td>';
 		print '</tr>';
 	}
@@ -169,7 +167,8 @@ class CreatePage extends FormPage
 	 */
 	public function addTextField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '', $input_size = 20)
 	{
-		$field_content = '<input size="'.$input_size.'" type="text" name="'.$input_name.'" value="'.$input_value.'">';
+		$field_content = $this->form->textInput($input_name, $input_value, $input_size);
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
 
@@ -187,13 +186,8 @@ class CreatePage extends FormPage
 	 */
 	public function addTextAreaField($field_name, $text_area_name, $text_area_value = '', $is_required = false, $field_summary = '', $toolbarname = 'dolibarr_details', $height = 100, $valign = 'top')
 	{
-		global $conf;
+	    $field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
 
-		if (! empty($conf->global->FCKEDITOR_ENABLE_DETAILS_FULL)) $toolbarname = 'Full';
-		else if (empty($toolbarname)) $toolbarname = 'dolibarr_details';
-	    $doleditor = new DolEditor($text_area_name, $text_area_value, '', $height, $toolbarname, 'In', false, false, true, ROWS_3, '90%');
-	    $field_content = $doleditor->Create(1);
-	    //$field_content = '<textarea name="'.$text_area_name.'" wrap="soft" cols="70" fields="'.ROWS_3.'">'.$text_area_value.'</textarea>';
 		$more_attr = ' valign="'.$valign.'"';
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
 	}
@@ -211,7 +205,10 @@ class CreatePage extends FormPage
 	 */
 	public function addNumberField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '', $min = 0, $max = 100)
 	{
-		$field_content = '<input type="number" min="'.$min.'" max="'.$max.'" name="'.$input_name.'" value="'.(empty($input_value) ? $min : $input_value).'">';
+		$input_value = (empty($input_value) ? $min : $input_value);
+
+		$field_content = $this->form->numberInput($input_name, $input_value, $min, $max);
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
 
@@ -226,7 +223,8 @@ class CreatePage extends FormPage
 	 */
 	public function addDateField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '')
 	{
-		$field_content = $this->form->select_date($input_value, $input_name, 0, 0, 1, '', 1, 1, 1);
+		$field_content = $this->form->dateInput($input_name, $input_value);
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
 
@@ -242,14 +240,8 @@ class CreatePage extends FormPage
 	 */
 	public function addListField($field_name, $list_name, $list_choices, $selected_choice = '', $is_required = false, $field_summary = '')
 	{
-		global $langs;
+		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice);
 
-		// Translate list choices
-		foreach ($list_choices as $key => $value) {
-			$list_choices[$key] = $langs->trans($value);
-		}
-
-		$field_content = $this->form->selectarray($list_name, $list_choices, $selected_choice);
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
 
@@ -266,18 +258,7 @@ class CreatePage extends FormPage
 	 */
 	public function addRadioListField($field_name, $radio_name, $radio_list, $selected = '', $is_required = false, $field_summary = '', $valign = 'middle')
 	{
-		global $langs;
-
-		$count = 0;
-		$field_content = '';
-		foreach ($radio_list as $key => $value) {
-			if ($count > 0) $field_content.= "<br>\n";
-			$field_content.= '<span>';
-			$field_content.= '<input type="radio" class="dolibase_radio" name="'.$radio_name.'" id="'.$key.'" value="'.$key.'"'.($selected == $key || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
-			$field_content.= ' <label for="'.$key.'">' . $langs->trans($value) . '</label>';
-			$field_content.= '</span>';
-			$count++;
-		}
+		$field_content = $this->form->radioList($radio_name, $radio_list, $selected);
 
 		$more_attr = ' valign="'.$valign.'"';
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
@@ -294,7 +275,8 @@ class CreatePage extends FormPage
 	 */
 	public function addColorField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '')
 	{
-		$field_content = $this->formother->selectColor(colorArrayToHex(colorStringToArray($input_value, array()), ''), $input_name, 'formcolor', 1);
+		$field_content = $this->form->colorInput($input_name, $input_value);
+		
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
 

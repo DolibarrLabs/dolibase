@@ -38,6 +38,10 @@ class Page
 	 */
 	protected $tabs = array();
 	/**
+	 * @var array Page main subtitle settings
+	 */
+	protected $main_subtitle = array();
+	/**
 	 * @var string Tabs picture
 	 */
 	protected $tabs_picture = ''; // Leave empty to use the module picture
@@ -92,6 +96,34 @@ class Page
 	}
 
 	/**
+	 * Set page main subtitle
+	 *
+	 * @param     $title     title
+	 * @param     $picture   subtitle picture
+	 */
+	public function setMainSubtitle($title, $picture = 'title_generic.png')
+	{
+		$this->main_subtitle = array('title' => $title, 'picture' => $picture);
+	}
+
+	/**
+	 * Load a language file
+	 *
+	 * @param     $lang_file          Language file
+	 * @param     $is_module_file     File is in module 'langs' directory or not
+	 */
+	public function loadLang($lang_file, $is_module_file = true)
+	{
+		global $langs, $dolibase_config;
+
+		if ($is_module_file) {
+			$lang_file = $lang_file.'@'.$dolibase_config['module_folder'];
+		}
+
+		$langs->load($lang_file);
+	}
+
+	/**
 	 * Add js file to page head
 	 *
 	 * @param     $js_file     Javascript file
@@ -100,7 +132,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->head.= '<script type="text/javascript" src="'.DOL_URL_ROOT.$dolibase_config['module_folder'].'/js/'.$js_file.'"></script>'."\n";
+		$this->head.= '<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/js/'.$js_file, 1).'"></script>'."\n";
 	}
 
 	/**
@@ -112,7 +144,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->head.= '<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.$dolibase_config['module_folder'].'/css/'.$css_file.'">'."\n";
+		$this->head.= '<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/css/'.$css_file, 1).'">'."\n";
 	}
 
 	/**
@@ -367,6 +399,11 @@ class Page
 	 */
 	protected function generate()
 	{
+		// Add main subtitle
+		if (! empty($this->main_subtitle)) {
+			$this->addSubTitle($this->main_subtitle['title'], $this->main_subtitle['picture']);
+		}
+
 		// Generate tabs
 		$this->generateTabs();
 	}
@@ -388,11 +425,14 @@ class Page
 	 */
 	public function end()
 	{
+		global $db;
+		
 		// Page end
 		$this->closeTable();
 		$this->closeForm();
 		if (! empty($this->tabs)) dol_fiche_end();
 		if (DOLIBASE_DEBUG_MODE) $this->showLoadTime();
 		llxFooter();
+		$db->close();
 	}
 }

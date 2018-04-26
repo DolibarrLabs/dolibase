@@ -32,6 +32,8 @@ if ($action == 'create' && $page->checkFields())
 
 	if (! empty($ref))
 	{
+		global $user;
+		
 		$data = array('ref' => $ref,
 					  'name' => str_escape(GETPOST('name')),
 					  'desc' => str_escape(GETPOST('desc')),

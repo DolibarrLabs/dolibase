@@ -18,7 +18,7 @@
 dolibase_include_once('/core/pages/create.php');
 
 /**
- * CreatePage class
+ * CardPage class
  */
 
 class CardPage extends CreatePage
@@ -35,10 +35,6 @@ class CardPage extends CreatePage
 	 * @var boolean used to close opened buttons div
 	 */
 	protected $close_buttons_div = false;
-	/**
-	 * @var string Page body (used to display actions confirmation)
-	 */
-	protected $body = '';
 
 
 	/**
@@ -54,6 +50,18 @@ class CardPage extends CreatePage
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
 
+		// Add custom css
+		$optioncss = GETPOST('optioncss', 'alpha');
+		if ($optioncss == 'print') {
+			$this->head.= "<style>
+							.hideonprint {display: none;}
+							.highlightedonprint {
+								font-weight: bold;
+								background-color: #4897d280;
+							}
+		                </style>";
+        }
+		
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -111,12 +119,13 @@ class CardPage extends CreatePage
 	 * @param     $field_content  field content
 	 * @param     $is_editable    is field editable or not
 	 * @param     $edit_link      edition link
+	 * @param     $attr           HTML attributes
 	 */
-	public function showField($field_name, $field_content, $is_editable = false, $edit_link = '')
+	public function showField($field_name, $field_content, $is_editable = false, $edit_link = '', $attr = '')
 	{
 		global $langs;
 
-		print '<tr>';
+		print '<tr'.(! empty($attr) ? ' '.$attr : '').'>';
 		print '<td width="25%"><table class="nobordernopadding" width="100%"><tr>';
 		print '<td>' . $langs->trans($field_name) . '</td>';
 		if ($is_editable && (empty($this->edit_permission) || verifCond($this->edit_permission))) {
@@ -142,6 +151,24 @@ class CardPage extends CreatePage
 		$field_content = $this->form->showrefnav($object, $object->ref_field_name, $morehtml, 1, $object->ref_field_name, $object->ref_field_name);
 
 		$this->showField($field_name, $field_content);
+	}
+
+	/**
+	 * show banner
+	 *
+	 * @param     $object         object
+	 * @param     $list_link      link to list
+	 * @param     $morehtmlleft   more html in the left
+	 */
+	public function showBanner($object, $list_link = '', $morehtmlleft = '')
+	{
+		global $langs;
+
+		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans("BackToList").'</a>');
+
+		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
+
+		print '<div class="underbanner clearboth"></div>';
 	}
 
 	/**
@@ -181,7 +208,8 @@ class CardPage extends CreatePage
 	 */
 	public function editTextField($field_name, $input_name, $input_value = '', $input_size = 20, $action_prefix = 'set_')
 	{
-		$field_content = '<input size="'.$input_size.'" type="text" name="'.$input_name.'" value="'.$input_value.'">';
+		$field_content = $this->form->textInput($input_name, $input_value, $input_size);
+
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
 	}
 
@@ -197,14 +225,8 @@ class CardPage extends CreatePage
 	 */
 	public function editTextAreaField($field_name, $text_area_name, $text_area_value = '', $toolbarname = 'dolibarr_details', $height = 100, $action_prefix = 'set_')
 	{
-		global $conf;
+		$field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
 
-		if (! empty($conf->global->FCKEDITOR_ENABLE_DETAILS_FULL)) $toolbarname = 'Full';
-		else if (empty($toolbarname)) $toolbarname = 'dolibarr_details';
-	    $doleditor = new DolEditor($text_area_name, $text_area_value, '', $height, $toolbarname, 'In', false, false, true, ROWS_3, '90%');
-
-		$field_content = $doleditor->Create(1);
-		//$field_content = '<textarea name="'.$text_area_name.'" wrap="soft" cols="70" fields="'.ROWS_3.'">'.$text_area_value.'</textarea>';
 		$this->editField($field_name, $field_content, $action_prefix.$text_area_name);
 	}
 
@@ -220,7 +242,10 @@ class CardPage extends CreatePage
 	 */
 	public function editNumberField($field_name, $input_name, $input_value = '', $min = 0, $max = 100, $action_prefix = 'set_')
 	{
-		$field_content = '<input type="number" min="'.$min.'" max="'.$max.'" name="'.$input_name.'" value="'.(empty($input_value) ? $min : $input_value).'">';
+		$input_value = (empty($input_value) ? $min : $input_value);
+
+		$field_content = $this->form->numberInput($input_name, $input_value, $min, $max);
+
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
 	}
 
@@ -234,7 +259,8 @@ class CardPage extends CreatePage
 	 */
 	public function editDateField($field_name, $input_name, $input_value = '', $action_prefix = 'set_date_')
 	{
-		$field_content = $this->form->select_date($input_value, $input_name, 0, 0, 1, '', 1, 1, 1);
+		$field_content = $this->form->dateInput($input_name, $input_value);
+
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
 	}
 
@@ -249,14 +275,8 @@ class CardPage extends CreatePage
 	 */
 	public function editListField($field_name, $list_name, $list_choices, $selected_choice = '', $action_prefix = 'set_')
 	{
-		global $langs;
+		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice);
 
-		// Translate list choices
-		foreach ($list_choices as $key => $value) {
-			$list_choices[$key] = $langs->trans($value);
-		}
-
-		$field_content = $this->form->selectarray($list_name, $list_choices, $selected_choice);
 		$this->editField($field_name, $field_content, $action_prefix.$list_name);
 	}
 
@@ -271,16 +291,7 @@ class CardPage extends CreatePage
 	 */
 	public function editRadioListField($field_name, $radio_name, $radio_list, $selected = '', $action_prefix = 'set_')
 	{
-		global $langs;
-
-		$field_content = '';
-		foreach ($radio_list as $key => $value) {
-			$field_content.= '<span>';
-			$field_content.= '<input type="radio" class="dolibase_radio" name="'.$radio_name.'" id="'.$key.'" value="'.$key.'"'.($selected == $key || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
-			$field_content.= ' <label for="'.$key.'">' . $langs->trans($value) . '</label>';
-			$field_content.= '</span>';
-			$field_content.= "<br>\n";
-		}
+		$field_content = $this->form->radioList($radio_name, $radio_list, $selected, true);
 
 		$this->editField($field_name, $field_content, $action_prefix.$radio_name);
 	}
@@ -295,35 +306,9 @@ class CardPage extends CreatePage
 	 */
 	public function editColorField($field_name, $input_name, $input_value = '', $action_prefix = 'set_')
 	{
-		$field_content = $this->formother->selectColor(colorArrayToHex(colorStringToArray($input_value, array()), ''), $input_name, 'formcolor', 1);
+		$field_content = $this->form->colorInput($input_name, $input_value);
+		
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
-	}
-
-	/**
-	 * Show a confirmation message
-	 *
-	 * @param     $url                Page url
-	 * @param     $title              Message title
-	 * @param     $question           Message question / content
-	 * @param     $action             Action to do after confirmation
-	 * @param     $question_param     Question parameter
-	 */
-	public function askForConfirmation($url, $title, $question, $action, $question_param = '')
-	{
-		global $langs;
-
-		$this->body = $this->form->formconfirm($url, $langs->trans($title), $langs->trans($question, $question_param), $action, '', '', DOLIBASE_USE_AJAX_ON_CONFIRM);
-	}
-
-	/**
-	 * Generate page body
-	 *
-	 */
-	protected function generate()
-	{
-		parent::generate();
-
-		print $this->body;
 	}
 
 	/**
@@ -335,6 +320,8 @@ class CardPage extends CreatePage
 	    print '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
 	    $permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
+	    $action = GETPOST('action', 'alpha');
+	    $id = GETPOST('id', 'int');
 
 	    include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
 
@@ -349,11 +336,11 @@ class CardPage extends CreatePage
 	 * Generate page end
 	 *
 	 */
-	public function end($object)
+	public function end($object = '')
 	{
 		if ($this->close_buttons_div) print '</div>';
 
-		if ($object->id > 0 && (isset($object->socid) || isset($object->fk_soc))) $this->printRelatedObjects($object);
+		if (! empty($object) && (isset($object->socid) || isset($object->fk_soc))) $this->printRelatedObjects($object);
 
 		parent::end();
 	}

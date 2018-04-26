@@ -1,6 +1,6 @@
 <?php
 
-// Load Dolibase Page class
+// Load Dolibase CustomObject class
 dolibase_include_once('/core/class/custom_object.php');
 
 class Book extends CustomObject
@@ -27,5 +27,17 @@ class Book extends CustomObject
 		$this->fetch_fields = array('rowid', 'ref', 'name', 'desc', 'type', 'qty', 'price', 'ref', 'publication_date', 'creation_date', 'created_by');
 
 		parent::__construct();
+	}
+
+	/**
+	 *	Return clicable name (with picto eventually)
+	 *
+	 *	@param		int		$withpicto		0=No picto, 1=Include picto into link, 2=Only picto
+	 *	@param		string	$title			Tooltip title
+	 *	@return		string					Chain with URL
+	 */
+	public function getNomUrl($withpicto = 0, $title = 'Show book')
+	{
+		return parent::getNomUrl($withpicto, $title);
 	}
 }

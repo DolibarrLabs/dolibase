@@ -24,7 +24,7 @@ $page->addSubTitle("Books");
 
 $page->openLeftSection();
 
-$form_fields = array('Book ref. or name' => 'sall');
+$form_fields = array('Book ref. or name' => 'all');
 
 $page->addSearchForm($form_fields, '/books/list.php', 'Search', 'summary..');
 
@@ -55,7 +55,7 @@ if ($books->fetchAll(10, 0, 't.creation_date'))
 		$page->openRow($odd);
 
 		// Ref
-		$page->addColumn($book->getNomUrl(1, 'Show book'), 'width="20%" class="nowrap"');
+		$page->addColumn($book->getNomUrl(1), 'width="20%" class="nowrap"');
 
 		// Creation date
 		$page->addColumn(dol_print_date($book->db->jdate($book->creation_date), 'day'), 'align="center"');

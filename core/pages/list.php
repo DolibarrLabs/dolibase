@@ -76,21 +76,23 @@ class ListPage extends FormPage
 	 * @param   $title               List title
 	 * @param   $picture             List picture
 	 * @param   $list_fields         List fields
-	 * @param   $param               List parameters
+	 * @param   $search_fields       List search fields
 	 * @param   $nbofshownrecords    Number of shown records
 	 * @param   $nbtotalofrecords    Total number of records
 	 * @param   $fieldstosearchall   Fields to search all
+	 * @param   $sortfield           Sort field
+	 * @param   $sortorder           Sort order
 	 */
-	public function openList($title, $picture = 'title_generic.png', $list_fields, $param, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array())
+	public function openList($title, $picture = 'title_generic.png', $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = '', $sortorder = '')
 	{
 		global $langs, $conf;
 
 		// Get parameters
 		$contextpage = GETPOST('contextpage','aZ') ? GETPOST('contextpage','aZ') : $this->contextpage;
-		$sall = GETPOST('sall', 'alphanohtml');
+		$sall = isset($search_fields['all']) ? $search_fields['all'] : GETPOST('sall', 'alphanohtml');
 		$page = GETPOST('page', 'int') ? GETPOST('page', 'int') : 0;
-		$sortorder = GETPOST('sortorder', 'alpha');
-		$sortfield = GETPOST('sortfield', 'alpha');
+		if (empty($sortorder)) $sortorder = GETPOST('sortorder', 'alpha');
+		if (empty($sortfield)) $sortfield = GETPOST('sortfield', 'alpha');
 		$limit = GETPOST('limit') ? GETPOST('limit', 'int') : $conf->liste_limit;
 		$optioncss = GETPOST('optioncss', 'alpha');
 
@@ -102,12 +104,17 @@ class ListPage extends FormPage
     	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
     	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
 
-    	// Add some list parameters
+    	// Add list parameters
+    	$param = '';
+    	foreach ($search_fields as $key => $value) {
+    		if ($value != '') $param.= '&'.$key.'='.urlencode($value);
+    	}
     	if (! empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) $param.= '&contextpage='.urlencode($contextpage);
     	if ($limit > 0 && $limit != $conf->liste_limit) $param.= '&limit='.urlencode($limit);
     	if ($optioncss != '') $param.= '&optioncss='.urlencode($optioncss);
 
     	// List title
+    	$title = $langs->trans($title);
         print_barre_liste($title, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $nbofshownrecords, $nbtotalofrecords, $picture, 0, '', '', $limit);
 
         if ($sall)
@@ -176,60 +183,42 @@ class ListPage extends FormPage
 	}
 
 	/**
-	 * Return a text input
+	 * Add buttons to the list
 	 *
-	 * @param   $name    input name
-	 * @param   $value   input value
-	 * @param   $size    input size
-	 * @return  string   input HTML
+	 * @param   $buttons        buttons to add
+	 * @param   $hide_buttons   hide buttons by default
 	 */
-	public function textInput($name, $value, $size = 8)
-	{
-		return '<input type="text" class="flat" name="'.$name.'" value="'.$value.'" size="'.$size.'">';
-	}
-
-	/**
-	 * Return a date input
-	 *
-	 * @param   $name    input name
-	 * @param   $value   input value
-	 * @return  string   input HTML
-	 */
-	public function dateInput($name, $value)
-	{
-		return $this->form->select_date($value, $name, 0, 0, 1, '', 1, 0, 1);
-	}
-
-	/**
-	 * Return a list input
-	 *
-	 * @param   $name      list name
-	 * @param   $values    list values
-	 * @param   $selected  list selected value
-	 * @return  string     input HTML
-	 */
-	public function listInput($name, $values, $selected)
+	protected function addButtons($buttons, $hide_buttons)
 	{
 		global $langs;
 
-		// Translate list values
-		foreach ($values as $key => $value) {
-			$values[$key] = $langs->trans($value);
+		print '<div class="tabsAction'.($hide_buttons ? ' hidden' : '').'">';
+
+		foreach ($buttons as $button)
+		{
+			if (! isset($button['enabled']) || verifCond($button['enabled'])) {
+				print '<input type="submit" class="butAction" name="'.$button['name'].'" value="'.$langs->trans($button['label']).'">';
+			}
 		}
 
-		return $this->form->selectarray($name, $values, $selected, 1);
+		print '</div>';
 	}
 
 	/**
 	 * Close list
 	 *
-	 * @param   $close_form   close list form or not
+	 * @param   $buttons        buttons to add before close list
+	 * @param   $hide_buttons   hide buttons by default
 	 */
-	public function closeList($close_form = true)
+	public function closeList($buttons = array(), $hide_buttons = false)
 	{
-		print "</table></div>\n";
+		print "</table>\n";
 
-		if ($close_form) print "</form>\n";
+		$optioncss = GETPOST('optioncss', 'alpha');
+		
+		if (! empty($buttons) && $optioncss != 'print') $this->addButtons($buttons, $hide_buttons);
+
+		print "</div></form>\n";
 	}
 
 	/**

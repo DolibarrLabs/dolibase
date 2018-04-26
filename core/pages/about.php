@@ -31,6 +31,12 @@ class AboutPage extends Page
 	 */
 	public function __construct($page_title = 'About', $access_perm = '$user->admin')
 	{
+		global $langs, $dolibase_config;
+
+		// Load lang files
+		$langs->load("admin");
+		$langs->load("about_page@".$dolibase_config['module_folder']);
+
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -42,10 +48,6 @@ class AboutPage extends Page
 	{
 		global $langs, $dolibase_config;
 
-		// Load lang files
-		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['module_folder']);
-
 		// Add sub title
 		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
 		$this->addSubTitle($this->title, 'title_generic.png', $linkback);
@@ -56,8 +58,7 @@ class AboutPage extends Page
 			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home", true);
 		}
 
-		// Generate tabs
-		$this->generateTabs();
+		parent::generate();
 	}
 
 	/**

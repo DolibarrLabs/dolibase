@@ -15,6 +15,9 @@
  * 
  */
 
+// Define __DIR__ for PHP version < 5.3
+if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
+
 // Load Dolibase constants
 require_once __DIR__ . '/const.php';
 

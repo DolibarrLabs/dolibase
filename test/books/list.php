@@ -23,13 +23,14 @@ $limit = GETPOST('limit') ? GETPOST('limit', 'int') : $conf->liste_limit;
 $offset = $limit * (GETPOST('page', 'int') ? GETPOST('page', 'int') : 0);
 
 // search parameters
-$sall = GETPOST('sall', 'alphanohtml');
-$sref = GETPOST('sref');
-$sname = GETPOST('sname');
-$stype = GETPOST('stype');
-$spdate = GETPOSTDATE('spdate');
-$scdate = GETPOSTDATE('scdate');
-$suser = GETPOST('suser');
+$search = array();
+$search['all'] = GETPOST('all', 'alphanohtml');
+$search['ref'] = GETPOST('ref');
+$search['name'] = GETPOST('name');
+$search['type'] = GETPOST('type');
+$search['pd'] = GETPOSTDATE('pd'); // publication date
+$search['cd'] = GETPOSTDATE('cd'); // creation date
+$search['user'] = GETPOST('user');
 
 $page->begin();
 
@@ -40,13 +41,13 @@ $books = new Book();
 $fieldstosearchall = array('t.ref' => 'Ref.', 't.name' => 'Name');
 $where = '1=1';
 
-if ($sall) $where .= natural_search(array_keys($fieldstosearchall), $sall);
-if ($sref) $where .= natural_search('t.ref', $sref);
-if ($sname) $where .= natural_search('t.name', $sname);
-if ($stype && $stype != -1) $where .= " AND t.type = '".$stype."'";
-if ($spdate) $where .= " AND date(t.publication_date) = date('".$books->db->idate($spdate)."')";
-if ($scdate) $where .= " AND date(t.creation_date) = date('".$books->db->idate($scdate)."')";
-if ($suser > 0) $where .= natural_search('t.created_by', $suser);
+if ($search['all']) $where .= natural_search(array_keys($fieldstosearchall), $search['all']);
+if ($search['ref']) $where .= natural_search('t.ref', $search['ref']);
+if ($search['name']) $where .= natural_search('t.name', $search['name']);
+if ($search['type'] && $search['type'] != -1) $where .= " AND t.type = '".$search['type']."'";
+if ($search['pd']) $where .= " AND date(t.publication_date) = date('".$books->db->idate($search['pd'])."')";
+if ($search['cd']) $where .= " AND date(t.creation_date) = date('".$books->db->idate($search['cd'])."')";
+if ($search['user'] > 0) $where .= natural_search('t.created_by', $search['user']);
 
 // Fetch
 $books->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
@@ -60,27 +61,17 @@ $type_list = array('sc'   => 'Science & nature',
 
 // List fields
 $list_fields = array();
-$list_fields[] = array('name' => 't.ref', 'label' => 'Ref.', 'search_input' => $page->textInput('sref', $sref));
-$list_fields[] = array('name' => 't.name', 'label' => 'Name', 'search_input' => $page->textInput('sname', $sname));
-$list_fields[] = array('name' => 't.type', 'label' => 'Type', 'search_input' => $page->listInput('stype', $type_list, $stype));
+$list_fields[] = array('name' => 't.ref', 'label' => 'Ref.', 'search_input' => $page->form->textInput('ref', $search['ref']));
+$list_fields[] = array('name' => 't.name', 'label' => 'Name', 'search_input' => $page->form->textInput('name', $search['name']));
+$list_fields[] = array('name' => 't.type', 'label' => 'Type', 'search_input' => $page->form->listInput('type', $type_list, $search['type'], 1));
 $list_fields[] = array('name' => 't.qty', 'label' => 'Qty');
 $list_fields[] = array('name' => 't.price', 'label' => 'Price');
-$list_fields[] = array('name' => 't.publication_date', 'label' => 'Publication date', 'align' => 'center', 'search_input' => $page->dateInput('spdate', $spdate));
-$list_fields[] = array('name' => 't.creation_date', 'label' => 'Creation date', 'align' => 'center', 'search_input' => $page->dateInput('scdate', $scdate));
-$list_fields[] = array('name' => 't.created_by', 'label' => 'Created by', 'search_input' => $page->form->select_dolusers($suser, 'suser', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
-
-// List parameters
-$param = '';
-if ($sall) $param.= '&sall='.urlencode($sall);
-if ($sref) $param.= '&sref='.urlencode($sref);
-if ($sname) $param.= '&sname='.urlencode($sname);
-if ($stype && $stype != -1) $param.= '&stype='.urlencode($stype);
-if ($spdate) $param.= '&spdate='.urlencode($spdate);
-if ($scdate) $param.= '&scdate='.urlencode($scdate);
-if ($suser > 0) $param.= '&suser='.urlencode($suser);
+$list_fields[] = array('name' => 't.publication_date', 'label' => 'Publication date', 'align' => 'center', 'search_input' => $page->form->dateInput('pd', $search['pd'], 0));
+$list_fields[] = array('name' => 't.creation_date', 'label' => 'Creation date', 'align' => 'center', 'search_input' => $page->form->dateInput('cd', $search['cd'], 0));
+$list_fields[] = array('name' => 't.created_by', 'label' => 'Created by', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
 
 // Print list head
-$page->openList('Books List', 'title_generic.png', $list_fields, $param, $books->count, $books->total, $fieldstosearchall);
+$page->openList('Books List', 'title_generic.png', $list_fields, $search, $books->count, $books->total, $fieldstosearchall, $sortfield, $sortorder);
 
 $odd = true;
 
@@ -91,7 +82,7 @@ foreach ($books->lines as $book)
 	$page->openRow($odd);
 
 	// Ref.
-	$page->addColumn('t.ref', $book->getNomUrl(1, 'Show book'));
+	$page->addColumn('t.ref', $book->getNomUrl(1));
 
 	// Name
 	$page->addColumn('t.name', $book->name);
@@ -116,7 +107,7 @@ foreach ($books->lines as $book)
 	// Created by
 	$userstatic = new User($book->db);
 	$userstatic->fetch($book->created_by);
-	$page->addColumn('t.created_by', $userstatic->getNomUrl(1));
+	$page->addColumn('t.created_by', $userstatic->getNomUrl(1), 'align="center"');
 
 	$page->closeRow();
 }

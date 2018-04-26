@@ -184,12 +184,12 @@ class Module
 	 * @param     $name      menu name (should be the same as the module folder name, & the same as the menu picture file *.png)
 	 * @param     $title     menu title
 	 * @param     $url       target page url
-	 * @param     $position  menu position
-	 * @param     $enabled   should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
 	 * @param     $perms     should anyone see & use the menu or use conditions like '$user->rights->monmodule->level1->level2'
+	 * @param     $enabled   should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
+	 * @param     $position  menu position
 	 * @param     $target    menu target, leave empty or use '_blank' to open in a new window / tab
 	 */
-	public function addTopMenu($name, $title, $url, $position = 100, $enabled = '1', $perms = '1', $target = '')
+	public function addTopMenu($name, $title, $url, $perms = '1', $enabled = '1', $position = 100, $target = '')
 	{
 		$this->addMenu('top', 0, $name, '', $title, $url, $position, $enabled, $perms, $target);
 	}
@@ -201,12 +201,12 @@ class Module
 	 * @param     $name         menu name (codename for further use)
 	 * @param     $title        menu title
 	 * @param     $url          target page url
-	 * @param     $position     menu position
-	 * @param     $enabled      should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
 	 * @param     $perms        should anyone see & use the menu or use conditions like '$user->rights->monmodule->level1->level2'
+	 * @param     $enabled      should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
+	 * @param     $position     menu position
 	 * @param     $target       menu target, leave empty or use '_blank' to open in a new window / tab
 	 */
-	public function addLeftMenu($main_menu, $name, $title, $url, $position = 100, $enabled = '1', $perms = '1', $target = '')
+	public function addLeftMenu($main_menu, $name, $title, $url, $perms = '1', $enabled = '1', $position = 100, $target = '')
 	{
 		$this->addMenu('left', 'fk_mainmenu='.$main_menu, $main_menu, $name, $title, $url, $position, $enabled, $perms, $target);
 	}
@@ -219,12 +219,12 @@ class Module
 	 * @param     $name         menu name (codename for further use)
 	 * @param     $title        menu title
 	 * @param     $url          target page url
-	 * @param     $position     menu position
-	 * @param     $enabled      should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
 	 * @param     $perms        should anyone see & use the menu or use conditions like '$user->rights->monmodule->level1->level2'
+	 * @param     $enabled      should the menu be always enabled or use conditions like '$conf->monmodule->enabled'
+	 * @param     $position     menu position
 	 * @param     $target       menu target, leave empty or use '_blank' to open in a new window / tab
 	 */
-	public function addLeftSubMenu($main_menu, $left_menu, $name, $title, $url, $position = 100, $enabled = '1', $perms = '1', $target = '')
+	public function addLeftSubMenu($main_menu, $left_menu, $name, $title, $url, $perms = '1', $enabled = '1', $position = 100, $target = '')
 	{
 		$this->addMenu('left', 'fk_mainmenu='.$main_menu.',fk_leftmenu='.$left_menu, $main_menu, $name, $title, $url, $position, $enabled, $perms, $target);
 	}
