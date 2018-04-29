@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 1.3.0 - APR18
+
+*   NEW: Add Dictionary support.
+*   NEW: Add Create/Update/Delete triggers.
+*   NEW: Add expanded links feature.
+*   FIX: Bug on modules page due to multi-inclusion of dolibase.
+
+---
+
 #### 1.2.0 - APR18
 
 *   NEW: Add Dolibase logs.

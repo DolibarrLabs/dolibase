@@ -19,7 +19,7 @@ CREATE TABLE llx_books(
         ref VARCHAR(30) NOT NULL,
         name VARCHAR(100) NOT NULL,
         `desc` VARCHAR(255) NULL,
-        type VARCHAR(100) NOT NULL,
+        type INTEGER NOT NULL,
         qty DOUBLE NOT NULL,
         price DOUBLE DEFAULT NULL,
         publication_date DATETIME NULL,

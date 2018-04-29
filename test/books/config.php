@@ -48,7 +48,7 @@ $dolibase_config['editor_url']      = 'https://github.com/AXeL-dev';
 
 $dolibase_config['editor_email']    = 'anass_denna@hotmail.fr';
 
-$dolibase_config['dolistore_url']   = 'https://www.dolistore.com/search?orderby=position&orderway=desc&search_query=axel-dev';
+$dolibase_config['dolistore_url']   = 'https://www.dolistore.com/en/search?orderby=position&orderway=desc&search_query=axel-dev';
 
 /**
  * Others
@@ -78,6 +78,6 @@ $dolibase_config['num_model_prefix'] = 'BK';
  * Load Dolibase
  */
 
-if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
+if (! defined('DOLIBASE_VERSION') && false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
 	dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/autoload.php'); // From module directory
 }

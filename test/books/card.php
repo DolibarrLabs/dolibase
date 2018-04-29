@@ -11,6 +11,8 @@ dol_include_once('/books/config.php');
 dolibase_include_once('/core/pages/card.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+// Load Dolibase Dictionary Class
+dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
 $page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete');
@@ -96,17 +98,12 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	}
 
 	// Type
-	$list = array('sc'   => 'Science & nature',
-				  'his'  => 'History',
-				  'cook' => 'Cooking',
-				  'med'  => 'Medecine',
-				  'psy'  => 'Psychology'
-				);
-
 	if ($action != 'edit_type' || ! $page->canEdit()) {
+		$list = Dictionary::get_all('books_dict');
 		$page->showField('Type', $list[$book->type], true, $_SERVER["PHP_SELF"] . '?action=edit_type&id=' . $book->id);
 	}
 	else {
+		$list = Dictionary::get_active('books_dict');
 		$page->editRadioListField('Type', 'type', $list, $book->type);
 	}
 

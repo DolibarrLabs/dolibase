@@ -1,10 +1,10 @@
 # Dolibase
 
-[![Stable Version](https://img.shields.io/badge/stable-1.2.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases)
+[![Stable Version](https://img.shields.io/badge/stable-1.3.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v1.3.0)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.0-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
-Dolibase is a framework that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster, more easier in a way that your code is more organised and more easy to read & maintain.
+Dolibase is a framework that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster, more easier in a way that your code is well organised and more easy to read & maintain.
 
 Example of a new module class:
 

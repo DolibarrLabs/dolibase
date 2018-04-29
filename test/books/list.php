@@ -11,6 +11,8 @@ dol_include_once('/books/config.php');
 dolibase_include_once('/core/pages/list.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+// Load Dolibase Dictionary Class
+dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
 $page = new ListPage("Books List", '$user->rights->books->read');
@@ -52,12 +54,8 @@ if ($search['user'] > 0) $where .= natural_search('t.created_by', $search['user'
 // Fetch
 $books->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
 
-$type_list = array('sc'   => 'Science & nature',
-			  'his'  => 'History',
-			  'cook' => 'Cooking',
-			  'med'  => 'Medecine',
-			  'psy'  => 'Psychology'
-			);
+$type_list = Dictionary::get_active('books_dict');
+$full_type_list = Dictionary::get_all('books_dict');
 
 // List fields
 $list_fields = array();
@@ -88,7 +86,7 @@ foreach ($books->lines as $book)
 	$page->addColumn('t.name', $book->name);
 
 	// Type
-	$page->addColumn('t.type', $type_list[$book->type]);
+	$page->addColumn('t.type', $full_type_list[$book->type]);
 
 	// Qty
 	$page->addColumn('t.qty', $book->qty);

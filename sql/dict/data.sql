@@ -1,4 +1,4 @@
--- <Dolibase logs table>
+-- <Dolibase dictionary table example>
 -- Copyright (C) <2018>  <AXeL>
 --
 -- This program is free software: you can redistribute it and/or modify
@@ -14,12 +14,5 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CREATE TABLE llx_dolibase_logs(
-	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
-        module_id INTEGER NOT NULL,
-        module_name VARCHAR(255) NOT NULL,
-        object_id INTEGER NOT NULL,
-        action VARCHAR(255) NOT NULL,
-        datec DATETIME NOT NULL,
-        fk_user INTEGER NOT NULL
-);
+-- INSERT rowid also to avoid re-insertion each time you activate the module
+INSERT INTO llx_dict (rowid, label, active) VALUES (1, 'label', 1);

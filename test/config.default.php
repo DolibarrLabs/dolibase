@@ -75,9 +75,9 @@ $dolibase_config['num_model_field']  = 'ref';
 $dolibase_config['num_model_prefix'] = 'PR';
 
 /**
- * Load Dolibase
+ * Load Dolibase (only if not already loaded by another module)
  */
 
-if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
+if (! defined('DOLIBASE_VERSION') && false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
 	dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/autoload.php'); // From module directory
 }

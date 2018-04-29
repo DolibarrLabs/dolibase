@@ -11,6 +11,8 @@ dol_include_once('/books/config.php');
 dolibase_include_once('/core/pages/index.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+// Load Dolibase Dictionary Class
+dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
 $page = new IndexPage("Books", '$user->rights->books->read');
@@ -28,12 +30,7 @@ $form_fields = array('Book ref. or name' => 'all');
 
 $page->addSearchForm($form_fields, '/books/list.php', 'Search', 'summary..');
 
-$list = array('sc'   => 'Science & nature',
-			  'his'  => 'History',
-			  'cook' => 'Cooking',
-			  'med'  => 'Medecine',
-			  'psy'  => 'Psychology'
-			);
+$list = Dictionary::get_all('books_dict');
 
 $page->addStatsGraph($books->table_element, 'type', $list);
 

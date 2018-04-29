@@ -106,6 +106,20 @@ class CustomForm extends Form
 	}
 
 	/**
+	 * Return a range input
+	 *
+	 * @param   $name    input name
+	 * @param   $value   input value
+	 * @param   $min     input minimum value
+	 * @param   $max     input maximum value
+	 * @return  string   input HTML
+	 */
+	public function rangeInput($name, $value, $min = 0, $max = 100)
+	{
+		return '<input type="range" min="'.$min.'" max="'.$max.'" class="flat" name="'.$name.'" value="'.$value.'">';
+	}
+
+	/**
 	 * Return a date input
 	 *
 	 * @param   $name         input name

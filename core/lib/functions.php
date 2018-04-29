@@ -70,7 +70,7 @@ function dolibase_load_tables(&$module)
 	// & update the code below to fit your needs
 
 	if (DOLIBASE_ENABLE_LOGS) {
-		$module->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/');
+		$module->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/logs/');
 	}
 }
 
@@ -133,4 +133,30 @@ function str_escape($str)
 	global $db;
 
 	return $db->escape($str);
+}
+
+/**
+ * Returns price with currency
+ *
+ * @param      $price       price
+ * @return     string       price with currency
+ */
+function price_with_currency($price, $currency = 'auto')
+{
+	return price($price, 0, '', 1, -1, -1, $currency);
+}
+
+/**
+ * Returns module rights class
+ *
+ * @param      $to_upper      convert to upper case
+ * @return     string         module rights class
+ */
+function get_rights_class($to_upper = false)
+{
+	global $dolibase_config;
+
+	$rights_class = empty($dolibase_config['rights_class']) ? 'dolibase_module' : $dolibase_config['rights_class'];
+
+	return $to_upper ? strtoupper($rights_class) : $rights_class;
 }

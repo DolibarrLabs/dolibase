@@ -66,6 +66,8 @@ class modBooks extends DolibarrModules
 
 		$module->addLeftSubMenu($module->config['top_menu_name'], "mybooks", "bookslist", "List", "/books/list.php");
 
+		$module->addDictionary('books_dict', 'Books types');
+
 		// Exports
 		//--------
 		

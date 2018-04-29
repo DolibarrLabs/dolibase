@@ -1,5 +1,5 @@
--- <one line to give the program's name and a brief idea of what it does.>
--- Copyright (C) <year>  <name of author>
+-- <Dolibase logs table>
+-- Copyright (C) <2018>  <AXeL>
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -14,7 +14,12 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ALTER TABLE llx_books ADD UNIQUE INDEX uk_ref (ref);
-ALTER TABLE llx_books ADD CONSTRAINT fk_book_created_by FOREIGN KEY (created_by) REFERENCES llx_user (rowid);
-
-ALTER TABLE llx_books ADD CONSTRAINT fk_book_type FOREIGN KEY (type) REFERENCES llx_books_dict (rowid);
+CREATE TABLE llx_dolibase_logs(
+	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
+	module_id INTEGER NOT NULL,
+	module_name VARCHAR(255) NOT NULL,
+	object_id INTEGER NOT NULL,
+	action VARCHAR(255) NOT NULL,
+	datec DATETIME NOT NULL,
+	fk_user INTEGER NOT NULL
+);

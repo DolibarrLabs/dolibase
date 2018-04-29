@@ -271,6 +271,25 @@ class SetupPage extends FormPage
 	}
 
 	/**
+	 * Add a new range option
+	 *
+	 * @param     $option_desc       Option description
+	 * @param     $const_name        Option constant name
+	 * @param     $min               Option minimum value
+	 * @param     $max               Option maximum value
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
+	 * @param     $width             Option last column/td width
+	 */
+	public function addRangeOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 250)
+	{
+		global $conf;
+
+		$option_content = $this->form->rangeInput($const_name, $conf->global->$const_name, $min, $max);
+
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
+	}
+
+	/**
 	 * Add a new list option
 	 *
 	 * @param     $option_desc       Option description

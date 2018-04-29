@@ -16,6 +16,7 @@
  */
 
 dolibase_include_once('/core/pages/create.php');
+dolibase_include_once('/core/lib/related_objects.php');
 
 /**
  * CardPage class
@@ -314,22 +315,41 @@ class CardPage extends CreatePage
 	/**
 	 * Print related objects block
 	 *
+	 * Note: To enable the linking feature, you must define a constant in each module as 'your_module_right_class_in_capital_letters'.'_ENABLE_EXPANDED_LINKS'
 	 */
 	protected function printRelatedObjects($object)
 	{
-	    print '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
+		if (! empty($object) && isset($object->id))
+		{
+			global $conf, $langs, $dolibase_config;
 
-	    $permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
-	    $action = GETPOST('action', 'alpha');
-	    $id = GETPOST('id', 'int');
+			$const_name = strtoupper($dolibase_config['rights_class']).'_ENABLE_EXPANDED_LINKS';
 
-	    include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+		    print '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
-	    // Show links to link elements
-	    $linktoelem = $this->form->showLinkToObjectBlock($object);
-	    $somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+		    // Dolibase object linking feature
+		    if ($conf->global->$const_name)
+		    {
+				$langs->load('related_objects@'.$dolibase_config['module_folder']);
 
-	    print '</div></div>';
+				show_related_objects($object);
+		    }
+		    // Dolibarr linked objects block
+		    else if (isset($object->socid) || isset($object->fk_soc))
+		    {
+			    $permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
+			    $action = GETPOST('action', 'alpha');
+			    $id = GETPOST('id', 'int');
+
+			    include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+
+			    // Show links to link elements
+			    $linktoelem = $this->form->showLinkToObjectBlock($object);
+			    $somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+			}
+
+		    print '</div></div>';
+		}
 	}
 
 	/**
@@ -340,7 +360,7 @@ class CardPage extends CreatePage
 	{
 		if ($this->close_buttons_div) print '</div>';
 
-		if (! empty($object) && (isset($object->socid) || isset($object->fk_soc))) $this->printRelatedObjects($object);
+		$this->printRelatedObjects($object);
 
 		parent::end();
 	}

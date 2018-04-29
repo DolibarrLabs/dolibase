@@ -11,6 +11,8 @@ dol_include_once('/books/config.php');
 dolibase_include_once('/core/pages/create.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+// Load Dolibase Dictionary Class
+dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
 $page = new CreatePage("New book", '$user->rights->books->create');
@@ -69,12 +71,7 @@ $page->addTextField('Name', 'name', GETPOST('name'), true, 'This is a field summ
 
 $page->addTextAreaField('Description', 'desc', GETPOST('desc'));
 
-$list = array('sc'   => 'Science & nature',
-			  'his'  => 'History',
-			  'cook' => 'Cooking',
-			  'med'  => 'Medecine',
-			  'psy'  => 'Psychology'
-			);
+$list = Dictionary::get_active('books_dict');
 
 $page->addRadioListField('Type', 'type', $list, GETPOST('type'), true);
 

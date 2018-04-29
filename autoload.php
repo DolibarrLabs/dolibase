@@ -15,6 +15,9 @@
  * 
  */
 
+// Dolibarr detection
+if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection failed.');
+
 // Define __DIR__ for PHP version < 5.3
 if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 

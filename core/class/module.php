@@ -90,6 +90,9 @@ class Module
 
 		// Menu
 		$this->module->menu = array();
+
+		// Dictionaries
+		$this->module->dictionaries = array();
 	}
 
 	/**
@@ -289,6 +292,42 @@ class Module
 	public function enableHook($hook)
 	{
 		$this->addModulePart('hooks', $hook);
+	}
+
+	/**
+	 * Add a dictionary
+	 *
+	 * @param     $table_name             table name without prefix
+	 * @param     $table_label            table label
+	 * @param     $select_fields          select statement fields, e.: 'rowid, code, label, active'
+	 * @param     $table_sort             sort field & order, e.: 'label ASC'
+	 * @param     $fields_to_show         fields to show on dict page (no spaces), e.: 'code,label'
+	 * @param     $fields_to_update       fields to update on dict page (no spaces), e.: 'code,label'
+	 * @param     $fields_to_insert       fields to insert on dict page (no spaces), e.: 'code,label'
+	 * @param     $table_pk_field         table primary key field
+	 * @param     $fields_help            fields help summary or link, e.: array('code' => 'summary..', 'label' => 'summary..')
+	 */
+	public function addDictionary($table_name, $table_label, $select_fields = 'rowid, label, active', $table_sort = 'label ASC', $fields_to_show = 'label', $fields_to_update = 'label', $fields_to_insert = 'label', $table_pk_field = 'rowid', $fields_help = array())
+	{
+		global $conf;
+
+		$dict_table   = MAIN_DB_PREFIX.$table_name;
+		$rights_class = $this->config['rights_class'];
+
+		if (! isset($this->module->dictionaries['langs'])) {
+			$this->module->dictionaries['langs'] = $this->config['lang_files'][0];
+		}
+
+		$this->module->dictionaries['tabname'][]        = $dict_table;
+		$this->module->dictionaries['tablib'][]         = $table_label;
+		$this->module->dictionaries['tabsql'][]         = 'SELECT '.$select_fields.' FROM '.$dict_table;
+		$this->module->dictionaries['tabsqlsort'][]     = $table_sort;
+		$this->module->dictionaries['tabfield'][]       = $fields_to_show;
+		$this->module->dictionaries['tabfieldvalue'][]  = $fields_to_update;
+		$this->module->dictionaries['tabfieldinsert'][] = $fields_to_insert;
+		$this->module->dictionaries['tabrowid'][]       = $table_pk_field;
+		$this->module->dictionaries['tabcond'][]        = $conf->$rights_class->enabled;
+		$this->module->dictionaries['tabhelp'][]        = $fields_help;
 	}
 
 	/**

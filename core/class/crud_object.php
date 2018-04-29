@@ -21,7 +21,7 @@ require_once DOL_DOCUMENT_ROOT."/core/class/commonobject.class.php";
  * CrudObject class (Create/Read/Update/Delete)
  */
 
-abstract class CrudObject extends CommonObject
+class CrudObject extends CommonObject
 {
 	/**
 	 * @var string Id to identify managed object
@@ -57,7 +57,18 @@ abstract class CrudObject extends CommonObject
 	public $count = 0;
 
 	
-	// No constructor as it is an abstract class
+	/**
+	 * Constructor
+	 * 
+	 * @param  $table_name  table name
+	 */
+	public function __construct($table_name = '')
+	{
+		global $db;
+
+		$this->db = $db;
+		$this->table_element = $table_name;
+	}
 
 	/**
 	 * Create object into database
@@ -66,7 +77,7 @@ abstract class CrudObject extends CommonObject
 	 * @param  int    $notrigger 0=launch triggers after, 1=disable triggers
 	 * @return int    <0 if KO, Id of created object if OK
 	 */
-	public function create($data, $notrigger = 0)
+	public function create($data, $notrigger = 1)
 	{
 		$error = 0;
 
@@ -98,14 +109,7 @@ abstract class CrudObject extends CommonObject
 			$this->id = $this->db->last_insert_id(MAIN_DB_PREFIX . $this->table_element, $this->pk_name);
 
 			if (! $notrigger) {
-				// Uncomment this and change MYOBJECT to your own tag if you
-				// want this action call a trigger.
-				//// Call triggers
-				//include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
-				//$interface=new Interfaces($this->db);
-				//$result=$interface->run_triggers('MYOBJECT_CREATE',$this,$user,$langs,$conf);
-				//if ($result < 0) { $error++; $this->errors=$interface->errors; }
-				//// End call triggers
+				$error = $this->run_triggers('_CREATE');
 			}
 		}
 
@@ -162,7 +166,7 @@ abstract class CrudObject extends CommonObject
 				}
 
 				// enssure that $this->id is filled because we use it in update & delete functions
-				if (! isset($this->id)) {
+				if (! in_array('id', $this->fetch_fields)) {
 					$id_field_name = $this->pk_name;
 					$this->id = $obj->$id_field_name;
 				}
@@ -239,6 +243,7 @@ abstract class CrudObject extends CommonObject
 				$i = 0;
 				$this->lines = array();
 				$num = ($get_total ? min($this->count, $limit) : $this->count); // also for list pagination
+				$set_id = (! in_array('id', $this->fetch_fields) ? true : false);
 
 				while ($i < $num)
 				{
@@ -253,12 +258,68 @@ abstract class CrudObject extends CommonObject
 					}
 
 					// enssure that $this->id is filled because we use it in update/delete/getNomUrl functions
-					if (! isset($this->lines[$i]->id)) {
+					if ($set_id) {
 						$id_field_name = $this->pk_name;
 						$this->lines[$i]->id = $obj->$id_field_name;
 					}
 
 					$i++;
+				}
+
+				$this->db->free($resql);
+
+				return 1;
+			}
+			$this->db->free($resql);
+
+			return 0;
+		} else {
+			$this->error = "Error " . $this->db->lasterror();
+			dol_syslog(__METHOD__ . " " . $this->error, LOG_ERR);
+			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
+    		else setEventMessage($this->error, 'errors');
+
+			return -1;
+		}
+	}
+
+	/**
+	 * Load object in memory from database
+	 *
+	 * @param  array   $fields       fields to fetch
+	 * @param  array   $conditions   fetch conditions
+	 * @return int     <0 if KO, >0 if OK
+	 */
+	public function custom_fetch($fields, $conditions = array())
+	{
+		// SELECT request
+		$sql = "SELECT ";
+		foreach ($fields as $field) {
+			$sql.= "`" . $field . "`,";
+		}
+		$sql = substr($sql, 0, -1); // Remove the last ','
+		$sql.= " FROM " . MAIN_DB_PREFIX . $this->table_element;
+		$sql.= " WHERE ";
+		$i = 0;
+		foreach ($conditions as $field => $value) {
+			$sql.= ($i > 0 ? ' AND ' : '') . $field . " = '" . $value . "'";
+			$i++;
+		}
+
+		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
+		$resql = $this->db->query($sql);
+		if ($resql) {
+			if ($this->db->num_rows($resql)) {
+				$obj = $this->db->fetch_object($resql);
+
+				foreach ($fields as $field) {
+					$this->$field = $obj->$field;
+				}
+
+				// enssure that $this->id is filled because we use it in update & delete functions
+				if (! in_array('id', $fields)) {
+					$id_field_name = $this->pk_name;
+					$this->id = $obj->$id_field_name;
 				}
 
 				$this->db->free($resql);
@@ -285,7 +346,7 @@ abstract class CrudObject extends CommonObject
 	 * @param  int     $notrigger 0=launch triggers after, 1=disable triggers
 	 * @return int     <0 if KO, >0 if OK
 	 */
-	public function update($data, $notrigger = 0)
+	public function update($data, $notrigger = 1)
 	{
 		$error = 0;
 
@@ -308,14 +369,7 @@ abstract class CrudObject extends CommonObject
 
 		if (! $error) {
 			if (! $notrigger) {
-				// Uncomment this and change MYOBJECT to your own tag if you
-				// want this action call a trigger.
-				//// Call triggers
-				//include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
-				//$interface=new Interfaces($this->db);
-				//$result=$interface->run_triggers('MYOBJECT_MODIFY',$this,$user,$langs,$conf);
-				//if ($result < 0) { $error++; $this->errors=$interface->errors; }
-				//// End call triggers
+				$error = $this->run_triggers('_MODIFY');
 			}
 		}
 
@@ -348,7 +402,7 @@ abstract class CrudObject extends CommonObject
 	 * @param  int  $notrigger 0=launch triggers after, 1=disable triggers
 	 * @return int  <0 if KO, >0 if OK
 	 */
-	public function delete($notrigger = 0)
+	public function delete($notrigger = 1)
 	{
 		$error = 0;
 
@@ -356,14 +410,7 @@ abstract class CrudObject extends CommonObject
 
 		if (! $error) {
 			if (! $notrigger) {
-				// Uncomment this and change MYOBJECT to your own tag if you
-				// want this action call a trigger.
-				//// Call triggers
-				//include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
-				//$interface=new Interfaces($this->db);
-				//$result=$interface->run_triggers('MYOBJECT_DELETE',$this,$user,$langs,$conf);
-				//if ($result < 0) { $error++; $this->errors=$interface->errors; }
-				//// End call triggers
+				$error = $this->run_triggers('_DELETE');
 			}
 		}
 
@@ -376,6 +423,9 @@ abstract class CrudObject extends CommonObject
 			if (! $resql) {
 				$error ++;
 				$this->errors[] = "Error " . $this->db->lasterror();
+			}
+			else {
+				$this->deleteObjectLinked(); // delete linked objects also
 			}
 		}
 
@@ -405,5 +455,28 @@ abstract class CrudObject extends CommonObject
 	protected function escape($value)
 	{
 		return is_null($value) ? 'null' : "'".$value."'";
+	}
+
+	/**
+	 * Run Dolibarr triggers (from other modules)
+	 *
+	 * @param      $action_suffix      action suffix
+	 * @return     int                 errors number
+	 */
+	protected function run_triggers($action_suffix)
+	{
+		global $user, $langs, $conf;
+
+		$error = 0;
+
+		// Call triggers
+		include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
+		$interface = new Interfaces($this->db);
+		$action = get_rights_class(true).$action_suffix;
+		$result = $interface->run_triggers($action, $this, $user, $langs, $conf);
+		if ($result < 0) { $error++; $this->errors = $interface->errors; }
+		// End call triggers
+
+		return $error;
 	}
 }
