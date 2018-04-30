@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.3.1 - APR18
+
+*   FIX: Dictionary get_list function.
+
+---
+
 #### 1.3.0 - APR18
 
 *   NEW: Add Dictionary support.

@@ -66,7 +66,7 @@ class Dictionary
 		$dict->fetch_fields = array($key_field, $value_field);
 		$where = $only_active ? 'active = 1' : '';
 
-		$result = $dict->fetchAll(0, 0, 0, '', '', '', $where);
+		$result = $dict->fetchAll(0, 0, $value_field, 'ASC', '', '', $where);
 
 		if ($result) {
 			foreach ($dict->lines as $line) {
