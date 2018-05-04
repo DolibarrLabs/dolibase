@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.4.0 - MAY18
+
+*   NEW: change the way Dolibarr environment was included.
+*   NEW: major changes for Module class.
+
+---
+
 #### 1.3.1 - APR18
 
 *   FIX: Dictionary get_list function.

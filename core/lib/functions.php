@@ -17,18 +17,6 @@
 
 
 /**
- * Returns Dolibarr version using DOL_VERSION const
- *
- * This function is not really needed but i prefer to keep it anyway
- *
- * @return     string     Dolibarr version
- */
-function getDolibarrVersion()
-{
-	return DOL_VERSION;
-}
-
-/**
  * Check if Dolibarr version if greater than another
  *
  * @param     $version     Dolibarr version to compare with
@@ -45,6 +33,22 @@ function dolibarrVersionGreaterThan($version)
 }
 
 /**
+ * Check if Dolibarr version if less than another
+ *
+ * @param     $version     Dolibarr version to compare with
+ * @return    int          1 or 0
+ */
+function dolibarrVersionLessThan($version)
+{
+	$dol_version = explode('.', DOL_VERSION);
+	$your_version = explode('.', $version);
+
+	return $dol_version[0] < $your_version[0] || 
+	(isset($your_version[1]) && $dol_version[0] == $your_version[0] && $dol_version[1] < $your_version[1]) || 
+	(isset($your_version[2]) && $dol_version[0] == $your_version[0] && $dol_version[1] == $your_version[1] && $dol_version[2] < $your_version[2]) ? 1 : 0;
+}
+
+/**
  * Include Dolibase components
  *
  * Use it only to include Dolibase components otherwise it will not work
@@ -56,22 +60,6 @@ function dolibase_include_once($component_path)
 	$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
 	@include_once DOL_DOCUMENT_ROOT.DOLIBASE_DOCUMENT_ROOT.'/'.$path; // @ is used to skip warnings..
-}
-
-/**
- * Load Dolibase tables
- *
- * @param      $module       module object
- */
-function dolibase_load_tables(&$module)
-{
-	// Load Dolibase tables
-	// PS: if you wanna add more sql tables & separate them from each others, just create new folder(s) inside sql folder
-	// & update the code below to fit your needs
-
-	if (DOLIBASE_ENABLE_LOGS) {
-		$module->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/logs/');
-	}
 }
 
 /**

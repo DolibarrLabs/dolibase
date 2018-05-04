@@ -16,83 +16,157 @@
  */
 
 /**
- * Module class
+ * Note: each time you add a function in this class/file, it's better to add the same function into your
+ * module class also (just copy & paste), because this way you'll avoid old versions non compatibility issues
+ * (remember that Dolibase is loaded/included only one time on "dolibarr/admin/modules.php" file),
+ * so even if an older Dolibase version is loaded first & this version will probably not include your new function(s), 
+ * your module class will always have a copy/override of the function(s) & that's it!
+ * (no need to always update your old modules Dolibase version anymore)
+ *
+ * P.S: This issue affects only the current class & not the other classes of Dolibase.
  */
 
-class Module
+include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
+
+/**
+ * DolibaseModule class
+ */
+
+class DolibaseModule extends DolibarrModules
 {
 	/**
-	 * @var DolibarrModules Dolibarr module object
-	 */
-	private $module;
-	/**
-	 * @var array Dolibase config array
+	 * @var array Dolibase module configuration array
 	 */
 	public $config;
+
 
 	/**
 	 * Constructor
 	 * 
-	 * @param     $mod        Dolibarr module object
 	 * @param     $db         Database handler
 	 */
-	public function __construct(&$mod)
+	public function __construct($db)
 	{
-		global $dolibase_config, $db;
+		global $dolibase_config;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
 
-		// Save module object & config for further use
-		$this->module = $mod;
+		// Save module config for further use
 		$this->config = $dolibase_config;
 
 		// Module configuration
-		$this->module->db              = $db;
-		$this->module->editor_name     = $this->config['editor_name'];
-		$this->module->editor_url      = $this->config['editor_url'];
-		$this->module->numero          = $this->config['module_number'];
-		$this->module->rights_class    = $this->config['rights_class'];
-		$this->module->family          = $this->config['module_family'];
-		$this->module->module_position = $this->config['module_position'];
-		$this->module->name            = $this->config['module_name'];
-		$this->module->description     = $this->config['module_desc'];
-		$this->module->version         = $this->config['module_version'];
-		$this->module->const_name      = "MAIN_MODULE_".strtoupper($this->module->name);
-		$this->module->special         = 0;
-		$this->module->picto           = $this->config['module_picture']."@".$this->config['module_folder'];
+		$this->db              = $db;
+		$this->editor_name     = $this->config['editor_name'];
+		$this->editor_url      = $this->config['editor_url'];
+		$this->numero          = $this->config['module_number'];
+		$this->rights_class    = $this->config['rights_class'];
+		$this->family          = $this->config['module_family'];
+		$this->module_position = $this->config['module_position'];
+		$this->name            = $this->config['module_name'];
+		$this->description     = $this->config['module_desc'];
+		$this->version         = $this->config['module_version'];
+		$this->const_name      = "MAIN_MODULE_".strtoupper($this->name);
+		$this->special         = 0;
+		$this->picto           = $this->config['module_picture']."@".$this->config['module_folder'];
 
 		// Module parts (css, js, ...)
-		$this->module->module_parts    = array();
+		$this->module_parts    = array();
 
 		// Data directories to create when module is enabled
-		$this->module->dirs            = $this->config['module_dirs'];
+		$this->dirs            = $this->config['module_dirs'];
 
 		// Config page
-		$this->module->config_page_url = array($this->config['setup_page_url']."@".$this->config['module_folder']);
+		$this->config_page_url = array($this->config['setup_page_url']."@".$this->config['module_folder']);
 
 		// Dependencies
-		$this->module->need_dolibarr_version = $this->config['need_dolibarr'];
-		$this->module->phpmin                = $this->config['need_php'];
-		$this->module->depends               = $this->config['module_depends'];
-		$this->module->requiredby            = $this->config['required_by'];
-		$this->module->conflictwith          = $this->config['conflict_with'];
-		$this->module->langfiles             = $this->config['lang_files'];
+		$this->need_dolibarr_version = $this->config['need_dolibarr'];
+		$this->phpmin                = $this->config['need_php'];
+		$this->depends               = $this->config['module_depends'];
+		$this->requiredby            = $this->config['required_by'];
+		$this->conflictwith          = $this->config['conflict_with'];
+		$this->langfiles             = $this->config['lang_files'];
 
 		// Constants
-		$this->module->const = array();
+		$this->const = array();
 
 		// Boxes / widgets
-		$this->module->boxes = array();
+		$this->boxes = array();
 
 		// Permissions
-		$this->module->rights = array();
+		$this->rights = array();
 
 		// Menu
-		$this->module->menu = array();
+		$this->menu = array();
 
 		// Dictionaries
-		$this->module->dictionaries = array();
+		$this->dictionaries = array();
+
+		// Load module settings
+		$this->loadSettings();
+	}
+
+	/**
+	 * Function called after module configuration.
+	 * 
+	 */
+	public function loadSettings()
+	{
+		// add here your module settings
+	}
+
+	/**
+	 * Function called when module is enabled.
+	 * The init function add constants, boxes, permissions and menus
+	 * (defined in constructor) into Dolibarr database.
+	 * It also creates data directories
+	 *
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return int 1 if OK, 0 if KO
+	 */
+	public function init($options = '')
+	{
+		//$this->remove($options);
+
+		$sql = array();
+
+		$result = $this->loadTables();
+
+		return $this->_init($sql, $options);
+	}
+
+	/**
+	 * Create tables, keys and data required by module
+	 * Files llx_table1.sql, llx_table1.key.sql llx_data.sql with create table, create keys
+	 * and create data commands must be stored in directory /mymodule/sql/
+	 * This function is called by this->init
+	 *
+	 * @return int <=0 if KO, >0 if OK
+	 */
+	private function loadTables()
+	{
+		// Load Dolibase tables
+		if (DOLIBASE_ENABLE_LOGS) {
+			$this->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/logs/');
+		}
+		
+		// Load module tables
+		return $this->_load_tables('/'.$this->config['module_folder'].'/sql/');
+	}
+
+	/**
+	 * Function called when module is disabled.
+	 * Remove from database constants, boxes and permissions from Dolibarr database.
+	 * Data directories are not deleted
+	 *
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return int 1 if OK, 0 if KO
+	 */
+	public function remove($options = '')
+	{
+		$sql = array();
+
+		return $this->_remove($sql, $options);
 	}
 
 	/**
@@ -105,7 +179,7 @@ class Module
 	 */
 	public function addConstant($name, $value, $desc = '', $type = 'chaine')
 	{
-		$this->module->const[] = array(
+		$this->const[] = array(
 									0 => $name,
 									1 => $type,
 									2 => $value,
@@ -124,7 +198,7 @@ class Module
 	 */
 	public function addWidget($widget_filename, $enabled_by_default_on = 'Home')
 	{
-		$this->module->boxes[] = array(
+		$this->boxes[] = array(
 	                                'file' => $widget_filename.'@'.$this->config['module_folder'],
 	                                'note' => '',
 	                                'enabledbydefaulton' => $enabled_by_default_on
@@ -141,7 +215,7 @@ class Module
 	 */
 	public function addPermission($name, $desc = '', $type = '', $enabled_by_default = 1)
 	{
-		$this->module->rights[] = array(
+		$this->rights[] = array(
 									0 => $this->generatePermissionID(), // id
 									1 => $desc,
 									2 => $type,
@@ -161,7 +235,7 @@ class Module
 	 */
 	public function addSubPermission($perm_name, $subperm_name, $desc = '', $type = '', $enabled_by_default = 1)
 	{
-		$this->module->rights[] = array(
+		$this->rights[] = array(
 									0 => $this->generatePermissionID(), // id
 									1 => $desc,
 									2 => $type,
@@ -178,7 +252,7 @@ class Module
 	 */
 	private function generatePermissionID()
 	{
-		return (int)$this->config['module_number'] + count($this->module->rights) + 1;
+		return (int)$this->config['module_number'] + count($this->rights) + 1;
 	}
 
 	/**
@@ -248,7 +322,7 @@ class Module
 	 */
 	private function addMenu($type, $fk_menu, $main_menu, $left_menu, $title, $url, $position, $enabled = '1', $perms = '1', $target = '')
 	{
-		$this->module->menu[] = array(
+		$this->menu[] = array(
 					'fk_menu' => $fk_menu,
 					'type' => $type,
 					'titre' => $title,
@@ -314,20 +388,20 @@ class Module
 		$dict_table   = MAIN_DB_PREFIX.$table_name;
 		$rights_class = $this->config['rights_class'];
 
-		if (! isset($this->module->dictionaries['langs'])) {
-			$this->module->dictionaries['langs'] = $this->config['lang_files'][0];
+		if (! isset($this->dictionaries['langs'])) {
+			$this->dictionaries['langs'] = $this->config['lang_files'][0];
 		}
 
-		$this->module->dictionaries['tabname'][]        = $dict_table;
-		$this->module->dictionaries['tablib'][]         = $table_label;
-		$this->module->dictionaries['tabsql'][]         = 'SELECT '.$select_fields.' FROM '.$dict_table;
-		$this->module->dictionaries['tabsqlsort'][]     = $table_sort;
-		$this->module->dictionaries['tabfield'][]       = $fields_to_show;
-		$this->module->dictionaries['tabfieldvalue'][]  = $fields_to_update;
-		$this->module->dictionaries['tabfieldinsert'][] = $fields_to_insert;
-		$this->module->dictionaries['tabrowid'][]       = $table_pk_field;
-		$this->module->dictionaries['tabcond'][]        = $conf->$rights_class->enabled;
-		$this->module->dictionaries['tabhelp'][]        = $fields_help;
+		$this->dictionaries['tabname'][]        = $dict_table;
+		$this->dictionaries['tablib'][]         = $table_label;
+		$this->dictionaries['tabsql'][]         = 'SELECT '.$select_fields.' FROM '.$dict_table;
+		$this->dictionaries['tabsqlsort'][]     = $table_sort;
+		$this->dictionaries['tabfield'][]       = $fields_to_show;
+		$this->dictionaries['tabfieldvalue'][]  = $fields_to_update;
+		$this->dictionaries['tabfieldinsert'][] = $fields_to_insert;
+		$this->dictionaries['tabrowid'][]       = $table_pk_field;
+		$this->dictionaries['tabcond'][]        = $conf->$rights_class->enabled;
+		$this->dictionaries['tabhelp'][]        = $fields_help;
 	}
 
 	/**
@@ -338,6 +412,6 @@ class Module
 	 */
 	private function addModulePart($module_part, $value)
 	{
-		$this->module->module_parts[$module_part][] = $value;
+		$this->module_parts[$module_part][] = $value;
 	}
 }

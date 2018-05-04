@@ -31,21 +31,29 @@ class SetupPage extends FormPage
 	 * @var string numbering model const name
 	 */
 	protected $num_model_const_name;
+	/**
+	 * @var string used to disable default actions
+	 */
+	protected $disable_default_actions = false;
 	
 
 	/**
 	 * Constructor
 	 * 
-	 * @param     $page_title     HTML page title
-	 * @param     $access_perm    Access permission
+	 * @param     $page_title    			  HTML page title
+	 * @param     $access_perm   			  Access permission
+	 * @param     $disable_default_actions    Disable default actions
 	 */
-	public function __construct($page_title = 'Setup', $access_perm = '$user->admin')
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false)
 	{
 		global $langs, $dolibase_config;
 
 		// Load lang files
 		$langs->load("admin");
 		$langs->load("setup_page@".$dolibase_config['module_folder']);
+
+		// Set attributes
+		$this->disable_default_actions = $disable_default_actions;
 
 		// Set numbering model constant name
 		$this->num_model_const_name = strtoupper($dolibase_config['rights_class']) . '_ADDON';
@@ -74,66 +82,73 @@ class SetupPage extends FormPage
 	 */
 	protected function loadDefaultActions()
 	{
-		global $conf, $db, $langs, $dolibase_config;
-
-		// Libraries
-		require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
-
-		// Parameters
-		$action = GETPOST('action', 'alpha');
-		$value = GETPOST('value', 'alpha');
-
-		// Actions
-		if (preg_match('/set_(.*)/', $action, $reg))
+		if (! $this->disable_default_actions)
 		{
-			$code = $reg[1];
-			if (dolibarr_set_const($db, $code, GETPOST($code), 'chaine', 0, '', $conf->entity) > 0)
+			global $conf, $db, $langs, $dolibase_config;
+
+			// Libraries
+			require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
+
+			// Parameters
+			$action = GETPOST('action', 'alpha');
+
+			// Actions
+			if (preg_match('/set_(.*)/', $action, $reg))
 			{
-				header("Location: ".$_SERVER["PHP_SELF"]);
-				exit;
+				$code = $reg[1];
+				$value = GETPOST($code);
+
+				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
+				{
+					header("Location: ".$_SERVER["PHP_SELF"]);
+					exit;
+				}
+				else
+				{
+					dol_print_error($db);
+				}
 			}
-			else
+
+			else if (preg_match('/del_(.*)/', $action, $reg))
 			{
-				dol_print_error($db);
+				$code = $reg[1];
+				
+				if (dolibarr_del_const($db, $code, $conf->entity) > 0)
+				{
+					Header("Location: ".$_SERVER["PHP_SELF"]);
+					exit;
+				}
+				else
+				{
+					dol_print_error($db);
+				}
 			}
-		}
 
-		else if (preg_match('/del_(.*)/', $action, $reg))
-		{
-			$code = $reg[1];
-			if (dolibarr_del_const($db, $code, $conf->entity) > 0)
+			else if ($action == 'updateMask')
 			{
-				Header("Location: ".$_SERVER["PHP_SELF"]);
-				exit;
+				$maskconst = GETPOST('maskconst','alpha');
+				$mask = GETPOST('mask','alpha');
+
+				if ($maskconst) $res = dolibarr_set_const($db, $maskconst, $mask,'chaine', 0, '', $conf->entity);
+
+				if (! $res > 0) $error++;
+
+			 	if (! $error)
+			    {
+			        setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
+			    }
+			    else
+			    {
+			        setEventMessages($langs->trans("Error"), null, 'errors');
+			    }
 			}
-			else
+
+			else if ($action == 'setmod')
 			{
-				dol_print_error($db);
+				$value = GETPOST('value', 'alpha');
+
+				dolibarr_set_const($db, $this->num_model_const_name, $value, 'chaine', 0, '', $conf->entity);
 			}
-		}
-
-		else if ($action == 'updateMask')
-		{
-			$maskconst = GETPOST('maskconst','alpha');
-			$mask = GETPOST('mask','alpha');
-
-			if ($maskconst) $res = dolibarr_set_const($db, $maskconst, $mask,'chaine', 0, '', $conf->entity);
-
-			if (! $res > 0) $error++;
-
-		 	if (! $error)
-		    {
-		        setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
-		    }
-		    else
-		    {
-		        setEventMessages($langs->trans("Error"), null, 'errors');
-		    }
-		}
-
-		else if ($action == 'setmod')
-		{
-			dolibarr_set_const($db, $this->num_model_const_name, $value, 'chaine', 0, '', $conf->entity);
 		}
 	}
 
@@ -143,10 +158,10 @@ class SetupPage extends FormPage
 	 */
 	protected function generate()
 	{
-		global $langs, $dolibase_config;
+		global $user, $langs, $dolibase_config;
 
 		// Add sub title
-		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
+		$linkback = ($user->admin ? '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>' : '');
 		$this->addSubTitle($this->title, 'title_setup.png', $linkback);
 
 		// Add default tabs
@@ -322,6 +337,33 @@ class SetupPage extends FormPage
 		$option_content = $this->form->colorInput($const_name, $conf->global->$const_name);
 
 		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
+	}
+
+	/**
+	 * Add a button to the page
+	 *
+	 * @param     $name                 button name
+	 * @param     $href                 button href
+	 * @param     $target               button target
+	 * @param     $class                button class
+	 * @param     $close_parent_div     should close parent div or not
+	 */
+	public function addButton($name, $href = '#', $target = '_self', $class = 'butAction', $close_parent_div = false)
+	{
+		global $langs;
+
+		if (! $this->close_buttons_div) {
+			dol_fiche_end();
+			print '<div class="tabsAction" style="text-align: center;">';
+			$this->close_buttons_div = true;
+		}
+
+		print '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
+
+		if ($close_parent_div) {
+			print '</div>';
+			$this->close_buttons_div = false;
+		}
 	}
 
 	/**

@@ -1,12 +1,7 @@
 <?php
 
-// Load Dolibarr environment (mandatory)
-if (false === (@include '../../main.inc.php')) {  // From htdocs directory
-	require '../../../main.inc.php'; // From "custom" directory
-}
-
 // Load Dolibase config file for this module (mandatory)
-dol_include_once('/books/config.php');
+include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/card.php');
 // Load Book class
