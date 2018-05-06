@@ -35,7 +35,11 @@ class SetupPage extends FormPage
 	 * @var string used to disable default actions
 	 */
 	protected $disable_default_actions = false;
-	
+	/**
+	 * @var string Title right link
+	 */
+	protected $title_link = '';
+
 
 	/**
 	 * Constructor
@@ -74,6 +78,22 @@ class SetupPage extends FormPage
 	                </style>";
 
 		parent::__construct($page_title, $access_perm);
+	}
+
+	/**
+	 * Set Title link
+	 *
+	 * @param    $link       Link href
+	 * @param    $label      Link label
+	 * @param    $enable     Condition to enable
+	 */
+	public function setTitleLink($link, $label, $enable = '$user->admin')
+	{
+		global $langs;
+
+		if (empty($enable) || verifCond($enable)) {
+			$this->title_link = '<a href="'.$link.'">'.$langs->trans($label).'</a>';
+		}
 	}
 
 	/**
@@ -161,8 +181,10 @@ class SetupPage extends FormPage
 		global $user, $langs, $dolibase_config;
 
 		// Add sub title
-		$linkback = ($user->admin ? '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>' : '');
-		$this->addSubTitle($this->title, 'title_setup.png', $linkback);
+		if (empty($this->title_link) && $user->admin) {
+			$this->title_link = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
+		}
+		$this->addSubTitle($this->title, 'title_setup.png', $this->title_link);
 
 		// Add default tabs
 		if (empty($this->tabs)) {

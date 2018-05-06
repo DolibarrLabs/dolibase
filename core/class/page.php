@@ -124,6 +124,16 @@ class Page
 	}
 
 	/**
+	 * Append content to page head
+	 *
+	 * @param     $content     content to add
+	 */
+	public function appendToHead($content)
+	{
+		$this->head.= $content;
+	}
+
+	/**
 	 * Add js file to page head
 	 *
 	 * @param     $js_file     Javascript file
@@ -132,7 +142,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->head.= '<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/js/'.$js_file, 1).'"></script>'."\n";
+		$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/js/'.$js_file, 1).'"></script>'."\n");
 	}
 
 	/**
@@ -144,7 +154,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->head.= '<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/css/'.$css_file, 1).'">'."\n";
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/css/'.$css_file, 1).'">'."\n");
 	}
 
 	/**

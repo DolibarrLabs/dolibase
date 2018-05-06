@@ -143,7 +143,7 @@ class DolibaseModule extends DolibarrModules
 	 *
 	 * @return int <=0 if KO, >0 if OK
 	 */
-	private function loadTables()
+	protected function loadTables()
 	{
 		// Load Dolibase tables
 		if (DOLIBASE_ENABLE_LOGS) {

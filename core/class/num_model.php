@@ -24,9 +24,9 @@ abstract class NumModel
 	public $error = '';
 
 	/**
-	 *	Return if a module can be used or not
+	 *	Return if a model can be used or not
 	 *
-	 *	@return		boolean     true if module can be used
+	 *	@return		boolean     true if model can be used
 	 */
 	public function isEnabled()
 	{

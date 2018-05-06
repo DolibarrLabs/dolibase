@@ -15,7 +15,7 @@
  * 
  */
 
-// Define __DIR__ for PHP version < 5.3 (should be already included in config file)
+// Define __DIR__ for PHP version < 5.3 (should be already included in config file, keep here for safety)
 if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 
 // Load Dolibarr environment

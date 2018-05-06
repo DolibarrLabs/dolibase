@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.4.1 - MAY18
+
+*   NEW: add ImportExport class.
+*   NEW: minor improvements.
+
+---
+
 #### 1.4.0 - MAY18
 
 *   NEW: change the way Dolibarr environment was included.
