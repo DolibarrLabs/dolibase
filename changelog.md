@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.5.0 - MAY18
+
+*   NEW: update Widget class the same way we've done for the Module class in version 1.4.0.
+
+---
+
 #### 1.4.2 - MAY18
 
 *   FIX: better file(s) include way #KISS (Keep It Simple Stupid).

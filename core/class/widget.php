@@ -15,53 +15,58 @@
  * 
  */
 
+include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
+
 /**
  * Widget class
  */
 
-class Widget
+class Widget extends ModeleBoxes
 {
 	/**
-	 * @var ModeleBoxes Dolibarr box object
+	 * @var Widget Label
 	 */
-	private $widget;
+	public $boxlabel;
+	/**
+	 * @var Widget Picture
+	 */
+	public $boximg;
+	/**
+	 * @var Widget Position
+	 */
+	public $position = 1;
+	/**
+	 * @var Widget is Enabled
+	 */
+	public $enabled = 1;
+
 
 	/**
 	 * Constructor
 	 * 
-	 * @param     $box        Dolibarr box object
 	 * @param     $db         Database handler
-	 * @param     $name       Widget name
-	 * @param     $picture    Widget picture (picture file should have 'object_' prefix)
-	 * @param     $position   Widget position
-	 * @param     $enabled    Enable or disable widget
 	 * @param     $param      More widget options
 	 */
-	public function __construct(&$box, $name, $picture, $position = 1, $enabled = 1, $param = '')
+	public function __construct($db, $param = '')
 	{
-		global $dolibase_config, $db, $langs;
+		global $dolibase_config, $langs;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Widget::Error module configuration not found.');
-
-		// Save box object for further use
-		$this->widget = $box;
 
 		// Load language files
 		$langs->load('boxes');
 		$langs->load($dolibase_config['lang_files'][0]);
 
 		// Widget configuration
-		$this->widget->db                = $db;
-		$this->widget->boxcode           = "";
-		$this->widget->boxlabel          = $langs->trans($name);
-		$this->widget->boximg            = $picture."@".$dolibase_config['module_folder'];
-		$this->widget->position          = $position;
-		$this->widget->depends           = $dolibase_config['module_depends'];
-		$this->widget->info_box_head     = array();
-		$this->widget->info_box_contents = array();
-		$this->widget->enabled           = $enabled;
-		$this->widget->param             = $param;
+		$this->boxcode           = "";
+		$this->boxlabel          = $langs->trans($this->boxlabel);
+		$this->boximg            = $this->boximg."@".$dolibase_config['module_folder'];
+		$this->depends           = $dolibase_config['module_depends'];
+		$this->info_box_head     = array();
+		$this->info_box_contents = array();
+
+		parent::__construct($db, $param);
 	}
 
 	/**
@@ -75,10 +80,10 @@ class Widget
 		global $langs;
 
 		// Use configuration value for max lines count
-		$this->widget->max = $max;
+		$this->max = $max;
 
 		// Set widget title
-		$this->widget->info_box_head = array(
+		$this->info_box_head = array(
 			// Title text
 			'text' => $langs->trans($title, $max),
 			// Add a link
@@ -111,11 +116,11 @@ class Widget
 	{
 		global $dolibase_config, $langs;
 
-		$this->widget->info_box_head['sublink']  = $link;
-		$this->widget->info_box_head['subpicto'] = $picture."@".$dolibase_config['module_folder'];
-		$this->widget->info_box_head['subtext']  = $langs->trans($tooltip);
-		$this->widget->info_box_head['target']   = $target;
-		$this->widget->info_box_head['subclass'] = $class;
+		$this->info_box_head['sublink']  = $link;
+		$this->info_box_head['subpicto'] = $picture."@".$dolibase_config['module_folder'];
+		$this->info_box_head['subtext']  = $langs->trans($tooltip);
+		$this->info_box_head['target']   = $target;
+		$this->info_box_head['subclass'] = $class;
 	}
 
 	/**
@@ -129,13 +134,13 @@ class Widget
 	 */
 	public function addContent($text, $attr = 'align="center"', $clean_text = false, $max_length = 0, $first_col_attr = '')
 	{
-		$lines_count = count($this->widget->info_box_contents);
+		$lines_count = count($this->info_box_contents);
 
 		$current_line = $lines_count > 0 ? $lines_count - 1 : 0;
 
-		$cols_count = count($this->widget->info_box_contents[$current_line]);
+		$cols_count = count($this->info_box_contents[$current_line]);
 
-		$this->widget->info_box_contents[$current_line][] = array(
+		$this->info_box_contents[$current_line][] = array(
 					// HTML properties of the TD element
 					'td'           => $attr,
 					// Fist line logo
@@ -160,7 +165,7 @@ class Widget
 
 		if ($cols_count == 0 && ! empty($first_col_attr)) {
 			//  HTML properties of the TR element. Only available on the first column.
-			$this->widget->info_box_contents[$current_line][0]['tr'] = $first_col_attr;
+			$this->info_box_contents[$current_line][0]['tr'] = $first_col_attr;
 		}
 	}
 
@@ -170,8 +175,22 @@ class Widget
 	 */
 	public function newLine()
 	{
-		$new_line = count($this->widget->info_box_contents);
+		$new_line = count($this->info_box_contents);
 
-		$this->widget->info_box_contents[$new_line] = array();
+		$this->info_box_contents[$new_line] = array();
+	}
+
+	/**
+	 * Method to show box. Called by Dolibarr eatch time it wants to display the box.
+	 *
+	 * @param array $head Array with properties of box title
+	 * @param array $contents Array with properties of box lines
+	 * @return void
+	 */
+	public function showBox($head = null, $contents = null, $nooutput = 0)
+	{
+		// You may make your own code here…
+		// … or use the parent's class function using the provided head and contents templates
+		parent::showBox($this->info_box_head, $this->info_box_contents);
 	}
 }
