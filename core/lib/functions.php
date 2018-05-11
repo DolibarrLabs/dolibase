@@ -57,9 +57,13 @@ function dolibarrVersionLessThan($version)
  */
 function dolibase_include_once($component_path)
 {
+	global $dolibase_config;
+
 	$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-	@include_once DOL_DOCUMENT_ROOT.DOLIBASE_DOCUMENT_ROOT.'/'.$path; // @ is used to skip warnings..
+	if (false === (@include_once DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/'.$path)) { // @ is used to skip warnings..
+		dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/'.$path);
+	}
 }
 
 /**

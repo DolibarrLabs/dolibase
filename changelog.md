@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.4.2 - MAY18
+
+*   FIX: better file(s) include way #KISS (Keep It Simple Stupid).
+
+---
+
 #### 1.4.1 - MAY18
 
 *   NEW: add ImportExport class.

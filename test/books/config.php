@@ -75,15 +75,17 @@ $dolibase_config['num_model_field']  = 'ref';
 $dolibase_config['num_model_prefix'] = 'BK';
 
 /**
+ * Load Dolibarr environment (mandatory)
+ */
+
+if (false === (@include_once '../main.inc.php')) { // From htdocs directory
+	@include_once '../../main.inc.php'; // From "custom" directory
+}
+
+/**
  * Load Dolibase
  */
 
-// Define __DIR__ for PHP version < 5.3
-if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
-
-// Load Dolibase only if not already loaded by another module
-if (! defined('DOLIBASE_VERSION') && false === (@include_once __DIR__ . '/../dolibase/autoload.php')) { // From htdocs directory
-	if (false === (@include_once __DIR__ . '/../../dolibase/autoload.php')) { // From "custom" directory
-		require_once __DIR__ . '/dolibase/autoload.php'; // From module directory
-	}
+if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
+	dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/autoload.php'); // From module directory
 }

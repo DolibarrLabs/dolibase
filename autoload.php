@@ -15,21 +15,18 @@
  * 
  */
 
-// Define __DIR__ for PHP version < 5.3 (should be already included in config file, keep here for safety)
-if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
-
-// Load Dolibarr environment
-if (false === (@include_once __DIR__ . '/../main.inc.php')) {  // From htdocs directory (dolibase is in htdocs directory)
-	if (false === (@include_once __DIR__ . '/../../main.inc.php')) { // From module directory (dolibase is in module directory)
-		require_once __DIR__ . '/../../../main.inc.php'; // From "custom" directory (module itself is in custom directory)
-	}
-}
-
 // Dolibarr detection
 if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection failed.');
 
-// Load Dolibase constants
-require_once __DIR__ . '/const.php';
+// Define __DIR__ for PHP version < 5.3
+if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 
-// Load Dolibase functions
-require_once __DIR__ . '/core/lib/functions.php';
+// Load Dolibase main components (only if not already loaded by another module)
+if (! defined('DOLIBASE_VERSION'))
+{
+	// Load Dolibase constants
+	require_once __DIR__ . '/const.php';
+
+	// Load Dolibase functions
+	require_once __DIR__ . '/core/lib/functions.php';
+}

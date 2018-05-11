@@ -28,9 +28,9 @@ class ImportExport
 	 */
 	public static function addJsFiles(&$page)
 	{
-		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_DOCUMENT_ROOT.'/extra/FileSaver/FileSaver.min.js"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/FileSaver/FileSaver.min.js"></script>'."\n");
 
-		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_DOCUMENT_ROOT.'/core/js/import_export.js.php"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/import_export.js.php"></script>'."\n");
 	}
 
 	/**

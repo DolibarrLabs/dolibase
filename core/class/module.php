@@ -147,7 +147,7 @@ class DolibaseModule extends DolibarrModules
 	{
 		// Load Dolibase tables
 		if (DOLIBASE_ENABLE_LOGS) {
-			$this->_load_tables(DOLIBASE_DOCUMENT_ROOT.'/sql/logs/');
+			$this->_load_tables(DOLIBASE_PATH.'/sql/logs/');
 		}
 		
 		// Load module tables
