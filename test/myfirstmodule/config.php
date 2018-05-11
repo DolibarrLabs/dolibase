@@ -68,8 +68,10 @@ $dolibase_config['top_menu_name']   = str_replace('_', '', $dolibase_config['mod
  * Load Dolibarr environment (mandatory)
  */
 
-if (false === (@include_once '../main.inc.php')) { // From htdocs directory
-	@include_once '../../main.inc.php'; // From "custom" directory
+if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__)); // Define __DIR__ for PHP version < 5.3
+
+if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs directory
+	@include_once __DIR__ . '/../../main.inc.php'; // From "custom" directory
 }
 
 /**

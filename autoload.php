@@ -18,7 +18,7 @@
 // Dolibarr detection
 if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection failed.');
 
-// Define __DIR__ for PHP version < 5.3
+// Define __DIR__ for PHP version < 5.3 (should be already defined in config file, keep here for safety)
 if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 
 // Load Dolibase main components (only if not already loaded by another module)
