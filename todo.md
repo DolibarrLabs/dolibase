@@ -1,6 +1,7 @@
 ### ToDo
 
-* Add Email sending support
-* Add PDF generation support
-* Add cron support
-* Add module export/import options
+* Calendar Page
+* Email sending support
+* PDF generation support
+* CRON support
+* Module export/import options
