@@ -23,6 +23,8 @@
  * your module class will always have a copy/override of the function(s) & that's it!
  * (no need to always update your old modules Dolibase version anymore)
  *
+ * Another solution would be to use namespaces, to separate each module files, but better not complicate things..
+ *
  * P.S: This issue affects only the current class & not the other classes of Dolibase.
  */
 
@@ -180,29 +182,30 @@ class DolibaseModule extends DolibarrModules
 	public function addConstant($name, $value, $desc = '', $type = 'chaine')
 	{
 		$this->const[] = array(
-									0 => $name,
-									1 => $type,
-									2 => $value,
-									3 => $desc,
-									4 => 1, // visiblity
-									5 => 'current', // entity 'current' or 'allentities'
-									6 => 0 // delete constant when module is disabled
-								);
+			0 => $name,
+			1 => $type,
+			2 => $value,
+			3 => $desc,
+			4 => 1, // visiblity
+			5 => 'current', // entity 'current' or 'allentities'
+			6 => 0 // delete constant when module is disabled
+		);
 	}
 
 	/**
 	 * Add a widget
 	 *
 	 * @param     $widget_filename           widget filename
+	 * @param     $note                      widget note
 	 * @param     $enabled_by_default_on     where to enable the widget by default
 	 */
-	public function addWidget($widget_filename, $enabled_by_default_on = 'Home')
+	public function addWidget($widget_filename, $note = '', $enabled_by_default_on = 'Home')
 	{
 		$this->boxes[] = array(
-	                                'file' => $widget_filename.'@'.$this->config['module_folder'],
-	                                'note' => '',
-	                                'enabledbydefaulton' => $enabled_by_default_on
-	                        	);
+			'file' => $widget_filename.'@'.$this->config['module_folder'],
+			'note' => $note,
+			'enabledbydefaulton' => $enabled_by_default_on
+		);
 	}
 
 	/**
@@ -216,12 +219,12 @@ class DolibaseModule extends DolibarrModules
 	public function addPermission($name, $desc = '', $type = '', $enabled_by_default = 1)
 	{
 		$this->rights[] = array(
-									0 => $this->generatePermissionID(), // id
-									1 => $desc,
-									2 => $type,
-									3 => $enabled_by_default,
-									4 => $name
-								);
+			0 => $this->generatePermissionID(), // id
+			1 => $desc,
+			2 => $type,
+			3 => $enabled_by_default,
+			4 => $name
+		);
 	}
 
 	/**
@@ -235,14 +238,20 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function addSubPermission($perm_name, $subperm_name, $desc = '', $type = '', $enabled_by_default = 1)
 	{
+		/*
+		$this->addPermission($perm_name, $desc, $type, $enabled_by_default);
+		$last_added = count($this->rights) - 1;
+		$this->rights[$last_added][5] = $subperm_name;
+		*/
+		
 		$this->rights[] = array(
-									0 => $this->generatePermissionID(), // id
-									1 => $desc,
-									2 => $type,
-									3 => $enabled_by_default,
-									4 => $perm_name,
-									5 => $subperm_name
-								);
+			0 => $this->generatePermissionID(), // id
+			1 => $desc,
+			2 => $type,
+			3 => $enabled_by_default,
+			4 => $perm_name,
+			5 => $subperm_name
+		);
 	}
 
 	/**

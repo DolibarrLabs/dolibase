@@ -338,7 +338,7 @@ function show_related_objects($object)
 								<td align="left"><?php echo $link; ?></td>
 								<td align="center"><?php echo ! empty($object_date) ? dol_print_date($object_date, 'day') : ''; ?></td>
 								<td align="center"><?php echo $statut; ?></td>
-								<td align="center"><a href="?id=<?php echo $object->id; ?>&action=delete_related_link&id_link=<?php echo $relation->id; ?>"><?php print img_picto($langs->trans("Delete"), 'delete.png') ?></a></td>
+								<td align="center"><a href="?id=<?php echo $object->id; ?>&action=delete_related_link&id_link=<?php echo $relation->id; ?>"><?php echo img_picto($langs->trans("Delete"), 'delete.png') ?></a></td>
 							</tr>
 							<?php
 

@@ -27,7 +27,7 @@ include_once '../lib/related_objects.php';
 
 top_httphead();
 
-//print '<!-- Ajax page called with url '.$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' -->'."\n";
+//echo '<!-- Ajax page called with url '.$_SERVER["PHP_SELF"].'?'.$_SERVER["QUERY_STRING"].' -->'."\n";
 
 $action = GETPOST('action');
 
@@ -35,5 +35,5 @@ if ($action == 'search')
 {
 	$result = search_object(GETPOST('key'));
 
-	print json_encode($result);
+	echo json_encode($result);
 }

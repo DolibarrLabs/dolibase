@@ -103,6 +103,6 @@ class FormPage extends Page
 	{
 		parent::generate();
 
-		print $this->body;
+		echo $this->body;
 	}
 }

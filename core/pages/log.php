@@ -56,7 +56,7 @@ class LogPage extends Page
 
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
-		print '<div class="underbanner clearboth"></div>';
+		echo '<div class="underbanner clearboth"></div>';
 	}
 
 	/**
@@ -81,43 +81,43 @@ class LogPage extends Page
 		    $deltadateforuser   = round($deltadateforclient-$deltadateforserver);
 
 		    // Show logs
-		    print '<table class="border" width="100%">';
+		    echo '<table class="border" width="100%">';
 
 		    foreach ($log->lines as $line)
 		    {
 		    	// Action
-			    print '<tr><td class="titlefield">';
-			    print $langs->trans("LogAction");
-			    print '</td><td>';
-			    print $langs->trans($line->action);
-			    print '</td></tr>';
+			    echo '<tr><td class="titlefield">';
+			    echo $langs->trans("LogAction");
+			    echo '</td><td>';
+			    echo $langs->trans($line->action);
+			    echo '</td></tr>';
 
 			    // Date
 			    $datec = $log->db->jdate($line->datec);
-			    print '<tr><td class="titlefield">';
-			    print $langs->trans("LogDate");
-			    print '</td><td>';
-			    print dol_print_date($datec, 'dayhour');
+			    echo '<tr><td class="titlefield">';
+			    echo $langs->trans("LogDate");
+			    echo '</td><td>';
+			    echo dol_print_date($datec, 'dayhour');
 			    if ($deltadateforuser) {
-			    	print ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($datec+($deltadateforuser*3600),"dayhour").' &nbsp;'.$langs->trans("ClientHour");
+			    	echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($datec+($deltadateforuser*3600),"dayhour").' &nbsp;'.$langs->trans("ClientHour");
 			    }
-			    print '</td></tr>';
+			    echo '</td></tr>';
 
 			    // User
 			    $userstatic = new User($log->db);
 			    $userstatic->fetch($line->fk_user);
-			    print '<tr><td class="titlefield">';
-			    print $langs->trans("MadeBy");
-			    print '</td><td>';
-			    print $userstatic->getNomUrl(1, '', 0, 0, 0);
-			    print '</td></tr>';
+			    echo '<tr><td class="titlefield">';
+			    echo $langs->trans("MadeBy");
+			    echo '</td><td>';
+			    echo $userstatic->getNomUrl(1, '', 0, 0, 0);
+			    echo '</td></tr>';
 			}
 
-			print '</table>';
+			echo '</table>';
 	    }
 	    else
 	    {
-	    	print '<br>'.$langs->trans('NoLogsAvailable');
+	    	echo '<br>'.$langs->trans('NoLogsAvailable');
 	    }
 	}
 }

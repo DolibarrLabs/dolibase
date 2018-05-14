@@ -147,12 +147,12 @@ class CreatePage extends FormPage
 	{
 		global $langs;
 
-		print '<tr>';
-		print '<td width="25%"'.($is_required ? ' class="fieldrequired"' : '').$more_attr.'>' . $langs->trans($field_name) . '</td>';
-		print '<td colspan="2">' . $field_content;
-		if (! empty($field_summary)) print $this->form->textwithpicto(' ', $langs->trans($field_summary));
-		print '</td>';
-		print '</tr>';
+		echo '<tr>';
+		echo '<td width="25%"'.($is_required ? ' class="fieldrequired"' : '').$more_attr.'>' . $langs->trans($field_name) . '</td>';
+		echo '<td colspan="2">' . $field_content;
+		if (! empty($field_summary)) echo $this->form->textwithpicto(' ', $langs->trans($field_summary));
+		echo '</td>';
+		echo '</tr>';
 	}
 
 	/**
@@ -288,12 +288,12 @@ class CreatePage extends FormPage
 	{
 		global $langs;
 
-		print '<div class="center">';
-	    print '<input type="submit" class="button" value="' . $langs->trans("Create") . '">';
-	    print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	    print '<input type="button" class="button" value="' . $langs->trans("Cancel") . '" onClick="javascript:history.go(-1)">';
-	    print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	    print '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
-	    print '</div>';
+		echo '<div class="center">';
+	    echo '<input type="submit" class="button" value="' . $langs->trans("Create") . '">';
+	    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	    echo '<input type="button" class="button" value="' . $langs->trans("Cancel") . '" onClick="javascript:history.go(-1)">';
+	    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+	    echo '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
+	    echo '</div>';
 	}
 }

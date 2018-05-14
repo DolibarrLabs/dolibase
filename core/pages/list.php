@@ -97,12 +97,12 @@ class ListPage extends FormPage
 		$optioncss = GETPOST('optioncss', 'alpha');
 
 		// List form
-		print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
-		print '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
-		print '<input type="hidden" name="action" value="list">';
-    	print '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
-    	print '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
+		echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+		echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+		echo '<input type="hidden" name="formfilteraction" id="formfilteraction" value="list">';
+		echo '<input type="hidden" name="action" value="list">';
+    	echo '<input type="hidden" name="sortfield" value="'.$sortfield.'">';
+    	echo '<input type="hidden" name="sortorder" value="'.$sortorder.'">';
 
     	// Add list parameters
     	$param = '';
@@ -120,11 +120,11 @@ class ListPage extends FormPage
         if ($sall)
         {
             foreach($fieldstosearchall as $key => $val) $fieldstosearchall[$key] = $langs->trans($val);
-            print $langs->trans("FilterOnInto", $sall) . join(', ',$fieldstosearchall);
+            echo $langs->trans("FilterOnInto", $sall) . join(', ',$fieldstosearchall);
         }
 
-        print '<div class="div-table-responsive">';
-        print '<table class="tagtable liste">'."\n";
+        echo '<div class="div-table-responsive">';
+        echo '<table class="tagtable liste">'."\n";
 
         // Generate $arrayfields
         $this->arrayfields = array();
@@ -138,7 +138,7 @@ class ListPage extends FormPage
         $selectedfields = $this->form->multiSelectArrayWithCheckbox('selectedfields', $this->arrayfields, $varpage);
 
         // List fields
-        print '<tr class="liste_titre">';
+        echo '<tr class="liste_titre">';
         foreach ($list_fields as $field) {
         	if (! empty($this->arrayfields[$field['name']]['checked'])) {
 	        	$field_align = (isset($field['align']) ? 'align="'.$field['align'].'"' : '');
@@ -147,24 +147,24 @@ class ListPage extends FormPage
 	        }
         }
         print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], '', '', '', 'align="right"', $sortfield, $sortorder, 'maxwidthsearch ');
-        print "</tr>\n";
+        echo "</tr>\n";
 
         // List search fields
         if ($optioncss != 'print')
         {
-        	print '<tr class="liste_titre liste_titre_filter">';
+        	echo '<tr class="liste_titre liste_titre_filter">';
         	foreach ($list_fields as $field) {
         		if (! empty($this->arrayfields[$field['name']]['checked'])) {
 	        		$field_align = (isset($field['align']) ? ' align="'.$field['align'].'"' : '');
 	        		$field_class = (isset($field['class']) ? ' '.$field['class'] : '');
 	        		$search_input = (isset($field['search_input']) ? $field['search_input'] : '');
-	        		print '<td class="liste_titre'.$field_class.'"'.$field_align.'>'.$search_input.'</td>';
+	        		echo '<td class="liste_titre'.$field_class.'"'.$field_align.'>'.$search_input.'</td>';
 	        	}
 	        }
 	        // search buttons
-	        print '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans("Search"),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
-            print '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
-            print "</td></tr>\n";
+	        echo '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans("Search"),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
+            echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
+            echo "</td></tr>\n";
         }
 	}
 
@@ -192,16 +192,16 @@ class ListPage extends FormPage
 	{
 		global $langs;
 
-		print '<div class="tabsAction'.($hide_buttons ? ' hidden' : '').'">';
+		echo '<div class="tabsAction'.($hide_buttons ? ' hidden' : '').'">';
 
 		foreach ($buttons as $button)
 		{
 			if (! isset($button['enabled']) || verifCond($button['enabled'])) {
-				print '<input type="submit" class="butAction" name="'.$button['name'].'" value="'.$langs->trans($button['label']).'">';
+				echo '<input type="submit" class="butAction" name="'.$button['name'].'" value="'.$langs->trans($button['label']).'">';
 			}
 		}
 
-		print '</div>';
+		echo '</div>';
 	}
 
 	/**
@@ -212,13 +212,13 @@ class ListPage extends FormPage
 	 */
 	public function closeList($buttons = array(), $hide_buttons = false)
 	{
-		print "</table>\n";
+		echo "</table>\n";
 
 		$optioncss = GETPOST('optioncss', 'alpha');
 		
 		if (! empty($buttons) && $optioncss != 'print') $this->addButtons($buttons, $hide_buttons);
 
-		print "</div></form>\n";
+		echo "</div></form>\n";
 	}
 
 	/**
@@ -227,7 +227,7 @@ class ListPage extends FormPage
 	 */
 	public function closeRow()
 	{
-		print '<td></td>';
+		echo '<td></td>';
 
 		parent::closeRow();
 	}

@@ -47,7 +47,7 @@ class IndexPage extends FormPage
 	{
 		parent::begin();
 
-		print '<div class="fichecenter">';
+		echo '<div class="fichecenter">';
 	}
 
 	/**
@@ -56,7 +56,7 @@ class IndexPage extends FormPage
 	 */
 	public function end()
 	{
-		print '</div>';
+		echo '</div>';
 
 		parent::end();
 	}
@@ -67,7 +67,7 @@ class IndexPage extends FormPage
 	 */
 	public function openLeftSection()
 	{
-		print '<div class="fichethirdleft">';
+		echo '<div class="fichethirdleft">';
 	}
 
 	/**
@@ -76,7 +76,7 @@ class IndexPage extends FormPage
 	 */
 	public function closeLeftSection()
 	{
-		print '</div>';
+		echo '</div>';
 	}
 
 	/**
@@ -85,7 +85,7 @@ class IndexPage extends FormPage
 	 */
 	public function openRightSection()
 	{
-		print '<div class="fichetwothirdright"><div class="ficheaddleft">';
+		echo '<div class="fichetwothirdright"><div class="ficheaddleft">';
 	}
 
 	/**
@@ -94,7 +94,7 @@ class IndexPage extends FormPage
 	 */
 	public function closeRightSection()
 	{
-		print '</div></div>';
+		echo '</div></div>';
 	}
 
 	/**
@@ -109,25 +109,25 @@ class IndexPage extends FormPage
 	{
 		global $langs;
 
-		print '<form method="post" action="'.dol_buildpath($url, 1).'">';
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
-		print '<table class="noborder nohover" width="100%">';
-		print '<tr class="liste_titre"><td colspan="3">';
+		echo '<form method="post" action="'.dol_buildpath($url, 1).'">';
+		echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+		echo '<table class="noborder nohover" width="100%">';
+		echo '<tr class="liste_titre"><td colspan="3">';
 		$title = $langs->trans($title);
-		print (! empty($summary) ? $this->form->textwithpicto($title, $langs->trans($summary)) : $title);
-		print '</td></tr>';
+		echo (! empty($summary) ? $this->form->textwithpicto($title, $langs->trans($summary)) : $title);
+		echo '</td></tr>';
 		$count = 0;
 		foreach ($fields as $key => $value) {
 			$autofocus = ($count == 0 ? ' autofocus' : '');
-			print '<tr><td>'.$langs->trans($key);
-			print '</td><td><input type="text" class="flat inputsearch" name="'.$value.'" size="18"'.$autofocus.'></td>';
+			echo '<tr><td>'.$langs->trans($key);
+			echo '</td><td><input type="text" class="flat inputsearch" name="'.$value.'" size="18"'.$autofocus.'></td>';
 			if ($count == 0) {
-				print '<td class="noborderbottom" rowspan="'.count($fields).'"><input type="submit" value="'.$langs->trans("Search").'" class="button"></td>';
+				echo '<td class="noborderbottom" rowspan="'.count($fields).'"><input type="submit" value="'.$langs->trans("Search").'" class="button"></td>';
 			}
-			print '</tr>';
+			echo '</tr>';
 			$count++;
 		}
-		print "</table></form><br>\n";
+		echo "</table></form><br>\n";
 	}
 
 	/**
@@ -173,8 +173,8 @@ class IndexPage extends FormPage
 		    }
 		    $db->free($resql);
 
-		    print '<table class="noborder nohover" width="100%">';
-		    print '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
+		    echo '<table class="noborder nohover" width="100%">';
+		    echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
 		    $var = true;
 
 		    if ($graph_type == 'barline')
@@ -205,17 +205,17 @@ class IndexPage extends FormPage
 			        if (! $conf->use_javascript_ajax)
 			        {
 			            $var = ! $var;
-			            print "<tr ".$bc[$var].">";
-			            print '<td>'.$label.'</td>';
-			            print '<td align="right"><a href="list.php?'.$field_name.'='.$value.'">'.$count.'</a></td>';
-			            print "</tr>\n";
+			            echo "<tr ".$bc[$var].">";
+			            echo '<td>'.$label.'</td>';
+			            echo '<td align="right"><a href="list.php?'.$field_name.'='.$value.'">'.$count.'</a></td>';
+			            echo "</tr>\n";
 			        }
 			    }
 		    }
 
 		    if ($conf->use_javascript_ajax)
 		    {
-		        print '<tr class="impair"><td align="center" colspan="2">';
+		        echo '<tr class="impair"><td align="center" colspan="2">';
 		        if ($graph_type == 'barline')
 		        {
 		        	$data = array('series' => array(array('label' => $field_name, 'data' => $dataseries)),
@@ -229,11 +229,11 @@ class IndexPage extends FormPage
 		        	$showlegend = 1;
 		        }
 		        dol_print_graph('stats_'.($this->stats_id++), 300, 180, $data, $showlegend, $graph_type, 1);
-		        print '</td></tr>';
+		        echo '</td></tr>';
 		    }
 		    
-		    print '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td align="right">'.$total.'</td></tr>';
-		    print "</table><br>";
+		    echo '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td align="right">'.$total.'</td></tr>';
+		    echo "</table><br>";
 		}
 		else
 		{

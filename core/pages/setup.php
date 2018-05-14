@@ -226,19 +226,19 @@ class SetupPage extends FormPage
 
 		$this->odd = !$this->odd;
 
-		print '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td align="center">&nbsp;</td>'."\n";
-		print '<td width="'.$width.'" align="right">'."\n";
+		echo '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
+		echo '<td align="center">&nbsp;</td>'."\n";
+		echo '<td width="'.$width.'" align="right">'."\n";
 		if (! empty($const_name)) {
-			print '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
-			print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
-			print '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
+			echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+			echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
+			echo '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
 		}
-		print $option_content."\n";
+		echo $option_content."\n";
 		if (! empty($const_name)) {
-			print '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
+			echo '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
 		}
-		print "</form>\n</td>\n</tr>\n";
+		echo "</form>\n</td>\n</tr>\n";
 	}
 
 	/**
@@ -256,18 +256,18 @@ class SetupPage extends FormPage
 		$this->odd = !$this->odd;
 		$more_attr = $disabled ? ' class="disabled nopointerevents"' : '';
 
-		print '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		print '<td'.$more_attr.' align="center">&nbsp;</td>'."\n";
-		print '<td'.$more_attr.' align="right">'."\n";
+		echo '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
+		echo '<td'.$more_attr.' align="center">&nbsp;</td>'."\n";
+		echo '<td'.$more_attr.' align="right">'."\n";
 		if (empty($conf->global->$const_name))
 		{
-		    print '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=1">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>'."\n";
+		    echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=1">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>'."\n";
 		}
 		else
 		{
-		    print '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=0">'.img_picto($langs->trans("Enabled"),'switch_on').'</a>'."\n";
+		    echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=0">'.img_picto($langs->trans("Enabled"),'switch_on').'</a>'."\n";
 		}
-		print "&nbsp;&nbsp;&nbsp;&nbsp;</td>\n</tr>\n";
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;</td>\n</tr>\n";
 	}
 
 	/**
@@ -376,14 +376,14 @@ class SetupPage extends FormPage
 
 		if (! $this->close_buttons_div) {
 			dol_fiche_end();
-			print '<div class="tabsAction" style="text-align: center;">';
+			echo '<div class="tabsAction" style="text-align: center;">';
 			$this->close_buttons_div = true;
 		}
 
-		print '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
+		echo '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
 
 		if ($close_parent_div) {
-			print '</div>';
+			echo '</div>';
 			$this->close_buttons_div = false;
 		}
 	}
@@ -398,14 +398,14 @@ class SetupPage extends FormPage
 
 		$const_name = $this->num_model_const_name;
 
-		print '<table class="noborder" width="100%">';
-		print '<tr class="liste_titre">';
-		print '<td>'.$langs->trans("Name").'</td>';
-		print '<td>'.$langs->trans("Description").'</td>';
-		print '<td class="nowrap">'.$langs->trans("Example").'</td>';
-		print '<td align="center" width="60">'.$langs->trans("Status").'</td>';
-		print '<td align="center" width="16">'.$langs->trans("ShortInfo").'</td>';
-		print '</tr>'."\n";
+		echo '<table class="noborder" width="100%">';
+		echo '<tr class="liste_titre">';
+		echo '<td>'.$langs->trans("Name").'</td>';
+		echo '<td>'.$langs->trans("Description").'</td>';
+		echo '<td class="nowrap">'.$langs->trans("Example").'</td>';
+		echo '<td align="center" width="60">'.$langs->trans("Status").'</td>';
+		echo '<td align="center" width="16">'.$langs->trans("ShortInfo").'</td>';
+		echo '</tr>'."\n";
 
 		clearstatcache();
 
@@ -444,30 +444,30 @@ class SetupPage extends FormPage
 							if ($module->isEnabled())
 							{
 								$var=!$var;
-								print '<tr '.$bc[$var].'><td>'.$module->nom."</td><td>\n";
-								print $module->info();
-								print '</td>';
+								echo '<tr '.$bc[$var].'><td>'.$module->nom."</td><td>\n";
+								echo $module->info();
+								echo '</td>';
 
 								// Show example of numbering model
-								print '<td class="nowrap">';
+								echo '<td class="nowrap">';
 								$tmp=$module->getExample();
-								if (preg_match('/^Error/',$tmp)) print '<div class="error">'.$langs->trans($tmp).'</div>';
-								elseif ($tmp=='NotConfigured') print $langs->trans($tmp);
-								else print $tmp;
-								print '</td>'."\n";
+								if (preg_match('/^Error/',$tmp)) echo '<div class="error">'.$langs->trans($tmp).'</div>';
+								elseif ($tmp=='NotConfigured') echo $langs->trans($tmp);
+								else echo $tmp;
+								echo '</td>'."\n";
 
-								print '<td align="center">';
+								echo '<td align="center">';
 								if ($conf->global->$const_name == $file)
 								{
-									print img_picto($langs->trans("Activated"),'switch_on');
+									echo img_picto($langs->trans("Activated"),'switch_on');
 								}
 								else
 								{
-									print '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
-									print img_picto($langs->trans("Disabled"),'switch_off');
-									print '</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
+									echo img_picto($langs->trans("Disabled"),'switch_off');
+									echo '</a>';
 								}
-								print '</td>';
+								echo '</td>';
 
 								// Info
 								$htmltooltip='';
@@ -485,11 +485,11 @@ class SetupPage extends FormPage
 									}
 								}
 
-								print '<td align="center">';
-								print $this->form->textwithpicto('',$htmltooltip,1,0);
-								print '</td>';
+								echo '<td align="center">';
+								echo $this->form->textwithpicto('',$htmltooltip,1,0);
+								echo '</td>';
 
-								print "</tr>\n";
+								echo "</tr>\n";
 							}
 						}
 					}
@@ -497,6 +497,6 @@ class SetupPage extends FormPage
 				}
 			}
 		}
-		print "</table><br>\n";
+		echo "</table><br>\n";
 	}
 }

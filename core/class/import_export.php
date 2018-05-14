@@ -45,7 +45,7 @@ class ImportExport
 	{
 		global $langs;
 
-		print '<a href="#" id="'.$id.'" class="'.$class.'"'.(empty($alt) ? '' : ' title="'.$alt).'">'.$langs->trans($text).'</a>';
+		echo '<a href="#" id="'.$id.'" class="'.$class.'"'.(empty($alt) ? '' : ' title="'.$alt).'">'.$langs->trans($text).'</a>';
 	}
 
 	/**
@@ -62,7 +62,7 @@ class ImportExport
 	{
 		global $langs;
 
-		print '<a href="#" id="'.$id.'" class="'.$class.'"'.(empty($alt) ? '' : ' title="'.$alt).'">'.$langs->trans($text).'</a>';
-		print '<input type="file" class="hidden" style="display: none;" id="'.$file_input_id.'" accept="'.$accept.'"/>';
+		echo '<a href="#" id="'.$id.'" class="'.$class.'"'.(empty($alt) ? '' : ' title="'.$alt).'">'.$langs->trans($text).'</a>';
+		echo '<input type="file" class="hidden" style="display: none;" id="'.$file_input_id.'" accept="'.$accept.'"/>';
 	}
 }

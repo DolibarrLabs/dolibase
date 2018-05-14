@@ -47,7 +47,7 @@ class StatsPage extends FormPage
 	{
 		parent::begin();
 
-		print '<div class="fichecenter">';
+		echo '<div class="fichecenter">';
 	}
 
 	/**
@@ -56,9 +56,9 @@ class StatsPage extends FormPage
 	 */
 	public function end()
 	{
-		print '</div>';
+		echo '</div>';
 
-		print '<div style="clear:both"></div>';
+		echo '<div style="clear:both"></div>';
 
 		parent::end();
 	}
@@ -69,7 +69,7 @@ class StatsPage extends FormPage
 	 */
 	public function openLeftSection()
 	{
-		print '<div class="fichethirdleft">';
+		echo '<div class="fichethirdleft">';
 	}
 
 	/**
@@ -78,7 +78,7 @@ class StatsPage extends FormPage
 	 */
 	public function closeLeftSection()
 	{
-		print '</div>';
+		echo '</div>';
 	}
 
 	/**
@@ -87,9 +87,9 @@ class StatsPage extends FormPage
 	 */
 	public function openRightSection()
 	{
-		print '<div class="fichetwothirdright"><div class="ficheaddleft">';
+		echo '<div class="fichetwothirdright"><div class="ficheaddleft">';
 
-		print '<table class="border" width="100%"><tr valign="top"><td align="center">';
+		echo '<table class="border" width="100%"><tr valign="top"><td align="center">';
 	}
 
 	/**
@@ -98,9 +98,9 @@ class StatsPage extends FormPage
 	 */
 	public function closeRightSection()
 	{
-		print '</td></tr></table>';
+		echo '</td></tr></table>';
 
-		print '</div></div>';
+		echo '</div></div>';
 	}
 
 	/**
@@ -129,27 +129,27 @@ class StatsPage extends FormPage
 		if (! count($arrayyears)) $arrayyears[$nowyear] = $nowyear;
 
 		// Print form
-		print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
-		print '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
-		print '<table class="noborder nohover" width="100%">';
-		print '<tr class="liste_titre"><td colspan="3">';
+		echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
+		echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+		echo '<table class="noborder nohover" width="100%">';
+		echo '<tr class="liste_titre"><td colspan="3">';
 		$title = $langs->trans($title);
-		print (! empty($summary) ? $this->form->textwithpicto($title, $langs->trans($summary)) : $title);
-		print '</td></tr>';
+		echo (! empty($summary) ? $this->form->textwithpicto($title, $langs->trans($summary)) : $title);
+		echo '</td></tr>';
 		// Fields
 		foreach ($fields as $label => $content) {
-			print '<tr><td align="left">'.$langs->trans($label).'</td><td align="left">'.$content.'</td></tr>';
+			echo '<tr><td align="left">'.$langs->trans($label).'</td><td align="left">'.$content.'</td></tr>';
 		}
 		// Year field
-		print '<tr><td align="left">'.$langs->trans("Year").'</td><td align="left">';
+		echo '<tr><td align="left">'.$langs->trans("Year").'</td><td align="left">';
 		if (! in_array($year, $arrayyears)) $arrayyears[$year] = $year;
 		if (! in_array($nowyear, $arrayyears)) $arrayyears[$nowyear] = $nowyear;
 		arsort($arrayyears);
-		print $this->form->selectarray('year', $arrayyears, $year, 0);
-		print '</td></tr>';
+		echo $this->form->selectarray('year', $arrayyears, $year, 0);
+		echo '</td></tr>';
 		// Submit button
-		print '<tr><td align="center" colspan="2"><input type="submit" name="submit" class="button" value="'.$langs->trans("Refresh").'"></td></tr>';
-		print "</table></form><br>\n";
+		echo '<tr><td align="center" colspan="2"><input type="submit" name="submit" class="button" value="'.$langs->trans("Refresh").'"></td></tr>';
+		echo "</table></form><br>\n";
 	}
 
 	/**
@@ -216,7 +216,7 @@ class StatsPage extends FormPage
 
 		    $graph->draw($filename, $fileurl);
 
-		    print $graph->show();
+		    echo $graph->show();
 		}
 	}
 }

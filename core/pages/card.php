@@ -101,14 +101,14 @@ class CardPage extends CreatePage
 
 		if (! $this->close_buttons_div) {
 			dol_fiche_end();
-			print '<div class="tabsAction">';
+			echo '<div class="tabsAction">';
 			$this->close_buttons_div = true;
 		}
 
-		print '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
+		echo '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
 
 		if ($close_parent_div) {
-			print '</div>';
+			echo '</div>';
 			$this->close_buttons_div = false;
 		}
 	}
@@ -126,15 +126,15 @@ class CardPage extends CreatePage
 	{
 		global $langs;
 
-		print '<tr'.(! empty($attr) ? ' '.$attr : '').'>';
-		print '<td width="25%"><table class="nobordernopadding" width="100%"><tr>';
-		print '<td>' . $langs->trans($field_name) . '</td>';
+		echo '<tr'.(! empty($attr) ? ' '.$attr : '').'>';
+		echo '<td width="25%"><table class="nobordernopadding" width="100%"><tr>';
+		echo '<td>' . $langs->trans($field_name) . '</td>';
 		if ($is_editable && (empty($this->edit_permission) || verifCond($this->edit_permission))) {
-			print '<td align="right"><a href="' . $edit_link . '">' . img_edit($langs->trans('Modify'), 1) . '</a></td>';
+			echo '<td align="right"><a href="' . $edit_link . '">' . img_edit($langs->trans('Modify'), 1) . '</a></td>';
 		}
-		print '</tr></table></td>';
-		print '<td colspan="5">' . $field_content . '</td>';
-		print '</tr>';
+		echo '</tr></table></td>';
+		echo '<td colspan="5">' . $field_content . '</td>';
+		echo '</tr>';
 	}
 
 	/**
@@ -169,7 +169,7 @@ class CardPage extends CreatePage
 
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
-		print '<div class="underbanner clearboth"></div>';
+		echo '<div class="underbanner clearboth"></div>';
 	}
 
 	/**
@@ -185,17 +185,17 @@ class CardPage extends CreatePage
 
 		$id = GETPOST('id', 'int');
 
-		print '<tr>';
-		print '<td width="25%">' . $langs->trans($field_name) . '</td>';
-		print '<td colspan="5">';
-		print '<form action="' . $_SERVER["PHP_SELF"] . '?id=' . $id . '" method="post">';
-        print '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
-        print '<input type="hidden" name="action" value="'.$action_name.'">';
-        print $field_content;
-        print ' <input type="submit" class="button" value="' . $langs->trans('Modify') . '">';
-        print '</form>';
-		print '</td>';
-		print '</tr>';
+		echo '<tr>';
+		echo '<td width="25%">' . $langs->trans($field_name) . '</td>';
+		echo '<td colspan="5">';
+		echo '<form action="' . $_SERVER["PHP_SELF"] . '?id=' . $id . '" method="post">';
+        echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+        echo '<input type="hidden" name="action" value="'.$action_name.'">';
+        echo $field_content;
+        echo ' <input type="submit" class="button" value="' . $langs->trans('Modify') . '">';
+        echo '</form>';
+		echo '</td>';
+		echo '</tr>';
 	}
 
 	/**
@@ -325,7 +325,7 @@ class CardPage extends CreatePage
 
 			$const_name = strtoupper($dolibase_config['rights_class']).'_ENABLE_EXPANDED_LINKS';
 
-		    print '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
+		    echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
 		    // Dolibase object linking feature
 		    if ($conf->global->$const_name)
@@ -348,7 +348,7 @@ class CardPage extends CreatePage
 			    $somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
 			}
 
-		    print '</div></div>';
+		    echo '</div></div>';
 		}
 	}
 
@@ -358,7 +358,7 @@ class CardPage extends CreatePage
 	 */
 	public function end($object = '')
 	{
-		if ($this->close_buttons_div) print '</div>';
+		if ($this->close_buttons_div) echo '</div>';
 
 		$this->printRelatedObjects($object);
 

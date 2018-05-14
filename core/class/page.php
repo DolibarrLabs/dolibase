@@ -230,7 +230,7 @@ class Page
 
 		$this->closeTable(); // close last opened table if true
 
-		print load_fiche_titre($langs->trans($title), $morehtmlright, $picture);
+		echo load_fiche_titre($langs->trans($title), $morehtmlright, $picture);
 	}
 
 	/**
@@ -243,9 +243,9 @@ class Page
 		// i.: HTML form inside another never works, so better not allow it
 		if (! $this->close_form)
 		{
-			print '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
-		    print '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
-		    print '<input type="hidden" name="action" value="'.$action.'">';
+			echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
+		    echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+		    echo '<input type="hidden" name="action" value="'.$action.'">';
 
 			$this->close_form = true;
 		}
@@ -259,7 +259,7 @@ class Page
 	{
 		if ($this->close_form)
 		{
-			print '</form>';
+			echo '</form>';
 
 			$this->close_form = false;
 		}
@@ -292,18 +292,18 @@ class Page
 
 		// Print table summary
 		if (! empty($summary)) {
-			print $langs->trans($summary);
+			echo $langs->trans($summary);
 		}
 
 		// Open table
-		print '<table '.$attr.'>'."\n";
+		echo '<table '.$attr.'>'."\n";
 		if (! empty($header_columns))
 		{
-			print '<tr class="liste_titre">'."\n";
+			echo '<tr class="liste_titre">'."\n";
 			foreach ($header_columns as $col) {
-				print '<td'.(! empty($col['attr']) ? ' '.$col['attr'] : '').'>'.$langs->trans($col['name']).'</td>'."\n";
+				echo '<td'.(! empty($col['attr']) ? ' '.$col['attr'] : '').'>'.$langs->trans($col['name']).'</td>'."\n";
 			}
-			print '</tr>'."\n";
+			echo '</tr>'."\n";
 		}
 
 		$this->close_table = true; // a table have been opened & should be closed
@@ -319,7 +319,7 @@ class Page
 		if ($this->close_table)
 		{
 			// Close table
-			print "</table>\n";
+			echo "</table>\n";
 
 			// Print dolibarr fiche end
 			if ($print_fiche_end) {
@@ -342,7 +342,7 @@ class Page
 	{
 		global $bc;
 
-		print '<tr '.$bc[$odd].(! empty($more_attr) ? ' '.$more_attr : '').'>';
+		echo '<tr '.$bc[$odd].(! empty($more_attr) ? ' '.$more_attr : '').'>';
 	}
 
 	/**
@@ -351,7 +351,7 @@ class Page
 	 */
 	public function closeRow()
 	{
-		print '</tr>';
+		echo '</tr>';
 	}
 
 	/**
@@ -362,7 +362,7 @@ class Page
 	 */
 	public function addColumn($content, $attr = '')
 	{
-		print '<td'.(! empty($attr) ? ' '.$attr : '').'>'.$content.'</td>';
+		echo '<td'.(! empty($attr) ? ' '.$attr : '').'>'.$content.'</td>';
 	}
 
 	/**
@@ -375,7 +375,7 @@ class Page
 		$repeat = $repeat < 0 ? 0 : $repeat;
 
 		for ($i = 0; $i <= $repeat; $i++) {
-			print "<br>\n";
+			echo "<br>\n";
 		}
 	}
 
@@ -426,7 +426,7 @@ class Page
 	{
 		$load_time  = round((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 4); // PHP 5.4+ only
 
-		print '<br>Page loaded in ' . $load_time . ' seconds.';
+		echo '<br>Page loaded in ' . $load_time . ' seconds.';
 	}
 
 	/**
