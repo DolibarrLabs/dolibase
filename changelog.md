@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.5.2 - MAY18
+
+*   FIX: better code optimisation for the last fix (in version 1.5.1).
+
+---
+
 #### 1.5.1 - MAY18
 
 *   FIX: module loadTables() function.

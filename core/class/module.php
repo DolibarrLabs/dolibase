@@ -148,14 +148,10 @@ class DolibaseModule extends DolibarrModules
 	protected function loadTables()
 	{
 		// Load Dolibase tables
-		if (DOLIBASE_ENABLE_LOGS)
-		{
-			if (DOLIBASE_PATH == '/dolibase') { // from htdocs directory
-				$this->_load_tables(DOLIBASE_PATH.'/sql/logs/');
-			}
-			else { // from module directory
-				$this->_load_tables('/'.$this->config['module_folder'].'/dolibase/sql/logs/');
-			}
+		$dolibase_path = (DOLIBASE_PATH == '/dolibase' ? DOLIBASE_PATH : '/'.$this->config['module_folder'].'/dolibase');
+		
+		if (DOLIBASE_ENABLE_LOGS) {
+			$this->_load_tables($dolibase_path.'/sql/logs/');
 		}
 		
 		// Load module tables
