@@ -72,8 +72,6 @@ if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs dir
  * Load Dolibase
  */
 
-if (false === (@include_once DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
-	dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/autoload.php'); // From module directory
+if (false === (@include DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
+	@include dol_buildpath('/'.$dolibase_config['module']['folder'].'/dolibase/autoload.php'); // From module directory
 }
-
-include DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/migration/migrate_config.php'; // Load config migration script

@@ -62,7 +62,8 @@ function dolibase_include_once($component_path)
 	$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
 	if (false === (@include_once DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/'.$path)) { // @ is used to skip warnings..
-		dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/'.$path);
+		//dol_include_once('/'.$dolibase_config['module_folder'].'/dolibase/'.$path);
+		@include_once dol_buildpath('/'.$dolibase_config['module_folder'].'/dolibase/'.$path);
 	}
 }
 
