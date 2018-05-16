@@ -1,38 +1,26 @@
 <?php
-/**
- * Dolibase
- * 
- * Open source framework for Dolibarr ERP/CRM
- *
- * Copyright (c) 2018 - 2019
- *
- *
- * @package     Dolibase
- * @author      AXeL
- * @copyright	Copyright (c) 2018 - 2019, AXeL-dev
- * @license
- * @link
- * 
- */
 
+// Load Dolibase config file for this module (mandatory)
+include_once dirname(__FILE__) . '/../../config.php'; // we use dirname(__FILE__) because this file is included by Dolibarr admin/boxes.php file
+//dol_include_once('/myfirstmodule/config.php'); // may work also
 include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
 
 /**
- * Widget class
+ * Class to manage the box
  *
- * P.S: This class is also affected with the issue in DolibaseModule class (@see module.php).
+ * Warning: for the box to be detected correctly by dolibarr,
+ * the filename should be the lowercase classname
  */
-
-class Widget extends ModeleBoxes
+class NativeBox extends ModeleBoxes
 {
 	/**
 	 * @var Widget Label
 	 */
-	public $boxlabel;
+	public $boxlabel = "NativeWidget";
 	/**
 	 * @var Widget Picture
 	 */
-	public $boximg;
+	public $boximg = "mywidget.png";
 	/**
 	 * @var Widget Position
 	 */
@@ -41,7 +29,6 @@ class Widget extends ModeleBoxes
 	 * @var Widget is Enabled
 	 */
 	public $enabled = 1;
-
 
 	/**
 	 * Constructor
@@ -69,6 +56,29 @@ class Widget extends ModeleBoxes
 		$this->info_box_contents = array();
 
 		parent::__construct($db, $param);
+	}
+
+	/**
+	 * Load data into info_box_contents array to show array later. Called by Dolibarr before displaying the box.
+	 *
+	 * @param int $max Maximum number of records to load
+	 * @return void
+	 */
+	public function loadBox($max = 5)
+	{
+		$this->setTitle("NativeWidgetTitle");
+
+		$this->setLink("http://example.com", "link.png");
+
+		$this->addContent("My column 1");
+
+		$this->addContent("My column 2");
+
+		$this->addContent("My column 3");
+
+		$this->newLine();
+
+		$this->addContent("My column 4", 'align="center" colspan="3"');
 	}
 
 	/**

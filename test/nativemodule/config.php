@@ -7,15 +7,15 @@ global $dolibase_config;
  */
 
 $dolibase_config['module'] = array(
-	'name'         => 'MyFirstModule',
-	'desc'         => 'MyFirstModuleDescription',
+	'name'         => 'NativeModule',
+	'desc'         => 'NativeModuleDescription',
 	'version'      => '1.0.0', // possible values: 'development', 'experimental', 'dolibarr' or version
-	'number'       => '550000', // e.: 110000 (avoid small numbers because they are used for core modules)
+	'number'       => '555000', // e.: 110000 (avoid small numbers because they are used for core modules)
 	'family'       => 'Dolibase modules', // possible values: 'crm', 'financial', 'hr', 'projects', 'products', 'ecm', 'technic', 'other'
 	'position'     => 500,
-	'rights_class' => 'my_first_module', // key to reference module (for permissions, menus, etc.)
+	'rights_class' => 'native_module', // key to reference module (for permissions, menus, etc.)
 	'url'          => '#', // e.: 'https://www.dolistore.com/my_module'
-	'folder'       => 'myfirstmodule', // advice: never use underscores in module folder name to avoid many problems especially with top menu icon, module widgets etc..
+	'folder'       => 'nativemodule', // advice: never use underscores in module folder name to avoid many problems especially with top menu icon, module widgets etc..
 	'picture'      => 'my_picture.png', // your picture file should have 'object_' prefix to work
 	'dirs'         => array(), // directories to create when activating the module, e.: array('/modulefoldername/temp')
 	'dolibarr_min' => array(3, 8), // minimum Dolibarr version, e.: array(6, 0)

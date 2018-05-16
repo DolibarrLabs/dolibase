@@ -1,40 +1,14 @@
 <?php
-/**
- * Dolibase
- * 
- * Open source framework for Dolibarr ERP/CRM
- *
- * Copyright (c) 2018 - 2019
- *
- *
- * @package     Dolibase
- * @author      AXeL
- * @copyright	Copyright (c) 2018 - 2019, AXeL-dev
- * @license
- * @link
- * 
- */
 
-/**
- * Note: each time you add a function in this class/file, it's better to add the same function into your
- * module class also (just copy & paste), because this way you'll avoid old versions non compatibility issues
- * (remember that Dolibase is loaded/included only one time on "dolibarr/admin/modules.php" file),
- * so even if an older Dolibase version is loaded first & this version will probably not include your new function(s), 
- * your module class will always have a copy/override of the function(s) & that's it!
- * (no need to always update your old modules Dolibase version anymore)
- *
- * Another solution would be to use namespaces, to separate each module files, but better not complicate things..
- *
- * P.S: This issue affects only DolibaseModule & Widget class & not the other classes of Dolibase.
- */
-
+// Load Dolibase config file for this module (mandatory)
+include_once dirname(__FILE__) . '/../../config.php'; // we use dirname(__FILE__) because this file is included by Dolibarr admin/modules.php file
+//dol_include_once('/myfirstmodule/config.php'); // may work also
 include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
 
 /**
- * DolibaseModule class
+ *	Class to describe and enable module
  */
-
-class DolibaseModule extends DolibarrModules
+class modNativeModule extends DolibarrModules
 {
 	/**
 	 * @var array Dolibase module configuration array
@@ -48,6 +22,49 @@ class DolibaseModule extends DolibarrModules
 	 * @param     $db         Database handler
 	 */
 	public function __construct($db)
+	{
+		// set module configuration
+		$this->setConfig($db);
+
+		// add options/settings
+		$this->addConstant("NATIVE_MODULE_CONST", "test");
+		$this->addConstant("NATIVE_MODULE_SECOND_CONST", "test2");
+
+		$this->addWidget("nativebox.php");
+
+		$this->addCssFile("mycss.css.php");
+		//$this->addCssFile("mycss2.css.php");
+
+		$this->addPermission("use", "UseTheModule");
+		//$this->addPermission("read", "Read permission", "r");
+		//$this->addPermission("create", "Create permission", "c");
+		//$this->addPermission("modify", "Modify permission", "m");
+		//$this->addPermission("delete", "Delete permission", "d");
+
+		//$this->addSubPermission("delete", "all", "Delete all permissions", "d");
+
+		$this->addTopMenu($this->config['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
+
+		//$this->addTopMenu("mysecondmenu", "MySecondMenu", "/myfirstmodule/index.php?test=10");
+
+		$this->addLeftMenu($this->config['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
+
+		$this->addLeftSubMenu($this->config['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
+
+		$this->addLeftSubMenu($this->config['top_menu_name'], "mysubleftmenu", "", "MySecondSubLeftMenu", "/myfirstmodule/index.php?test=4");
+
+		$this->addLeftMenu($this->config['top_menu_name'], "mysecondleftmenu", "MySecondLeftMenu", "/myfirstmodule/index.php?test=5");
+
+		// Exports
+		//--------
+	}
+
+	/**
+	 * Set module configuration
+	 * 
+	 * @param     $db         Database handler
+	 */
+	protected function setConfig($db)
 	{
 		global $dolibase_config;
 
@@ -103,18 +120,6 @@ class DolibaseModule extends DolibarrModules
 
 		// Dictionaries
 		$this->dictionaries = array();
-
-		// Load module settings
-		$this->loadSettings();
-	}
-
-	/**
-	 * Function called after module configuration.
-	 * 
-	 */
-	public function loadSettings()
-	{
-		// add here your module settings
 	}
 
 	/**

@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 1.6.0 - MAY18
+
+*   NEW: native module (test module).
+*   NEW: migration script (to old config).
+*   NEW: better dolibase config organization.
+
+---
+
 #### 1.5.2 - MAY18
 
 *   FIX: better code optimisation for the last fix (in version 1.5.1).
