@@ -1,8 +1,7 @@
 <?php
 
 // Load Dolibase config file for this module (mandatory)
-include_once dirname(__FILE__) . '/../../config.php'; // we use dirname(__FILE__) because this file is included by Dolibarr admin/boxes.php file
-//dol_include_once('/myfirstmodule/config.php'); // may work also
+dol_include_once('/myfirstmodule/config.php');
 // Load Dolibase Widget class
 dolibase_include_once('/core/class/widget.php');
 

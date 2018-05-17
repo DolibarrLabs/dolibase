@@ -1,31 +1,12 @@
 <?php
-/**
- * Dolibase
- * 
- * Open source framework for Dolibarr ERP/CRM
- *
- * Copyright (c) 2018 - 2019
- *
- *
- * @package     Dolibase
- * @author      AXeL
- * @copyright	Copyright (c) 2018 - 2019, AXeL-dev
- * @license
- * @link
- * 
- */
-
-/**
- * Note: This class is also affected by the issue in DolibaseModule class (@see module.php).
- */
 
 include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
 
 /**
- * Widget class
+ * CustomWidget class (you should change this class name for each new module to avoid conflits)
  */
 
-class Widget extends ModeleBoxes
+class CustomWidget extends ModeleBoxes
 {
 	/**
 	 * @var Widget Label

@@ -1,7 +1,7 @@
 <?php
 
 // Load Dolibase config file for this module (mandatory)
-include_once dirname(__FILE__) . '/../../config.php'; // this file is called from Dolibarr admin folder so we use dirname(__FILE__)
+dol_include_once('/books/config.php');
 // Load Dolibase Module class
 dolibase_include_once('/core/class/module.php');
 
