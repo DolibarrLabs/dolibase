@@ -1,6 +1,6 @@
 # Dolibase
 
-[![Stable Version](https://img.shields.io/badge/stable-v1.5.2-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v1.5.2)
+[![Stable Version](https://img.shields.io/badge/stable-v1.6.2-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v1.6.2)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.0-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
@@ -29,9 +29,9 @@ class modMyFirstModule extends DolibaseModule
 		$this->addPermission("delete", "Delete permission", "d");
 
 		// Add menu(s)
-		$this->addTopMenu($this->config['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
-		$this->addLeftMenu($this->config['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
-		$this->addLeftSubMenu($this->config['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
+		$this->addTopMenu($this->config['other']['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
+		$this->addLeftMenu($this->config['other']['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
+		$this->addLeftSubMenu($this->config['other']['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
 	}
 }
 ```

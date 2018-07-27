@@ -62,8 +62,8 @@ class Logs extends CrudObject
 	{
 		global $dolibase_config, $user;
 
-		$info = array('module_id'   => $dolibase_config['module_number'],
-					  'module_name' => $dolibase_config['module_name'],
+		$info = array('module_id'   => $dolibase_config['module']['number'],
+					  'module_name' => $dolibase_config['module']['name'],
 					  'object_id'   => $object_id,
 					  'action'      => $action,
 					  'datec'       => dolibase_now(true),

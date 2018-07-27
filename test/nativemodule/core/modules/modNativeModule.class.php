@@ -32,17 +32,17 @@ class modNativeModule extends CustomModule
 
 		//$this->addSubPermission("delete", "all", "Delete all permissions", "d");
 
-		//$this->addTopMenu($this->config['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
+		//$this->addTopMenu($this->config['other']['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
 
 		//$this->addTopMenu("mysecondmenu", "MySecondMenu", "/myfirstmodule/index.php?test=10");
 
-		//$this->addLeftMenu($this->config['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
+		//$this->addLeftMenu($this->config['other']['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
 
-		//$this->addLeftSubMenu($this->config['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
+		//$this->addLeftSubMenu($this->config['other']['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
 
-		//$this->addLeftSubMenu($this->config['top_menu_name'], "mysubleftmenu", "", "MySecondSubLeftMenu", "/myfirstmodule/index.php?test=4");
+		//$this->addLeftSubMenu($this->config['other']['top_menu_name'], "mysubleftmenu", "", "MySecondSubLeftMenu", "/myfirstmodule/index.php?test=4");
 
-		//$this->addLeftMenu($this->config['top_menu_name'], "mysecondleftmenu", "MySecondLeftMenu", "/myfirstmodule/index.php?test=5");
+		//$this->addLeftMenu($this->config['other']['top_menu_name'], "mysecondleftmenu", "MySecondLeftMenu", "/myfirstmodule/index.php?test=5");
 
 		// Exports
 		//--------

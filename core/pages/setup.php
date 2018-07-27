@@ -54,13 +54,13 @@ class SetupPage extends FormPage
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_config['module_folder']);
+		$langs->load("setup_page@".$dolibase_config['module']['folder']);
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
 
 		// Set numbering model constant name
-		$this->num_model_const_name = strtoupper($dolibase_config['rights_class']) . '_ADDON';
+		$this->num_model_const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
 
 		// Add some custom css
 		$this->head.= "<style>
@@ -188,8 +188,8 @@ class SetupPage extends FormPage
 
 		// Add default tabs
 		if (empty($this->tabs)) {
-			$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']."?mainmenu=home", true);
-			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home");
+			$this->addTab("Settings", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home", true);
+			$this->addTab("About", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
 		}
 		
 		parent::generate();
@@ -414,7 +414,7 @@ class SetupPage extends FormPage
 		foreach ($dirmodels as $reldir)
 		{
 			$dir = dol_buildpath($reldir."/dolibase/core/num_models/");
-			$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module_folder']."/dolibase/core/num_models/");
+			$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/num_models/");
 
 			$dir = ! is_dir($dir) ? $mod_dir : $dir;
 

@@ -23,13 +23,13 @@ class modBooks extends DolibaseModule
 		$this->addPermission("modify", "Modify permission", "m");
 		$this->addPermission("delete", "Delete permission", "d");
 
-		$this->addTopMenu($this->config['top_menu_name'], "Books", "/books/index.php");
+		$this->addTopMenu($this->config['other']['top_menu_name'], "Books", "/books/index.php");
 
-		$this->addLeftMenu($this->config['top_menu_name'], "mybooks", "Books", "/books/index.php");
+		$this->addLeftMenu($this->config['other']['top_menu_name'], "mybooks", "Books", "/books/index.php");
 
-		$this->addLeftSubMenu($this->config['top_menu_name'], "mybooks", "", "New Book", "/books/new.php");
+		$this->addLeftSubMenu($this->config['other']['top_menu_name'], "mybooks", "", "New Book", "/books/new.php");
 
-		$this->addLeftSubMenu($this->config['top_menu_name'], "mybooks", "bookslist", "List", "/books/list.php");
+		$this->addLeftSubMenu($this->config['other']['top_menu_name'], "mybooks", "bookslist", "List", "/books/list.php");
 
 		$this->addDictionary('books_dict', 'Books types');
 

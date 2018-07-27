@@ -323,14 +323,14 @@ class CardPage extends CreatePage
 		{
 			global $conf, $langs, $dolibase_config;
 
-			$const_name = strtoupper($dolibase_config['rights_class']).'_ENABLE_EXPANDED_LINKS';
+			$const_name = strtoupper($dolibase_config['module']['rights_class']).'_ENABLE_EXPANDED_LINKS';
 
 		    echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
 		    // Dolibase object linking feature
 		    if ($conf->global->$const_name)
 		    {
-				$langs->load('related_objects@'.$dolibase_config['module_folder']);
+				$langs->load('related_objects@'.$dolibase_config['module']['folder']);
 
 				show_related_objects($object);
 		    }

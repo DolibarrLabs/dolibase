@@ -36,7 +36,7 @@ class LogPage extends Page
 		global $langs, $dolibase_config;
 
 		// Load lang files
-		$langs->load("log_page@".$dolibase_config['module_folder']);
+		$langs->load("log_page@".$dolibase_config['module']['folder']);
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -69,8 +69,8 @@ class LogPage extends Page
 	    global $dolibase_config, $langs;
 
 	    $log = new Logs();
-	    $where = "(module_id = ".$dolibase_config['module_number'];
-	    $where.= " || module_name = '".$dolibase_config['module_name']."'";
+	    $where = "(module_id = ".$dolibase_config['module']['number'];
+	    $where.= " || module_name = '".$dolibase_config['module']['name']."'";
 	    $where.= ") AND object_id = ".$object_id;
 
 	    // Fetch logs

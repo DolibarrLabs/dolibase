@@ -35,7 +35,7 @@ class AboutPage extends Page
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['module_folder']);
+		$langs->load("about_page@".$dolibase_config['module']['folder']);
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -54,8 +54,8 @@ class AboutPage extends Page
 
 		// Add default tabs
 		if (empty($this->tabs)) {
-			$this->addTab("Settings", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['setup_page_url']."?mainmenu=home");
-			$this->addTab("About", "/".$dolibase_config['module_folder']."/admin/".$dolibase_config['about_page_url']."?mainmenu=home", true);
+			$this->addTab("Settings", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home");
+			$this->addTab("About", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home", true);
 		}
 
 		parent::generate();
@@ -71,19 +71,19 @@ class AboutPage extends Page
 		global $langs, $dolibase_config;
 
 		if (empty($picture)) {
-			$picture = 'object_'.$dolibase_config['module_picture'];
+			$picture = 'object_'.$dolibase_config['module']['picture'];
 		}
 
 		echo '<div style="float: left; margin-right: 20px;"><img src="../img/'.$picture.'" /></div>';
 		echo '<br/>';
 		echo '<div>';
-		echo '<a href="'.$dolibase_config['module_url'].'" target="_blank">';
-		echo '<b>'.$langs->trans($dolibase_config['module_name']).'</b>';
-		echo '</a> : '.$langs->trans($dolibase_config['module_desc']);
-		echo '<br/><br/>'.$langs->trans('DevelopedBy').' <a href="'.$dolibase_config['editor_url'].'" target="_blank">'.$dolibase_config['editor_name'].'</a>';
+		echo '<a href="'.$dolibase_config['module']['url'].'" target="_blank">';
+		echo '<b>'.$langs->trans($dolibase_config['module']['name']).'</b>';
+		echo '</a> : '.$langs->trans($dolibase_config['module']['desc']);
+		echo '<br/><br/>'.$langs->trans('DevelopedBy').' <a href="'.$dolibase_config['author']['url'].'" target="_blank">'.$dolibase_config['author']['name'].'</a>';
 		echo '. '.$langs->trans('DolibaseVersion').' <a href="'.DOLIBASE_LINK.'" target="_blank">'.DOLIBASE_VERSION.'</a>';
-		echo '<br/><br/>'.$langs->trans('ForAnyQuestions').' <a href="mailto:'.$dolibase_config['editor_email'].'">'.$dolibase_config['editor_email'].'</a>';
-		echo '<br><br>'.$langs->trans('FindMyModules').' <a href="'.$dolibase_config['dolistore_url'].'" target="_blank">'.$langs->trans('Dolistore').'</a>';
+		echo '<br/><br/>'.$langs->trans('ForAnyQuestions').' <a href="mailto:'.$dolibase_config['author']['email'].'">'.$dolibase_config['author']['email'].'</a>';
+		echo '<br><br>'.$langs->trans('FindMyModules').' <a href="'.$dolibase_config['author']['dolistore_url'].'" target="_blank">'.$langs->trans('Dolistore').'</a>';
 		echo '</div>';
 		echo '<br/><br/>';
 	}

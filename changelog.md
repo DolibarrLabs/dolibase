@@ -1,6 +1,10 @@
 ### Dolibase Framework
 ------
 
+#### 1.6.2 - JUL18
+
+*   FIX: remove config migration for better performance.
+
 #### 1.6.1 - MAY18
 
 *   FIX: issues related to version 1.6.0.

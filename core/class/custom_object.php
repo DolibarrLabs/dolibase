@@ -131,7 +131,7 @@ class CustomObject extends CrudObject
     {
         global $conf, $langs, $dolibase_config;
 
-        $const_name = strtoupper($dolibase_config['rights_class']) . '_ADDON';
+        $const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
 
         if (! empty($conf->global->$const_name))
         {
@@ -145,7 +145,7 @@ class CustomObject extends CrudObject
             foreach ($dirmodels as $reldir) {
 
                 $dir = dol_buildpath($reldir."/dolibase/core/num_models/");
-				$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module_folder']."/dolibase/core/num_models/");
+				$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/num_models/");
 				
 				$dir = ! is_dir($dir) ? $mod_dir : $dir;
 
@@ -202,10 +202,10 @@ class CustomObject extends CrudObject
             $label .= '<b>' . $langs->trans('Ref') . ':</b> ' . $this->$ref_field;
         }
         
-        $link = '<a href="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/card.php?id='.$this->id, 1).'" title="'.dol_escape_htmltag($label, 1).'" class="classfortooltip">';
+        $link = '<a href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/card.php?id='.$this->id, 1).'" title="'.dol_escape_htmltag($label, 1).'" class="classfortooltip">';
         $linkend = '</a>';
 
-        $picto = $dolibase_config['module_picture'].'@'.$dolibase_config['module_folder'];
+        $picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
 
         if ($withpicto) $result.= ($link.img_object($label, $picto, 'class="classfortooltip"').$linkend);
         if ($withpicto && $withpicto != 2) $result.= ' ';

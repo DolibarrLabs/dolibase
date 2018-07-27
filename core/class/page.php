@@ -74,7 +74,7 @@ class Page
 		$this->access_permission = $access_perm;
 
 		// Load translations
-		$langs->load($dolibase_config['lang_files'][0]);
+		$langs->load($dolibase_config['other']['lang_files'][0]);
 
 		// Access control
 		if (! empty($this->access_permission) && ! verifCond($this->access_permission)) {
@@ -117,7 +117,7 @@ class Page
 		global $langs, $dolibase_config;
 
 		if ($is_module_file) {
-			$lang_file = $lang_file.'@'.$dolibase_config['module_folder'];
+			$lang_file = $lang_file.'@'.$dolibase_config['module']['folder'];
 		}
 
 		$langs->load($lang_file);
@@ -142,7 +142,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/js/'.$js_file, 1).'"></script>'."\n");
+		$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/js/'.$js_file, 1).'"></script>'."\n");
 	}
 
 	/**
@@ -154,7 +154,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module_folder'].'/css/'.$css_file, 1).'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
 	}
 
 	/**
@@ -206,14 +206,14 @@ class Page
 	        // Entries must be declared in modules descriptor with line
 	        // $this->tabs = array('entity:+tabname:Title:@mymodule:/mymodule/mypage.php?id=__ID__');   to add new tab
 	        // $this->tabs = array('entity:-tabname);   												to remove a tab
-	        complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $dolibase_config['rights_class']);
+	        complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $dolibase_config['module']['rights_class']);
 
 	        if (empty($this->tabs_picture)) {
-	        	$this->tabs_picture = $dolibase_config['module_picture']."@".$dolibase_config['module_folder'];
+	        	$this->tabs_picture = $dolibase_config['module']['picture']."@".$dolibase_config['module']['folder'];
 	        }
 
 	        // Generate tabs
-	        dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module_name']), 0, $this->tabs_picture);
+	        dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), 0, $this->tabs_picture);
 	    }
 	}
 

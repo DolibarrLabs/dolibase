@@ -51,7 +51,7 @@ class ListPage extends FormPage
 	{
 		global $hookmanager, $dolibase_config;
 
-		$hook_name = strtolower($dolibase_config['rights_class']).'list';
+		$hook_name = strtolower($dolibase_config['module']['rights_class']).'list';
 		$this->contextpage = str_replace('_', '', $hook_name);
 
 		// Initialize technical object to manage hooks of thirdparties.

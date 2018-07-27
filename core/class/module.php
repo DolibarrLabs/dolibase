@@ -59,35 +59,35 @@ class DolibaseModule extends DolibarrModules
 
 		// Module configuration
 		$this->db              = $db;
-		$this->editor_name     = $this->config['editor_name'];
-		$this->editor_url      = $this->config['editor_url'];
-		$this->numero          = $this->config['module_number'];
-		$this->rights_class    = $this->config['rights_class'];
-		$this->family          = $this->config['module_family'];
-		$this->module_position = $this->config['module_position'];
-		$this->name            = $this->config['module_name'];
-		$this->description     = $this->config['module_desc'];
-		$this->version         = $this->config['module_version'];
+		$this->editor_name     = $this->config['author']['name'];
+		$this->editor_url      = $this->config['author']['url'];
+		$this->numero          = $this->config['module']['number'];
+		$this->rights_class    = $this->config['module']['rights_class'];
+		$this->family          = $this->config['module']['family'];
+		$this->module_position = $this->config['module']['position'];
+		$this->name            = $this->config['module']['name'];
+		$this->description     = $this->config['module']['desc'];
+		$this->version         = $this->config['module']['version'];
 		$this->const_name      = "MAIN_MODULE_".strtoupper($this->name);
 		$this->special         = 0;
-		$this->picto           = $this->config['module_picture']."@".$this->config['module_folder'];
+		$this->picto           = $this->config['module']['picture']."@".$this->config['module']['folder'];
 
 		// Module parts (css, js, ...)
 		$this->module_parts    = array();
 
 		// Data directories to create when module is enabled
-		$this->dirs            = $this->config['module_dirs'];
+		$this->dirs            = $this->config['module']['dirs'];
 
 		// Config page
-		$this->config_page_url = array($this->config['setup_page_url']."@".$this->config['module_folder']);
+		$this->config_page_url = array($this->config['other']['setup_page']."@".$this->config['module']['folder']);
 
 		// Dependencies
-		$this->need_dolibarr_version = $this->config['need_dolibarr'];
-		$this->phpmin                = $this->config['need_php'];
-		$this->depends               = $this->config['module_depends'];
-		$this->requiredby            = $this->config['required_by'];
-		$this->conflictwith          = $this->config['conflict_with'];
-		$this->langfiles             = $this->config['lang_files'];
+		$this->need_dolibarr_version = $this->config['module']['dolibarr_min'];
+		$this->phpmin                = $this->config['module']['php_min'];
+		$this->depends               = $this->config['module']['depends'];
+		$this->requiredby            = $this->config['module']['required_by'];
+		$this->conflictwith          = $this->config['module']['conflict_with'];
+		$this->langfiles             = $this->config['other']['lang_files'];
 
 		// Constants
 		$this->const = array();
@@ -148,14 +148,14 @@ class DolibaseModule extends DolibarrModules
 	protected function loadTables()
 	{
 		// Load Dolibase tables
-		$dolibase_path = (DOLIBASE_PATH == '/dolibase' ? DOLIBASE_PATH : '/'.$this->config['module_folder'].'/dolibase');
+		$dolibase_path = (DOLIBASE_PATH == '/dolibase' ? DOLIBASE_PATH : '/'.$this->config['module']['folder'].'/dolibase');
 		
 		if (DOLIBASE_ENABLE_LOGS) {
 			$this->_load_tables($dolibase_path.'/sql/logs/');
 		}
 		
 		// Load module tables
-		return $this->_load_tables('/'.$this->config['module_folder'].'/sql/');
+		return $this->_load_tables('/'.$this->config['module']['folder'].'/sql/');
 	}
 
 	/**
@@ -204,7 +204,7 @@ class DolibaseModule extends DolibarrModules
 	public function addWidget($widget_filename, $note = '', $enabled_by_default_on = 'Home')
 	{
 		$this->boxes[] = array(
-			'file' => $widget_filename.'@'.$this->config['module_folder'],
+			'file' => $widget_filename.'@'.$this->config['module']['folder'],
 			'note' => $note,
 			'enabledbydefaulton' => $enabled_by_default_on
 		);
@@ -263,7 +263,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	private function generatePermissionID()
 	{
-		return (int)$this->config['module_number'] + count($this->rights) + 1;
+		return (int)$this->config['module']['number'] + count($this->rights) + 1;
 	}
 
 	/**
@@ -340,7 +340,7 @@ class DolibaseModule extends DolibarrModules
 					'mainmenu' => $main_menu,
 					'leftmenu' => $left_menu,
 					'url' => $url,
-					'langs' => $this->config['menu_lang_file'],
+					'langs' => $this->config['other']['menu_lang_file'],
 					'position' => $position,
 					'enabled' => $enabled,
 					'perms' => $perms,
@@ -356,7 +356,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function addCssFile($css_filename)
 	{
-		$this->addModulePart('css', $this->config['module_folder'].'/css/'.$css_filename);
+		$this->addModulePart('css', $this->config['module']['folder'].'/css/'.$css_filename);
 	}
 
 	/**
@@ -366,7 +366,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function addJsFile($js_filename)
 	{
-		$this->addModulePart('js', $this->config['module_folder'].'/js/'.$js_filename);
+		$this->addModulePart('js', $this->config['module']['folder'].'/js/'.$js_filename);
 	}
 
 	/**
@@ -397,10 +397,10 @@ class DolibaseModule extends DolibarrModules
 		global $conf;
 
 		$dict_table   = MAIN_DB_PREFIX.$table_name;
-		$rights_class = $this->config['rights_class'];
+		$rights_class = $this->config['module']['rights_class'];
 
 		if (! isset($this->dictionaries['langs'])) {
-			$this->dictionaries['langs'] = $this->config['lang_files'][0];
+			$this->dictionaries['langs'] = $this->config['other']['lang_files'][0];
 		}
 
 		$this->dictionaries['tabname'][]        = $dict_table;

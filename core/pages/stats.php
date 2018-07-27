@@ -170,12 +170,12 @@ class StatsPage extends FormPage
 		$endyear = $year;
 
 		// Create directory where to store graph png
-		$dir = $conf->$dolibase_config['rights_class']->dir_temp;
+		$dir = $conf->$dolibase_config['module']['rights_class']->dir_temp;
 
 		dol_mkdir($dir);
 
 		// Set file name & url
-		$file_prefix = str_replace('_', '', $dolibase_config['rights_class']);
+		$file_prefix = str_replace('_', '', $dolibase_config['module']['rights_class']);
 		if (! $user->rights->societe->client->voir || $user->societe_id)
 		{
 		    $filename = $dir.'/'.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';

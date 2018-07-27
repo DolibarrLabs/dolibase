@@ -60,13 +60,13 @@ class Widget extends ModeleBoxes
 
 		// Load language files
 		$langs->load('boxes');
-		$langs->load($dolibase_config['lang_files'][0]);
+		$langs->load($dolibase_config['other']['lang_files'][0]);
 
 		// Widget configuration
 		$this->boxcode           = "";
 		$this->boxlabel          = $langs->trans($this->boxlabel);
-		$this->boximg            = $this->boximg."@".$dolibase_config['module_folder'];
-		$this->depends           = $dolibase_config['module_depends'];
+		$this->boximg            = $this->boximg."@".$dolibase_config['module']['folder'];
+		$this->depends           = $dolibase_config['module']['depends'];
 		$this->info_box_head     = array();
 		$this->info_box_contents = array();
 
@@ -121,7 +121,7 @@ class Widget extends ModeleBoxes
 		global $dolibase_config, $langs;
 
 		$this->info_box_head['sublink']  = $link;
-		$this->info_box_head['subpicto'] = $picture."@".$dolibase_config['module_folder'];
+		$this->info_box_head['subpicto'] = $picture."@".$dolibase_config['module']['folder'];
 		$this->info_box_head['subtext']  = $langs->trans($tooltip);
 		$this->info_box_head['target']   = $target;
 		$this->info_box_head['subclass'] = $class;
