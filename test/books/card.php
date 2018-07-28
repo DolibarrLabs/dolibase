@@ -139,6 +139,9 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Action buttons
 	if ($optioncss != 'print')
 	{
+		// Save as PDF
+		$page->addButton('SaveAsPDF', '#" id="save_as_pdf'); // tricky way to assign an id to the button
+
 		// Print
 		$page->addButton('Print', $_SERVER["PHP_SELF"] . '?id=' . $book->id . '&optioncss=print', '_blank');
 

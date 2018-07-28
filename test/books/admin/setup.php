@@ -14,18 +14,20 @@ $page->addSubtitle("NumberingModels");
 
 $page->printNumModels();
 
-/*
-$page->closeTable()->addBreakLine();
+$page->closeTable()->addLineBreak();
 
 $page->addSubtitle("General Options");
 
 $page->newOptionsTable();
 
+/*
 global $conf;
 
 $company_select = $page->form->select_company($conf->global->BOOKS_COMPANY_NAME, 'BOOKS_COMPANY_NAME');
 
 $page->addOption('My company', $company_select, 'BOOKS_COMPANY_NAME');
 */
+
+$page->addSwitchOption("Enable expanded links", "BOOKS_ENABLE_EXPANDED_LINKS");
 
 $page->end();

@@ -46,7 +46,7 @@ class CardPage extends CreatePage
 	 * @param     $edit_perm      Edit permission
 	 * @param     $delete_perm    Delete permission
 	 */
-	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '')
+	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as_pdf = true)
 	{
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
@@ -62,6 +62,13 @@ class CardPage extends CreatePage
 							}
 		                </style>";
         }
+
+        // Add JS files
+        if ($enable_save_as_pdf) {
+	        $this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.min.js"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.plugin.autotable.min.js"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/save_as_pdf.js.php"></script>'."\n");
+		}
 		
 		parent::__construct($page_title, $access_perm);
 	}

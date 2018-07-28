@@ -1,9 +1,18 @@
 ### Dolibase Framework
 ------
 
+#### 1.6.3 - JUL18
+
+*   NEW: add an option to save card as PDF.
+*   NEW: update Books module.
+
+---
+
 #### 1.6.2 - JUL18
 
 *   FIX: remove config migration for better performance.
+
+---
 
 #### 1.6.1 - MAY18
 
