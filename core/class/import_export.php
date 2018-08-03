@@ -30,7 +30,9 @@ class ImportExport
 	{
 		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/FileSaver/FileSaver.min.js"></script>'."\n");
 
-		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/import_export.js.php"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/import.js.php"></script>'."\n");
+
+		$page->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/export.js.php"></script>'."\n");
 	}
 
 	/**

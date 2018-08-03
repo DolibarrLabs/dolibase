@@ -1,4 +1,4 @@
-# Dolibase Log Page - fr_FR
+# Dolibase Card Page - en_US
 #
 # Copyright (C) 2018 AXel
 #
@@ -16,18 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #
-# Générique
+# Generic
 #
-LogAction = <b>Action</b>
-MadeBy = Utilisateur
-LogDate = Date
-CurrentHour = PHP Time (server)
-ClientHour = Heure client (utilisateur)
-NoLogsAvailable = Pas de logs disponible.
-
-#
-# Actions
-#
-CREATE_OBJECT = <b>Creation</b>
-UPDATE_OBJECT = <b>Modification</b>
-DELETE_OBJECT = <b>Suppression</b>
+SaveAs = Save as

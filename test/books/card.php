@@ -10,7 +10,7 @@ dol_include_once('/books/class/book.class.php');
 dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
-$page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete');
+$page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete', true);
 
 // Set fields
 $page->fields[] = new Field('name', 'Name', 'required');
@@ -139,8 +139,8 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Action buttons
 	if ($optioncss != 'print')
 	{
-		// Save as PDF
-		$page->addButton('SaveAsPDF', '#" id="save_as_pdf'); // tricky way to assign an id to the button
+		// Save as
+		$page->addSaveAsButton();
 
 		// Print
 		$page->addButton('Print', $_SERVER["PHP_SELF"] . '?id=' . $book->id . '&optioncss=print', '_blank');

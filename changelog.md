@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.6.4 - JUL18
+
+*   NEW: add an option to save card as CSV also.
+
+---
+
 #### 1.6.3 - JUL18
 
 *   NEW: add an option to save card as PDF.

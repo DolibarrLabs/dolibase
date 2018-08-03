@@ -45,29 +45,32 @@ class CardPage extends CreatePage
 	 * @param     $access_perm    Access permission
 	 * @param     $edit_perm      Edit permission
 	 * @param     $delete_perm    Delete permission
+	 * @param     $enable_save_as Enable save as feature
 	 */
-	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as_pdf = true)
+	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as = false)
 	{
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
 
-		// Add custom css
+		global $langs, $dolibase_config;
+
+		// Load lang files
+		$langs->load("card_page@".$dolibase_config['module']['folder']);
+
+		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
 		if ($optioncss == 'print') {
-			$this->head.= "<style>
-							.hideonprint {display: none;}
-							.highlightedonprint {
-								font-weight: bold;
-								background-color: #4897d280;
-							}
-		                </style>";
-        }
+			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/print.css.php">'."\n");
+		}
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/dropdown.css.php">'."\n");
 
-        // Add JS files
-        if ($enable_save_as_pdf) {
-	        $this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.min.js"></script>'."\n");
+		// Add JS files
+		$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/dropdown.js.php"></script>'."\n");
+		if ($enable_save_as) {
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.min.js"></script>'."\n");
 			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.plugin.autotable.min.js"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/save_as_pdf.js.php"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/table2csv/table2csv.js"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/save_as.js.php"></script>'."\n");
 		}
 		
 		parent::__construct($page_title, $access_perm);
@@ -118,6 +121,60 @@ class CardPage extends CreatePage
 			echo '</div>';
 			$this->close_buttons_div = false;
 		}
+	}
+
+	/**
+	 * Add a list button to the page
+	 *
+	 * @param     $name                 button name
+	 * @param     $buttons              buttons list
+	 * @param     $class                button class
+	 * @param     $close_parent_div     should close parent div or not
+	 */
+	public function addListButton($name, $buttons = array(), $class = 'butAction', $close_parent_div = false)
+	{
+		global $langs;
+
+		if (! $this->close_buttons_div) {
+			dol_fiche_end();
+			echo '<div class="tabsAction">';
+			$this->close_buttons_div = true;
+		}
+
+		echo '<div class="dropdown-click">';
+		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/arrow-down.png" /></label>';
+		echo '<div class="dropdown-content dropdown-bottom">';
+
+		// buttons list
+		foreach ($buttons as $button)
+		{
+			echo '<a href="#" id="'.$button['id'].'" style="'.$button['style'].'">';
+			echo '<img src="'.$button['picto'].'" alt="picto" class="align-middle" width="20" />';
+			echo '&nbsp;&nbsp;'.$langs->trans($button['name']);
+			echo '</a>';
+		}
+
+		echo '</div></div>';
+
+		if ($close_parent_div) {
+			echo '</div>';
+			$this->close_buttons_div = false;
+		}
+	}
+
+	/**
+	 * Add save as button to the page
+	 *
+	 * @param     $close_parent_div     should close parent div or not
+	 */
+	public function addSaveAsButton($close_parent_div = false)
+	{
+		$buttons = array(
+			array('name' => 'CSV', 'picto' => DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/csv.png', 'id' => 'save_as_csv', 'style' => 'text-align: center;'),
+			array('name' => 'PDF', 'picto' => DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/pdf.png', 'id' => 'save_as_pdf', 'style' => 'text-align: center;')
+		);
+
+		$this->addListButton('SaveAs', $buttons, 'butAction', $close_parent_div);
 	}
 
 	/**
