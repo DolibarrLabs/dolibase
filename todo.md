@@ -1,5 +1,6 @@
 ### ToDo
 
+* Module update feature
 * Calendar Page
 * Email sending support
 * PDF generation support
