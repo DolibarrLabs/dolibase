@@ -96,34 +96,34 @@ function get_object_by_type($type)
 	}
 	else if ($type == 'contact') {
 		$object['class_file']  = '/contact/class/contact.class.php';
-        $object['table']       = MAIN_DB_PREFIX.'socpeople';
-        $object['ref_field']   = 'lastname';
-        //$object['date_field']  = 'date_creation'; // will not work because Contact fetch function don't pick up the date
+		$object['table']       = MAIN_DB_PREFIX.'socpeople';
+		$object['ref_field']   = 'lastname';
+		//$object['date_field']  = 'date_creation'; // will not work because Contact fetch function don't pick up the date
 		$object['join_to_soc'] = true;
-    }
-    else if ($type == 'proposal') {
-    	$object['class_file']  = '/comm/propal/class/propal.class.php';
-        $object['table']       = MAIN_DB_PREFIX.'propal';
-        $object['name']        = 'Propal';
-        $object['join_to_soc'] = true;
-    }
-    else if ($type == 'supplier-invoice') {
-    	$object['class_file']  = '/fourn/class/fournisseur.facture.class.php';
-        $object['table']       = MAIN_DB_PREFIX.'facture_fourn';
-        $object['name']        = 'FactureFournisseur';
+	}
+	else if ($type == 'proposal') {
+		$object['class_file']  = '/comm/propal/class/propal.class.php';
+		$object['table']       = MAIN_DB_PREFIX.'propal';
+		$object['name']        = 'Propal';
 		$object['join_to_soc'] = true;
-    }
-    else if ($type == 'supplier-po') {
-    	$object['class_file']  = '/fourn/class/fournisseur.commande.class.php';
-        $object['table']       = MAIN_DB_PREFIX.'commande_fournisseur';
-        $object['name']        = 'CommandeFournisseur';
+	}
+	else if ($type == 'supplier-invoice') {
+		$object['class_file']  = '/fourn/class/fournisseur.facture.class.php';
+		$object['table']       = MAIN_DB_PREFIX.'facture_fourn';
+		$object['name']        = 'FactureFournisseur';
 		$object['join_to_soc'] = true;
-    }
-    else if ($type == 'intervention') {
-    	$object['table']       = MAIN_DB_PREFIX.'fichinter';
-    	$object['name']        = 'Fichinter';
-    	$object['join_to_soc'] = true;
-    }
+	}
+	else if ($type == 'supplier-po') {
+		$object['class_file']  = '/fourn/class/fournisseur.commande.class.php';
+		$object['table']       = MAIN_DB_PREFIX.'commande_fournisseur';
+		$object['name']        = 'CommandeFournisseur';
+		$object['join_to_soc'] = true;
+	}
+	else if ($type == 'intervention') {
+		$object['table']       = MAIN_DB_PREFIX.'fichinter';
+		$object['name']        = 'Fichinter';
+		$object['join_to_soc'] = true;
+	}
 	else if ($type == 'returned_product') {
 		$object['class_file']  = '/product_returns/class/returnedProduct.class.php';
 		$object['table']       = MAIN_DB_PREFIX.'returned_product';
@@ -224,29 +224,29 @@ function show_related_objects($object)
 	dolibase_include_once('/core/class/crud_object.php');
 	$relation = new CrudObject('element_element');
 
- 	$action = GETPOST('action');
+	$action = GETPOST('action');
 
- 	// Actions
- 	if ($action == 'add_related_link')
- 	{
+	// Actions
+	if ($action == 'add_related_link')
+	{
 		$type = GETPOST('related_object_type');
 		$id = GETPOST('related_object_id');
 
 		if ($type == 'projet') $type = 'project';
 		else if ($type == 'invoice') $type = 'facture';
 		else if ($type == 'company') $type = 'societe';
-        else if ($type == 'facture_fournisseur') $type = 'invoice_supplier';
-        else if ($type == 'commande_fournisseur') $type = 'order_supplier';
+		else if ($type == 'facture_fournisseur') $type = 'invoice_supplier';
+		else if ($type == 'commande_fournisseur') $type = 'order_supplier';
 
-        $res = $object->add_object_linked($type, $id);
+		$res = $object->add_object_linked($type, $id);
 
-        if ($res) {
-        	setEventMessage($langs->trans('RelationAdded'));
-        }
-        else {
-        	setEventMessage($langs->trans('RelationCantBeAdded'), 'errors');
-        }
- 	}
+		if ($res) {
+			setEventMessage($langs->trans('RelationAdded'));
+		}
+		else {
+			setEventMessage($langs->trans('RelationCantBeAdded'), 'errors');
+		}
+	}
 	else if ($action == 'delete_related_link')
 	{
 		$idLink = GETPOST('id_link');
@@ -265,17 +265,17 @@ function show_related_objects($object)
 
 	// Show linked objects
 
- 	?>
- 	<div class="relatedobjects_block">
- 		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
- 			<input type="hidden" name="action" value="add_related_link" />
- 			<input type="hidden" name="id" value="<?php echo $object->id; ?>" />
-	 		<input type="hidden" id="related_object_id" name="related_object_id" value="" />
-	 		<input type="hidden" id="related_object_type" name="related_object_type" value="" />
+	?>
+	<div class="relatedobjects_block">
+		<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+			<input type="hidden" name="action" value="add_related_link" />
+			<input type="hidden" name="id" value="<?php echo $object->id; ?>" />
+			<input type="hidden" id="related_object_id" name="related_object_id" value="" />
+			<input type="hidden" id="related_object_type" name="related_object_type" value="" />
 
-	 		<div align="left" class="titre"><?php echo $langs->trans('ElementToLink'); ?></div>
+			<div align="left" class="titre"><?php echo $langs->trans('ElementToLink'); ?></div>
 
-	 		<table class="noborder allwidth">
+			<table class="noborder allwidth">
 				<tr class="liste_titre">
 					<td><?php echo $langs->trans("Ref"); ?> <input type="text" id="add_related_object" name="add_related_object" value="" class="flat" /> <input type="submit" id="add_related_object_btn" name="add_related_object_btn" class="button" value="<?php echo $langs->trans('AddRelated') ?>" style="display:none;" /></td>
 					<td align="center"><?php echo $langs->trans("Date"); ?></td>
@@ -348,96 +348,92 @@ function show_related_objects($object)
 
 				?>
 				</table>
- 		</form>
- 	</div>
- 		<script type="text/javascript">
+		</form>
+	</div>
 
- 			$(document).ready(function() {
+	<script type="text/javascript">
 
- 				$('#add_related_object').autocomplete({
-			      source: function(request, response) {
-			        $.ajax({
-			          url: "<?php echo DOL_URL_ROOT.DOLIBASE_PATH.'/core/ajax/related_objects.php'; ?>",
-			          dataType: "json",
-			          data: {
-			              key: request.term,
-			              action: 'search'
-			          },
-			          success: function(data) {
-			          	  var c = [];
-			              $.each(data, function (i, cat) {
+		$(document).ready(function() {
 
-			              	var first = true;
-			              	$.each(cat, function(j, label) {
+			$('#add_related_object').autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "<?php echo DOL_URL_ROOT.DOLIBASE_PATH.'/core/ajax/related_objects.php'; ?>",
+						dataType: "json",
+						data: {
+							key: request.term,
+							action: 'search'
+						},
+						success: function(data) {
+							var c = [];
+							$.each(data, function (i, cat) {
 
-			              		if(first) {
-			              			c.push({value:i, label:i, object:'title'});
-			              			first = false;
-			              		}
+								var first = true;
+								$.each(cat, function(j, label) {
 
-			              		c.push({ value: j, label:'  '+label, object:i});
+									if(first) {
+										c.push({value:i, label:i, object:'title'});
+										first = false;
+									}
 
-			              	});
+									c.push({ value: j, label:'  '+label, object:i});
+								});
+							});
 
-			              });
+							response(c);
+						}
+					});
+				},
+				minLength: 1,
+				select: function(event, ui) {
 
-			              response(c);
-			          }
-			        });
-			      },
-			      minLength: 1,
-			      select: function(event, ui) {
+					if(ui.item.object == 'title') return false;
+					else {
+						$('#related_object_id').val(ui.item.value);
+						$('#add_related_object').val(ui.item.label.trim());
+						$('#related_object_type').val(ui.item.object);
 
-			       	if(ui.item.object == 'title') return false;
-			       	else {
-			       		$('#related_object_id').val(ui.item.value);
-			       		$('#add_related_object').val(ui.item.label.trim());
-			       		$('#related_object_type').val(ui.item.object);
+						$('#add_related_object_btn').css('display','inline-block');
 
-			       		$('#add_related_object_btn').css('display','inline-block');
+						return false;
+					}
+				},
+				open: function(event, ui) {
+					$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+				},
+				close: function() {
+					$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+				}
+			});
 
-			       		return false;
-			       	}
+			$("#add_related_object").autocomplete().data("uiAutocomplete")._renderItem = function(ul, item) {
 
-			      },
-			      open: function(event, ui) {
-			        $(this).removeClass("ui-corner-all").addClass("ui-corner-top");
-			      },
-			      close: function() {
-			        $(this).removeClass("ui-corner-top").addClass("ui-corner-all");
-			      }
-			    });
+				$li = $( "<li />" )
+					.attr( "data-value", item.value )
+					.append( item.label )
+					.appendTo( ul );
 
- 				$("#add_related_object").autocomplete().data("uiAutocomplete")._renderItem = function(ul, item) {
+				if(item.object=="title") $li.css("font-weight","bold");
 
-			      	  $li = $( "<li />" )
-						    .attr( "data-value", item.value )
-						    .append( item.label )
-						    .appendTo( ul );
+				return $li;
+			};
 
-					  if(item.object=="title") $li.css("font-weight","bold");
+			var blockrelated = $('div.tabsAction .relatedobjects_block');
+			if (blockrelated.length == 1)
+			{
+				if ($('.relatedobjects_block').length > 1)
+				{
+					blockrelated.remove();
+				}
+				else
+				{
+					blockrelated.appendTo($('div.tabsAction'));
+				}
+			}
+		});
 
-					  return $li;
-			    };
+	</script>
 
-
- 				var blockrelated = $('div.tabsAction .relatedobjects_block');
- 				if (blockrelated.length == 1)
- 				{
- 					if ($('.relatedobjects_block').length > 1)
- 					{
- 						blockrelated.remove();
- 					}
- 					else
- 					{
-	 					blockrelated.appendTo($('div.tabsAction'));
- 					}
- 				}
-
- 			});
-
- 		</script>
-
- 	<?php
+	<?php
 
 } // end show function

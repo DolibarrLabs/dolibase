@@ -34,8 +34,8 @@ $(document).ready(function() {
 				fontSize: 8,
 				overflow: 'linebreak'
 			}
-	    });
-	    $('div.pagination').show();
+		});
+		$('div.pagination').show();
 		doc.save(filename);
 	});
 

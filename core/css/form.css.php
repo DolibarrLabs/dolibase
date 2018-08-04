@@ -19,13 +19,9 @@ header('Content-Type: text/css');
 
 ?>
 
-.hideonprint {
-	display: none;
-}
-
-.highlightedonprint {
-	font-weight: bold;
-	background-color: #a3cbe8;
+.dolibase_radio {
+	height: 26px !important;
+	vertical-align: middle;
 }
 
 <?php

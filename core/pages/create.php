@@ -93,21 +93,21 @@ class CreatePage extends FormPage
 		// required
 		$is_required = in_array('required', $validation_rules);
 		if ($is_required && $field_value == '') {
-            setEventMessage($langs->transnoentities("ErrorFieldRequired", $langs->transnoentities($field_trans)), 'errors');
-            $error++;
-        }
+			setEventMessage($langs->transnoentities("ErrorFieldRequired", $langs->transnoentities($field_trans)), 'errors');
+			$error++;
+		}
 
-        // numeric (escape if empty)
-        else if (in_array('numeric', $validation_rules) && $field_value != '' && ! is_numeric($field_value)) {
-            setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
-            $error++;
+		// numeric (escape if empty)
+		else if (in_array('numeric', $validation_rules) && $field_value != '' && ! is_numeric($field_value)) {
+			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+			$error++;
 		}
 
 		// greaterThanZero
-        else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && (! is_numeric($field_value) || $field_value <= 0)) {
-        	$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
-            setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
-            $error++;
+		else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && (! is_numeric($field_value) || $field_value <= 0)) {
+			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
+			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
+			$error++;
 		}
 
 		if ($return_err_number) {
@@ -186,7 +186,7 @@ class CreatePage extends FormPage
 	 */
 	public function addTextAreaField($field_name, $text_area_name, $text_area_value = '', $is_required = false, $field_summary = '', $toolbarname = 'dolibarr_details', $height = 100, $valign = 'top')
 	{
-	    $field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
+		$field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
 
 		$more_attr = ' valign="'.$valign.'"';
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
@@ -289,11 +289,11 @@ class CreatePage extends FormPage
 		global $langs;
 
 		echo '<div class="center">';
-	    echo '<input type="submit" class="button" value="' . $langs->trans("Create") . '">';
-	    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	    echo '<input type="button" class="button" value="' . $langs->trans("Cancel") . '" onClick="javascript:history.go(-1)">';
-	    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-	    echo '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
-	    echo '</div>';
+		echo '<input type="submit" class="button" value="' . $langs->trans("Create") . '">';
+		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		echo '<input type="button" class="button" value="' . $langs->trans("Cancel") . '" onClick="javascript:history.go(-1)">';
+		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		echo '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
+		echo '</div>';
 	}
 }

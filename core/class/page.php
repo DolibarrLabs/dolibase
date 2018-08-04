@@ -203,18 +203,18 @@ class Page
 			global $conf, $langs, $dolibase_config;
 
 			// Show more tabs from modules
-	        // Entries must be declared in modules descriptor with line
-	        // $this->tabs = array('entity:+tabname:Title:@mymodule:/mymodule/mypage.php?id=__ID__');   to add new tab
-	        // $this->tabs = array('entity:-tabname);   												to remove a tab
-	        complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $dolibase_config['module']['rights_class']);
+			// Entries must be declared in modules descriptor with line
+			// $this->tabs = array('entity:+tabname:Title:@mymodule:/mymodule/mypage.php?id=__ID__');   to add new tab
+			// $this->tabs = array('entity:-tabname);   												to remove a tab
+			complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $dolibase_config['module']['rights_class']);
 
-	        if (empty($this->tabs_picture)) {
-	        	$this->tabs_picture = $dolibase_config['module']['picture']."@".$dolibase_config['module']['folder'];
-	        }
+			if (empty($this->tabs_picture)) {
+				$this->tabs_picture = $dolibase_config['module']['picture']."@".$dolibase_config['module']['folder'];
+			}
 
-	        // Generate tabs
-	        dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), 0, $this->tabs_picture);
-	    }
+			// Generate tabs
+			dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), 0, $this->tabs_picture);
+		}
 	}
 
 	/**
@@ -244,8 +244,8 @@ class Page
 		if (! $this->close_form)
 		{
 			echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
-		    echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
-		    echo '<input type="hidden" name="action" value="'.$action.'">';
+			echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+			echo '<input type="hidden" name="action" value="'.$action.'">';
 
 			$this->close_form = true;
 		}

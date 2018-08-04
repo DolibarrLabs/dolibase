@@ -50,16 +50,16 @@ class NumModelMarbre extends NumModel
 	}
 
 	/**
-     *  Return description of numbering model
-     *
-     *  @return     string      Text with description
-     */
-    public function info()
-    {
-    	global $langs;
+	 *  Return description of numbering model
+	 *
+	 *  @return     string      Text with description
+	 */
+	public function info()
+	{
+		global $langs;
 
-      	return $langs->trans("SimpleNumRefModelDesc", $this->prefix);
-    }
+		return $langs->trans("SimpleNumRefModelDesc", $this->prefix);
+	}
 
 	/**
 	 *  Return an example of numbering

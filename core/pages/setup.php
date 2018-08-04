@@ -63,19 +63,7 @@ class SetupPage extends FormPage
 		$this->num_model_const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
 
 		// Add some custom css
-		$this->head.= "<style>
-						.disabled {
-	                        cursor: not-allowed !important;
-	                        opacity: 0.4;
-	                        filter: alpha(opacity=40);
-	                        box-shadow: none;
-	                        -webkit-box-shadow: none;
-	                        -moz-box-shadow: none;
-	                    }
-	                    .nopointerevents {
-	                        pointer-events: none;
-	                    }
-	                </style>";
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/setup.css.php">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -153,14 +141,14 @@ class SetupPage extends FormPage
 
 				if (! $res > 0) $error++;
 
-			 	if (! $error)
-			    {
-			        setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
-			    }
-			    else
-			    {
-			        setEventMessages($langs->trans("Error"), null, 'errors');
-			    }
+				if (! $error)
+				{
+					setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
+				}
+				else
+				{
+					setEventMessages($langs->trans("Error"), null, 'errors');
+				}
 			}
 
 			else if ($action == 'setmod')
@@ -261,11 +249,11 @@ class SetupPage extends FormPage
 		echo '<td'.$more_attr.' align="right">'."\n";
 		if (empty($conf->global->$const_name))
 		{
-		    echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=1">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>'."\n";
+			echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=1">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>'."\n";
 		}
 		else
 		{
-		    echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=0">'.img_picto($langs->trans("Enabled"),'switch_on').'</a>'."\n";
+			echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=0">'.img_picto($langs->trans("Enabled"),'switch_on').'</a>'."\n";
 		}
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;</td>\n</tr>\n";
 	}

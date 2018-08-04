@@ -66,58 +66,58 @@ class LogPage extends Page
 	 */
 	public function printLogs($object_id)
 	{
-	    global $dolibase_config, $langs;
+		global $dolibase_config, $langs;
 
-	    $log = new Logs();
-	    $where = "(module_id = ".$dolibase_config['module']['number'];
-	    $where.= " || module_name = '".$dolibase_config['module']['name']."'";
-	    $where.= ") AND object_id = ".$object_id;
+		$log = new Logs();
+		$where = "(module_id = ".$dolibase_config['module']['number'];
+		$where.= " || module_name = '".$dolibase_config['module']['name']."'";
+		$where.= ") AND object_id = ".$object_id;
 
-	    // Fetch logs
-	    if ($log->fetchAll(0, 0, 't.datec', 'DESC', '', '', $where))
-	    {
-		    $deltadateforserver = getServerTimeZoneInt('now');
-		    $deltadateforclient = ((int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst']);
-		    $deltadateforuser   = round($deltadateforclient-$deltadateforserver);
+		// Fetch logs
+		if ($log->fetchAll(0, 0, 't.datec', 'DESC', '', '', $where))
+		{
+			$deltadateforserver = getServerTimeZoneInt('now');
+			$deltadateforclient = ((int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst']);
+			$deltadateforuser   = round($deltadateforclient-$deltadateforserver);
 
-		    // Show logs
-		    echo '<table class="border" width="100%">';
+			// Show logs
+			echo '<table class="border" width="100%">';
 
-		    foreach ($log->lines as $line)
-		    {
-		    	// Action
-			    echo '<tr><td class="titlefield">';
-			    echo $langs->trans("LogAction");
-			    echo '</td><td>';
-			    echo $langs->trans($line->action);
-			    echo '</td></tr>';
+			foreach ($log->lines as $line)
+			{
+				// Action
+				echo '<tr><td class="titlefield">';
+				echo $langs->trans("LogAction");
+				echo '</td><td>';
+				echo $langs->trans($line->action);
+				echo '</td></tr>';
 
-			    // Date
-			    $datec = $log->db->jdate($line->datec);
-			    echo '<tr><td class="titlefield">';
-			    echo $langs->trans("LogDate");
-			    echo '</td><td>';
-			    echo dol_print_date($datec, 'dayhour');
-			    if ($deltadateforuser) {
-			    	echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($datec+($deltadateforuser*3600),"dayhour").' &nbsp;'.$langs->trans("ClientHour");
-			    }
-			    echo '</td></tr>';
+				// Date
+				$datec = $log->db->jdate($line->datec);
+				echo '<tr><td class="titlefield">';
+				echo $langs->trans("LogDate");
+				echo '</td><td>';
+				echo dol_print_date($datec, 'dayhour');
+				if ($deltadateforuser) {
+					echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($datec+($deltadateforuser*3600),"dayhour").' &nbsp;'.$langs->trans("ClientHour");
+				}
+				echo '</td></tr>';
 
-			    // User
-			    $userstatic = new User($log->db);
-			    $userstatic->fetch($line->fk_user);
-			    echo '<tr><td class="titlefield">';
-			    echo $langs->trans("MadeBy");
-			    echo '</td><td>';
-			    echo $userstatic->getNomUrl(1, '', 0, 0, 0);
-			    echo '</td></tr>';
+				// User
+				$userstatic = new User($log->db);
+				$userstatic->fetch($line->fk_user);
+				echo '<tr><td class="titlefield">';
+				echo $langs->trans("MadeBy");
+				echo '</td><td>';
+				echo $userstatic->getNomUrl(1, '', 0, 0, 0);
+				echo '</td></tr>';
 			}
 
 			echo '</table>';
-	    }
-	    else
-	    {
-	    	echo '<br>'.$langs->trans('NoLogsAvailable');
-	    }
+		}
+		else
+		{
+			echo '<br>'.$langs->trans('NoLogsAvailable');
+		}
 	}
 }

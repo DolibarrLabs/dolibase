@@ -253,11 +253,11 @@ class CardPage extends CreatePage
 		echo '<td width="25%">' . $langs->trans($field_name) . '</td>';
 		echo '<td colspan="5">';
 		echo '<form action="' . $_SERVER["PHP_SELF"] . '?id=' . $id . '" method="post">';
-        echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
-        echo '<input type="hidden" name="action" value="'.$action_name.'">';
-        echo $field_content;
-        echo ' <input type="submit" class="button" value="' . $langs->trans('Modify') . '">';
-        echo '</form>';
+		echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+		echo '<input type="hidden" name="action" value="'.$action_name.'">';
+		echo $field_content;
+		echo ' <input type="submit" class="button" value="' . $langs->trans('Modify') . '">';
+		echo '</form>';
 		echo '</td>';
 		echo '</tr>';
 	}
@@ -389,30 +389,30 @@ class CardPage extends CreatePage
 
 			$const_name = strtoupper($dolibase_config['module']['rights_class']).'_ENABLE_EXPANDED_LINKS';
 
-		    echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
+			echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
-		    // Dolibase object linking feature
-		    if ($conf->global->$const_name)
-		    {
+			// Dolibase object linking feature
+			if ($conf->global->$const_name)
+			{
 				$langs->load('related_objects@'.$dolibase_config['module']['folder']);
 
 				show_related_objects($object);
-		    }
-		    // Dolibarr linked objects block
-		    else if (isset($object->socid) || isset($object->fk_soc))
-		    {
-			    $permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
-			    $action = GETPOST('action', 'alpha');
-			    $id = GETPOST('id', 'int');
+			}
+			// Dolibarr linked objects block
+			else if (isset($object->socid) || isset($object->fk_soc))
+			{
+				$permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
+				$action = GETPOST('action', 'alpha');
+				$id = GETPOST('id', 'int');
 
-			    include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+				include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
 
-			    // Show links to link elements
-			    $linktoelem = $this->form->showLinkToObjectBlock($object);
-			    $somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+				// Show links to link elements
+				$linktoelem = $this->form->showLinkToObjectBlock($object);
+				$somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
 			}
 
-		    echo '</div></div>';
+			echo '</div></div>';
 		}
 	}
 

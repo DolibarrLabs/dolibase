@@ -178,13 +178,13 @@ class StatsPage extends FormPage
 		$file_prefix = str_replace('_', '', $dolibase_config['module']['rights_class']);
 		if (! $user->rights->societe->client->voir || $user->societe_id)
 		{
-		    $filename = $dir.'/'.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
-		    $fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
+			$filename = $dir.'/'.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
+			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
 		}
 		else
 		{
-		    $filename = $dir.'/'.$file_prefix.$suffix.'-'.$year.'.png';
-		    $fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$year.'.png';
+			$filename = $dir.'/'.$file_prefix.$suffix.'-'.$year.'.png';
+			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$year.'.png';
 		}
 
 		// Generate graph
@@ -193,30 +193,30 @@ class StatsPage extends FormPage
 		$HEIGHT = DolGraph::getDefaultGraphSizeForStats('height');
 		if (! $graph->isGraphKo())
 		{
-		    $graph->SetData($data);
-		    $graph->SetPrecisionY(0);
-		    $i = $startyear;
-		    $legend = array();
-		    while ($i <= $endyear)
-		    {
-		        $legend[] = $i;
-		        $i++;
-		    }
-		    $graph->SetLegend($legend);
-		    $graph->SetMaxValue($graph->GetCeilMaxValue());
-		    $graph->SetMinValue(min(0,$graph->GetFloorMinValue()));
-		    $graph->SetWidth($WIDTH);
-		    $graph->SetHeight($HEIGHT);
-		    //$graph->SetYLabel($langs->trans("YLabel"));
-		    $graph->SetShading(3);
-		    $graph->SetHorizTickIncrement(1);
-		    $graph->SetPrecisionY(0);
-		    $graph->mode = 'depth';
-		    $graph->SetTitle($langs->trans($title));
+			$graph->SetData($data);
+			$graph->SetPrecisionY(0);
+			$i = $startyear;
+			$legend = array();
+			while ($i <= $endyear)
+			{
+				$legend[] = $i;
+				$i++;
+			}
+			$graph->SetLegend($legend);
+			$graph->SetMaxValue($graph->GetCeilMaxValue());
+			$graph->SetMinValue(min(0,$graph->GetFloorMinValue()));
+			$graph->SetWidth($WIDTH);
+			$graph->SetHeight($HEIGHT);
+			//$graph->SetYLabel($langs->trans("YLabel"));
+			$graph->SetShading(3);
+			$graph->SetHorizTickIncrement(1);
+			$graph->SetPrecisionY(0);
+			$graph->mode = 'depth';
+			$graph->SetTitle($langs->trans($title));
 
-		    $graph->draw($filename, $fileurl);
+			$graph->draw($filename, $fileurl);
 
-		    echo $graph->show();
+			echo $graph->show();
 		}
 	}
 }

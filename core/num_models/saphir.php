@@ -47,19 +47,19 @@ class NumModelSaphir extends NumModel
 		$this->field_name = $dolibase_config['numbering_model']['field'];
 	}
 
-    /**
-     *  Return description of numbering model
-     *
-     *  @return     string      Text with description
-     */
+	/**
+	 *  Return description of numbering model
+	 *
+	 *  @return     string      Text with description
+	 */
 	public function info()
-    {
-    	global $db, $conf, $langs, $dolibase_config;
+	{
+		global $db, $conf, $langs, $dolibase_config;
 
-    	$langs->load($dolibase_config['other']['lang_files'][0]);
+		$langs->load($dolibase_config['other']['lang_files'][0]);
 
-    	$module_name = $langs->transnoentities($dolibase_config['module']['name']);
-    	$const_name = $this->const_name;
+		$module_name = $langs->transnoentities($dolibase_config['module']['name']);
+		$const_name = $this->const_name;
 
 		$form = new Form($db);
 
@@ -87,25 +87,25 @@ class NumModelSaphir extends NumModel
 		$texte.= '</form>';
 
 		return $texte;
-    }
+	}
 
-    /**
-     *  Return an example of numbering
-     *
-     *  @return string      Example
-     */
-    public function getExample()
-    {
-     	global $langs;
+	/**
+	 *  Return an example of numbering
+	 *
+	 *  @return string      Example
+	 */
+	public function getExample()
+	{
+		global $langs;
 
-     	$numExample = $this->getNextValue($this->table_name, $this->field_name);
+		$numExample = $this->getNextValue($this->table_name, $this->field_name);
 
 		if (! $numExample)
 		{
 			$numExample = $langs->trans('NotConfigured');
 		}
 		return $numExample;
-    }
+	}
 
 	/**
 	 * 	Return next free value
@@ -114,8 +114,8 @@ class NumModelSaphir extends NumModel
 	 *  @param  Object		$object		Object we need next value for
 	 *  @return string      			Value if KO, <0 if KO
 	 */
-    public function getNextValue($objsoc = '', $object = '')
-    {
+	public function getNextValue($objsoc = '', $object = '')
+	{
 		global $db, $conf, $langs;
 
 		require_once DOL_DOCUMENT_ROOT .'/core/lib/functions2.lib.php';

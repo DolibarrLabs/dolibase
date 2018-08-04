@@ -165,7 +165,7 @@ class CustomStats extends Stats
 		$sql.= " WHERE ".$this->date_field." BETWEEN '".$this->db->idate(dol_get_first_day($year))."' AND '".$this->db->idate(dol_get_last_day($year))."'";
 		$sql.= " AND ".$this->where;
 		$sql.= " GROUP BY dc";
-        $sql.= $this->db->order('dc','DESC');
+		$sql.= $this->db->order('dc','DESC');
 
 		return $this->_getAverageByMonth($year, $sql);
 	}

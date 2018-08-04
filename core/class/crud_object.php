@@ -121,7 +121,7 @@ class CrudObject extends CommonObject
 			}
 			$this->db->rollback();
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1 * $error;
 		} else {
@@ -182,7 +182,7 @@ class CrudObject extends CommonObject
 			$this->error = "Error " . $this->db->lasterror();
 			dol_syslog(__METHOD__ . " " . $this->error, LOG_ERR);
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1;
 		}
@@ -277,7 +277,7 @@ class CrudObject extends CommonObject
 			$this->error = "Error " . $this->db->lasterror();
 			dol_syslog(__METHOD__ . " " . $this->error, LOG_ERR);
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1;
 		}
@@ -333,7 +333,7 @@ class CrudObject extends CommonObject
 			$this->error = "Error " . $this->db->lasterror();
 			dol_syslog(__METHOD__ . " " . $this->error, LOG_ERR);
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1;
 		}
@@ -381,7 +381,7 @@ class CrudObject extends CommonObject
 			}
 			$this->db->rollback();
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1 * $error;
 		} else {
@@ -437,7 +437,7 @@ class CrudObject extends CommonObject
 			}
 			$this->db->rollback();
 			if (DOLIBASE_DEBUG_MODE) dol_print_error($this->db, $this->error);
-    		else setEventMessage($this->error, 'errors');
+			else setEventMessage($this->error, 'errors');
 
 			return -1 * $error;
 		} else {

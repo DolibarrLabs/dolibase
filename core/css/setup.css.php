@@ -19,13 +19,17 @@ header('Content-Type: text/css');
 
 ?>
 
-.hideonprint {
-	display: none;
+.disabled {
+	cursor: not-allowed !important;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
 }
 
-.highlightedonprint {
-	font-weight: bold;
-	background-color: #a3cbe8;
+.nopointerevents {
+	pointer-events: none;
 }
 
 <?php

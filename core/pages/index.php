@@ -152,92 +152,92 @@ class IndexPage extends FormPage
 
 		if ($resql)
 		{
-		    $num = $db->num_rows($resql);
+			$num = $db->num_rows($resql);
 
-		    $i = 0;
-		    $total = 0;
-		    $totalinprocess = 0;
-		    $dataseries = array();
-		    $vals = array();
+			$i = 0;
+			$total = 0;
+			$totalinprocess = 0;
+			$dataseries = array();
+			$vals = array();
 
-		    while ($i < $num)
-		    {
-		        $row = $db->fetch_row($resql);
-		        if ($row)
-		        {
-	                $vals[$row[1]]   = $row[0];
-	                $totalinprocess += $row[0];
-		            $total          += $row[0];
-		        }
-		        $i++;
-		    }
-		    $db->free($resql);
+			while ($i < $num)
+			{
+				$row = $db->fetch_row($resql);
+				if ($row)
+				{
+					$vals[$row[1]]   = $row[0];
+					$totalinprocess += $row[0];
+					$total          += $row[0];
+				}
+				$i++;
+			}
+			$db->free($resql);
 
-		    echo '<table class="noborder nohover" width="100%">';
-		    echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
-		    $var = true;
+			echo '<table class="noborder nohover" width="100%">';
+			echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
+			$var = true;
 
-		    if ($graph_type == 'barline')
-		    {
-			    $xlabel = array();
-			    $i = 0;
+			if ($graph_type == 'barline')
+			{
+				$xlabel = array();
+				$i = 0;
 			}
 
-		    foreach ($field_values as $key => $value)
-		    {
-		    	$count = (isset($vals[$key]) ? (int) $vals[$key] : 0);
+			foreach ($field_values as $key => $value)
+			{
+				$count = (isset($vals[$key]) ? (int) $vals[$key] : 0);
 
-		    	if ($count > 0)
-		    	{
-		    		$label = $langs->trans($value);
+				if ($count > 0)
+				{
+					$label = $langs->trans($value);
 
-		    		if ($graph_type == 'barline')
-		    		{
-			    		$xlabel[]     = array($i, $label);
-			    		$dataseries[] = array($i, $count);
-			    		$i++;
-			    	}
-			    	else
-			    	{
-			        	$dataseries[] = array('label' => $label, 'data' => $count);
-			        }
+					if ($graph_type == 'barline')
+					{
+						$xlabel[]     = array($i, $label);
+						$dataseries[] = array($i, $count);
+						$i++;
+					}
+					else
+					{
+						$dataseries[] = array('label' => $label, 'data' => $count);
+					}
 
-			        if (! $conf->use_javascript_ajax)
-			        {
-			            $var = ! $var;
-			            echo "<tr ".$bc[$var].">";
-			            echo '<td>'.$label.'</td>';
-			            echo '<td align="right"><a href="list.php?'.$field_name.'='.$value.'">'.$count.'</a></td>';
-			            echo "</tr>\n";
-			        }
-			    }
-		    }
+					if (! $conf->use_javascript_ajax)
+					{
+						$var = ! $var;
+						echo "<tr ".$bc[$var].">";
+						echo '<td>'.$label.'</td>';
+						echo '<td align="right"><a href="list.php?'.$field_name.'='.$value.'">'.$count.'</a></td>';
+						echo "</tr>\n";
+					}
+				}
+			}
 
-		    if ($conf->use_javascript_ajax)
-		    {
-		        echo '<tr class="impair"><td align="center" colspan="2">';
-		        if ($graph_type == 'barline')
-		        {
-		        	$data = array('series' => array(array('label' => $field_name, 'data' => $dataseries)),
-		        				  'xlabel' => $xlabel
-		        				);
-		        	$showlegend = 0;
-		        }
-		        else
-		        {
-		        	$data = array('series' => $dataseries);
-		        	$showlegend = 1;
-		        }
-		        dol_print_graph('stats_'.($this->stats_id++), 300, 180, $data, $showlegend, $graph_type, 1);
-		        echo '</td></tr>';
-		    }
-		    
-		    echo '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td align="right">'.$total.'</td></tr>';
-		    echo "</table><br>";
+			if ($conf->use_javascript_ajax)
+			{
+				echo '<tr class="impair"><td align="center" colspan="2">';
+				if ($graph_type == 'barline')
+				{
+					$data = array('series' => array(array('label' => $field_name, 'data' => $dataseries)),
+								  'xlabel' => $xlabel
+							);
+					$showlegend = 0;
+				}
+				else
+				{
+					$data = array('series' => $dataseries);
+					$showlegend = 1;
+				}
+				dol_print_graph('stats_'.($this->stats_id++), 300, 180, $data, $showlegend, $graph_type, 1);
+				echo '</td></tr>';
+			}
+
+			echo '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td align="right">'.$total.'</td></tr>';
+			echo "</table><br>";
 		}
 		else
 		{
-		    dol_print_error($db);
+			dol_print_error($db);
 		}
 	}
 }

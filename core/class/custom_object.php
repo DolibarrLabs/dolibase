@@ -127,90 +127,89 @@ class CustomObject extends CrudObject
 	 *  @param	Societe		$soc  	Object thirdparty
 	 *  @return string      		Reference
 	 */
-    public function getNextNumRef($soc = '')
-    {
-        global $conf, $langs, $dolibase_config;
+	public function getNextNumRef($soc = '')
+	{
+		global $conf, $langs, $dolibase_config;
 
-        $const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
+		$const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
 
-        if (! empty($conf->global->$const_name))
-        {
-        	$mybool=false;
+		if (! empty($conf->global->$const_name))
+		{
+			$mybool=false;
 
-            $file = $conf->global->$const_name;
-            $classname = 'NumModel'.ucfirst($file);
+			$file = $conf->global->$const_name;
+			$classname = 'NumModel'.ucfirst($file);
 
-            // Include file with class
-            $dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
-            foreach ($dirmodels as $reldir) {
-
-                $dir = dol_buildpath($reldir."/dolibase/core/num_models/");
+			// Include file with class
+			$dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
+			foreach ($dirmodels as $reldir) {
+				$dir = dol_buildpath($reldir."/dolibase/core/num_models/");
 				$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/num_models/");
 				
 				$dir = ! is_dir($dir) ? $mod_dir : $dir;
 
-                // Load file with numbering class (if found)
-                $mybool|=@include_once $dir.$file.".php";
-            }
+				// Load file with numbering class (if found)
+				$mybool|=@include_once $dir.$file.".php";
+			}
 
-            if (! $mybool)
-            {
-                dol_print_error('',"Failed to include file ".$file);
-                return '';
-            }
+			if (! $mybool)
+			{
+				dol_print_error('',"Failed to include file ".$file);
+				return '';
+			}
 
-            $obj = new $classname();
-            $numref = "";
-            $numref = $obj->getNextValue($soc);
+			$obj = new $classname();
+			$numref = "";
+			$numref = $obj->getNextValue($soc);
 
-            if ($numref != "")
-            {
-                return $numref;
-            }
-            else
-            {
-                $this->error = $obj->error;
-                setEventMessage($this->error, 'errors');
-                return "";
-            }
-        }
-        else
-        {
-            $langs->load("errors");
-            $this->error = $langs->trans("ErrorModuleSetupNotComplete");
-            setEventMessage($this->error, 'errors');
-            return "";
-        }
-    }
+			if ($numref != "")
+			{
+				return $numref;
+			}
+			else
+			{
+				$this->error = $obj->error;
+				setEventMessage($this->error, 'errors');
+				return "";
+			}
+		}
+		else
+		{
+			$langs->load("errors");
+			$this->error = $langs->trans("ErrorModuleSetupNotComplete");
+			setEventMessage($this->error, 'errors');
+			return "";
+		}
+	}
 
-    /**
-    *	Return clicable name (with picto eventually)
-    *
-    *	@param		int		$withpicto		0=No picto, 1=Include picto into link, 2=Only picto
-    *	@param		string	$title			Tooltip title
-    *	@return		string					Chain with URL
-    */
-    public function getNomUrl($withpicto = 0, $title = '')
-    {
-        global $langs, $dolibase_config;
+	/**
+	 *	Return clicable name (with picto eventually)
+	 *
+	 *	@param		int		$withpicto		0=No picto, 1=Include picto into link, 2=Only picto
+	 *	@param		string	$title			Tooltip title
+	 *	@return		string					Chain with URL
+	 */
+	public function getNomUrl($withpicto = 0, $title = '')
+	{
+		global $langs, $dolibase_config;
 
-        $ref_field = $this->ref_field_name;
+		$ref_field = $this->ref_field_name;
 
-        $result = '';
-        $label  = (! empty($title) ? '<u>' . $langs->trans($title) . '</u><br>' : '');
-        if (! empty($this->$ref_field)) {
-            $label .= '<b>' . $langs->trans('Ref') . ':</b> ' . $this->$ref_field;
-        }
-        
-        $link = '<a href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/card.php?id='.$this->id, 1).'" title="'.dol_escape_htmltag($label, 1).'" class="classfortooltip">';
-        $linkend = '</a>';
+		$result = '';
+		$label  = (! empty($title) ? '<u>' . $langs->trans($title) . '</u><br>' : '');
+		if (! empty($this->$ref_field)) {
+			$label .= '<b>' . $langs->trans('Ref') . ':</b> ' . $this->$ref_field;
+		}
 
-        $picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
+		$link = '<a href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/card.php?id='.$this->id, 1).'" title="'.dol_escape_htmltag($label, 1).'" class="classfortooltip">';
+		$linkend = '</a>';
 
-        if ($withpicto) $result.= ($link.img_object($label, $picto, 'class="classfortooltip"').$linkend);
-        if ($withpicto && $withpicto != 2) $result.= ' ';
-        $result.= $link.$this->$ref_field.$linkend;
-        
-        return $result;
-    }
+		$picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
+
+		if ($withpicto) $result.= ($link.img_object($label, $picto, 'class="classfortooltip"').$linkend);
+		if ($withpicto && $withpicto != 2) $result.= ' ';
+		$result.= $link.$this->$ref_field.$linkend;
+
+		return $result;
+	}
 }

@@ -33,17 +33,17 @@ class CustomForm extends Form
 
 
 	/**
-     * Constructor
-     *
-     * @param		DoliDB		$db      Database handler
-     */
-    public function __construct($db)
-    {
-        $this->db = $db;
-        $this->other = new FormOther($db);
-    }
+	 * Constructor
+	 *
+	 * @param		DoliDB		$db      Database handler
+	 */
+	public function __construct($db)
+	{
+		$this->db = $db;
+		$this->other = new FormOther($db);
+	}
 
-    /**
+	/**
 	 * Return a checkbox
 	 *
 	 * @param   $name    checkbox name
@@ -57,7 +57,7 @@ class CustomForm extends Form
 		return '<input type="checkbox" class="flat'.(! empty($class) ? ' '.$class : '').'" name="'.$name.'" id="'.$id.'" value="'.$value.'">';
 	}
 
-    /**
+	/**
 	 * Return a text input
 	 *
 	 * @param   $name    input name
@@ -85,7 +85,7 @@ class CustomForm extends Form
 
 		if (! empty($conf->global->FCKEDITOR_ENABLE_DETAILS_FULL)) $toolbarname = 'Full';
 		else if (empty($toolbarname)) $toolbarname = 'dolibarr_details';
-	    $doleditor = new DolEditor($name, $value, '', $height, $toolbarname, 'In', false, false, true, ROWS_3, '90%');
+		$doleditor = new DolEditor($name, $value, '', $height, $toolbarname, 'In', false, false, true, ROWS_3, '90%');
 
 		return $doleditor->Create(1);
 		//return '<textarea name="'.$name.'" wrap="soft" cols="70" fields="'.ROWS_3.'">'.$value.'</textarea>';

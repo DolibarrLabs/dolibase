@@ -48,23 +48,12 @@ class FormPage extends Page
 		$this->form = new CustomForm($db);
 
 		// Add some custom css
-		$this->head.= "<style>
-						.dolibase_radio {
-							height: 26px !important;
-	                        vertical-align: middle;
-	                    }
-	                </style>";
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/form.css.php">'."\n");
 
-        // Add custom js
-		$this->head.= empty($conf->use_javascript_ajax) ? "" : "<script type=\"text/javascript\">
-						$(document).ready(function () {
-							$('.dolibase_select').select2({
-					            dir: 'ltr',
-					            width: 'resolve',       /* off or resolve */
-					            minimumInputLength: 0
-					        });
-					    });
-					</script>";
+		// Add custom js
+		if ($conf->use_javascript_ajax) {
+			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/form.js.php"></script>'."\n");
+		}
 
 		parent::__construct($page_title, $access_perm);
 	}
