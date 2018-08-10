@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.6.5 - JUL18
+
+*   FIX: bottom border removed from statistics page.
+
+---
+
 #### 1.6.4 - JUL18
 
 *   NEW: add an option to save card as CSV also.

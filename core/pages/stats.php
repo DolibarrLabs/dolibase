@@ -51,6 +51,16 @@ class StatsPage extends FormPage
 	}
 
 	/**
+	 * Generate tabs
+	 *
+	 * @param     $noheader     -1 or 0=Add tab header, 1=no tab header.
+	 */
+	protected function generateTabs($noheader = -1)
+	{
+		parent::generateTabs($noheader);
+	}
+
+	/**
 	 * Generate page end
 	 *
 	 */

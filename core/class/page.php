@@ -195,8 +195,9 @@ class Page
 	/**
 	 * Generate tabs
 	 *
+	 * @param     $noheader     -1 or 0=Add tab header, 1=no tab header.
 	 */
-	protected function generateTabs()
+	protected function generateTabs($noheader = 0)
 	{
 		if (! empty($this->tabs))
 		{
@@ -213,7 +214,7 @@ class Page
 			}
 
 			// Generate tabs
-			dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), 0, $this->tabs_picture);
+			dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), $noheader, $this->tabs_picture);
 		}
 	}
 
