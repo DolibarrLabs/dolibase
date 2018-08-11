@@ -24,3 +24,5 @@ About = À propos
 Option = Option
 Value = Valeur
 NumberingModels = Modèles de numérotation
+DocumentModels = Modèles de document
+DocModelAzurDescription = Modèle de document complet (logo...)

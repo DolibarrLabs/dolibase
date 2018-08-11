@@ -10,7 +10,7 @@ dol_include_once('/books/class/book.class.php');
 dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
-$page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete', true);
+$page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete', true, true);
 
 // Set fields
 $page->fields[] = new Field('name', 'Name', 'required');
@@ -24,6 +24,7 @@ $ref = GETPOST('ref', 'alpha');
 $action = GETPOST('action', 'alpha');
 $confirm = GETPOST('confirm', 'alpha');
 $optioncss = GETPOST('optioncss', 'alpha');
+$model = GETPOST('model', 'alpha');
 
 // Init object
 $book = new Book();
@@ -63,6 +64,31 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 				exit();
 	        }
 		}
+	}
+
+	// Build doc
+	if ($action == 'builddoc')
+	{
+		$list = Dictionary::get_all('books_dict');
+
+		$book->lines = array(
+			array('name' => 'Ref', 'value' => $book->ref),
+			array('name' => 'Name', 'value' => $book->name),
+			array('name' => 'Description', 'value' => $book->desc),
+			array('name' => 'Type', 'value' => $list[$book->type]),
+			array('name' => 'Publication Date', 'value' => dol_print_date($book->publication_date, 'daytext')),
+			array('name' => 'Qty', 'value' => $book->qty),
+			array('name' => 'Price', 'value' => price_with_currency($book->price))
+		);
+
+		$book->documentTitle = 'Book';
+		$book->generateDocument($model);
+	}
+
+	// Remove file in doc form
+	if ($action == 'remove_file')
+	{
+		$book->deleteDocument();
 	}
 
 	// --- End actions
@@ -112,7 +138,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	// Price
 	if ($action != 'edit_price' || ! $page->canEdit()) {
-		$page->showField('Price', $book->price, true, $_SERVER["PHP_SELF"] . '?action=edit_price&id=' . $book->id);
+		$page->showField('Price', price_with_currency($book->price), true, $_SERVER["PHP_SELF"] . '?action=edit_price&id=' . $book->id);
 	}
 	else {
 		$page->editTextField('Price', 'price', $book->price);

@@ -1,7 +1,13 @@
 ### Dolibase Framework
 ------
 
-#### 1.6.5 - JUL18
+#### 1.7.0 - AUG18
+
+*   NEW: add PDF/Document generation support.
+
+---
+
+#### 1.6.5 - AUG18
 
 *   FIX: bottom border removed from statistics page.
 

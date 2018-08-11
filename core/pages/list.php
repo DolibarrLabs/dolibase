@@ -49,10 +49,9 @@ class ListPage extends FormPage
 	 */
 	protected function loadDefaultActions()
 	{
-		global $hookmanager, $dolibase_config;
+		global $hookmanager;
 
-		$hook_name = strtolower($dolibase_config['module']['rights_class']).'list';
-		$this->contextpage = str_replace('_', '', $hook_name);
+		$this->contextpage = get_rights_class(false, true) . 'list';
 
 		// Initialize technical object to manage hooks of thirdparties.
 		$hookmanager->initHooks(array($this->contextpage));

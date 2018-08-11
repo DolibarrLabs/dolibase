@@ -41,7 +41,7 @@ class NumModelMarbre extends NumModel
 		global $dolibase_config;
 
 		// Generate constant name
-		$this->const_name = strtoupper($dolibase_config['module']['rights_class']) . '_MARBRE_MASK';
+		$this->const_name = get_rights_class(true) . '_MARBRE_MASK';
 
 		// Set parameters
 		$this->table_name = $dolibase_config['numbering_model']['table'];

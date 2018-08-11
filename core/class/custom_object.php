@@ -131,7 +131,7 @@ class CustomObject extends CrudObject
 	{
 		global $conf, $langs, $dolibase_config;
 
-		$const_name = strtoupper($dolibase_config['module']['rights_class']) . '_ADDON';
+		$const_name = get_rights_class(true) . '_ADDON';
 
 		if (! empty($conf->global->$const_name))
 		{
@@ -211,5 +211,87 @@ class CustomObject extends CrudObject
 		$result.= $link.$this->$ref_field.$linkend;
 
 		return $result;
+	}
+
+	/**
+	 *  Create a document onto disk according to template module.
+	 *
+	 *  @param	    string		$model			Force template to use ('' to not force)
+	 *  @param      int			$hidedetails    Hide details of lines
+	 *  @param      int			$hidedesc       Hide description
+	 *  @param      int			$hideref        Hide ref
+	 *  @return     int         				0 if KO, 1 if OK
+	 */
+	public function generateDocument($model, $hidedetails=0, $hidedesc=0, $hideref=0)
+	{
+		global $conf, $user, $langs;
+
+		// Save last template used to generate document
+		if ($model) $this->setDocModel($user, $model);
+
+		// Define output language
+		$outputlangs = $langs;
+		$newlang = '';
+		if ($conf->global->MAIN_MULTILANGS && empty($newlang) && ! empty($_REQUEST['lang_id']))
+			$newlang = $_REQUEST['lang_id'];
+		if ($conf->global->MAIN_MULTILANGS && empty($newlang))
+			$newlang = $this->thirdparty->default_lang;
+		if (! empty($newlang)) {
+			$outputlangs = new Translate("", $conf);
+			$outputlangs->setDefaultLang($newlang);
+		}
+
+		// Model to use
+		if (! dol_strlen($model))
+		{
+			$const_name = get_rights_class(true) . '_ADDON_PDF';
+
+			if (! empty($conf->global->$const_name))
+			{
+				$model = $conf->global->$const_name;
+			}
+			else
+			{
+				$model = 'azur';
+			}
+		}
+
+		$modelpath = DOLIBASE_PATH.'/core/doc_models/';
+
+		$result = $this->commonGenerateDocument($modelpath, $model, $outputlangs, $hidedetails, $hidedesc, $hideref);
+		if ($result <= 0) {
+			setEventMessages($this->error, $this->errors, 'errors');
+		}
+
+		return $result;
+	}
+
+	/**
+	 *  Delete document from disk.
+	 *
+	 *  @return     int         				0 if KO, 1 if OK
+	 */
+	public function deleteDocument()
+	{
+		global $conf, $langs;
+
+		if ($this->id > 0)
+		{
+			require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
+
+			$langs->load("other");
+			$const_name = get_rights_class();
+			$upload_dir = $conf->$const_name->dir_output;
+			$file = $upload_dir . '/' . GETPOST('file');
+			$result = dol_delete_file($file, 0, 0, 0, $object);
+			if ($result)
+				setEventMessages($langs->trans("FileWasRemoved", GETPOST('file')), null, 'mesgs');
+			else
+				setEventMessages($langs->trans("ErrorFailToDeleteFile", GETPOST('file')), null, 'errors');
+
+			return $result;
+		}
+
+		return 0;
 	}
 }

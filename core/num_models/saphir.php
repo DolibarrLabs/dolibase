@@ -40,7 +40,7 @@ class NumModelSaphir extends NumModel
 		global $dolibase_config;
 
 		// Generate constant name
-		$this->const_name = strtoupper($dolibase_config['module']['rights_class']) . '_SAPHIR_MASK';
+		$this->const_name = get_rights_class(true) . '_SAPHIR_MASK';
 
 		// Set parameters
 		$this->table_name = $dolibase_config['numbering_model']['table'];

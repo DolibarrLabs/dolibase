@@ -1,5 +1,5 @@
--- <one line to give the program's name and a brief idea of what it does.>
--- Copyright (C) <year>  <name of author>
+-- <Dolibase dictionary table example>
+-- Copyright (C) <2018>  <AXeL>
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -14,16 +14,4 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CREATE TABLE llx_books(
-	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
-        ref VARCHAR(30) NOT NULL,
-        name VARCHAR(100) NOT NULL,
-        `desc` VARCHAR(255) NULL,
-        type INTEGER NOT NULL,
-        qty DOUBLE NOT NULL,
-        price DOUBLE DEFAULT NULL,
-        publication_date DATETIME NULL,
-        creation_date DATETIME NOT NULL,
-        created_by INTEGER NOT NULL,
-        model_pdf VARCHAR(255) DEFAULT NULL
-);
+ALTER TABLE llx_books_dict ADD UNIQUE INDEX uk_label (label);

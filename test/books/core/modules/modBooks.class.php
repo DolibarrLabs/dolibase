@@ -16,7 +16,8 @@ class modBooks extends DolibaseModule
 	 */
 	public function loadSettings()
 	{
-		$this->addConstant("BOOKS_ADDON", "marbre");
+		$this->activateNumModel("marbre");
+		$this->activateDocModel("azur");
 
 		$this->addPermission("read", "Read permission", "r");
 		$this->addPermission("create", "Create permission", "c");

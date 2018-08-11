@@ -40,6 +40,10 @@ class DolibaseModule extends DolibarrModules
 	 * @var array Dolibase module configuration array
 	 */
 	public $config;
+	/**
+	 * @var array Dolibase module addons array
+	 */
+	public $addons = array();
 
 
 	/**
@@ -132,9 +136,34 @@ class DolibaseModule extends DolibarrModules
 
 		$sql = array();
 
+		// Load tables
 		$result = $this->loadTables();
 
+		// Set addons
+		$this->setAddons();
+
 		return $this->_init($sql, $options);
+	}
+
+	/**
+	 * Set/Activate addons required by module
+	 *
+	 */
+	protected function setAddons()
+	{
+		foreach ($this->addons as $addon)
+		{
+			$const_prefix = get_rights_class(true);
+
+			if (isset($addon['type']) && $addon['type'] == 'doc') {
+				$this->addConstant($const_prefix . '_ADDON_PDF', $addon['name']);
+				$type = get_rights_class();
+				addDocumentModel($addon['name'], $type);
+			}
+			else {
+				$this->addConstant($const_prefix . '_ADDON', $addon['name']);
+			}
+		}
 	}
 
 	/**
@@ -424,5 +453,25 @@ class DolibaseModule extends DolibarrModules
 	private function addModulePart($module_part, $value)
 	{
 		$this->module_parts[$module_part][] = $value;
+	}
+
+	/**
+	 * Activate a numbering model
+	 *
+	 * @param     $name     numbering model name
+	 */
+	public function activateNumModel($name)
+	{
+		$this->addons[] = array('name' => $name);
+	}
+
+	/**
+	 * Activate a document model
+	 *
+	 * @param     $name     document model name
+	 */
+	public function activateDocModel($name)
+	{
+		$this->addons[] = array('name' => $name, 'type' => 'doc');
 	}
 }

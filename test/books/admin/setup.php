@@ -14,7 +14,9 @@ $page->addSubtitle("NumberingModels");
 
 $page->printNumModels();
 
-$page->closeTable()->addLineBreak();
+$page->addSubtitle("DocumentModels");
+
+$page->printDocModels();
 
 $page->addSubtitle("General Options");
 

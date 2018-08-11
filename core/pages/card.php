@@ -36,6 +36,10 @@ class CardPage extends CreatePage
 	 * @var boolean used to close opened buttons div
 	 */
 	protected $close_buttons_div = false;
+	/**
+	 * @var boolean used to show documents block
+	 */
+	protected $show_documents = false;
 
 
 	/**
@@ -47,10 +51,11 @@ class CardPage extends CreatePage
 	 * @param     $delete_perm    Delete permission
 	 * @param     $enable_save_as Enable save as feature
 	 */
-	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as = false)
+	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as = false, $show_documents = false)
 	{
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
+		$this->show_documents    = $show_documents;
 
 		global $langs, $dolibase_config;
 
@@ -148,8 +153,17 @@ class CardPage extends CreatePage
 		// buttons list
 		foreach ($buttons as $button)
 		{
-			echo '<a href="#" id="'.$button['id'].'" style="'.$button['style'].'">';
-			echo '<img src="'.$button['picto'].'" alt="picto" class="align-middle" width="20" />';
+			echo '<a href="'.(isset($button['href']) ? $button['href'] : '#').'"';
+			if (isset($button['id'])) {
+				echo ' id="'.$button['id'].'"';
+			}
+			if (isset($button['style'])) {
+				echo ' style="'.$button['style'].'"';
+			}
+			echo '>';
+			if (isset($button['picto'])) {
+				echo '<img src="'.$button['picto'].'" alt="picto" class="align-middle" width="20" />';
+			}
 			echo '&nbsp;&nbsp;'.$langs->trans($button['name']);
 			echo '</a>';
 		}
@@ -385,34 +399,75 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			global $conf, $langs, $dolibase_config;
+			$action = GETPOST('action', 'alpha');
 
-			$const_name = strtoupper($dolibase_config['module']['rights_class']).'_ENABLE_EXPANDED_LINKS';
-
-			echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
-
-			// Dolibase object linking feature
-			if ($conf->global->$const_name)
+			if ($action != 'presend')
 			{
-				$langs->load('related_objects@'.$dolibase_config['module']['folder']);
+				global $conf, $langs, $dolibase_config;
 
-				show_related_objects($object);
+				$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
+
+				echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
+
+				// Dolibase object linking feature
+				if ($conf->global->$const_name)
+				{
+					$langs->load('related_objects@'.$dolibase_config['module']['folder']);
+
+					show_related_objects($object);
+				}
+				// Dolibarr linked objects block
+				else if (isset($object->socid) || isset($object->fk_soc))
+				{
+					$permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
+					$action = GETPOST('action', 'alpha');
+					$id = GETPOST('id', 'int');
+
+					include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+
+					// Show links to link elements
+					$linktoelem = $this->form->showLinkToObjectBlock($object);
+					$somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+				}
+
+				echo '</div></div>';
 			}
-			// Dolibarr linked objects block
-			else if (isset($object->socid) || isset($object->fk_soc))
+		}
+	}
+
+	/**
+	 * Print documents block
+	 *
+	 */
+	protected function printDocuments($object)
+	{
+		if (! empty($object) && isset($object->id))
+		{
+			$action = GETPOST('action', 'alpha');
+
+			if ($action != 'presend')
 			{
-				$permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
-				$action = GETPOST('action', 'alpha');
-				$id = GETPOST('id', 'int');
+				global $db, $conf, $user;
+				
+				include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
+				
+				$formfile = new FormFile($db);
 
-				include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+				echo '<div class="fichecenter"><div class="fichehalfleft">';
 
-				// Show links to link elements
-				$linktoelem = $this->form->showLinkToObjectBlock($object);
-				$somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+				// Documents
+				$ref = dol_sanitizeFileName($object->ref);
+				$const_name = get_rights_class();
+				$file = $conf->$const_name->dir_output . '/' . $ref . '/' . $ref . '.pdf';
+				$relativepath = $ref . '/' . $ref . '.pdf';
+				$filedir = $conf->$const_name->dir_output . '/' . $ref;
+				$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
+				$genallowed = $user->rights->$const_name->create;
+				$delallowed = $user->rights->$const_name->delete;
+				echo $formfile->showdocuments($const_name, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->modelpdf);
+
+				echo '</div></div>';
 			}
-
-			echo '</div></div>';
 		}
 	}
 
@@ -423,6 +478,8 @@ class CardPage extends CreatePage
 	public function end($object = '')
 	{
 		if ($this->close_buttons_div) echo '</div>';
+
+		if ($this->show_documents) $this->printDocuments($object);
 
 		$this->printRelatedObjects($object);
 

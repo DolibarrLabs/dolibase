@@ -142,14 +142,23 @@ function price_with_currency($price, $currency = 'auto')
 /**
  * Returns module rights class
  *
- * @param      $to_upper      convert to upper case
- * @return     string         module rights class
+ * @param      $to_upper           convert to upper case
+ * @param      $no_underscores     remove underscores
+ * @return     string              module rights class
  */
-function get_rights_class($to_upper = false)
+function get_rights_class($to_upper = false, $no_underscores = false)
 {
 	global $dolibase_config;
 
 	$rights_class = empty($dolibase_config['module']['rights_class']) ? 'dolibase_module' : $dolibase_config['module']['rights_class'];
 
-	return $to_upper ? strtoupper($rights_class) : $rights_class;
+	if ($to_upper) {
+		$rights_class = strtoupper($rights_class);
+	}
+
+	if ($no_underscores) {
+		$rights_class = str_replace('_', '', $rights_class);
+	}
+
+	return $rights_class;
 }
