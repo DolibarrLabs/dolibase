@@ -6,7 +6,7 @@ include_once '../config.php';
 dolibase_include_once('/core/pages/setup.php');
 
 // Create Setup Page using Dolibase
-$page = new SetupPage();
+$page = new SetupPage('Setup', '$user->admin', false, true);
 
 $page->begin();
 

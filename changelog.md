@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.1 - AUG18
+
+*   NEW: add extra-fields support.
+*   NEW: update Books module to version 1.4.0.
+
+---
+
 #### 1.7.0 - AUG18
 
 *   NEW: add email sending support.

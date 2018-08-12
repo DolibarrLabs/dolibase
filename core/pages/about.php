@@ -24,18 +24,28 @@ dolibase_include_once('/core/class/page.php');
 class AboutPage extends Page
 {
 	/**
+	 * @var boolean used to add extrafields tab
+	 */
+	protected $add_extrafields_tab = false;
+
+
+	/**
 	 * Constructor
 	 * 
-	 * @param     $page_title     HTML page title
-	 * @param     $access_perm    Access permission
+	 * @param     $page_title                 HTML page title
+	 * @param     $access_perm                Access permission
+	 * @param     $add_extrafields_tab        Add extrafields tab
 	 */
-	public function __construct($page_title = 'About', $access_perm = '$user->admin')
+	public function __construct($page_title = 'About', $access_perm = '$user->admin', $add_extrafields_tab = false)
 	{
 		global $langs, $dolibase_config;
 
 		// Load lang files
 		$langs->load("admin");
 		$langs->load("about_page@".$dolibase_config['module']['folder']);
+
+		// Set attributes
+		$this->add_extrafields_tab = $add_extrafields_tab;
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -55,10 +65,23 @@ class AboutPage extends Page
 		// Add default tabs
 		if (empty($this->tabs)) {
 			$this->addTab("Settings", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home");
+			if ($this->add_extrafields_tab) {
+				$this->addTab("ExtraFields", "/".$dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
+			}
 			$this->addTab("About", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home", true);
 		}
 
 		parent::generate();
+	}
+
+	/**
+	 * Generate tabs
+	 *
+	 * @param     $noheader     -1 or 0=Add tab header, 1=no tab header.
+	 */
+	protected function generateTabs($noheader = -1)
+	{
+		parent::generateTabs($noheader);
 	}
 
 	/**

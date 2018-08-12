@@ -46,8 +46,13 @@ if ($search['pd']) $where .= " AND date(t.publication_date) = date('".$books->db
 if ($search['cd']) $where .= " AND date(t.creation_date) = date('".$books->db->idate($search['cd'])."')";
 if ($search['user'] > 0) $where .= natural_search('t.created_by', $search['user']);
 
+// Fetch extrafields
+$more_fields = '';
+$join = '';
+$page->fetchExtraFields($books->table_element, $more_fields, $join, $where);
+
 // Fetch
-$books->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
+$books->fetchAll($limit, $offset, $sortfield, $sortorder, $more_fields, $join, $where, true);
 
 $type_list = Dictionary::get_active('books_dict');
 $full_type_list = Dictionary::get_all('books_dict');
@@ -101,6 +106,9 @@ foreach ($books->lines as $book)
 	$userstatic = new User($book->db);
 	$userstatic->fetch($book->created_by);
 	$page->addColumn('t.created_by', $userstatic->getNomUrl(1), 'align="center"');
+
+	// Extrafields
+	$page->addExtraFields($book);
 
 	$page->closeRow();
 }

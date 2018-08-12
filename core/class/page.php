@@ -163,19 +163,27 @@ class Page
 	 * @param     $title         tab title
 	 * @param     $url           tab url
 	 * @param     $is_active     should this tab be the activated one (true or false)
+	 * @param     $position      tab position (-1 means add to the last)
 	 */
-	public function addTab($title, $url, $is_active = false)
+	public function addTab($title, $url, $is_active = false, $position = -1)
 	{
 		global $langs;
 
 		$tab_id = count($this->tabs) + 1;
 		$tab_name = 'tab_'.$tab_id;
 
-		$this->tabs[] = array(
+		$tab = array(
 			0 => dol_buildpath($url, 1),
 			1 => $langs->trans($title),
 			2 => $tab_name
 		);
+
+		if ($position >= 0) {
+			array_splice($this->tabs, $position, 0, $tab);
+		}
+		else {
+			$this->tabs[] = $tab;
+		}
 
 		if ($is_active) {
 			$this->active_tab = $tab_name;

@@ -58,6 +58,29 @@ class CreatePage extends FormPage
 	}
 
 	/**
+	 * Check page extrafields
+	 *
+	 * @param      $object     Object
+	 * @return     boolean     true or false
+	 */
+	public function checkExtraFields($object)
+	{
+		global $db;
+
+		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+
+		$extrafields = new ExtraFields($db);
+
+		// fetch optionals attributes and labels
+		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+
+		// Fill array 'array_options' with data from add form
+		$result = $extrafields->setOptionalsFromPost($extralabels, $object);
+
+		return $result >= 0 ? true : false;
+	}
+
+	/**
 	 * Check specified field
 	 *
 	 * @param      $field_name                 Field name
@@ -278,6 +301,25 @@ class CreatePage extends FormPage
 		$field_content = $this->form->colorInput($input_name, $input_value);
 		
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+	}
+
+	/**
+	 * add extra fields
+	 *
+	 * @param      $object     Object
+	 */
+	public function addExtraFields($object)
+	{
+		global $db, $conf, $langs, $hookmanager, $action;
+
+		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+
+		$extrafields = new ExtraFields($db);
+
+		// fetch optionals attributes and labels
+		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+
+		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_add.tpl.php';
 	}
 
 	/**

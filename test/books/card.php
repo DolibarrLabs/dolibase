@@ -49,6 +49,13 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 		$book->update($data);
 	}
 
+	// Edit extrafields
+	if ($page->canEdit() && $action == 'update_extras')
+	{
+		$result = $page->updateExtraFields($book);
+		if ($result) $action = 'edit_extras';
+	}
+
 	// Delete
 	if ($page->canDelete())
 	{
@@ -167,6 +174,9 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	$userstatic = new User($book->db);
     $userstatic->fetch($book->created_by);
 	$page->showField('Created by', $userstatic->getNomUrl(1));
+
+	// Extra fields
+	$page->showExtraFields($book);
 
 	$page->closeTable();
 

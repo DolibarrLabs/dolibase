@@ -6,7 +6,7 @@ include_once '../config.php';
 dolibase_include_once('/core/pages/about.php');
 
 // Create About Page using Dolibase
-$page = new AboutPage();
+$page = new AboutPage('About', '$user->admin', true);
 
 $page->begin();
 

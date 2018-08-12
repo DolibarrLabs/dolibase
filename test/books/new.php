@@ -21,10 +21,11 @@ $page->fields[] = new Field('price', 'Price', 'numeric');
 // Set actions
 $action = GETPOST('action', 'alpha');
 
-if ($action == 'create' && $page->checkFields())
-{
-	$book = new Book();
+// Init object
+$book = new Book();
 
+if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book))
+{
 	$ref = $book->getNextNumRef();
 
 	if (! empty($ref))
@@ -44,11 +45,13 @@ if ($action == 'create' && $page->checkFields())
 
 		$id = $book->create($data);
 
-		if ($id > 0) {
-	        // Creation OK
-	        header('Location: card.php?id=' . $id);
-	        exit();
-	    }
+		$result = $book->insertExtraFields();
+
+		if ($id > 0 && $result >= 0) {
+			// Creation OK
+			header('Location: card.php?id=' . $id);
+			exit();
+		}
 	}
 }
 
@@ -75,6 +78,8 @@ $page->addNumberField('Qty', 'qty', GETPOST('qty'), true);
 $page->addTextField('Price', 'price', GETPOST('price'));
 
 $page->addDateField('Publication Date', 'publication_date', GETPOSTDATE('publication_date'));
+
+$page->addExtraFields($book);
 
 $page->closeTable(true);
 

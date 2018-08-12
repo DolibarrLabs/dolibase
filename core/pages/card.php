@@ -234,6 +234,59 @@ class CardPage extends CreatePage
 	}
 
 	/**
+	 * show extra fields
+	 *
+	 * @param      $object     Object
+	 */
+	public function showExtraFields($object)
+	{
+		global $db, $conf, $langs, $hookmanager, $user, $action;
+
+		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+
+		$extrafields = new ExtraFields($db);
+
+		// fetch optionals attributes and labels
+		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element, true);
+		$object->fetch_optionals($object->id, $extralabels);
+		$object->element = get_rights_class();
+
+		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_view.tpl.php';
+	}
+
+	/**
+	 * update extra fields
+	 *
+	 * @param      $object     Object
+	 */
+	public function updateExtraFields($object)
+	{
+		global $db;
+
+		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+
+		$extrafields = new ExtraFields($db);
+		$error = 0;
+
+		// Fill array 'array_options' with data from update form
+		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+		$object->fetch_optionals($object->id, $extralabels);
+		$ret = $extrafields->setOptionalsFromPost($extralabels, $object, GETPOST('attribute'));
+		if ($ret < 0) $error++;
+		if (! $error)
+		{
+			$result = $object->insertExtraFields();
+			if ($result < 0)
+			{
+				setEventMessages($object->error, $object->errors, 'errors');
+				$error++;
+			}
+		}
+
+		return $error;
+	}
+
+	/**
 	 * show banner
 	 *
 	 * @param     $object         object

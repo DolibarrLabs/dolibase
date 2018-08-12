@@ -16,6 +16,7 @@
  */
 
 dolibase_include_once('/core/class/form_page.php');
+include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 
 /**
  * ListPage class
@@ -31,6 +32,19 @@ class ListPage extends FormPage
 	 * @var string Page context
 	 */
 	protected $contextpage = '';
+	/**
+	 * @var object extrafields object
+	 */
+	protected $extrafields;
+	/**
+	 * @var array extrafields labels
+	 */
+	protected $extralabels = array();
+	/**
+	 * @var array extrafields search options
+	 */
+	protected $search_array_options = array();
+
 
 	/**
 	 * Constructor
@@ -40,6 +54,10 @@ class ListPage extends FormPage
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
+		global $db;
+
+		$this->extrafields = new ExtraFields($db);
+
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -64,8 +82,8 @@ class ListPage extends FormPage
 		// Purge search criteria
 		if (GETPOST("button_removefilter_x") || GETPOST("button_removefilter")) // Both test are required to be compatible with all browsers
 		{
-		    $_POST = array();
-		    $_GET  = array();
+			$_POST = array();
+			$_GET  = array();
 		}
 	}
 
@@ -111,6 +129,9 @@ class ListPage extends FormPage
 		if (! empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) $param.= '&contextpage='.urlencode($contextpage);
 		if ($limit > 0 && $limit != $conf->liste_limit) $param.= '&limit='.urlencode($limit);
 		if ($optioncss != '') $param.= '&optioncss='.urlencode($optioncss);
+		// Add $param from extra fields
+		$search_array_options = $this->search_array_options;
+		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_param.tpl.php';
 
 		// List title
 		$title = $langs->trans($title);
@@ -134,6 +155,16 @@ class ListPage extends FormPage
 			$enabled = (isset($field['enabled']) ? verifCond($field['enabled']) : 1);
 			$this->arrayfields[$field['name']] = array('label' => $field['label'], 'checked' => $checked, 'enabled' => $enabled);
 		}
+		// Extra fields
+		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label))
+		{
+			foreach($this->extrafields->attribute_label as $key => $val)
+			{
+				if (! empty($this->extrafields->attribute_list[$key])) {
+					$this->arrayfields['ef.'.$key] = array('label'=>$this->extrafields->attribute_label[$key], 'checked'=>(($this->extrafields->attribute_list[$key]<0)?0:1), 'position'=>$this->extrafields->attribute_pos[$key], 'enabled'=>(abs($this->extrafields->attribute_list[$key])!=3 && $this->extrafields->attribute_perms[$key]));
+				}
+			}
+		}
 		// This change content of $arrayfields
 		$varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
 		$selectedfields = $this->form->multiSelectArrayWithCheckbox('selectedfields', $this->arrayfields, $varpage);
@@ -147,6 +178,11 @@ class ListPage extends FormPage
 				print_liste_field_titre($langs->trans($field['label']), $_SERVER["PHP_SELF"], $field['name'], '', $param, $field_align, $sortfield, $sortorder, $field_class);
 			}
 		}
+		// Extra fields
+		$extrafields = $this->extrafields;
+		$extralabels = $this->extralabels;
+		$arrayfields = $this->arrayfields;
+		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_title.tpl.php';
 		print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], '', '', '', 'align="right"', $sortfield, $sortorder, 'maxwidthsearch ');
 		echo "</tr>\n";
 
@@ -162,6 +198,8 @@ class ListPage extends FormPage
 					echo '<td class="liste_titre'.$field_class.'"'.$field_align.'>'.$search_input.'</td>';
 				}
 			}
+			// Extra fields
+			include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_input.tpl.php';
 			// search buttons
 			echo '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans("Search"),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
 			echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
@@ -181,6 +219,60 @@ class ListPage extends FormPage
 		if (! empty($this->arrayfields[$field_name]['checked'])) {
 			parent::addColumn($content, $attr);
 		}
+	}
+
+	/**
+	 * Add extrafields columns
+	 *
+	 * @param   $obj   object
+	 */
+	public function addExtraFields($obj)
+	{
+		global $db, $conf;
+
+		$extrafields = $this->extrafields;
+		$arrayfields = $this->arrayfields;
+
+		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_print_fields.tpl.php';
+	}
+
+	/**
+	 * Fetch extrafields
+	 *
+	 * @param   $obj   object
+	 */
+	public function fetchExtraFields($elementtype, &$more_fields, &$join, &$where)
+	{
+		global $db, $conf;
+
+		// fetch optionals attributes and labels
+		$this->extralabels = $this->extrafields->fetch_name_optionals_label($elementtype);
+		$this->search_array_options = $this->extrafields->getOptionalsFromPost($this->extralabels, '', 'search_');
+
+		// Add fields from extrafields
+		foreach ($this->extrafields->attribute_label as $key => $val) {
+			$more_fields.= ($extrafields->attribute_type[$key] != 'separate' ? ', ef.'.$key.' as options_'.$key : '');
+		}
+		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label)) {
+			$join.= " LEFT JOIN ".MAIN_DB_PREFIX.$elementtype."_extrafields as ef on (t.rowid = ef.fk_object)";
+		}
+
+		// Add where from extra fields
+		$sql = '';
+		$extrafields = $this->extrafields;
+		$search_array_options = $this->search_array_options;
+		// Fix date search
+		foreach ($search_array_options as $key => $val)
+		{
+			$tmpkey = preg_replace('/search_options_/', '', $key);
+			$type = $extrafields->attribute_type[$tmpkey];
+			if (in_array($type, array('date', 'datetime')) && ! empty($val)) {
+				$where.= " AND date(ef.".$tmpkey.") = date('".$db->idate($val)."')";
+				unset($search_array_options[$key]);
+			}
+		}
+		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_sql.tpl.php';
+		$where.= $sql;
 	}
 
 	/**

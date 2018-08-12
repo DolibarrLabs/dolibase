@@ -47,6 +47,10 @@ class SetupPage extends FormPage
 	 * @var string Title right link
 	 */
 	protected $title_link = '';
+	/**
+	 * @var boolean used to add extrafields tab
+	 */
+	protected $add_extrafields_tab = false;
 
 
 	/**
@@ -55,8 +59,9 @@ class SetupPage extends FormPage
 	 * @param     $page_title    			  HTML page title
 	 * @param     $access_perm   			  Access permission
 	 * @param     $disable_default_actions    Disable default actions
+	 * @param     $add_extrafields_tab        Add extrafields tab
 	 */
-	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false)
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false)
 	{
 		global $langs, $dolibase_config;
 
@@ -66,6 +71,7 @@ class SetupPage extends FormPage
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
+		$this->add_extrafields_tab     = $add_extrafields_tab;
 
 		// Set numbering model constant name
 		$this->num_model_const_name = get_rights_class(true) . '_ADDON';
@@ -289,10 +295,23 @@ class SetupPage extends FormPage
 		// Add default tabs
 		if (empty($this->tabs)) {
 			$this->addTab("Settings", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home", true);
+			if ($this->add_extrafields_tab) {
+				$this->addTab("ExtraFields", "/".$dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
+			}
 			$this->addTab("About", "/".$dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
 		}
 		
 		parent::generate();
+	}
+
+	/**
+	 * Generate tabs
+	 *
+	 * @param     $noheader     -1 or 0=Add tab header, 1=no tab header.
+	 */
+	protected function generateTabs($noheader = -1)
+	{
+		parent::generateTabs($noheader);
 	}
 
 	/**

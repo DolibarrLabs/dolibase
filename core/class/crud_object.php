@@ -208,8 +208,10 @@ class CrudObject extends CommonObject
 		foreach ($this->fetch_fields as $field) {
 			$sql.= "t.`" . $field . "`,";
 		}
-		if (empty($more_fields)) $sql = substr($sql, 0, -1); // Remove the last ','
-		else $sql.= ', '.$more_fields;
+		$sql = substr($sql, 0, -1); // Remove the last ','
+		if (! empty($more_fields)) {
+			$sql.= $more_fields[0] == ',' ? $more_fields : ', ' . $more_fields;
+		}
 		$sql.= " FROM " . MAIN_DB_PREFIX . $this->table_element . " as t";
 		if (! empty($join)) $sql.= $join;
 		if (! empty($where)) $sql.= " WHERE ".$where;
@@ -255,6 +257,27 @@ class CrudObject extends CommonObject
 
 					foreach ($this->fetch_fields as $field) {
 						$this->lines[$i]->$field = $obj->$field;
+					}
+
+					if (! empty($more_fields)) 
+					{
+						$fields = explode(',', $more_fields);
+
+						foreach ($fields as $field) 
+						{
+							$field = trim($field);
+
+							if (! empty($field))
+							{
+								// check for ' as ' alias
+								$pos = stripos($field, ' as ');
+								if ($pos !== false) {
+									$field = substr($field, $pos + 4); // 4 == strlen(' as ')
+								}
+								// add field
+								$this->lines[$i]->$field = $obj->$field;
+							}
+						}
 					}
 
 					// enssure that $this->id is filled because we use it in update/delete/getNomUrl functions
