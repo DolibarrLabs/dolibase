@@ -242,11 +242,8 @@ class CardPage extends CreatePage
 	{
 		global $db, $conf, $langs, $hookmanager, $user, $action;
 
-		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
-
-		$extrafields = new ExtraFields($db);
-
 		// fetch optionals attributes and labels
+		$extrafields = $this->extrafields;
 		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element, true);
 		$object->fetch_optionals($object->id, $extralabels);
 		$object->element = get_rights_class();
@@ -261,17 +258,12 @@ class CardPage extends CreatePage
 	 */
 	public function updateExtraFields($object)
 	{
-		global $db;
-
-		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
-
-		$extrafields = new ExtraFields($db);
 		$error = 0;
 
 		// Fill array 'array_options' with data from update form
-		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+		$extralabels = $this->extrafields->fetch_name_optionals_label($object->table_element);
 		$object->fetch_optionals($object->id, $extralabels);
-		$ret = $extrafields->setOptionalsFromPost($extralabels, $object, GETPOST('attribute'));
+		$ret = $this->extrafields->setOptionalsFromPost($extralabels, $object, GETPOST('attribute'));
 		if ($ret < 0) $error++;
 		if (! $error)
 		{

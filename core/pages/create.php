@@ -17,6 +17,7 @@
 
 dolibase_include_once('/core/class/form_page.php');
 dolibase_include_once('/core/class/field.php');
+include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 
 /**
  * CreatePage class
@@ -28,6 +29,10 @@ class CreatePage extends FormPage
 	 * @var array Fields to check on validation
 	 */
 	public $fields = array();
+	/**
+	 * @var object extrafields
+	 */
+	protected $extrafields;
 
 
 	/**
@@ -38,6 +43,10 @@ class CreatePage extends FormPage
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
+		global $db;
+
+		$this->extrafields = new ExtraFields($db);
+
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -65,17 +74,11 @@ class CreatePage extends FormPage
 	 */
 	public function checkExtraFields($object)
 	{
-		global $db;
-
-		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
-
-		$extrafields = new ExtraFields($db);
-
 		// fetch optionals attributes and labels
-		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+		$extralabels = $this->extrafields->fetch_name_optionals_label($object->table_element);
 
 		// Fill array 'array_options' with data from add form
-		$result = $extrafields->setOptionalsFromPost($extralabels, $object);
+		$result = $this->extrafields->setOptionalsFromPost($extralabels, $object);
 
 		return $result >= 0 ? true : false;
 	}
@@ -310,13 +313,10 @@ class CreatePage extends FormPage
 	 */
 	public function addExtraFields($object)
 	{
-		global $db, $conf, $langs, $hookmanager, $action;
-
-		include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
-
-		$extrafields = new ExtraFields($db);
+		global $conf, $langs, $hookmanager, $action;
 
 		// fetch optionals attributes and labels
+		$extrafields = $this->extrafields;
 		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
 
 		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_add.tpl.php';
