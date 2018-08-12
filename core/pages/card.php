@@ -49,9 +49,10 @@ class CardPage extends CreatePage
 	 * @param     $access_perm    Access permission
 	 * @param     $edit_perm      Edit permission
 	 * @param     $delete_perm    Delete permission
+	 * @param     $show_documents Show documents/linked files block
 	 * @param     $enable_save_as Enable save as feature
 	 */
-	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $enable_save_as = false, $show_documents = false)
+	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $show_documents = false, $enable_save_as = false)
 	{
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
@@ -399,39 +400,34 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			$action = GETPOST('action', 'alpha');
+			global $conf, $langs, $dolibase_config;
 
-			if ($action != 'presend')
+			$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
+
+			echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
+
+			// Dolibase object linking feature
+			if ($conf->global->$const_name)
 			{
-				global $conf, $langs, $dolibase_config;
+				$langs->load('related_objects@'.$dolibase_config['module']['folder']);
 
-				$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
-
-				echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
-
-				// Dolibase object linking feature
-				if ($conf->global->$const_name)
-				{
-					$langs->load('related_objects@'.$dolibase_config['module']['folder']);
-
-					show_related_objects($object);
-				}
-				// Dolibarr linked objects block
-				else if (isset($object->socid) || isset($object->fk_soc))
-				{
-					$permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
-					$action = GETPOST('action', 'alpha');
-					$id = GETPOST('id', 'int');
-
-					include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
-
-					// Show links to link elements
-					$linktoelem = $this->form->showLinkToObjectBlock($object);
-					$somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
-				}
-
-				echo '</div></div>';
+				show_related_objects($object);
 			}
+			// Dolibarr linked objects block
+			else if (isset($object->socid) || isset($object->fk_soc))
+			{
+				$permissiondellink = $this->canEdit(); // Used by the include of actions_dellink.inc.php
+				$action = GETPOST('action', 'alpha');
+				$id = GETPOST('id', 'int');
+
+				include DOL_DOCUMENT_ROOT.'/core/actions_dellink.inc.php'; // Must be include, not include_once
+
+				// Show links to link elements
+				$linktoelem = $this->form->showLinkToObjectBlock($object);
+				$somethingshown = $this->form->showLinkedObjectBlock($object, $linktoelem);
+			}
+
+			echo '</div></div>';
 		}
 	}
 
@@ -443,31 +439,137 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			$action = GETPOST('action', 'alpha');
+			global $db, $conf, $user;
+			
+			include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
+			
+			$formfile = new FormFile($db);
 
-			if ($action != 'presend')
-			{
-				global $db, $conf, $user;
-				
-				include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
-				
-				$formfile = new FormFile($db);
+			echo '<div class="fichecenter"><div class="fichehalfleft">';
 
-				echo '<div class="fichecenter"><div class="fichehalfleft">';
+			// Documents
+			$ref = dol_sanitizeFileName($object->ref);
+			$const_name = get_rights_class();
+			$file = $conf->$const_name->dir_output . '/' . $ref . '/' . $ref . '.pdf';
+			$relativepath = $ref . '/' . $ref . '.pdf';
+			$filedir = $conf->$const_name->dir_output . '/' . $ref;
+			$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
+			$genallowed = $user->rights->$const_name->create;
+			$delallowed = $user->rights->$const_name->delete;
+			echo $formfile->showdocuments($const_name, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
 
-				// Documents
-				$ref = dol_sanitizeFileName($object->ref);
-				$const_name = get_rights_class();
-				$file = $conf->$const_name->dir_output . '/' . $ref . '/' . $ref . '.pdf';
-				$relativepath = $ref . '/' . $ref . '.pdf';
-				$filedir = $conf->$const_name->dir_output . '/' . $ref;
-				$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
-				$genallowed = $user->rights->$const_name->create;
-				$delallowed = $user->rights->$const_name->delete;
-				echo $formfile->showdocuments($const_name, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->modelpdf);
+			echo '</div></div>';
+		}
+	}
 
-				echo '</div></div>';
+	/**
+	 * Print mail form
+	 *
+	 */
+	protected function printMailForm($object)
+	{
+		if (! empty($object) && isset($object->id))
+		{
+			global $db, $conf, $langs, $user;
+
+			$rights_class = get_rights_class();
+
+			if (! $this->close_buttons_div) {
+				dol_fiche_end();
+				$this->close_buttons_div = true;
 			}
+
+			echo '<div class="clearboth"></div><br>';
+			echo load_fiche_titre($langs->trans('SendByMail'));
+			dol_fiche_head();
+
+			// Create mail form
+			include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
+			$formmail = new FormMail($db);
+			$formmail->param['langsmodels'] = (empty($newlang)?$langs->defaultlang:$newlang);
+			$formmail->fromtype = (GETPOST('fromtype')?GETPOST('fromtype'):(!empty($conf->global->MAIN_MAIL_DEFAULT_FROMTYPE)?$conf->global->MAIN_MAIL_DEFAULT_FROMTYPE:'user'));
+			if($formmail->fromtype === 'user'){
+				$formmail->fromid = $user->id;
+				$formmail->frommail = $user->email; // fix for dolibarr 3.9
+			}
+			$formmail->trackid = $rights_class.$object->id;
+			if (! empty($conf->global->MAIN_EMAIL_ADD_TRACK_ID) && ($conf->global->MAIN_EMAIL_ADD_TRACK_ID & 2)) // If bit 2 is set
+			{
+				include DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
+				$formmail->frommail = dolAddEmailTrackId($formmail->frommail, $formmail->trackid);
+			}
+			$formmail->withfrom = 1;
+			$liste = array();
+			if ($object->fk_soc > 0)
+			{
+				foreach ($object->thirdparty->thirdparty_and_contact_email_array(1) as $key => $value) {
+					$liste [$key] = $value;
+				}
+			}
+			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $liste;
+			$formmail->withtocc            = $liste;
+			$formmail->withtoccc           = $conf->global->MAIN_EMAIL_USECCC;
+			$formmail->withtopic           = $langs->trans('MailSubject', '__REF__');
+			$formmail->withfile            = 2;
+			$formmail->withbody            = $langs->trans('MailTemplate');
+			$formmail->withdeliveryreceipt = 1;
+			$formmail->withcancel = 1;
+			// Substitutions Array
+			if (method_exists($formmail,"setSubstitFromObject")) { // fix for dolibarr 3.9
+				$formmail->setSubstitFromObject($object, $langs);
+				$formmail->substit ['__CONTACTCIVNAME__'] = '';
+				$formmail->substit ['__PERSONALIZED__'] = '';
+			}
+			else {
+				$formmail->substit ['__CONTACTCIVNAME__'] = '';
+				$formmail->substit ['__PERSONALIZED__'] = '';
+				$formmail->substit ['__SIGNATURE__'] = $user->signature;
+			}
+			$formmail->substit ['__REF__'] = $object->ref;
+
+			$custcontact = '';
+			$contactarr = array();
+			$contactarr = $object->liste_contact(-1, 'external');
+
+			if (is_array($contactarr) && count($contactarr) > 0)
+			{
+				foreach ($contactarr as $contact)
+				{
+					if ($contact['libelle'] == $langs->trans('TypeContact_external_CUSTOMER')) { // TODO Use code and not label
+						$contactstatic = new Contact($db);
+						$contactstatic->fetch($contact['id']);
+						$custcontact = $contactstatic->getFullName($langs, 1);
+					}
+				}
+
+				if (! empty($custcontact)) {
+					$formmail->substit['__CONTACTCIVNAME__'] = $custcontact;
+				}
+			}
+
+			// Get file/attachment
+			$ref = dol_sanitizeFileName($object->ref);
+			include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
+			$fileparams = dol_most_recent_file($conf->$rights_class->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
+			$file = $fileparams['fullname'];
+
+			// Array of additional parameters
+			$formmail->param['action']    = 'send';
+			$formmail->param['models']    = $rights_class.'_send';
+			$formmail->param['models_id'] = GETPOST('modelmailselected','int');
+			$formmail->param['returnurl'] = $_SERVER["PHP_SELF"] . '?id=' . $object->id;
+			$formmail->param['fileinit']  = array($file);
+
+			/*
+			// Init list of files
+			if (GETPOST("mode") == 'init') {
+				$formmail->clear_attached_files();
+				$formmail->add_attached_files($file, basename($file), dol_mimetype($file));
+			}
+			*/
+
+			// Show form
+			echo $formmail->get_form();
 		}
 	}
 
@@ -479,9 +581,19 @@ class CardPage extends CreatePage
 	{
 		if ($this->close_buttons_div) echo '</div>';
 
-		if ($this->show_documents) $this->printDocuments($object);
+		//$action = GETPOST('action', 'alpha');
+		global $action;
 
-		$this->printRelatedObjects($object);
+		if ($action == 'presend')
+		{
+			$this->printMailForm($object);
+		}
+		else
+		{
+			if ($this->show_documents) $this->printDocuments($object);
+
+			$this->printRelatedObjects($object);
+		}
 
 		parent::end();
 	}

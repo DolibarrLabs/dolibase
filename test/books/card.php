@@ -91,6 +91,14 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 		$book->deleteDocument();
 	}
 
+	// Send by mail
+	if ($action == 'send')
+	{
+		$object = $book;
+		$object->fk_thirdparty = 1; // only to fix 'ErrorFailedToReadObject' error message
+		include DOL_DOCUMENT_ROOT.'/core/actions_sendmails.inc.php';
+	}
+
 	// --- End actions
 
 	$page->addTab("Card", "/books/card.php?id=".$id.'&ref='.$ref, true);
@@ -163,8 +171,11 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	$page->closeTable();
 
 	// Action buttons
-	if ($optioncss != 'print')
+	if ($optioncss != 'print' && $action != 'presend')
 	{
+		// Send by mail
+		$page->addButton('SendByMail', $_SERVER["PHP_SELF"] . '?id=' . $book->id . '&action=presend&mode=init');
+
 		// Save as
 		$page->addSaveAsButton();
 

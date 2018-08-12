@@ -3,7 +3,10 @@
 
 #### 1.7.0 - AUG18
 
+*   NEW: add email sending support.
 *   NEW: add PDF/Document generation support.
+*   NEW: update Books module to version 1.3.0.
+*   FIX: some typo errors.
 
 ---
 

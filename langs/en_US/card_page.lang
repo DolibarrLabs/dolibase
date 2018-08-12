@@ -19,3 +19,6 @@
 # Generic
 #
 SaveAs = Save as
+SendByMail = Send by mail
+MailSubject = Submission of document __REF__
+MailTemplate = Hello __CONTACTCIVNAME__\n\nYou will find here the document __REF__\n\n__PERSONALIZED__Sincerely\n\n__SIGNATURE__
