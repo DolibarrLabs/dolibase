@@ -582,17 +582,19 @@ class CardPage extends CreatePage
 		if ($this->close_buttons_div) echo '</div>';
 
 		//$action = GETPOST('action', 'alpha');
+		$optioncss = GETPOST('optioncss', 'alpha');
 		global $action;
 
-		if ($action == 'presend')
+		if ($optioncss != 'print')
 		{
-			$this->printMailForm($object);
-		}
-		else
-		{
-			if ($this->show_documents) $this->printDocuments($object);
+			if ($action == 'presend') {
+				$this->printMailForm($object);
+			}
+			else {
+				if ($this->show_documents) $this->printDocuments($object);
 
-			$this->printRelatedObjects($object);
+				$this->printRelatedObjects($object);
+			}
 		}
 
 		parent::end();
