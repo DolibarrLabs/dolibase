@@ -282,8 +282,8 @@ class CustomObject extends CrudObject
 			require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
 
 			$langs->load("other");
-			$const_name = get_rights_class();
-			$upload_dir = $conf->$const_name->dir_output;
+			$rights_class = get_rights_class();
+			$upload_dir = $conf->$rights_class->dir_output;
 			$file = $upload_dir . '/' . GETPOST('file');
 			$result = dol_delete_file($file, 0, 0, 0, $object);
 			if ($result)

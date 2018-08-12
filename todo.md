@@ -1,5 +1,6 @@
 ### ToDo
 
+* extra-fields support
 * Email templates support
 * Module update feature
 * Calendar Page

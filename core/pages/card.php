@@ -449,14 +449,14 @@ class CardPage extends CreatePage
 
 			// Documents
 			$ref = dol_sanitizeFileName($object->ref);
-			$const_name = get_rights_class();
-			$file = $conf->$const_name->dir_output . '/' . $ref . '/' . $ref . '.pdf';
+			$rights_class = get_rights_class();
+			$file = $conf->$rights_class->dir_output . '/' . $ref . '/' . $ref . '.pdf';
 			$relativepath = $ref . '/' . $ref . '.pdf';
-			$filedir = $conf->$const_name->dir_output . '/' . $ref;
+			$filedir = $conf->$rights_class->dir_output . '/' . $ref;
 			$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
-			$genallowed = $user->rights->$const_name->create;
-			$delallowed = $user->rights->$const_name->delete;
-			echo $formfile->showdocuments($const_name, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
+			$genallowed = $user->rights->$rights_class->create;
+			$delallowed = $user->rights->$rights_class->delete;
+			echo $formfile->showdocuments($rights_class, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
 
 			echo '</div></div>';
 		}
