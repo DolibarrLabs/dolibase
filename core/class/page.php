@@ -163,7 +163,7 @@ class Page
 	 * @param     $title         tab title
 	 * @param     $url           tab url
 	 * @param     $is_active     should this tab be the activated one (true or false)
-	 * @param     $position      tab position (-1 means add to the last)
+	 * @param     $position      tab position (-1 means add to the end)
 	 */
 	public function addTab($title, $url, $is_active = false, $position = -1)
 	{
