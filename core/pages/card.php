@@ -606,13 +606,11 @@ class CardPage extends CreatePage
 			$formmail->param['returnurl'] = $_SERVER["PHP_SELF"] . '?id=' . $object->id;
 			$formmail->param['fileinit']  = array($file);
 
-			/*
 			// Init list of files
 			if (GETPOST('mode') == 'init') {
 				$formmail->clear_attached_files();
 				$formmail->add_attached_files($file, basename($file), dol_mimetype($file));
 			}
-			*/
 
 			// Show form
 			echo $formmail->get_form();

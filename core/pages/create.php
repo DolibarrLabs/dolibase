@@ -313,13 +313,18 @@ class CreatePage extends FormPage
 	 */
 	public function addExtraFields($object)
 	{
-		global $conf, $langs, $hookmanager, $action;
+		global $hookmanager, $action;
 
 		// fetch optionals attributes and labels
-		$extrafields = $this->extrafields;
-		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element);
+		$this->extralabels = $this->extrafields->fetch_name_optionals_label($object->table_element);
 
-		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_add.tpl.php';
+		// show attributes
+		$parameters = array();
+		$reshook = $hookmanager->executeHooks('formObjectOptions', $parameters, $object, $action);
+		echo $hookmanager->resPrint;
+		if (empty($reshook) && ! empty($this->extrafields->attribute_label)) {
+			echo $object->showOptionals($this->extrafields, 'edit');
+		}
 	}
 
 	/**

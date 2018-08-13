@@ -129,9 +129,12 @@ class ListPage extends FormPage
 		if (! empty($contextpage) && $contextpage != $_SERVER["PHP_SELF"]) $param.= '&contextpage='.urlencode($contextpage);
 		if ($limit > 0 && $limit != $conf->liste_limit) $param.= '&limit='.urlencode($limit);
 		if ($optioncss != '') $param.= '&optioncss='.urlencode($optioncss);
-		// Add $param from extra fields
-		$search_array_options = $this->search_array_options;
-		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_param.tpl.php';
+		// Loop to complete $param for extrafields
+		foreach ($this->search_array_options as $key => $val)
+		{
+			$tmpkey = preg_replace('/search_options_/', '', $key);
+			if ($val != '') $param.= '&search_options_'.$tmpkey.'='.urlencode($val);
+		}
 
 		// List title
 		$title = $langs->trans($title);
@@ -160,9 +163,7 @@ class ListPage extends FormPage
 		{
 			foreach($this->extrafields->attribute_label as $key => $val)
 			{
-				if (! empty($this->extrafields->attribute_list[$key])) {
-					$this->arrayfields['ef.'.$key] = array('label'=>$this->extrafields->attribute_label[$key], 'checked'=>(($this->extrafields->attribute_list[$key]<0)?0:1), 'position'=>$this->extrafields->attribute_pos[$key], 'enabled'=>(abs($this->extrafields->attribute_list[$key])!=3 && $this->extrafields->attribute_perms[$key]));
-				}
+				$this->arrayfields['ef.'.$key] = array('label' => $this->extrafields->attribute_label[$key], 'checked' => (($this->extrafields->attribute_list[$key]<0)?0:1), 'position' => $this->extrafields->attribute_pos[$key], 'enabled' => $this->extrafields->attribute_perms[$key]);
 			}
 		}
 		// This change content of $arrayfields
@@ -178,11 +179,20 @@ class ListPage extends FormPage
 				print_liste_field_titre($langs->trans($field['label']), $_SERVER["PHP_SELF"], $field['name'], '', $param, $field_align, $sortfield, $sortorder, $field_class);
 			}
 		}
-		// Extra fields
-		$extrafields = $this->extrafields;
-		$extralabels = $this->extralabels;
-		$arrayfields = $this->arrayfields;
-		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_title.tpl.php';
+		// Loop to show all columns of extrafields for the title line
+		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label))
+		{
+			foreach($this->extrafields->attribute_label as $key => $val)
+			{
+				if (! empty($this->arrayfields["ef.".$key]['checked']))
+				{
+					$align = $this->extrafields->getAlignFlag($key);
+					$sortonfield = "ef.".$key;
+					if (! empty($this->extrafields->attribute_computed[$key])) $sortonfield = '';
+					echo getTitleFieldOfList($langs->trans($this->extralabels[$key]), 0, $_SERVER["PHP_SELF"], $sortonfield, "", $param, ($align?'align="'.$align.'"':''), $sortfield, $sortorder)."\n";
+				}
+			}
+		}
 		print_liste_field_titre($selectedfields, $_SERVER["PHP_SELF"], '', '', '', 'align="right"', $sortfield, $sortorder, 'maxwidthsearch ');
 		echo "</tr>\n";
 
@@ -198,8 +208,39 @@ class ListPage extends FormPage
 					echo '<td class="liste_titre'.$field_class.'"'.$field_align.'>'.$search_input.'</td>';
 				}
 			}
-			// Extra fields
-			include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_input.tpl.php';
+			// Loop to show all columns of extrafields for the search title line
+			if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label))
+			{
+				foreach($this->extrafields->attribute_label as $key => $val)
+				{
+					if (! empty($this->arrayfields['ef.'.$key]['checked'])) {
+						$align = $this->extrafields->getAlignFlag($key);
+						$typeofextrafield = $this->extrafields->attribute_type[$key];
+						echo '<td class="liste_titre'.($align?' '.$align:'').'">';
+						if (in_array($typeofextrafield, array('varchar', 'int', 'double', 'select')) && empty($this->extrafields->attribute_computed[$key]))
+						{
+							$tmpkey = preg_replace('/search_options_/', '', $key);
+							$searchclass = '';
+							if (in_array($typeofextrafield, array('varchar', 'select'))) $searchclass='searchstring';
+							if (in_array($typeofextrafield, array('int', 'double'))) $searchclass='searchnum';
+							echo '<input class="flat'.($searchclass?' '.$searchclass:'').'" size="4" type="text" name="search_options_'.$tmpkey.'" value="'.dol_escape_htmltag($this->search_array_options['search_options_'.$tmpkey]).'">';
+						}
+						elseif (! in_array($typeofextrafield, array('datetime','timestamp')))
+						{
+							// for the type as 'checkbox', 'chkbxlst', 'sellist' we should use code instead of id (example: I declare a 'chkbxlst' to have a link with dictionnairy, I have to extend it with the 'code' instead 'rowid')
+							$morecss = '';
+							if ($typeofextrafield == 'sellist') $morecss = 'maxwidth200';
+							echo $this->extrafields->showInputField($key, $this->search_array_options['search_options_'.$key], '', '', 'search_', $morecss);
+						}
+						elseif (in_array($typeofextrafield, array('datetime','timestamp')))
+						{
+							// TODO
+							// Use showInputField in a particular manner to have input with a comparison operator, not input for a specific value date-hour-minutes
+						}
+						echo '</td>';
+					}
+				}
+			}
 			// search buttons
 			echo '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans("Search"),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
 			echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
@@ -228,12 +269,32 @@ class ListPage extends FormPage
 	 */
 	public function addExtraFields($obj)
 	{
-		global $db, $conf;
+		global $db;
 
-		$extrafields = $this->extrafields;
-		$arrayfields = $this->arrayfields;
-
-		include DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_print_fields.tpl.php';
+		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label))
+		{
+			foreach($this->extrafields->attribute_label as $key => $val)
+			{
+				if (! empty($this->arrayfields['ef.'.$key]['checked']))
+				{
+					$align = $this->extrafields->getAlignFlag($key);
+					echo '<td';
+					if ($align) echo ' align="'.$align.'"';
+					echo '>';
+					$tmpkey = 'options_'.$key;
+					if (in_array($this->extrafields->attribute_type[$key], array('date', 'datetime', 'timestamp')))
+					{
+						$value = $db->jdate($obj->$tmpkey);
+					}
+					else
+					{
+						$value = $obj->$tmpkey;
+					}
+					echo $this->extrafields->showOutputField($key, $value, '');
+					echo '</td>';
+				}
+			}
+		}
 	}
 
 	/**
@@ -243,7 +304,7 @@ class ListPage extends FormPage
 	 */
 	public function fetchExtraFields($elementtype, &$more_fields, &$join, &$where)
 	{
-		global $db, $conf;
+		global $db;
 
 		// fetch optionals attributes and labels
 		$this->extralabels = $this->extrafields->fetch_name_optionals_label($elementtype);
@@ -251,28 +312,35 @@ class ListPage extends FormPage
 
 		// Add fields from extrafields
 		foreach ($this->extrafields->attribute_label as $key => $val) {
-			$more_fields.= ($extrafields->attribute_type[$key] != 'separate' ? ', ef.'.$key.' as options_'.$key : '');
+			$more_fields.= ($this->extrafields->attribute_type[$key] != 'separate' ? ', ef.'.$key.' as options_'.$key : '');
 		}
 		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label)) {
 			$join.= " LEFT JOIN ".MAIN_DB_PREFIX.$elementtype."_extrafields as ef on (t.rowid = ef.fk_object)";
 		}
 
-		// Add where from extra fields
-		$sql = '';
-		$extrafields = $this->extrafields;
-		$search_array_options = $this->search_array_options;
-		// Fix date search
-		foreach ($search_array_options as $key => $val)
+		// Loop to complete the sql search criterias from extrafields
+		foreach ($this->search_array_options as $key => $val)
 		{
-			$tmpkey = preg_replace('/search_options_/', '', $key);
-			$type = $extrafields->attribute_type[$tmpkey];
-			if (in_array($type, array('date', 'datetime')) && ! empty($val)) {
-				$where.= " AND date(ef.".$tmpkey.") = date('".$db->idate($val)."')";
-				unset($search_array_options[$key]);
+			$tmpkey = preg_replace('/search_options_/','',$key);
+			$type = $this->extrafields->attribute_type[$tmpkey];
+
+			if (in_array($type, array('date', 'datetime')) && ! empty($val))
+			{
+				$where .= " AND date(ef.".$tmpkey.") = date('".$db->idate($val)."')";
+			}
+			else
+			{
+				$crit = $val;
+				$mode_search = 0;
+
+				if (in_array($type, array('int', 'double', 'real'))) $mode_search = 1; // Search on a numeric
+				if (in_array($type, array('sellist', 'link', 'chkbxlst', 'checkbox')) && $crit != '0' && $crit != '-1') $mode_search = 2; // Search on a foreign key int
+				if ($crit != '' && (! in_array($type, array('select','sellist')) || $crit != '0') && (! in_array($type, array('link')) || $crit != '-1'))
+				{
+					$where .= natural_search('ef.'.$tmpkey, $crit, $mode_search);
+				}
 			}
 		}
-		include_once DOL_DOCUMENT_ROOT.'/core/tpl/extrafields_list_search_sql.tpl.php';
-		$where.= $sql;
 	}
 
 	/**
