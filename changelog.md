@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.2 - AUG18
+
+*   NEW: add email templates support (only with $type == 'all' for the moment).
+*   FIX: extrafields issues on dolibarr 5.0.4.
+
+---
+
 #### 1.7.1 - AUG18
 
 *   NEW: add extra-fields support.
