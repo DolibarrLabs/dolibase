@@ -540,7 +540,7 @@ class CardPage extends CreatePage
 			$formmail->trackid = $rights_class.$object->id;
 			if (! empty($conf->global->MAIN_EMAIL_ADD_TRACK_ID) && ($conf->global->MAIN_EMAIL_ADD_TRACK_ID & 2)) // If bit 2 is set
 			{
-				include DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
+				include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 				$formmail->frommail = dolAddEmailTrackId($formmail->frommail, $formmail->trackid);
 			}
 			$formmail->withfrom = 1;
@@ -558,23 +558,23 @@ class CardPage extends CreatePage
 			$formmail->withfile            = 2;
 			$formmail->withbody            = $langs->trans('MailTemplate');
 			$formmail->withdeliveryreceipt = 1;
-			$formmail->withcancel = 1;
+			$formmail->withcancel          = 1;
 			// Substitutions Array
 			if (method_exists($formmail,"setSubstitFromObject")) { // fix for dolibarr 3.9
 				$formmail->setSubstitFromObject($object, $langs);
-				$formmail->substit ['__CONTACTCIVNAME__'] = '';
-				$formmail->substit ['__PERSONALIZED__'] = '';
+				$formmail->substit['__CONTACTCIVNAME__'] = '';
+				$formmail->substit['__PERSONALIZED__']   = '';
 			}
 			else {
-				$formmail->substit ['__CONTACTCIVNAME__'] = '';
-				$formmail->substit ['__PERSONALIZED__'] = '';
-				$formmail->substit ['__SIGNATURE__'] = $user->signature;
+				$formmail->substit['__CONTACTCIVNAME__'] = '';
+				$formmail->substit['__PERSONALIZED__']   = '';
+				$formmail->substit['__SIGNATURE__']      = $user->signature;
 			}
-			$formmail->substit ['__REF__'] = $object->ref;
+			$formmail->substit['__REF__'] = $object->ref;
 
 			$custcontact = '';
-			$contactarr = array();
-			$contactarr = $object->liste_contact(-1, 'external');
+			$contactarr  = array();
+			$contactarr  = $object->liste_contact(-1, 'external');
 
 			if (is_array($contactarr) && count($contactarr) > 0)
 			{
@@ -601,13 +601,14 @@ class CardPage extends CreatePage
 			// Array of additional parameters
 			$formmail->param['action']    = 'send';
 			$formmail->param['models']    = $rights_class.'_send';
-			$formmail->param['models_id'] = GETPOST('modelmailselected','int');
+			$formmail->param['models_id'] = GETPOST('modelmailselected', 'int');
+			$formmail->param['id']        = $object->id;
 			$formmail->param['returnurl'] = $_SERVER["PHP_SELF"] . '?id=' . $object->id;
 			$formmail->param['fileinit']  = array($file);
 
 			/*
 			// Init list of files
-			if (GETPOST("mode") == 'init') {
+			if (GETPOST('mode') == 'init') {
 				$formmail->clear_attached_files();
 				$formmail->add_attached_files($file, basename($file), dol_mimetype($file));
 			}
@@ -619,6 +620,20 @@ class CardPage extends CreatePage
 	}
 
 	/**
+	 * Generate page begining
+	 *
+	 */
+	public function begin()
+	{
+		global $action;
+
+		// Select mail models is same action as presend
+		if (GETPOST('modelselected')) $action = 'presend';
+
+		parent::begin();
+	}
+
+	/**
 	 * Generate page end
 	 *
 	 */
@@ -626,9 +641,8 @@ class CardPage extends CreatePage
 	{
 		if ($this->close_buttons_div) echo '</div>';
 
-		//$action = GETPOST('action', 'alpha');
+		global $action; // should be global
 		$optioncss = GETPOST('optioncss', 'alpha');
-		global $action;
 
 		if ($optioncss != 'print')
 		{
