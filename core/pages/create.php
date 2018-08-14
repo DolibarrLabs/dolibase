@@ -316,7 +316,7 @@ class CreatePage extends FormPage
 		global $hookmanager, $action;
 
 		// fetch optionals attributes and labels
-		$this->extralabels = $this->extrafields->fetch_name_optionals_label($object->table_element);
+		$extralabels = $this->extrafields->fetch_name_optionals_label($object->table_element);
 
 		// show attributes
 		$parameters = array();
