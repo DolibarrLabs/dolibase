@@ -231,9 +231,9 @@ class SetupPage extends FormPage
 				$object->specimen      = 1;
 				$object->creation_date = time();
 				$object->lines         = array(
-					array('name' => 'Line1', 'value' => '...'),
-					array('name' => 'Line2', 'value' => '...'),
-					array('name' => 'Line3', 'value' => '...')
+					array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'),
+					array('name' => 'Lorem ipsum', 'value' => 'Aliquam tincidunt mauris eu risus.'),
+					array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.')
 				);
 
 				// Search template files
@@ -528,7 +528,7 @@ class SetupPage extends FormPage
 
 		clearstatcache();
 
-		$dirmodels = array_merge(array('/'),(array) $conf->modules_parts['models']);
+		$dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
 
 		foreach ($dirmodels as $reldir)
 		{
@@ -544,7 +544,7 @@ class SetupPage extends FormPage
 				{
 					$var = true;
 
-					while (($file = readdir($handle))!==false)
+					while (($file = readdir($handle)) !== false)
 					{
 						if (substr($file, dol_strlen($file)-3, 3) == 'php')
 						{
@@ -635,11 +635,11 @@ class SetupPage extends FormPage
 		$sql.= " FROM ".MAIN_DB_PREFIX."document_model";
 		$sql.= " WHERE type = '".$this->doc_model_type."'";
 		$sql.= " AND entity = ".$conf->entity;
-		$resql=$db->query($sql);
+		$resql = $db->query($sql);
 		if ($resql)
 		{
 			$i = 0;
-			$num_rows=$db->num_rows($resql);
+			$num_rows = $db->num_rows($resql);
 			while ($i < $num_rows)
 			{
 				$array = $db->fetch_array($resql);
@@ -664,7 +664,7 @@ class SetupPage extends FormPage
 
 		clearstatcache();
 
-		$dirmodels = array_merge(array('/'),(array) $conf->modules_parts['models']);
+		$dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
 
 		foreach ($dirmodels as $reldir)
 		{
@@ -680,7 +680,7 @@ class SetupPage extends FormPage
 				{
 					$var = true;
 
-					while (($file = readdir($handle))!==false)
+					while (($file = readdir($handle)) !== false)
 					{
 						if (preg_match('/\.modules\.php$/i',$file) && preg_match('/^(pdf_|doc_)/',$file))
 						{
