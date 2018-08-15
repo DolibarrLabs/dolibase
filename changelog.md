@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.3 - AUG18
+
+*   NEW: add Document page.
+*   NEW: update Books module to version 1.5.0.
+
+---
+
 #### 1.7.2 - AUG18
 
 *   NEW: add email templates support (only with $type == 'all' for the moment).

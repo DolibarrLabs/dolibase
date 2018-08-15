@@ -15,7 +15,7 @@
  * 
  */
 
-if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '1.7.2'); // a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
+if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '1.7.3'); // a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
 if (! defined('DOLIBASE_LINK')) define('DOLIBASE_LINK', 'https://github.com/AXeL-dev/dolibase');
 if (! defined('DOLIBASE_PATH')) define('DOLIBASE_PATH', str_replace(DOL_DOCUMENT_ROOT, '', __DIR__)); // should keep this file in dolibase root folder (to get things work)
 if (! defined('DOLIBASE_ALLOW_FUNC_CHAINING')) define('DOLIBASE_ALLOW_FUNC_CHAINING', true); // functions chaining may not work on PHP 4

@@ -4,6 +4,7 @@
 include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/card.php');
+dolibase_include_once('/core/pages/document.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
 // Load Dolibase Dictionary Class
@@ -108,7 +109,10 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	// --- End actions
 
+	// Add tabs
 	$page->addTab("Card", "/books/card.php?id=".$id.'&ref='.$ref, true);
+	$page->addTab(DocumentPage::getTabTitle($book), "/books/document.php?id=".$id.'&ref='.$ref);
+	$page->addTab("Log", "/books/log.php?id=".$id.'&ref='.$ref);
 
 	$page->begin();
 
