@@ -3,7 +3,7 @@
 
 #### 1.7.5 - AUG18
 
-*   FIX: doc preview error on setup page.
+*   FIX: document preview error on setup page.
 
 ---
 
