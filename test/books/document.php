@@ -23,8 +23,12 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	$page->addTab("Card", "/books/card.php?id=".$id.'&ref='.$ref);
 	$page->addTab(DocumentPage::getTabTitle($book), "/books/document.php?id=".$id.'&ref='.$ref, true);
 	$page->addTab("Log", "/books/log.php?id=".$id.'&ref='.$ref);
-}
 
-$page->begin($book);
+	$page->begin($book);
+
+	// Documents
+	$page->printDocuments($book);
+}
+else $page->begin();
 
 $page->end();
