@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.5 - AUG18
+
+*   FIX: doc preview error on setup page.
+
+---
+
 #### 1.7.4 - AUG18
 
 *   FIX: major bugs fixes related to new features.

@@ -243,7 +243,7 @@ class SetupPage extends FormPage
 				$dirmodels = array_merge(array('/'),(array) $conf->modules_parts['models']);
 				foreach($dirmodels as $reldir)
 				{
-				    $file = dol_buildpath($reldir."/dolibase/core/doc_models/pdf_".$model.".modules.php", 0);
+				    $file = dol_buildpath($reldir.DOLIBASE_PATH."/core/doc_models/pdf_".$model.".modules.php", 0);
 					if (file_exists($file))
 					{
 						$filefound = 1;
