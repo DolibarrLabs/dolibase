@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.4 - AUG18
+
+*   FIX: major bugs fixes related to new features.
+
+---
+
 #### 1.7.3 - AUG18
 
 *   NEW: add Document page.

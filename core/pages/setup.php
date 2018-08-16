@@ -260,7 +260,8 @@ class SetupPage extends FormPage
 
 					if ($module->write_file($object, $langs) > 0)
 					{
-						header("Location: ".DOL_URL_ROOT."/document.php?modulepart=".$this->doc_model_type."&file=SPECIMEN.pdf");
+						$modulepart = get_rights_class(false, true);
+						header("Location: ".DOL_URL_ROOT."/document.php?modulepart=".$modulepart."&file=SPECIMEN.pdf");
 						return;
 					}
 					else

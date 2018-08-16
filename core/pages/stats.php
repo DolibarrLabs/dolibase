@@ -180,8 +180,8 @@ class StatsPage extends FormPage
 		$endyear = $year;
 
 		// Create directory where to store graph png
-		$rights_class = get_rights_class();
-		$dir = $conf->$rights_class->dir_temp;
+		$modulepart = get_rights_class(false, true);
+		$dir = $conf->$modulepart->dir_temp;
 
 		dol_mkdir($dir);
 

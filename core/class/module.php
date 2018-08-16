@@ -425,8 +425,8 @@ class DolibaseModule extends DolibarrModules
 	{
 		global $conf;
 
-		$dict_table   = MAIN_DB_PREFIX.$table_name;
-		$rights_class = $this->config['module']['rights_class'];
+		$dict_table = MAIN_DB_PREFIX.$table_name;
+		$modulepart = get_rights_class(false, true);
 
 		if (! isset($this->dictionaries['langs'])) {
 			$this->dictionaries['langs'] = $this->config['other']['lang_files'][0];
@@ -440,7 +440,7 @@ class DolibaseModule extends DolibarrModules
 		$this->dictionaries['tabfieldvalue'][]  = $fields_to_update;
 		$this->dictionaries['tabfieldinsert'][] = $fields_to_insert;
 		$this->dictionaries['tabrowid'][]       = $table_pk_field;
-		$this->dictionaries['tabcond'][]        = $conf->$rights_class->enabled;
+		$this->dictionaries['tabcond'][]        = $conf->$modulepart->enabled;
 		$this->dictionaries['tabhelp'][]        = $fields_help;
 	}
 

@@ -80,11 +80,11 @@ class DocumentPage extends Page
 
 		include_once DOL_DOCUMENT_ROOT.'/core/class/link.class.php';
 
-		$rights_class = get_rights_class();
-		$upload_dir   = $conf->$rights_class->dir_output . "/" . dol_sanitizeFileName($object->ref);
-		$nbFiles      = count(dol_dir_list($upload_dir, 'files', 0, '', '(\.meta|_preview.*\.png)$'));
-		$nbLinks      = Link::count($db, $object->element, $object->id);
-		$nbDocuments  = $nbFiles + $nbLinks;
+		$modulepart  = get_rights_class(false, true);
+		$upload_dir  = $conf->$modulepart->dir_output . "/" . dol_sanitizeFileName($object->ref);
+		$nbFiles     = count(dol_dir_list($upload_dir, 'files', 0, '', '(\.meta|_preview.*\.png)$'));
+		$nbLinks     = Link::count($db, $object->element, $object->id);
+		$nbDocuments = $nbFiles + $nbLinks;
 
 		return $langs->trans('Documents') . ($nbDocuments > 0 ? ' <span class="badge">'.$nbDocuments.'</span>' : '');
 	}
@@ -94,36 +94,54 @@ class DocumentPage extends Page
 	 *
 	 * @param     $object         object
 	 */
-	public function begin($object)
+	public function begin($object = '')
 	{
-		global $langs, $conf, $user, $db, $hookmanager, $sortfield, $sortorder;
-
-		if ($object->id > 0)
+		if (! empty($object) && isset($object->id))
 		{
-			$rights_class = get_rights_class();
-			$upload_dir   = $conf->$rights_class->dir_output.'/'.dol_sanitizeFileName($object->ref);
+			global $langs, $conf, $db, $hookmanager, $maxwidthmini, $maxheightmini;
+
+			$modulepart = get_rights_class(false, true);
+			$upload_dir = $conf->$modulepart->dir_output.'/'.dol_sanitizeFileName($object->ref);
 
 			// Get parameters
-			$action    = GETPOST('action', 'alpha');
-			$confirm   = GETPOST('confirm','alpha');
-			$sortfield = GETPOST('sortfield', 'alpha');
-			$sortorder = GETPOST('sortorder', 'alpha');
-			if (! $sortorder) $sortorder = 'ASC';
-			if (! $sortfield) $sortfield = 'name';
+			$action  = GETPOST('action', 'alpha');
+			$confirm = GETPOST('confirm','alpha');
 
 			// Actions
-			global $maxwidthmini, $maxheightmini;
 			include_once DOL_DOCUMENT_ROOT . '/core/lib/images.lib.php'; // should be here
 			include_once DOL_DOCUMENT_ROOT . '/core/actions_linkedfiles.inc.php';
+
 			// Fix documents number after upload a file or add a link by refreshing the page
 			if ((GETPOST('sendit','none') || GETPOST('linkit','none')) && ! empty($conf->global->MAIN_UPLOAD_DOC))
 			{
 				header('Location: ' . $_SERVER["PHP_SELF"] . '?id=' . $object->id);
 				exit;
 			}
+		}
 
-			// Page begin
-			parent::begin();
+		parent::begin();
+	}
+
+	/**
+	 * Print documents/linked files
+	 *
+	 * @param     $object         object
+	 */
+	public function printDocuments($object)
+	{
+		if ($object->id > 0)
+		{
+			global $langs, $conf, $user, $db, $sortfield, $sortorder;
+
+			$modulepart = get_rights_class(false, true);
+			$upload_dir = $conf->$modulepart->dir_output.'/'.dol_sanitizeFileName($object->ref);
+
+			// Get parameters
+			$action    = GETPOST('action', 'alpha');
+			$sortfield = GETPOST('sortfield', 'alpha');
+			$sortorder = GETPOST('sortorder', 'alpha');
+			if (! $sortorder) $sortorder = 'ASC';
+			if (! $sortfield) $sortfield = 'name';
 
 			// Construct files list
 			$filearray = dol_dir_list($upload_dir, 'files', 0, '', '(\.meta|_preview.*\.png)$', $sortfield, (strtolower($sortorder)=='desc'?SORT_DESC:SORT_ASC), 1);
@@ -143,16 +161,12 @@ class DocumentPage extends Page
 			echo "</table>\n";
 			echo '</div>';
 
-			$form       = new Form($db);
-			$modulepart = $rights_class;
-			$permission = $user->rights->$rights_class->create;
-			$permtoedit = $user->rights->$rights_class->modify;
-			$param      = '';
+			$form         = new Form($db);
+			$rights_class = get_rights_class();
+			$permission   = $user->rights->$rights_class->create;
+			$permtoedit   = $user->rights->$rights_class->modify;
+			$param        = '';
 			include_once DOL_DOCUMENT_ROOT . '/core/tpl/document_actions_post_headers.tpl.php';
-		}
-		else
-		{
-			parent::begin();
 		}
 	}
 }

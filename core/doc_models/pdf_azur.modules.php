@@ -110,22 +110,22 @@ class pdf_azur extends DocModel
 		$outputlangs->load("dict");
 		$outputlangs->load("companies");
 
-		$rights_class = get_rights_class();
+		$modulepart = get_rights_class(false, true);
 
-		if ($conf->$rights_class->dir_output)
+		if ($conf->$modulepart->dir_output)
 		{
 			$object->fetch_thirdparty();
 
 			// Definition of $dir and $file
 			if ($object->specimen)
 			{
-				$dir = $conf->$rights_class->dir_output;
+				$dir = $conf->$modulepart->dir_output;
 				$file = $dir . "/SPECIMEN.pdf";
 			}
 			else
 			{
 				$objectref = dol_sanitizeFileName($object->ref);
-				$dir = $conf->$rights_class->dir_output . "/" . $objectref;
+				$dir = $conf->$modulepart->dir_output . "/" . $objectref;
 				$file = $dir . "/" . $objectref . ".pdf";
 			}
 
@@ -178,7 +178,13 @@ class pdf_azur extends DocModel
 				$pagenb = 0;
 				$pdf->SetDrawColor(128, 128, 128);
 
-				$subject = isset($object->documentTitle) ? $object->documentTitle : ucfirst($rights_class);
+				if (isset($object->documentTitle)) {
+					$subject = $object->documentTitle;
+				}
+				else {
+					$rights_class = get_rights_class();
+					$subject = ucfirst($rights_class);
+				}
 
 				$pdf->SetTitle($outputlangs->convToOutputCharset($object->ref));
 				$pdf->SetSubject($outputlangs->transnoentities($subject));

@@ -495,13 +495,14 @@ class CardPage extends CreatePage
 			// Documents
 			$ref = dol_sanitizeFileName($object->ref);
 			$rights_class = get_rights_class();
-			$file = $conf->$rights_class->dir_output . '/' . $ref . '/' . $ref . '.pdf';
+			$modulepart = get_rights_class(false, true);
+			$file = $conf->$modulepart->dir_output . '/' . $ref . '/' . $ref . '.pdf';
 			$relativepath = $ref . '/' . $ref . '.pdf';
-			$filedir = $conf->$rights_class->dir_output . '/' . $ref;
+			$filedir = $conf->$modulepart->dir_output . '/' . $ref;
 			$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
 			$genallowed = $user->rights->$rights_class->create;
 			$delallowed = $user->rights->$rights_class->delete;
-			echo $formfile->showdocuments($rights_class, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
+			echo $formfile->showdocuments($modulepart, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
 
 			echo '</div></div>';
 		}
@@ -595,7 +596,8 @@ class CardPage extends CreatePage
 			// Get file/attachment
 			$ref = dol_sanitizeFileName($object->ref);
 			include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
-			$fileparams = dol_most_recent_file($conf->$rights_class->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
+			$modulepart = get_rights_class(false, true);
+			$fileparams = dol_most_recent_file($conf->$modulepart->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
 			$file = $fileparams['fullname'];
 
 			// Array of additional parameters
