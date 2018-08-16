@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.6 - AUG18
+
+*   FIX: update related objects to fit changes on product returns module.
+
+---
+
 #### 1.7.5 - AUG18
 
 *   FIX: document preview error on setup page.

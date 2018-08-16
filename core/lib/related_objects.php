@@ -125,7 +125,7 @@ function get_object_by_type($type)
 		$object['join_to_soc'] = true;
 	}
 	else if ($type == 'returned_product') {
-		$object['class_file']  = '/product_returns/class/returnedProduct.class.php';
+		$object['class_file']  = '/productreturns/class/returnedProduct.class.php';
 		$object['table']       = MAIN_DB_PREFIX.'returned_product';
 		$object['name']        = 'ReturnedProduct';
 		$object['date_field']  = 'creation_date';
