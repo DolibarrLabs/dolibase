@@ -533,10 +533,7 @@ class SetupPage extends FormPage
 
 		foreach ($dirmodels as $reldir)
 		{
-			$dir = dol_buildpath($reldir."/dolibase/core/num_models/");
-			$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/num_models/");
-
-			$dir = ! is_dir($dir) ? $mod_dir : $dir;
+			$dir = dol_buildpath($reldir.DOLIBASE_PATH."/core/num_models/");
 
 			if (is_dir($dir))
 			{
@@ -669,10 +666,7 @@ class SetupPage extends FormPage
 
 		foreach ($dirmodels as $reldir)
 		{
-			$dir = dol_buildpath($reldir."/dolibase/core/doc_models/");
-			$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/doc_models/");
-
-			$dir = ! is_dir($dir) ? $mod_dir : $dir;
+			$dir = dol_buildpath($reldir.DOLIBASE_PATH."/core/doc_models/");
 
 			if (is_dir($dir))
 			{
