@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.7 - AUG18
+
+*   NEW: add crabe document model.
+
+---
+
 #### 1.7.6 - AUG18
 
 *   FIX: update related objects to fit changes on product returns module.

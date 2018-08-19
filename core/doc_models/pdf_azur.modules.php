@@ -79,8 +79,8 @@ class pdf_azur extends DocModel
 		$this->option_draft_watermark = 1; // Support add of a watermark on drafts
 
 		// Get source company
-		$this->emetteur=$mysoc;
-		if (empty($this->emetteur->country_code)) $this->emetteur->country_code=substr($langs->defaultlang,-2); // By default, if was not defined
+		$this->emetteur = $mysoc;
+		if (empty($this->emetteur->country_code)) $this->emetteur->country_code = substr($langs->defaultlang,-2); // By default, if was not defined
 
 		// Define position of columns
 		$this->posxfield = $this->marge_gauche+1;
@@ -133,7 +133,7 @@ class pdf_azur extends DocModel
 			{
 				if (dol_mkdir($dir) < 0)
 				{
-					$this->error=$langs->transnoentities("ErrorCanNotCreateDir", $dir);
+					$this->error = $langs->transnoentities("ErrorCanNotCreateDir", $dir);
 					return 0;
 				}
 			}
@@ -265,27 +265,8 @@ class pdf_azur extends DocModel
 					$height_note=0;
 				}
 
-				$iniY = $tab_top + 7;
-				$curY = $tab_top + 7;
-				$nexY = $tab_top + 1;// + 7;
-
-				// Columns background color
-				$cols_width = $this->posxvalue - $this->posxfield;
-				$cols_height = $this->page_hauteur - $tab_top - $heightforinfotot - $heightforfreetext - $heightforfooter;
-				//$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR = '230,230,230';
-				if (! empty($conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR)) $pdf->Rect($this->marge_gauche, $tab_top, $cols_width, $cols_height, 'F', null, explode(',',$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR));
-
-				// Print lines
-				if (isset($object->lines))
-				{
-					$lines_count = count($object->lines);
-					$i = 0;
-					foreach ($object->lines as $line) {
-						$add_separator = ($i == $lines_count - 1 ? 0 : 1);
-						$nexY = $this->print_line($pdf, $line['name'], $line['value'], $nexY, $outputlangs, $default_font_size, $add_separator);
-						$i++;
-					}
-				}
+				// Write content
+				$this->write_content($pdf, $object, $outputlangs, $default_font_size, $tab_top, $heightforinfotot, $heightforfreetext, $heightforfooter);
 
 				// Show square
 				$this->_tableau($pdf, $tab_top, $this->page_hauteur - $tab_top - $heightforinfotot - $heightforfreetext - $heightforfooter, 0, $outputlangs, 0, 0);
@@ -313,7 +294,7 @@ class pdf_azur extends DocModel
 			}
 			else
 			{
-				$this->error=$langs->trans("ErrorCanNotCreateDir", $dir);
+				$this->error = $langs->trans("ErrorCanNotCreateDir", $dir);
 				return 0;
 			}
 		}
@@ -325,22 +306,59 @@ class pdf_azur extends DocModel
 	}
 
 	/**
+	 *  Function to write pdf content
+	 *
+	 *  @param		TCPDF		$pdf				PDF object
+	 *  @param		Object		$object				Object to generate
+	 *  @param		Translate	$outputlangs		Lang output object
+	 *  @param		int			$default_font_size	Default font size
+	 *  @param		int			$tab_top			Table top position
+	 *  @param		int			$heightforinfotot	Info height
+	 *  @param		int			$heightforfreetext	Free text height
+	 *  @param		int			$heightforfooter	Footer height
+	 */
+	protected function write_content(&$pdf, $object, $outputlangs, $default_font_size, $tab_top, $heightforinfotot, $heightforfreetext, $heightforfooter)
+	{
+		global $conf;
+
+		// Columns background color
+		$cols_width = $this->posxvalue - $this->posxfield;
+		$cols_height = $this->page_hauteur - $tab_top - $heightforinfotot - $heightforfreetext - $heightforfooter;
+		//$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR = '230,230,230';
+		if (! empty($conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR)) $pdf->Rect($this->marge_gauche, $tab_top, $cols_width, $cols_height, 'F', null, explode(',',$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR));
+
+		// Print lines
+		if (isset($object->lines))
+		{
+			$lines_count = count($object->lines);
+			$curY = $tab_top + 1;// + 7;
+			$i = 0;
+
+			foreach ($object->lines as $line)
+			{
+				$add_separator = ($i == $lines_count - 1 ? 0 : 1);
+				$curY = $this->print_line($pdf, $line['name'], $line['value'], $curY, $outputlangs, $default_font_size, $add_separator);
+				$i++;
+			}
+		}
+	}
+
+	/**
 	 *  Function to print table line
 	 *
 	 *  @param		TCPDF		$pdf				PDF object
 	 *  @param		string		$name				Row name
 	 *  @param		string		$value				Row value
-	 *  @param		int			$nexY				Current Y position
+	 *  @param		int			$curY				Current Y position
 	 *  @param		Translate	$outputlangs		Lang output object
 	 *  @param		int			$default_font_size	Default font size
 	 *  @param		int			$add_separator		Should add a row separator or not
 	 *  @return     int             				next Y position
 	 */
-	protected function print_line(&$pdf, $name, $value, $nexY, $outputlangs, $default_font_size, $add_separator=1)
+	protected function print_line(&$pdf, $name, $value, $curY, $outputlangs, $default_font_size, $add_separator=1)
 	{
 		global $langs;
 
-		$curY = $nexY;
 		$pdf->SetFont('', '', $default_font_size - 1); // Into loop to work with multipage
 		$pdf->SetTextColor(0, 0, 0);
 
@@ -362,16 +380,16 @@ class pdf_azur extends DocModel
 		// Add line
 		if ($add_separator)
 		{
-			$pageposafter=$pdf->getPage();
+			$pageposafter = $pdf->getPage();
 			$pdf->setPage($pageposafter);
 			//$pdf->SetLineStyle(array('dash'=>'1,1','color'=>array(80,80,80)));
 			//$pdf->SetDrawColor(190,190,200);
-			$pdf->SetLineStyle(array('dash'=>0));
+			$pdf->SetLineStyle(array('dash' => 0));
 			$pdf->line($this->marge_gauche, $nexY+1, $this->page_largeur - $this->marge_droite, $nexY+1);
 			//$pdf->SetLineStyle(array('dash'=>0));
 		}
 
-		$nexY+=2; // put some space between lines
+		$nexY += 2; // put some space between lines
 
 		return $nexY;
 	}
@@ -401,7 +419,7 @@ class pdf_azur extends DocModel
 		$pdf->SetFont('', '', $default_font_size - 1);
 
 		// Output Rect
-		$this->printRect($pdf,$this->marge_gauche, $tab_top, $this->page_largeur-$this->marge_gauche-$this->marge_droite, $tab_height, $hidetop, $hidebottom); // Rect prend une longueur en 3eme param et 4eme param
+		$this->printRect($pdf,$this->marge_gauche, $tab_top, $this->page_largeur-$this->marge_gauche-$this->marge_droite, $tab_height, $hidetop, $hidebottom);
 
 		$pdf->line($this->posxvalue-1, $tab_top, $this->posxvalue-1, $tab_top + $tab_height);
 	}
@@ -607,7 +625,7 @@ class pdf_azur extends DocModel
 	 *  @param	int			$hidefreetext		1=Hide free text
 	 *  @return	int								Return height of bottom margin including footer text
 	 */
-	public function _pagefoot(&$pdf,$object,$outputlangs,$hidefreetext=0)
+	public function _pagefoot(&$pdf, $object, $outputlangs, $hidefreetext=0)
 	{
 		global $conf;
 
