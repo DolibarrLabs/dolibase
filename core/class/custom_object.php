@@ -229,7 +229,10 @@ class CustomObject extends CrudObject
 		$hideref = (GETPOST('hideref', 'int') ? GETPOST('hideref', 'int') : (! empty($conf->global->MAIN_GENERATE_DOCUMENTS_HIDE_REF) ? 1 : 0));
 
 		// Save last template used to generate document
-		if ($model) $this->setDocModel($user, $model);
+		if ($model) {
+			$this->setDocModel($user, $model);
+			$this->model_pdf = $model;
+		}
 
 		// Define output language
 		$outputlangs = $langs;

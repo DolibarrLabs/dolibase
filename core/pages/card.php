@@ -502,7 +502,14 @@ class CardPage extends CreatePage
 			$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
 			$genallowed = $user->rights->$rights_class->create;
 			$delallowed = $user->rights->$rights_class->delete;
-			echo $formfile->showdocuments($modulepart, $ref, $filedir, $urlsource, $genallowed, $delallowed, $object->model_pdf);
+			if (empty($object->model_pdf)) {
+				$const_name    = get_rights_class(true) . '_ADDON_PDF';
+				$modelselected = $conf->global->$const_name;
+			}
+			else {
+				$modelselected = $object->model_pdf;
+			}
+			echo $formfile->showdocuments($modulepart, $ref, $filedir, $urlsource, $genallowed, $delallowed, $modelselected);
 
 			echo '</div></div>';
 		}

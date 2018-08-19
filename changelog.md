@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.8 - AUG18
+
+*   FIX: default document selection.
+
+---
+
 #### 1.7.7 - AUG18
 
 *   NEW: add crabe document model.

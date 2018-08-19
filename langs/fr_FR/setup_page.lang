@@ -25,5 +25,5 @@ Option = Option
 Value = Valeur
 NumberingModels = Modèles de numérotation
 DocumentModels = Modèles de document
-DocModelAzurDescription = Modèle PDF Azur. Modèle de document complet (logo...)
-DocModelCrabeDescription = Modèle PDF Crabe. Modèle de document complet (modèle recommandé)
+DocModelAzurDescription = Modèle PDF Azur. Modèle de document complet (modèle recommandé)
+DocModelCrabeDescription = Modèle PDF Crabe. Modèle de document complet (logo...)

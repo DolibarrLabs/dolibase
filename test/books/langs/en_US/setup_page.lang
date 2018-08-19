@@ -25,5 +25,5 @@ Option = Option
 Value = Value
 NumberingModels = Numbering models
 DocumentModels = Document models
-DocModelAzurDescription = PDF template Azur. A complete document model (logo...)
-DocModelCrabeDescription = PDF template Crabe. A complete document model (recommended template)
+DocModelAzurDescription = PDF template Azur. A complete document model (recommended template)
+DocModelCrabeDescription = PDF template Crabe. A complete document model (logo...)
