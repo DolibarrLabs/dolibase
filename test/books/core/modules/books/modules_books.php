@@ -25,3 +25,7 @@ abstract class ModeleBooks extends DocModel
 		return parent::getModelsList($db, $maxfilenamelength);
 	}
 }
+
+// Fix for dolibarr 8
+abstract class ModelePDFBooks extends ModeleBooks {}
+
