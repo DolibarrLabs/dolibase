@@ -14,7 +14,9 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-CREATE TABLE llx_dict(
+-- 'module' should be replaced with the name of module
+
+CREATE TABLE llx_module_dict(
 	rowid INTEGER AUTO_INCREMENT PRIMARY KEY,
 	label VARCHAR(255) NOT NULL,
 	active INTEGER DEFAULT 1

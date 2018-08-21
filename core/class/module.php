@@ -53,13 +53,16 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function __construct($db)
 	{
-		global $dolibase_config;
+		global $dolibase_config, $langs;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
 
 		// Save module config for further use
 		$this->config = $dolibase_config;
+
+		// Load lang files
+		$langs->load("module@".DOLIBASE_PATH);
 
 		// Module configuration
 		$this->db              = $db;
@@ -110,6 +113,9 @@ class DolibaseModule extends DolibarrModules
 
 		// Load module settings
 		$this->loadSettings();
+
+		// Check for updates
+		$this->checkUpdates($langs);
 	}
 
 	/**
@@ -119,6 +125,37 @@ class DolibaseModule extends DolibarrModules
 	public function loadSettings()
 	{
 		// add here your module settings
+	}
+
+	/**
+	 * Function to check module updates.
+	 * 
+	 * @param     $langs     Language/translation handler
+	 */
+	protected function checkUpdates($langs)
+	{
+		if (DOLIBASE_CHECK_FOR_UPDATE && ! empty($this->config['module']['url']) && $this->config['module']['url'] != '#')
+		{
+			$connected = @fsockopen("www.dolistore.com", 80);
+
+			if ($connected)
+			{
+				// Close socket
+				fclose($connected);
+
+				// Get module page content
+				$page = file_get_contents($this->config['module']['url']);
+
+				// Extract module version
+				preg_match("/var module_version = '(.*)'/", $page, $module_version);
+
+				// If a new version is available
+				if (isset($module_version[1]) && currentVersionGreaterThanVersion($module_version[1], $this->config['module']['version']))
+				{
+					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('UpdateAvailable').'" target="_blank"><img src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/update.png" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
+				}
+			}
+		}
 	}
 
 	/**

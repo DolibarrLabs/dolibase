@@ -24,12 +24,7 @@
  */
 function dolibarrVersionGreaterThan($version)
 {
-	$dol_version = explode('.', DOL_VERSION);
-	$your_version = explode('.', $version);
-
-	return $dol_version[0] > $your_version[0] || 
-	(isset($your_version[1]) && $dol_version[0] == $your_version[0] && $dol_version[1] > $your_version[1]) || 
-	(isset($your_version[2]) && $dol_version[0] == $your_version[0] && $dol_version[1] == $your_version[1] && $dol_version[2] > $your_version[2]) ? 1 : 0;
+	return currentVersionGreaterThanVersion(DOL_VERSION, $version);
 }
 
 /**
@@ -40,12 +35,41 @@ function dolibarrVersionGreaterThan($version)
  */
 function dolibarrVersionLessThan($version)
 {
-	$dol_version = explode('.', DOL_VERSION);
-	$your_version = explode('.', $version);
+	return currentVersionLessThanVersion(DOL_VERSION, $version);
+}
 
-	return $dol_version[0] < $your_version[0] || 
-	(isset($your_version[1]) && $dol_version[0] == $your_version[0] && $dol_version[1] < $your_version[1]) || 
-	(isset($your_version[2]) && $dol_version[0] == $your_version[0] && $dol_version[1] == $your_version[1] && $dol_version[2] < $your_version[2]) ? 1 : 0;
+/**
+ * Check if a version if greater than another
+ *
+ * @param     $current_version     Current version
+ * @param     $version             Version to compare with
+ * @return    int                  1 or 0
+ */
+function currentVersionGreaterThanVersion($current_version, $version)
+{
+	$current_version_digits = explode('.', $current_version);
+	$version_digits = explode('.', $version);
+
+	return $current_version_digits[0] > $version_digits[0] || 
+	(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] > $version_digits[1]) || 
+	(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] > $version_digits[2]) ? 1 : 0;
+}
+
+/**
+ * Check if a version if less than another
+ *
+ * @param     $current_version     Current version
+ * @param     $version             Version to compare with
+ * @return    int                  1 or 0
+ */
+function currentVersionLessThanVersion($current_version, $version)
+{
+	$current_version_digits = explode('.', $current_version);
+	$version_digits = explode('.', $version);
+
+	return $current_version_digits[0] < $version_digits[0] || 
+	(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] < $version_digits[1]) || 
+	(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] < $version_digits[2]) ? 1 : 0;
 }
 
 /**

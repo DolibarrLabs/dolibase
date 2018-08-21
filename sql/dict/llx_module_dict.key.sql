@@ -14,4 +14,6 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-ALTER TABLE llx_dict ADD UNIQUE INDEX uk_label (label);
+-- 'module' should be replaced with the name of module
+
+ALTER TABLE llx_module_dict ADD UNIQUE INDEX uk_label (label);

@@ -14,5 +14,7 @@
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+-- 'module' should be replaced with the name of module
+
 -- INSERT rowid also to avoid re-insertion each time you activate the module
-INSERT INTO llx_dict (rowid, label, active) VALUES (1, 'label', 1);
+INSERT INTO llx_module_dict (rowid, label, active) VALUES (1, 'label', 1);
