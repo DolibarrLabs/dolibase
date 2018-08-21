@@ -609,7 +609,7 @@ class CardPage extends CreatePage
 
 			// Array of additional parameters
 			$formmail->param['action']    = 'send';
-			$formmail->param['models']    = $rights_class.'_send';
+			$formmail->param['models']    = 'body';
 			$formmail->param['models_id'] = GETPOST('modelmailselected', 'int');
 			$formmail->param['id']        = $object->id;
 			$formmail->param['returnurl'] = $_SERVER["PHP_SELF"] . '?id=' . $object->id;
