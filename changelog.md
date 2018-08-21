@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.7.9 - AUG18
+
+*   NEW: add a feature to check modules updates.
+*   FIX: rename dict table.
+
+---
+
 #### 1.7.8 - AUG18
 
 *   FIX: default document selection.
