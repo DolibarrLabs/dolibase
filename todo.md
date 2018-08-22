@@ -1,6 +1,6 @@
 ### ToDo
 
-* Load custom language files from dolibase folder instead of module folder?
+* Debug bar
 * Calendar Page
 * CRON support
 * Module export/import options

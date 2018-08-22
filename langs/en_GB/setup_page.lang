@@ -1,6 +1,6 @@
-# Dolibase Setup Page - fr_FR
+# Dolibase Setup Page - en_GB
 #
-# Copyright (C) 2018 AXeL
+# Copyright (C) 2018 AXel
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #
-# Générique
+# Generic
 #
-Setup = Configuration
-Settings = Paramètres
-About = À propos
+Setup = Setup
+Settings = Settings
+About = About
 Option = Option
-Value = Valeur
-NumberingModels = Modèles de numérotation
-DocumentModels = Modèles de document
-DocModelAzurDescription = Modèle PDF Azur. Modèle de document complet (modèle recommandé)
-DocModelCrabeDescription = Modèle PDF Crabe. Modèle de document complet (logo...)
+Value = Value
+NumberingModels = Numbering models
+DocumentModels = Document models
+DocModelAzurDescription = PDF template Azur. A complete document model (recommended template)
+DocModelCrabeDescription = PDF template Crabe. A complete document model (logo...)

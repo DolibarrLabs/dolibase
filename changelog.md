@@ -1,6 +1,17 @@
 ### Dolibase Framework
 ------
 
+#### 1.8.0 - AUG18
+
+*   FIX: DOLIBASE_PATH constant definition.
+*   NEW: add DOLIBASE_LANGS_ROOT constant to load custom language files easily.
+*   FIX: allow adding custom subject & template to mail form on card page.
+*   NEW: add Polish & English GB translations.
+*   FIX: update test modules to fit changes made on language files loading.
+*   FIX: about page text position issue on Dolibarr 8.
+
+---
+
 #### 1.7.9 - AUG18
 
 *   NEW: add a feature to check modules updates.

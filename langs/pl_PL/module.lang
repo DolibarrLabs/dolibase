@@ -1,4 +1,4 @@
-# Dolibase Log Page - fr_FR
+# Dolibase Module - pl_PL
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,16 +18,4 @@
 #
 # Generic
 #
-LogAction = <b>Action</b>
-MadeBy = Utilisateur
-LogDate = Date
-CurrentHour = PHP Time (server)
-ClientHour = Heure client (utilisateur)
-NoLogsAvailable = Pas de logs disponible.
-
-#
-# Actions
-#
-CREATE_OBJECT = <b>Creation</b>
-UPDATE_OBJECT = <b>Modification</b>
-DELETE_OBJECT = <b>Suppression</b>
+UpdateAvailable = Aktualizacja jest dostępna

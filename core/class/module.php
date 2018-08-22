@@ -62,7 +62,7 @@ class DolibaseModule extends DolibarrModules
 		$this->config = $dolibase_config;
 
 		// Load lang files
-		$langs->load("module@".DOLIBASE_PATH);
+		$langs->load("module@".DOLIBASE_LANGS_ROOT);
 
 		// Module configuration
 		$this->db              = $db;
@@ -214,12 +214,10 @@ class DolibaseModule extends DolibarrModules
 	protected function loadTables()
 	{
 		// Load Dolibase tables
-		$dolibase_path = (DOLIBASE_PATH == '/dolibase' ? DOLIBASE_PATH : '/'.$this->config['module']['folder'].'/dolibase');
-		
 		if (DOLIBASE_ENABLE_LOGS) {
-			$this->_load_tables($dolibase_path.'/sql/logs/');
+			$this->_load_tables(DOLIBASE_PATH.'/sql/logs/');
 		}
-		
+
 		// Load module tables
 		return $this->_load_tables('/'.$this->config['module']['folder'].'/sql/');
 	}

@@ -59,16 +59,16 @@ class NumModelSaphir extends NumModel
 		$langs->load($dolibase_config['other']['lang_files'][0]);
 
 		$module_name = $langs->transnoentities($dolibase_config['module']['name']);
-		$const_name = $this->const_name;
+		$const_name  = $this->const_name;
 
 		$form = new Form($db);
 
-		$texte = $langs->trans('GenericNumRefModelDesc')."<br>\n";
-		$texte.= '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
-		$texte.= '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
-		$texte.= '<input type="hidden" name="action" value="updateMask">';
-		$texte.= '<input type="hidden" name="maskconst" value="'.$const_name.'">';
-		$texte.= '<table class="nobordernopadding" width="100%">';
+		$text = $langs->trans('GenericNumRefModelDesc')."<br>\n";
+		$text.= '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
+		$text.= '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+		$text.= '<input type="hidden" name="action" value="updateMask">';
+		$text.= '<input type="hidden" name="maskconst" value="'.$const_name.'">';
+		$text.= '<table class="nobordernopadding" width="100%">';
 
 		$tooltip = $langs->trans("GenericMaskCodes", $module_name, $module_name);
 		$tooltip.= $langs->trans("GenericMaskCodes2");
@@ -76,17 +76,17 @@ class NumModelSaphir extends NumModel
 		$tooltip.= $langs->trans("GenericMaskCodes4a", $module_name, $module_name);
 		$tooltip.= $langs->trans("GenericMaskCodes5");
 
-		$texte.= '<tr><td>'.$langs->trans("Mask").':</td>';
-		$texte.= '<td align="right">'.$form->textwithpicto('<input type="text" class="flat" size="24" name="mask" value="'.$conf->global->$const_name.'">',$tooltip,1,1).'</td>';
+		$text.= '<tr><td>'.$langs->trans("Mask").':</td>';
+		$text.= '<td align="right">'.$form->textwithpicto('<input type="text" class="flat" size="24" name="mask" value="'.$conf->global->$const_name.'">',$tooltip,1,1).'</td>';
 
-		$texte.= '<td align="left" rowspan="2">&nbsp; <input type="submit" class="button" value="'.$langs->trans("Modify").'" name="Button"></td>';
+		$text.= '<td align="left" rowspan="2">&nbsp; <input type="submit" class="button" value="'.$langs->trans("Modify").'" name="Button"></td>';
 
-		$texte.= '</tr>';
+		$text.= '</tr>';
 
-		$texte.= '</table>';
-		$texte.= '</form>';
+		$text.= '</table>';
+		$text.= '</form>';
 
-		return $texte;
+		return $text;
 	}
 
 	/**

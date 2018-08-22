@@ -1,4 +1,4 @@
-# Dolibase Setup Page - en_US
+# Dolibase Card Page - pl_PL
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,9 +18,7 @@
 #
 # Generic
 #
-Setup = Setup
-Settings = Settings
-About = About
-Option = Option
-Value = Value
-NumberingModels = Numbering models
+SaveAs = Zapisz jako
+SendByMail = Wyślij pocztą
+MailSubject = Przedłożenie dokumentu __REF__
+MailTemplate = Cześć __CONTACTCIVNAME__\n\nZnajdziesz tu dokument __REF__\n\n__PERSONALIZED__Pozdrowienia\n\n__SIGNATURE__

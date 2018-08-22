@@ -58,10 +58,10 @@ class CardPage extends CreatePage
 		$this->delete_permission = $delete_perm;
 		$this->show_documents    = $show_documents;
 
-		global $langs, $dolibase_config;
+		global $langs;
 
 		// Load lang files
-		$langs->load("card_page@".$dolibase_config['module']['folder']);
+		$langs->load("card_page@".DOLIBASE_LANGS_ROOT);
 
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
@@ -439,13 +439,14 @@ class CardPage extends CreatePage
 	/**
 	 * Print related objects block
 	 *
+	 * @param     $object     Object
 	 * Note: To enable the linking feature, you must define a constant in each module as 'your_module_right_class_in_capital_letters'.'_ENABLE_EXPANDED_LINKS'
 	 */
 	protected function printRelatedObjects($object)
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			global $conf, $langs, $dolibase_config;
+			global $conf, $langs;
 
 			$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
 
@@ -454,7 +455,7 @@ class CardPage extends CreatePage
 			// Dolibase object linking feature
 			if ($conf->global->$const_name)
 			{
-				$langs->load('related_objects@'.$dolibase_config['module']['folder']);
+				$langs->load('related_objects@'.DOLIBASE_LANGS_ROOT);
 
 				show_related_objects($object);
 			}
@@ -479,6 +480,7 @@ class CardPage extends CreatePage
 	/**
 	 * Print documents block
 	 *
+	 * @param     $object     Object
 	 */
 	protected function printDocuments($object)
 	{
@@ -518,8 +520,11 @@ class CardPage extends CreatePage
 	/**
 	 * Print mail form
 	 *
+	 * @param     $object       Object
+	 * @param     $subject      Mail subject string
+	 * @param     $template     Mail template string
 	 */
-	protected function printMailForm($object)
+	protected function printMailForm($object, $subject = 'MailSubject', $template = 'MailTemplate')
 	{
 		if (! empty($object) && isset($object->id))
 		{
@@ -562,9 +567,9 @@ class CardPage extends CreatePage
 			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $liste;
 			$formmail->withtocc            = $liste;
 			$formmail->withtoccc           = $conf->global->MAIN_EMAIL_USECCC;
-			$formmail->withtopic           = $langs->trans('MailSubject', '__REF__');
+			$formmail->withtopic           = $langs->trans($subject, '__REF__');
 			$formmail->withfile            = 2;
-			$formmail->withbody            = $langs->trans('MailTemplate');
+			$formmail->withbody            = $langs->trans($template);
 			$formmail->withdeliveryreceipt = 1;
 			$formmail->withcancel          = 1;
 			// Substitutions Array
@@ -643,8 +648,11 @@ class CardPage extends CreatePage
 	/**
 	 * Generate page end
 	 *
+	 * @param     $object            Object
+	 * @param     $mail_subject      Mail subject string
+	 * @param     $mail_template     Mail template string
 	 */
-	public function end($object = '')
+	public function end($object = '', $mail_subject = 'MailSubject', $mail_template = 'MailTemplate')
 	{
 		if ($this->close_buttons_div) echo '</div>';
 
@@ -654,7 +662,7 @@ class CardPage extends CreatePage
 		if ($optioncss != 'print')
 		{
 			if ($action == 'presend') {
-				$this->printMailForm($object);
+				$this->printMailForm($object, $mail_subject, $mail_template);
 			}
 			else {
 				if ($this->show_documents) $this->printDocuments($object);

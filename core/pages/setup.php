@@ -63,11 +63,11 @@ class SetupPage extends FormPage
 	 */
 	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false)
 	{
-		global $langs, $dolibase_config;
+		global $langs;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_config['module']['folder']);
+		$langs->load("setup_page@".DOLIBASE_LANGS_ROOT);
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;

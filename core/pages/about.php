@@ -38,11 +38,11 @@ class AboutPage extends Page
 	 */
 	public function __construct($page_title = 'About', $access_perm = '$user->admin', $add_extrafields_tab = false)
 	{
-		global $langs, $dolibase_config;
+		global $langs;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['module']['folder']);
+		$langs->load("about_page@".DOLIBASE_LANGS_ROOT);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;
@@ -97,8 +97,8 @@ class AboutPage extends Page
 			$picture = 'object_'.$dolibase_config['module']['picture'];
 		}
 
-		echo '<div style="float: left; margin-right: 20px;"><img src="../img/'.$picture.'" /></div>';
 		echo '<br/>';
+		echo '<div style="float: left; margin-right: 20px;"><img src="../img/'.$picture.'" /></div>';
 		echo '<div>';
 		echo '<a href="'.$dolibase_config['module']['url'].'" target="_blank">';
 		echo '<b>'.$langs->trans($dolibase_config['module']['name']).'</b>';

@@ -1,6 +1,6 @@
-# Dolibase About Page - fr_FR
+# Dolibase Log Page - pl_PL
 #
-# Copyright (C) 2018 AXeL
+# Copyright (C) 2018 AXel
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,12 +16,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #
-# Générique
+# Generic
 #
-Settings = Paramètres
-About = À propos
-DevelopedBy = Développé par
-DolibaseVersion = Ce module utilise la version Dolibase
-ForAnyQuestions = Pour toute question ou commentaire, envoyez moi un e-mail sur
-FindMyModules = Retrouvez mes autres modules sur
-Dolistore = Dolistore
+LogAction = <b>Działanie</b>
+MadeBy = Utworzone przez
+LogDate = Data
+CurrentHour = Czas PHP (serwer)
+ClientHour = Czas klienta (użytkownika)
+NoLogsAvailable = Brak dostępnych logów.
+
+#
+# Actions
+#
+CREATE_OBJECT = <b>Utwórz</b>
+UPDATE_OBJECT = <b>Zmodyfikuj</b>
+DELETE_OBJECT = <b>Usuń</b>

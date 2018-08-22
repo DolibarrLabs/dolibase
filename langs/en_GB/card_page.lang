@@ -1,4 +1,4 @@
-# Dolibase About Page - en_US
+# Dolibase Card Page - en_GB
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,10 +18,7 @@
 #
 # Generic
 #
-Settings = Settings
-About = About
-DevelopedBy = Developed by
-DolibaseVersion = This module use Dolibase version
-ForAnyQuestions = For any questions or feedback, please send an e-mail to
-FindMyModules = Find my other modules on
-Dolistore = Dolistore
+SaveAs = Save as
+SendByMail = Send by mail
+MailSubject = Submission of document __REF__
+MailTemplate = Hello __CONTACTCIVNAME__\n\nYou will find here the document __REF__\n\n__PERSONALIZED__Sincerely\n\n__SIGNATURE__

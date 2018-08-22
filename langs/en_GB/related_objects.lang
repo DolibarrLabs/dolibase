@@ -1,4 +1,4 @@
-# Dolibase Setup Page - en_US
+# Dolibase Related objects - en_GB
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,12 +18,7 @@
 #
 # Generic
 #
-Setup = Setup
-Settings = Settings
-About = About
-Option = Option
-Value = Value
-NumberingModels = Numbering models
-DocumentModels = Document models
-DocModelAzurDescription = PDF template Azur. A complete document model (recommended template)
-DocModelCrabeDescription = PDF template Crabe. A complete document model (logo...)
+AddRelated = Add link
+ElementToLink = Expanded Links
+RelationAdded = Linked
+RelationCantBeAdded = Failed

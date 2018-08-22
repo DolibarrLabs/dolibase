@@ -33,10 +33,10 @@ class LogPage extends Page
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
-		global $langs, $dolibase_config;
+		global $langs;
 
 		// Load lang files
-		$langs->load("log_page@".$dolibase_config['module']['folder']);
+		$langs->load("log_page@".DOLIBASE_LANGS_ROOT);
 
 		parent::__construct($page_title, $access_perm);
 	}
