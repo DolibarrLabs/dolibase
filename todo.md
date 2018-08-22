@@ -1,5 +1,6 @@
 ### ToDo
 
+* Add Spanish/Italiano & Deutsch translations
 * Debug bar
 * Calendar Page
 * CRON support
