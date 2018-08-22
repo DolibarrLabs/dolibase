@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 1.8.1 - AUG18
+
+*   FIX: issues related to version 1.8.0.
+
+---
+
 #### 1.8.0 - AUG18
 
 *   FIX: DOLIBASE_PATH constant definition.
