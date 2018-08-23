@@ -40,6 +40,10 @@ class CardPage extends CreatePage
 	 * @var boolean used to show documents block
 	 */
 	protected $show_documents = false;
+	/**
+	 * @var boolean used to add fiche end
+	 */
+	protected $add_fiche_end = true;
 
 
 	/**
@@ -119,6 +123,7 @@ class CardPage extends CreatePage
 			dol_fiche_end();
 			echo '<div class="tabsAction">';
 			$this->close_buttons_div = true;
+			$this->add_fiche_end = false;
 		}
 
 		echo '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
@@ -671,6 +676,6 @@ class CardPage extends CreatePage
 			}
 		}
 
-		parent::end();
+		parent::end($this->add_fiche_end);
 	}
 }

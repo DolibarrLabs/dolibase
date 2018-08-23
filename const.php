@@ -20,7 +20,7 @@
  *
  * Possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
  */
-if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '1.8.2');
+if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '1.8.3');
 
 /**
  * Link

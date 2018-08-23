@@ -144,7 +144,7 @@ class DolibaseModule extends DolibarrModules
 				fclose($connected);
 
 				// Get module page content
-				$page = file_get_contents($this->config['module']['url']);
+				$page = @file_get_contents($this->config['module']['url']);
 
 				// Extract module version
 				preg_match("/var module_version = '(.*)'/", $page, $module_version);

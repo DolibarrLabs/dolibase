@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 1.8.3 - AUG18
+
+*   FIX: hide file_get_contents function warnings when checking for updates.
+*   FIX: fiche end issue on card page.
+
+---
+
 #### 1.8.2 - AUG18
 
 *   NEW: Spanish/Italiano & Deutsch translations.

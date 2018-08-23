@@ -443,14 +443,14 @@ class Page
 	 * Generate page end
 	 *
 	 */
-	public function end()
+	public function end($add_fiche_end = true)
 	{
 		global $db;
 		
 		// Page end
 		$this->closeTable();
 		$this->closeForm();
-		if (! empty($this->tabs)) dol_fiche_end();
+		if (! empty($this->tabs) && $add_fiche_end) dol_fiche_end();
 		if (DOLIBASE_DEBUG_MODE) $this->showLoadTime();
 		llxFooter();
 		$db->close();
