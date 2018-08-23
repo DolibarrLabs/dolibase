@@ -1,4 +1,4 @@
-# Dolibase Module - pl_PL
+# Dolibase Card Page - it_IT
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,4 +18,7 @@
 #
 # Generic
 #
-NewVersionAvailable = Wersja %s jest dostępna
+SaveAs = Salva come
+SendByMail = Invia per posta
+MailSubject = Presentazione del documento __REF__
+MailTemplate = Ciao __CONTACTCIVNAME__\n\nTroverete qui il documento __REF__\n\n__PERSONALIZED__Cordiali saluti\n\n__SIGNATURE__

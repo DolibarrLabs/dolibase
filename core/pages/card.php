@@ -557,15 +557,15 @@ class CardPage extends CreatePage
 				$formmail->frommail = dolAddEmailTrackId($formmail->frommail, $formmail->trackid);
 			}
 			$formmail->withfrom = 1;
-			$liste = array();
-			if ($object->fk_soc > 0)
+			$receivers = array();
+			if ($object->fetch_thirdparty() > 0)
 			{
 				foreach ($object->thirdparty->thirdparty_and_contact_email_array(1) as $key => $value) {
-					$liste [$key] = $value;
+					$receivers[$key] = $value;
 				}
 			}
-			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $liste;
-			$formmail->withtocc            = $liste;
+			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $receivers;
+			$formmail->withtocc            = $receivers;
 			$formmail->withtoccc           = $conf->global->MAIN_EMAIL_USECCC;
 			$formmail->withtopic           = $langs->trans($subject, '__REF__');
 			$formmail->withfile            = 2;

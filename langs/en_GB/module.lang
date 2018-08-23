@@ -18,4 +18,4 @@
 #
 # Generic
 #
-UpdateAvailable = An update is available
+NewVersionAvailable = Version %s is available

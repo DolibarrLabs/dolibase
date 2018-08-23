@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 1.8.2 - AUG18
+
+*   NEW: Spanish/Italiano & Deutsch translations.
+*   FIX: autofill receiver(s) in mail form.
+*   FIX: module updates title have been changed.
+
+---
+
 #### 1.8.1 - AUG18
 
 *   FIX: issues related to version 1.8.0.

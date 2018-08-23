@@ -18,4 +18,4 @@
 #
 # Générique
 #
-UpdateAvailable = Une mise à jour du module est disponible
+NewVersionAvailable = La version %s est disponible

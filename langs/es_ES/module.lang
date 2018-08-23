@@ -1,4 +1,4 @@
-# Dolibase Module - pl_PL
+# Dolibase Module - es_ES
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,4 +18,4 @@
 #
 # Generic
 #
-NewVersionAvailable = Wersja %s jest dostępna
+NewVersionAvailable = La versión %s está disponible

@@ -152,7 +152,7 @@ class DolibaseModule extends DolibarrModules
 				// If a new version is available
 				if (isset($module_version[1]) && currentVersionGreaterThanVersion($module_version[1], $this->config['module']['version']))
 				{
-					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('UpdateAvailable').'" target="_blank"><img src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/update.png" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
+					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('NewVersionAvailable', $module_version[1]).'" target="_blank"><img src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/update.png" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
 				}
 			}
 		}

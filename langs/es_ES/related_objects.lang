@@ -1,4 +1,4 @@
-# Dolibase Module - pl_PL
+# Dolibase Related objects - es_ES
 #
 # Copyright (C) 2018 AXel
 #
@@ -18,4 +18,7 @@
 #
 # Generic
 #
-NewVersionAvailable = Wersja %s jest dostępna
+AddRelated = Agregar enlace
+ElementToLink = Enlaces ampliados
+RelationAdded = Vinculado
+RelationCantBeAdded = Ha fallado
