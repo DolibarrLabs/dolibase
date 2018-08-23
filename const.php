@@ -20,7 +20,14 @@
  *
  * Possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
  */
-if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '1.8.3');
+if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.0.0-beta');
+
+/**
+ * Environment
+ *
+ * Possible values: 'dev', 'prod'
+ */
+if (! defined('DOLIBASE_ENV')) define('DOLIBASE_ENV', 'dev');
 
 /**
  * Link
@@ -64,7 +71,7 @@ if (! defined('DOLIBASE_ALLOW_FUNC_CHAINING')) define('DOLIBASE_ALLOW_FUNC_CHAIN
  *
  * Turn it to true to get more informations about errors
  */
-if (! defined('DOLIBASE_DEBUG_MODE')) define('DOLIBASE_DEBUG_MODE', false);
+if (! defined('DOLIBASE_DEBUG_MODE')) define('DOLIBASE_DEBUG_MODE', (DOLIBASE_ENV == 'dev' ? true : false));
 
 /**
  * Use AJAX on confirmation

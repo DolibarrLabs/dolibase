@@ -57,6 +57,14 @@ class Page
 	 * @var boolean used to close opened HTML table
 	 */
 	protected $close_table = false;
+	/**
+	 * @var object DebugBar
+	 */
+	public $debugbar;
+	/**
+	 * @var object DebugBar Renderer
+	 */
+	protected $debugbarRenderer;
 
 
 	/**
@@ -83,6 +91,14 @@ class Page
 
 		// Load default actions
 		$this->loadDefaultActions();
+
+		// Load DebugBar
+		if (DOLIBASE_ENV == 'dev') {
+			dolibase_include_once('/core/class/debug_bar.php');
+			$this->debugbar = new DolibaseDebugBar();
+			$this->debugbarRenderer = $this->debugbar->getRenderer();
+			$this->appendToHead($this->debugbarRenderer->renderHead());
+		}
 	}
 
 	/**
@@ -429,17 +445,6 @@ class Page
 	}
 
 	/**
-	 * Calculate & show page loading time
-	 *
-	 */
-	protected function showLoadTime()
-	{
-		$load_time  = round((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']), 4); // PHP 5.4+ only
-
-		echo '<br>Page loaded in ' . $load_time . ' seconds.';
-	}
-
-	/**
 	 * Generate page end
 	 *
 	 */
@@ -451,7 +456,7 @@ class Page
 		$this->closeTable();
 		$this->closeForm();
 		if (! empty($this->tabs) && $add_fiche_end) dol_fiche_end();
-		if (DOLIBASE_DEBUG_MODE) $this->showLoadTime();
+		if (DOLIBASE_ENV == 'dev') echo $this->debugbarRenderer->render();
 		llxFooter();
 		$db->close();
 	}

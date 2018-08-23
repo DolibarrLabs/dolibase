@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.0.0 - AUG18
+
+*   NEW: Debug bar.
+
+---
+
 #### 1.8.3 - AUG18
 
 *   FIX: hide file_get_contents function warnings when checking for updates.
