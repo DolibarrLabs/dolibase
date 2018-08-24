@@ -52,12 +52,12 @@ class DolibaseInfoCollector extends DataCollector implements Renderable
 	public function getWidgets()
 	{
 		return array(
-            "dolibase_version" => array(
-                "icon" => "code-fork",
-                "tooltip" => "Dolibase Version",
-                "map" => "dolibase.version",
-                "default" => ""
-            ),
-        );
+			"dolibase_version" => array(
+				"icon" => "code-fork",
+				"tooltip" => "Dolibase Version",
+				"map" => "dolibase.version",
+				"default" => ""
+			)
+		);
 	}
 }

@@ -22,9 +22,12 @@
  * @param     $version     Dolibarr version to compare with
  * @return    int          1 or 0
  */
-function dolibarrVersionGreaterThan($version)
+if (! function_exists('dolibarrVersionGreaterThan'))
 {
-	return currentVersionGreaterThanVersion(DOL_VERSION, $version);
+	function dolibarrVersionGreaterThan($version)
+	{
+		return currentVersionGreaterThanVersion(DOL_VERSION, $version);
+	}
 }
 
 /**
@@ -33,9 +36,12 @@ function dolibarrVersionGreaterThan($version)
  * @param     $version     Dolibarr version to compare with
  * @return    int          1 or 0
  */
-function dolibarrVersionLessThan($version)
+if (! function_exists('dolibarrVersionLessThan'))
 {
-	return currentVersionLessThanVersion(DOL_VERSION, $version);
+	function dolibarrVersionLessThan($version)
+	{
+		return currentVersionLessThanVersion(DOL_VERSION, $version);
+	}
 }
 
 /**
@@ -45,14 +51,17 @@ function dolibarrVersionLessThan($version)
  * @param     $version             Version to compare with
  * @return    int                  1 or 0
  */
-function currentVersionGreaterThanVersion($current_version, $version)
+if (! function_exists('currentVersionGreaterThanVersion'))
 {
-	$current_version_digits = explode('.', $current_version);
-	$version_digits = explode('.', $version);
+	function currentVersionGreaterThanVersion($current_version, $version)
+	{
+		$current_version_digits = explode('.', $current_version);
+		$version_digits = explode('.', $version);
 
-	return $current_version_digits[0] > $version_digits[0] || 
-	(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] > $version_digits[1]) || 
-	(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] > $version_digits[2]) ? 1 : 0;
+		return $current_version_digits[0] > $version_digits[0] || 
+		(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] > $version_digits[1]) || 
+		(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] > $version_digits[2]) ? 1 : 0;
+	}
 }
 
 /**
@@ -62,14 +71,17 @@ function currentVersionGreaterThanVersion($current_version, $version)
  * @param     $version             Version to compare with
  * @return    int                  1 or 0
  */
-function currentVersionLessThanVersion($current_version, $version)
+if (! function_exists('currentVersionLessThanVersion'))
 {
-	$current_version_digits = explode('.', $current_version);
-	$version_digits = explode('.', $version);
+	function currentVersionLessThanVersion($current_version, $version)
+	{
+		$current_version_digits = explode('.', $current_version);
+		$version_digits = explode('.', $version);
 
-	return $current_version_digits[0] < $version_digits[0] || 
-	(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] < $version_digits[1]) || 
-	(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] < $version_digits[2]) ? 1 : 0;
+		return $current_version_digits[0] < $version_digits[0] || 
+		(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] < $version_digits[1]) || 
+		(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] < $version_digits[2]) ? 1 : 0;
+	}
 }
 
 /**
@@ -79,15 +91,18 @@ function currentVersionLessThanVersion($current_version, $version)
  *
  * @param     $component_path     Dolibase component path
  */
-function dolibase_include_once($component_path)
+if (! function_exists('dolibase_include_once'))
 {
-	global $dolibase_config;
+	function dolibase_include_once($component_path)
+	{
+		global $dolibase_config;
 
-	$path = preg_replace('/^\//', '', $component_path); // Clean the path
+		$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-	if (false === (@include_once DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/'.$path)) { // @ is used to skip warnings..
-		//dol_include_once('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
-		@include_once dol_buildpath('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
+		if (false === (@include_once DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/'.$path)) { // @ is used to skip warnings..
+			//dol_include_once('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
+			@include_once dol_buildpath('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
+		}
 	}
 }
 
@@ -98,17 +113,20 @@ function dolibase_include_once($component_path)
  * @param      $convert_to_db_format  should convert the date to database format or not
  * @return     string                 date in your db format, null if error/empty
  */
-function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
+if (! function_exists('GETPOSTDATE'))
 {
-	$date = dol_mktime(12, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
+	function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
+	{
+		$date = dol_mktime(12, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
 
-	if ($convert_to_db_format) {
-		global $db;
+		if ($convert_to_db_format) {
+			global $db;
 
-		return empty($date) ? null : $db->idate($date);
-	}
-	else {
-		return $date;
+			return empty($date) ? null : $db->idate($date);
+		}
+		else {
+			return $date;
+		}
 	}
 }
 
@@ -119,9 +137,12 @@ function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
  * @param      $minus_one_also consider -1 also as an empty value
  * @return     null|string     null or initial value
  */
-function empty_to_null($value, $minus_one_also = false)
+if (! function_exists('empty_to_null'))
 {
-	return empty($value) || ($minus_one_also && $value == -1) ? null : $value;
+	function empty_to_null($value, $minus_one_also = false)
+	{
+		return empty($value) || ($minus_one_also && $value == -1) ? null : $value;
+	}
 }
 
 /**
@@ -130,13 +151,16 @@ function empty_to_null($value, $minus_one_also = false)
  * @param      $convert_to_db_format  should convert the date to database format or not
  * @return     string                 current date in your db format
  */
-function dolibase_now($convert_to_db_format = false)
+if (! function_exists('dolibase_now'))
 {
-	global $db;
+	function dolibase_now($convert_to_db_format = false)
+	{
+		global $db;
 
-	$now = dol_now();
+		$now = dol_now();
 
-	return $convert_to_db_format ? $db->idate($now) : $now;
+		return $convert_to_db_format ? $db->idate($now) : $now;
+	}
 }
 
 /**
@@ -145,11 +169,14 @@ function dolibase_now($convert_to_db_format = false)
  * @param      $str       string to escape
  * @return     string     escaped string
  */
-function str_escape($str)
+if (! function_exists('str_escape'))
 {
-	global $db;
+	function str_escape($str)
+	{
+		global $db;
 
-	return $db->escape($str);
+		return $db->escape($str);
+	}
 }
 
 /**
@@ -158,9 +185,12 @@ function str_escape($str)
  * @param      $price       price
  * @return     string       price with currency
  */
-function price_with_currency($price, $currency = 'auto')
+if (! function_exists('price_with_currency'))
 {
-	return price($price, 0, '', 1, -1, -1, $currency);
+	function price_with_currency($price, $currency = 'auto')
+	{
+		return price($price, 0, '', 1, -1, -1, $currency);
+	}
 }
 
 /**
@@ -170,19 +200,22 @@ function price_with_currency($price, $currency = 'auto')
  * @param      $no_underscores     remove underscores
  * @return     string              module rights class
  */
-function get_rights_class($to_upper = false, $no_underscores = false)
+if (! function_exists('get_rights_class'))
 {
-	global $dolibase_config;
+	function get_rights_class($to_upper = false, $no_underscores = false)
+	{
+		global $dolibase_config;
 
-	$rights_class = empty($dolibase_config['module']['rights_class']) ? 'dolibase_module' : $dolibase_config['module']['rights_class'];
+		$rights_class = empty($dolibase_config['module']['rights_class']) ? 'dolibase_module' : $dolibase_config['module']['rights_class'];
 
-	if ($to_upper) {
-		$rights_class = strtoupper($rights_class);
+		if ($to_upper) {
+			$rights_class = strtoupper($rights_class);
+		}
+
+		if ($no_underscores) {
+			$rights_class = str_replace('_', '', $rights_class);
+		}
+
+		return $rights_class;
 	}
-
-	if ($no_underscores) {
-		$rights_class = str_replace('_', '', $rights_class);
-	}
-
-	return $rights_class;
 }

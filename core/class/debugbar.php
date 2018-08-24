@@ -32,6 +32,8 @@ dolibase_include_once('/core/debugbar_collectors/DolibaseInfoCollector.php');
 
 /**
  * DolibaseDebugBar class
+ *
+ * @see http://phpdebugbar.com/docs/base-collectors.html#base-collectors
  */
 
 class DolibaseDebugBar extends DebugBar
