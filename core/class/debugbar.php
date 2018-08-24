@@ -16,7 +16,6 @@
  */
 
 dolibase_include_once('/core/class/autoloader.php');
-
 Autoloader::register();
 
 use \DebugBar\DebugBar;
@@ -27,6 +26,7 @@ use \DebugBar\DataCollector\ConfigCollector;
 use \DebugBar\DataCollector\TimeDataCollector;
 use \DebugBar\DataCollector\MemoryCollector;
 use \DebugBar\DataCollector\ExceptionsCollector;
+dolibase_include_once('/core/debugbar_collectors/DatabaseCollector.php');
 
 /**
  * DolibaseDebugBar class
@@ -47,10 +47,24 @@ class DolibaseDebugBar extends DebugBar
 		$this->addCollector(new TimeDataCollector());
 		$this->addCollector(new MemoryCollector());
 		$this->addCollector(new ExceptionsCollector());
+		$this->addCollector(new DatabaseCollector($this->getDatabase()));
 	}
 
 	/**
-	 * Returns Config array
+	 * Returns database object
+	 *
+	 */
+	protected function getDatabase()
+	{
+		global $db;
+
+		$db->queries = array();
+
+		return $db;
+	}
+
+	/**
+	 * Returns an array with config data
 	 *
 	 */
 	protected function getConfig()
@@ -62,9 +76,10 @@ class DolibaseDebugBar extends DebugBar
 			'dolibarr' => array()
 		);
 
+		// Get constants
 		$const = get_defined_constants(true);
 
-		// Get 'dolibase' & 'dolibarr' constants
+		// Separate constants
 		foreach ($const['user'] as $key => $value)
 		{
 			if (substr($key, 0, 8) == 'DOLIBASE') {

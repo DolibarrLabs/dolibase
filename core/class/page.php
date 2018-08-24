@@ -94,7 +94,7 @@ class Page
 
 		// Load DebugBar
 		if (DOLIBASE_ENV == 'dev') {
-			dolibase_include_once('/core/class/debug_bar.php');
+			dolibase_include_once('/core/class/debugbar.php');
 			$this->debugbar = new DolibaseDebugBar();
 			$this->debugbarRenderer = $this->debugbar->getRenderer();
 			$this->appendToHead($this->debugbarRenderer->renderHead());
