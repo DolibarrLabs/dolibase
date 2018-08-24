@@ -99,7 +99,7 @@ class CrudObject extends CommonObject
 		$this->db->begin();
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
-		$resql = $this->query($sql);
+		$resql = $this->db->query($sql);
 		if (! $resql) {
 			$error ++;
 			$this->errors[] = "Error " . $this->db->lasterror();
@@ -155,7 +155,7 @@ class CrudObject extends CommonObject
 		}
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
-		$resql = $this->query($sql);
+		$resql = $this->db->query($sql);
 		if ($resql) {
 			if ($this->db->num_rows($resql)) {
 				$obj = $this->db->fetch_object($resql);
@@ -219,7 +219,7 @@ class CrudObject extends CommonObject
 			$this->total = 0;
 			if (empty($conf->global->MAIN_DISABLE_FULL_SCANLIST))
 			{
-				$result = $this->query($sql);
+				$result = $this->db->query($sql);
 				if ($result) {
 					$this->total = $this->db->num_rows($result);
 				}
@@ -235,7 +235,7 @@ class CrudObject extends CommonObject
 		}
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
-		$resql = $this->query($sql);
+		$resql = $this->db->query($sql);
 		if ($resql) {
 			$this->count = $this->db->num_rows($resql);
 			if ($this->count)
@@ -327,7 +327,7 @@ class CrudObject extends CommonObject
 		}
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
-		$resql = $this->query($sql);
+		$resql = $this->db->query($sql);
 		if ($resql) {
 			if ($this->db->num_rows($resql)) {
 				$obj = $this->db->fetch_object($resql);
@@ -380,7 +380,7 @@ class CrudObject extends CommonObject
 		$this->db->begin();
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
-		$resql = $this->query($sql);
+		$resql = $this->db->query($sql);
 		if (! $resql) {
 			$error ++;
 			$this->errors[] = "Error " . $this->db->lasterror();
@@ -437,7 +437,7 @@ class CrudObject extends CommonObject
 			$sql.= " WHERE ".$this->pk_name."=" . $this->id;
 
 			dol_syslog(__METHOD__ . " sql=" . $sql);
-			$resql = $this->query($sql);
+			$resql = $this->db->query($sql);
 			if (! $resql) {
 				$error ++;
 				$this->errors[] = "Error " . $this->db->lasterror();
@@ -495,41 +495,5 @@ class CrudObject extends CommonObject
 		// End call triggers
 
 		return $error;
-	}
-
-	/**
-	 * Run Sql query
-	 *
-	 * @param      $sql      sql query
-	 * @return     int       query result
-	 */
-	protected function query($sql)
-	{
-		if (DOLIBASE_ENV == 'dev')
-		{
-			$startTime   = microtime(true);
-			$startMemory = memory_get_usage(true);
-		}
-
-		$resql = $this->db->query($sql);
-
-		if (DOLIBASE_ENV == 'dev')
-		{
-			$endTime     = microtime(true);
-			$duration    = $endTime - $startTime;
-			$endMemory   = memory_get_usage(true);
-			$memoryDelta = $endMemory - $startMemory;
-
-			$this->db->queries[] = array(
-				'sql'           => $sql,
-				'duration'      => $duration,
-				'memory_usage'  => $memoryDelta,
-				'is_success'    => $resql,
-				'error_code'    => ! $resql ? $this->db->lasterrno() : null,
-				'error_message' => ! $resql ? $this->db->lasterror() : null
-			);
-		}
-
-		return $resql;
 	}
 }

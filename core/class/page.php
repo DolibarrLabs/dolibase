@@ -92,7 +92,7 @@ class Page
 		// Load default actions
 		$this->loadDefaultActions();
 
-		// Load DebugBar
+		// Load Debug Bar
 		if (DOLIBASE_ENV == 'dev') {
 			dolibase_include_once('/core/class/debugbar.php');
 			$this->debugbar = new DolibaseDebugBar();

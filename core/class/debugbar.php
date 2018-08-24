@@ -27,6 +27,7 @@ use \DebugBar\DataCollector\TimeDataCollector;
 use \DebugBar\DataCollector\MemoryCollector;
 use \DebugBar\DataCollector\ExceptionsCollector;
 dolibase_include_once('/core/debugbar_collectors/DatabaseCollector.php');
+dolibase_include_once('/core/class/traceable_db.php');
 
 /**
  * DolibaseDebugBar class
@@ -58,7 +59,7 @@ class DolibaseDebugBar extends DebugBar
 	{
 		global $db;
 
-		$db->queries = array();
+		$db = new TraceableDB($db);
 
 		return $db;
 	}
