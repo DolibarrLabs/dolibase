@@ -102,6 +102,19 @@ class Page
 	}
 
 	/**
+	 * Add a message to Debug Bar
+	 *
+	 * @param     $message     Message
+	 * @param     $label       Label, possible values: 'info', 'error', 'warning', ...
+	 */
+	public function log($message, $label = 'info')
+	{
+		if (DOLIBASE_ENV == 'dev') {
+			$this->debugbar['messages']->addMessage($message, $label);
+		}
+	}
+
+	/**
 	 * Set page title
 	 *
 	 * @param     $page_title     Page title
@@ -421,7 +434,7 @@ class Page
 	public function begin()
 	{
 		global $langs;
-		
+
 		// Load Page Header (Dolibarr header, menus, ...)
 		llxHeader($this->head, $langs->trans($this->title));
 
@@ -451,7 +464,7 @@ class Page
 	public function end($add_fiche_end = true)
 	{
 		global $db;
-		
+
 		// Page end
 		$this->closeTable();
 		$this->closeForm();
