@@ -26,9 +26,9 @@ use \DebugBar\DataCollector\ConfigCollector;
 use \DebugBar\DataCollector\TimeDataCollector;
 use \DebugBar\DataCollector\MemoryCollector;
 use \DebugBar\DataCollector\ExceptionsCollector;
-dolibase_include_once('/core/debugbar_collectors/DatabaseCollector.php');
-dolibase_include_once('/core/class/traceable_db.php');
-dolibase_include_once('/core/debugbar_collectors/DolibaseInfoCollector.php');
+dolibase_include_once('/core/debugbar/DataCollector/DatabaseCollector.php');
+dolibase_include_once('/core/debugbar/TraceableDB.php');
+dolibase_include_once('/core/debugbar/DataCollector/DolibaseInfoCollector.php');
 
 /**
  * DolibaseDebugBar class
