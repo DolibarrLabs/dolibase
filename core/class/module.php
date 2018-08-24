@@ -214,8 +214,8 @@ class DolibaseModule extends DolibarrModules
 	protected function loadTables()
 	{
 		// Load Dolibase tables
-		if (DOLIBASE_ENABLE_LOGS) {
-			$this->_load_tables(DOLIBASE_ROOT.'/sql/logs/');
+		foreach (DOLIBASE_LOAD_TABLES as $table) {
+			$this->_load_tables(DOLIBASE_ROOT.'/sql/'.$table.'/');
 		}
 
 		// Load module tables

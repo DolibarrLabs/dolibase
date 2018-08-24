@@ -74,11 +74,18 @@ if (! defined('DOLIBASE_ALLOW_FUNC_CHAINING')) define('DOLIBASE_ALLOW_FUNC_CHAIN
 if (! defined('DOLIBASE_USE_AJAX_ON_CONFIRM')) define('DOLIBASE_USE_AJAX_ON_CONFIRM', 1);
 
 /**
+ * Array of tables that should be loaded by Dolibase
+ *
+ * Tables files should be in /dolibase/sql folder
+ */
+if (! defined('DOLIBASE_LOAD_TABLES')) define('DOLIBASE_LOAD_TABLES', array('logs'));
+
+/**
  * Enable Dolibase logs
  *
  * Logs are currently saved only when creating/modifying/deleting an object
  */
-if (! defined('DOLIBASE_ENABLE_LOGS')) define('DOLIBASE_ENABLE_LOGS', true);
+if (! defined('DOLIBASE_ENABLE_LOGS')) define('DOLIBASE_ENABLE_LOGS', (in_array('logs', DOLIBASE_LOAD_TABLES) ? true : false));
 
 /**
  * Define if Dolibase should check for module updates or not
