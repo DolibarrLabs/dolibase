@@ -219,3 +219,22 @@ if (! function_exists('get_rights_class'))
 		return $rights_class;
 	}
 }
+
+/**
+ * Returns function output as a string
+ *
+ * @param      $func       function name
+ * @param      $args       function arguments
+ */
+if (! function_exists('get_func_output'))
+{
+	function get_func_output($func, $args = array())
+	{
+		ob_start();
+		call_user_func_array($func, $args);
+		$out = ob_get_contents();
+		ob_end_clean();
+
+		return $out;
+	}
+}

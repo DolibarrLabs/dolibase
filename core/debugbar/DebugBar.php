@@ -29,6 +29,7 @@ use \DebugBar\DataCollector\ExceptionsCollector;
 dolibase_include_once('/core/debugbar/DataCollector/DatabaseCollector.php');
 dolibase_include_once('/core/debugbar/TraceableDB.php');
 dolibase_include_once('/core/debugbar/DataCollector/DolibaseInfoCollector.php');
+dolibase_include_once('/core/debugbar/DataCollector/DolibarrLogCollector.php');
 
 /**
  * DolibaseDebugBar class
@@ -53,6 +54,7 @@ class DolibaseDebugBar extends DebugBar
 		$this->addCollector(new ExceptionsCollector());
 		$this->addCollector(new DatabaseCollector($this->getDatabase()));
 		$this->addCollector(new DolibaseInfoCollector());
+		$this->addCollector(new DolibarrLogCollector());
 	}
 
 	/**
