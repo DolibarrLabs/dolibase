@@ -67,13 +67,6 @@ if (! defined('DOLIBASE_LANGS_ROOT')) define('DOLIBASE_LANGS_ROOT', substr(DOLIB
 if (! defined('DOLIBASE_ALLOW_FUNC_CHAINING')) define('DOLIBASE_ALLOW_FUNC_CHAINING', true);
 
 /**
- * Enable Debug mode
- *
- * Turn it to true to get more informations about errors
- */
-if (! defined('DOLIBASE_DEBUG_MODE')) define('DOLIBASE_DEBUG_MODE', (DOLIBASE_ENV == 'dev' ? true : false));
-
-/**
  * Use AJAX on confirmation
  *
  * Values should be 1/0 instead of true/false because the function where this is used takes an integer value instead of boolean as parameter
