@@ -15,6 +15,8 @@
  * 
  */
 
+global $conf;
+
 /**
  * Version
  *
@@ -27,7 +29,7 @@ if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.0.0-beta');
  *
  * Possible values: 'dev', 'prod'
  */
-if (! defined('DOLIBASE_ENV')) define('DOLIBASE_ENV', 'dev');
+if (! defined('DOLIBASE_ENV')) define('DOLIBASE_ENV', ($conf->global->DOLIBASE_ENV ? $conf->global->DOLIBASE_ENV : 'prod'));
 
 /**
  * Link
