@@ -69,11 +69,13 @@ class DolibaseDebugBar extends DebugBar
 	 */
 	protected function getConfig()
 	{
-		global $dolibase_config;
+		global $dolibase_config, $conf, $user;
 
 		$config = array(
 			'dolibase' => array(),
-			'dolibarr' => array()
+			'dolibarr' => array(),
+			'$conf'    => (array) $conf,
+			'$user'    => (array) $user
 		);
 
 		// Get constants
