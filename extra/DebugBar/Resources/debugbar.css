@@ -19,6 +19,10 @@ div.phpdebugbar {
   text-align: left;
 }
 
+div.phpdebugbar a {
+  cursor: pointer;
+}
+
 div.phpdebugbar-drag-capture {
   position: fixed;
   top: 0;
