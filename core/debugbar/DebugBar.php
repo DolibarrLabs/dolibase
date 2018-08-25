@@ -47,7 +47,7 @@ class DolibaseDebugBar extends DebugBar
 	{
 		global $conf;
 
-		$this->addCollector(new PhpInfoCollector());
+		//$this->addCollector(new PhpInfoCollector());
 		$this->addCollector(new MessagesCollector());
 		$this->addCollector(new RequestDataCollector());
 		$this->addCollector(new ConfigCollector($this->getConfig()));

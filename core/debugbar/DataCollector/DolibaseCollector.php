@@ -98,7 +98,7 @@ class DolibaseCollector extends DataCollector implements Renderable, AssetProvid
 		$info .= 'ID: <strong>' . $conf->global->MAIN_MAIL_SMTPS_ID . '</strong><br>';
 		$info .= 'Pwd: <strong>' . $conf->global->MAIN_MAIL_SMTPS_PW . '</strong><br>';
 		$info .= 'TLS/STARTTLS: <strong>' . $conf->global->MAIN_MAIL_EMAIL_TLS . '</strong> / <strong>' . $conf->global->MAIN_MAIL_EMAIL_STARTTLS . '</strong><br>';
-		$info .= 'State: <strong>' . ($conf->global->MAIN_DISABLE_ALL_MAILS ? 'disabled' : 'enabled') . '</strong>';
+		$info .= 'Status: <strong>' . ($conf->global->MAIN_DISABLE_ALL_MAILS ? 'disabled' : 'enabled') . '</strong>';
 
 		return $info;
 	}
