@@ -94,6 +94,9 @@ div.phpdebugbar-widgets-messages {
     width: 100%;
     background: #fff;
   }
+  div.phpdebugbar-widgets-messages div.phpdebugbar-widgets-toolbar i.fa-search {
+    margin-left: 7px;
+  }
     div.phpdebugbar-widgets-messages div.phpdebugbar-widgets-toolbar input {
       border: 0;
       margin: 0;
@@ -108,7 +111,7 @@ div.phpdebugbar-widgets-messages {
         float: right;
         font-size: 12px;
         padding: 2px 4px;
-        background: #7cacd5;
+        background: #3d6c99;
         margin: 0 2px;
         border-radius: 4px;
         color: #fff;
