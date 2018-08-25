@@ -44,7 +44,7 @@ class LogsCollector extends MessagesCollector
 	{
 		parent::__construct($name);
 
-		$this->path = $path;
+		$this->path = $path ?: $this->getLogsFile();
 	}
 
 	/**
@@ -53,9 +53,7 @@ class LogsCollector extends MessagesCollector
 	 */
 	public function collect()
 	{
-		$path = $this->path ?: $this->getLogsFile();
-
-		$this->getStorageLogs($path);
+		$this->getStorageLogs($this->path);
 
 		return parent::collect();
 	}
@@ -77,7 +75,6 @@ class LogsCollector extends MessagesCollector
 	 * Get logs
 	 *
 	 * @param string $path
-	 *
 	 * @return array
 	 */
 	public function getStorageLogs($path)
@@ -96,7 +93,7 @@ class LogsCollector extends MessagesCollector
 
 	/**
 	 * Get latest file lines
-	 * http://tekkie.flashbit.net/php/tail-functionality-in-php
+	 *
 	 * @param string $file
 	 * @param int $lines
 	 * @return array

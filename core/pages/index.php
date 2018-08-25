@@ -16,6 +16,7 @@
  */
 
 dolibase_include_once('/core/class/form_page.php');
+include_once DOL_DOCUMENT_ROOT.'/core/class/dolgraph.class.php';
 
 /**
  * IndexPage class
@@ -136,7 +137,7 @@ class IndexPage extends FormPage
 	 * @param     $table_name       Table name (without prefix)
 	 * @param     $field_name       Table field name
 	 * @param     $field_values     Table field values, e.: array(0 => 'Status 1', 1 => 'Status 2')
-	 * @param     $graph_type       Type of graph ('pie', 'barline')
+	 * @param     $graph_type       Type of graph ('pie', 'bars', 'lines')
 	 * @param     $graph_title      Graph title
 	 * @param     $pk_field_name    Table primary key name
 	 */
@@ -177,12 +178,6 @@ class IndexPage extends FormPage
 			echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
 			$var = true;
 
-			if ($graph_type == 'barline')
-			{
-				$xlabel = array();
-				$i = 0;
-			}
-
 			foreach ($field_values as $key => $value)
 			{
 				$count = (isset($vals[$key]) ? (int) $vals[$key] : 0);
@@ -191,16 +186,7 @@ class IndexPage extends FormPage
 				{
 					$label = $langs->trans($value);
 
-					if ($graph_type == 'barline')
-					{
-						$xlabel[]     = array($i, $label);
-						$dataseries[] = array($i, $count);
-						$i++;
-					}
-					else
-					{
-						$dataseries[] = array('label' => $label, 'data' => $count);
-					}
+					$dataseries[] = array($label, $count);
 
 					if (! $conf->use_javascript_ajax)
 					{
@@ -216,19 +202,23 @@ class IndexPage extends FormPage
 			if ($conf->use_javascript_ajax)
 			{
 				echo '<tr class="impair"><td align="center" colspan="2">';
-				if ($graph_type == 'barline')
-				{
-					$data = array('series' => array(array('label' => $field_name, 'data' => $dataseries)),
-								  'xlabel' => $xlabel
-							);
-					$showlegend = 0;
+
+				$graph = new DolGraph();
+				$width = DolGraph::getDefaultGraphSizeForStats('width');
+				$height = DolGraph::getDefaultGraphSizeForStats('height');
+				$graph->SetData($dataseries);
+				if (in_array($graph_type, array('bars', 'lines'))) {
+					$graph->SetMaxValue($graph->GetCeilMaxValue());
+					$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
 				}
-				else
-				{
-					$data = array('series' => $dataseries);
-					$showlegend = 1;
-				}
-				dol_print_graph('stats_'.($this->stats_id++), 300, 180, $data, $showlegend, $graph_type, 1);
+				$graph->setShowLegend(1);
+				$graph->setShowPercent(1);
+				$graph->SetType(array($graph_type));
+				$graph->setWidth($width);
+				$graph->setHeight($height);
+				$graph->draw('stats_'.($this->stats_id++));
+				echo $graph->show();
+
 				echo '</td></tr>';
 			}
 

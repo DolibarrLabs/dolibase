@@ -204,8 +204,6 @@ class StatsPage extends FormPage
 		$HEIGHT = DolGraph::getDefaultGraphSizeForStats('height');
 		if (! $graph->isGraphKo())
 		{
-			$graph->SetData($data);
-			$graph->SetPrecisionY(0);
 			$i = $startyear;
 			$legend = array();
 			while ($i <= $endyear)
@@ -213,6 +211,7 @@ class StatsPage extends FormPage
 				$legend[] = $i;
 				$i++;
 			}
+			$graph->SetData($data);
 			$graph->SetLegend($legend);
 			$graph->SetMaxValue($graph->GetCeilMaxValue());
 			$graph->SetMinValue(min(0,$graph->GetFloorMinValue()));

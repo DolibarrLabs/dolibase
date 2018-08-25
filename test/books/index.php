@@ -29,7 +29,7 @@ $list = Dictionary::get_all('books_dict');
 
 $page->addStatsGraph($books->table_element, 'type', $list);
 
-$page->addStatsGraph($books->table_element, 'type', $list, 'barline', 'Statistics - Barline');
+$page->addStatsGraph($books->table_element, 'type', $list, 'bars', 'Statistics - Bars');
 
 $page->closeLeftSection();
 
@@ -59,7 +59,9 @@ if ($books->fetchAll(10, 0, 't.creation_date'))
 	}
 }
 
-$page->closeTable();
+$page->closeTable()->addLineBreak();
+
+$page->addStatsGraph($books->table_element, 'type', $list, 'lines', 'Statistics - Lines');
 
 $page->closeRightSection();
 
