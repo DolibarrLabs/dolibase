@@ -85,8 +85,8 @@ class DolibaseDebugBar extends DebugBar
 		$config = array(
 			'dolibase' => array(),
 			'dolibarr' => array(),
-			'$conf'    => (array) $conf,
-			'$user'    => (array) $user
+			'$conf'    => object_to_array($conf),
+			'$user'    => object_to_array($user)
 		);
 
 		// Get constants
