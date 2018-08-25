@@ -45,6 +45,8 @@ class DolibaseDebugBar extends DebugBar
 	 */
 	public function __construct()
 	{
+		global $conf;
+
 		$this->addCollector(new PhpInfoCollector());
 		$this->addCollector(new MessagesCollector());
 		$this->addCollector(new RequestDataCollector());
@@ -54,7 +56,9 @@ class DolibaseDebugBar extends DebugBar
 		$this->addCollector(new ExceptionsCollector());
 		$this->addCollector(new DatabaseCollector($this->getDatabase()));
 		$this->addCollector(new DolibaseInfoCollector());
-		$this->addCollector(new DolibarrLogCollector());
+		if ($conf->syslog->enabled) {
+			$this->addCollector(new DolibarrLogCollector());
+		}
 	}
 
 	/**
