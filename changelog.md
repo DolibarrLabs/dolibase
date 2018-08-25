@@ -4,6 +4,7 @@
 #### 2.0.0 - AUG18
 
 *   NEW: Debug bar.
+*   FIX: some dolibarr errors/warnings.
 
 ---
 

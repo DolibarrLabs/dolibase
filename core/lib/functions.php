@@ -274,3 +274,22 @@ if (! function_exists('dolibase_debug'))
 		}
 	}
 }
+
+/**
+ * Redirect to specific url
+ *
+ * @param     $url     Url
+ */
+if (! function_exists('dolibase_redirect'))
+{
+	function dolibase_redirect($url)
+	{
+		if (DOLIBASE_ENV == 'dev') {
+			global $debugbar;
+
+			$debugbar->stackData();
+		}
+
+		header($url);
+	}
+}

@@ -68,7 +68,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 		{
 			$result = $book->delete();
 			if ($result > 0) {
-				header('Location: list.php');
+				dolibase_redirect('Location: list.php');
 				exit();
 	        }
 		}
