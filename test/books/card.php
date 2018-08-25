@@ -84,7 +84,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 			array('name' => 'Name', 'value' => $book->name),
 			array('name' => 'Description', 'value' => $book->desc),
 			array('name' => 'Type', 'value' => $list[$book->type]),
-			array('name' => 'Publication Date', 'value' => dol_print_date($book->db->jdate($book->publication_date), 'daytext')),
+			array('name' => 'Publication Date', 'value' => dol_print_date($book->publication_date, 'daytext')),
 			array('name' => 'Qty', 'value' => $book->qty),
 			array('name' => 'Price', 'value' => price_with_currency($book->price))
 		);
@@ -165,14 +165,14 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	// Pub date
 	if ($action != 'edit_publication_date' || ! $page->canEdit()) {
-		$page->showField('Publication Date', dol_print_date($book->db->jdate($book->publication_date), 'daytext'), true, $_SERVER["PHP_SELF"] . '?action=edit_publication_date&id=' . $book->id);
+		$page->showField('Publication Date', dol_print_date($book->publication_date, 'daytext'), true, $_SERVER["PHP_SELF"] . '?action=edit_publication_date&id=' . $book->id);
 	}
 	else {
 		$page->editDateField('Publication Date', 'publication_date', $book->publication_date);
 	}
 
 	// Creation date
-	$page->showField('Creation Date', dol_print_date($book->db->jdate($book->creation_date), 'daytext'));
+	$page->showField('Creation Date', dol_print_date($book->creation_date, 'daytext'));
 
 	// Created by
 	$userstatic = new User($book->db);

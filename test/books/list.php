@@ -95,11 +95,11 @@ foreach ($books->lines as $book)
 	$page->addColumn('t.price', price($book->price));
 
 	// Publication date
-	$pub_date = empty($book->publication_date) ? '-' : dol_print_date($book->db->jdate($book->publication_date), "day");
+	$pub_date = empty($book->publication_date) ? '-' : dol_print_date($book->publication_date, "day");
 	$page->addColumn('t.publication_date', $pub_date, 'align="center"');
 
 	// Creation date
-	$creation_date = empty($book->creation_date) ? '-' : dol_print_date($book->db->jdate($book->creation_date), "day");
+	$creation_date = empty($book->creation_date) ? '-' : dol_print_date($book->creation_date, "day");
 	$page->addColumn('t.creation_date', $creation_date, 'align="center"');
 
 	// Created by

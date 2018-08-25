@@ -50,7 +50,7 @@ if ($books->fetchAll(10, 0, 't.creation_date'))
 		$page->addColumn($book->getNomUrl(1), 'width="20%" class="nowrap"');
 
 		// Creation date
-		$page->addColumn(dol_print_date($book->db->jdate($book->creation_date), 'day'), 'align="center"');
+		$page->addColumn(dol_print_date($book->creation_date, 'day'), 'align="center"');
 
 		// Type
 		$page->addColumn($list[$book->type], 'align="right" width="20%"');
