@@ -20,10 +20,10 @@ use Psr\Log\LogLevel;
 use ReflectionClass;
 
 /**
- * DolibarrLogCollector class
+ * LogsCollector class
  */
 
-class DolibarrLogCollector extends MessagesCollector
+class LogsCollector extends MessagesCollector
 {
 	/**
 	 * @var string default logs file path

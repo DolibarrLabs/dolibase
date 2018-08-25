@@ -28,8 +28,8 @@ use \DebugBar\DataCollector\MemoryCollector;
 use \DebugBar\DataCollector\ExceptionsCollector;
 dolibase_include_once('/core/debugbar/DataCollector/DatabaseCollector.php');
 dolibase_include_once('/core/debugbar/TraceableDB.php');
-dolibase_include_once('/core/debugbar/DataCollector/DolibaseInfoCollector.php');
-dolibase_include_once('/core/debugbar/DataCollector/DolibarrLogCollector.php');
+dolibase_include_once('/core/debugbar/DataCollector/DolibaseCollector.php');
+dolibase_include_once('/core/debugbar/DataCollector/LogsCollector.php');
 
 /**
  * DolibaseDebugBar class
@@ -55,9 +55,9 @@ class DolibaseDebugBar extends DebugBar
 		$this->addCollector(new MemoryCollector());
 		$this->addCollector(new ExceptionsCollector());
 		$this->addCollector(new DatabaseCollector($this->getDatabase()));
-		$this->addCollector(new DolibaseInfoCollector());
+		$this->addCollector(new DolibaseCollector());
 		if ($conf->syslog->enabled) {
-			$this->addCollector(new DolibarrLogCollector());
+			$this->addCollector(new LogsCollector());
 		}
 	}
 

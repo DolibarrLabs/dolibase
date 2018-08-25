@@ -20,10 +20,10 @@ use DebugBar\DataCollector\Renderable;
 use DebugBar\DebugBarException;
 
 /**
- * DolibaseInfoCollector class
+ * DolibaseCollector class
  */
 
-class DolibaseInfoCollector extends DataCollector implements Renderable
+class DolibaseCollector extends DataCollector implements Renderable
 {
 	/**
 	 *	Return collector name
