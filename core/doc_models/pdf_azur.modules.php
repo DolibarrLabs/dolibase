@@ -512,7 +512,8 @@ class pdf_azur extends DocModel
 		$posy += 4;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
-		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("Date")." : " . dol_print_date($object->creation_date, "%d %b %Y", false, $outputlangs, true), '', 'R');
+		$date = $object->db->jdate($object->creation_date);
+		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("Date")." : " . dol_print_date($date, "%d %b %Y", false, $outputlangs, true), '', 'R');
 
 		// Get contact
 		if (!empty($conf->global->DOC_SHOW_FIRST_SALES_REP))
