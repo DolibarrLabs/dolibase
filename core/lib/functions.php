@@ -238,3 +238,39 @@ if (! function_exists('get_func_output'))
 		return $out;
 	}
 }
+
+/**
+ * Load Debug bar
+ *
+ */
+if (! function_exists('load_debugbar'))
+{
+	function load_debugbar()
+	{
+		if (DOLIBASE_ENV == 'dev') {
+			global $debugbar;
+
+			dolibase_include_once('/core/debugbar/DebugBar.php');
+
+			$debugbar = new DolibaseDebugBar();
+		}
+	}
+}
+
+/**
+ * Add a message to Debug bar
+ *
+ * @param     $message     Message
+ * @param     $label       Label, possible values: 'info', 'error', 'warning', ...
+ */
+if (! function_exists('dolibase_debug'))
+{
+	function dolibase_debug($message, $label = 'info')
+	{
+		if (DOLIBASE_ENV == 'dev') {
+			global $debugbar;
+
+			$debugbar['messages']->addMessage($message, $label);
+		}
+	}
+}

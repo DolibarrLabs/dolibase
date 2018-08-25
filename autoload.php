@@ -26,3 +26,6 @@ require_once __DIR__ . '/const.php';
 
 // Load Dolibase functions
 require_once __DIR__ . '/core/lib/functions.php';
+
+// Load Debug bar
+load_debugbar();

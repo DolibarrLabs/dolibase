@@ -58,10 +58,6 @@ class Page
 	 */
 	protected $close_table = false;
 	/**
-	 * @var object DebugBar
-	 */
-	public $debugbar;
-	/**
 	 * @var object DebugBar Renderer
 	 */
 	protected $debugbarRenderer;
@@ -92,25 +88,12 @@ class Page
 		// Load default actions
 		$this->loadDefaultActions();
 
-		// Load Debug Bar
+		// Add Debug bar assets
 		if (DOLIBASE_ENV == 'dev') {
-			dolibase_include_once('/core/debugbar/DebugBar.php');
-			$this->debugbar = new DolibaseDebugBar();
-			$this->debugbarRenderer = $this->debugbar->getRenderer();
-			$this->appendToHead($this->debugbarRenderer->renderHead());
-		}
-	}
+			global $debugbar;
 
-	/**
-	 * Add a message to Debug Bar
-	 *
-	 * @param     $message     Message
-	 * @param     $label       Label, possible values: 'info', 'error', 'warning', ...
-	 */
-	public function log($message, $label = 'info')
-	{
-		if (DOLIBASE_ENV == 'dev') {
-			$this->debugbar['messages']->addMessage($message, $label);
+			$this->debugbarRenderer = $debugbar->getRenderer();
+			$this->appendToHead($this->debugbarRenderer->renderHead());
 		}
 	}
 
