@@ -15,10 +15,13 @@
  * 
  */
 
-global $dolibase_path, $debugbar;
+global $dolibase_path, $dolibase_tables, $debugbar;
 
 // Get Dolibase path
 $dolibase_path = get_dolibase_path();
+
+// Set Dolibase tables
+$dolibase_tables = array('logs');
 
 // Initialise Debug bar
 if (DOLIBASE_ENV == 'dev' && ! is_object($debugbar)) {

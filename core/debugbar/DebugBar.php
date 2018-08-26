@@ -80,13 +80,14 @@ class DolibaseDebugBar extends DebugBar
 	 */
 	protected function getConfig()
 	{
-		global $dolibase_config, $dolibase_path, $conf, $user;
+		global $dolibase_config, $dolibase_path, $dolibase_tables, $conf, $user;
 
 		$config = array(
 			'dolibase' => array(
 				'const' => array(),
 				'var'   => array(
-					'$dolibase_path' => $dolibase_path
+					'$dolibase_path'   => $dolibase_path,
+					'$dolibase_tables' => $dolibase_tables
 				)
 			),
 			'dolibarr' => array(

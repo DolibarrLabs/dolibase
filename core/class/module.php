@@ -215,10 +215,10 @@ class DolibaseModule extends DolibarrModules
 	 */
 	protected function loadTables()
 	{
-		global $dolibase_path;
+		global $dolibase_path, $dolibase_tables;
 
 		// Load Dolibase tables
-		foreach (array('logs') as $table) {
+		foreach ($dolibase_tables as $table) {
 			$this->_load_tables($dolibase_path.'/sql/'.$table.'/');
 		}
 

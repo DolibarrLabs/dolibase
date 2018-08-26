@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.0.1 - AUG18
+
+*   NEW: Add $dolibase_tables var.
+
+---
+
 #### 2.0.0 - AUG18
 
 *   NEW: Debug bar.
