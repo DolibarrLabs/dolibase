@@ -49,8 +49,7 @@ if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book
 
 		if ($id > 0 && $result >= 0) {
 			// Creation OK
-			dolibase_redirect('Location: card.php?id=' . $id);
-			exit();
+			dolibase_redirect('card.php?id=' . $id);
 		}
 	}
 }

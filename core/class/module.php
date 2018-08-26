@@ -152,7 +152,7 @@ class DolibaseModule extends DolibarrModules
 				preg_match("/var module_version = '(.*)'/", $page, $module_version);
 
 				// If a new version is available
-				if (isset($module_version[1]) && currentVersionGreaterThanVersion($module_version[1], $this->config['module']['version']))
+				if (isset($module_version[1]) && compare_version($module_version[1], '>', $this->config['module']['version']))
 				{
 					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('NewVersionAvailable', $module_version[1]).'" target="_blank"><img src="'.dolibase_buildurl('/core/img/update.png').'" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
 				}

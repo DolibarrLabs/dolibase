@@ -17,70 +17,33 @@
 
 
 /**
- * Check if Dolibarr version if greater than another
+ * Compare two versions
  *
- * @param     $version     Dolibarr version to compare with
- * @return    int          1 or 0
+ * @param     $version        Version string, possible values: 'x', 'x.x', 'x.x.x'
+ * @param     $sign           Compare sign, possible values: '>', '<'
+ * @param     $version_to     Version to compare with
+ * @return    boolean         true or false
  */
-if (! function_exists('dolibarrVersionGreaterThan'))
+if (! function_exists('compare_version'))
 {
-	function dolibarrVersionGreaterThan($version)
+	function compare_version($version, $sign, $version_to)
 	{
-		return currentVersionGreaterThanVersion(DOL_VERSION, $version);
-	}
-}
-
-/**
- * Check if Dolibarr version if less than another
- *
- * @param     $version     Dolibarr version to compare with
- * @return    int          1 or 0
- */
-if (! function_exists('dolibarrVersionLessThan'))
-{
-	function dolibarrVersionLessThan($version)
-	{
-		return currentVersionLessThanVersion(DOL_VERSION, $version);
-	}
-}
-
-/**
- * Check if a version if greater than another
- *
- * @param     $current_version     Current version
- * @param     $version             Version to compare with
- * @return    int                  1 or 0
- */
-if (! function_exists('currentVersionGreaterThanVersion'))
-{
-	function currentVersionGreaterThanVersion($current_version, $version)
-	{
-		$current_version_digits = explode('.', $current_version);
 		$version_digits = explode('.', $version);
+		$version_to_digits = explode('.', $version_to);
 
-		return $current_version_digits[0] > $version_digits[0] || 
-		(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] > $version_digits[1]) || 
-		(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] > $version_digits[2]) ? 1 : 0;
-	}
-}
-
-/**
- * Check if a version if less than another
- *
- * @param     $current_version     Current version
- * @param     $version             Version to compare with
- * @return    int                  1 or 0
- */
-if (! function_exists('currentVersionLessThanVersion'))
-{
-	function currentVersionLessThanVersion($current_version, $version)
-	{
-		$current_version_digits = explode('.', $current_version);
-		$version_digits = explode('.', $version);
-
-		return $current_version_digits[0] < $version_digits[0] || 
-		(isset($version_digits[1]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] < $version_digits[1]) || 
-		(isset($version_digits[2]) && $current_version_digits[0] == $version_digits[0] && $current_version_digits[1] == $version_digits[1] && $current_version_digits[2] < $version_digits[2]) ? 1 : 0;
+		if ($sign == '>') {
+			return $version_digits[0] > $version_to_digits[0] || 
+			(isset($version_to_digits[1]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] > $version_to_digits[1]) || 
+			(isset($version_to_digits[2]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] == $version_to_digits[1] && $version_digits[2] > $version_to_digits[2]) ? true : false;
+		}
+		else if ($sign == '<') {
+			return $version_digits[0] < $version_to_digits[0] || 
+			(isset($version_to_digits[1]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] < $version_to_digits[1]) || 
+			(isset($version_to_digits[2]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] == $version_to_digits[1] && $version_digits[2] < $version_to_digits[2]) ? true : false;
+		}
+		else {
+			die('Dolibase::Functions::Error wrong sign provided to '.__FUNCTION__.'.');
+		}
 	}
 }
 
@@ -161,7 +124,7 @@ if (! function_exists('get_dolibase_path'))
 }
 
 /**
- * Returns posted date
+ * Return posted date
  *
  * @param      $date_input_name       date input name
  * @param      $convert_to_db_format  should convert the date to database format or not
@@ -200,7 +163,7 @@ if (! function_exists('empty_to_null'))
 }
 
 /**
- * Returns current date & time
+ * Return current date & time
  *
  * @param      $convert_to_db_format  should convert the date to database format or not
  * @return     string                 current date in your db format
@@ -234,7 +197,7 @@ if (! function_exists('str_escape'))
 }
 
 /**
- * Returns price with currency
+ * Return price with currency
  *
  * @param      $price       price
  * @return     string       price with currency
@@ -248,7 +211,7 @@ if (! function_exists('price_with_currency'))
 }
 
 /**
- * Returns module rights class
+ * Return module rights class
  *
  * @param      $to_upper           convert to upper case
  * @param      $no_underscores     remove underscores
@@ -275,7 +238,7 @@ if (! function_exists('get_rights_class'))
 }
 
 /**
- * Returns function output as a string
+ * Return function output as a string
  *
  * @param      $func       function name
  * @param      $args       function arguments
@@ -294,12 +257,12 @@ if (! function_exists('get_func_output'))
 }
 
 /**
- * Load Debug bar
+ * Return a new instance of Debug bar
  *
  */
-if (! function_exists('load_debugbar'))
+if (! function_exists('init_debugbar'))
 {
-	function load_debugbar()
+	function init_debugbar()
 	{
 		dolibase_include_once('/core/debugbar/DebugBar.php', 'DolibaseDebugBar');
 
@@ -340,7 +303,9 @@ if (! function_exists('dolibase_redirect'))
 			$debugbar->stackData();
 		}
 
-		header($url);
+		header('Location: ' . $url);
+
+		exit();
 	}
 }
 

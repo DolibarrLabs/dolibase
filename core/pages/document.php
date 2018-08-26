@@ -114,8 +114,7 @@ class DocumentPage extends Page
 			// Fix documents number after upload a file or add a link by refreshing the page
 			if ((GETPOST('sendit','none') || GETPOST('linkit','none')) && ! empty($conf->global->MAIN_UPLOAD_DOC))
 			{
-				header('Location: ' . $_SERVER["PHP_SELF"] . '?id=' . $object->id);
-				exit;
+				dolibase_redirect($_SERVER["PHP_SELF"] . '?id=' . $object->id);
 			}
 		}
 

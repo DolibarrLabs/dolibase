@@ -20,7 +20,7 @@ global $dolibase_path, $debugbar;
 // Get Dolibase path
 $dolibase_path = get_dolibase_path();
 
-// Load Debug bar
+// Initialise Debug bar
 if (DOLIBASE_ENV == 'dev') {
-	$debugbar = load_debugbar();
+	$debugbar = init_debugbar();
 }

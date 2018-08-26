@@ -126,8 +126,7 @@ class SetupPage extends FormPage
 
 				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
 				{
-					header("Location: ".$_SERVER["PHP_SELF"]);
-					exit;
+					dolibase_redirect($_SERVER["PHP_SELF"]);
 				}
 				else
 				{
@@ -141,8 +140,7 @@ class SetupPage extends FormPage
 				
 				if (dolibarr_del_const($db, $code, $conf->entity) > 0)
 				{
-					Header("Location: ".$_SERVER["PHP_SELF"]);
-					exit;
+					dolibase_redirect($_SERVER["PHP_SELF"]);
 				}
 				else
 				{
@@ -248,8 +246,7 @@ class SetupPage extends FormPage
 					if ($module->write_file($object, $langs) > 0)
 					{
 						$modulepart = get_rights_class(false, true);
-						header("Location: ".DOL_URL_ROOT."/document.php?modulepart=".$modulepart."&file=SPECIMEN.pdf");
-						return;
+						dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$modulepart."&file=SPECIMEN.pdf");
 					}
 					else
 					{
