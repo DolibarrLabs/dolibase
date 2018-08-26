@@ -73,7 +73,7 @@ class Page
 	{
 		global $langs, $user, $dolibase_config, $debugbar;
 
-		// Start measuring time after cosntruct call
+		// Start measuring time after construct call
 		start_time_measure('after_construct_call', __METHOD__);
 
 		// Set page attributes
@@ -442,6 +442,15 @@ class Page
 
 		// Generate tabs
 		$this->generateTabs();
+	}
+
+	/**
+	 * Redirect to a url (alias for dolibase_redirect function)
+	 *
+	 */
+	public function redirect($url)
+	{
+		dolibase_redirect($url);
 	}
 
 	/**

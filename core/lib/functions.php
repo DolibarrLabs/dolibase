@@ -91,7 +91,7 @@ if (! function_exists('dolibase_buildpath'))
 }
 
 /**
- * Return Dolibase components full url (shortcut for dolibase_buildpath function)
+ * Return Dolibase components full url (alias for dolibase_buildpath function)
  *
  * @param     $component_path     Dolibase component path
  */
