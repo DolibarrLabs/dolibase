@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.0.2 - AUG18
+
+*   FIX: update config collector.
+
+---
+
 #### 2.0.1 - AUG18
 
 *   NEW: Add $dolibase_tables var.

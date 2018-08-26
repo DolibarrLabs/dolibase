@@ -87,7 +87,8 @@ class DolibaseDebugBar extends DebugBar
 				'const' => array(),
 				'var'   => array(
 					'$dolibase_path'   => $dolibase_path,
-					'$dolibase_tables' => $dolibase_tables
+					'$dolibase_tables' => $dolibase_tables,
+					'$dolibase_config' => $dolibase_config
 				)
 			),
 			'dolibarr' => array(
@@ -113,7 +114,7 @@ class DolibaseDebugBar extends DebugBar
 			}
 		}
 
-		return array_merge($config, $dolibase_config);
+		return $config;
 	}
 
 	/**
