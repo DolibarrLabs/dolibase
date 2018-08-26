@@ -21,10 +21,10 @@ use DebugBar\DataCollector\Renderable;
 use DebugBar\DebugBarException;
 
 /**
- * DatabaseCollector class
+ * QueryCollector class
  */
 
-class DatabaseCollector extends DataCollector implements Renderable, AssetProvider
+class QueryCollector extends DataCollector implements Renderable, AssetProvider
 {
 	/**
 	 * @var object Database handler
@@ -86,7 +86,7 @@ class DatabaseCollector extends DataCollector implements Renderable, AssetProvid
 	 */
 	public function getName()
 	{
-		return 'db';
+		return 'query';
 	}
 
 	/**
@@ -99,11 +99,11 @@ class DatabaseCollector extends DataCollector implements Renderable, AssetProvid
 			"database" => array(
 				"icon" => "arrow-right",
 				"widget" => "PhpDebugBar.Widgets.SQLQueriesWidget",
-				"map" => "db",
+				"map" => "query",
 				"default" => "[]"
 			),
 			"database:badge" => array(
-				"map" => "db.nb_statements",
+				"map" => "query.nb_statements",
 				"default" => 0
 			)
 		);
