@@ -73,6 +73,9 @@ class Page
 	{
 		global $langs, $user, $dolibase_config, $debugbar;
 
+		// Start measuring time after cosntruct call
+		start_time_measure('after_construct_call', __METHOD__);
+
 		// Set page attributes
 		$this->title             = $page_title;
 		$this->access_permission = $access_perm;
@@ -416,6 +419,9 @@ class Page
 	{
 		global $langs;
 
+		// Stop measuring time after construct call & Start measuring time after begin
+		start_time_measure('after_begin_call', __METHOD__, 'after_construct_call');
+
 		// Load Page Header (Dolibarr header, menus, ...)
 		llxHeader($this->head, $langs->trans($this->title));
 
@@ -445,6 +451,9 @@ class Page
 	public function end($add_fiche_end = true)
 	{
 		global $db;
+
+		// Stop measuring time after begin call & Start measuring time after end ('after_end_call' will be stopped when rendering the Debug bar)
+		start_time_measure('after_end_call', __METHOD__, 'after_begin_call');
 
 		// Page end
 		$this->closeTable();

@@ -310,6 +310,45 @@ if (! function_exists('dolibase_redirect'))
 }
 
 /**
+ * Start time measure, that will appear later on Debug bar Timeline
+ *
+ * @param     $name        measure name, used to stop measure later
+ * @param     $label       measure label, will appear on Timeline
+ * @param     $stop_name   name of measure to stop before starting the new one, leave empty if not
+ */
+if (! function_exists('start_time_measure'))
+{
+	function start_time_measure($name, $label = '', $stop_name = '')
+	{
+		global $debugbar;
+
+		if (is_object($debugbar)) {
+			if (! empty($stop_name)) {
+				$debugbar['time']->stopMeasure($stop_name);
+			}
+			$debugbar['time']->startMeasure($name, $label);
+		}
+	}
+}
+
+/**
+ * Stop time measure
+ *
+ * @param     $name        measure name
+ */
+if (! function_exists('stop_time_measure'))
+{
+	function stop_time_measure($name)
+	{
+		global $debugbar;
+
+		if (is_object($debugbar)) {
+			$debugbar['time']->stopMeasure($name);
+		}
+	}
+}
+
+/**
  * Dumps all the object propreties and its associations recursively into an array
  *
  * @param     $obj     Object
