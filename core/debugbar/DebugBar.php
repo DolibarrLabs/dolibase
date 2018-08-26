@@ -80,13 +80,22 @@ class DolibaseDebugBar extends DebugBar
 	 */
 	protected function getConfig()
 	{
-		global $dolibase_config, $conf, $user;
+		global $dolibase_config, $dolibase_path, $conf, $user;
 
 		$config = array(
-			'dolibase' => array(),
-			'dolibarr' => array(),
-			'$conf'    => object_to_array($conf),
-			'$user'    => object_to_array($user)
+			'dolibase' => array(
+				'const' => array(),
+				'var'   => array(
+					'$dolibase_path' => $dolibase_path
+				)
+			),
+			'dolibarr' => array(
+				'const' => array(),
+				'var'   => array(
+					'$conf' => object_to_array($conf),
+					'$user' => object_to_array($user)
+				)
+			)
 		);
 
 		// Get constants
@@ -96,10 +105,10 @@ class DolibaseDebugBar extends DebugBar
 		foreach ($const['user'] as $key => $value)
 		{
 			if (substr($key, 0, 8) == 'DOLIBASE') {
-				$config['dolibase'][$key] = $value;
+				$config['dolibase']['const'][$key] = $value;
 			}
 			else  {
-				$config['dolibarr'][$key] = $value;
+				$config['dolibarr']['const'][$key] = $value;
 			}
 		}
 

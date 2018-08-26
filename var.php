@@ -21,6 +21,6 @@ global $dolibase_path, $debugbar;
 $dolibase_path = get_dolibase_path();
 
 // Initialise Debug bar
-if (DOLIBASE_ENV == 'dev') {
+if (DOLIBASE_ENV == 'dev' && ! is_object($debugbar)) {
 	$debugbar = init_debugbar();
 }
