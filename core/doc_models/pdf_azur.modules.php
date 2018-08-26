@@ -46,6 +46,8 @@ class pdf_azur extends DocModel
 
 	public $emetteur; // Society object
 
+	protected $watermark_text;
+
 	/**
 	 *	Constructor
 	 *
@@ -76,7 +78,9 @@ class pdf_azur extends DocModel
 		$this->option_logo            = 1; // Show logo
 		$this->option_multilang       = 1; // Multi-language support
 		$this->option_freetext        = 1; // Support add of a personalised text
-		$this->option_draft_watermark = 1; // Support add of a watermark on drafts
+		$watermark_const              = get_rights_class(true) . '_DRAFT_WATERMARK';
+		$this->watermark_text         = $conf->global->$watermark_const;
+		$this->option_draft_watermark = (! empty($this->watermark_text) ? 1 : 0); // Support add of a watermark on drafts
 
 		// Get source company
 		$this->emetteur = $mysoc;
@@ -178,8 +182,8 @@ class pdf_azur extends DocModel
 				$pagenb = 0;
 				$pdf->SetDrawColor(128, 128, 128);
 
-				if (isset($object->documentTitle)) {
-					$subject = $object->documentTitle;
+				if (! empty($object->doc_title)) {
+					$subject = $object->doc_title;
 				}
 				else {
 					$rights_class = get_rights_class();
@@ -446,10 +450,9 @@ class pdf_azur extends DocModel
 		pdf_pagehead($pdf, $outputlangs, $this->page_hauteur);
 
 		// Show Draft Watermark
-		$watermark_const = get_rights_class(true) . '_DRAFT_WATERMARK';
-		if($object->status == 0 && (! empty($conf->global->$watermark_const)) )
+		if($object->status == 0 && (! empty($this->watermark_text)))
 		{
-			pdf_watermark($pdf,$outputlangs,$this->page_hauteur,$this->page_largeur,'mm',$conf->global->$watermark_const);
+			pdf_watermark($pdf, $outputlangs, $this->page_hauteur, $this->page_largeur, 'mm', $this->watermark_text);
 		}
 
 		$pdf->SetTextColor(0, 0, 60);
@@ -483,13 +486,14 @@ class pdf_azur extends DocModel
 			$pdf->MultiCell(100, 4, $outputlangs->convToOutputCharset($text), 0, 'L');
 		}
 
+		// Title
 		$pdf->SetFont('','B', $default_font_size + 3);
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
 		if (empty($titlekey))
 		{
-			if (isset($object->documentTitle)) {
-				$titlekey = $object->documentTitle;
+			if (! empty($object->doc_title)) {
+				$titlekey = $object->doc_title;
 			}
 			else {
 				$rights_class = get_rights_class();
@@ -499,40 +503,19 @@ class pdf_azur extends DocModel
 		$title = $outputlangs->transnoentities($titlekey);
 		$pdf->MultiCell(100, 3, $title, '', 'R');
 
+		// Ref
 		$pdf->SetFont('', 'B',$default_font_size);
-
 		$posy += 5;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
 		$pdf->MultiCell(100, 4, $outputlangs->transnoentities("Ref")." : " . $outputlangs->convToOutputCharset($object->ref), '', 'R');
 
-		$posy += 1;
+		// Date
 		$pdf->SetFont('', '', $default_font_size - 1);
-
-		$posy += 4;
+		$posy += 5;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
 		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("Date")." : " . dol_print_date($object->creation_date, "%d %b %Y", false, $outputlangs, true), '', 'R');
-
-		// Get contact
-		if (!empty($conf->global->DOC_SHOW_FIRST_SALES_REP))
-		{
-			$arrayidcontact = $object->getIdContact('internal','SALESREPFOLL');
-			if (count($arrayidcontact) > 0)
-			{
-				$usertmp = new User($this->db);
-				$usertmp->fetch($arrayidcontact[0]);
-				$posy += 4;
-				$pdf->SetXY($posx,$posy);
-				$pdf->SetTextColor(0, 0, 60);
-				$pdf->MultiCell(100, 3, $langs->trans("SalesRepresentative")." : ".$usertmp->getFullName($langs), '', 'R');
-			}
-		}
-
-		$posy += 2;
-
-		// Show list of linked objects
-		$posy = pdf_writeLinkedObjects($pdf, $object, $outputlangs, $posx, $posy, 100, 3, 'R', $default_font_size);
 
 		if ($showaddress)
 		{
@@ -565,15 +548,6 @@ class pdf_azur extends DocModel
 			$pdf->SetXY($posx+2, $posy);
 			$pdf->SetFont('', '', $default_font_size - 1);
 			$pdf->MultiCell(80, 4, $carac_emetteur, 0, 'L');
-
-			// If CUSTOMER contact defined, we use it
-			$usecontact = false;
-			$arrayidcontact = $object->getIdContact('external','CUSTOMER');
-			if (count($arrayidcontact) > 0)
-			{
-				$usecontact = true;
-				$result = $object->fetch_contact($arrayidcontact[0]);
-			}
 
 			// Recipient name
 			if ($usecontact && !empty($conf->global->MAIN_USE_COMPANY_NAME_OF_CONTACT)) {

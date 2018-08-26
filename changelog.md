@@ -6,6 +6,7 @@
 *   NEW: Debug bar.
 *   FIX: some dolibarr errors/warnings.
 *   FIX: issues with components include.
+*   FIX: database errors on pdf generation.
 
 ---
 

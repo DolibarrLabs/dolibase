@@ -88,7 +88,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 			array('name' => 'Price', 'value' => price_with_currency($book->price))
 		);
 
-		$book->documentTitle = 'Book';
+		$book->doc_title = 'Book';
 		$book->generateDocument($model);
 	}
 

@@ -40,6 +40,14 @@ class SetupPage extends FormPage
 	 */
 	protected $doc_model_type;
 	/**
+	 * @var string used to generate documents specimen
+	 */
+	protected $doc_object_class;
+	/**
+	 * @var string used to generate documents specimen
+	 */
+	protected $doc_object_path;
+	/**
 	 * @var boolean used to disable default actions
 	 */
 	protected $disable_default_actions = false;
@@ -60,8 +68,10 @@ class SetupPage extends FormPage
 	 * @param     $access_perm   			  Access permission
 	 * @param     $disable_default_actions    Disable default actions
 	 * @param     $add_extrafields_tab        Add extrafields tab
+	 * @param     $doc_object_class           Document object class
+	 * @param     $doc_object_path            Document object path
 	 */
-	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false)
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $doc_object_class = '', $doc_object_path = '')
 	{
 		global $langs, $dolibase_path;
 
@@ -76,9 +86,11 @@ class SetupPage extends FormPage
 		// Set numbering model constant name
 		$this->num_model_const_name = get_rights_class(true) . '_ADDON';
 
-		// Set document model constant name & type
+		// Set document model constant name, type, object class & path
 		$this->doc_model_const_name = get_rights_class(true) . '_ADDON_PDF';
 		$this->doc_model_type       = get_rights_class();
+		$this->doc_object_class     = $doc_object_class;
+		$this->doc_object_path      = $doc_object_path;
 
 		// Add some custom css
 		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/setup.css.php').'">'."\n");
@@ -221,18 +233,33 @@ class SetupPage extends FormPage
 			{
 				$model = GETPOST('model','alpha');
 
-				dolibase_include_once('/core/class/custom_object.php');
+				if (! empty($this->doc_object_path) && ! empty($this->doc_object_class)) {
+					dol_include_once($this->doc_object_path);
+					$classname = $this->doc_object_class;
+				}
+				else {
+					dolibase_include_once('/core/class/custom_object.php');
+					$classname = 'CustomObject';
+				}
 
-				$object                = new CustomObject($db);
-				//$object->documentTitle = 'SPECIMEN';
-				$object->ref           = 'SPECIMEN';
-				$object->specimen      = 1;
-				$object->creation_date = time();
-				$object->lines         = array(
-					array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'),
-					array('name' => 'Lorem ipsum', 'value' => 'Aliquam tincidunt mauris eu risus.'),
-					array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.')
-				);
+				$object = new $classname($db);
+
+				if (method_exists($object, 'initAsSpecimen'))
+				{
+					$object->initAsSpecimen();
+				}
+				else
+				{
+					//$object->doc_title     = 'SPECIMEN';
+					$object->ref           = 'SPECIMEN';
+					$object->specimen      = 1;
+					$object->creation_date = time();
+					$object->lines         = array(
+						array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'),
+						array('name' => 'Lorem ipsum', 'value' => 'Aliquam tincidunt mauris eu risus.'),
+						array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.')
+					);
+				}
 
 				// Search template files
 				$file = dolibase_buildpath("/core/doc_models/pdf_".$model.".modules.php");

@@ -48,6 +48,10 @@ class CustomObject extends CrudObject
 	 * @var string Ref. field name
 	 */
 	public $ref_field_name = 'ref';
+	/**
+	 * @var string Document title
+	 */
+	public $doc_title = '';
 
 
 	/**
