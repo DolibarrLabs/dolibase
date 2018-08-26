@@ -22,7 +22,7 @@ global $conf;
  *
  * Possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
  */
-if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.0.0-beta');
+if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.0.0');
 
 /**
  * Environment
