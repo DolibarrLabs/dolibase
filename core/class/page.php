@@ -71,7 +71,7 @@ class Page
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
-		global $langs, $user, $dolibase_config;
+		global $langs, $user, $dolibase_config, $debugbar;
 
 		// Set page attributes
 		$this->title             = $page_title;
@@ -89,9 +89,7 @@ class Page
 		$this->loadDefaultActions();
 
 		// Add Debug bar assets
-		if (DOLIBASE_ENV == 'dev') {
-			global $debugbar;
-
+		if (is_object($debugbar)) {
 			$this->debugbarRenderer = $debugbar->getRenderer();
 			$this->appendToHead($this->debugbarRenderer->renderHead());
 		}
@@ -452,7 +450,7 @@ class Page
 		$this->closeTable();
 		$this->closeForm();
 		if (! empty($this->tabs) && $add_fiche_end) dol_fiche_end();
-		if (DOLIBASE_ENV == 'dev') echo $this->debugbarRenderer->render();
+		if (is_object($this->debugbarRenderer)) echo $this->debugbarRenderer->render();
 		llxFooter();
 		$db->close();
 	}

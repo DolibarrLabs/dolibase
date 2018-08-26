@@ -38,11 +38,11 @@ class AboutPage extends Page
 	 */
 	public function __construct($page_title = 'About', $access_perm = '$user->admin', $add_extrafields_tab = false)
 	{
-		global $langs;
+		global $langs, $dolibase_path;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".DOLIBASE_LANGS_ROOT);
+		$langs->load("about_page@".$dolibase_path);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;

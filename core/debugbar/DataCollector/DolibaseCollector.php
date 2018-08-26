@@ -159,7 +159,7 @@ class DolibaseCollector extends DataCollector implements Renderable, AssetProvid
 	public function getAssets()
 	{
 		return array(
-			'base_url' => DOL_URL_ROOT.DOLIBASE_PATH.'/core/debugbar',
+			'base_url' => dolibase_buildurl('/core/debugbar'),
 			'js' => 'js/widgets.js'
 		);
 	}

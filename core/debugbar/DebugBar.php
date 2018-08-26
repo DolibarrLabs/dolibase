@@ -112,6 +112,6 @@ class DolibaseDebugBar extends DebugBar
 	 */
 	public function getRenderer()
 	{
-		return parent::getJavascriptRenderer(DOL_URL_ROOT.DOLIBASE_PATH.'/extra/DebugBar/Resources');
+		return parent::getJavascriptRenderer(dolibase_buildurl('/extra/DebugBar/Resources'));
 	}
 }

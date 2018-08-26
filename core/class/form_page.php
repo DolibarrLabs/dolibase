@@ -48,11 +48,11 @@ class FormPage extends Page
 		$this->form = new CustomForm($db);
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/form.css.php">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/form.css.php').'">'."\n");
 
 		// Add custom js
 		if ($conf->use_javascript_ajax) {
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/form.js.php"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/form.js.php').'"></script>'."\n");
 		}
 
 		parent::__construct($page_title, $access_perm);

@@ -30,10 +30,9 @@ class Autoloader
 	public static function register()
 	{
 		spl_autoload_register(function ($class) {
-			$root = DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/extra/';
-			$file = $root.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php';
+			$file = dolibase_buildpath('/extra/'.str_replace('\\', DIRECTORY_SEPARATOR, $class).'.php');
 			if (file_exists($file)) {
-				require $file;
+				require_once $file;
 				return true;
 			}
 			return false;

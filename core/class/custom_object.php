@@ -221,7 +221,7 @@ class CustomObject extends CrudObject
 	 */
 	public function generateDocument($model)
 	{
-		global $conf, $user, $langs;
+		global $conf, $user, $langs, $dolibase_path;
 
 		// Get parameters
 		$hidedetails = (GETPOST('hidedetails', 'int') ? GETPOST('hidedetails', 'int') : (! empty($conf->global->MAIN_GENERATE_DOCUMENTS_HIDE_DETAILS) ? 1 : 0));
@@ -261,7 +261,7 @@ class CustomObject extends CrudObject
 			}
 		}
 
-		$modelpath = DOLIBASE_PATH.'/core/doc_models/';
+		$modelpath = $dolibase_path . '/core/doc_models/';
 
 		$result = $this->commonGenerateDocument($modelpath, $model, $outputlangs, $hidedetails, $hidedesc, $hideref);
 		if ($result <= 0) {

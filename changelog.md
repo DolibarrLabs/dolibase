@@ -5,6 +5,7 @@
 
 *   NEW: Debug bar.
 *   FIX: some dolibarr errors/warnings.
+*   FIX: issues with components include.
 
 ---
 

@@ -25,6 +25,8 @@ include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
  * Widget class
  */
 
+if (! class_exists('Widget')) {
+
 class Widget extends ModeleBoxes
 {
 	/**
@@ -197,4 +199,6 @@ class Widget extends ModeleBoxes
 		// … or use the parent's class function using the provided head and contents templates
 		parent::showBox($this->info_box_head, $this->info_box_contents);
 	}
+}
+
 }

@@ -62,25 +62,25 @@ class CardPage extends CreatePage
 		$this->delete_permission = $delete_perm;
 		$this->show_documents    = $show_documents;
 
-		global $langs;
+		global $langs, $dolibase_path;
 
 		// Load lang files
-		$langs->load("card_page@".DOLIBASE_LANGS_ROOT);
+		$langs->load("card_page@".$dolibase_path);
 
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
 		if ($optioncss == 'print') {
-			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/print.css.php">'."\n");
+			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/print.css.php').'">'."\n");
 		}
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/css/dropdown.css.php">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/dropdown.css.php').'">'."\n");
 
 		// Add JS files
-		$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/dropdown.js.php"></script>'."\n");
+		$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/dropdown.js.php').'"></script>'."\n");
 		if ($enable_save_as) {
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.min.js"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/jsPDF/jspdf.plugin.autotable.min.js"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/extra/table2csv/table2csv.js"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/js/save_as.js.php"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/jsPDF/jspdf.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/jsPDF/jspdf.plugin.autotable.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/table2csv/table2csv.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/save_as.js.php').'"></script>'."\n");
 		}
 		
 		parent::__construct($page_title, $access_perm);
@@ -153,7 +153,7 @@ class CardPage extends CreatePage
 		}
 
 		echo '<div class="dropdown-click">';
-		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/arrow-down.png" /></label>';
+		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.dolibase_buildurl('/core/img/arrow-down.png').'" /></label>';
 		echo '<div class="dropdown-content dropdown-bottom">';
 
 		// buttons list
@@ -190,8 +190,8 @@ class CardPage extends CreatePage
 	public function addSaveAsButton($close_parent_div = false)
 	{
 		$buttons = array(
-			array('name' => 'CSV', 'picto' => DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/csv.png', 'id' => 'save_as_csv', 'style' => 'text-align: center;'),
-			array('name' => 'PDF', 'picto' => DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/pdf.png', 'id' => 'save_as_pdf', 'style' => 'text-align: center;')
+			array('name' => 'CSV', 'picto' => dolibase_buildurl('/core/img/csv.png'), 'id' => 'save_as_csv', 'style' => 'text-align: center;'),
+			array('name' => 'PDF', 'picto' => dolibase_buildurl('/core/img/pdf.png'), 'id' => 'save_as_pdf', 'style' => 'text-align: center;')
 		);
 
 		$this->addListButton('SaveAs', $buttons, 'butAction', $close_parent_div);
@@ -451,7 +451,7 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			global $conf, $langs;
+			global $conf, $langs, $dolibase_path;
 
 			$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
 
@@ -460,7 +460,7 @@ class CardPage extends CreatePage
 			// Dolibase object linking feature
 			if ($conf->global->$const_name)
 			{
-				$langs->load('related_objects@'.DOLIBASE_LANGS_ROOT);
+				$langs->load('related_objects@'.$dolibase_path);
 
 				show_related_objects($object);
 			}

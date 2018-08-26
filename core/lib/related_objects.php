@@ -358,7 +358,7 @@ function show_related_objects($object)
 			$('#add_related_object').autocomplete({
 				source: function(request, response) {
 					$.ajax({
-						url: "<?php echo DOL_URL_ROOT.DOLIBASE_PATH.'/core/ajax/related_objects.php'; ?>",
+						url: "<?php echo dolibase_buildurl('/core/ajax/related_objects.php'); ?>",
 						dataType: "json",
 						data: {
 							key: request.term,

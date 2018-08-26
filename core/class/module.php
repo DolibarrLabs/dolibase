@@ -34,6 +34,8 @@ include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
  * DolibaseModule class
  */
 
+if (! class_exists('DolibaseModule')) {
+
 class DolibaseModule extends DolibarrModules
 {
 	/**
@@ -53,7 +55,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function __construct($db)
 	{
-		global $dolibase_config, $langs;
+		global $dolibase_config, $dolibase_path, $langs;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
@@ -62,7 +64,7 @@ class DolibaseModule extends DolibarrModules
 		$this->config = $dolibase_config;
 
 		// Load lang files
-		$langs->load("module@".DOLIBASE_LANGS_ROOT);
+		$langs->load("module@".$dolibase_path);
 
 		// Module configuration
 		$this->db              = $db;
@@ -152,7 +154,7 @@ class DolibaseModule extends DolibarrModules
 				// If a new version is available
 				if (isset($module_version[1]) && currentVersionGreaterThanVersion($module_version[1], $this->config['module']['version']))
 				{
-					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('NewVersionAvailable', $module_version[1]).'" target="_blank"><img src="'.DOL_URL_ROOT.DOLIBASE_PATH.'/core/img/update.png" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
+					$this->version .= ' <a href="'.$this->config['module']['url'].'" title="'.$langs->trans('NewVersionAvailable', $module_version[1]).'" target="_blank"><img src="'.dolibase_buildurl('/core/img/update.png').'" class="valignmiddle" width="24" alt="'.$module_version[1].'"></a>';
 				}
 			}
 		}
@@ -213,9 +215,11 @@ class DolibaseModule extends DolibarrModules
 	 */
 	protected function loadTables()
 	{
+		global $dolibase_path;
+
 		// Load Dolibase tables
-		foreach (DOLIBASE_LOAD_TABLES as $table) {
-			$this->_load_tables(DOLIBASE_ROOT.'/sql/'.$table.'/');
+		foreach (array('logs') as $table) {
+			$this->_load_tables($dolibase_path.'/sql/'.$table.'/');
 		}
 
 		// Load module tables
@@ -509,4 +513,6 @@ class DolibaseModule extends DolibarrModules
 	{
 		$this->addons[] = array('name' => $name, 'type' => 'doc');
 	}
+}
+
 }

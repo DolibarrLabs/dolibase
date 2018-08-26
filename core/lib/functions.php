@@ -90,18 +90,72 @@ if (! function_exists('currentVersionLessThanVersion'))
  * Use it only to include Dolibase components otherwise it will not work
  *
  * @param     $component_path     Dolibase component path
+ * @param     $class_name         Dolibase class name that should be checked before including file,
+ *                                to bypass => Fatal error: Cannot declare class xxx, because the name is already in use
  */
 if (! function_exists('dolibase_include_once'))
 {
-	function dolibase_include_once($component_path)
+	function dolibase_include_once($component_path, $class_name = '')
 	{
-		global $dolibase_config;
+		if (empty($class_name) || ! class_exists($class_name)) {
+			@include_once dolibase_buildpath($component_path); // @ is used to skip warnings..
+		}
+	}
+}
+
+/**
+ * Return Dolibase components full path
+ *
+ * Use it only for Dolibase components otherwise it will not work
+ *
+ * @param     $component_path     Dolibase component path
+ * @param     $as_url             Return path as url
+ */
+if (! function_exists('dolibase_buildpath'))
+{
+	function dolibase_buildpath($component_path, $as_url = false)
+	{
+		global $dolibase_path;
 
 		$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-		if (false === (@include_once DOL_DOCUMENT_ROOT.DOLIBASE_PATH.'/'.$path)) { // @ is used to skip warnings..
-			//dol_include_once('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
-			@include_once dol_buildpath('/'.$dolibase_config['module']['folder'].'/dolibase/'.$path);
+		if ($dolibase_path == '/dolibase') {
+			return ($as_url ? DOL_URL_ROOT : DOL_DOCUMENT_ROOT).'/dolibase/'.$path;
+		}
+
+		return dol_buildpath($dolibase_path.'/'.$path, ($as_url ? 1 : 0));
+	}
+}
+
+/**
+ * Return Dolibase components full url (shortcut for dolibase_buildpath function)
+ *
+ * @param     $component_path     Dolibase component path
+ */
+if (! function_exists('dolibase_buildurl'))
+{
+	function dolibase_buildurl($component_path)
+	{
+		return dolibase_buildpath($component_path, true);
+	}
+}
+
+/**
+ * Return Dolibase relative path
+ *
+ * Possible values: '/dolibase', '/module/dolibase'
+ */
+if (! function_exists('get_dolibase_path'))
+{
+	function get_dolibase_path()
+	{
+		if (file_exists(DOL_DOCUMENT_ROOT . '/dolibase')) {
+			return '/dolibase';
+		}
+		else {
+			global $dolibase_config;
+
+			return '/'.$dolibase_config['module']['folder'].'/dolibase';
 		}
 	}
 }
@@ -247,13 +301,9 @@ if (! function_exists('load_debugbar'))
 {
 	function load_debugbar()
 	{
-		if (DOLIBASE_ENV == 'dev') {
-			global $debugbar;
+		dolibase_include_once('/core/debugbar/DebugBar.php', 'DolibaseDebugBar');
 
-			dolibase_include_once('/core/debugbar/DebugBar.php');
-
-			$debugbar = new DolibaseDebugBar();
-		}
+		return new DolibaseDebugBar();
 	}
 }
 
@@ -267,9 +317,9 @@ if (! function_exists('dolibase_debug'))
 {
 	function dolibase_debug($message, $label = 'info')
 	{
-		if (DOLIBASE_ENV == 'dev') {
-			global $debugbar;
+		global $debugbar;
 
+		if (is_object($debugbar)) {
 			$debugbar['messages']->addMessage($message, $label);
 		}
 	}
@@ -284,9 +334,9 @@ if (! function_exists('dolibase_redirect'))
 {
 	function dolibase_redirect($url)
 	{
-		if (DOLIBASE_ENV == 'dev') {
-			global $debugbar;
+		global $debugbar;
 
+		if (is_object($debugbar)) {
 			$debugbar->stackData();
 		}
 
