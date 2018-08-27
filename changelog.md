@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.1.0 - AUG18
+
+*   NEW: separate debug bar from dolibase & use it as a standalone module.
+*   FIX: some minor syntax errors.
+
+---
+
 #### 2.0.2 - AUG18
 
 *   FIX: update config collector.

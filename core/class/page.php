@@ -57,10 +57,6 @@ class Page
 	 * @var boolean used to close opened HTML table
 	 */
 	protected $close_table = false;
-	/**
-	 * @var object DebugBar Renderer
-	 */
-	protected $debugbarRenderer;
 
 
 	/**
@@ -71,7 +67,7 @@ class Page
 	 */
 	public function __construct($page_title, $access_perm = '')
 	{
-		global $langs, $user, $dolibase_config, $debugbar;
+		global $langs, $user, $dolibase_config;
 
 		// Start measuring time after construct call
 		start_time_measure('after_construct_call', __METHOD__);
@@ -90,12 +86,6 @@ class Page
 
 		// Load default actions
 		$this->loadDefaultActions();
-
-		// Add Debug bar assets
-		if (is_object($debugbar)) {
-			$this->debugbarRenderer = $debugbar->getRenderer();
-			$this->appendToHead($this->debugbarRenderer->renderHead());
-		}
 	}
 
 	/**
@@ -468,7 +458,6 @@ class Page
 		$this->closeTable();
 		$this->closeForm();
 		if (! empty($this->tabs) && $add_fiche_end) dol_fiche_end();
-		if (is_object($this->debugbarRenderer)) echo $this->debugbarRenderer->render();
 		llxFooter();
 		$db->close();
 	}

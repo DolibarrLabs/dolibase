@@ -27,3 +27,4 @@ NumberingModels = Szablony numerowania
 DocumentModels = Szablony dokumentów
 DocModelAzurDescription = Szablon PDF Azur. Pełny model dokumentu (zalecany szablon)
 DocModelCrabeDescription = Szablon PDF Crabe. Pełny model dokumentu (logo...)
+NoSetupAvailable = Brak dostępnych ustawień.

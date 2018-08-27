@@ -15,21 +15,12 @@
  * 
  */
 
-global $conf;
-
 /**
  * Version
  *
  * Possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
  */
-if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.0.2');
-
-/**
- * Environment
- *
- * Possible values: 'dev', 'prod'
- */
-if (! defined('DOLIBASE_ENV')) define('DOLIBASE_ENV', ($conf->global->DOLIBASE_ENV ? $conf->global->DOLIBASE_ENV : 'prod'));
+if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.1.0');
 
 /**
  * Link

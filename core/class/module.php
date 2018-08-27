@@ -329,7 +329,7 @@ class DolibaseModule extends DolibarrModules
 	 *
 	 * @return     int     permission ID
 	 */
-	private function generatePermissionID()
+	protected function generatePermissionID()
 	{
 		return (int)$this->config['module']['number'] + count($this->rights) + 1;
 	}
@@ -399,7 +399,7 @@ class DolibaseModule extends DolibarrModules
 	 * @param     $perms        use 'perms'=>'$user->rights->monmodule->level1->level2' if you want your menu with a permission rules
 	 * @param     $target       menu target, leave empty or use '_blank' to open in a new window / tab
 	 */
-	private function addMenu($type, $fk_menu, $main_menu, $left_menu, $title, $url, $position, $enabled = '1', $perms = '1', $target = '')
+	protected function addMenu($type, $fk_menu, $main_menu, $left_menu, $title, $url, $position, $enabled = '1', $perms = '1', $target = '')
 	{
 		$this->menu[] = array(
 					'fk_menu' => $fk_menu,
@@ -489,7 +489,7 @@ class DolibaseModule extends DolibarrModules
 	 * @param     $module_part     module part: 'hooks', 'css', 'js'
 	 * @param     $value           module part value (could be a css or js filenames, a hook, etc)
 	 */
-	private function addModulePart($module_part, $value)
+	protected function addModulePart($module_part, $value)
 	{
 		$this->module_parts[$module_part][] = $value;
 	}

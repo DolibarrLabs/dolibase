@@ -257,20 +257,6 @@ if (! function_exists('get_func_output'))
 }
 
 /**
- * Return a new instance of Debug bar
- *
- */
-if (! function_exists('init_debugbar'))
-{
-	function init_debugbar()
-	{
-		dolibase_include_once('/core/debugbar/DebugBar.php', 'DolibaseDebugBar');
-
-		return new DolibaseDebugBar();
-	}
-}
-
-/**
  * Add a message to Debug bar
  *
  * @param     $message     Message
@@ -284,6 +270,23 @@ if (! function_exists('dolibase_debug'))
 
 		if (is_object($debugbar)) {
 			$debugbar['messages']->addMessage($message, $label);
+		}
+	}
+}
+
+/**
+ * Add an exception to Debug bar
+ *
+ * @param     $exception     Exception object
+ */
+if (! function_exists('dolibase_exception'))
+{
+	function dolibase_exception($exception)
+	{
+		global $debugbar;
+
+		if (is_object($debugbar)) {
+			$debugbar['exceptions']->addException($exception);
 		}
 	}
 }

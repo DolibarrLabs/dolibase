@@ -27,3 +27,4 @@ NumberingModels = Nummerierungsmodelle
 DocumentModels = Dokumentmodelle
 DocModelAzurDescription = PDF Vorlage Azur. Ein vollständiges Dokumentmodell (empfohlene Vorlage)
 DocModelCrabeDescription = PDF Vorlage Crabe. Ein komplettes Dokumentenmodell (logo...)
+NoSetupAvailable = Keine Einrichtung verfügbar.

@@ -27,3 +27,4 @@ NumberingModels = Numeración de modelos
 DocumentModels = Modelos de documentos
 DocModelAzurDescription = Plantilla en PDF Azur. Un modelo de documento completo (plantilla recomendada)
 DocModelCrabeDescription = Plantilla en PDF Crabe. Un modelo de documento completo (logotipo...)
+NoSetupAvailable = Sin configuración disponible.
