@@ -136,7 +136,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	protected function checkUpdates($langs)
 	{
-		if (DOLIBASE_CHECK_FOR_UPDATE && ! empty($this->config['module']['url']) && $this->config['module']['url'] != '#')
+		if (isset($this->config['module']['check_updates']) && $this->config['module']['check_updates'] && ! empty($this->config['module']['url']) && $this->config['module']['url'] != '#')
 		{
 			$connected = @fsockopen("www.dolistore.com", 80);
 

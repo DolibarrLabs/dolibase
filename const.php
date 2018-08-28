@@ -47,8 +47,3 @@ if (! defined('DOLIBASE_USE_AJAX_ON_CONFIRM')) define('DOLIBASE_USE_AJAX_ON_CONF
  * Logs are currently saved only when creating/modifying/deleting an object
  */
 if (! defined('DOLIBASE_ENABLE_LOGS')) define('DOLIBASE_ENABLE_LOGS', true);
-
-/**
- * Define if Dolibase should check for module updates or not
- */
-if (! defined('DOLIBASE_CHECK_FOR_UPDATE')) define('DOLIBASE_CHECK_FOR_UPDATE', true);
