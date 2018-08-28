@@ -284,9 +284,9 @@ class Page
 	 * Opens a new html table
 	 *
 	 * @param   $header_columns   table header columns, e.: array(
-			 												array('name' => 'Column1', 'attr' => 'align="center"'),
-			 												array('name' => 'Column2', 'attr' => 'align="center" width="20"')
-		 												)
+																array('name' => 'Column1', 'attr' => 'align="center"'),
+																array('name' => 'Column2', 'attr' => 'align="center" width="20"')
+															)
 	 * @param   $attr             table attributes
 	 * @param   $print_fiche_head print Dolibarr fiche head
 	 * @param   $summary          table summary

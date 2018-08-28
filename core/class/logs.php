@@ -64,13 +64,14 @@ class Logs extends CrudObject
 
 		if (isset($dolibase_config['module']['enable_logs']) && $dolibase_config['module']['enable_logs'])
 		{
-			$info = array('module_id'   => $dolibase_config['module']['number'],
-						  'module_name' => $dolibase_config['module']['name'],
-						  'object_id'   => $object_id,
-						  'action'      => $action,
-						  'datec'       => dolibase_now(true),
-						  'fk_user'     => $user->id
-						);
+			$info = array(
+				'module_id'   => $dolibase_config['module']['number'],
+				'module_name' => $dolibase_config['module']['name'],
+				'object_id'   => $object_id,
+				'action'      => $action,
+				'datec'       => dolibase_now(true),
+				'fk_user'     => $user->id
+			);
 
 			return $this->create($info, $notrigger);
 		}
