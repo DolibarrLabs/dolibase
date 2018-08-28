@@ -28,13 +28,6 @@ if (! defined('DOLIBASE_VERSION')) define('DOLIBASE_VERSION', '2.1.0');
 if (! defined('DOLIBASE_LINK')) define('DOLIBASE_LINK', 'https://github.com/AXeL-dev/dolibase');
 
 /**
- * Allow functions chaining
- *
- * Require PHP >= 5
- */
-if (! defined('DOLIBASE_ALLOW_FUNC_CHAINING')) define('DOLIBASE_ALLOW_FUNC_CHAINING', true);
-
-/**
  * Use AJAX on confirmation
  *
  * Values should be 1/0 instead of true/false because the function where this is used takes an integer value instead of boolean as parameter

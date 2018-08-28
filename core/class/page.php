@@ -277,7 +277,7 @@ class Page
 			$this->close_form = false;
 		}
 
-		if (DOLIBASE_ALLOW_FUNC_CHAINING) return $this;
+		return $this; // allow chaining this function with another (need PHP >= 5)
 	}
 
 	/**
@@ -342,7 +342,7 @@ class Page
 			$this->close_table = false;
 		}
 
-		if (DOLIBASE_ALLOW_FUNC_CHAINING) return $this;
+		return $this; // allow chaining this function with another (need PHP >= 5)
 	}
 
 	/**
