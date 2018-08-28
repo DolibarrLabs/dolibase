@@ -62,14 +62,21 @@ class Logs extends CrudObject
 	{
 		global $dolibase_config, $user;
 
-		$info = array('module_id'   => $dolibase_config['module']['number'],
-					  'module_name' => $dolibase_config['module']['name'],
-					  'object_id'   => $object_id,
-					  'action'      => $action,
-					  'datec'       => dolibase_now(true),
-					  'fk_user'     => $user->id
-					);
+		if (isset($dolibase_config['module']['enable_logs']) && $dolibase_config['module']['enable_logs'])
+		{
+			$info = array('module_id'   => $dolibase_config['module']['number'],
+						  'module_name' => $dolibase_config['module']['name'],
+						  'object_id'   => $object_id,
+						  'action'      => $action,
+						  'datec'       => dolibase_now(true),
+						  'fk_user'     => $user->id
+						);
 
-		return $this->create($info, $notrigger);
+			return $this->create($info, $notrigger);
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }

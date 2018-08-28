@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.0 - AUG18
+
+*   FIX: remove all dolibase constants & replace them with global vars.
+*   FIX: merge global vars into one array for better code visibility.
+
+---
+
 #### 2.1.0 - AUG18
 
 *   NEW: separate debug bar from dolibase & use it as a standalone module.

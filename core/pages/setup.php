@@ -73,11 +73,11 @@ class SetupPage extends FormPage
 	 */
 	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $doc_object_class = '', $doc_object_path = '')
 	{
-		global $langs, $dolibase_path;
+		global $langs, $dolibase_config;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_path);
+		$langs->load("setup_page@".$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
@@ -122,7 +122,7 @@ class SetupPage extends FormPage
 	{
 		if (! $this->disable_default_actions)
 		{
-			global $conf, $db, $langs, $dolibase_config;
+			global $conf, $db, $langs;
 
 			// Libraries
 			require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
@@ -525,7 +525,7 @@ class SetupPage extends FormPage
 	 */
 	public function printNumModels()
 	{
-		global $conf, $langs, $dolibase_config;
+		global $conf, $langs;
 
 		$const_name = $this->num_model_const_name;
 

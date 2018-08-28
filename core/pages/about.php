@@ -38,11 +38,11 @@ class AboutPage extends Page
 	 */
 	public function __construct($page_title = 'About', $access_perm = '$user->admin', $add_extrafields_tab = false)
 	{
-		global $langs, $dolibase_path;
+		global $langs, $dolibase_config;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_path);
+		$langs->load("about_page@".$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;
@@ -104,7 +104,7 @@ class AboutPage extends Page
 		echo '<b>'.$langs->trans($dolibase_config['module']['name']).'</b>';
 		echo '</a> : '.$langs->trans($dolibase_config['module']['desc']);
 		echo '<br/><br/>'.$langs->trans('DevelopedBy').' <a href="'.$dolibase_config['author']['url'].'" target="_blank">'.$dolibase_config['author']['name'].'</a>';
-		echo '. '.$langs->trans('DolibaseVersion').' <a href="'.DOLIBASE_LINK.'" target="_blank">'.DOLIBASE_VERSION.'</a>';
+		echo '. '.$langs->trans('DolibaseVersion').' <a href="'.$dolibase_config['main']['link'].'" target="_blank">'.$dolibase_config['main']['version'].'</a>';
 		echo '<br/><br/>'.$langs->trans('ForAnyQuestions').' <a href="mailto:'.$dolibase_config['author']['email'].'">'.$dolibase_config['author']['email'].'</a>';
 		echo '<br><br>'.$langs->trans('FindMyModules').' <a href="'.$dolibase_config['author']['dolistore_url'].'" target="_blank">'.$langs->trans('Dolistore').'</a>';
 		echo '</div>';

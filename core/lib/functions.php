@@ -78,15 +78,15 @@ if (! function_exists('dolibase_buildpath'))
 {
 	function dolibase_buildpath($component_path, $as_url = false)
 	{
-		global $dolibase_path;
+		global $dolibase_config;
 
 		$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-		if ($dolibase_path == '/dolibase') {
+		if ($dolibase_config['main']['path'] == '/dolibase') {
 			return ($as_url ? DOL_URL_ROOT : DOL_DOCUMENT_ROOT).'/dolibase/'.$path;
 		}
 
-		return dol_buildpath($dolibase_path.'/'.$path, ($as_url ? 1 : 0));
+		return dol_buildpath($dolibase_config['main']['path'].'/'.$path, ($as_url ? 1 : 0));
 	}
 }
 

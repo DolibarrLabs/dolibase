@@ -21,11 +21,8 @@ if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection 
 // Define __DIR__ for PHP version < 5.3 (should be already defined in config file, keep here for safety)
 if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 
-// Load Dolibase constants
-require_once __DIR__ . '/const.php';
-
 // Load Dolibase functions
 require_once __DIR__ . '/core/lib/functions.php';
 
-// Load Dolibase variables
-require_once __DIR__ . '/var.php';
+// Load Dolibase config
+require_once __DIR__ . '/config.php';

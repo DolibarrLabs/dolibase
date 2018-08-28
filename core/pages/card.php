@@ -58,14 +58,15 @@ class CardPage extends CreatePage
 	 */
 	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $show_documents = false, $enable_save_as = false)
 	{
+		global $langs, $dolibase_config;
+
+		// Set page attributes
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
 		$this->show_documents    = $show_documents;
 
-		global $langs, $dolibase_path;
-
 		// Load lang files
-		$langs->load("card_page@".$dolibase_path);
+		$langs->load("card_page@".$dolibase_config['main']['path']);
 
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
@@ -451,7 +452,7 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			global $conf, $langs, $dolibase_path;
+			global $conf, $langs, $dolibase_config;
 
 			$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
 
@@ -460,7 +461,7 @@ class CardPage extends CreatePage
 			// Dolibase object linking feature
 			if ($conf->global->$const_name)
 			{
-				$langs->load('related_objects@'.$dolibase_path);
+				$langs->load('related_objects@'.$dolibase_config['main']['path']);
 
 				show_related_objects($object);
 			}

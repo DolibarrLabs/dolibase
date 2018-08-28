@@ -23,7 +23,8 @@ $dolibase_config['module'] = array(
 	'depends'       => array(), // modules to activate when this one is activated, e.: array('modProduct')
 	'required_by'   => array(), // modules to disable if this one is disabled, e.: array('modFacture')
 	'conflit_with'  => array(), // modules who are in conflict with this module, e.: array('modProduct')
-	'check_updates' => true // check for module updates (module url should be filled also)
+	'check_updates' => true, // check for module updates (module url should be filled also)
+	'enable_logs'   => true // enable saving logs when create/modify or delete an object
 );
 
 /**

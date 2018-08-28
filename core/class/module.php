@@ -45,7 +45,7 @@ class DolibaseModule extends DolibarrModules
 	/**
 	 * @var array Dolibase module addons array
 	 */
-	public $addons = array();
+	protected $addons;
 
 
 	/**
@@ -55,7 +55,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function __construct($db)
 	{
-		global $dolibase_config, $dolibase_path, $langs;
+		global $dolibase_config, $langs;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
@@ -64,7 +64,7 @@ class DolibaseModule extends DolibarrModules
 		$this->config = $dolibase_config;
 
 		// Load lang files
-		$langs->load("module@".$dolibase_path);
+		$langs->load("module@".$this->config['main']['path']);
 
 		// Module configuration
 		$this->db              = $db;
@@ -112,6 +112,9 @@ class DolibaseModule extends DolibarrModules
 
 		// Dictionaries
 		$this->dictionaries = array();
+
+		// Addons
+		$this->addons = array();
 
 		// Load module settings
 		$this->loadSettings();
@@ -215,11 +218,9 @@ class DolibaseModule extends DolibarrModules
 	 */
 	protected function loadTables()
 	{
-		global $dolibase_path, $dolibase_tables;
-
 		// Load Dolibase tables
-		foreach ($dolibase_tables as $table) {
-			$this->_load_tables($dolibase_path.'/sql/'.$table.'/');
+		foreach ($this->config['main']['tables'] as $table) {
+			$this->_load_tables($this->config['main']['path'].'/sql/'.$table.'/');
 		}
 
 		// Load module tables

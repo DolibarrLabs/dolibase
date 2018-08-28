@@ -77,7 +77,7 @@ class CustomObject extends CrudObject
 		$res = parent::create($data, $notrigger);
 
 		// Add log
-		if (DOLIBASE_ENABLE_LOGS && $res > 0) {
+		if ($res > 0) {
 			$log = new Logs();
 			$log->add($this->id, 'CREATE_OBJECT');
 		}
@@ -97,7 +97,7 @@ class CustomObject extends CrudObject
 		$res = parent::update($data, $notrigger);
 
 		// Add log
-		if (DOLIBASE_ENABLE_LOGS && $res > 0) {
+		if ($res > 0) {
 			$log = new Logs();
 			$log->add($this->id, 'UPDATE_OBJECT');
 		}
@@ -116,7 +116,7 @@ class CustomObject extends CrudObject
 		$res = parent::delete($notrigger);
 
 		// Add log
-		if (DOLIBASE_ENABLE_LOGS && $res > 0) {
+		if ($res > 0) {
 			$log = new Logs();
 			$log->add($this->id, 'DELETE_OBJECT');
 		}
@@ -225,7 +225,7 @@ class CustomObject extends CrudObject
 	 */
 	public function generateDocument($model)
 	{
-		global $conf, $user, $langs, $dolibase_path;
+		global $conf, $user, $langs, $dolibase_config;
 
 		// Get parameters
 		$hidedetails = (GETPOST('hidedetails', 'int') ? GETPOST('hidedetails', 'int') : (! empty($conf->global->MAIN_GENERATE_DOCUMENTS_HIDE_DETAILS) ? 1 : 0));
@@ -265,7 +265,7 @@ class CustomObject extends CrudObject
 			}
 		}
 
-		$modelpath = $dolibase_path . '/core/doc_models/';
+		$modelpath = $dolibase_config['main']['path'] . '/core/doc_models/';
 
 		$result = $this->commonGenerateDocument($modelpath, $model, $outputlangs, $hidedetails, $hidedesc, $hideref);
 		if ($result <= 0) {
