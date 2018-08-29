@@ -9,7 +9,7 @@ global $dolibase_config;
 $dolibase_config['module'] = array(
 	'name'          => 'Books',
 	'desc'          => 'Books Managment Module',
-	'version'       => '1.5.0', // possible values: 'development', 'experimental', 'dolibarr' or version
+	'version'       => '1.6.0', // possible values: 'development', 'experimental', 'dolibarr' or version
 	'number'        => '450000', // e.: 110000 (avoid small numbers because they are used for core modules)
 	'family'        => 'Dolibase modules', // possible values: 'crm', 'financial', 'hr', 'projects', 'products', 'ecm', 'technic', 'other'
 	'position'      => 500,

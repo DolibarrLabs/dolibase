@@ -16,6 +16,7 @@
  */
 
 include_once DOL_DOCUMENT_ROOT.'/core/class/commondocgenerator.class.php';
+include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 
 /**
  * DocModel class
@@ -35,9 +36,6 @@ abstract class DocModel extends CommonDocGenerator
 	public static function getModelsList($db, $maxfilenamelength=0)
 	{
 		$type = get_rights_class();
-		$list = array();
-
-		include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 		$list = getListOfModels($db, $type, $maxfilenamelength);
 
 		return $list;

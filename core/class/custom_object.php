@@ -218,6 +218,55 @@ class CustomObject extends CrudObject
 	}
 
 	/**
+	 *  Return label of status of object (draft, validated, ...)
+	 *
+	 *  @param      int         $mode        0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto
+	 *  @return     string      Label
+	 */
+	public function getLibStatut($mode = 0)
+	{
+		return ''; // temporary fix to allow display banner without errors
+	}
+
+	/**
+	 * Get object image(s)
+	 *
+	 * @param     $default_image     Default image to show if no image is available
+	 */
+	public function getImage($default_image)
+	{
+		global $conf, $dolibase_config;
+
+		$out = '';
+		$image_available = false;
+		$modulepart = get_rights_class(false, true);
+		$dir = $conf->$modulepart->dir_output;
+
+		$out.= '<div class="floatleft inline-block valignmiddle divphotoref">';
+
+		if (method_exists($this, 'show_photos'))
+		{
+			$max = 5;
+			$width = 80;
+			$photos = $this->show_photos($modulepart, $dir ,'small', $max, 0, 0, 0, $width);
+
+			if ($this->nbphoto > 0) {
+				$out.= $photos;
+				$image_available = true;
+			}
+		}
+
+		if (! $image_available)
+		{
+			$out.= '<div class="photoref">'.img_picto('', $default_image.'@'.$dolibase_config['module']['folder']).'</div>';
+		}
+
+		$out.= '</div>';
+
+		return $out;
+	}
+
+	/**
 	 *  Create a document onto disk according to template module.
 	 *
 	 *  @param	    string		$model			Force template to use ('' to not force)

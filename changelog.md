@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.1 - AUG18
+
+*   FIX: optimise DocModel class.
+*   FIX: improve card banner.
+*   NEW: add getImage function to CustomObject class.
+*   NEW: update books module to version 1.6.0 & fix icon issue on dolibarr 8.
+
+---
+
 #### 2.2.0 - AUG18
 
 *   FIX: remove all dolibase constants & replace them with global vars.

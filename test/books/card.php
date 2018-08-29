@@ -115,10 +115,13 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	$page->begin();
 
+	// Banner
+	$page->showBanner($book, '/books/list.php', $book->getImage('books.png'));
+
 	$page->openTable(array(), 'class="border" width="100%"');
 
 	// Ref.
-	$page->showRefField('Ref.', $book, '/books/list.php');
+	//$page->showRefField('Ref.', $book, '/books/list.php');
 
 	// Name
 	if ($action != 'edit_name' || ! $page->canEdit()) {

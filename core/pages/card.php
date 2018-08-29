@@ -73,6 +73,7 @@ class CardPage extends CreatePage
 		if ($optioncss == 'print') {
 			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/print.css.php').'">'."\n");
 		}
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");
 		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/dropdown.css.php').'">'."\n");
 
 		// Add JS files

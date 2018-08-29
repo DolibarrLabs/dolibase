@@ -38,6 +38,9 @@ class DocumentPage extends Page
 		// Load lang files
 		$langs->load("other");
 
+		// Add CSS files
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");
+
 		parent::__construct($page_title, $access_perm);
 	}
 

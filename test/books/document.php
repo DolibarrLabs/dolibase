@@ -26,6 +26,9 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	$page->begin($book);
 
+	// Banner
+	$page->showBanner($book, '/books/list.php', $book->getImage('books.png'));
+
 	// Documents
 	$page->printDocuments($book);
 }
