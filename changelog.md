@@ -6,7 +6,7 @@
 *   FIX: optimise DocModel class.
 *   FIX: improve card banner.
 *   NEW: add getImage function to CustomObject class.
-*   NEW: update books module to version 1.6.0 & fix icon issue on dolibarr 8.
+*   NEW: update books module to version 1.6.0 & fix menu icon issue on dolibarr 8.
 
 ---
 
