@@ -66,7 +66,7 @@ class CardPage extends CreatePage
 		$this->show_documents    = $show_documents;
 
 		// Load lang files
-		$langs->load("card_page@".$dolibase_config['main']['path']);
+		$langs->load("card_page@".$dolibase_config['langs']['path']);
 
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
@@ -462,7 +462,7 @@ class CardPage extends CreatePage
 			// Dolibase object linking feature
 			if ($conf->global->$const_name)
 			{
-				$langs->load('related_objects@'.$dolibase_config['main']['path']);
+				$langs->load('related_objects@'.$dolibase_config['langs']['path']);
 
 				show_related_objects($object);
 			}

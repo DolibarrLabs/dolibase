@@ -22,9 +22,17 @@ global $dolibase_config;
  */
 
 $dolibase_config['main'] = array(
-	'version'             => '2.2.1', // possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
+	'version'             => '2.2.2', // possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
 	'link'                => 'https://github.com/AXeL-dev/dolibase',
 	'path'                => get_dolibase_path(),
 	'tables'              => array('logs'),
 	'use_ajax_on_confirm' => 1 // value should be 1/0 instead of true/false
+);
+
+/**
+ * Dolibase langs configuration
+ */
+
+$dolibase_config['langs'] = array(
+	'path' => preg_replace('/^\//', '', $dolibase_config['main']['path']) // the same as main path but without the first slash '/'
 );

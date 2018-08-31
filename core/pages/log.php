@@ -36,7 +36,7 @@ class LogPage extends Page
 		global $langs, $dolibase_config;
 
 		// Load lang files
-		$langs->load("log_page@".$dolibase_config['main']['path']);
+		$langs->load("log_page@".$dolibase_config['langs']['path']);
 
 		// Add CSS files
 		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");

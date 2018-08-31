@@ -42,7 +42,7 @@ class AboutPage extends Page
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['main']['path']);
+		$langs->load("about_page@".$dolibase_config['langs']['path']);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;

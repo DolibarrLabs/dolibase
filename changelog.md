@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.2 - AUG18
+
+*   FIX: add langs path to config, to avoid confusion or future issues with main path.
+
+---
+
 #### 2.2.1 - AUG18
 
 *   FIX: optimise DocModel class.
