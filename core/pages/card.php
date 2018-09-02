@@ -255,7 +255,7 @@ class CardPage extends CreatePage
 	/**
 	 * show extra fields
 	 *
-	 * @param      $object         Object
+	 * @param      $object     Object
 	 */
 	public function showExtraFields($object)
 	{
@@ -520,7 +520,7 @@ class CardPage extends CreatePage
 	/**
 	 * Print documents block
 	 *
-	 * @param     $object                Object
+	 * @param     $object     Object
 	 */
 	protected function printDocuments($object)
 	{

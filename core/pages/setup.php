@@ -770,12 +770,7 @@ class SetupPage extends FormPage
 							echo '<td align="center">';
 							if ($model->type == 'pdf')
 							{
-								if (! empty($this->doc_model_picture)) {
-									$picto = $this->doc_model_picture;
-								}
-								else {
-									$picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
-								}
+								$picto = (! empty($this->doc_model_picture) ? $this->doc_model_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
 								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
 							}
 							else

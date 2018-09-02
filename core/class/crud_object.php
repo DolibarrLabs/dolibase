@@ -166,8 +166,7 @@ class CrudObject extends CommonObject
 
 				// enssure that $this->id is filled because we use it in update & delete functions
 				if (! in_array('id', $this->fetch_fields)) {
-					$id_field_name = $this->pk_name;
-					$this->id = $obj->$id_field_name;
+					$this->id = $obj->{$this->pk_name};
 				}
 
 				$this->db->free($resql);
@@ -280,8 +279,7 @@ class CrudObject extends CommonObject
 
 					// enssure that $this->id is filled because we use it in update/delete/getNomUrl functions
 					if ($set_id) {
-						$id_field_name = $this->pk_name;
-						$this->lines[$i]->id = $obj->$id_field_name;
+						$this->lines[$i]->id = $obj->{$this->pk_name};
 					}
 
 					$i++;
@@ -338,8 +336,7 @@ class CrudObject extends CommonObject
 
 				// enssure that $this->id is filled because we use it in update & delete functions
 				if (! in_array('id', $fields)) {
-					$id_field_name = $this->pk_name;
-					$this->id = $obj->$id_field_name;
+					$this->id = $obj->{$this->pk_name};
 				}
 
 				$this->db->free($resql);
