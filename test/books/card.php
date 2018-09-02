@@ -104,6 +104,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 		$object = $book;
 		$object->fk_thirdparty = 1; // only to fix 'ErrorFailedToReadObject' error message
 		include DOL_DOCUMENT_ROOT.'/core/actions_sendmails.inc.php';
+		unset($object->fk_thirdparty);
 	}
 
 	// --- End actions

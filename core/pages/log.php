@@ -65,9 +65,10 @@ class LogPage extends Page
 	/**
 	 * Print logs
 	 *
-	 * @param     $object_id     object id
+	 * @param     $object_id          object id
+	 * @param     $object_element     object element
 	 */
-	public function printLogs($object_id)
+	public function printLogs($object_id, $object_element = '')
 	{
 		global $langs, $dolibase_config;
 
@@ -75,6 +76,9 @@ class LogPage extends Page
 		$where = "(module_id = ".$dolibase_config['module']['number'];
 		$where.= " || module_name = '".$dolibase_config['module']['name']."'";
 		$where.= ") AND object_id = ".$object_id;
+		if (! empty($object_element)) {
+			$where.= " AND object_element = '".$object_element."'";
+		}
 
 		// Fetch logs
 		if ($log->fetchAll(0, 0, 't.datec', 'DESC', '', '', $where))

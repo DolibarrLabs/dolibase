@@ -193,17 +193,20 @@ class DolibaseModule extends DolibarrModules
 	 */
 	protected function setAddons()
 	{
-		foreach ($this->addons as $addon)
+		foreach ($this->addons as $key => $arr)
 		{
-			$const_prefix = get_rights_class(true);
+			foreach ($arr as $addon)
+			{
+				$const_prefix = (isset($addon['const_prefix']) && ! empty($addon['const_prefix']) ? $addon['const_prefix'] : get_rights_class(true));
 
-			if (isset($addon['type']) && $addon['type'] == 'doc') {
-				$this->addConstant($const_prefix . '_ADDON_PDF', $addon['name']);
-				$type = get_rights_class();
-				addDocumentModel($addon['name'], $type);
-			}
-			else {
-				$this->addConstant($const_prefix . '_ADDON', $addon['name']);
+				if ($key == 'doc') {
+					$this->addConstant($const_prefix . '_ADDON_PDF', $addon['name']);
+					$type = (isset($addon['type']) && ! empty($addon['type']) ? $addon['type'] : get_rights_class());
+					addDocumentModel($addon['name'], $type);
+				}
+				else {
+					$this->addConstant($const_prefix . '_ADDON', $addon['name']);
+				}
 			}
 		}
 	}
@@ -498,21 +501,24 @@ class DolibaseModule extends DolibarrModules
 	/**
 	 * Activate a numbering model
 	 *
-	 * @param     $name     numbering model name
+	 * @param     $name             numbering model name
+	 * @param     $const_prefix     numbering model constant prefix
 	 */
-	public function activateNumModel($name)
+	public function activateNumModel($name, $const_prefix = '')
 	{
-		$this->addons[] = array('name' => $name);
+		$this->addons['num'][] = array('name' => $name, 'const_prefix' => $const_prefix);
 	}
 
 	/**
 	 * Activate a document model
 	 *
-	 * @param     $name     document model name
+	 * @param     $name             document model name
+	 * @param     $type             document model type
+	 * @param     $const_prefix     document model constant prefix
 	 */
-	public function activateDocModel($name)
+	public function activateDocModel($name, $type = '', $const_prefix = '')
 	{
-		$this->addons[] = array('name' => $name, 'type' => 'doc');
+		$this->addons['doc'][] = array('name' => $name, 'type' => $type, 'const_prefix' => $const_prefix);
 	}
 }
 

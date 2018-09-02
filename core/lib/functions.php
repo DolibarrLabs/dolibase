@@ -355,6 +355,7 @@ if (! function_exists('stop_time_measure'))
  * Dumps all the object propreties and its associations recursively into an array
  *
  * @param     $obj     Object
+ * @return    array
  */
 if (! function_exists('object_to_array'))
 {

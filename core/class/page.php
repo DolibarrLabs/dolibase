@@ -46,6 +46,10 @@ class Page
 	 */
 	protected $tabs_picture = ''; // Leave empty to use the module picture
 	/**
+	 * @var string Tabs title
+	 */
+	protected $tabs_title = ''; // Leave empty to use the module name
+	/**
 	 * @var string Active page tab
 	 */
 	protected $active_tab = '';
@@ -57,6 +61,14 @@ class Page
 	 * @var boolean used to close opened HTML table
 	 */
 	protected $close_table = false;
+	/**
+	 * @var string Module rights class
+	 */
+	protected $rights_class;
+	/**
+	 * @var string Module part
+	 */
+	protected $modulepart;
 
 
 	/**
@@ -75,6 +87,8 @@ class Page
 		// Set page attributes
 		$this->title             = $page_title;
 		$this->access_permission = $access_perm;
+		$this->rights_class      = get_rights_class();
+		$this->modulepart        = get_rights_class(false, true);
 
 		// Load translations
 		$langs->load($dolibase_config['other']['lang_files'][0]);
@@ -204,6 +218,18 @@ class Page
 	}
 
 	/**
+	 * Set tabs title
+	 *
+	 * @param     $title      tabs title
+	 */
+	public function setTabsTitle($title)
+	{
+		global $langs;
+
+		$this->tabs_title = $langs->trans($title);
+	}
+
+	/**
 	 * Generate tabs
 	 *
 	 * @param     $noheader     -1 or 0=Add tab header, 1=no tab header.
@@ -218,15 +244,18 @@ class Page
 			// Entries must be declared in modules descriptor with line
 			// $this->tabs = array('entity:+tabname:Title:@mymodule:/mymodule/mypage.php?id=__ID__');   to add new tab
 			// $this->tabs = array('entity:-tabname);   												to remove a tab
-			$rights_class = get_rights_class();
-			complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $rights_class);
+			complete_head_from_modules($conf, $langs, null, $this->tabs, count($this->tabs), $this->rights_class);
 
 			if (empty($this->tabs_picture)) {
 				$this->tabs_picture = $dolibase_config['module']['picture']."@".$dolibase_config['module']['folder'];
 			}
 
+			if (empty($this->tabs_title)) {
+				$this->tabs_title = $langs->trans($dolibase_config['module']['name']);
+			}
+
 			// Generate tabs
-			dol_fiche_head($this->tabs, $this->active_tab, $langs->trans($dolibase_config['module']['name']), $noheader, $this->tabs_picture);
+			dol_fiche_head($this->tabs, $this->active_tab, $this->tabs_title, $noheader, $this->tabs_picture);
 		}
 	}
 

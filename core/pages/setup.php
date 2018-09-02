@@ -28,6 +28,10 @@ class SetupPage extends FormPage
 	 */
 	protected $odd = true;
 	/**
+	 * @var string const name prefix
+	 */
+	protected $const_name_prefix;
+	/**
 	 * @var string numbering model const name
 	 */
 	protected $num_model_const_name;
@@ -39,6 +43,10 @@ class SetupPage extends FormPage
 	 * @var string document model type
 	 */
 	protected $doc_model_type;
+	/**
+	 * @var string document model picture
+	 */
+	protected $doc_model_picture = '';
 	/**
 	 * @var string used to generate documents specimen
 	 */
@@ -68,10 +76,12 @@ class SetupPage extends FormPage
 	 * @param     $access_perm   			  Access permission
 	 * @param     $disable_default_actions    Disable default actions
 	 * @param     $add_extrafields_tab        Add extrafields tab
+	 * @param     $const_name_prefix          Constant name prefix
+	 * @param     $doc_model_type             Document model type
 	 * @param     $doc_object_class           Document object class
 	 * @param     $doc_object_path            Document object path
 	 */
-	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $doc_object_class = '', $doc_object_path = '')
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $const_name_prefix = '', $doc_model_type = '', $doc_object_class = '', $doc_object_path = '')
 	{
 		global $langs, $dolibase_config;
 
@@ -82,13 +92,14 @@ class SetupPage extends FormPage
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
 		$this->add_extrafields_tab     = $add_extrafields_tab;
+		$this->const_name_prefix       = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true));
 
 		// Set numbering model constant name
-		$this->num_model_const_name = get_rights_class(true) . '_ADDON';
+		$this->num_model_const_name = $this->const_name_prefix . '_ADDON';
 
 		// Set document model constant name, type, object class & path
-		$this->doc_model_const_name = get_rights_class(true) . '_ADDON_PDF';
-		$this->doc_model_type       = get_rights_class();
+		$this->doc_model_const_name = $this->const_name_prefix . '_ADDON_PDF';
+		$this->doc_model_type       = (! empty($doc_model_type) ? $doc_model_type : get_rights_class());
 		$this->doc_object_class     = $doc_object_class;
 		$this->doc_object_path      = $doc_object_path;
 
@@ -112,6 +123,16 @@ class SetupPage extends FormPage
 		if (empty($enable) || verifCond($enable)) {
 			$this->title_link = '<a href="'.$link.'">'.$langs->trans($label).'</a>';
 		}
+	}
+
+	/**
+	 * Set Document model(s) picture
+	 *
+	 * @param    $picture     Document model picture
+	 */
+	public function setDocModelsPicture($picture)
+	{
+		$this->doc_model_picture = $picture;
 	}
 
 	/**
@@ -250,7 +271,7 @@ class SetupPage extends FormPage
 				}
 				else
 				{
-					//$object->doc_title     = 'SPECIMEN';
+					$object->doc_title     = 'SPECIMEN';
 					$object->ref           = 'SPECIMEN';
 					$object->specimen      = 1;
 					$object->creation_date = time();
@@ -272,8 +293,7 @@ class SetupPage extends FormPage
 
 					if ($module->write_file($object, $langs) > 0)
 					{
-						$modulepart = get_rights_class(false, true);
-						dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$modulepart."&file=SPECIMEN.pdf");
+						dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$this->modulepart."&file=SPECIMEN.pdf");
 					}
 					else
 					{
@@ -522,8 +542,9 @@ class SetupPage extends FormPage
 	/**
 	 * Print numbering models
 	 *
+	 * @param     $model_name     Numbering model name
 	 */
-	public function printNumModels()
+	public function printNumModels($model_name = '')
 	{
 		global $conf, $langs;
 
@@ -559,7 +580,7 @@ class SetupPage extends FormPage
 
 						$classname = 'NumModel'.ucfirst($file);
 
-						$model = new $classname();
+						$model = new $classname($this->const_name_prefix, $model_name);
 
 						// Show models according to features level
 						if ($model->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) continue;
@@ -749,7 +770,12 @@ class SetupPage extends FormPage
 							echo '<td align="center">';
 							if ($model->type == 'pdf')
 							{
-								$picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
+								if (! empty($this->doc_model_picture)) {
+									$picto = $this->doc_model_picture;
+								}
+								else {
+									$picto = $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder'];
+								}
 								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
 							}
 							else

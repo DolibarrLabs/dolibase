@@ -31,11 +31,13 @@ abstract class DocModel extends CommonDocGenerator
 	 *
 	 *  @param	DoliDB	$db     			Database handler
 	 *  @param  integer	$maxfilenamelength  Max length of value to show
+	 *  @param	string	$type     			Model(s) type
 	 *  @return	array						List of templates
 	 */
-	public static function getModelsList($db, $maxfilenamelength=0)
+	public static function getModelsList($db, $maxfilenamelength=0, $type = '')
 	{
-		$type = get_rights_class();
+		$type = (! empty($type) ? $type : get_rights_class());
+
 		$list = getListOfModels($db, $type, $maxfilenamelength);
 
 		return $list;

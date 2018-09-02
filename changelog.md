@@ -1,6 +1,18 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.3 - AUG18
+
+*   NEW: multi-numbering models configuration.
+*   NEW: allow using class custom picto & url in getNomUrl function.
+*   NEW: add checkList function to CustomForm class.
+*   FIX: translate dict values in get_list function.
+*   NEW: add object_element field to dolibase_logs table.
+*   NEW: improve compatibility with submodules.
+*   FIX: code optimisation.
+
+---
+
 #### 2.2.2 - AUG18
 
 *   FIX: add langs path to config, to avoid confusion or future issues with main path.

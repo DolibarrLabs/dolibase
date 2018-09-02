@@ -192,6 +192,44 @@ class CustomForm extends Form
 	}
 
 	/**
+	 * Return a check list
+	 *
+	 * @param   $name      list name
+	 * @param   $values    list values
+	 * @param   $selected  list selected value(s)
+	 * @param   $add_br    add a line break in the end
+	 * @return  string     list HTML
+	 */
+	public function checkList($name, $values, $selected, $add_br = false)
+	{
+		global $langs;
+
+		$count = 0;
+		$out = '';
+		foreach ($values as $val => $label) {
+			$content = '';
+			if (is_array($label)) {
+				$val = $label['value'];
+				$content = $label['content'];
+				$label = $label['label'];
+			}
+			if ($count > 0) $out.= "<br>\n";
+			$out.= '<span>';
+			$out.= '<input type="checkbox" class="dolibase_radio" name="'.$name.'[]" id="'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
+			$out.= ' <label for="'.$val.'">' . $langs->trans($label) . '</label>';
+			$out.= '</span>';
+			$out.= $content;
+			$count++;
+		}
+
+		if ($add_br) {
+			$out.= "<br>\n";
+		}
+
+		return $out;
+	}
+
+	/**
 	 * Return a color input
 	 *
 	 * @param   $name    input name

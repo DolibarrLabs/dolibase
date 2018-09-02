@@ -34,17 +34,27 @@ class NumModelSaphir extends NumModel
 	/**
 	 * Constructor
 	 *
+	 * @param     $const_name_prefix     Constant name prefix
+	 * @param     $model_name            Numbering model name
 	 */
-	public function __construct()
+	public function __construct($const_name_prefix, $model_name = '')
 	{
 		global $dolibase_config;
 
 		// Generate constant name
-		$this->const_name = get_rights_class(true) . '_SAPHIR_MASK';
+		$this->const_name = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true)) . '_SAPHIR_MASK';
 
 		// Set parameters
-		$this->table_name = $dolibase_config['numbering_model']['table'];
-		$this->field_name = $dolibase_config['numbering_model']['field'];
+		if (! empty($model_name))
+		{
+			$this->table_name = $dolibase_config['numbering_model'][$model_name]['table'];
+			$this->field_name = $dolibase_config['numbering_model'][$model_name]['field'];
+		}
+		else
+		{
+			$this->table_name = $dolibase_config['numbering_model']['table'];
+			$this->field_name = $dolibase_config['numbering_model']['field'];
+		}
 	}
 
 	/**

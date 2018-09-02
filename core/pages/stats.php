@@ -34,6 +34,7 @@ class StatsPage extends FormPage
 	{
 		global $langs;
 
+		// Load lang files
 		$langs->load('other');
 
 		parent::__construct($page_title, $access_perm);
@@ -180,22 +181,20 @@ class StatsPage extends FormPage
 		$endyear = $year;
 
 		// Create directory where to store graph png
-		$modulepart = get_rights_class(false, true);
-		$dir = $conf->$modulepart->dir_temp;
+		$dir = $conf->{$this->modulepart}->dir_temp;
 
 		dol_mkdir($dir);
 
 		// Set file name & url
-		$file_prefix = get_rights_class(false, true);
 		if (! $user->rights->societe->client->voir || $user->societe_id)
 		{
-			$filename = $dir.'/'.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
-			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$user->id.'-'.$year.'.png';
+			$filename = $dir.'/'.$this->modulepart.$suffix.'-'.$user->id.'-'.$year.'.png';
+			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$this->modulepart.'stats&file='.$this->modulepart.$suffix.'-'.$user->id.'-'.$year.'.png';
 		}
 		else
 		{
-			$filename = $dir.'/'.$file_prefix.$suffix.'-'.$year.'.png';
-			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$file_prefix.'stats&file='.$file_prefix.$suffix.'-'.$year.'.png';
+			$filename = $dir.'/'.$this->modulepart.$suffix.'-'.$year.'.png';
+			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$this->modulepart.'stats&file='.$this->modulepart.$suffix.'-'.$year.'.png';
 		}
 
 		// Generate graph

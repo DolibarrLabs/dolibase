@@ -35,17 +35,23 @@ class Logs extends CrudObject
 	 * @var string Primary key name (id field)
 	 */
 	public $pk_name = 'rowid';
+	/**
+	 * @var string Object element
+	 */
+	public $object_element = '';
 
 
 	/**
 	 * Constructor
 	 * 
+	 * @param     string    $object_element
 	 */
-	public function __construct()
+	public function __construct($object_element = '')
 	{
 		global $db;
 
 		$this->db = $db;
+		$this->object_element = $object_element;
 
 		$this->fetch_fields = array('rowid', 'module_id', 'module_name', 'object_id', 'action', 'datec', 'fk_user');
 	}
@@ -65,12 +71,13 @@ class Logs extends CrudObject
 		if (isset($dolibase_config['module']['enable_logs']) && $dolibase_config['module']['enable_logs'])
 		{
 			$info = array(
-				'module_id'   => $dolibase_config['module']['number'],
-				'module_name' => $dolibase_config['module']['name'],
-				'object_id'   => $object_id,
-				'action'      => $action,
-				'datec'       => dolibase_now(true),
-				'fk_user'     => $user->id
+				'module_id'      => $dolibase_config['module']['number'],
+				'module_name'    => $dolibase_config['module']['name'],
+				'object_id'      => $object_id,
+				'object_element' => $this->object_element,
+				'action'         => $action,
+				'datec'          => dolibase_now(true),
+				'fk_user'        => $user->id
 			);
 
 			return $this->create($info, $notrigger);

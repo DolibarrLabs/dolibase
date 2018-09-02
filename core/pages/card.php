@@ -44,19 +44,29 @@ class CardPage extends CreatePage
 	 * @var boolean used to add fiche end
 	 */
 	protected $add_fiche_end = true;
+	/**
+	 * @var string Constant name prefix
+	 */
+	protected $const_name_prefix = '';
+	/**
+	 * @var string Module sub permision
+	 */
+	protected $sub_permission = '';
 
 
 	/**
 	 * Constructor
 	 * 
-	 * @param     $page_title     HTML page title
-	 * @param     $access_perm    Access permission
-	 * @param     $edit_perm      Edit permission
-	 * @param     $delete_perm    Delete permission
-	 * @param     $show_documents Show documents/linked files block
-	 * @param     $enable_save_as Enable save as feature
+	 * @param     $page_title            HTML page title
+	 * @param     $access_perm           Access permission
+	 * @param     $edit_perm             Edit permission
+	 * @param     $delete_perm           Delete permission
+	 * @param     $show_documents        Show documents/linked files block
+	 * @param     $enable_save_as        Enable save as feature
+	 * @param     $const_name_prefix     Constant name prefix
+	 * @param     $sub_permission        Module sub permission
 	 */
-	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $show_documents = false, $enable_save_as = false)
+	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $show_documents = false, $enable_save_as = false, $const_name_prefix = '', $sub_permission = '')
 	{
 		global $langs, $dolibase_config;
 
@@ -64,6 +74,8 @@ class CardPage extends CreatePage
 		$this->edit_permission   = $edit_perm;
 		$this->delete_permission = $delete_perm;
 		$this->show_documents    = $show_documents;
+		$this->const_name_prefix = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true));
+		$this->sub_permission    = $sub_permission;
 
 		// Load lang files
 		$langs->load("card_page@".$dolibase_config['langs']['path']);
@@ -243,17 +255,22 @@ class CardPage extends CreatePage
 	/**
 	 * show extra fields
 	 *
-	 * @param      $object     Object
+	 * @param      $object         Object
 	 */
 	public function showExtraFields($object)
 	{
 		global $db, $conf, $langs, $hookmanager, $user, $action;
 
-		// fetch optionals attributes and labels
+		// Fetch optionals attributes and labels
 		$extrafields = $this->extrafields;
 		$extralabels = $extrafields->fetch_name_optionals_label($object->table_element, true);
 		$object->fetch_optionals($object->id, $extralabels);
-		$object->element = get_rights_class();
+		$object->element = $this->rights_class;
+
+		// Set modify permission value for submodules
+		if (! empty($this->sub_permission)) {
+			$user->rights->{$object->element}->create = $user->rights->{$object->element}->{$this->sub_permission}->modify;
+		}
 
 		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_view.tpl.php';
 	}
@@ -429,6 +446,22 @@ class CardPage extends CreatePage
 	}
 
 	/**
+	 * add a table field with a checkbox input(s)
+	 *
+	 * @param     $field_name       field name
+	 * @param     $check_name       checkbox inputs name
+	 * @param     $check_list       list of checkbox inputs, e.: array('check_1' => 'Check 1', 'check_2' => 'Check 2')
+	 * @param     $selected         selected checkbox input
+	 * @param     $action_prefix    action prefix
+	 */
+	public function editCheckListField($field_name, $radio_name, $radio_list, $selected = '', $action_prefix = 'set_')
+	{
+		$field_content = $this->form->checkList($radio_name, $radio_list, $selected, true);
+
+		$this->editField($field_name, $field_content, $action_prefix.$radio_name);
+	}
+
+	/**
 	 * add a table field with a color picker
 	 *
 	 * @param     $field_name        field name
@@ -455,7 +488,7 @@ class CardPage extends CreatePage
 		{
 			global $conf, $langs, $dolibase_config;
 
-			$const_name = get_rights_class(true) . '_ENABLE_EXPANDED_LINKS';
+			$const_name = $this->const_name_prefix . '_ENABLE_EXPANDED_LINKS';
 
 			echo '<div class="fichecenter hideonprint"><div class="fichehalfleft">';
 
@@ -487,7 +520,7 @@ class CardPage extends CreatePage
 	/**
 	 * Print documents block
 	 *
-	 * @param     $object     Object
+	 * @param     $object                Object
 	 */
 	protected function printDocuments($object)
 	{
@@ -503,22 +536,20 @@ class CardPage extends CreatePage
 
 			// Documents
 			$ref = dol_sanitizeFileName($object->ref);
-			$rights_class = get_rights_class();
-			$modulepart = get_rights_class(false, true);
-			$file = $conf->$modulepart->dir_output . '/' . $ref . '/' . $ref . '.pdf';
+			$file = $conf->{$this->modulepart}->dir_output . '/' . $ref . '/' . $ref . '.pdf';
 			$relativepath = $ref . '/' . $ref . '.pdf';
-			$filedir = $conf->$modulepart->dir_output . '/' . $ref;
+			$filedir = $conf->{$this->modulepart}->dir_output . '/' . $ref;
 			$urlsource = $_SERVER["PHP_SELF"] . "?id=" . $object->id;
-			$genallowed = $user->rights->$rights_class->create;
-			$delallowed = $user->rights->$rights_class->delete;
+			$genallowed = (empty($this->sub_permission) ? $user->rights->{$this->rights_class}->create : $user->rights->{$this->rights_class}->{$this->sub_permission}->create);
+			$delallowed = (empty($this->sub_permission) ? $user->rights->{$this->rights_class}->delete : $user->rights->{$this->rights_class}->{$this->sub_permission}->delete);
 			if (empty($object->model_pdf)) {
-				$const_name    = get_rights_class(true) . '_ADDON_PDF';
+				$const_name    = $this->const_name_prefix . '_ADDON_PDF';
 				$modelselected = $conf->global->$const_name;
 			}
 			else {
 				$modelselected = $object->model_pdf;
 			}
-			echo $formfile->showdocuments($modulepart, $ref, $filedir, $urlsource, $genallowed, $delallowed, $modelselected);
+			echo $formfile->showdocuments($this->modulepart, $ref, $filedir, $urlsource, $genallowed, $delallowed, $modelselected);
 
 			echo '</div></div>';
 		}
@@ -536,8 +567,6 @@ class CardPage extends CreatePage
 		if (! empty($object) && isset($object->id))
 		{
 			global $db, $conf, $langs, $user;
-
-			$rights_class = get_rights_class();
 
 			if (! $this->close_buttons_div) {
 				dol_fiche_end();
@@ -557,7 +586,7 @@ class CardPage extends CreatePage
 				$formmail->fromid = $user->id;
 				$formmail->frommail = $user->email; // fix for dolibarr 3.9
 			}
-			$formmail->trackid = $rights_class.$object->id;
+			$formmail->trackid = $this->rights_class.$object->id;
 			if (! empty($conf->global->MAIN_EMAIL_ADD_TRACK_ID) && ($conf->global->MAIN_EMAIL_ADD_TRACK_ID & 2)) // If bit 2 is set
 			{
 				include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
@@ -615,8 +644,7 @@ class CardPage extends CreatePage
 			// Get file/attachment
 			$ref = dol_sanitizeFileName($object->ref);
 			include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
-			$modulepart = get_rights_class(false, true);
-			$fileparams = dol_most_recent_file($conf->$modulepart->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
+			$fileparams = dol_most_recent_file($conf->{$this->modulepart}->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
 			$file = $fileparams['fullname'];
 
 			// Array of additional parameters

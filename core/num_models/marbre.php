@@ -35,18 +35,29 @@ class NumModelMarbre extends NumModel
 	/**
 	 * Constructor
 	 *
+	 * @param     $const_name_prefix     Constant name prefix
+	 * @param     $model_name            Numbering model name
 	 */
-	public function __construct()
+	public function __construct($const_name_prefix, $model_name = '')
 	{
 		global $dolibase_config;
 
 		// Generate constant name
-		$this->const_name = get_rights_class(true) . '_MARBRE_MASK';
+		$this->const_name = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true)) . '_MARBRE_MASK';
 
 		// Set parameters
-		$this->table_name = $dolibase_config['numbering_model']['table'];
-		$this->field_name = $dolibase_config['numbering_model']['field'];
-		$this->prefix     = $dolibase_config['numbering_model']['prefix'];
+		if (! empty($model_name))
+		{
+			$this->table_name = $dolibase_config['numbering_model'][$model_name]['table'];
+			$this->field_name = $dolibase_config['numbering_model'][$model_name]['field'];
+			$this->prefix     = $dolibase_config['numbering_model'][$model_name]['prefix'];
+		}
+		else
+		{
+			$this->table_name = $dolibase_config['numbering_model']['table'];
+			$this->field_name = $dolibase_config['numbering_model']['field'];
+			$this->prefix     = $dolibase_config['numbering_model']['prefix'];
+		}
 	}
 
 	/**

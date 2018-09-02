@@ -47,6 +47,8 @@ class pdf_azur extends DocModel
 	public $emetteur; // Society object
 
 	protected $watermark_text;
+	protected $modulepart;
+	protected $const_prefix;
 
 	/**
 	 *	Constructor
@@ -78,7 +80,9 @@ class pdf_azur extends DocModel
 		$this->option_logo            = 1; // Show logo
 		$this->option_multilang       = 1; // Multi-language support
 		$this->option_freetext        = 1; // Support add of a personalised text
-		$watermark_const              = get_rights_class(true) . '_DRAFT_WATERMARK';
+		$this->modulepart             = get_rights_class(false, true);
+		$this->const_prefix           = get_rights_class(true);
+		$watermark_const              = $this->const_prefix . '_DRAFT_WATERMARK';
 		$this->watermark_text         = $conf->global->$watermark_const;
 		$this->option_draft_watermark = (! empty($this->watermark_text) ? 1 : 0); // Support add of a watermark on drafts
 
@@ -114,22 +118,20 @@ class pdf_azur extends DocModel
 		$outputlangs->load("dict");
 		$outputlangs->load("companies");
 
-		$modulepart = get_rights_class(false, true);
-
-		if ($conf->$modulepart->dir_output)
+		if ($conf->{$this->modulepart}->dir_output)
 		{
 			$object->fetch_thirdparty();
 
 			// Definition of $dir and $file
 			if ($object->specimen)
 			{
-				$dir = $conf->$modulepart->dir_output;
+				$dir = $conf->{$this->modulepart}->dir_output;
 				$file = $dir . "/SPECIMEN.pdf";
 			}
 			else
 			{
 				$objectref = dol_sanitizeFileName($object->ref);
-				$dir = $conf->$modulepart->dir_output . "/" . $objectref;
+				$dir = $conf->{$this->modulepart}->dir_output . "/" . $objectref;
 				$file = $dir . "/" . $objectref . ".pdf";
 			}
 
@@ -182,16 +184,8 @@ class pdf_azur extends DocModel
 				$pagenb = 0;
 				$pdf->SetDrawColor(128, 128, 128);
 
-				if (! empty($object->doc_title)) {
-					$subject = $object->doc_title;
-				}
-				else {
-					$rights_class = get_rights_class();
-					$subject = ucfirst($rights_class);
-				}
-
 				$pdf->SetTitle($outputlangs->convToOutputCharset($object->ref));
-				$pdf->SetSubject($outputlangs->transnoentities($subject));
+				$pdf->SetSubject($outputlangs->transnoentities($object->doc_title));
 				$pdf->SetCreator("Dolibarr ".DOL_VERSION);
 				$pdf->SetAuthor($outputlangs->convToOutputCharset($user->getFullName($outputlangs)));
 				$pdf->SetKeyWords($outputlangs->convToOutputCharset($object->ref)." ".$outputlangs->transnoentities($subject)." ".$outputlangs->convToOutputCharset($object->thirdparty->name));
@@ -304,7 +298,7 @@ class pdf_azur extends DocModel
 		}
 		else
 		{
-			$this->error=$langs->trans("ErrorConstantNotDefined", get_rights_class(true) . "_OUTPUTDIR");
+			$this->error=$langs->trans("ErrorConstantNotDefined", $this->const_prefix . "_OUTPUTDIR");
 			return 0;
 		}
 	}
@@ -490,15 +484,8 @@ class pdf_azur extends DocModel
 		$pdf->SetFont('','B', $default_font_size + 3);
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
-		if (empty($titlekey))
-		{
-			if (! empty($object->doc_title)) {
-				$titlekey = $object->doc_title;
-			}
-			else {
-				$rights_class = get_rights_class();
-				$titlekey = ucfirst($rights_class);
-			}
+		if (empty($titlekey) && ! empty($object->doc_title)) {
+			$titlekey = $object->doc_title;
 		}
 		$title = $outputlangs->transnoentities($titlekey);
 		$pdf->MultiCell(100, 3, $title, '', 'R');
@@ -604,7 +591,7 @@ class pdf_azur extends DocModel
 		global $conf;
 
 		$showdetails   = $conf->global->MAIN_GENERATE_DOCUMENTS_SHOW_FOOT_DETAILS;
-		$paramfreetext = get_rights_class(true) . '_FREE_TEXT';
+		$paramfreetext = $this->const_prefix . '_FREE_TEXT';
 
 		return pdf_pagefoot($pdf, $outputlangs, $paramfreetext, $this->emetteur, $this->marge_basse, $this->marge_gauche, $this->page_hauteur, $object, $showdetails, $hidefreetext);
 	}

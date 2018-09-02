@@ -60,6 +60,8 @@ class Dictionary
 	 */
 	private static function get_list($dict_table, $key_field = 'rowid', $value_field = 'label', $only_active = false)
 	{
+		global $langs;
+
 		$list = array();
 
 		$dict = new CrudObject($dict_table);
@@ -70,7 +72,7 @@ class Dictionary
 
 		if ($result) {
 			foreach ($dict->lines as $line) {
-				$list[$line->$key_field] = $line->$value_field;
+				$list[$line->$key_field] = $langs->trans($line->$value_field);
 			}
 		}
 

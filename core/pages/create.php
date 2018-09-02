@@ -291,6 +291,25 @@ class CreatePage extends FormPage
 	}
 
 	/**
+	 * add a table field with a checkbox input(s)
+	 *
+	 * @param     $field_name       field name
+	 * @param     $check_name       checkbox inputs name
+	 * @param     $check_list       list of checkbox inputs, e.: array('check_1' => 'Checkbox 1', 'check_2' => 'Checkbox 2')
+	 * @param     $selected         selected checkbox input
+	 * @param     $is_required      is field required or not
+	 * @param     $field_summary    field summary
+	 * @param     $valign           field vertical align
+	 */
+	public function addCheckListField($field_name, $check_name, $check_list, $selected = '', $is_required = false, $field_summary = '', $valign = 'middle')
+	{
+		$field_content = $this->form->checkList($check_name, $check_list, $selected);
+
+		$more_attr = ' valign="'.$valign.'"';
+		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
+	}
+
+	/**
 	 * add a table field with a color picker
 	 *
 	 * @param     $field_name        field name
