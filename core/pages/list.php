@@ -51,12 +51,15 @@ class ListPage extends FormPage
 	 * 
 	 * @param     $page_title     HTML page title
 	 * @param     $access_perm    Access permission
+	 * @param     $contextpage    Page context
 	 */
-	public function __construct($page_title, $access_perm = '')
+	public function __construct($page_title, $access_perm = '', $contextpage = '')
 	{
 		global $db;
 
+		// Set page attributes
 		$this->extrafields = new ExtraFields($db);
+		$this->contextpage = (! empty($contextpage) ? $contextpage : get_rights_class(false, true) . 'list');
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -68,8 +71,6 @@ class ListPage extends FormPage
 	protected function loadDefaultActions()
 	{
 		global $hookmanager;
-
-		$this->contextpage = get_rights_class(false, true) . 'list';
 
 		// Initialize technical object to manage hooks of thirdparties.
 		$hookmanager->initHooks(array($this->contextpage));

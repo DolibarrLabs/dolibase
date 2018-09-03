@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.5 - AUG18
+
+*   FIX: context issue on List Page.
+
+---
+
 #### 2.2.4 - AUG18
 
 *   FIX: remove some useless parts of code.
