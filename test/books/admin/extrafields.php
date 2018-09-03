@@ -10,4 +10,6 @@ $page = new ExtraFieldsPage('books');
 
 $page->begin();
 
+$page->printExtraFields();
+
 $page->end();

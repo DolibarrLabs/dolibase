@@ -44,9 +44,9 @@ class SetupPage extends FormPage
 	 */
 	protected $doc_model_type;
 	/**
-	 * @var string document model picture
+	 * @var string document model preview picture
 	 */
-	protected $doc_model_picture = '';
+	protected $doc_model_preview_picture = '';
 	/**
 	 * @var string used to generate documents specimen
 	 */
@@ -126,13 +126,13 @@ class SetupPage extends FormPage
 	}
 
 	/**
-	 * Set Document model(s) picture
+	 * Set Document model(s) preview picture
 	 *
-	 * @param    $picture     Document model picture
+	 * @param    $picture     Document model preview picture
 	 */
-	public function setDocModelsPicture($picture)
+	public function setDocModelPreviewPicture($picture)
 	{
-		$this->doc_model_picture = $picture;
+		$this->doc_model_preview_picture = $picture;
 	}
 
 	/**
@@ -355,7 +355,6 @@ class SetupPage extends FormPage
 	{
 		$options_table_cols = array(
 								array('name' => $first_column_name, 'attr' => ''),
-								array('name' => '&nbsp;', 'attr' => 'align="center" width="20"'),
 								array('name' => 'Value', 'attr' => 'align="center" width="100"')
 							);
 
@@ -371,14 +370,13 @@ class SetupPage extends FormPage
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addOption($option_desc, $option_content, $const_name = '', $morehtmlright = '', $width = 250)
+	public function addOption($option_desc, $option_content, $const_name = '', $morehtmlright = '', $width = 300)
 	{
 		global $conf, $langs, $bc;
 
 		$this->odd = !$this->odd;
 
 		echo '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		echo '<td align="center">&nbsp;</td>'."\n";
 		echo '<td width="'.$width.'" align="right">'."\n";
 		if (! empty($const_name)) {
 			echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
@@ -408,7 +406,6 @@ class SetupPage extends FormPage
 		$more_attr = $disabled ? ' class="disabled nopointerevents"' : '';
 
 		echo '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
-		echo '<td'.$more_attr.' align="center">&nbsp;</td>'."\n";
 		echo '<td'.$more_attr.' align="right">'."\n";
 		if (empty($conf->global->$const_name))
 		{
@@ -430,7 +427,7 @@ class SetupPage extends FormPage
 	 * @param     $size              Option textbox size
 	 * @param     $width             Option last column/td width
 	 */
-	public function addTextOption($option_desc, $const_name, $morehtmlright = '', $size = 16, $width = 250)
+	public function addTextOption($option_desc, $const_name, $morehtmlright = '', $size = 16, $width = 300)
 	{
 		global $conf;
 
@@ -449,7 +446,7 @@ class SetupPage extends FormPage
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addNumberOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 250)
+	public function addNumberOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 300)
 	{
 		global $conf;
 
@@ -468,7 +465,7 @@ class SetupPage extends FormPage
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addRangeOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 250)
+	public function addRangeOption($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = '', $width = 300)
 	{
 		global $conf;
 
@@ -486,7 +483,7 @@ class SetupPage extends FormPage
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addListOption($option_desc, $const_name, $list, $morehtmlright = '', $width = 250)
+	public function addListOption($option_desc, $const_name, $list, $morehtmlright = '', $width = 300)
 	{
 		global $conf;
 
@@ -503,7 +500,7 @@ class SetupPage extends FormPage
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
 	 */
-	public function addColorOption($option_desc, $const_name, $morehtmlright = '', $width = 250)
+	public function addColorOption($option_desc, $const_name, $morehtmlright = '', $width = 300)
 	{
 		global $conf;
 
@@ -770,7 +767,7 @@ class SetupPage extends FormPage
 							echo '<td align="center">';
 							if ($model->type == 'pdf')
 							{
-								$picto = (! empty($this->doc_model_picture) ? $this->doc_model_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
+								$picto = (! empty($this->doc_model_preview_picture) ? $this->doc_model_preview_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
 								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
 							}
 							else

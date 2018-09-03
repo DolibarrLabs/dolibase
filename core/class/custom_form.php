@@ -177,8 +177,8 @@ class CustomForm extends Form
 			}
 			if ($count > 0) $out.= "<br>\n";
 			$out.= '<span>';
-			$out.= '<input type="radio" class="dolibase_radio" name="'.$name.'" id="'.$val.'" value="'.$val.'"'.($selected == $val || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
-			$out.= ' <label for="'.$val.'">' . $langs->trans($label) . '</label>';
+			$out.= '<input type="radio" class="dolibase_radio" name="'.$name.'" id="'.$name.'-'.$val.'" value="'.$val.'"'.($selected == $val || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
+			$out.= ' <label for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
 			$out.= '</span>';
 			$out.= $content;
 			$count++;
@@ -215,8 +215,8 @@ class CustomForm extends Form
 			}
 			if ($count > 0) $out.= "<br>\n";
 			$out.= '<span>';
-			$out.= '<input type="checkbox" class="dolibase_radio" name="'.$name.'[]" id="'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
-			$out.= ' <label for="'.$val.'">' . $langs->trans($label) . '</label>';
+			$out.= '<input type="checkbox" class="dolibase_radio" name="'.$name.'[]" id="'.$name.'-'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
+			$out.= ' <label for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
 			$out.= '</span>';
 			$out.= $content;
 			$count++;

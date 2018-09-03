@@ -420,11 +420,12 @@ class CardPage extends CreatePage
 	 * @param     $list_name        list name
 	 * @param     $list_choices     list choices, e.: array('choice_1' => 'Choice 1', 'choice_2' => 'Choice 2')
 	 * @param     $selected_choice  selected choice
+	 * @param     $show_empty       show empty value
 	 * @param     $action_prefix    action prefix
 	 */
-	public function editListField($field_name, $list_name, $list_choices, $selected_choice = '', $action_prefix = 'set_')
+	public function editListField($field_name, $list_name, $list_choices, $selected_choice = '', $show_empty = 0, $action_prefix = 'set_')
 	{
-		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice);
+		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice, $show_empty);
 
 		$this->editField($field_name, $field_content, $action_prefix.$list_name);
 	}

@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.2.4 - AUG18
+
+*   FIX: remove some useless parts of code.
+*   FIX: rename some vars in Setup Page.
+*   FIX: review ExtraFields Page code.
+
+---
+
 #### 2.2.3 - AUG18
 
 *   NEW: multi-numbering models configuration.

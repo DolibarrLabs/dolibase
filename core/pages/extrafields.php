@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('/core/class/form_page.php');
 include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 include_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
 
@@ -23,12 +23,16 @@ include_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
  * ExtraFieldsPage class
  */
 
-class ExtraFieldsPage extends Page
+class ExtraFieldsPage extends FormPage
 {
 	/**
 	 * @var string element type
 	 */
 	protected $elementtype;
+	/**
+	 * @var object extra fields
+	 */
+	protected $extrafields;
 
 
 	/**
@@ -40,13 +44,14 @@ class ExtraFieldsPage extends Page
 	 */
 	public function __construct($elementtype, $page_title = 'ExtraFields', $access_perm = '$user->admin')
 	{
-		global $langs;
+		global $db, $langs;
 
 		// Load lang files
 		$langs->load("admin");
 
 		// Set attributes
 		$this->elementtype = $elementtype;
+		$this->extrafields = new ExtraFields($db);
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -84,17 +89,36 @@ class ExtraFieldsPage extends Page
 	}
 
 	/**
-	 * Generate page begining
+	 * Load default actions
 	 *
 	 */
-	public function begin()
+	protected function loadDefaultActions()
 	{
-		global $db, $conf, $langs;
+		global $langs;
+
+		// Get parameters
+		$action      = GETPOST('action', 'alpha');
+		$elementtype = $this->elementtype;
+		$extrafields = $this->extrafields;
+
+		// Actions
+		include_once DOL_DOCUMENT_ROOT.'/core/actions_extrafields.inc.php';
+	}
+
+	/**
+	 * Print extra fields table
+	 *
+	 */
+	public function printExtraFields()
+	{
+		global $conf, $langs;
 
 		// Get parameters
 		$action      = GETPOST('action', 'alpha');
 		$attrname    = GETPOST('attrname', 'alpha');
 		$elementtype = $this->elementtype;
+		$extrafields = $this->extrafields;
+		$form        = $this->form;
 
 		// List of supported format
 		$tmptype2label = ExtraFields::$type2label;
@@ -102,16 +126,6 @@ class ExtraFieldsPage extends Page
 		foreach ($tmptype2label as $key => $val) {
 			$type2label[$key] = $langs->transnoentitiesnoconv($val);
 		}
-
-		// Init objects
-		$extrafields = new ExtraFields($db);
-		$form        = new Form($db);
-
-		// Actions
-		include_once DOL_DOCUMENT_ROOT.'/core/actions_extrafields.inc.php';
-
-		// Page begin
-		parent::begin();
 
 		// Extrafields view/table
 		include_once DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_view.tpl.php';

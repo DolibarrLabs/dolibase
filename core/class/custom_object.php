@@ -87,8 +87,8 @@ class CustomObject extends CrudObject
 
 		// Add log
 		if ($res > 0) {
-			$log = new Logs($this->element);
-			$log->add($this->id, 'CREATE_OBJECT');
+			$log = new Logs();
+			$log->add($this, 'CREATE_OBJECT');
 		}
 
 		return $res;
@@ -107,8 +107,8 @@ class CustomObject extends CrudObject
 
 		// Add log
 		if ($res > 0) {
-			$log = new Logs($this->element);
-			$log->add($this->id, 'UPDATE_OBJECT');
+			$log = new Logs();
+			$log->add($this, 'UPDATE_OBJECT');
 		}
 
 		return $res;
@@ -126,8 +126,8 @@ class CustomObject extends CrudObject
 
 		// Add log
 		if ($res > 0) {
-			$log = new Logs($this->element);
-			$log->add($this->id, 'DELETE_OBJECT');
+			$log = new Logs();
+			$log->add($this, 'DELETE_OBJECT');
 		}
 
 		return $res;

@@ -263,10 +263,11 @@ class CreatePage extends FormPage
 	 * @param     $selected_choice  selected choice
 	 * @param     $is_required      is field required or not
 	 * @param     $field_summary    field summary
+	 * @param     $show_empty       show empty value
 	 */
-	public function addListField($field_name, $list_name, $list_choices, $selected_choice = '', $is_required = false, $field_summary = '')
+	public function addListField($field_name, $list_name, $list_choices, $selected_choice = '', $is_required = false, $field_summary = '', $show_empty = 0)
 	{
-		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice);
+		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice, $show_empty);
 
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
 	}
