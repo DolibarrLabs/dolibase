@@ -4,6 +4,7 @@
 #### 2.2.5 - AUG18
 
 *   FIX: context issue on List Page.
+*   FIX: fetchAll lines array was not initialised when request result is empty.
 
 ---
 

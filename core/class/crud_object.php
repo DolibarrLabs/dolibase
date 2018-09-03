@@ -233,6 +233,9 @@ class CrudObject extends CommonObject
 			}
 		}
 
+		// Init lines
+		$this->lines = array();
+
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
 		$resql = $this->db->query($sql);
 		if ($resql) {
@@ -240,7 +243,6 @@ class CrudObject extends CommonObject
 			if ($this->count)
 			{
 				$i = 0;
-				$this->lines = array();
 				$num = ($get_total ? min($this->count, $limit) : $this->count); // also for list pagination
 				$set_id = (! in_array('id', $this->fetch_fields) ? true : false);
 
