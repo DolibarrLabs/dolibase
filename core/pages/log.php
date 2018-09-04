@@ -127,7 +127,8 @@ class LogPage extends FormPage
 		if (! empty($object_element)) {
 			$where.= " AND object_element = '".$object_element."'";
 		}
-		if ($search['ds'] && $search['de']) $where .= " AND date(t.datec) BETWEEN date('".$log->db->idate($search['ds'])."') AND date('".$log->db->idate($search['de'])."')";
+		if ($search['ds']) $where .= " AND date(t.datec) >= date('".$log->db->idate($search['ds'])."')";
+		if ($search['de']) $where .= " AND date(t.datec) <= date('".$log->db->idate($search['de'])."')";
 		if ($search['user'] > 0) $where .= natural_search('t.fk_user', $search['user']);
 
 		$log->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
