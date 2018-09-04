@@ -18,8 +18,8 @@
 #
 # Generic
 #
-LogAction = <b>Acción</b>
-MadeBy = Hecho por
+LogAction = Acción
+LogUser = Usuario
 LogDate = Fecha
 CurrentHour = Tiempo de PHP (servidor)
 ClientHour = Hora del cliente (usuario)

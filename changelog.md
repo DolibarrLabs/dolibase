@@ -1,7 +1,13 @@
 ### Dolibase Framework
 ------
 
-#### 2.2.5 - AUG18
+#### 2.3.0 - SEP18
+
+*   NEW: enhance Log Page.
+
+---
+
+#### 2.2.5 - SEP18
 
 *   FIX: context issue on List Page.
 *   FIX: fetchAll lines array was not initialised when request result is empty.
@@ -9,7 +15,7 @@
 
 ---
 
-#### 2.2.4 - AUG18
+#### 2.2.4 - SEP18
 
 *   FIX: remove some useless parts of code.
 *   FIX: rename some vars in Setup Page.
@@ -17,7 +23,7 @@
 
 ---
 
-#### 2.2.3 - AUG18
+#### 2.2.3 - SEP18
 
 *   NEW: multi-numbering models configuration.
 *   NEW: allow using class custom picto & url in getNomUrl function.
