@@ -29,11 +29,13 @@ class Dictionary
 	 * @param     $dict_table     dictionary table name (without prefix)
 	 * @param     $key_field      list key field, e.: 'rowid'
 	 * @param     $value_field    list value field, e.: 'label'
+	 * @param     $sort_field     list sort field, e.: 'label'
+	 * @param     $sort_order     list sort order, e.: 'DESC' or 'ASC'
 	 * @return    array           dictionary active lines list
 	 */
-	public static function get_active($dict_table, $key_field = 'rowid', $value_field = 'label')
+	public static function get_active($dict_table, $key_field = 'rowid', $value_field = 'label', $sort_field = 'label', $sort_order = 'ASC')
 	{
-		return self::get_list($dict_table, $key_field, $value_field, true);
+		return self::get_list($dict_table, $key_field, $value_field, true, $sort_field, $sort_order);
 	}
 
 	/**
@@ -42,11 +44,13 @@ class Dictionary
 	 * @param     $dict_table     dictionary table name (without prefix)
 	 * @param     $key_field      list key field, e.: 'rowid'
 	 * @param     $value_field    list value field, e.: 'label'
+	 * @param     $sort_field     list sort field, e.: 'label'
+	 * @param     $sort_order     list sort order, e.: 'DESC' or 'ASC'
 	 * @return    array           dictionary all lines list
 	 */
-	public static function get_all($dict_table, $key_field = 'rowid', $value_field = 'label')
+	public static function get_all($dict_table, $key_field = 'rowid', $value_field = 'label', $sort_field = 'label', $sort_order = 'ASC')
 	{
-		return self::get_list($dict_table, $key_field, $value_field);
+		return self::get_list($dict_table, $key_field, $value_field, false, $sort_field, $sort_order);
 	}
 
 	/**
@@ -56,9 +60,11 @@ class Dictionary
 	 * @param     $key_field      list key field, e.: 'rowid'
 	 * @param     $value_field    list value field, e.: 'label'
 	 * @param     $only_active    get only active lines or not
+	 * @param     $sort_field     list sort field, e.: 'label'
+	 * @param     $sort_order     list sort order, e.: 'DESC' or 'ASC'
 	 * @return    array           dictionary lines list
 	 */
-	private static function get_list($dict_table, $key_field = 'rowid', $value_field = 'label', $only_active = false)
+	private static function get_list($dict_table, $key_field = 'rowid', $value_field = 'label', $only_active = false, $sort_field = 'label', $sort_order = 'ASC')
 	{
 		global $langs;
 
@@ -68,7 +74,7 @@ class Dictionary
 		$dict->fetch_fields = array($key_field, $value_field);
 		$where = $only_active ? 'active = 1' : '';
 
-		$result = $dict->fetchAll(0, 0, $value_field, 'ASC', '', '', $where);
+		$result = $dict->fetchAll(0, 0, $sort_field, $sort_order, '', '', $where);
 
 		if ($result) {
 			foreach ($dict->lines as $line) {

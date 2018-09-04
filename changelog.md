@@ -5,6 +5,7 @@
 
 *   FIX: context issue on List Page.
 *   FIX: fetchAll lines array was not initialised when request result is empty.
+*   FIX: allow setting sort field & order when retrieving a dictionary values.
 
 ---
 
