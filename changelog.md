@@ -4,6 +4,7 @@
 #### 2.3.0 - SEP18
 
 *   NEW: enhance Log Page.
+*   NEW: Calendar Page.
 
 ---
 

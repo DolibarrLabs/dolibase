@@ -41,10 +41,6 @@ class CardPage extends CreatePage
 	 */
 	protected $show_documents = false;
 	/**
-	 * @var boolean used to add fiche end
-	 */
-	protected $add_fiche_end = true;
-	/**
 	 * @var string Constant name prefix
 	 */
 	protected $const_name_prefix = '';
@@ -707,6 +703,6 @@ class CardPage extends CreatePage
 			}
 		}
 
-		parent::end($this->add_fiche_end);
+		parent::end();
 	}
 }

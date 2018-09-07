@@ -62,6 +62,10 @@ class Page
 	 */
 	protected $close_table = false;
 	/**
+	 * @var boolean used to add fiche end
+	 */
+	protected $add_fiche_end = true;
+	/**
 	 * @var string Module rights class
 	 */
 	protected $rights_class;
@@ -476,7 +480,7 @@ class Page
 	 * Generate page end
 	 *
 	 */
-	public function end($add_fiche_end = true)
+	public function end()
 	{
 		global $db;
 
@@ -486,7 +490,7 @@ class Page
 		// Page end
 		$this->closeTable();
 		$this->closeForm();
-		if (! empty($this->tabs) && $add_fiche_end) dol_fiche_end();
+		if (! empty($this->tabs) && $this->add_fiche_end) dol_fiche_end();
 		llxFooter();
 		$db->close();
 	}
