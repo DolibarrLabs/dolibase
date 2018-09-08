@@ -177,7 +177,7 @@ class ListPage extends FormPage
 			if (! empty($this->arrayfields[$field['name']]['checked'])) {
 				$field_align = (isset($field['align']) ? 'align="'.$field['align'].'"' : '');
 				$field_class = (isset($field['class']) ? $field['class'].' ' : '');
-				print_liste_field_titre($langs->trans($field['label']), $_SERVER["PHP_SELF"], $field['name'], '', $param, $field_align, $sortfield, $sortorder, $field_class);
+				print_liste_field_titre($field['label'], $_SERVER["PHP_SELF"], $field['name'], '', $param, $field_align, $sortfield, $sortorder, $field_class);
 			}
 		}
 		// Loop to show all columns of extrafields for the title line
@@ -190,7 +190,7 @@ class ListPage extends FormPage
 					$align = $this->extrafields->getAlignFlag($key);
 					$sortonfield = "ef.".$key;
 					if (! empty($this->extrafields->attribute_computed[$key])) $sortonfield = '';
-					echo getTitleFieldOfList($langs->trans($this->extralabels[$key]), 0, $_SERVER["PHP_SELF"], $sortonfield, "", $param, ($align?'align="'.$align.'"':''), $sortfield, $sortorder)."\n";
+					echo getTitleFieldOfList($this->extralabels[$key], 0, $_SERVER["PHP_SELF"], $sortonfield, "", $param, ($align?'align="'.$align.'"':''), $sortfield, $sortorder)."\n";
 				}
 			}
 		}

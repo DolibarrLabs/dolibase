@@ -5,6 +5,9 @@
 
 *   NEW: enhance Log Page.
 *   NEW: Calendar Page.
+*   NEW: Dolibase Logs test module.
+*   FIX: date issue on logs class.
+*   FIX: translation issue on List page.
 
 ---
 

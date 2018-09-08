@@ -47,7 +47,7 @@ class Logs extends CrudObject
 
 		$this->db = $db;
 
-		$this->fetch_fields = array('rowid', 'module_id', 'module_name', 'object_id', 'action', 'datec', 'fk_user');
+		$this->fetch_fields = array('rowid', 'module_id', 'module_name', 'object_id', 'object_element', 'action', 'datec', 'fk_user');
 	}
 
 	/**
