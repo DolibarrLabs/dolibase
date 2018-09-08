@@ -134,7 +134,12 @@ if (! function_exists('GETPOSTDATE'))
 {
 	function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
 	{
-		$date = dol_mktime(12, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
+		if (isset($_GET[$date_input_name.'month']) || isset($_POST[$date_input_name.'month'])) { // checking month value should be sufficient
+			$date = dol_mktime(0, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
+		}
+		else {
+			$date = GETPOST($date_input_name);
+		}
 
 		if ($convert_to_db_format) {
 			global $db;

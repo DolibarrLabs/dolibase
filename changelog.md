@@ -8,6 +8,7 @@
 *   NEW: Dolibase Logs test module.
 *   FIX: date issue on logs class.
 *   FIX: translation issue on List page.
+*   FIX: GETPOSTDATE function return a blank value when it shouldn't.
 
 ---
 
