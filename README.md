@@ -1,6 +1,6 @@
 # Dolibase
 
-[![Stable Version](https://img.shields.io/badge/stable-v2.2.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.2.0)
+[![Stable Version](https://img.shields.io/badge/stable-v2.3.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.3.0)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.0-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
