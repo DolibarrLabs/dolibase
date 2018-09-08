@@ -246,8 +246,8 @@ class CalendarPage extends FormPage
 			$lastdaytoshow = dol_mktime(0, 0, 0, $next_month, $next_day, $next_year);
 
 			$nav = "<a href=\"?year=".$prev_year."&amp;month=".$prev_month.$param."\">".img_previous($langs->trans("Previous"), 'class="valignbottom"')."</a>\n";
-			$nav.= " <span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $month, 1, $year), "%b %Y");
-			$nav.= " </span>\n";
+			$nav.= "<span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $month, 1, $year), "%b %Y");
+			$nav.= "</span>\n";
 			$nav.= "<a href=\"?year=".$next_year."&amp;month=".$next_month.$param."\">".img_next($langs->trans("Next"), 'class="valignbottom"')."</a>\n";
 			$nav.= " &nbsp; (<a href=\"?year=".$nowyear."&amp;month=".$nowmonth.$param."\">".$langs->trans("Today")."</a>)";
 
@@ -364,8 +364,8 @@ class CalendarPage extends FormPage
 			$tmpday = $first_day;
 
 			$nav = "<a href=\"?year=".$prev_year."&amp;month=".$prev_month."&amp;day=".$prev_day.$param."\">".img_previous($langs->trans("Previous"), 'class="valignbottom"')."</a>\n";
-			$nav.= " <span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $first_month, $first_day, $first_year),"%Y").", ".$langs->trans("Week")." ".$week;
-			$nav.= " </span>\n";
+			$nav.= "<span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $first_month, $first_day, $first_year),"%Y").", ".$langs->trans("Week")." ".$week;
+			$nav.= "</span>\n";
 			$nav.= "<a href=\"?year=".$next_year."&amp;month=".$next_month."&amp;day=".$next_day.$param."\">".img_next($langs->trans("Next"), 'class="valignbottom"')."</a>\n";
 			$nav.= " &nbsp; (<a href=\"?year=".$nowyear."&amp;month=".$nowmonth."&amp;day=".$nowday.$param."\">".$langs->trans("Today")."</a>)";
 
@@ -437,8 +437,8 @@ class CalendarPage extends FormPage
 			$lastdaytoshow = dol_mktime(0, 0, 0, $next_month, $next_day, $next_year);
 
 			$nav = "<a href=\"?year=".$prev_year."&amp;month=".$prev_month."&amp;day=".$prev_day.$param."\">".img_previous($langs->trans("Previous"), 'class="valignbottom"')."</a>\n";
-			$nav.= " <span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $month, $day, $year), "daytextshort");
-			$nav.= " </span>\n";
+			$nav.= "<span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $month, $day, $year), "daytextshort");
+			$nav.= "</span>\n";
 			$nav.= "<a href=\"?year=".$next_year."&amp;month=".$next_month."&amp;day=".$next_day.$param."\">".img_next($langs->trans("Next"), 'class="valignbottom"')."</a>\n";
 			$nav.= " &nbsp; (<a href=\"?year=".$nowyear."&amp;month=".$nowmonth."&amp;day=".$nowday.$param."\">".$langs->trans("Today")."</a>)";
 

@@ -189,10 +189,9 @@ class LogPage extends FormPage
 
 				// Date
 				echo '<td align="center">';
-				$datec = $log->db->jdate($line->datec);
-				echo dol_print_date($datec, 'dayhour');
+				echo dol_print_date($line->datec, 'dayhour');
 				if ($deltadateforuser) {
-					echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($datec+($deltadateforuser*3600),"dayhour").' &nbsp;'.$langs->trans("ClientHour");
+					echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($line->datec+($deltadateforuser*3600), "dayhour").' &nbsp;'.$langs->trans("ClientHour");
 				}
 				echo '</td>';
 
