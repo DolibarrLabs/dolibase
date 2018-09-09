@@ -124,6 +124,20 @@ if (! function_exists('get_dolibase_path'))
 }
 
 /**
+ * Check if a value have been submitted by GET or POST method
+ *
+ * @param      $value_name       value name
+ * @return     boolean           true or false
+ */
+if (! function_exists('is_submitted'))
+{
+	function is_submitted($value_name)
+	{
+		return isset($_GET[$value_name]) || isset($_POST[$value_name]);
+	}
+}
+
+/**
  * Return posted date
  *
  * @param      $date_input_name       date input name
@@ -134,7 +148,7 @@ if (! function_exists('GETPOSTDATE'))
 {
 	function GETPOSTDATE($date_input_name, $convert_to_db_format = false)
 	{
-		if (isset($_GET[$date_input_name.'month']) || isset($_POST[$date_input_name.'month'])) { // checking month value should be sufficient
+		if (is_submitted($date_input_name.'month') && is_submitted($date_input_name.'day') && is_submitted($date_input_name.'year')) {
 			$date = dol_mktime(0, 0, 0, GETPOST($date_input_name.'month'), GETPOST($date_input_name.'day'), GETPOST($date_input_name.'year'));
 		}
 		else {

@@ -170,6 +170,7 @@ class ListPage extends FormPage
 		// This change content of $arrayfields
 		$varpage = empty($contextpage) ? $_SERVER["PHP_SELF"] : $contextpage;
 		$selectedfields = $this->form->multiSelectArrayWithCheckbox('selectedfields', $this->arrayfields, $varpage);
+		$old_dolibarr = compare_version(DOL_VERSION, '<', '6.0.0');
 
 		// List fields
 		echo '<tr class="liste_titre">';
@@ -177,7 +178,7 @@ class ListPage extends FormPage
 			if (! empty($this->arrayfields[$field['name']]['checked'])) {
 				$field_align = (isset($field['align']) ? 'align="'.$field['align'].'"' : '');
 				$field_class = (isset($field['class']) ? $field['class'].' ' : '');
-				$label = compare_version(DOL_VERSION, '<', '6.0.0') ? $langs->trans($field['label']) : $field['label'];
+				$label = $old_dolibarr ? $langs->trans($field['label']) : $field['label'];
 				print_liste_field_titre($label, $_SERVER["PHP_SELF"], $field['name'], '', $param, $field_align, $sortfield, $sortorder, $field_class);
 			}
 		}
@@ -191,7 +192,7 @@ class ListPage extends FormPage
 					$align = $this->extrafields->getAlignFlag($key);
 					$sortonfield = "ef.".$key;
 					if (! empty($this->extrafields->attribute_computed[$key])) $sortonfield = '';
-					$label = compare_version(DOL_VERSION, '<', '6.0.0') ? $langs->trans($this->extralabels[$key]) : $this->extralabels[$key];
+					$label = $old_dolibarr ? $langs->trans($this->extralabels[$key]) : $this->extralabels[$key];
 					echo getTitleFieldOfList($label, 0, $_SERVER["PHP_SELF"], $sortonfield, "", $param, ($align?'align="'.$align.'"':''), $sortfield, $sortorder)."\n";
 				}
 			}
