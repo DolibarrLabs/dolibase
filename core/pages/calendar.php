@@ -410,7 +410,7 @@ class CalendarPage extends FormPage
 				if ($today) $style = 'cal_today';
 
 				echo '<td class="'.$style.'" width="14%" valign="top"'.($iter_day == 0 ? ' colspan="2"': '').'>';
-				$this->showEvents($tmpday, $tmpmonth, $tmpyear);
+				$this->showEvents($tmpday, $tmpmonth, $tmpyear, 300);
 				echo "</td>\n";
 			}
 			echo "</tr>\n";
@@ -462,7 +462,7 @@ class CalendarPage extends FormPage
 			echo "</tr>\n";
 			echo "<tr>\n";
 			echo '<td class="'.$style.'" width="14%" valign="top" colspan="2">';
-			$this->showEvents($day, $month, $year);
+			$this->showEvents($day, $month, $year, 300);
 			echo "</td>\n";
 			echo "</tr>\n";
 			echo "</table>\n";
