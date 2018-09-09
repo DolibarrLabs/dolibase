@@ -39,8 +39,9 @@ class CalendarPage extends FormPage
 	 * 
 	 * @param     $page_title     HTML page title
 	 * @param     $access_perm    Access permission
+	 * @param     $default_view   Default calendar view, possible values: 'day', 'week', 'month'
 	 */
-	public function __construct($page_title, $access_perm = '')
+	public function __construct($page_title, $access_perm = '', $default_view = '')
 	{
 		global $langs, $dolibase_config;
 
@@ -57,6 +58,10 @@ class CalendarPage extends FormPage
 			'day' => GETPOST('day', 'int') ? GETPOST('day', 'int') : date('d'),
 			'wich_week' => GETPOST('wich_week', 'alpha')
 		);
+
+		if (empty($this->params['action']) && ! empty($default_view)) {
+			$this->params['action'] = 'show_'.$default_view;
+		}
 
 		parent::__construct($page_title, $access_perm);
 	}
