@@ -452,6 +452,15 @@ class DolibaseModule extends DolibarrModules
 	}
 
 	/**
+	 * Enable triggers
+	 *
+	 */
+	public function enableTriggers()
+	{
+		$this->module_parts['triggers'] = 1;
+	}
+
+	/**
 	 * Add a dictionary
 	 *
 	 * @param     $table_name             table name without prefix
