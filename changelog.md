@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.1 - SEP18
+
+*   NEW: function to enable triggers in module class.
+*   FIX: code optimisation.
+
+---
+
 #### 2.3.0 - SEP18
 
 *   NEW: enhance Log Page.
