@@ -55,7 +55,7 @@ class DolibaseModule extends DolibarrModules
 	 */
 	public function __construct($db)
 	{
-		global $dolibase_config, $langs;
+		global $dolibase_config, $langs, $conf;
 
 		// Check if config array is empty
 		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
@@ -127,7 +127,9 @@ class DolibaseModule extends DolibarrModules
 		$this->loadSettings();
 
 		// Check for updates
-		$this->checkUpdates($langs);
+		if (! $conf->global->DOLIBASE_DISABLE_CHECK_FOR_UPDATES) {
+			$this->checkUpdates($langs);
+		}
 	}
 
 	/**
