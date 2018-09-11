@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.2 - SEP18
+
+*   NEW: possibility to disable check for updates for all dolibase modules.
+*   NEW: optimise stats class.
+*   FIX: some missing array declaration in module class.
+
+---
+
 #### 2.3.1 - SEP18
 
 *   NEW: function to enable triggers in module class.
