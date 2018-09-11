@@ -35,26 +35,29 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Set actions ---
 
 	// Edit
-	if ($page->canEdit() && preg_match('/set_(.*)/', $action, $field) && $page->checkField($field[1]))
+	if ($page->canEdit())
 	{
-		if (preg_match('/date_(.*)/', $field[1], $datefield)) {
-			$val  = GETPOSTDATE($datefield[1], true);
-			$data = array($datefield[1] => $val);
+		// Extrafields
+		if ($action == 'update_extras')
+		{
+			$result = $page->updateExtraFields($book);
+			if ($result) $action = 'edit_extras';
 		}
-		else {
-			$val  = GETPOST($field[1]);
-			$val  = empty($val) ? empty_to_null($val) : str_escape($val);
-			$data = array($field[1] => $val);
+		// Other fields
+		else if (preg_match('/set_(.*)/', $action, $field) && $page->checkField($field[1]))
+		{
+			if (preg_match('/date_(.*)/', $field[1], $datefield)) {
+				$val  = GETPOSTDATE($datefield[1], true);
+				$data = array($datefield[1] => $val);
+			}
+			else {
+				$val  = GETPOST($field[1]);
+				$val  = empty($val) ? empty_to_null($val) : str_escape($val);
+				$data = array($field[1] => $val);
+			}
+
+			$book->update($data);
 		}
-
-		$book->update($data);
-	}
-
-	// Edit extrafields
-	if ($page->canEdit() && $action == 'update_extras')
-	{
-		$result = $page->updateExtraFields($book);
-		if ($result) $action = 'edit_extras';
 	}
 
 	// Delete
