@@ -193,7 +193,7 @@ class IndexPage extends FormPage
 						$var = ! $var;
 						echo "<tr ".$bc[$var].">";
 						echo '<td>'.$label.'</td>';
-						echo '<td align="right"><a href="list.php?'.$field_name.'='.$value.'">'.$count.'</a></td>';
+						echo '<td align="right"><a href="list.php?'.$field_name.'='.$key.'">'.$count.'</a></td>';
 						echo "</tr>\n";
 					}
 				}
@@ -229,5 +229,47 @@ class IndexPage extends FormPage
 		{
 			dol_print_error($db);
 		}
+	}
+
+	/**
+	 * Add a statistics graph from predefined data
+	 *
+	 * @param     $data       		Data to show
+	 * @param     $legend       	Legend array
+	 * @param     $graph_type       Type of graph ('pie', 'bars', 'lines')
+	 * @param     $graph_title      Graph title
+	 */
+	public function addStatsGraphFromData($data, $legend = array(), $graph_type = 'pie', $graph_title = 'Statistics')
+	{
+		global $langs;
+
+		echo '<table class="noborder nohover" width="100%">';
+		echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
+		echo '<tr class="impair"><td align="center" colspan="2">';
+
+		// Generate graph
+		$graph = new DolGraph();
+		$width = DolGraph::getDefaultGraphSizeForStats('width');
+		$height = DolGraph::getDefaultGraphSizeForStats('height');
+		$show_legend = empty($legend) ? 0 : 1;
+		if (! $graph->isGraphKo())
+		{
+			$graph->SetData($data);
+			$graph->SetLegend($legend);
+			if (in_array($graph_type, array('bars', 'lines'))) {
+				$graph->SetMaxValue($graph->GetCeilMaxValue());
+				$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
+			}
+			$graph->setShowLegend($show_legend);
+			$graph->setShowPercent(1);
+			$graph->SetType(array($graph_type));
+			$graph->setWidth($width);
+			$graph->setHeight($height);
+			$graph->draw('stats_'.($this->stats_id++));
+			echo $graph->show();
+		}
+
+		echo '</td></tr>';
+		echo "</table><br>";
 	}
 }

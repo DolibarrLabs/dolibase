@@ -76,9 +76,10 @@ class CustomStats extends Stats
 	 * Return object number by month for a year
 	 *
 	 * @param	int		$year		Year to scan
+	 * @param	int		$format		0=Label of absiss is a translated text, 1=Label of absiss is month number, 2=Label of absiss is first letter of month
 	 * @return	array				Array with number by month
 	 */
-	protected function getNbByMonth($year)
+	public function getNbByMonth($year, $format = 0)
 	{
 		$sql = "SELECT date_format(".$this->date_field.",'%m') as dc, COUNT(*) as nb";
 		$sql.= " FROM ".$this->from;
@@ -88,9 +89,7 @@ class CustomStats extends Stats
 		$sql.= " GROUP BY dc";
 		$sql.= $this->db->order('dc','DESC');
 
-		$res = $this->_getNbByMonth($year, $sql);
-
-		return $res;
+		return $this->_getNbByMonth($year, $sql, $format);
 	}
 
 	/**
@@ -99,7 +98,7 @@ class CustomStats extends Stats
 	 * @return	array	Array with number by year
 	 *
 	 */
-	protected function getNbByYear()
+	public function getNbByYear()
 	{
 		$sql = "SELECT date_format(".$this->date_field.",'%Y') as dc, COUNT(*) as nb";
 		if (! empty($this->amount_field)) $sql.= ", SUM(".$this->amount_field.")";
@@ -133,10 +132,11 @@ class CustomStats extends Stats
 	/**
 	 * Return object amount by month for a year
 	 *
-	 * @param	int		$year	Year to scan
-	 * @return	array			Array with amount by month
+	 * @param	int		$year		Year to scan
+	 * @param	int		$format		0=Label of absiss is a translated text, 1=Label of absiss is month number, 2=Label of absiss is first letter of month
+	 * @return	array				Array with amount by month
 	 */
-	protected function getAmountByMonth($year)
+	public function getAmountByMonth($year, $format = 0)
 	{
 		$sql = "SELECT date_format(".$this->date_field.",'%m') as dc, SUM(".$this->amount_field.")";
 		$sql.= " FROM ".$this->from;
@@ -146,18 +146,17 @@ class CustomStats extends Stats
 		$sql.= " GROUP BY dc";
 		$sql.= $this->db->order('dc','DESC');
 
-		$res = $this->_getAmountByMonth($year, $sql);
-
-		return $res;
+		return $this->_getAmountByMonth($year, $sql, $format);
 	}
 
 	/**
 	 * Return object amount average by month for a year
 	 *
-	 * @param	int		$year	year for stats
-	 * @return	array			array with number by month
+	 * @param	int		$year		year for stats
+	 * @param	int		$format		0=Label of absiss is a translated text, 1=Label of absiss is month number, 2=Label of absiss is first letter of month
+	 * @return	array				array with number by month
 	 */
-	protected function getAverageByMonth($year)
+	public function getAverageByMonth($year, $format = 0)
 	{
 		$sql = "SELECT date_format(".$this->date_field.",'%m') as dc, AVG(".$this->amount_field.")";
 		$sql.= " FROM ".$this->from;
@@ -167,6 +166,6 @@ class CustomStats extends Stats
 		$sql.= " GROUP BY dc";
 		$sql.= $this->db->order('dc','DESC');
 
-		return $this->_getAverageByMonth($year, $sql);
+		return $this->_getAverageByMonth($year, $sql, $format);
 	}
 }

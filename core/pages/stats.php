@@ -199,8 +199,8 @@ class StatsPage extends FormPage
 
 		// Generate graph
 		$graph = new DolGraph();
-		$WIDTH = DolGraph::getDefaultGraphSizeForStats('width');
-		$HEIGHT = DolGraph::getDefaultGraphSizeForStats('height');
+		$width = DolGraph::getDefaultGraphSizeForStats('width');
+		$height = DolGraph::getDefaultGraphSizeForStats('height');
 		if (! $graph->isGraphKo())
 		{
 			$i = $startyear;
@@ -213,9 +213,9 @@ class StatsPage extends FormPage
 			$graph->SetData($data);
 			$graph->SetLegend($legend);
 			$graph->SetMaxValue($graph->GetCeilMaxValue());
-			$graph->SetMinValue(min(0,$graph->GetFloorMinValue()));
-			$graph->SetWidth($WIDTH);
-			$graph->SetHeight($HEIGHT);
+			$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
+			$graph->SetWidth($width);
+			$graph->SetHeight($height);
 			//$graph->SetYLabel($langs->trans("YLabel"));
 			$graph->SetShading(3);
 			$graph->SetHorizTickIncrement(1);
