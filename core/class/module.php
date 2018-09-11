@@ -82,7 +82,11 @@ class DolibaseModule extends DolibarrModules
 		$this->picto           = $this->config['module']['picture']."@".$this->config['module']['folder'];
 
 		// Module parts (css, js, ...)
-		$this->module_parts    = array();
+		$this->module_parts    = array(
+			'css'   => array(),
+			'js'    => array(),
+			'hooks' => array()
+		);
 
 		// Data directories to create when module is enabled
 		$this->dirs            = $this->config['module']['dirs'];
@@ -114,7 +118,10 @@ class DolibaseModule extends DolibarrModules
 		$this->dictionaries = array();
 
 		// Addons
-		$this->addons = array();
+		$this->addons = array(
+			'num' => array(),
+			'doc' => array()
+		);
 
 		// Load module settings
 		$this->loadSettings();
