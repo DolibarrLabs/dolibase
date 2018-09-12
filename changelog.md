@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.3 - SEP18
+
+*   NEW: update logs & books test modules.
+*   NEW: enhance crud object class.
+*   FIX: addons error when enabling a module.
+
+---
+
 #### 2.3.2 - SEP18
 
 *   NEW: possibility to disable check for updates for all dolibase modules.
