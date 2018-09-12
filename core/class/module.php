@@ -211,6 +211,7 @@ class DolibaseModule extends DolibarrModules
 				if ($key == 'doc') {
 					$this->addConstant($const_prefix . '_ADDON_PDF', $addon['name']);
 					$type = (isset($addon['type']) && ! empty($addon['type']) ? $addon['type'] : get_rights_class());
+					delDocumentModel($addon['name'], $type);
 					addDocumentModel($addon['name'], $type);
 				}
 				else {
