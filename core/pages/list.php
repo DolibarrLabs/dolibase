@@ -100,8 +100,9 @@ class ListPage extends FormPage
 	 * @param   $fieldstosearchall   Fields to search all
 	 * @param   $sortfield           Sort field
 	 * @param   $sortorder           Sort order
+	 * @param   $morehtmlright       More HTML to show on the right of the list title
 	 */
-	public function openList($title, $picture = 'title_generic.png', $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = '', $sortorder = '')
+	public function openList($title, $picture = 'title_generic.png', $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = '', $sortorder = '', $morehtmlright = '')
 	{
 		global $langs, $conf;
 
@@ -139,7 +140,7 @@ class ListPage extends FormPage
 
 		// List title
 		$title = $langs->trans($title);
-		print_barre_liste($title, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $nbofshownrecords, $nbtotalofrecords, $picture, 0, '', '', $limit);
+		print_barre_liste($title, $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $nbofshownrecords, $nbtotalofrecords, $picture, 0, $morehtmlright, '', $limit);
 
 		if ($sall)
 		{

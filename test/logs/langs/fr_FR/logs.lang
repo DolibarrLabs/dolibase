@@ -37,3 +37,6 @@ ModuleName = Nom du module
 ModuleID = ID du module
 ObjectID = ID de l'objet
 ObjectElement = Element de l'objet
+Purge = Purger
+ConfirmPurge = Etes vous sur de vouloir purger tout les logs?
+PurgeSuccess = Suppression terminée avec succès!

@@ -11,11 +11,13 @@ dolibase_include_once('/core/class/logs.php');
 $page = new ListPage("DolibaseLogs", '$user->rights->dolibase_logs->read');
 
 // Get parameters
-global $conf;
+global $conf, $langs;
 $sortorder = GETPOST('sortorder', 'alpha') ? GETPOST('sortorder', 'alpha') : 'DESC';
 $sortfield = GETPOST('sortfield', 'alpha') ? GETPOST('sortfield', 'alpha') : 't.datec';
 $limit = GETPOST('limit') ? GETPOST('limit', 'int') : $conf->liste_limit;
 $offset = $limit * (GETPOST('page', 'int') ? GETPOST('page', 'int') : 0);
+$action = GETPOST('action', 'alpha');
+$confirm = GETPOST('confirm', 'alpha');
 
 // search parameters
 $search = array();
@@ -28,11 +30,22 @@ $search['ds'] = GETPOSTDATE('ds'); // date start
 $search['de'] = GETPOSTDATE('de'); // date end
 $search['user'] = GETPOST('user');
 
-$page->begin();
-
 // Init objects
 $log = new Logs();
 $userstatic = new User($log->db);
+
+// Actions
+if ($action == 'purge') {
+	$page->askForConfirmation($_SERVER["PHP_SELF"], 'Purge', 'ConfirmPurge', 'confirm_purge');
+}
+else if ($action == 'confirm_purge' && $confirm == 'yes') {
+	$result = $log->deleteAll();
+	if ($result > 0) {
+		setEventMessage($langs->trans("PurgeSuccess"), 'mesgs');
+	}
+}
+
+$page->begin();
 
 // Adjust query
 $where = '1=1';
@@ -60,7 +73,8 @@ $list_fields[] = array('name' => 't.datec', 'label' => 'LogDate', 'align' => 'ce
 $list_fields[] = array('name' => 't.fk_user', 'label' => 'LogUser', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
 
 // Print list head
-$page->openList('DolibaseLogs', 'title_generic.png', $list_fields, $search, $log->count, $log->total, array(), $sortfield, $sortorder);
+$purge_button = '<a class="butActionDelete" href="'.$_SERVER["PHP_SELF"].'?action=purge">'.$langs->trans("Purge").'</a>';
+$page->openList('DolibaseLogs', 'title_generic.png', $list_fields, $search, $log->count, $log->total, array(), $sortfield, $sortorder, $purge_button);
 
 $odd = true;
 
