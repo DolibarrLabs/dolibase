@@ -70,7 +70,8 @@ class Dictionary
 
 		$list = array();
 
-		$dict = new CrudObject($dict_table);
+		$dict = new CrudObject();
+		$dict->setTableName($dict_table);
 		$dict->fetch_fields = array($key_field, $value_field);
 		$where = $only_active ? 'active = 1' : '';
 

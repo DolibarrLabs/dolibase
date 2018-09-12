@@ -55,18 +55,31 @@ class CrudObject extends CommonObject
 	 * @var int Total number of fetched records (used in fetchAll function)
 	 */
 	public $count = 0;
+	/**
+	 * @var string Triggers prefix
+	 */
+	public $triggers_prefix;
 
-	
+
 	/**
 	 * Constructor
-	 * 
-	 * @param  $table_name  table name
+	 *
 	 */
-	public function __construct($table_name = '')
+	public function __construct()
 	{
 		global $db;
 
 		$this->db = $db;
+		$this->triggers_prefix = empty($this->element) ? get_rights_class(true) : strtoupper($this->element);
+	}
+
+	/**
+	 * Set table name
+	 * 
+	 * @param  $table_name  table name
+	 */
+	public function setTableName($table_name)
+	{
 		$this->table_element = $table_name;
 	}
 
@@ -310,7 +323,7 @@ class CrudObject extends CommonObject
 	 * @param  array   $conditions   fetch conditions
 	 * @return int     <0 if KO, >0 if OK
 	 */
-	public function custom_fetch($fields, $conditions = array())
+	public function fetchWhere($fields, $conditions = array())
 	{
 		// SELECT request
 		$sql = "SELECT ";
@@ -414,6 +427,63 @@ class CrudObject extends CommonObject
 	}
 
 	/**
+	 * Update all object rows into database
+	 *
+	 * @param  array   $data      array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')
+	 * @param  string  $where     where clause (without 'WHERE')
+	 * @param  int     $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int                <0 if KO, >0 if OK
+	 */
+	public function updateAll($data, $where = '', $notrigger = 1)
+	{
+		$error = 0;
+
+		// UPDATE request
+		$sql = "UPDATE " . MAIN_DB_PREFIX . $this->table_element . " SET ";
+		foreach ($data as $key => $value) {
+			$sql.= "`" . $key . "` = " . $this->escape($value) . ",";
+		}
+		$sql = substr($sql, 0, -1); // Remove the last ','
+		if (! empty($where)) $sql.= " WHERE ".$where;
+
+		$this->db->begin();
+
+		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
+		$resql = $this->db->query($sql);
+		if (! $resql) {
+			$error ++;
+			$this->errors[] = "Error " . $this->db->lasterror();
+		}
+
+		if (! $error) {
+			if (! $notrigger) {
+				$error = $this->run_triggers('_MODIFY_ALL');
+			}
+		}
+
+		// Commit or rollback
+		if ($error) {
+			foreach ($this->errors as $errmsg) {
+				dol_syslog(__METHOD__ . " " . $errmsg, LOG_ERR);
+				$this->error.=($this->error ? ', ' . $errmsg : $errmsg);
+			}
+			$this->db->rollback();
+			setEventMessage($this->error, 'errors');
+
+			return -1 * $error;
+		} else {
+			$this->db->commit();
+
+			// apply changes to object
+			foreach ($data as $key => $value) {
+				$this->$key = $value;
+			}
+
+			return 1;
+		}
+	}
+
+	/**
 	 * Delete object in database
 	 *
 	 * @param  int  $notrigger 0=launch triggers after, 1=disable triggers
@@ -464,6 +534,99 @@ class CrudObject extends CommonObject
 	}
 
 	/**
+	 * Delete all object rows in database
+	 *
+	 * @param  string  $where     where clause (without 'WHERE')
+	 * @param  int     $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int                <0 if KO, >0 if OK
+	 */
+	public function deleteAll($where = '', $notrigger = 1)
+	{
+		$error = 0;
+
+		$this->db->begin();
+
+		if (! $error) {
+			if (! $notrigger) {
+				$error = $this->run_triggers('_DELETE_ALL');
+			}
+		}
+
+		if (! $error) {
+			if (empty($where)) {
+				// TRUNCATE request
+				$sql = "TRUNCATE " . MAIN_DB_PREFIX . $this->table_element;
+			}
+			else {
+				// DELETE request
+				$sql = "DELETE FROM " . MAIN_DB_PREFIX . $this->table_element;
+				$sql.= " WHERE ".$where;
+				// Fetch rows ids before deleting
+				$this->fetchAll(0, 0, '', 'DESC', '', '', $where);
+			}
+
+			dol_syslog(__METHOD__ . " sql=" . $sql);
+			$resql = $this->db->query($sql);
+			if (! $resql) {
+				$error ++;
+				$this->errors[] = "Error " . $this->db->lasterror();
+			}
+			else {
+				// delete linked objects also
+				if (empty($where)) {
+					$this->deleteAllObjectLinked();
+				}
+				else {
+					foreach ($this->lines as $obj) {
+						$obj->deleteObjectLinked();
+					}
+				}
+			}
+		}
+
+		// Commit or rollback
+		if ($error) {
+			foreach ($this->errors as $errmsg) {
+				dol_syslog(__METHOD__ . " " . $errmsg, LOG_ERR);
+				$this->error.=($this->error ? ', ' . $errmsg : $errmsg);
+			}
+			$this->db->rollback();
+			setEventMessage($this->error, 'errors');
+
+			return -1 * $error;
+		} else {
+			$this->db->commit();
+
+			return 1;
+		}
+	}
+
+	/**
+	 * Delete all links between an object $this
+	 *
+	 * @param  string  $where     where clause (without 'WHERE')
+	 * @param  int     $notrigger 0=launch triggers after, 1=disable triggers
+	 * @return int                <0 if KO, >0 if OK
+	 */
+	protected function deleteAllObjectLinked()
+	{
+		$sql = "DELETE FROM ".MAIN_DB_PREFIX."element_element";
+		$sql.= " WHERE sourcetype = '".$this->db->escape($this->element)."' OR targettype = '".$this->db->escape($this->element)."'";
+
+		dol_syslog(get_class($this)."::deleteAllObjectLinked", LOG_DEBUG);
+		if ($this->db->query($sql))
+		{
+			return 1;
+		}
+		else
+		{
+			$this->error = $this->db->lasterror();
+			$this->errors[] = $this->error;
+			return -1;
+		}
+	}
+
+	/**
 	 * Escape field value
 	 *
 	 * @param     $value     field value
@@ -488,7 +651,7 @@ class CrudObject extends CommonObject
 		// Call triggers
 		include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
 		$interface = new Interfaces($this->db);
-		$action = get_rights_class(true).$action_suffix;
+		$action = $this->triggers_prefix.$action_suffix;
 		$result = $interface->run_triggers($action, $this, $user, $langs, $conf);
 		if ($result < 0) { $error++; $this->errors = $interface->errors; }
 		// End call triggers

@@ -222,7 +222,8 @@ function show_related_objects($object)
 	global $langs, $db;
 
 	dolibase_include_once('/core/class/crud_object.php');
-	$relation = new CrudObject('element_element');
+	$relation = new CrudObject();
+	$relation->setTableName('element_element');
 
 	$action = GETPOST('action');
 
@@ -327,11 +328,11 @@ function show_related_objects($object)
 							}
 
 							// Fetch relation
-							$relation->custom_fetch(array('rowid'), array('fk_source'  => $sourceid,
-																		  'fk_target'  => $object->id,
-																		  'sourcetype' => $sourcetype,
-																		  'targettype' => $object->element
-																		));
+							$relation->fetchWhere(array('rowid'), array('fk_source'  => $sourceid,
+																		'fk_target'  => $object->id,
+																		'sourcetype' => $sourcetype,
+																		'targettype' => $object->element
+																	));
 
 							?>
 							<tr class="<?php echo $class; ?>">

@@ -68,9 +68,8 @@ class CustomObject extends CrudObject
 	 */
 	public function __construct()
 	{
-		global $db;
+		parent::__construct();
 
-		$this->db = $db;
 		$this->modulepart = get_rights_class(false, true);
 	}
 
