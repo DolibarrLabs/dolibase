@@ -347,7 +347,7 @@ class Page
 		{
 			echo '<tr class="liste_titre">'."\n";
 			foreach ($header_columns as $col) {
-				echo '<td'.(! empty($col['attr']) ? ' '.$col['attr'] : '').'>'.$langs->trans($col['name']).'</td>'."\n";
+				echo '<td'.(isset($col['attr']) && ! empty($col['attr']) ? ' '.$col['attr'] : '').'>'.$langs->trans($col['name']).'</td>'."\n";
 			}
 			echo '</tr>'."\n";
 		}
