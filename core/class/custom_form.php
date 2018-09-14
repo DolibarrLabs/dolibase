@@ -46,15 +46,17 @@ class CustomForm extends Form
 	/**
 	 * Return a checkbox
 	 *
-	 * @param   $name    checkbox name
-	 * @param   $value   checkbox value
-	 * @param   $id      checkbox id
-	 * @param   $class   checkbox class
-	 * @return  string   checkbox HTML
+	 * @param   $name     checkbox name
+	 * @param   $value    checkbox value
+	 * @param   $id       checkbox id
+	 * @param   $class    checkbox class
+	 * @param   $checked  checkbox is checked or not
+	 * @param   $disabled checkbox is disabled or not
+	 * @return  string    checkbox HTML
 	 */
-	public function checkBox($name, $value = '', $id = '', $class = '')
+	public function checkBox($name, $value = '', $id = '', $class = '', $checked = false, $disabled = false)
 	{
-		return '<input type="checkbox" class="flat'.(! empty($class) ? ' '.$class : '').'" name="'.$name.'" id="'.$id.'" value="'.$value.'">';
+		return '<input type="checkbox" class="flat'.(! empty($class) ? ' '.$class : '').'" name="'.$name.'" id="'.$id.'" value="'.$value.'"'.($checked ? ' checked' : '').($disabled ? ' disabled' : '').'>';
 	}
 
 	/**
