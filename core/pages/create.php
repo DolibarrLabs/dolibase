@@ -26,10 +26,6 @@ include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 class CreatePage extends FormPage
 {
 	/**
-	 * @var array Fields to check on validation
-	 */
-	public $fields = array();
-	/**
 	 * @var object extrafields
 	 */
 	protected $extrafields;
@@ -51,22 +47,6 @@ class CreatePage extends FormPage
 	}
 
 	/**
-	 * Check page fields
-	 *
-	 * @return     boolean     true or false
-	 */
-	public function checkFields()
-	{
-		$error = 0;
-
-		foreach($this->fields as $field) {
-			$error += $this->checkField($field->name, $field->trans, $field->validation_rules, true);
-		}
-
-		return $error > 0 ? false : true;
-	}
-
-	/**
 	 * Check page extrafields
 	 *
 	 * @param      $object     Object
@@ -81,83 +61,6 @@ class CreatePage extends FormPage
 		$result = $this->extrafields->setOptionalsFromPost($extralabels, $object);
 
 		return $result >= 0 ? true : false;
-	}
-
-	/**
-	 * Check specified field
-	 *
-	 * @param      $field_name                 Field name
-	 * @param      $field_trans                Field translation
-	 * @param      $field_validation_rules     Field validatin rules
-	 * @param      $return_err_number          return errors number or boolean value
-	 * @return     boolean|int                 true/false | errors number
-	 */
-	public function checkField($field_name, $field_trans = '', $field_validation_rules = '', $return_err_number = false)
-	{
-		global $langs;
-
-		$langs->load("errors");
-
-		$error = 0;
-
-		$field_value = GETPOST($field_name);
-
-		if (empty($field_trans) || empty($field_validation_rules)) {
-			$field = $this->getField($field_name);
-
-			if (empty($field)) {
-				return 1;
-			}
-			else {
-				$field_trans = $field->trans;
-				$field_validation_rules = $field->validation_rules;
-			}
-		}
-
-		$validation_rules = explode('|', $field_validation_rules);
-
-		// required
-		$is_required = in_array('required', $validation_rules);
-		if ($is_required && $field_value == '') {
-			setEventMessage($langs->transnoentities("ErrorFieldRequired", $langs->transnoentities($field_trans)), 'errors');
-			$error++;
-		}
-
-		// numeric (escape if empty)
-		else if (in_array('numeric', $validation_rules) && $field_value != '' && ! is_numeric($field_value)) {
-			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
-			$error++;
-		}
-
-		// greaterThanZero
-		else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && (! is_numeric($field_value) || $field_value <= 0)) {
-			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
-			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
-			$error++;
-		}
-
-		if ($return_err_number) {
-			return $error;
-		}
-		else {
-			return $error > 0 ? false : true;
-		}
-	}
-
-	/**
-	 * Return specified field if found
-	 *
-	 * @return     Field|empty     field object or empty value
-	 */
-	protected function getField($field_name)
-	{
-		foreach($this->fields as $field) {
-			if ($field->name == $field_name) {
-				return $field;
-			}
-		}
-
-		return '';
 	}
 
 	/**
