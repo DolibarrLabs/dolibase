@@ -17,6 +17,7 @@
 
 dolibase_include_once('/core/class/page.php');
 dolibase_include_once('/core/class/custom_form.php');
+dolibase_include_once('/core/class/field.php');
 
 /**
  * FormPage class

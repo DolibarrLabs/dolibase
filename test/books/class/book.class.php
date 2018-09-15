@@ -58,11 +58,12 @@ class Book extends CustomObject
 	 * @param  string  $join         join clause
 	 * @param  string  $where        where clause (without 'WHERE')
 	 * @param  boolean $get_total    get total number of records or not
+	 * @param  boolean $table_alias  Alias to use for table name, leave it empty if you won't
 	 * @return int                   <0 if KO, >0 if OK
 	 */
-	public function fetchAll($limit = 0, $offset = 0, $sort_field = '', $sort_order = 'DESC', $more_fields = '', $join = '', $where = '', $get_total = false)
+	public function fetchAll($limit = 0, $offset = 0, $sort_field = '', $sort_order = 'DESC', $more_fields = '', $join = '', $where = '', $get_total = false, $table_alias = 't')
 	{
-		$result = parent::fetchAll($limit, $offset, $sort_field, $sort_order, $more_fields, $join, $where, $get_total);
+		$result = parent::fetchAll($limit, $offset, $sort_field, $sort_order, $more_fields, $join, $where, $get_total, $table_alias);
 
 		// Fix error: dol_print_date function call with deprecated value of time
 		for ($i = 0; $i < count($this->lines); $i++) { 
