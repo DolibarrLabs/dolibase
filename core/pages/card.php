@@ -370,7 +370,7 @@ class CardPage extends CreatePage
 	 */
 	public function editTextAreaField($field_name, $text_area_name, $text_area_value = '', $toolbarname = 'dolibarr_details', $height = 100, $action_prefix = 'set_')
 	{
-		$field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
+		$field_content = $this->form->textEditor($text_area_name, $text_area_value, $toolbarname, $height);
 
 		$this->editField($field_name, $field_content, $action_prefix.$text_area_name);
 	}

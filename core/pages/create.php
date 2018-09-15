@@ -114,7 +114,7 @@ class CreatePage extends FormPage
 	 */
 	public function addTextAreaField($field_name, $text_area_name, $text_area_value = '', $is_required = false, $field_summary = '', $toolbarname = 'dolibarr_details', $height = 100, $valign = 'top')
 	{
-		$field_content = $this->form->textArea($text_area_name, $text_area_value, $toolbarname, $height);
+		$field_content = $this->form->textEditor($text_area_name, $text_area_value, $toolbarname, $height);
 
 		$more_attr = ' valign="'.$valign.'"';
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
