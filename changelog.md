@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.4 - SEP18
+
+*   NEW: rename textArea function to textEditor in custom form class.
+*   NEW: enhance crud object class with new custom functions.
+*   FIX: minor issues.
+
+---
+
 #### 2.3.3 - SEP18
 
 *   NEW: update logs & books test modules.
