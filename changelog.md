@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.5 - SEP18
+
+*   NEW: enhance README.
+*   NEW: change the way mail subject & template were defined in card page.
+
+---
+
 #### 2.3.4 - SEP18
 
 *   NEW: rename textArea function to textEditor in custom form class.
