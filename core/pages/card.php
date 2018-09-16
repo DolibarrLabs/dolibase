@@ -48,6 +48,14 @@ class CardPage extends CreatePage
 	 * @var string Module sub permision
 	 */
 	protected $sub_permission = '';
+	/**
+	 * @var string Mail subject
+	 */
+	protected $mail_subject = 'MailSubject';
+	/**
+	 * @var string Mail template
+	 */
+	protected $mail_template = 'MailTemplate';
 
 
 	/**
@@ -114,6 +122,26 @@ class CardPage extends CreatePage
 	public function canDelete()
 	{
 		return empty($this->delete_permission) || verifCond($this->delete_permission);
+	}
+
+	/**
+	 * Set mail subject
+	 *
+	 * @param     $mail_subject     Mail subject string
+	 */
+	public function setMailSubject($mail_subject)
+	{
+		$this->mail_subject = $mail_subject;
+	}
+
+	/**
+	 * Set mail template
+	 *
+	 * @param     $mail_template     Mail template string
+	 */
+	public function setMailTemplate($mail_template)
+	{
+		$this->mail_template = $mail_template;
 	}
 
 	/**
@@ -556,10 +584,8 @@ class CardPage extends CreatePage
 	 * Print mail form
 	 *
 	 * @param     $object       Object
-	 * @param     $subject      Mail subject string
-	 * @param     $template     Mail template string
 	 */
-	protected function printMailForm($object, $subject = 'MailSubject', $template = 'MailTemplate')
+	protected function printMailForm($object)
 	{
 		if (! empty($object) && isset($object->id))
 		{
@@ -600,9 +626,9 @@ class CardPage extends CreatePage
 			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $receivers;
 			$formmail->withtocc            = $receivers;
 			$formmail->withtoccc           = $conf->global->MAIN_EMAIL_USECCC;
-			$formmail->withtopic           = $langs->trans($subject, '__REF__');
+			$formmail->withtopic           = $langs->trans($this->mail_subject, '__REF__');
 			$formmail->withfile            = 2;
-			$formmail->withbody            = $langs->trans($template);
+			$formmail->withbody            = $langs->trans($this->mail_template);
 			$formmail->withdeliveryreceipt = 1;
 			$formmail->withcancel          = 1;
 			// Substitutions Array
@@ -681,10 +707,8 @@ class CardPage extends CreatePage
 	 * Generate page end
 	 *
 	 * @param     $object            Object
-	 * @param     $mail_subject      Mail subject string
-	 * @param     $mail_template     Mail template string
 	 */
-	public function end($object = '', $mail_subject = 'MailSubject', $mail_template = 'MailTemplate')
+	public function end($object = '')
 	{
 		if ($this->close_buttons_div) echo '</div>';
 
@@ -694,7 +718,7 @@ class CardPage extends CreatePage
 		if ($optioncss != 'print')
 		{
 			if ($action == 'presend') {
-				$this->printMailForm($object, $mail_subject, $mail_template);
+				$this->printMailForm($object);
 			}
 			else {
 				if ($this->show_documents) $this->printDocuments($object);
