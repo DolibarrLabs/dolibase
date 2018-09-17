@@ -54,9 +54,9 @@ dolibarr module                                         dolibase module
 - `core/modules/modMyModule.class.php` is the module main configuration file or class, it contains all the informations about the module: name, description, menus, user permissions, etc.. In dolibase, this is a bit different, some of the module configuration are set in the `config.php` file in a way to allow reusing them in other parts of the module.
 - `core/boxes/widget1.php` is one of the module widgets that can be displayed in the dashboard of Dolibarr.
 - `core/triggers` contains [trigger](https://wiki.dolibarr.org/index.php/Triggers) files that allows you to execute personalized code after a Dolibarr event.
-- `class` folder may contains your objects class & functions, sql queries, etc.. It's a kind of model if you're familiar with the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
+- `class` folder may contains your objects class & functions, sql queries, etc.. It's a kind of model(s) container if you're familiar with the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
 - `dolibase` folder contains all the code & logic of dolibase.
-- `img` is a folder for your images (note that module's picture should start with the "**object_**" prefix).
+- `img` is a folder for your images (note that module's picture should start with the \`**object_**\` prefix).
 - `langs` folder contains all the translations related to your module.
 - `sql` folder contains the sql files to create or update the tables of your module.
 - `css` folder should contain your css files.
@@ -103,9 +103,6 @@ class modMyFirstModule extends DolibaseModule
 
 		// Set user permissions
 		$this->addPermission("read", "Read permission", "r");
-		$this->addPermission("create", "Create permission", "c");
-		$this->addPermission("modify", "Modify permission", "m");
-		$this->addPermission("delete", "Delete permission", "d");
 
 		// Add menu(s)
 		$this->addTopMenu($this->config['other']['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
