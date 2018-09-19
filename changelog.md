@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.6 - SEP18
+
+*   NEW: upgrade PHP minimum version to 5.3.
+*   FIX: greaterThanZero validation rule.
+
+---
+
 #### 2.3.5 - SEP18
 
 *   NEW: enhance README.
