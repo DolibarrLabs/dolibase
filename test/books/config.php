@@ -19,7 +19,7 @@ $dolibase_config['module'] = array(
 	'picture'       => 'books.png', // your picture file should have 'object_' prefix to work
 	'dirs'          => array(), // directories to create when activating the module, e.: array('/modulefoldername/temp')
 	'dolibarr_min'  => array(3, 8), // minimum Dolibarr version, e.: array(6, 0)
-	'php_min'       => array(5, 0), // minimum PHP version, e.: array(4, 0)
+	'php_min'       => array(5, 3), // minimum PHP version, e.: array(4, 0)
 	'depends'       => array(), // modules to activate when this one is activated, e.: array('modProduct')
 	'required_by'   => array(), // modules to disable if this one is disabled, e.: array('modFacture')
 	'conflit_with'  => array(), // modules who are in conflict with this module, e.: array('modProduct')
@@ -63,8 +63,6 @@ $dolibase_config['other'] = array(
 /**
  * Load Dolibarr environment (mandatory)
  */
-
-if (! defined('__DIR__')) define('__DIR__', dirname(__FILE__)); // Define __DIR__ for PHP version < 5.3
 
 if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs directory
 	@include_once __DIR__ . '/../../main.inc.php'; // From "custom" directory
