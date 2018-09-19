@@ -126,7 +126,7 @@ class FormPage extends Page
 		}
 
 		// greaterThanZero
-		else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && (! is_numeric($field_value) || $field_value <= 0)) {
+		else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && is_numeric($field_value) && $field_value <= 0) {
 			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
 			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
 			$error++;
