@@ -355,7 +355,7 @@ class SetupPage extends FormPage
 	public function newOptionsTable($first_column_name = 'Option')
 	{
 		$options_table_cols = array(
-								array('name' => $first_column_name, 'attr' => ''),
+								array('name' => $first_column_name),
 								array('name' => 'Value', 'attr' => 'align="center" width="100"')
 							);
 

@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.7 - SEP18
+
+*   NEW: enhance compare_version global function.
+*   FIX: missing lib inclusion in setup page.
+*   NEW: allow file upload in setup page.
+
+---
+
 #### 2.3.6 - SEP18
 
 *   NEW: upgrade PHP minimum version to 5.3.
