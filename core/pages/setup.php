@@ -370,8 +370,9 @@ class SetupPage extends FormPage
 	 * @param     $const_name        Option constant name
 	 * @param     $morehtmlright     more HTML to add on the right of the option description
 	 * @param     $width             Option last column/td width
+	 * @param     $form_enctype      Form enctype attribute
 	 */
-	public function addOption($option_desc, $option_content, $const_name = '', $morehtmlright = '', $width = 300)
+	public function addOption($option_desc, $option_content, $const_name = '', $morehtmlright = '', $width = 300, $form_enctype = '')
 	{
 		global $conf, $langs, $bc;
 
@@ -380,7 +381,7 @@ class SetupPage extends FormPage
 		echo '<tr '.$bc[$this->odd].'><td>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
 		echo '<td width="'.$width.'" align="right">'."\n";
 		if (! empty($const_name)) {
-			echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">'."\n";
+			echo '<form action="'.$_SERVER["PHP_SELF"].'" method="POST"'.(! empty($form_enctype) ? ' enctype="'.$form_enctype.'"' : '').">\n";
 			echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'" />'."\n";
 			echo '<input type="hidden" name="action" value="set_'.$const_name.'" />'."\n";
 		}
