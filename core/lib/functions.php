@@ -20,7 +20,7 @@
  * Compare two versions
  *
  * @param     $version        Version string, possible values: 'x', 'x.x', 'x.x.x'
- * @param     $sign           Compare sign, possible values: '>', '<'
+ * @param     $sign           Compare sign, possible values: '>', '>=', '<', '<='
  * @param     $version_to     Version to compare with
  * @return    boolean         true or false
  */
@@ -31,17 +31,24 @@ if (! function_exists('compare_version'))
 		$version_digits = explode('.', $version);
 		$version_to_digits = explode('.', $version_to);
 
-		if ($sign == '>') {
-			return $version_digits[0] > $version_to_digits[0] || 
+		if ($sign == '>' || $sign == '>=')
+		{
+			$greater_than = $version_digits[0] > $version_to_digits[0] || 
 			(isset($version_to_digits[1]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] > $version_to_digits[1]) || 
 			(isset($version_to_digits[2]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] == $version_to_digits[1] && $version_digits[2] > $version_to_digits[2]) ? true : false;
+
+			return ($sign == '>=' ? (($version == $version_to) || $greater_than) : $greater_than);
 		}
-		else if ($sign == '<') {
-			return $version_digits[0] < $version_to_digits[0] || 
+		else if ($sign == '<' || $sign == '<=')
+		{
+			$lesser_than = $version_digits[0] < $version_to_digits[0] || 
 			(isset($version_to_digits[1]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] < $version_to_digits[1]) || 
 			(isset($version_to_digits[2]) && $version_digits[0] == $version_to_digits[0] && $version_digits[1] == $version_to_digits[1] && $version_digits[2] < $version_to_digits[2]) ? true : false;
+
+			return ($sign == '<=' ? (($version == $version_to) || $lesser_than) : $lesser_than);
 		}
-		else {
+		else
+		{
 			die('Dolibase::Functions::Error wrong sign provided to '.__FUNCTION__.'.');
 		}
 	}
