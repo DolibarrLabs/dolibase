@@ -1,7 +1,7 @@
 # Dolibase
 
 [![Stable Version](https://img.shields.io/badge/stable-v2.3.3-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.3.3)
-[![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.0-blue.svg)](https://github.com/php)
+[![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
 Dolibase is a set of reusable code & architecture that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
