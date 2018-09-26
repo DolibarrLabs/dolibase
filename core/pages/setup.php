@@ -73,8 +73,8 @@ class SetupPage extends FormPage
 	/**
 	 * Constructor
 	 * 
-	 * @param     $page_title    			  HTML page title
-	 * @param     $access_perm   			  Access permission
+	 * @param     $page_title                 HTML page title
+	 * @param     $access_perm                Access permission
 	 * @param     $disable_default_actions    Disable default actions
 	 * @param     $add_extrafields_tab        Add extrafields tab
 	 * @param     $const_name_prefix          Constant name prefix
