@@ -442,6 +442,18 @@ class DolibaseModule extends DolibarrModules
 	}
 
 	/**
+	 * Add an array of CSS files
+	 *
+	 * @param     $css_files_array     css files array
+	 */
+	public function addCssFiles($css_files_array)
+	{
+		foreach ($css_files_array as $css_file) {
+			$this->addCssFile($css_file);
+		}
+	}
+
+	/**
 	 * Add a JS file
 	 *
 	 * @param     $js_filename     javascript filename
@@ -452,6 +464,18 @@ class DolibaseModule extends DolibarrModules
 	}
 
 	/**
+	 * Add an array of JS files
+	 *
+	 * @param     $js_files_array     javascript files array
+	 */
+	public function addJsFiles($js_files_array)
+	{
+		foreach ($js_files_array as $js_file) {
+			$this->addJsFile($js_file);
+		}
+	}
+
+	/**
 	 * Enable a hook
 	 *
 	 * @param     $hook      dolibarr hook name: 'toprightmenu', 'main', ...
@@ -459,6 +483,18 @@ class DolibaseModule extends DolibarrModules
 	public function enableHook($hook)
 	{
 		$this->addModulePart('hooks', $hook);
+	}
+
+	/**
+	 * Enable an array of hooks
+	 *
+	 * @param     $hooks_array      hooks array
+	 */
+	public function enableHooks($hooks_array)
+	{
+		foreach ($hooks_array as $hook) {
+			$this->enableHook($hook);
+		}
 	}
 
 	/**
