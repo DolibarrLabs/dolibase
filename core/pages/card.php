@@ -60,6 +60,10 @@ class CardPage extends CreatePage
 	 * @var array Mail substitutions
 	 */
 	protected $mail_substitutions = array();
+	/**
+	 * @var boolean Enable mail delivery receipt
+	 */
+	protected $enable_mail_delivery_receipt = false;
 
 
 	/**
@@ -146,6 +150,15 @@ class CardPage extends CreatePage
 	public function setMailTemplate($mail_template)
 	{
 		$this->mail_template = $mail_template;
+	}
+
+	/**
+	 * Enables mail delivery receipt
+	 *
+	 */
+	public function enableMailDeliveryReceipt()
+	{
+		$this->enable_mail_delivery_receipt = true;
 	}
 
 	/**
@@ -662,6 +675,10 @@ class CardPage extends CreatePage
 			// Add custom substitutions
 			foreach ($this->mail_substitutions as $key => $value) {
 				$formmail->substit[$key] = $value;
+			}
+			// Enable mail delivery receipt
+			if ($this->enable_mail_delivery_receipt && ! isset($_POST["deliveryreceipt"])) {
+				$_POST["deliveryreceipt"] = 1;
 			}
 
 			$custcontact = '';
