@@ -41,6 +41,10 @@ class CustomObject extends CrudObject
 	 */
 	public $fetch_fields = array(); // e.: array('field_1', 'field_2', 'field_3')
 	/**
+	 * @var array Tooltip details
+	 */
+	public $tooltip_details = array(); // e.: array('detail_1' => 'value_1', 'detail_2' => 'value_2')
+	/**
 	 * @var string Primary key name (id field)
 	 */
 	public $pk_name = 'rowid';
@@ -213,6 +217,10 @@ class CustomObject extends CrudObject
 		$label  = (! empty($title) ? '<u>' . $langs->trans($title) . '</u><br>' : '');
 		if (! empty($this->$ref_field)) {
 			$label .= '<b>' . $langs->trans('Ref') . ':</b> ' . $this->$ref_field;
+		}
+		// Add tooltip details
+		foreach ($this->tooltip_details as $key => $value) {
+			$label .= '<br><b>' . $langs->trans($key) . ':</b> ' . $value;
 		}
 
 		$url = dol_buildpath((! empty($this->card_url) ? $this->card_url : '/'.$dolibase_config['module']['folder'].'/card.php') . '?id='.$this->id, 1);
