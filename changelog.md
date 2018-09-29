@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 2.3.8 - SEP18
+
+*   NEW: possibility to add tooltip details when calling getNomUrl function in custom_object class.
+*   NEW: add a function to enable delivery receipt in card page.
+*   NEW: allow setting custom mail substitutions in card page.
+*   NEW: add enableHooks, addCssFiles, addJsFiles functions to module class.
+
+---
+
 #### 2.3.7 - SEP18
 
 *   NEW: enhance compare_version global function.
