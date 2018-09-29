@@ -56,6 +56,10 @@ class CardPage extends CreatePage
 	 * @var string Mail template
 	 */
 	protected $mail_template = 'MailTemplate';
+	/**
+	 * @var array Mail substitutions
+	 */
+	protected $mail_substitutions = array();
 
 
 	/**
@@ -142,6 +146,16 @@ class CardPage extends CreatePage
 	public function setMailTemplate($mail_template)
 	{
 		$this->mail_template = $mail_template;
+	}
+
+	/**
+	 * Set mail substitutions
+	 *
+	 * @param     $mail_substitutions_array     Mail substitutions array
+	 */
+	public function setMailSubstitutions($mail_substitutions_array)
+	{
+		$this->mail_substitutions = $mail_substitutions_array;
 	}
 
 	/**
@@ -638,11 +652,17 @@ class CardPage extends CreatePage
 				$formmail->substit['__PERSONALIZED__']   = '';
 			}
 			else {
-				$formmail->substit['__CONTACTCIVNAME__'] = '';
-				$formmail->substit['__PERSONALIZED__']   = '';
-				$formmail->substit['__SIGNATURE__']      = $user->signature;
+				$formmail->substit = array(
+					'__CONTACTCIVNAME__' => '',
+					'__PERSONALIZED__'   => '',
+					'__SIGNATURE__'      => $user->signature
+				);
 			}
 			$formmail->substit['__REF__'] = $object->ref;
+			// Add custom substitutions
+			foreach ($this->mail_substitutions as $key => $value) {
+				$formmail->substit[$key] = $value;
+			}
 
 			$custcontact = '';
 			$contactarr  = array();
