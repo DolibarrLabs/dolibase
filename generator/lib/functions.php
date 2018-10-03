@@ -113,19 +113,22 @@ function getDolibaseVersion($root = '')
  * @return string
  *     template
  */
-function getTemplate($file, $hooks) {
+function getTemplate($file, $hooks = array()) {
 	// Read our template in as a string.
 	$template = file_get_contents($file);
 
-	$keys = array();
-	$data = array();
-	foreach($hooks as $key => $value) {
-		array_push($keys, '${'. $key .'}');
-		array_push($data,  $value );
-	}
+	if (is_array($hooks) && ! empty($hooks))
+	{
+		$keys = array();
+		$data = array();
+		foreach($hooks as $key => $value) {
+			array_push($keys, '${'. $key .'}');
+			array_push($data,  $value );
+		}
 
-	// Replace all of the variables with the variable values.
-	$template = str_replace($keys, $data, $template);
+		// Replace all of the variables with the variable values.
+		$template = str_replace($keys, $data, $template);
+	}
 
 	return $template;
 }

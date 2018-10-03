@@ -97,9 +97,9 @@ if ($action == 'generate')
 		file_put_contents($module_path.'/config.php', $template);
 
 		// Create setup & about pages
-		$setup_template = getTemplate(__DIR__ . '/tpl/setup.php', $data);
+		$setup_template = getTemplate(__DIR__ . '/tpl/setup.php');
 		file_put_contents($module_path.'/admin/setup.php', $setup_template);
-		$about_template = getTemplate(__DIR__ . '/tpl/about.php', $data);
+		$about_template = getTemplate(__DIR__ . '/tpl/about.php', array('picture' => $data['picture']));
 		file_put_contents($module_path.'/admin/about.php', $about_template);
 
 		// Create module class
