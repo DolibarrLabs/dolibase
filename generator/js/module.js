@@ -2,9 +2,9 @@
 $(document).ready(function() {
 	$('#name').on('keyup input', function() {
 		var name = $(this).val();
-		var nameToLower = name.toLowerCase();
+		var sanitizedName = name.replace(/\s/g, '').toLowerCase();
 		$('#description').val(name + 'Description');
-		$('#rights_class').val(nameToLower);
-		$('#folder').val(nameToLower.replace(/_/g, ''));
+		$('#rights_class').val(sanitizedName);
+		$('#folder').val(sanitizedName.replace(/_/g, ''));
 	});
 });

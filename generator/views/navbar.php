@@ -4,7 +4,7 @@
 // List/Array of nabvar items
 $items = array(
 	'module' => array('label' => 'Module', 'link' => 'module.php', 'active' => false),
-	'widget' => array('label' => 'Widget', 'link' => '#', 'active' => false),
+	'widget' => array('label' => 'Widget', 'link' => 'widget.php', 'active' => false),
 	'page' => array('label' => 'Page', 'link' => '#', 'active' => false)
 );
 

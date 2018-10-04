@@ -37,10 +37,10 @@ if ($action == 'generate')
 		'number' => getPostData('number'),
 		'family' => getPostData('family'),
 		'position' => getPostData('position'),
-		'rights_class' => getPostData('rights_class'),
+		'rights_class' => sanitizeString(getPostData('rights_class')),
 		'url' => getPostData('url'),
-		'folder' => getPostData('folder'),
-		'picture' => strtolower($module_name).'.'.getFileExtension($_FILES['picture']['name']),
+		'folder' => sanitizeString(getPostData('folder'), true),
+		'picture' => sanitizeString(strtolower($module_name)).'.'.getFileExtension($_FILES['picture']['name']),
 		'check_updates' => bool2Alpha(getPostData('check_updates')),
 		'enable_logs' => bool2Alpha(getPostData('enable_logs')),
 		'author_name' => getPostData('author_name'),
@@ -50,7 +50,6 @@ if ($action == 'generate')
 	);
 
 	// Create module folder & sub-folders
-	$error = false;
 	$root = getDolibarrRootDirectory();
 	$module_path = $root.'/custom/'.$data['folder'];
 	$module_sub_folders = array(
@@ -65,21 +64,15 @@ if ($action == 'generate')
 		'sql'
 	);
 
-	$old = umask(0); // @see https://stackoverflow.com/questions/3997641/why-cant-php-create-a-directory-with-777-permissions
-	foreach ($module_sub_folders as $folder) {
-		if (! @mkdir($module_path.'/'.$folder, 0777, true)) {
-			$error = true;
-			$message = array(
-				'text' => 'Module folder <strong>'.$module_path.'</strong> already exists.',
-				'type' => 'danger'
-			);
-
-			break;
-		}
+	if (! mkdir_r($module_sub_folders, 0777, $module_path))
+	{
+		// Set error message
+		$message = array(
+			'text' => 'Module folder <strong>'.$module_path.'</strong> already exists.',
+			'type' => 'danger'
+		);
 	}
-	umask($old);
-
-	if (! $error)
+	else
 	{
 		// Upload/Set module picture
 		$picture_target_dir = $module_path.'/img/';
@@ -105,9 +98,9 @@ if ($action == 'generate')
 		// Create module class
 		$module_class_data = array(
 			'module_folder' => $data['folder'],
-			'module_name' => ucfirst($module_name),
-			'class_name' => 'DolibaseModule',
-			'class_include' => "dolibase_include_once('/core/class/module.php');"
+			'module_class_name' => sanitizeString(ucfirst($module_name)),
+			'dolibase_class_name' => 'DolibaseModule',
+			'dolibase_class_include' => "dolibase_include_once('/core/class/module.php');"
 		);
 		if ($use_custom_class) {
 			// Copy dolibase module class into module folder & rename it from DolibaseModule to DolibaseModuleXXX where XXX represent the current version of dolibase
@@ -116,15 +109,15 @@ if ($action == 'generate')
 				if (copy($root.'/dolibase/core/class/module.php', $module_path.'/class/module.php')) {
 					$version_numbers = explode('.', $dolibase_version);
 					foreach ($version_numbers as $num) {
-						$module_class_data['class_name'] .= num2Alpha($num);
+						$module_class_data['dolibase_class_name'] .= num2Alpha((int) $num);
 					}
-					file_replace_contents($module_path.'/class/module.php', 'DolibaseModule', $module_class_data['class_name']);
-					$module_class_data['class_include'] = "dol_include_once('/".$data['folder']."/class/module.php');";
+					file_replace_contents($module_path.'/class/module.php', 'DolibaseModule', $module_class_data['dolibase_class_name']);
+					$module_class_data['dolibase_class_include'] = "dol_include_once('/".$data['folder']."/class/module.php');";
 				}
 			}
 		}
 		$module_class_template = getTemplate(__DIR__ . '/tpl/module_class.php', $module_class_data);
-		file_put_contents($module_path.'/core/modules/mod'.$module_class_data['module_name'].'.class.php', $module_class_template);
+		file_put_contents($module_path.'/core/modules/mod'.$module_class_data['module_class_name'].'.class.php', $module_class_template);
 
 		// Create langs files
 		$lang_data = array(

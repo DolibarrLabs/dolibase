@@ -63,10 +63,37 @@ function num2Alpha($num) {
  * Convert a boolean to alpha
  *
  * @return string
- *     alphabet boolean
+ *     'true' or 'false'
  */
 function bool2Alpha($bool) {
 	return $bool ? 'true' : 'false';
+}
+
+/**
+ * Convert a boolean to integer
+ *
+ * @return integer
+ *     1 or 0
+ */
+function bool2Int($bool) {
+	return $bool ? 1 : 0;
+}
+
+/**
+ * Sanitize specified string
+ *
+ * @return string
+ *     sanitized string
+ */
+function sanitizeString($str, $no_underscores = false)
+{
+	$sanitized_str = str_replace(' ', '', $str);
+
+	if ($no_underscores) {
+		return str_replace('_', '', $sanitized_str);
+	}
+
+	return $sanitized_str;
 }
 
 /**
@@ -106,6 +133,80 @@ function getDolibaseVersion($root = '')
 }
 
 /**
+ * Return Module filename (with path)
+ *
+ * @return string
+ *     module filename
+ */
+function getModuleFileName($module_path)
+{
+	foreach(glob($module_path.'/core/modules/mod*.class.php') as $filename) {
+		return $filename;
+	}
+
+	die('Dolibase::Generator::Error getModuleFileName function, could not get module filename.');
+}
+
+/**
+ * Return external modules list (those in custom directory),
+ * sorted by the last time they was changed (DESC).
+ *
+ * @return array
+ *     modules list
+ */
+function getModulesList($root = '')
+{
+	if (empty($root)) {
+		$root = getDolibarrRootDirectory();
+	}
+
+	$path = $root.'/custom';
+	$dirs = array();
+
+	// directory handle
+	$dir = dir($path);
+
+	// Get modules directories
+	while (false !== ($entry = $dir->read())) {
+		if ($entry != '.' && $entry != '..') {
+			$entry_path = $path . '/' .$entry;
+			if (is_dir($entry_path)) {
+				$dirs[] = array(
+					'name' => $entry,
+					'ctime' => filectime($entry_path)
+				);
+			}
+		}
+	}
+
+	// Sort directories
+	sortArrayByKey($dirs, 'ctime', SORT_DESC);
+
+	$modules_list = array();
+
+	foreach ($dirs as $directory) {
+		$modules_list[] = $directory['name'];
+	}
+
+	return $modules_list;
+}
+
+/**
+ * Sort an array by key.
+ *
+ */
+function sortArrayByKey(&$array, $array_key, $sort_order = SORT_ASC)
+{
+	$sortarray = array();
+
+	foreach ($array as $key => $row) {
+		$sortarray[$key] = $row[$array_key];
+	}
+
+	array_multisort($sortarray, $sort_order, $array);
+}
+
+/**
  * Return file template as a string
  *
  * @see https://stackoverflow.com/questions/26962791/load-file-as-string-which-contains-variable-definitions
@@ -123,7 +224,7 @@ function getTemplate($file, $hooks = array()) {
 		$data = array();
 		foreach($hooks as $key => $value) {
 			array_push($keys, '${'. $key .'}');
-			array_push($data,  $value );
+			array_push($data, $value);
 		}
 
 		// Replace all of the variables with the variable values.
@@ -172,6 +273,32 @@ function chmod_r($dir, $dirPermissions, $filePermissions)
 }
 
 /**
+ * Create folder(s) recursively.
+ *
+ * @see https://stackoverflow.com/questions/3997641/why-cant-php-create-a-directory-with-777-permissions
+ *
+ * @return boolean
+ *     true if success
+ *     false if error
+ */
+function mkdir_r($folders, $perm_code = 0777, $path_prefix = '')
+{
+	if (! empty($path_prefix) && substr($path_prefix, -1) != '/') {
+		$path_prefix .= '/';
+	}
+
+	$old = umask(0);
+	foreach ($folders as $folder) {
+		if (! @mkdir($path_prefix.$folder, $perm_code, true)) {
+			return false;
+		}
+	}
+	umask($old);
+
+	return true;
+}
+
+/**
  * Copy entire contents of a directory to another.
  *
  * @see https://stackoverflow.com/questions/2050859/copy-entire-contents-of-a-directory-to-another-using-php
@@ -210,6 +337,6 @@ function file_replace_contents($file, $str_to_replace, $replace_with_str)
 	$file_content = str_replace($str_to_replace, $replace_with_str, $file_content);
 	//$file_content = preg_replace('/'.$str_to_replace.'/', $replace_with_str, $file_content);
 
-	// write the content to a new file
+	// Write the content to a new file
 	file_put_contents($file, $file_content);
 }

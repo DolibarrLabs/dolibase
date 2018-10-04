@@ -147,27 +147,27 @@ class Widget extends ModeleBoxes
 		$cols_count = count($this->info_box_contents[$current_line]);
 
 		$this->info_box_contents[$current_line][] = array(
-					// HTML properties of the TD element
-					'td'           => $attr,
-					// Fist line logo
-					//'logo'         => 'mypicture@mymodule',
-					// Main text
-					'text'         => $text,
-					// Secondary text
-					//'text2'        => '<p><strong>Another text</strong></p>',
-					// Unformatted text, usefull to load javascript elements
-					//'textnoformat' => '',
-					// Link on 'text' and 'logo' elements
-					//'url'          => 'http://example.com',
-					// Link's target HTML property
-					//'target'       => '_blank',
-					// Truncates 'text' element to the specified character length, 0 = disabled
-					'maxlength'    => $max_length,
-					// Prevents HTML cleaning (and truncation)
-					'asis'         => ! $clean_text, // abbr.: asis = as it is
-					// Same for 'text2'
-					//'asis2'        => true
-				);
+			// HTML properties of the TD element
+			'td'           => $attr,
+			// Fist line logo
+			//'logo'         => 'mypicture@mymodule',
+			// Main text
+			'text'         => $text,
+			// Secondary text
+			//'text2'        => '<p><strong>Another text</strong></p>',
+			// Unformatted text, usefull to load javascript elements
+			//'textnoformat' => '',
+			// Link on 'text' and 'logo' elements
+			//'url'          => 'http://example.com',
+			// Link's target HTML property
+			//'target'       => '_blank',
+			// Truncates 'text' element to the specified character length, 0 = disabled
+			'maxlength'    => $max_length,
+			// Prevents HTML cleaning (and truncation)
+			'asis'         => ! $clean_text, // abbr.: asis = as it is
+			// Same for 'text2'
+			//'asis2'        => true
+		);
 
 		if ($cols_count == 0 && ! empty($first_col_attr)) {
 			//  HTML properties of the TR element. Only available on the first column.

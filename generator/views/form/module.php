@@ -47,7 +47,7 @@
 					</div>
 					<div class="form-group">
 						<label for="position">Position</label>
-						<input type="number" class="form-control" id="position" name="position" placeholder="500" min="1" value="500">
+						<input type="number" class="form-control" id="position" name="position" placeholder="500" min="1" value="500" required>
 					</div>
 					<div class="form-group">
 						<label for="rights_class">Rights Class</label>
