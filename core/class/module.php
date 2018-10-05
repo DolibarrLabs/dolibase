@@ -21,7 +21,7 @@
  * Undefined function xxx in DolibaseModule class.
  *
  * Solutions:
- *            + Use Dolibase module generator (will generate a custom class copy in your module directory).
+ *            + Use Dolibase module builder (will generate a custom class copy in your module directory).
  *            + Keep always your modules up-to-date with the latest version of Dolibase (painful solution).
  *            + Each time you add a function in this class/file, you need to add the same function into your
  *              module(s) class also (just copy & paste).

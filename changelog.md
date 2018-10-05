@@ -3,8 +3,8 @@
 
 #### 2.4.0 - OCT18
 
-*   NEW: module generator.
-*   NEW: widget generator.
+*   NEW: module builder.
+*   NEW: widget builder.
 
 ---
 

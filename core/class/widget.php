@@ -19,7 +19,7 @@
  * Known issue: This class is also affected by the same kind of issue as in DolibaseModule class (@see module.php).
  *
  * Fast solution:
- *                + Use Dolibase widget generator.
+ *                + Use Dolibase widget builder.
  */
 
 include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";

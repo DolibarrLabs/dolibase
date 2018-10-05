@@ -74,12 +74,12 @@ So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/do
 
 ## Quick start
 
-Starting from version [2.4.0](https://github.com/AXeL-dev/dolibase/releases/tag/v2.4.0), you can easily generate your modules & widgets using Dolibase Generator.
+Starting from version [2.4.0](https://github.com/AXeL-dev/dolibase/releases/tag/v2.4.0), you can easily generate your modules & widgets using Dolibase Builder.
 
-To create a new module, simply go to the dolibase generator page & follow the instructions:
+To create a new module, simply go to the dolibase builder page & follow the instructions:
 
 ```
-http://localhost/dolibarr/htdocs/dolibase/generator
+http://localhost/dolibarr/htdocs/dolibase/builder
 ```
 
 Note that `localhost/dolibarr` may change depending on your dolibarr installation & your domain name.
