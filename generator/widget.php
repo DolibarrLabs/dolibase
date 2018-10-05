@@ -88,7 +88,7 @@ if ($action == 'generate')
 				}
 			}
 		}
-		$template = getTemplate(__DIR__ . '/tpl/widget_class.php', $data);
+		$template = getTemplate(__DIR__ . '/tpl/widget/class.php', $data);
 		file_put_contents($widget_file, $template);
 
 		// Add widget in module class

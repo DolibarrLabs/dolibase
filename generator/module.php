@@ -86,13 +86,13 @@ if ($action == 'generate')
 		$image->save($picture_target_dir.'object_'.$data['picture'], $image->getImageType());
 
 		// Create module config file
-		$template = getTemplate(__DIR__ . '/tpl/config.php', $data);
+		$template = getTemplate(__DIR__ . '/tpl/module/config.php', $data);
 		file_put_contents($module_path.'/config.php', $template);
 
 		// Create setup & about pages
-		$setup_template = getTemplate(__DIR__ . '/tpl/setup.php');
+		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php');
 		file_put_contents($module_path.'/admin/setup.php', $setup_template);
-		$about_template = getTemplate(__DIR__ . '/tpl/about.php', array('picture' => $data['picture']));
+		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', array('picture' => $data['picture']));
 		file_put_contents($module_path.'/admin/about.php', $about_template);
 
 		// Create module class
@@ -116,7 +116,7 @@ if ($action == 'generate')
 				}
 			}
 		}
-		$module_class_template = getTemplate(__DIR__ . '/tpl/module_class.php', $module_class_data);
+		$module_class_template = getTemplate(__DIR__ . '/tpl/module/class.php', $module_class_data);
 		file_put_contents($module_path.'/core/modules/mod'.$module_class_data['module_class_name'].'.class.php', $module_class_template);
 
 		// Create langs files
@@ -125,9 +125,9 @@ if ($action == 'generate')
 			'current_year' => date('Y'),
 			'author_name' => $data['author_name']
 		);
-		$english_template = getTemplate(__DIR__ . '/tpl/en_US.lang', $lang_data);
+		$english_template = getTemplate(__DIR__ . '/tpl/module/en_US.lang', $lang_data);
 		file_put_contents($module_path.'/langs/en_US/'.$data['folder'].'.lang', $english_template);
-		$french_template = getTemplate(__DIR__ . '/tpl/fr_FR.lang', $lang_data);
+		$french_template = getTemplate(__DIR__ . '/tpl/module/fr_FR.lang', $lang_data);
 		file_put_contents($module_path.'/langs/fr_FR/'.$data['folder'].'.lang', $french_template);
 
 		// Add a copy of dolibase
