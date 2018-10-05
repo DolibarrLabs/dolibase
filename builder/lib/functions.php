@@ -55,7 +55,7 @@ function num2Alpha($num) {
 		case 9:
 			return 'Nine';
 		default:
-			die('Dolibase::Generator::Error non numeric value provided to num2Alpha function.');
+			die('Dolibase::Builder::Error non numeric value provided to num2Alpha function.');
 	}
 }
 
@@ -104,9 +104,9 @@ function sanitizeString($str, $no_underscores = false)
  */
 function getDolibarrRootDirectory()
 {
-	$path = defined(__DIR__) ? __DIR__ : dirname(__FILE__); // should be: .../dolibarr/dolibase/generator/lib
+	$path = defined(__DIR__) ? __DIR__ : dirname(__FILE__); // should be: .../dolibarr/dolibase/builder/lib
 	$parts = explode('/', $path);
-	array_splice($parts, -3); // remove '/dolibase/generator/lib'
+	array_splice($parts, -3); // remove '/dolibase/builder/lib'
 	$root_path = implode('/', $parts);
 
 	return $root_path;
@@ -144,7 +144,7 @@ function getModuleFileName($module_path)
 		return $filename;
 	}
 
-	die('Dolibase::Generator::Error getModuleFileName function, could not get module filename.');
+	die('Dolibase::Builder::Error getModuleFileName function, could not get module filename.');
 }
 
 /**
@@ -257,7 +257,7 @@ function getAuthorInfo()
 {
 	$info = array();
 	$root = getDolibarrRootDirectory();
-	$json = @file_get_contents($root.'/dolibase/generator/author.json');
+	$json = @file_get_contents($root.'/dolibase/builder/author.json');
 
 	if ($json !== false) {
 		$info = json_decode($json, true);

@@ -132,7 +132,7 @@ if ($action == 'generate')
 
 		// Add a copy of dolibase
 		$dolibase_filter = array(
-			'generator',
+			'builder',
 			'test',
 			'LICENSE',
 			'changelog.md',
@@ -159,7 +159,7 @@ if ($action == 'generate')
  */
 
 $options = array(
-	'title' => 'Module Generator',
+	'title' => 'Module Builder',
 	'navbar_active' => 'module',
 	'form_name' => 'module',
 	'css' => array(),
