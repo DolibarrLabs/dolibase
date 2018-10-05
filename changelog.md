@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.4.0 - OCT18
+
+*   NEW: module generator.
+*   NEW: widget generator.
+
+---
+
 #### 2.3.8 - SEP18
 
 *   NEW: possibility to add tooltip details when calling getNomUrl function in custom_object class.
