@@ -248,6 +248,25 @@ function getFileExtension($filename)
 }
 
 /**
+ * Get author informations from 'author.info' file if found.
+ *
+ * @return array
+ *     author informations or empty array
+ */
+function getAuthorInfo()
+{
+	$info = array();
+	$root = getDolibarrRootDirectory();
+	$json = @file_get_contents($root.'/dolibase/generator/author.info');
+
+	if ($json !== false) {
+		$info = json_decode($json, true);
+	}
+
+	return $info;
+}
+
+/**
  * Changes permissions on files and directories within $dir and dives recursively into found subdirectories.
  *
  * @see https://stackoverflow.com/questions/9262622/set-permissions-for-all-files-and-folders-recursively

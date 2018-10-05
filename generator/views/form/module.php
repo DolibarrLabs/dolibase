@@ -94,19 +94,19 @@
 				<div class="card-body">
 					<div class="form-group">
 						<label for="author_name">Name</label>
-						<input type="text" class="form-control" id="author_name" name="author_name" placeholder="YourName" value="AXeL" required>
+						<input type="text" class="form-control" id="author_name" name="author_name" placeholder="YourName" value="<?php echo (isset($options['author_info']['name']) ? $options['author_info']['name'] : ''); ?>" required>
 					</div>
 					<div class="form-group">
 						<label for="author_url">Url</label>
-						<input type="text" class="form-control" id="author_url" name="author_url" placeholder="#" value="https://github.com/AXeL-dev">
+						<input type="text" class="form-control" id="author_url" name="author_url" placeholder="#" value="<?php echo (isset($options['author_info']['url']) ? $options['author_info']['url'] : ''); ?>">
 					</div>
 					<div class="form-group">
 						<label for="author_email">Email</label>
-						<input type="email" class="form-control" id="author_email" name="author_email" placeholder="email@provider.com" value="anass_denna@hotmail.fr" required>
+						<input type="email" class="form-control" id="author_email" name="author_email" placeholder="email@provider.com" value="<?php echo (isset($options['author_info']['email']) ? $options['author_info']['email'] : ''); ?>">
 					</div>
 					<div class="form-group">
 						<label for="author_dolistore_url">Dolistore Url</label>
-						<input type="text" class="form-control" id="author_dolistore_url" name="author_dolistore_url" placeholder="#" value="https://www.dolistore.com/en/search?orderby=position&orderway=desc&search_query=axel">
+						<input type="text" class="form-control" id="author_dolistore_url" name="author_dolistore_url" placeholder="#" value="<?php echo (isset($options['author_info']['dolistore_url']) ? $options['author_info']['dolistore_url'] : ''); ?>">
 					</div>
 				</div>
 			</div>

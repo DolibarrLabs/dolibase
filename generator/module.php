@@ -154,7 +154,8 @@ $options = array(
 	'form_name' => 'module',
 	'css' => array(),
 	'js' => array('module.js'),
-	'message' => $message
+	'message' => $message,
+	'author_info' => getAuthorInfo()
 );
 
 include_once __DIR__ . '/views/layout.php';
