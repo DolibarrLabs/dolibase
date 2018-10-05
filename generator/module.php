@@ -131,7 +131,17 @@ if ($action == 'generate')
 		file_put_contents($module_path.'/langs/fr_FR/'.$data['folder'].'.lang', $french_template);
 
 		// Add copy of dolibase
-		recurse_copy($root.'/dolibase', $module_path.'/dolibase', array('generator'));
+		$dolibase_filter = array(
+			'generator',
+			'test',
+			'LICENSE',
+			'changelog.md',
+			'todo.md',
+			'README.md',
+			'.git',
+			'.gitignore'
+		);
+		recurse_copy($root.'/dolibase', $module_path.'/dolibase', $dolibase_filter);
 
 		// Set files/folders permissions
 		chmod_r($module_path, 0777, 0777);
