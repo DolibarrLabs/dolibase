@@ -70,13 +70,23 @@ Dolibase can act in 2 different ways:
  - **Globally**: this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
  - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those who use a new one.
 
-So, to install dolibase globally, just unzip it inside your dolibarr root directory.
+So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory.
 
 ## Quick start
 
-To create a new dolibase module just use the same directory architecture demonstrated above, or simply copy one of the test modules from the test folder.
+Starting from version [2.4.0](https://github.com/AXeL-dev/dolibase/releases/tag/v2.4.0), you can easily generate your modules & widgets using Dolibase Generator.
 
-Example of a new module class:
+To create a new module, simply go to the dolibase generator page & follow the instructions:
+
+```
+http://localhost/dolibarr/htdocs/dolibase/generator
+```
+
+Note that `localhost/dolibarr` may change depending on your dolibarr installation & your domain name.
+
+## Examples
+
+1. Module class:
 
 ```php
 <?php
@@ -114,7 +124,7 @@ class modMyFirstModule extends DolibaseModule
 ?>
 ```
 
-Example of a new module page:
+2. Module page:
 
 ```php
 <?php
