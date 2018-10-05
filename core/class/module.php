@@ -16,14 +16,17 @@
  */
 
 /**
- * Note: each time you add a function in this class/file, it's better to add the same function into your
- * module class also (just copy & paste), because this way you'll avoid old versions non compatibility issues
- * (remember that Dolibase is loaded/included only one time on "dolibarr/admin/modules.php" file),
- * so even if an older Dolibase version is loaded first & this version will probably not include your new function(s), 
- * your module class will always have a copy/override of the function(s) & that's it!
- * (no need to always update your old modules Dolibase version anymore)
+ * Known issue: Dolibase class is loaded/included only one time on "dolibarr/admin/modules.php" file,
+ * so if a module with an older version of Dolibase is loaded first, then you may face some errors like :
+ * Undefined function xxx in DolibaseModule class.
  *
- * Another solution would be to use namespaces, to separate each module files, but better not complicate things..
+ * Solutions:
+ *            + Use Dolibase module generator (will generate a custom class copy in your module directory).
+ *            + Keep always your modules up-to-date with the latest version of Dolibase (painful solution).
+ *            + Each time you add a function in this class/file, you need to add the same function into your
+ *              module(s) class also (just copy & paste).
+ *            + Use namespaces to separate module file(s) from each others (complicated solution,
+ *              may even not work with Dolibarr).
  *
  * P.S: This issue affects only DolibaseModule & Widget class & not the other classes of Dolibase.
  */
