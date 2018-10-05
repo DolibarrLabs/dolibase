@@ -248,7 +248,7 @@ function getFileExtension($filename)
 }
 
 /**
- * Get author informations from 'author.info' file if found.
+ * Get author informations from 'author.json' file if found.
  *
  * @return array
  *     author informations or empty array
@@ -257,7 +257,7 @@ function getAuthorInfo()
 {
 	$info = array();
 	$root = getDolibarrRootDirectory();
-	$json = @file_get_contents($root.'/dolibase/generator/author.info');
+	$json = @file_get_contents($root.'/dolibase/generator/author.json');
 
 	if ($json !== false) {
 		$info = json_decode($json, true);
