@@ -19,7 +19,7 @@ include_once __DIR__ . '/lib/functions.php';
 include_once __DIR__ . '/lib/simple_image.php';
 
 /**
- * Generate module
+ * Generate widget
  */
 
 $action = getPostData('action');

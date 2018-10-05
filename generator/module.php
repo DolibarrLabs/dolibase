@@ -130,7 +130,7 @@ if ($action == 'generate')
 		$french_template = getTemplate(__DIR__ . '/tpl/fr_FR.lang', $lang_data);
 		file_put_contents($module_path.'/langs/fr_FR/'.$data['folder'].'.lang', $french_template);
 
-		// Add copy of dolibase
+		// Add a copy of dolibase
 		$dolibase_filter = array(
 			'generator',
 			'test',
