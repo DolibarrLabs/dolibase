@@ -1,5 +1,5 @@
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data" class="px-2">
 	<div class="form-group">
 		<label for="module_folder">Module</label>
 		<select class="form-control" id="module_folder" name="module_folder">
