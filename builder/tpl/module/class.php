@@ -16,6 +16,6 @@ class mod${module_class_name} extends ${dolibase_class_name}
 	 */
 	public function loadSettings()
 	{
-		// add here your settings..
+		${module_settings}
 	}
 }

@@ -30,6 +30,9 @@ if ($action == 'generate')
 	// Get data
 	$module_name = getPostData('name');
 	$use_custom_class = getPostData('use_custom_class');
+	$add_top_menu = getPostData('add_top_menu');
+	$add_generic_left_menu = getPostData('add_generic_left_menu');
+	$add_crud_perms = getPostData('add_crud_perms');
 	$data = array(
 		'name' => $module_name,
 		'description' => getPostData('description'),
@@ -100,8 +103,42 @@ if ($action == 'generate')
 			'module_folder' => $data['folder'],
 			'module_class_name' => sanitizeString(ucfirst($module_name)),
 			'dolibase_class_name' => 'DolibaseModule',
-			'dolibase_class_include' => "dolibase_include_once('/core/class/module.php');"
+			'dolibase_class_include' => "dolibase_include_once('/core/class/module.php');",
+			'module_settings' => ''
 		);
+		if ($add_top_menu) {
+			// Add top menu
+			$module_class_data['module_settings'] .= '// Top Menu';
+			$module_class_data['module_settings'] .= "\n\t\t".'$this->addTopMenu($this->config["other"]["top_menu_name"], "'.$module_name.'", "/'.$data['folder'].'/index.php");';
+			// Add menu icon (this is mandatory starting from Dolibarr 8)
+			copy($picture_target_file, $picture_target_dir.InsertBeforeFileExtension($data['picture'], '_over'));
+		}
+		if ($add_generic_left_menu) {
+			// Add generic left menu
+			$leftmenu_name = strtolower($module_name);
+			$module_class_data['module_settings'] .= "\n\n\t\t".'// Left Menu';
+			// Index page
+			$module_class_data['module_settings'] .= "\n\t\t".'$this->addLeftMenu($this->config["other"]["top_menu_name"], "'.$leftmenu_name.'", "'.$module_name.'", "/'.$data['folder'].'/index.php");';
+			// Create page
+			$module_class_data['module_settings'] .= "\n\t\t".'$this->addLeftSubMenu($this->config["other"]["top_menu_name"], "'.$leftmenu_name.'", "", "New", "/'.$data['folder'].'/new.php");';
+			// List page
+			$module_class_data['module_settings'] .= "\n\t\t".'$this->addLeftSubMenu($this->config["other"]["top_menu_name"], "'.$leftmenu_name.'", "", "List", "/'.$data['folder'].'/list.php");';
+		}
+		if ($add_crud_perms) {
+			// Add CRUD permissions
+			$crud_perms = array(
+				array('name' => 'read', 'desc' => 'Read permission', 'type' => 'r'),
+				array('name' => 'create', 'desc' => 'Create permission', 'type' => 'c'),
+				array('name' => 'modify', 'desc' => 'Modify permission', 'type' => 'm'),
+				array('name' => 'delete', 'desc' => 'Delete permission', 'type' => 'd')
+			);
+
+			$module_class_data['module_settings'] .= "\n\n\t\t".'// Permissions';
+
+			foreach ($crud_perms as $perm) {
+				$module_class_data['module_settings'] .= "\n\t\t".'$this->addPermission("'.$perm['name'].'", "'.$perm['desc'].'", "'.$perm['type'].'");';
+			}
+		}
 		if ($use_custom_class) {
 			// Copy dolibase module class into module folder & rename it from DolibaseModule to DolibaseModuleXXX where XXX represent the current version of dolibase
 			$dolibase_version = getDolibaseVersion($root);

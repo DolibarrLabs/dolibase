@@ -248,6 +248,22 @@ function getFileExtension($filename)
 }
 
 /**
+ * Insert a string before file extension
+ *
+ * @return string
+ *     filename
+ */
+function InsertBeforeFileExtension($filename, $str)
+{
+	if (empty($str)) {
+		return $filename;
+	}
+
+	$extension_pos = strrpos($filename, '.'); // find position of the last dot, so where the extension starts
+	return substr($filename, 0, $extension_pos) . $str . substr($filename, $extension_pos);
+}
+
+/**
  * Get author informations from 'author.json' file if found.
  *
  * @return array
@@ -282,10 +298,10 @@ function chmod_r($dir, $dirPermissions, $filePermissions)
 		$fullPath = $dir."/".$file;
 
 		if(is_dir($fullPath)) {
-			chmod($fullPath, $dirPermissions);
-			chmod_r($fullPath, $dirPermissions, $filePermissions);
+			@chmod($fullPath, $dirPermissions);
+			@chmod_r($fullPath, $dirPermissions, $filePermissions);
 		} else {
-			chmod($fullPath, $filePermissions);
+			@chmod($fullPath, $filePermissions);
 		}
 	}
 	closedir($dp);

@@ -7,6 +7,12 @@
 		<li class="nav-item">
 			<a class="nav-link" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">Author</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#menus" role="tab" aria-controls="menus" aria-selected="false">Menus</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#permissions" role="tab" aria-controls="permissions" aria-selected="false">Permissions</a>
+		</li>
 	</ul>
 
 	<div class="tab-content p-3">
@@ -99,6 +105,26 @@
 			<div class="form-group">
 				<label for="author_dolistore_url">Dolistore Url</label>
 				<input type="text" class="form-control" id="author_dolistore_url" name="author_dolistore_url" placeholder="#" value="<?php echo (isset($options['author_info']['dolistore_url']) ? $options['author_info']['dolistore_url'] : ''); ?>">
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="menus" role="tabpanel" aria-labelledby="menus-tab">
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_top_menu" name="add_top_menu">
+				<label class="form-check-label" for="add_top_menu">Add top menu</label>
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_generic_left_menu" name="add_generic_left_menu">
+				<label class="form-check-label" for="add_generic_left_menu" aria-describedby="AddGenericLeftMenuHelp">Add generic left menu</label>
+				<small id="AddGenericLeftMenuHelp" class="form-text text-muted">adds left menu entries for index/create/list pages</small>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="permissions" role="tabpanel" aria-labelledby="permissions-tab">
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_crud_perms" name="add_crud_perms">
+				<label class="form-check-label" for="add_crud_perms" aria-describedby="AddCrudPermHelp">Add CRUD permissions</label>
+				<small id="AddCrudPermHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
 			</div>
 		</div>
 
