@@ -123,8 +123,8 @@
 		<div class="tab-pane fade" id="permissions" role="tabpanel" aria-labelledby="permissions-tab">
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_crud_perms" name="add_crud_perms">
-				<label class="form-check-label" for="add_crud_perms" aria-describedby="AddCrudPermHelp">Add CRUD permissions</label>
-				<small id="AddCrudPermHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
+				<label class="form-check-label" for="add_crud_perms" aria-describedby="AddCrudPermsHelp">Add CRUD permissions</label>
+				<small id="AddCrudPermsHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
 			</div>
 		</div>
 

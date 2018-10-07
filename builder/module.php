@@ -106,6 +106,7 @@ if ($action == 'generate')
 			'dolibase_class_include' => "dolibase_include_once('/core/class/module.php');",
 			'module_settings' => ''
 		);
+		$perms_translation = '';
 		if ($add_top_menu) {
 			// Add top menu
 			$module_class_data['module_settings'] .= '// Top Menu';
@@ -134,9 +135,11 @@ if ($action == 'generate')
 			);
 
 			$module_class_data['module_settings'] .= "\n\n\t\t".'// Permissions';
+			$perm_number = (int) $data['number'];
 
 			foreach ($crud_perms as $perm) {
 				$module_class_data['module_settings'] .= "\n\t\t".'$this->addPermission("'.$perm['name'].'", "'.$perm['desc'].'", "'.$perm['type'].'");';
+				$perms_translation .= 'Permission'.(++$perm_number).' = '.$perm['desc']."\n";
 			}
 		}
 		if ($use_custom_class) {
@@ -160,7 +163,8 @@ if ($action == 'generate')
 		$lang_data = array(
 			'module_name' => strtoupper($module_name),
 			'current_year' => date('Y'),
-			'author_name' => $data['author_name']
+			'author_name' => $data['author_name'],
+			'permissions_translation' => $perms_translation
 		);
 		$english_template = getTemplate(__DIR__ . '/tpl/module/en_US.lang', $lang_data);
 		file_put_contents($module_path.'/langs/en_US/'.$data['folder'].'.lang', $english_template);
