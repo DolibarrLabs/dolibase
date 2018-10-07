@@ -7,4 +7,8 @@ $(document).ready(function() {
 		$('#rights_class').val(sanitizedName);
 		$('#folder').val(sanitizedName.replace(/_/g, ''));
 	});
+
+	$('form input').on('invalid', function() {
+		alert($("label[for='" + $(this).attr('id') + "']").text() + ' field is required!');
+	});
 });
