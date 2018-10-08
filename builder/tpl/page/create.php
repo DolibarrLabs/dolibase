@@ -4,6 +4,8 @@
 include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/create.php');
+// Load Object class
+dolibase_include_once('/core/class/custom_object.php');
 
 // Create Page using Dolibase
 $page = new CreatePage('${page_title}', '${access_perms}');
@@ -15,7 +17,8 @@ $page = new CreatePage('${page_title}', '${access_perms}');
 $action = GETPOST('action', 'alpha');
 
 // Init object
-// $object = new ...
+$object = new CustomObject();
+// $object->setTableName(...);
 
 if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($object))
 {

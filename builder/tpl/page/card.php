@@ -4,6 +4,8 @@
 include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/card.php');
+// Load Object class
+dolibase_include_once('/core/class/custom_object.php');
 
 // Create Page using Dolibase
 $page = new CardPage('${page_title}', '${access_perms}', '${modify_perms}', '${delete_perms}', ${show_documents_block});
@@ -20,7 +22,8 @@ $optioncss = GETPOST('optioncss', 'alpha');
 $model = GETPOST('model', 'alpha');
 
 // Init object
-// $object = new ...
+$object = new CustomObject();
+// $object->setTableName(...);
 
 if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 {
