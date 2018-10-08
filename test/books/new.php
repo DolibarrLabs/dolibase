@@ -57,7 +57,7 @@ if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book
 $page->begin();
 
 // Add Sub Title
-$page->AddSubTitle("New book", "object_books.png@books");
+$page->addSubTitle("New book", "object_books.png@books");
 
 // Create form
 $page->openForm();
