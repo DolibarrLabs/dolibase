@@ -1,6 +1,8 @@
 
 <?php if (! isset($options) || ! is_array($options)) die('Dolibase::Builder::Error options array not set.'); ?>
 
+<?php $assets_prefix = isset($options['path_prefix']) ? $options['path_prefix'] : ''; ?>
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 	<head>
@@ -8,17 +10,16 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="Dolibase Builder">
 		<meta name="author" content="AXeL">
-		<link rel="icon" href="favicon.ico">
+		<link rel="icon" href="<?php echo $assets_prefix; ?>assets/favicon.ico">
 
 		<title><?php echo $options['title']; ?></title>
 
 		<!-- CSS -->
-		<link href="assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-		<link href="assets/css/builder.css" rel="stylesheet">
+		<link href="<?php echo $assets_prefix; ?>assets/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+		<link href="<?php echo $assets_prefix; ?>assets/css/font-awesome.min.css" rel="stylesheet">
 		<?php
 			foreach ($options['css'] as $css_filename) {
-				echo '<link href="assets/css/'.$css_filename.'" rel="stylesheet">'."\n";
+				echo '<link href="'.$assets_prefix.'assets/css/'.$css_filename.'" rel="stylesheet">'."\n";
 			}
 		?>
 	</head>
@@ -26,8 +27,11 @@
 	<body class="h-100">
 
 		<!-- Top NavBar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Dolibase Builder</a>
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand" href="#"><i class="fa fa-rocket fa-fw"></i> Dolibase Builder</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 		</nav>
 
 		<!-- Container -->
@@ -38,7 +42,7 @@
 				<?php include_once __DIR__ . '/sidebar.php'; ?>
 
 				<!-- Main -->
-				<main class="col p-3 bg-faded">
+				<main class="col p-3">
 
 					<!-- Message -->
 					<?php if (isset($options['message']) && ! empty($options['message'])) { ?>
@@ -58,11 +62,11 @@
 		</div>
 
 		<!-- JavaScript -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap/bootstrap.min.js"></script>
+		<script src="<?php echo $assets_prefix; ?>assets/js/jquery.min.js"></script>
+		<script src="<?php echo $assets_prefix; ?>assets/js/bootstrap/bootstrap.min.js"></script>
 		<?php
 			foreach ($options['js'] as $js_filename) {
-				echo '<script src="assets/js/'.$js_filename.'"></script>'."\n";
+				echo '<script src="'.$assets_prefix.'assets/js/'.$js_filename.'"></script>'."\n";
 			}
 		?>
 	</body>
