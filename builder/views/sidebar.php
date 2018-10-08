@@ -44,31 +44,29 @@ if (isset($options['path_prefix'])) {
 
 ?>
 
-<aside class="col-12 col-md-2 p-0 bg-light border-right">
-	<nav class="navbar navbar-expand-md navbar-light p-0">
-		<div id="sidebar" class="collapse navbar-collapse py-1">
-			<ul class="navbar-nav flex-md-column w-100">
-				<?php foreach ($items as $key => $value) { ?>
-					<?php if (isset($value['menu']) && ! empty($value['menu'])) { ?>
-						<li class="nav-item<?php echo $value['active'] ? ' active' : ''; ?>">
-							<a class="nav-link px-4 py-3" href="<?php echo $value['link']; ?>" data-toggle="collapse" data-target="#<?php echo $key; ?>">
-								<i class="fa fa-<?php echo $value['icon']; ?> fa-fw"></i> <?php echo $value['label']; ?><i class="fa fa-angle-down fa-fw pull-right"></i>
-							</a>
-							<ul class="collapse<?php echo $value['active'] ? ' show' : ''; ?>" id="<?php echo $key; ?>">
-								<?php foreach ($value['menu'] as $menu_item) { ?>
-									<li class="nav-item<?php echo $menu_item['active'] ? ' active' : ''; ?>">
-										<a class="nav-link" href="<?php echo $menu_item['link']; ?>"><?php echo $menu_item['label']; ?></a>
-									</li>
-								<?php } ?>
-							</ul>
-						</li>
-					<?php } else { ?>
-						<li class="nav-item<?php echo $value['active'] ? ' active' : ''; ?>">
-							<a class="nav-link px-4 py-3" href="<?php echo $value['link']; ?>"><i class="fa fa-<?php echo $value['icon']; ?> fa-fw"></i> <?php echo $value['label']; ?></a>
-						</li>
-					<?php } ?>
+<aside id="sidebar" class="collapse d-md-block col-12 col-md-2 p-0 py-1 bg-light border-right">
+	<nav class="navbar navbar-light p-0">
+		<ul class="navbar-nav w-100">
+			<?php foreach ($items as $key => $value) { ?>
+				<?php if (isset($value['menu']) && ! empty($value['menu'])) { ?>
+					<li class="nav-item<?php echo $value['active'] ? ' active' : ''; ?>">
+						<a class="nav-link px-4 py-3" href="<?php echo $value['link']; ?>" data-toggle="collapse" data-target="#<?php echo $key; ?>">
+							<i class="fa fa-<?php echo $value['icon']; ?> fa-fw"></i> <?php echo $value['label']; ?><i class="fa fa-angle-down fa-fw pull-right"></i>
+						</a>
+						<ul class="collapse<?php echo $value['active'] ? ' show' : ''; ?>" id="<?php echo $key; ?>">
+							<?php foreach ($value['menu'] as $menu_item) { ?>
+								<li class="nav-item<?php echo $menu_item['active'] ? ' active' : ''; ?>">
+									<a class="nav-link" href="<?php echo $menu_item['link']; ?>"><?php echo $menu_item['label']; ?></a>
+								</li>
+							<?php } ?>
+						</ul>
+					</li>
+				<?php } else { ?>
+					<li class="nav-item<?php echo $value['active'] ? ' active' : ''; ?>">
+						<a class="nav-link px-4 py-3" href="<?php echo $value['link']; ?>"><i class="fa fa-<?php echo $value['icon']; ?> fa-fw"></i> <?php echo $value['label']; ?></a>
+					</li>
 				<?php } ?>
-			</ul>
-		</div>
+			<?php } ?>
+		</ul>
 	</nav>
 </aside>
