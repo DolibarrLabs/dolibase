@@ -10,7 +10,7 @@ $(document).ready(function() {
 		var html = '';
 		if ($.trim($(this).val()).length > 0) {
 			$.each($(this).val().split(','), function(index, value) {
-				var sanitizedValue = value.replace(/\s/g, '');
+				var sanitizedValue = value.replace(/[\s'"]/g, '');
 				html += '<option value="' + sanitizedValue + '">' + sanitizedValue + '</option>';
 			});
 		}
