@@ -100,7 +100,7 @@ if ($action == 'generate')
 
 		// Set success message
 		$message = array(
-			'text' => 'Widget <strong>'.$widget_name.'</strong> successfully generated into <strong>'.$widget_path.'</strong> directory.',
+			'text' => 'Widget <strong>'.$widget_file.'</strong> successfully generated.',
 			'type' => 'success'
 		);
 	}

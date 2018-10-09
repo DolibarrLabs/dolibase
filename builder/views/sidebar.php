@@ -10,6 +10,9 @@ $items = array(
 		'create' => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
 		'card' => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
 		'list' => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false)
+	)),
+	'model' => array('label' => 'Model', 'link' => '#', 'icon' => 'clone', 'active' => false, 'menu' => array(
+		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false)
 	))
 );
 
@@ -29,14 +32,11 @@ else {
 if (isset($options['path_prefix'])) {
 	foreach ($items as $key => $value) {
 		if (! empty($value['link']) && $value['link'] != '#') {
-			$items[$key]['link'] = $options['path_prefix'].$value['link'];
+			$items[$key]['link'] = $options['path_prefix'].$value['link']; // e.: replace 'module.php' with '../module.php'
 		}
 		else if (isset($value['menu']) && ! empty($value['menu'])) {
 			foreach ($value['menu'] as $menu_key => $menu_item) {
-				$link = explode('/', $menu_item['link']);
-				if (isset($link[1])) {
-					$items[$key]['menu'][$menu_key]['link'] = $link[1]; // e.: replace 'page/index.php' with 'index.php'
-				}
+				$items[$key]['menu'][$menu_key]['link'] = $options['path_prefix'].$menu_item['link'];
 			}
 		}
 	}

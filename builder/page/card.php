@@ -62,7 +62,7 @@ if ($action == 'generate')
 
 		// Set success message
 		$message = array(
-			'text' => 'Page <strong>'.$page_file.'</strong> successfully generated into <strong>'.$module_path.'</strong> directory.',
+			'text' => 'Page <strong>'.$page_file.'</strong> successfully generated.',
 			'type' => 'success'
 		);
 	}
