@@ -82,6 +82,7 @@ if ($action == 'generate')
  */
 
 $modules_list = getModulesList();
+$rights_class = getModuleRightsClass($modules_list[0]);
 $options = array(
 	'path_prefix' => '../',
 	'title' => 'Page Builder',
@@ -92,9 +93,9 @@ $options = array(
 	'message' => $message,
 	'modules_list' => $modules_list,
 	'object_class_list' => getModuleObjectClassList($modules_list[0]),
-	'access_perms' => '$user->rights->'.getModuleRightsClass($modules_list[0]).'->read',
-	'modify_perms' => '$user->rights->'.getModuleRightsClass($modules_list[0]).'->modify',
-	'delete_perms' => '$user->rights->'.getModuleRightsClass($modules_list[0]).'->delete'
+	'access_perms' => '$user->rights->'.$rights_class.'->read',
+	'modify_perms' => '$user->rights->'.$rights_class.'->modify',
+	'delete_perms' => '$user->rights->'.$rights_class.'->delete'
 );
 
 include_once '../views/layout.php';
