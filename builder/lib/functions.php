@@ -127,7 +127,7 @@ function getDolibaseVersion($root = '')
 	$dolibase_config = file_get_contents($root.'/dolibase/config.php');
 
 	// Extract dolibase version
-	preg_match("/'version'             => '(.*)'/", $dolibase_config, $dolibase_version);
+	preg_match("/'version'\s+=> '(.*)'/", $dolibase_config, $dolibase_version);
 
 	return isset($dolibase_version[1]) ? $dolibase_version[1] : '';
 }
@@ -162,7 +162,7 @@ function getModuleRightsCLass($module_folder)
 		$module_config = file_get_contents($config_file_path);
 
 		// Extract module rights class
-		preg_match("/'rights_class'  => '(.*)'/", $module_config, $rights_class);
+		preg_match("/'rights_class'\s+=> '(.*)'/", $module_config, $rights_class);
 	}
 
 	return isset($rights_class) && isset($rights_class[1]) ? $rights_class[1] : '';
