@@ -33,6 +33,7 @@ if ($action == 'generate')
 	$add_top_menu = getPostData('add_top_menu');
 	$add_generic_left_menu = getPostData('add_generic_left_menu');
 	$add_crud_perms = getPostData('add_crud_perms');
+	$add_extrafields_page = getPostData('add_extrafields_page');
 	$data = array(
 		'name' => $module_name,
 		'description' => getPostData('description'),
@@ -92,11 +93,24 @@ if ($action == 'generate')
 		$template = getTemplate(__DIR__ . '/tpl/module/config.php', $data);
 		file_put_contents($module_path.'/config.php', $template);
 
-		// Create setup & about pages
-		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php');
+		// Create setup page
+		$pages_data = array(
+			'add_extrafields_tab' => bool2Alpha($add_extrafields_page)
+		);
+		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php', $pages_data);
 		file_put_contents($module_path.'/admin/setup.php', $setup_template);
-		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', array('picture' => $data['picture']));
+
+		// Create about page
+		$pages_data['picture'] = $data['picture'];
+		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', $pages_data);
 		file_put_contents($module_path.'/admin/about.php', $about_template);
+
+		// Create extrafields page
+		if ($add_extrafields_page) {
+			$element_type = sanitizeString(strtolower($module_name));
+			$extrafields_template = getTemplate(__DIR__ . '/tpl/module/extrafields.php', array('element_type' => $element_type));
+			file_put_contents($module_path.'/admin/extrafields.php', $extrafields_template);
+		}
 
 		// Create module class
 		$module_class_data = array(

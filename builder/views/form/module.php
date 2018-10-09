@@ -13,6 +13,9 @@
 		<li class="nav-item">
 			<a class="nav-link" data-toggle="tab" href="#permissions" role="tab" aria-controls="permissions" aria-selected="false">Permissions</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#pages" role="tab" aria-controls="pages" aria-selected="false">Pages</a>
+		</li>
 	</ul>
 
 	<div class="tab-content p-3">
@@ -125,6 +128,21 @@
 				<input type="checkbox" class="form-check-input" id="add_crud_perms" name="add_crud_perms">
 				<label class="form-check-label" for="add_crud_perms" aria-describedby="AddCrudPermsHelp">Add CRUD permissions</label>
 				<small id="AddCrudPermsHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="pages" role="tabpanel" aria-labelledby="pages-tab">
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_setup_page" name="add_setup_page" checked disabled>
+				<label class="form-check-label" for="add_setup_page">Add setup page</label>
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_about_page" name="add_about_page" checked disabled>
+				<label class="form-check-label" for="add_about_page">Add about page</label>
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_extrafields_page" name="add_extrafields_page">
+				<label class="form-check-label" for="add_extrafields_page">Add extrafields page</label>
 			</div>
 		</div>
 
