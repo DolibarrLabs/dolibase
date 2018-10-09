@@ -40,7 +40,7 @@ class ${object_classname} extends CustomObject
 	{
 		$result = parent::fetch($id, $ref);
 
-		${fetch_function_date_fields}
+		${fetch_function_content}
 
 		return $result;
 	}
@@ -63,7 +63,7 @@ class ${object_classname} extends CustomObject
 	{
 		$result = parent::fetchAll($limit, $offset, $sort_field, $sort_order, $more_fields, $join, $where, $get_total, $table_alias);
 
-		${fetchAll_function_date_fields}
+		${fetchAll_function_content}
 
 		return $result;
 	}

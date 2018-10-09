@@ -35,8 +35,8 @@ if ($action == 'generate')
 		'object_element' => getPostData('object_element'),
 		'object_table' => getPostData('object_table'),
 		'fetch_fields' => getPostData('fetch_fields'),
-		'fetch_function_date_fields' => '',
-		'fetchAll_function_date_fields' => '',
+		'fetch_function_content' => '',
+		'fetchAll_function_content' => '',
 		'tooltip_title' => getPostData('tooltip_title')
 	);
 
@@ -68,15 +68,15 @@ if ($action == 'generate')
 		}
 		$data['fetch_fields'] = substr($sanitized_fetch_fields, 0, -2); // remove the last ', '
 
-		// Generate date fields for fetch & fetchAll functions
+		// Generate content for fetch & fetchAll functions
 		if (is_array($date_fields) && ! empty($date_fields)) {
-			$data['fetch_function_date_fields'] = $data['fetchAll_function_date_fields'] = '// Fix error: dol_print_date function call with deprecated value of time';
-			$data['fetchAll_function_date_fields'] .= "\n\t\t".'for ($i = 0; $i < count($this->lines); $i++) {';
+			$data['fetch_function_content'] = $data['fetchAll_function_content'] = '// Fix error: dol_print_date function call with deprecated value of time';
+			$data['fetchAll_function_content'] .= "\n\t\t".'for ($i = 0; $i < count($this->lines); $i++) {';
 			foreach ($date_fields as $field) {
-				$data['fetch_function_date_fields'] .= "\n\t\t".'$this->'.$field.' = $this->db->jdate($this->'.$field.');';
-				$data['fetchAll_function_date_fields'] .= "\n\t\t\t".'$this->lines[$i]->'.$field.' = $this->db->jdate($this->lines[$i]->'.$field.');';
+				$data['fetch_function_content'] .= "\n\t\t".'$this->'.$field.' = $this->db->jdate($this->'.$field.');';
+				$data['fetchAll_function_content'] .= "\n\t\t\t".'$this->lines[$i]->'.$field.' = $this->db->jdate($this->lines[$i]->'.$field.');';
 			}
-			$data['fetchAll_function_date_fields'] .= "\n\t\t}";
+			$data['fetchAll_function_content'] .= "\n\t\t}";
 		}
 
 		// Add object class into module
