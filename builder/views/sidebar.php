@@ -9,7 +9,10 @@ $items = array(
 		'index' => array('label' => 'Index Page', 'link' => 'page/index.php', 'active' => false),
 		'create' => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
 		'card' => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
-		'list' => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false)
+		'list' => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false),
+		'calendar' => array('label' => 'Calendar Page', 'link' => 'page/calendar.php', 'active' => false),
+		'document' => array('label' => 'Document Page', 'link' => 'page/document.php', 'active' => false),
+		'log' => array('label' => 'Log Page', 'link' => 'page/log.php', 'active' => false)
 	)),
 	'model' => array('label' => 'Model', 'link' => '#', 'icon' => 'clone', 'active' => false, 'menu' => array(
 		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false)

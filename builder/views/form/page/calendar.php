@@ -19,7 +19,7 @@
 	</div>
 	<div class="form-group">
 		<label for="page_name">Page Name</label>
-		<input type="text" class="form-control" id="page_name" name="page_name" placeholder="card.php" value="card.php" required>
+		<input type="text" class="form-control" id="page_name" name="page_name" placeholder="calendar.php" value="calendar.php" required>
 	</div>
 	<div class="form-group">
 		<label for="page_title">Page Title</label>
@@ -30,24 +30,12 @@
 		<input type="text" class="form-control" id="access_perms" name="access_perms" placeholder="$user->rights->mymodule->read" value="<?php echo $options['access_perms']; ?>">
 	</div>
 	<div class="form-group">
-		<label for="modify_perms">Modify Permission(s)</label>
-		<input type="text" class="form-control" id="modify_perms" name="modify_perms" placeholder="$user->rights->mymodule->modify" value="<?php echo $options['modify_perms']; ?>">
-	</div>
-	<div class="form-group">
-		<label for="delete_perms">Delete Permission(s)</label>
-		<input type="text" class="form-control" id="delete_perms" name="delete_perms" placeholder="$user->rights->mymodule->delete" value="<?php echo $options['delete_perms']; ?>">
-	</div>
-	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="show_documents_block" name="show_documents_block">
-		<label class="form-check-label" for="show_documents_block">Show documents block</label>
-	</div>
-	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="add_document_tab" name="add_document_tab">
-		<label class="form-check-label" for="add_document_tab">Add document page tab</label>
-	</div>
-	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="add_log_tab" name="add_log_tab">
-		<label class="form-check-label" for="add_log_tab">Add log page tab</label>
+		<label for="default_view">Default View</label>
+		<select class="form-control" id="default_view" name="default_view">
+			<option value="day">day</option>
+			<option value="week">week</option>
+			<option value="month">month</option>
+		</select>
 	</div>
 	<input type="hidden" name="action" value="generate">
 	<button type="submit" class="btn btn-primary">Generate</button>

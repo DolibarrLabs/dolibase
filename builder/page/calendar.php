@@ -34,6 +34,7 @@ if ($action == 'generate')
 		'module_folder' => $module_folder,
 		'page_title' => getPostData('page_title'),
 		'access_perms' => getPostData('access_perms'),
+		'default_view' => getPostData('default_view'),
 		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
 		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);'
 	);
@@ -60,7 +61,7 @@ if ($action == 'generate')
 		}
 
 		// Add page into module
-		$template = getTemplate(__DIR__ . '/../tpl/page/index.php', $data);
+		$template = getTemplate(__DIR__ . '/../tpl/page/calendar.php', $data);
 		file_put_contents($page_file, $template);
 
 		// Set file permission
@@ -82,8 +83,8 @@ $modules_list = getModulesList();
 $options = array(
 	'path_prefix' => '../',
 	'title' => 'Page Builder',
-	'navbar_active' => 'page/index',
-	'form_name' => 'page/index',
+	'navbar_active' => 'page/calendar',
+	'form_name' => 'page/calendar',
 	'css' => array(),
 	'js' => array('page.js'),
 	'message' => $message,

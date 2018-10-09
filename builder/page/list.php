@@ -28,9 +28,10 @@ if ($action == 'generate')
 {
 	// Get data
 	$page_name = getPostData('page_name');
+	$module_folder = getPostData('module_folder');
 	$object_class = getPostData('object_class');
 	$data = array(
-		'module_folder' => getPostData('module_folder'),
+		'module_folder' => $module_folder,
 		'page_title' => getPostData('page_title'),
 		'access_perms' => getPostData('access_perms'),
 		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
@@ -39,7 +40,7 @@ if ($action == 'generate')
 
 	// Check if page already exist
 	$root = getDolibarrRootDirectory();
-	$module_path = $root.'/custom/'.$data['module_folder'];
+	$module_path = $root.'/custom/'.$module_folder;
 	$page_file = $module_path.'/'.$page_name;
 
 	if (file_exists($page_file))
@@ -54,7 +55,7 @@ if ($action == 'generate')
 	{
 		// Set object class include & init
 		if (! empty($object_class)) {
-			$data['object_class_include'] = "dol_include_once('/".$data['module_folder']."/class/".$object_class."');";
+			$data['object_class_include'] = "dol_include_once('/".$module_folder."/class/".$object_class."');";
 			$data['object_init'] = '$object = new '.getClassName($module_path.'/class/'.$object_class).'();';
 		}
 

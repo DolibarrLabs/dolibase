@@ -81,7 +81,7 @@ if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 	// --- End actions
 
 	// Add tabs
-	$page->addTab("Card", "/${module_folder}/${page_name}?id=".$id.'&ref='.$ref, true);
+	${tabs}
 
 	$page->begin();
 

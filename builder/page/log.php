@@ -30,12 +30,16 @@ if ($action == 'generate')
 	$page_name = getPostData('page_name');
 	$module_folder = getPostData('module_folder');
 	$object_class = getPostData('object_class');
+	$add_card_tab = getPostData('add_card_tab');
+	$add_document_tab = getPostData('add_document_tab');
 	$data = array(
 		'module_folder' => $module_folder,
+		'page_name' => $page_name,
 		'page_title' => getPostData('page_title'),
 		'access_perms' => getPostData('access_perms'),
 		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
-		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);'
+		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);',
+		'tabs' => ''
 	);
 
 	// Check if page already exist
@@ -59,8 +63,22 @@ if ($action == 'generate')
 			$data['object_init'] = '$object = new '.getClassName($module_path.'/class/'.$object_class).'();';
 		}
 
+		// Add card page tab
+		if ($add_card_tab) {
+			$data['tabs'] .= '$page->addTab("Card", "/'.$module_folder.'/card.php?id=".$id."&ref=".$ref);';
+		}
+
+		// Add document page tab
+		if ($add_document_tab) {
+			$data['object_class_include'] .= "\n// Load Document Page class\ndolibase_include_once('/core/pages/document.php');";
+			$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab(DocumentPage::getTabTitle($object), "/'.$module_folder.'/document.php?id=".$id."&ref=".$ref);';
+		}
+
+		// Add log page tab
+		$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab("Log", "/'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);';
+
 		// Add page into module
-		$template = getTemplate(__DIR__ . '/../tpl/page/index.php', $data);
+		$template = getTemplate(__DIR__ . '/../tpl/page/log.php', $data);
 		file_put_contents($page_file, $template);
 
 		// Set file permission
@@ -82,8 +100,8 @@ $modules_list = getModulesList();
 $options = array(
 	'path_prefix' => '../',
 	'title' => 'Page Builder',
-	'navbar_active' => 'page/index',
-	'form_name' => 'page/index',
+	'navbar_active' => 'page/log',
+	'form_name' => 'page/log',
 	'css' => array(),
 	'js' => array('page.js'),
 	'message' => $message,
