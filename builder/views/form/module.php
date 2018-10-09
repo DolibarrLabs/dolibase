@@ -95,7 +95,8 @@
 		<div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
 			<div class="form-group">
 				<label for="author_name">Name</label>
-				<input type="text" class="form-control" id="author_name" name="author_name" placeholder="YourName" value="<?php echo (isset($options['author_info']['name']) ? $options['author_info']['name'] : ''); ?>" required>
+				<input type="text" class="form-control" id="author_name" name="author_name" aria-describedby="authorHelp" placeholder="YourName" value="<?php echo (isset($options['author_info']['name']) ? $options['author_info']['name'] : ''); ?>" required>
+				<small id="authorHelp" class="form-text text-muted">author default informations can be changed in author.json file</small>
 			</div>
 			<div class="form-group">
 				<label for="author_url">Url</label>
