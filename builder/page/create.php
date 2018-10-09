@@ -28,10 +28,13 @@ if ($action == 'generate')
 {
 	// Get data
 	$page_name = getPostData('page_name');
+	$object_class = getPostData('object_class');
 	$data = array(
 		'module_folder' => getPostData('module_folder'),
 		'page_title' => getPostData('page_title'),
-		'access_perms' => getPostData('access_perms')
+		'access_perms' => getPostData('access_perms'),
+		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
+		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);'
 	);
 
 	// Check if page already exist
@@ -49,6 +52,12 @@ if ($action == 'generate')
 	}
 	else
 	{
+		// Set object class include & init
+		if (! empty($object_class)) {
+			$data['object_class_include'] = "dol_include_once('/".$data['module_folder']."/class/".$object_class."');";
+			$data['object_init'] = '$object = new '.getClassName($module_path.'/class/'.$object_class).'();';
+		}
+
 		// Add page into module
 		$template = getTemplate(__DIR__ . '/../tpl/page/create.php', $data);
 		file_put_contents($page_file, $template);
@@ -68,15 +77,18 @@ if ($action == 'generate')
  * Show view
  */
 
+$modules_list = getModulesList();
 $options = array(
 	'path_prefix' => '../',
 	'title' => 'Page Builder',
 	'navbar_active' => 'page/create',
 	'form_name' => 'page/create',
 	'css' => array(),
-	'js' => array(),
+	'js' => array('page.js'),
 	'message' => $message,
-	'modules_list' => getModulesList()
+	'modules_list' => $modules_list,
+	'object_class_list' => getModuleObjectClassList($modules_list[0]),
+	'access_perms' => '$user->rights->'.getModuleRightsClass($modules_list[0]).'->create'
 );
 
 include_once '../views/layout.php';

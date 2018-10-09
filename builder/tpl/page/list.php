@@ -5,7 +5,7 @@ include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/list.php');
 // Load Object class
-dolibase_include_once('/core/class/custom_object.php');
+${object_class_include}
 
 // Create Page using Dolibase
 $page = new ListPage('${page_title}', '${access_perms}');
@@ -22,8 +22,7 @@ $search = array();
 // ...
 
 // Init object
-$object = new CustomObject();
-// $object->setTableName(...);
+${object_init}
 
 $page->begin();
 
@@ -59,7 +58,7 @@ foreach ($object->lines as $obj)
 	//$page->addColumn(...);
 
 	// Extrafields
-	$page->addExtraFields($object);
+	$page->addExtraFields($obj);
 
 	$page->closeRow();
 }

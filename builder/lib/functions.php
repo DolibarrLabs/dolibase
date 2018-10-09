@@ -124,10 +124,10 @@ function getDolibaseVersion($root = '')
 		$root = getDolibarrRootDirectory();
 	}
 
-	$dolibase_config_file = file_get_contents($root.'/dolibase/config.php');
+	$dolibase_config = file_get_contents($root.'/dolibase/config.php');
 
 	// Extract dolibase version
-	preg_match("/'version'             => '(.*)'/", $dolibase_config_file, $dolibase_version);
+	preg_match("/'version'             => '(.*)'/", $dolibase_config, $dolibase_version);
 
 	return isset($dolibase_version[1]) ? $dolibase_version[1] : '';
 }
@@ -145,6 +145,66 @@ function getModuleFileName($module_path)
 	}
 
 	die('Dolibase::Builder::Error getModuleFileName function, could not get module filename.');
+}
+
+/**
+ * Return Module rights class
+ *
+ * @return string
+ *     module rights class
+ */
+function getModuleRightsCLass($module_folder)
+{
+	$root = getDolibarrRootDirectory();
+	$config_file_path = $root.'/custom/'.$module_folder.'/config.php';
+
+	if (file_exists($config_file_path)) {
+		$module_config = file_get_contents($config_file_path);
+
+		// Extract module rights class
+		preg_match("/'rights_class'  => '(.*)'/", $module_config, $rights_class);
+	}
+
+	return isset($rights_class) && isset($rights_class[1]) ? $rights_class[1] : '';
+}
+
+/**
+ * Return Module object class list
+ *
+ * @return array
+ *     module object class list
+ */
+function getModuleObjectClassList($module_folder)
+{
+	$root = getDolibarrRootDirectory();
+	$module_path = $root.'/custom/'.$module_folder;
+	$list = array();
+
+	foreach(glob($module_path.'/class/*.class.php') as $filename) {
+		$list[] = str_replace($module_path.'/class/', '', $filename);
+	}
+
+	return $list;
+}
+
+/**
+ * Return Class name
+ *
+ * @see https://stackoverflow.com/questions/7153000/get-class-name-from-file#answer-7153080
+ *
+ * @return string
+ *     class name
+ */
+function getClassName($class_file)
+{
+	if (file_exists($class_file)) {
+		$class_content = file_get_contents($class_file);
+
+		// Extract module rights class
+		preg_match("/class ([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)/", $class_content, $class_name);
+	}
+
+	return isset($class_name) && isset($class_name[1]) ? $class_name[1] : '';
 }
 
 /**

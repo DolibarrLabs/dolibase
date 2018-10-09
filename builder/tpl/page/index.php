@@ -5,14 +5,13 @@ include_once 'config.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/index.php');
 // Load Object class
-dolibase_include_once('/core/class/custom_object.php');
+${object_class_include}
 
 // Create Page using Dolibase
 $page = new IndexPage('${page_title}', '${access_perms}');
 
 // Init object
-$object = new CustomObject();
-// $object->setTableName(...);
+${object_init}
 
 $page->begin();
 
