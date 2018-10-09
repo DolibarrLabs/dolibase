@@ -1,7 +1,7 @@
 ### ToDo
 
-* Module Builder: add an option to auto generate Index/Create/Card/List pages.
-* Model Builder? (object class, PDF model, ...)
+* Page Builder: add Calendar/Document & Log pages.
+* Translation Builder
 * SQL files Builder?
 * CRON support
 * Module export/import options
