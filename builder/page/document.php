@@ -96,6 +96,8 @@ if ($action == 'generate')
  */
 
 $modules_list = getModulesList();
+$object_class_list = empty($modules_list) ? array() : getModuleObjectClassList($modules_list[0]);
+$rights_class = empty($modules_list) ? '' : getModuleRightsClass($modules_list[0]);
 $options = array(
 	'path_prefix' => '../',
 	'title' => 'Page Builder',
@@ -105,8 +107,8 @@ $options = array(
 	'js' => array('page.js'),
 	'message' => $message,
 	'modules_list' => $modules_list,
-	'object_class_list' => getModuleObjectClassList($modules_list[0]),
-	'access_perms' => '$user->rights->'.getModuleRightsClass($modules_list[0]).'->read'
+	'object_class_list' => $object_class_list,
+	'access_perms' => '$user->rights->'.$rights_class.'->read'
 );
 
 include_once '../views/layout.php';

@@ -17,7 +17,7 @@ $items = array(
 	'model' => array('label' => 'Model', 'link' => '#', 'icon' => 'clone', 'active' => false, 'menu' => array(
 		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false)
 	)),
-	'translation' => array('label' => 'Translation', 'link' => '#', 'icon' => 'language', 'active' => false)
+	'translation' => array('label' => 'Translation', 'link' => 'translation.php', 'icon' => 'language', 'active' => false)
 );
 
 // Set active item

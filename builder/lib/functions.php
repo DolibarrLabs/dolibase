@@ -169,6 +169,27 @@ function getModuleRightsCLass($module_folder)
 }
 
 /**
+ * Return a list of directory files
+ *
+ * @return array
+ *     list of directory files
+ */
+function getDirFilesList($pattern, $no_path = false, $dir_only = false)
+{
+	$list = array();
+
+	foreach(glob($pattern) as $filename) {
+		if ($dir_only && ! is_dir($filename)) {
+			continue;
+		}
+
+		$list[] = ($no_path ? basename($filename) : $filename);
+	}
+
+	return $list;
+}
+
+/**
  * Return Module object class list
  *
  * @return array
@@ -178,11 +199,43 @@ function getModuleObjectClassList($module_folder)
 {
 	$root = getDolibarrRootDirectory();
 	$module_path = $root.'/custom/'.$module_folder;
-	$list = array();
 
-	foreach(glob($module_path.'/class/*.class.php') as $filename) {
-		$list[] = str_replace($module_path.'/class/', '', $filename);
-	}
+	// Get object class files list
+	$list = getDirFilesList($module_path.'/class/*.class.php', true);
+
+	return $list;
+}
+
+/**
+ * Return Module language folders list
+ *
+ * @return array
+ *     module language folders list
+ */
+function getModuleLangList($module_folder)
+{
+	$root = getDolibarrRootDirectory();
+	$module_path = $root.'/custom/'.$module_folder;
+
+	// Get language folders list
+	$list = getDirFilesList($module_path.'/langs/*', true, true);
+
+	return $list;
+}
+
+/**
+ * Return Module language files list
+ *
+ * @return array
+ *     module language files list
+ */
+function getModuleLangFileList($module_folder, $lang_folder)
+{
+	$root = getDolibarrRootDirectory();
+	$module_path = $root.'/custom/'.$module_folder;
+
+	// Get language files list
+	$list = getDirFilesList($module_path.'/langs/'.$lang_folder.'/*.lang', true);
 
 	return $list;
 }
