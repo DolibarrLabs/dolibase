@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.4.1 - OCT18
+
+*   NEW: page builder.
+*   NEW: model builder.
+*   NEW: translation builder.
+
+---
+
 #### 2.4.0 - OCT18
 
 *   NEW: module builder.
