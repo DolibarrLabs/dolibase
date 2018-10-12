@@ -10,8 +10,6 @@ $page = new SetupPage('Setup', '$user->admin', false, ${add_extrafields_tab});
 
 $page->begin();
 
-global $langs;
-
-echo $langs->trans('NoSetupAvailable');
+${settings}
 
 $page->end();

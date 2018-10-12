@@ -34,6 +34,8 @@ if ($action == 'generate')
 	$add_generic_left_menu = getPostData('add_generic_left_menu');
 	$add_crud_perms = getPostData('add_crud_perms');
 	$add_extrafields_page = getPostData('add_extrafields_page');
+	$add_num_models_settings = getPostData('add_num_models_settings');
+	$add_doc_models_settings = getPostData('add_doc_models_settings');
 	$data = array(
 		'name' => $module_name,
 		'description' => getPostData('description'),
@@ -94,15 +96,25 @@ if ($action == 'generate')
 		file_put_contents($module_path.'/config.php', $template);
 
 		// Create setup page
-		$pages_data = array(
-			'add_extrafields_tab' => bool2Alpha($add_extrafields_page)
+		$setup_data = array(
+			'add_extrafields_tab' => bool2Alpha($add_extrafields_page),
+			'settings' => ($add_num_models_settings || $add_doc_models_settings ? '' : 'global $langs;'."\n\n".'echo $langs->trans("NoSetupAvailable");')
 		);
-		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php', $pages_data);
+		if ($add_num_models_settings) {
+			$setup_data['settings'] .= '$page->addSubtitle("NumberingModels");'."\n\n".'$page->printNumModels();';
+		}
+		if ($add_doc_models_settings) {
+			$setup_data['settings'] .= ($add_num_models_settings ? "\n\n" : '').'$page->addSubtitle("DocumentModels");'."\n\n".'$page->printDocModels();';
+		}
+		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php', $setup_data);
 		file_put_contents($module_path.'/admin/setup.php', $setup_template);
 
 		// Create about page
-		$pages_data['picture'] = $data['picture'];
-		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', $pages_data);
+		$about_data = array(
+			'add_extrafields_tab' => $setup_data['add_extrafields_tab'],
+			'picture' => $data['picture']
+		);
+		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', $about_data);
 		file_put_contents($module_path.'/admin/about.php', $about_template);
 
 		// Create extrafields page

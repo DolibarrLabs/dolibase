@@ -133,9 +133,19 @@
 		</div>
 
 		<div class="tab-pane fade" id="pages" role="tabpanel" aria-labelledby="pages-tab">
-			<div class="form-group form-check">
-				<input type="checkbox" class="form-check-input" id="add_setup_page" name="add_setup_page" checked disabled>
-				<label class="form-check-label" for="add_setup_page">Add setup page</label>
+			<div class="form-group">
+				<div class="form-check mb-2">
+					<input type="checkbox" class="form-check-input" id="add_setup_page" name="add_setup_page" checked disabled>
+					<label class="form-check-label" for="add_setup_page">Add setup page</label>
+				</div>
+				<div class="form-check ml-4 mb-1">
+					<input type="checkbox" class="form-check-input" id="add_num_models_settings" name="add_num_models_settings">
+					<label class="form-check-label" for="add_num_models_settings">Add numbering models settings</label>
+				</div>
+				<div class="form-check ml-4">
+					<input type="checkbox" class="form-check-input" id="add_doc_models_settings" name="add_doc_models_settings">
+					<label class="form-check-label" for="add_doc_models_settings">Add document models settings</label>
+				</div>
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_about_page" name="add_about_page" checked disabled>
