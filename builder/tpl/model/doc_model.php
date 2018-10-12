@@ -40,7 +40,7 @@ class ${model_classname} extends DocModel
 		$this->name        = '${model_name}';
 		$this->description = $langs->trans('${model_description}');
 		$this->version     = '${model_version}';
-		$this->modulepart  = get_rights_class(false, true);
+		$this->modulepart  = get_modulepart();
 
 		// Page dimensions for A4 format
 		$this->type         = 'pdf';

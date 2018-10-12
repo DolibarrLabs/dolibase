@@ -80,7 +80,7 @@ class pdf_azur extends DocModel
 		$this->option_logo            = 1; // Show logo
 		$this->option_multilang       = 1; // Multi-language support
 		$this->option_freetext        = 1; // Support add of a personalised text
-		$this->modulepart             = get_rights_class(false, true);
+		$this->modulepart             = get_modulepart();
 		$this->const_prefix           = get_rights_class(true);
 		$watermark_const              = $this->const_prefix . '_DRAFT_WATERMARK';
 		$this->watermark_text         = $conf->global->$watermark_const;

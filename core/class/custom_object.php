@@ -74,7 +74,7 @@ class CustomObject extends CrudObject
 	{
 		parent::__construct();
 
-		$this->modulepart = get_rights_class(false, true);
+		$this->modulepart = get_modulepart();
 	}
 
 	/**

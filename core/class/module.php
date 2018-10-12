@@ -527,7 +527,7 @@ class DolibaseModule extends DolibarrModules
 		global $conf;
 
 		$dict_table = MAIN_DB_PREFIX.$table_name;
-		$modulepart = get_rights_class(false, true);
+		$modulepart = get_modulepart();
 
 		if (! isset($this->dictionaries['langs'])) {
 			$this->dictionaries['langs'] = $this->config['other']['lang_files'][0];

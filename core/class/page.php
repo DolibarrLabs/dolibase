@@ -92,7 +92,7 @@ class Page
 		$this->title             = $page_title;
 		$this->access_permission = $access_perm;
 		$this->rights_class      = get_rights_class();
-		$this->modulepart        = get_rights_class(false, true);
+		$this->modulepart        = get_modulepart();
 
 		// Load translations
 		$langs->load($dolibase_config['other']['lang_files'][0]);

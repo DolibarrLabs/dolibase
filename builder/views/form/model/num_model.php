@@ -37,7 +37,7 @@
 	<div class="form-group">
 		<label for="field_name">Field Name</label>
 		<input type="text" class="form-control" id="field_name" name="field_name" aria-describedby="fieldNameHelp" placeholder="ref" value="ref" required>
-		<small id="fieldNameHelp" class="form-text text-muted">table field that will be assigned to the numbering model</small>
+		<small id="fieldNameHelp" class="form-text text-muted">table field that will be associated with the numbering model</small>
 	</div>
 	<input type="hidden" name="action" value="generate">
 	<button type="submit" class="btn btn-primary">Generate</button>

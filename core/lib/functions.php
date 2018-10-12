@@ -264,6 +264,19 @@ if (! function_exists('get_rights_class'))
 }
 
 /**
+ * Return module part (which is the same as module rights class in general)
+ *
+ * @return     string     module part
+ */
+if (! function_exists('get_modulepart'))
+{
+	function get_modulepart()
+	{
+		return get_rights_class(false, true);
+	}
+}
+
+/**
  * Return function output as a string
  *
  * @param      $func       function name
