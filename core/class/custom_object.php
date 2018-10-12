@@ -153,24 +153,26 @@ class CustomObject extends CrudObject
 
 		if (! empty($conf->global->$const_name))
 		{
-			$mybool=false;
-
 			$file = $conf->global->$const_name;
 			$classname = 'NumModel'.ucfirst($file);
+			$exists = false;
 
 			// Include file with class
-			$dirmodels = array_merge(array('/'), (array) $conf->modules_parts['models']);
-			foreach ($dirmodels as $reldir) {
-				$dir = dol_buildpath($reldir."/dolibase/core/num_models/");
-				$mod_dir = dol_buildpath($reldir."/".$dolibase_config['module']['folder']."/dolibase/core/num_models/");
-				
-				$dir = ! is_dir($dir) ? $mod_dir : $dir;
+			$dirmodels = array(
+				dolibase_buildpath("/core/num_models/"),
+				dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/num_models/")
+			);
 
-				// Load file with numbering class (if found)
-				$mybool|=@include_once $dir.$file.".php";
+			foreach ($dirmodels as $dir)
+			{
+				if (is_dir($dir))
+				{
+					// Load file with numbering class (if found)
+					$exists|=@include_once $dir.$file.".php";
+				}
 			}
 
-			if (! $mybool)
+			if (! $exists)
 			{
 				dol_print_error('',"Failed to include file ".$file);
 				return '';
@@ -332,8 +334,25 @@ class CustomObject extends CrudObject
 			}
 		}
 
+		// Get model path
 		$modelpath = $dolibase_config['main']['path'] . '/core/doc_models/';
+		$dirmodels = array(
+			$dolibase_config['main']['path'] . '/core/doc_models/' => dolibase_buildpath("/core/doc_models/"),
+			$dolibase_config['module']['folder'] . '/core/modules/doc_models/' => dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/doc_models/")
+		);
 
+		foreach ($dirmodels as $path => $dir)
+		{
+			foreach(array('doc', 'pdf') as $prefix)
+			{
+				if (file_exists($dir.$prefix."_".$model.".modules.php")) {
+					$modelpath = $path;
+					break 2;
+				}
+			}
+		}
+
+		// Generate document
 		$result = $this->commonGenerateDocument($modelpath, $model, $outputlangs, $hidedetails, $hidedesc, $hideref);
 		if ($result <= 0) {
 			setEventMessages($this->error, $this->errors, 'errors');

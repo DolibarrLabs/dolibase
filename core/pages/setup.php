@@ -186,6 +186,7 @@ class SetupPage extends FormPage
 			{
 				$maskconst = GETPOST('maskconst','alpha');
 				$mask = GETPOST('mask','alpha');
+				$error = 0;
 
 				if ($maskconst) $res = dolibarr_set_const($db, $maskconst, $mask,'chaine', 0, '', $conf->entity);
 
@@ -284,25 +285,43 @@ class SetupPage extends FormPage
 				}
 
 				// Search template files
-				$file = dolibase_buildpath("/core/doc_models/pdf_".$model.".modules.php");
-				if (file_exists($file))
+				$dirmodels = array(
+					dolibase_buildpath("/core/doc_models/"),
+					dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/doc_models/")
+				);
+				$error = 0;
+
+				foreach ($dirmodels as $dir)
 				{
-					require_once $file;
-
-					$classname = 'pdf_'.$model;
-					$module = new $classname($db);
-
-					if ($module->write_file($object, $langs) > 0)
+					$file = $dir."pdf_".$model.".modules.php";
+					if (file_exists($file))
 					{
-						dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$this->modulepart."&file=SPECIMEN.pdf");
+						$error = 0;
+						require_once $file;
+
+						$classname = 'pdf_'.$model;
+						$module = new $classname($db);
+
+						// Generate document
+						if ($module->write_file($object, $langs) > 0)
+						{
+							dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$this->modulepart."&file=SPECIMEN.pdf");
+						}
+						else
+						{
+							setEventMessages($module->error, null, 'errors');
+							dol_syslog($module->error, LOG_ERR);
+						}
+
+						break;
 					}
 					else
 					{
-						setEventMessages($module->error, null, 'errors');
-						dol_syslog($module->error, LOG_ERR);
+						$error++;
 					}
 				}
-				else
+
+				if ($error)
 				{
 					setEventMessages($langs->trans("ErrorModuleNotFound"), null, 'errors');
 					dol_syslog($langs->trans("ErrorModuleNotFound"), LOG_ERR);
@@ -545,7 +564,7 @@ class SetupPage extends FormPage
 	 */
 	public function printNumModels($model_name = '')
 	{
-		global $conf, $langs;
+		global $conf, $langs, $dolibase_config;
 
 		$const_name = $this->num_model_const_name;
 
@@ -560,84 +579,90 @@ class SetupPage extends FormPage
 
 		clearstatcache();
 
-		$dir = dolibase_buildpath("/core/num_models/");
+		$dirmodels = array(
+			dolibase_buildpath("/core/num_models/"),
+			dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/num_models/")
+		);
 
-		if (is_dir($dir))
+		foreach ($dirmodels as $dir)
 		{
-			$handle = opendir($dir);
-			if (is_resource($handle))
+			if (is_dir($dir))
 			{
-				$var = true;
-
-				while (($file = readdir($handle)) !== false)
+				$handle = opendir($dir);
+				if (is_resource($handle))
 				{
-					if (substr($file, dol_strlen($file)-3, 3) == 'php')
+					$var = true;
+
+					while (($file = readdir($handle)) !== false)
 					{
-						$file = substr($file, 0, dol_strlen($file)-4);
-
-						require_once $dir.$file.'.php';
-
-						$classname = 'NumModel'.ucfirst($file);
-
-						$model = new $classname($this->const_name_prefix, $model_name);
-
-						// Show models according to features level
-						if ($model->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) continue;
-						if ($model->version == 'experimental' && $conf->global->MAIN_FEATURES_LEVEL < 1) continue;
-
-						if ($model->isEnabled())
+						if (substr($file, dol_strlen($file)-3, 3) == 'php')
 						{
-							$var=!$var;
-							echo '<tr '.$bc[$var].'><td>'.$model->nom."</td><td>\n";
-							echo $model->info();
-							echo '</td>';
+							$file = substr($file, 0, dol_strlen($file)-4);
 
-							// Show example of numbering model
-							echo '<td class="nowrap">';
-							$tmp=$model->getExample();
-							if (preg_match('/^Error/',$tmp)) echo '<div class="error">'.$langs->trans($tmp).'</div>';
-							elseif ($tmp=='NotConfigured') echo $langs->trans($tmp);
-							else echo $tmp;
-							echo '</td>'."\n";
+							require_once $dir.$file.'.php';
 
-							echo '<td align="center">';
-							if ($conf->global->$const_name == $file)
+							$classname = 'NumModel'.ucfirst($file);
+
+							$model = new $classname($this->const_name_prefix, $model_name);
+
+							// Show models according to features level
+							if ($model->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) continue;
+							if ($model->version == 'experimental' && $conf->global->MAIN_FEATURES_LEVEL < 1) continue;
+
+							if ($model->isEnabled())
 							{
-								echo img_picto($langs->trans("Activated"),'switch_on');
-							}
-							else
-							{
-								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
-								echo img_picto($langs->trans("Disabled"),'switch_off');
-								echo '</a>';
-							}
-							echo '</td>';
+								$var=!$var;
+								echo '<tr '.$bc[$var].'><td>'.$model->nom."</td><td>\n";
+								echo $model->info();
+								echo '</td>';
 
-							// Info
-							$htmltooltip='';
-							$htmltooltip.=''.$langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
-							$nextval=$model->getNextValue();
-							if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
-								$htmltooltip.=''.$langs->trans("NextValue").': ';
-								if ($nextval) {
-									if (preg_match('/^Error/',$nextval) || $nextval=='NotConfigured') {
-										$nextval = $langs->trans($nextval);
-									}
-									$htmltooltip.=$nextval.'<br>';
-								} else {
-									$htmltooltip.=$langs->trans($model->error).'<br>';
+								// Show example of numbering model
+								echo '<td class="nowrap">';
+								$tmp=$model->getExample();
+								if (preg_match('/^Error/',$tmp)) echo '<div class="error">'.$langs->trans($tmp).'</div>';
+								elseif ($tmp=='NotConfigured') echo $langs->trans($tmp);
+								else echo $tmp;
+								echo '</td>'."\n";
+
+								echo '<td align="center">';
+								if ($conf->global->$const_name == $file)
+								{
+									echo img_picto($langs->trans("Activated"),'switch_on');
 								}
+								else
+								{
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
+									echo img_picto($langs->trans("Disabled"),'switch_off');
+									echo '</a>';
+								}
+								echo '</td>';
+
+								// Info
+								$htmltooltip='';
+								$htmltooltip.=''.$langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
+								$nextval=$model->getNextValue();
+								if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
+									$htmltooltip.=''.$langs->trans("NextValue").': ';
+									if ($nextval) {
+										if (preg_match('/^Error/',$nextval) || $nextval=='NotConfigured') {
+											$nextval = $langs->trans($nextval);
+										}
+										$htmltooltip.=$nextval.'<br>';
+									} else {
+										$htmltooltip.=$langs->trans($model->error).'<br>';
+									}
+								}
+
+								echo '<td align="center">';
+								echo $this->form->textwithpicto('',$htmltooltip,1,0);
+								echo '</td>';
+
+								echo "</tr>\n";
 							}
-
-							echo '<td align="center">';
-							echo $this->form->textwithpicto('',$htmltooltip,1,0);
-							echo '</td>';
-
-							echo "</tr>\n";
 						}
 					}
+					closedir($handle);
 				}
-				closedir($handle);
 			}
 		}
 
@@ -689,100 +714,106 @@ class SetupPage extends FormPage
 
 		clearstatcache();
 
-		$dir = dolibase_buildpath("/core/doc_models/");
+		$dirmodels = array(
+			dolibase_buildpath("/core/doc_models/"),
+			dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/doc_models/")
+		);
 
-		if (is_dir($dir))
+		foreach ($dirmodels as $dir)
 		{
-			$handle = opendir($dir);
-			if (is_resource($handle))
+			if (is_dir($dir))
 			{
-				$var = true;
-
-				while (($file = readdir($handle)) !== false)
+				$handle = opendir($dir);
+				if (is_resource($handle))
 				{
-					if (preg_match('/\.modules\.php$/i',$file) && preg_match('/^(pdf_|doc_)/',$file))
+					$var = true;
+
+					while (($file = readdir($handle)) !== false)
 					{
-						require_once $dir.$file;
-
-						$classname = substr($file, 0, dol_strlen($file) - 12);
-
-						$model = new $classname($db);
-
-						// Show models according to features level
-						$modelqualified = 1;
-						if ($model->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) $modelqualified = 0;
-						if ($model->version == 'experimental' && $conf->global->MAIN_FEATURES_LEVEL < 1) $modelqualified = 0;
-
-						if ($modelqualified)
+						if (preg_match('/\.modules\.php$/i',$file) && preg_match('/^(pdf_|doc_)/',$file))
 						{
-							$var=!$var;
-							echo '<tr '.$bc[$var].'><td width="100">'.$model->name."</td><td>\n";
-							if (method_exists($model,'info')) echo $model->info($langs);
-							else echo $model->description;
-							echo '</td>';
+							require_once $dir.$file;
 
-							// Active
-							if (in_array($model->name, $def))
+							$classname = substr($file, 0, dol_strlen($file) - 12);
+
+							$model = new $classname($db);
+
+							// Show models according to features level
+							$modelqualified = 1;
+							if ($model->version == 'development'  && $conf->global->MAIN_FEATURES_LEVEL < 2) $modelqualified = 0;
+							if ($model->version == 'experimental' && $conf->global->MAIN_FEATURES_LEVEL < 1) $modelqualified = 0;
+
+							if ($modelqualified)
 							{
-								echo '<td align="center">'."\n";
-								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=deldoc&value='.$model->name.'">';
-								echo img_picto($langs->trans("Enabled"),'switch_on');
-								echo '</a>';
+								$var=!$var;
+								echo '<tr '.$bc[$var].'><td width="100">'.$model->name."</td><td>\n";
+								if (method_exists($model,'info')) echo $model->info($langs);
+								else echo $model->description;
 								echo '</td>';
-							}
-							else
-							{
-								echo '<td align="center">'."\n";
-								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>';
-								echo "</td>";
-							}
 
-							// Default
-							echo '<td align="center">';
-							if ($conf->global->$const_name == $model->name)
-							{
-								echo img_picto($langs->trans("Default"),'on');
-							}
-							else
-							{
-								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdefaultdoc&value='.$model->name.'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"),'off').'</a>';
-							}
-							echo '</td>';
+								// Active
+								if (in_array($model->name, $def))
+								{
+									echo '<td align="center">'."\n";
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=deldoc&value='.$model->name.'">';
+									echo img_picto($langs->trans("Enabled"),'switch_on');
+									echo '</a>';
+									echo '</td>';
+								}
+								else
+								{
+									echo '<td align="center">'."\n";
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>';
+									echo "</td>";
+								}
 
-							// Info
-							$htmltooltip =    ''.$langs->trans("Name").': '.$model->name;
-							$htmltooltip.='<br>'.$langs->trans("Type").': '.($model->type?$model->type:$langs->trans("Unknown"));
-							if ($model->type == 'pdf')
-							{
-								$htmltooltip.='<br>'.$langs->trans("Width").'/'.$langs->trans("Height").': '.$model->page_largeur.'/'.$model->page_hauteur;
-							}
-							$htmltooltip.='<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
-							$htmltooltip.='<br>'.$langs->trans("Logo").': '.yn($model->option_logo,1,1);
-							$htmltooltip.='<br>'.$langs->trans("MultiLanguage").': '.yn($model->option_multilang,1,1);
-							$htmltooltip.='<br>'.$langs->trans("WatermarkOnDraft").': '.yn($model->option_draft_watermark,1,1);
+								// Default
+								echo '<td align="center">';
+								if ($conf->global->$const_name == $model->name)
+								{
+									echo img_picto($langs->trans("Default"),'on');
+								}
+								else
+								{
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdefaultdoc&value='.$model->name.'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"),'off').'</a>';
+								}
+								echo '</td>';
 
-							echo '<td align="center">';
-							echo $this->form->textwithpicto('',$htmltooltip,1,0);
-							echo '</td>';
+								// Info
+								$htmltooltip =    ''.$langs->trans("Name").': '.$model->name;
+								$htmltooltip.='<br>'.$langs->trans("Type").': '.($model->type?$model->type:$langs->trans("Unknown"));
+								if ($model->type == 'pdf')
+								{
+									$htmltooltip.='<br>'.$langs->trans("Width").'/'.$langs->trans("Height").': '.$model->page_largeur.'/'.$model->page_hauteur;
+								}
+								$htmltooltip.='<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
+								$htmltooltip.='<br>'.$langs->trans("Logo").': '.yn($model->option_logo,1,1);
+								$htmltooltip.='<br>'.$langs->trans("MultiLanguage").': '.yn($model->option_multilang,1,1);
+								$htmltooltip.='<br>'.$langs->trans("WatermarkOnDraft").': '.yn($model->option_draft_watermark,1,1);
 
-							// Preview
-							echo '<td align="center">';
-							if ($model->type == 'pdf')
-							{
-								$picto = (! empty($this->doc_model_preview_picture) ? $this->doc_model_preview_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
-								echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
-							}
-							else
-							{
-								echo img_object($langs->trans("PreviewNotAvailable"),'generic');
-							}
-							echo '</td>';
+								echo '<td align="center">';
+								echo $this->form->textwithpicto('',$htmltooltip,1,0);
+								echo '</td>';
 
-							echo "</tr>\n";
+								// Preview
+								echo '<td align="center">';
+								if ($model->type == 'pdf')
+								{
+									$picto = (! empty($this->doc_model_preview_picture) ? $this->doc_model_preview_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
+								}
+								else
+								{
+									echo img_object($langs->trans("PreviewNotAvailable"),'generic');
+								}
+								echo '</td>';
+
+								echo "</tr>\n";
+							}
 						}
 					}
+					closedir($handle);
 				}
-				closedir($handle);
 			}
 		}
 
