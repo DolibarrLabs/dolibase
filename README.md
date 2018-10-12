@@ -151,4 +151,4 @@ $page->end();
 
 :tada: So simple isn't it ?!
 
-Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [Dolibarr developer documentation](https://wiki.dolibarr.org/index.php/Developer_documentation).
+Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
