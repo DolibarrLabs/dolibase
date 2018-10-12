@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Logs | Dolibase Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Logs" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Logs
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Logs</strong>        extends <a href="CrudObject.html">CrudObject</a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>Logs class</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_element">
+                                                                                string
+                </td>
+                <td>$element</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_element">CrudObject</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_table_element">
+                                                                                string
+                </td>
+                <td>$table_element</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fetch_fields">
+                                                                                array
+                </td>
+                <td>$fetch_fields</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_pk_name">
+                                                                                string
+                </td>
+                <td>$pk_name</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_ref_field_name">
+                                                                                string
+                </td>
+                <td>$ref_field_name</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_ref_field_name">CrudObject</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_lines">
+                                                                                array
+                </td>
+                <td>$lines</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_lines">CrudObject</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_total">
+                                                                                int
+                </td>
+                <td>$total</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_total">CrudObject</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_count">
+                                                                                int
+                </td>
+                <td>$count</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_count">CrudObject</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_triggers_prefix">
+                                                                                string
+                </td>
+                <td>$triggers_prefix</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CrudObject.html#property_triggers_prefix">CrudObject</a></small></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>()
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTableName">setTableName</a>($table_name)
+        
+                                            <p>Set table name</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_setTableName">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_create">create</a>(array $data, int $notrigger = 1)
+        
+                                            <p>Create object into database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_create">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetch">fetch</a>(int $id, string $ref = &#039;&#039;)
+        
+                                            <p>Load object in memory from database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetchAll">fetchAll</a>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false)
+        
+                                            <p>Load all object entries in memory from database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_fetchWhere">fetchWhere</a>(array $fields, array $conditions = array())
+        
+                                            <p>Load object in memory from database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_fetchWhere">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_update">update</a>(array $data, int $notrigger = 1)
+        
+                                            <p>Update object into database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_update">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateWhere">updateWhere</a>(array $data, string $where, int $notrigger = 1)
+        
+                                            <p>Update row(s) into database (wrapper for updateAll function)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_updateWhere">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateAll">updateAll</a>(array $data, string $where = &#039;&#039;, int $notrigger = 1)
+        
+                                            <p>Update all object rows into database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_updateAll">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_delete">delete</a>(int $notrigger = 1)
+        
+                                            <p>Delete object in database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_delete">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteWhere">deleteWhere</a>(string $where, int $notrigger = 1)
+        
+                                            <p>Delete row(s) in database (wrapper for deleteAll function)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_deleteWhere">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteAll">deleteAll</a>(string $where = &#039;&#039;, int $notrigger = 1)
+        
+                                            <p>Delete all object rows in database</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_deleteAll">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_deleteAllObjectLinked">deleteAllObjectLinked</a>()
+        
+                                            <p>Delete all links between an object $this</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_escape">escape</a>($value)
+        
+                                            <p>Escape field value</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_escape">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_run_triggers">run_triggers</a>($action_suffix)
+        
+                                            <p>Run Dolibarr triggers (from other modules)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_run_triggers">CrudObject</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_add">add</a>(object $object, string $action, int $notrigger = 1)
+        
+                                            <p>Add log into database</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 44</div>
+        <code>                    
+    <strong>__construct</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTableName">
+        <div class="location">in <a href="CrudObject.html#method_setTableName">CrudObject</a> at         line 81</div>
+        <code>                    
+    <strong>setTableName</strong>($table_name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set table name</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$table_name</td>
+                <td>table name</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_create">
+        <div class="location">in <a href="CrudObject.html#method_create">CrudObject</a> at         line 93</div>
+        <code>                    int
+    <strong>create</strong>(array $data, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create object into database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>&lt;0 if KO, Id of created object if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetch">
+        <div class="location">at         line 60</div>
+        <code>                    int
+    <strong>fetch</strong>(int $id, string $ref = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load object in memory from database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$id</td>
+                <td>object Id</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$ref</td>
+                <td>object ref</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetchAll">
+        <div class="location">at         line 83</div>
+        <code>                    int
+    <strong>fetchAll</strong>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load all object entries in memory from database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$limit</td>
+                <td>fetch limit</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$offset</td>
+                <td>fetch offset</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sort_field</td>
+                <td>field to sort by</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$sort_order</td>
+                <td>sort order: 'DESC' or 'ASC'</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$more_fields</td>
+                <td>more fields to fetch</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$join</td>
+                <td>join clause</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
+            </tr>
+                    <tr>
+                <td>boolean</td>
+                <td>$get_total</td>
+                <td>get total number of records or not</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_fetchWhere">
+        <div class="location">in <a href="CrudObject.html#method_fetchWhere">CrudObject</a> at         line 332</div>
+        <code>                    int
+    <strong>fetchWhere</strong>(array $fields, array $conditions = array())
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load object in memory from database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$fields</td>
+                <td>fields to fetch</td>
+            </tr>
+                    <tr>
+                <td>array</td>
+                <td>$conditions</td>
+                <td>fetch conditions</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_update">
+        <div class="location">in <a href="CrudObject.html#method_update">CrudObject</a> at         line 386</div>
+        <code>                    int
+    <strong>update</strong>(array $data, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Update object into database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateWhere">
+        <div class="location">in <a href="CrudObject.html#method_updateWhere">CrudObject</a> at         line 443</div>
+        <code>                    int
+    <strong>updateWhere</strong>(array $data, string $where, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Update row(s) into database (wrapper for updateAll function)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateAll">
+        <div class="location">in <a href="CrudObject.html#method_updateAll">CrudObject</a> at         line 456</div>
+        <code>                    int
+    <strong>updateAll</strong>(array $data, string $where = &#039;&#039;, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Update all object rows into database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>array</td>
+                <td>$data</td>
+                <td>array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_delete">
+        <div class="location">in <a href="CrudObject.html#method_delete">CrudObject</a> at         line 506</div>
+        <code>                    int
+    <strong>delete</strong>(int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Delete object in database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteWhere">
+        <div class="location">in <a href="CrudObject.html#method_deleteWhere">CrudObject</a> at         line 557</div>
+        <code>                    int
+    <strong>deleteWhere</strong>(string $where, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Delete row(s) in database (wrapper for deleteAll function)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteAll">
+        <div class="location">in <a href="CrudObject.html#method_deleteAll">CrudObject</a> at         line 569</div>
+        <code>                    int
+    <strong>deleteAll</strong>(string $where = &#039;&#039;, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Delete all object rows in database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_deleteAllObjectLinked">
+        <div class="location">in <a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject</a> at         line 637</div>
+        <code>            protected        int
+    <strong>deleteAllObjectLinked</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Delete all links between an object $this</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td><0 if KO, >0 if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_escape">
+        <div class="location">in <a href="CrudObject.html#method_escape">CrudObject</a> at         line 660</div>
+        <code>            protected        
+    <strong>escape</strong>($value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Escape field value</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>field value</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_run_triggers">
+        <div class="location">in <a href="CrudObject.html#method_run_triggers">CrudObject</a> at         line 671</div>
+        <code>            protected        int
+    <strong>run_triggers</strong>($action_suffix)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Run Dolibarr triggers (from other modules)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$action_suffix</td>
+                <td>action suffix</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>errors number</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_add">
+        <div class="location">at         line 103</div>
+        <code>                    int
+    <strong>add</strong>(object $object, string $action, int $notrigger = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add log into database</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>object</td>
+                <td>$object</td>
+                <td>object</td>
+            </tr>
+                    <tr>
+                <td>string</td>
+                <td>$action</td>
+                <td>log action</td>
+            </tr>
+                    <tr>
+                <td>int</td>
+                <td>$notrigger</td>
+                <td>0=launch triggers after, 1=disable triggers</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>&lt;0 if KO, Id of created object if OK</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

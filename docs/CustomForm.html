@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>CustomForm | Dolibase Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:CustomForm" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            CustomForm
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>CustomForm</strong>        extends Form
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>CustomForm class</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_other">
+                                                                                object
+                </td>
+                <td>$other</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>(DoliDB $db)
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkBox">checkBox</a>($name, $value = &#039;&#039;, $id = &#039;&#039;, $class = &#039;&#039;, $checked = false, $disabled = false)
+        
+                                            <p>Return a checkbox</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_textInput">textInput</a>($name, $value, $size = 8)
+        
+                                            <p>Return a text input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_textArea">textArea</a>($name, $value, $style = &#039;margin-top: 5px; width: 90%&#039;, $rows = &#039;3&#039;)
+        
+                                            <p>Return a text area</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_textEditor">textEditor</a>($name, $value, $toolbarname = &#039;dolibarr_details&#039;, $height = 100)
+        
+                                            <p>Return a text area with editor (if WYSIWYG editor module is activated)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_numberInput">numberInput</a>($name, $value, $min = 0, $max = 100)
+        
+                                            <p>Return a number input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_rangeInput">rangeInput</a>($name, $value, $min = 0, $max = 100)
+        
+                                            <p>Return a range input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_dateInput">dateInput</a>($name, $value, $addnowlink = 1)
+        
+                                            <p>Return a date input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_listInput">listInput</a>($name, $values, $selected, $show_empty = 0)
+        
+                                            <p>Return a list</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_radioList">radioList</a>($name, $values, $selected, $add_br = false)
+        
+                                            <p>Return a radio list</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkList">checkList</a>($name, $values, $selected, $add_br = false)
+        
+                                            <p>Return a check list</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_colorInput">colorInput</a>($name, $value)
+        
+                                            <p>Return a color input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_productList">productList</a>($name, $value, $show_empty = &#039;1&#039;)
+        
+                                            <p>Return products list</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 40</div>
+        <code>                    
+    <strong>__construct</strong>(DoliDB $db)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>DoliDB</td>
+                <td>$db</td>
+                <td>Database handler</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkBox">
+        <div class="location">at         line 57</div>
+        <code>                    string
+    <strong>checkBox</strong>($name, $value = &#039;&#039;, $id = &#039;&#039;, $class = &#039;&#039;, $checked = false, $disabled = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a checkbox</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>checkbox name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>checkbox value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$id</td>
+                <td>checkbox id</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$class</td>
+                <td>checkbox class</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$checked</td>
+                <td>checkbox is checked or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$disabled</td>
+                <td>checkbox is disabled or not</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>checkbox HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_textInput">
+        <div class="location">at         line 70</div>
+        <code>                    string
+    <strong>textInput</strong>($name, $value, $size = 8)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a text input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$size</td>
+                <td>input size</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>input HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_textArea">
+        <div class="location">at         line 84</div>
+        <code>                    string
+    <strong>textArea</strong>($name, $value, $style = &#039;margin-top: 5px; width: 90%&#039;, $rows = &#039;3&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a text area</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>text area name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>text area value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$style</td>
+                <td>text area style</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$rows</td>
+                <td>text area rows</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>text area HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_textEditor">
+        <div class="location">at         line 98</div>
+        <code>                    string
+    <strong>textEditor</strong>($name, $value, $toolbarname = &#039;dolibarr_details&#039;, $height = 100)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a text area with editor (if WYSIWYG editor module is activated)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>text area name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>text area value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$toolbarname</td>
+                <td>toolbar name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$height</td>
+                <td>text area height</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>text area HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_numberInput">
+        <div class="location">at         line 118</div>
+        <code>                    string
+    <strong>numberInput</strong>($name, $value, $min = 0, $max = 100)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a number input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>input minimum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>input maximum number</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>input HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_rangeInput">
+        <div class="location">at         line 132</div>
+        <code>                    string
+    <strong>rangeInput</strong>($name, $value, $min = 0, $max = 100)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a range input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>input minimum value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>input maximum value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>input HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_dateInput">
+        <div class="location">at         line 145</div>
+        <code>                    string
+    <strong>dateInput</strong>($name, $value, $addnowlink = 1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a date input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$addnowlink</td>
+                <td>add now link</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>input HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_listInput">
+        <div class="location">at         line 159</div>
+        <code>                    string
+    <strong>listInput</strong>($name, $values, $selected, $show_empty = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$values</td>
+                <td>list values</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>list selected value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$show_empty</td>
+                <td>show empty value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>list HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_radioList">
+        <div class="location">at         line 180</div>
+        <code>                    string
+    <strong>radioList</strong>($name, $values, $selected, $add_br = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a radio list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$values</td>
+                <td>list values</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>list selected value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$add_br</td>
+                <td>add a line break in the end</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>list HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkList">
+        <div class="location">at         line 218</div>
+        <code>                    string
+    <strong>checkList</strong>($name, $values, $selected, $add_br = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a check list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$values</td>
+                <td>list values</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>list selected value(s)</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$add_br</td>
+                <td>add a line break in the end</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>list HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_colorInput">
+        <div class="location">at         line 254</div>
+        <code>                    string
+    <strong>colorInput</strong>($name, $value)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return a color input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>input value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>input HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_productList">
+        <div class="location">at         line 267</div>
+        <code>                    string
+    <strong>productList</strong>($name, $value, $show_empty = &#039;1&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return products list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$value</td>
+                <td>list value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$show_empty</td>
+                <td>show empty line or not, '1' if yes '' if no, 'Your text' if you wanna show some text</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>list HTML</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

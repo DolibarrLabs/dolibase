@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>Widget | Dolibase Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:Widget" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            Widget
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>Widget</strong>        extends ModeleBoxes
+</p>
+
+        
+    
+
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_boxlabel">
+                                                                                <a href="Widget.html">Widget</a>
+                </td>
+                <td>$boxlabel</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_boximg">
+                                                                                <a href="Widget.html">Widget</a>
+                </td>
+                <td>$boximg</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_position">
+                                                                                <a href="Widget.html">Widget</a>
+                </td>
+                <td>$position</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_enabled">
+                                                                                <a href="Widget.html">Widget</a>
+                </td>
+                <td>$enabled</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>($db, $param = &#039;&#039;)
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTitle">setTitle</a>($title, $max = 5)
+        
+                                            <p>Set widget title</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setLink">setLink</a>($link, $picture, $tooltip = &#039;&#039;, $target = &#039;_self&#039;, $class = &#039;center&quot; style=&quot;margin-right: 5px;&#039;)
+        
+                                            <p>Set widget link</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addContent">addContent</a>($text, $attr = &#039;align=&quot;center&quot;&#039;, $clean_text = false, $max_length = 0, $first_col_attr = &#039;&#039;)
+        
+                                            <p>Add content to widget</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_newLine">newLine</a>()
+        
+                                            <p>Add a new line to widget</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    void
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_showBox">showBox</a>($head = null, $contents = null, $nooutput = 0)
+        
+                                            <p>Method to show box. Called by Dolibarr eatch time it wants to display the box.</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 59</div>
+        <code>                    
+    <strong>__construct</strong>($db, $param = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$db</td>
+                <td>Database handler</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$param</td>
+                <td>More widget options</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTitle">
+        <div class="location">at         line 87</div>
+        <code>                    
+    <strong>setTitle</strong>($title, $max = 5)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set widget title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>widget title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>maximum number of rows to show (will be added to translated title if so)</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setLink">
+        <div class="location">at         line 124</div>
+        <code>                    
+    <strong>setLink</strong>($link, $picture, $tooltip = &#039;&#039;, $target = &#039;_self&#039;, $class = &#039;center&quot; style=&quot;margin-right: 5px;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set widget link</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$link</td>
+                <td>widget link</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>link picture</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$tooltip</td>
+                <td>tooltip text</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$target</td>
+                <td>link target, use '' or '_blank' to open in a new window / tab</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$class</td>
+                <td>link css class</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addContent">
+        <div class="location">at         line 144</div>
+        <code>                    
+    <strong>addContent</strong>($text, $attr = &#039;align=&quot;center&quot;&#039;, $clean_text = false, $max_length = 0, $first_col_attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add content to widget</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$text</td>
+                <td>text to show</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>element attributes (align, colspan, ...)</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$clean_text</td>
+                <td>allow HTML cleaning &amp; truncation</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max_length</td>
+                <td>maximum text length (0 = disabled)</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$first_col_attr</td>
+                <td>first column attributes</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_newLine">
+        <div class="location">at         line 185</div>
+        <code>                    
+    <strong>newLine</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new line to widget</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showBox">
+        <div class="location">at         line 199</div>
+        <code>                    void
+    <strong>showBox</strong>($head = null, $contents = null, $nooutput = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Method to show box. Called by Dolibarr eatch time it wants to display the box.</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$head</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$contents</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$nooutput</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

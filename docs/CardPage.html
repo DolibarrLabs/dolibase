@@ -1,0 +1,3695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>CardPage | Dolibase Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:CardPage" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            CardPage
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>CardPage</strong>        extends <a href="CreatePage.html">CreatePage</a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>CardPage class</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_head">
+                                        protected                                        string
+                </td>
+                <td>$head</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_head">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_title">
+                                        protected                                        string
+                </td>
+                <td>$title</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_title">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_access_permission">
+                                        protected                                        string
+                </td>
+                <td>$access_permission</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_access_permission">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs">
+                                        protected                                        array
+                </td>
+                <td>$tabs</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_main_subtitle">
+                                        protected                                        array
+                </td>
+                <td>$main_subtitle</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_main_subtitle">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs_picture">
+                                        protected                                        string
+                </td>
+                <td>$tabs_picture</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs_picture">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs_title">
+                                        protected                                        string
+                </td>
+                <td>$tabs_title</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs_title">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_active_tab">
+                                        protected                                        string
+                </td>
+                <td>$active_tab</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_active_tab">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_close_form">
+                                        protected                                        boolean
+                </td>
+                <td>$close_form</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_close_form">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_close_table">
+                                        protected                                        boolean
+                </td>
+                <td>$close_table</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_close_table">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_add_fiche_end">
+                                        protected                                        boolean
+                </td>
+                <td>$add_fiche_end</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_add_fiche_end">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_rights_class">
+                                        protected                                        string
+                </td>
+                <td>$rights_class</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_rights_class">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_modulepart">
+                                        protected                                        string
+                </td>
+                <td>$modulepart</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_modulepart">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_form">
+                                                                                object
+                </td>
+                <td>$form</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_form">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_body">
+                                        protected                                        string
+                </td>
+                <td>$body</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_body">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fields">
+                                                                                array
+                </td>
+                <td>$fields</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_fields">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_extrafields">
+                                        protected                                        object
+                </td>
+                <td>$extrafields</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="CreatePage.html#property_extrafields">CreatePage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_edit_permission">
+                                        protected                                        string
+                </td>
+                <td>$edit_permission</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_delete_permission">
+                                        protected                                        string
+                </td>
+                <td>$delete_permission</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_close_buttons_div">
+                                        protected                                        boolean
+                </td>
+                <td>$close_buttons_div</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_show_documents">
+                                        protected                                        boolean
+                </td>
+                <td>$show_documents</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_const_name_prefix">
+                                        protected                                        string
+                </td>
+                <td>$const_name_prefix</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_sub_permission">
+                                        protected                                        string
+                </td>
+                <td>$sub_permission</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_mail_subject">
+                                        protected                                        string
+                </td>
+                <td>$mail_subject</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_mail_template">
+                                        protected                                        string
+                </td>
+                <td>$mail_template</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_mail_substitutions">
+                                        protected                                        array
+                </td>
+                <td>$mail_substitutions</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_enable_mail_delivery_receipt">
+                                        protected                                        boolean
+                </td>
+                <td>$enable_mail_delivery_receipt</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>($page_title, $access_perm = &#039;&#039;, $edit_perm = &#039;&#039;, $delete_perm = &#039;&#039;, $show_documents = false, $enable_save_as = false, $const_name_prefix = &#039;&#039;, $sub_permission = &#039;&#039;)
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTitle">setTitle</a>($page_title)
+        
+                                            <p>Set page title</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMainSubtitle">setMainSubtitle</a>($title, $picture = &#039;title_generic.png&#039;)
+        
+                                            <p>Set page main subtitle</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setMainSubtitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadLang">loadLang</a>($lang_file, $is_module_file = true)
+        
+                                            <p>Load a language file</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_loadLang">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendToHead">appendToHead</a>($content)
+        
+                                            <p>Append content to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_appendToHead">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addJsFile">addJsFile</a>($js_file)
+        
+                                            <p>Add js file to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addJsFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCssFile">addCssFile</a>($css_file)
+        
+                                            <p>Add css file to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addCssFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addTab">addTab</a>($title, $url, $is_active = false, $position = -1)
+        
+                                            <p>Add a tab to the page</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addTab">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTabsPicture">setTabsPicture</a>($picture)
+        
+                                            <p>Set tabs picture</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTabsPicture">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTabsTitle">setTabsTitle</a>($title)
+        
+                                            <p>Set tabs title</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTabsTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateTabs">generateTabs</a>($noheader = 0)
+        
+                                            <p>Generate tabs</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_generateTabs">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addSubTitle">addSubTitle</a>($title, $picture = &#039;title_generic.png&#039;, $morehtmlright = &#039;&#039;)
+        
+                                            <p>Add a subtitle</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addSubTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openForm">openForm</a>($action = &#039;create&#039;)
+        
+                                            <p>Open a form only if not already opened</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openForm">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeForm">closeForm</a>()
+        
+                                            <p>Close an opened form</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeForm">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openTable">openTable</a>($header_columns = array(), $attr = &#039;class=&quot;noborder allwidth&quot;&#039;, $print_fiche_head = false, $summary = &#039;&#039;)
+        
+                                            <p>Opens a new html table</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openTable">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeTable">closeTable</a>($print_fiche_end = false)
+        
+                                            <p>Close an opened html table</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeTable">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openRow">openRow</a>($odd = true, $more_attr = &#039;&#039;)
+        
+                                            <p>Open a table row</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openRow">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeRow">closeRow</a>()
+        
+                                            <p>Close a table row</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeRow">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addColumn">addColumn</a>($content, $attr = &#039;&#039;)
+        
+                                            <p>Add a table column</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addColumn">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addLineBreak">addLineBreak</a>($repeat = 0)
+        
+                                            <p>Add a line break (or many)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addLineBreak">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadDefaultActions">loadDefaultActions</a>()
+        
+                                            <p>Load default actions</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_loadDefaultActions">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_begin">begin</a>()
+        
+                                            <p>Generate page begining</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generate">generate</a>()
+        
+                                            <p>Generate page body</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_generate">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_redirect">redirect</a>($url)
+        
+                                            <p>Redirect to a url (alias for dolibase_redirect function)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_redirect">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_end">end</a>($object = &#039;&#039;)
+        
+                                            <p>Generate page end</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkFields">checkFields</a>()
+        
+                                            <p>Check page fields</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_checkFields">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean|int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkField">checkField</a>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
+        
+                                            <p>Check specified field</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_checkField">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Field.html">Field</a>|empty
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getField">getField</a>($field_name)
+        
+                                            <p>Return specified field if found</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_getField">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_askForConfirmation">askForConfirmation</a>($url, $title, $question, $action, $question_param = &#039;&#039;)
+        
+                                            <p>Show a confirmation message</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_askForConfirmation">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendToBody">appendToBody</a>($content)
+        
+                                            <p>Append a content to page body</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_appendToBody">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkExtraFields">checkExtraFields</a>($object)
+        
+                                            <p>Check page extrafields</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_checkExtraFields">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addField">addField</a>($field_name, $field_content, $is_required = false, $field_summary = &#039;&#039;, $more_attr = &#039;&#039;)
+        
+                                            <p>add a table field</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addTextField">addTextField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $input_size = 20)
+        
+                                            <p>add a table field with a text input</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addTextField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addTextAreaField">addTextAreaField</a>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $valign = &#039;top&#039;)
+        
+                                            <p>add a table field with a text area</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addTextAreaField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addNumberField">addNumberField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $min = 0, $max = 100)
+        
+                                            <p>add a table field with a number input</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addNumberField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addDateField">addDateField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
+        
+                                            <p>add a table field with a date picker</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addDateField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addListField">addListField</a>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $show_empty = 0)
+        
+                                            <p>add a table field with a list</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addListField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addRadioListField">addRadioListField</a>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
+        
+                                            <p>add a table field with a radio input(s)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addRadioListField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCheckListField">addCheckListField</a>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
+        
+                                            <p>add a table field with a checkbox input(s)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addCheckListField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addColorField">addColorField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
+        
+                                            <p>add a table field with a color picker</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addColorField">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addExtraFields">addExtraFields</a>($object)
+        
+                                            <p>add extra fields</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addExtraFields">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateFormButtons">generateFormButtons</a>()
+        
+                                            <p>generate form buttons</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_generateFormButtons">CreatePage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_canEdit">canEdit</a>()
+        
+                                            <p>Return if the current user can edit the page or not</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_canDelete">canDelete</a>()
+        
+                                            <p>Return if the current user can delete the object or not</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMailSubject">setMailSubject</a>($mail_subject)
+        
+                                            <p>Set mail subject</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMailTemplate">setMailTemplate</a>($mail_template)
+        
+                                            <p>Set mail template</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_enableMailDeliveryReceipt">enableMailDeliveryReceipt</a>()
+        
+                                            <p>Enables mail delivery receipt</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMailSubstitutions">setMailSubstitutions</a>($mail_substitutions_array)
+        
+                                            <p>Set mail substitutions</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addButton">addButton</a>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
+        
+                                            <p>Add a button to the page</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addListButton">addListButton</a>($name, $buttons = array(), $class = &#039;butAction&#039;, $close_parent_div = false)
+        
+                                            <p>Add a list button to the page</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addSaveAsButton">addSaveAsButton</a>($close_parent_div = false)
+        
+                                            <p>Add save as button to the page</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_showField">showField</a>($field_name, $field_content, $is_editable = false, $edit_link = &#039;&#039;, $attr = &#039;&#039;)
+        
+                                            <p>show a table field</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_showRefField">showRefField</a>($field_name, $object, $list_link = &#039;&#039;)
+        
+                                            <p>show reference/Ref. field</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_showExtraFields">showExtraFields</a>($object)
+        
+                                            <p>show extra fields</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_updateExtraFields">updateExtraFields</a>($object)
+        
+                                            <p>update extra fields</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_showBanner">showBanner</a>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
+        
+                                            <p>show banner</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editField">editField</a>($field_name, $field_content, $action_name)
+        
+                                            <p>Edit a field</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editTextField">editTextField</a>($field_name, $input_name, $input_value = &#039;&#039;, $input_size = 20, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a text input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editTextAreaField">editTextAreaField</a>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a text area</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editNumberField">editNumberField</a>($field_name, $input_name, $input_value = &#039;&#039;, $min = 0, $max = 100, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a number input</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editDateField">editDateField</a>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_date_&#039;)
+        
+                                            <p>add a table field with a date picker</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editListField">editListField</a>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $show_empty = 0, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a list</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editRadioListField">editRadioListField</a>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a radio input(s)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editCheckListField">editCheckListField</a>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a checkbox input(s)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_editColorField">editColorField</a>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        
+                                            <p>add a table field with a color picker</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printRelatedObjects">printRelatedObjects</a>($object)
+        
+                                            <p>Print related objects block</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printDocuments">printDocuments</a>($object)
+        
+                                            <p>Print documents block</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printMailForm">printMailForm</a>($object)
+        
+                                            <p>Print mail form</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 81</div>
+        <code>                    
+    <strong>__construct</strong>($page_title, $access_perm = &#039;&#039;, $edit_perm = &#039;&#039;, $delete_perm = &#039;&#039;, $show_documents = false, $enable_save_as = false, $const_name_prefix = &#039;&#039;, $sub_permission = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$page_title</td>
+                <td>HTML page title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$access_perm</td>
+                <td>Access permission</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$edit_perm</td>
+                <td>Edit permission</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$delete_perm</td>
+                <td>Delete permission</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$show_documents</td>
+                <td>Show documents/linked files block</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$enable_save_as</td>
+                <td>Enable save as feature</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name_prefix</td>
+                <td>Constant name prefix</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$sub_permission</td>
+                <td>Module sub permission</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTitle">
+        <div class="location">in <a href="Page.html#method_setTitle">Page</a> at         line 114</div>
+        <code>                    
+    <strong>setTitle</strong>($page_title)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set page title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$page_title</td>
+                <td>Page title</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMainSubtitle">
+        <div class="location">in <a href="Page.html#method_setMainSubtitle">Page</a> at         line 125</div>
+        <code>                    
+    <strong>setMainSubtitle</strong>($title, $picture = &#039;title_generic.png&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set page main subtitle</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>subtitle picture</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadLang">
+        <div class="location">in <a href="Page.html#method_loadLang">Page</a> at         line 136</div>
+        <code>                    
+    <strong>loadLang</strong>($lang_file, $is_module_file = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load a language file</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$lang_file</td>
+                <td>Language file</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_module_file</td>
+                <td>File is in module 'langs' directory or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendToHead">
+        <div class="location">in <a href="Page.html#method_appendToHead">Page</a> at         line 152</div>
+        <code>                    
+    <strong>appendToHead</strong>($content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Append content to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>content to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addJsFile">
+        <div class="location">in <a href="Page.html#method_addJsFile">Page</a> at         line 162</div>
+        <code>                    
+    <strong>addJsFile</strong>($js_file)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add js file to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$js_file</td>
+                <td>Javascript file</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCssFile">
+        <div class="location">in <a href="Page.html#method_addCssFile">Page</a> at         line 174</div>
+        <code>                    
+    <strong>addCssFile</strong>($css_file)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add css file to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$css_file</td>
+                <td>CSS file</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTab">
+        <div class="location">in <a href="Page.html#method_addTab">Page</a> at         line 189</div>
+        <code>                    
+    <strong>addTab</strong>($title, $url, $is_active = false, $position = -1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a tab to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>tab title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td>tab url</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_active</td>
+                <td>should this tab be the activated one (true or false)</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$position</td>
+                <td>tab position (-1 means add to the end)</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTabsPicture">
+        <div class="location">in <a href="Page.html#method_setTabsPicture">Page</a> at         line 219</div>
+        <code>                    
+    <strong>setTabsPicture</strong>($picture)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set tabs picture</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>tabs picture</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTabsTitle">
+        <div class="location">in <a href="Page.html#method_setTabsTitle">Page</a> at         line 229</div>
+        <code>                    
+    <strong>setTabsTitle</strong>($title)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set tabs title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>tabs title</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateTabs">
+        <div class="location">in <a href="Page.html#method_generateTabs">Page</a> at         line 241</div>
+        <code>            protected        
+    <strong>generateTabs</strong>($noheader = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate tabs</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$noheader</td>
+                <td>-1 or 0=Add tab header, 1=no tab header.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addSubTitle">
+        <div class="location">in <a href="Page.html#method_addSubTitle">Page</a> at         line 273</div>
+        <code>                    
+    <strong>addSubTitle</strong>($title, $picture = &#039;title_generic.png&#039;, $morehtmlright = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a subtitle</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>subtitle title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>subtitle picture</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to show on the right</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openForm">
+        <div class="location">in <a href="Page.html#method_openForm">Page</a> at         line 287</div>
+        <code>                    
+    <strong>openForm</strong>($action = &#039;create&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open a form only if not already opened</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$action</td>
+                <td>form action</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeForm">
+        <div class="location">in <a href="Page.html#method_closeForm">Page</a> at         line 304</div>
+        <code>                    
+    <strong>closeForm</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close an opened form</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openTable">
+        <div class="location">in <a href="Page.html#method_openTable">Page</a> at         line 327</div>
+        <code>                    
+    <strong>openTable</strong>($header_columns = array(), $attr = &#039;class=&quot;noborder allwidth&quot;&#039;, $print_fiche_head = false, $summary = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Opens a new html table</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$header_columns</td>
+                <td>table header columns, e.: array(
+                                                        array('name' => 'Column1', 'attr' => 'align="center"'),
+                                                        array('name' => 'Column2', 'attr' => 'align="center" width="20"')
+                                                    )</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>table attributes</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$print_fiche_head</td>
+                <td>print Dolibarr fiche head</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$summary</td>
+                <td>table summary</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeTable">
+        <div class="location">in <a href="Page.html#method_closeTable">Page</a> at         line 363</div>
+        <code>                    
+    <strong>closeTable</strong>($print_fiche_end = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close an opened html table</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$print_fiche_end</td>
+                <td>print Dolibarr fiche end</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openRow">
+        <div class="location">in <a href="Page.html#method_openRow">Page</a> at         line 387</div>
+        <code>                    
+    <strong>openRow</strong>($odd = true, $more_attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open a table row</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$odd</td>
+                <td>row is odd or peer</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$more_attr</td>
+                <td>more attributes to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeRow">
+        <div class="location">in <a href="Page.html#method_closeRow">Page</a> at         line 398</div>
+        <code>                    
+    <strong>closeRow</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close a table row</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addColumn">
+        <div class="location">in <a href="Page.html#method_addColumn">Page</a> at         line 409</div>
+        <code>                    
+    <strong>addColumn</strong>($content, $attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a table column</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>column content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>column attributes</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addLineBreak">
+        <div class="location">in <a href="Page.html#method_addLineBreak">Page</a> at         line 419</div>
+        <code>                    
+    <strong>addLineBreak</strong>($repeat = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a line break (or many)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$repeat</td>
+                <td>repeat line breaks</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadDefaultActions">
+        <div class="location">in <a href="Page.html#method_loadDefaultActions">Page</a> at         line 432</div>
+        <code>            protected        
+    <strong>loadDefaultActions</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load default actions</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_begin">
+        <div class="location">at         line 733</div>
+        <code>                    
+    <strong>begin</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page begining</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generate">
+        <div class="location">in <a href="FormPage.html#method_generate">FormPage</a> at         line 189</div>
+        <code>            protected        
+    <strong>generate</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page body</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirect">
+        <div class="location">in <a href="Page.html#method_redirect">Page</a> at         line 474</div>
+        <code>                    
+    <strong>redirect</strong>($url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Redirect to a url (alias for dolibase_redirect function)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_end">
+        <div class="location">at         line 748</div>
+        <code>                    
+    <strong>end</strong>($object = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page end</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkFields">
+        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         line 71</div>
+        <code>                    boolean
+    <strong>checkFields</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check page fields</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true or false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkField">
+        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         line 91</div>
+        <code>                    boolean|int
+    <strong>checkField</strong>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check specified field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>Field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_trans</td>
+                <td>Field translation</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_validation_rules</td>
+                <td>Field validatin rules</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$return_err_number</td>
+                <td>return errors number or boolean value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean|int</td>
+            <td>true/false | errors number</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getField">
+        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         line 148</div>
+        <code>            protected        <a href="Field.html">Field</a>|empty
+    <strong>getField</strong>($field_name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return specified field if found</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Field.html">Field</a>|empty</td>
+            <td>field object or empty value</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_askForConfirmation">
+        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         line 168</div>
+        <code>                    
+    <strong>askForConfirmation</strong>($url, $title, $question, $action, $question_param = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Show a confirmation message</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td>Page url</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>Message title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$question</td>
+                <td>Message question / content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action</td>
+                <td>Action to do after confirmation</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$question_param</td>
+                <td>Question parameter</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendToBody">
+        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         line 180</div>
+        <code>                    
+    <strong>appendToBody</strong>($content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Append a content to page body</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>content to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkExtraFields">
+        <div class="location">in <a href="CreatePage.html#method_checkExtraFields">CreatePage</a> at         line 54</div>
+        <code>                    boolean
+    <strong>checkExtraFields</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check page extrafields</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true or false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addField">
+        <div class="location">in <a href="CreatePage.html#method_addField">CreatePage</a> at         line 74</div>
+        <code>                    
+    <strong>addField</strong>($field_name, $field_content, $is_required = false, $field_summary = &#039;&#039;, $more_attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_content</td>
+                <td>field content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$more_attr</td>
+                <td>more attributes to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTextField">
+        <div class="location">in <a href="CreatePage.html#method_addTextField">CreatePage</a> at         line 96</div>
+        <code>                    
+    <strong>addTextField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $input_size = 20)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a text input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_size</td>
+                <td>input size</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTextAreaField">
+        <div class="location">in <a href="CreatePage.html#method_addTextAreaField">CreatePage</a> at         line 115</div>
+        <code>                    
+    <strong>addTextAreaField</strong>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $valign = &#039;top&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a text area</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$text_area_name</td>
+                <td>text area name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$text_area_value</td>
+                <td>text area value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$toolbarname</td>
+                <td>Editor toolbar name, values: 'Full', dolibarr_details', 'dolibarr_notes', 'dolibarr_mailings', 'dolibarr_readonly'</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$height</td>
+                <td>text area height</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$valign</td>
+                <td>field vertical align</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addNumberField">
+        <div class="location">in <a href="CreatePage.html#method_addNumberField">CreatePage</a> at         line 134</div>
+        <code>                    
+    <strong>addNumberField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $min = 0, $max = 100)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a number input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>input minimum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>input maximum number</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addDateField">
+        <div class="location">in <a href="CreatePage.html#method_addDateField">CreatePage</a> at         line 152</div>
+        <code>                    
+    <strong>addDateField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a date picker</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addListField">
+        <div class="location">in <a href="CreatePage.html#method_addListField">CreatePage</a> at         line 170</div>
+        <code>                    
+    <strong>addListField</strong>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $show_empty = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_choices</td>
+                <td>list choices, e.: array('choice_1' => 'Choice 1', 'choice_2' => 'Choice 2')</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected_choice</td>
+                <td>selected choice</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$show_empty</td>
+                <td>show empty value</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRadioListField">
+        <div class="location">in <a href="CreatePage.html#method_addRadioListField">CreatePage</a> at         line 188</div>
+        <code>                    
+    <strong>addRadioListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a radio input(s)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_name</td>
+                <td>radio inputs name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_list</td>
+                <td>list of radio inputs, e.: array('radio_1' => 'Radio 1', 'radio_2' => 'Radio 2')</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>selected radio input</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$valign</td>
+                <td>field vertical align</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCheckListField">
+        <div class="location">in <a href="CreatePage.html#method_addCheckListField">CreatePage</a> at         line 207</div>
+        <code>                    
+    <strong>addCheckListField</strong>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a checkbox input(s)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$check_name</td>
+                <td>checkbox inputs name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$check_list</td>
+                <td>list of checkbox inputs, e.: array('check_1' => 'Checkbox 1', 'check_2' => 'Checkbox 2')</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>selected checkbox input</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$valign</td>
+                <td>field vertical align</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addColorField">
+        <div class="location">in <a href="CreatePage.html#method_addColorField">CreatePage</a> at         line 224</div>
+        <code>                    
+    <strong>addColorField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a color picker</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_required</td>
+                <td>is field required or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_summary</td>
+                <td>field summary</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addExtraFields">
+        <div class="location">in <a href="CreatePage.html#method_addExtraFields">CreatePage</a> at         line 236</div>
+        <code>                    
+    <strong>addExtraFields</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add extra fields</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateFormButtons">
+        <div class="location">in <a href="CreatePage.html#method_generateFormButtons">CreatePage</a> at         line 256</div>
+        <code>                    
+    <strong>generateFormButtons</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>generate form buttons</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canEdit">
+        <div class="location">at         line 120</div>
+        <code>                    boolean
+    <strong>canEdit</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return if the current user can edit the page or not</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true or false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_canDelete">
+        <div class="location">at         line 130</div>
+        <code>                    boolean
+    <strong>canDelete</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return if the current user can delete the object or not</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true or false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMailSubject">
+        <div class="location">at         line 140</div>
+        <code>                    
+    <strong>setMailSubject</strong>($mail_subject)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set mail subject</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$mail_subject</td>
+                <td>Mail subject string</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMailTemplate">
+        <div class="location">at         line 150</div>
+        <code>                    
+    <strong>setMailTemplate</strong>($mail_template)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set mail template</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$mail_template</td>
+                <td>Mail template string</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_enableMailDeliveryReceipt">
+        <div class="location">at         line 159</div>
+        <code>                    
+    <strong>enableMailDeliveryReceipt</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Enables mail delivery receipt</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMailSubstitutions">
+        <div class="location">at         line 169</div>
+        <code>                    
+    <strong>setMailSubstitutions</strong>($mail_substitutions_array)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set mail substitutions</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$mail_substitutions_array</td>
+                <td>Mail substitutions array</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addButton">
+        <div class="location">at         line 183</div>
+        <code>                    
+    <strong>addButton</strong>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a button to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>button name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$href</td>
+                <td>button href</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$target</td>
+                <td>button target</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$class</td>
+                <td>button class</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$close_parent_div</td>
+                <td>should close parent div or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addListButton">
+        <div class="location">at         line 210</div>
+        <code>                    
+    <strong>addListButton</strong>($name, $buttons = array(), $class = &#039;butAction&#039;, $close_parent_div = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a list button to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>button name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$buttons</td>
+                <td>buttons list</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$class</td>
+                <td>button class</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$close_parent_div</td>
+                <td>should close parent div or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addSaveAsButton">
+        <div class="location">at         line 255</div>
+        <code>                    
+    <strong>addSaveAsButton</strong>($close_parent_div = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add save as button to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$close_parent_div</td>
+                <td>should close parent div or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showField">
+        <div class="location">at         line 274</div>
+        <code>                    
+    <strong>showField</strong>($field_name, $field_content, $is_editable = false, $edit_link = &#039;&#039;, $attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>show a table field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_content</td>
+                <td>field content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_editable</td>
+                <td>is field editable or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$edit_link</td>
+                <td>edition link</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>HTML attributes</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showRefField">
+        <div class="location">at         line 296</div>
+        <code>                    
+    <strong>showRefField</strong>($field_name, $object, $list_link = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>show reference/Ref. field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>object</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_link</td>
+                <td>link to list</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showExtraFields">
+        <div class="location">at         line 311</div>
+        <code>                    
+    <strong>showExtraFields</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>show extra fields</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_updateExtraFields">
+        <div class="location">at         line 334</div>
+        <code>                    
+    <strong>updateExtraFields</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>update extra fields</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_showBanner">
+        <div class="location">at         line 363</div>
+        <code>                    
+    <strong>showBanner</strong>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>show banner</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>object</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_link</td>
+                <td>link to list</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlleft</td>
+                <td>more html in the left</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editField">
+        <div class="location">at         line 381</div>
+        <code>                    
+    <strong>editField</strong>($field_name, $field_content, $action_name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Edit a field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_content</td>
+                <td>field content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_name</td>
+                <td>action name</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editTextField">
+        <div class="location">at         line 409</div>
+        <code>                    
+    <strong>editTextField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $input_size = 20, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a text input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_size</td>
+                <td>input size</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editTextAreaField">
+        <div class="location">at         line 426</div>
+        <code>                    
+    <strong>editTextAreaField</strong>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a text area</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$text_area_name</td>
+                <td>text area name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$text_area_value</td>
+                <td>text area value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$toolbarname</td>
+                <td>Editor toolbar name, values: 'Full', dolibarr_details', 'dolibarr_notes', 'dolibarr_mailings', 'dolibarr_readonly'</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$height</td>
+                <td>text area height</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editNumberField">
+        <div class="location">at         line 443</div>
+        <code>                    
+    <strong>editNumberField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $min = 0, $max = 100, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a number input</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>input minimum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>input maximum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editDateField">
+        <div class="location">at         line 460</div>
+        <code>                    
+    <strong>editDateField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_date_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a date picker</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editListField">
+        <div class="location">at         line 477</div>
+        <code>                    
+    <strong>editListField</strong>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $show_empty = 0, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a list</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_name</td>
+                <td>list name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list_choices</td>
+                <td>list choices, e.: array('choice_1' => 'Choice 1', 'choice_2' => 'Choice 2')</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected_choice</td>
+                <td>selected choice</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$show_empty</td>
+                <td>show empty value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editRadioListField">
+        <div class="location">at         line 493</div>
+        <code>                    
+    <strong>editRadioListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a radio input(s)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_name</td>
+                <td>radio inputs name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_list</td>
+                <td>list of radio inputs, e.: array('radio_1' => 'Radio 1', 'radio_2' => 'Radio 2')</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td>selected radio input</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editCheckListField">
+        <div class="location">at         line 509</div>
+        <code>                    
+    <strong>editCheckListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a checkbox input(s)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_name</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$radio_list</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$selected</td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_editColorField">
+        <div class="location">at         line 524</div>
+        <code>                    
+    <strong>editColorField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>add a table field with a color picker</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_name</td>
+                <td>input name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$input_value</td>
+                <td>input value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action_prefix</td>
+                <td>action prefix</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printRelatedObjects">
+        <div class="location">at         line 537</div>
+        <code>            protected        
+    <strong>printRelatedObjects</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print related objects block</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object
+Note: To enable the linking feature, you must define a constant in each module as 'your_module_right_class_in_capital_letters'.'_ENABLE_EXPANDED_LINKS'</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printDocuments">
+        <div class="location">at         line 577</div>
+        <code>            protected        
+    <strong>printDocuments</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print documents block</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printMailForm">
+        <div class="location">at         line 615</div>
+        <code>            protected        
+    <strong>printMailForm</strong>($object)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print mail form</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$object</td>
+                <td>Object</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>

@@ -1,0 +1,2347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow, all" />
+    <title>SetupPage | Dolibase Documentation</title>
+
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/sami.css">
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/typeahead.min.js"></script>
+        <script src="sami.js"></script>
+        <meta name="MobileOptimized" content="width">
+        <meta name="HandheldFriendly" content="true">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    
+    
+    </head>
+
+    <body id="class" data-name="class:SetupPage" data-root-path="">
+            <div id="content">
+        <div id="left-column">
+                <div id="control-panel">
+                <script>
+            $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
+        </script>
+        <form id="search-form" action="search.html" method="GET">
+            <span class="glyphicon glyphicon-search"></span>
+            <input name="search"
+                   class="typeahead form-control"
+                   type="search"
+                   placeholder="Search">
+        </form>
+    </div>
+
+                <div id="api-tree"></div>
+
+        </div>
+        <div id="right-column">
+                <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-elements">
+                <ul class="nav navbar-nav">
+                    <li><a href="classes.html">Classes</a></li>
+                                        <li><a href="interfaces.html">Interfaces</a></li>
+                    <li><a href="traits.html">Traits</a></li>
+                    <li><a href="doc-index.html">Index</a></li>
+                    <li><a href="search.html">Search</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+                            <div id="page-content">
+                
+    <div class="page-header">
+        <h1>
+            SetupPage
+                
+        </h1>
+    </div>
+
+    <p>    class
+    <strong>SetupPage</strong>        extends <a href="FormPage.html">FormPage</a>
+</p>
+
+        
+    
+
+            <div class="description">
+            <p>SetupPage class</p>                                </div>
+    
+    
+    
+            <h2>Properties</h2>
+
+            <table class="table table-condensed">
+                    <tr>
+                <td class="type" id="property_head">
+                                        protected                                        string
+                </td>
+                <td>$head</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_head">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_title">
+                                        protected                                        string
+                </td>
+                <td>$title</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_title">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_access_permission">
+                                        protected                                        string
+                </td>
+                <td>$access_permission</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_access_permission">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs">
+                                        protected                                        array
+                </td>
+                <td>$tabs</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_main_subtitle">
+                                        protected                                        array
+                </td>
+                <td>$main_subtitle</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_main_subtitle">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs_picture">
+                                        protected                                        string
+                </td>
+                <td>$tabs_picture</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs_picture">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_tabs_title">
+                                        protected                                        string
+                </td>
+                <td>$tabs_title</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_tabs_title">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_active_tab">
+                                        protected                                        string
+                </td>
+                <td>$active_tab</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_active_tab">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_close_form">
+                                        protected                                        boolean
+                </td>
+                <td>$close_form</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_close_form">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_close_table">
+                                        protected                                        boolean
+                </td>
+                <td>$close_table</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_close_table">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_add_fiche_end">
+                                        protected                                        boolean
+                </td>
+                <td>$add_fiche_end</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_add_fiche_end">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_rights_class">
+                                        protected                                        string
+                </td>
+                <td>$rights_class</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_rights_class">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_modulepart">
+                                        protected                                        string
+                </td>
+                <td>$modulepart</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="Page.html#property_modulepart">Page</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_form">
+                                                                                object
+                </td>
+                <td>$form</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_form">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_body">
+                                        protected                                        string
+                </td>
+                <td>$body</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_body">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_fields">
+                                                                                array
+                </td>
+                <td>$fields</td>
+                <td class="last"></td>
+                <td><small>from&nbsp;<a href="FormPage.html#property_fields">FormPage</a></small></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_odd">
+                                        protected                                        boolean
+                </td>
+                <td>$odd</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_const_name_prefix">
+                                        protected                                        string
+                </td>
+                <td>$const_name_prefix</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_num_model_const_name">
+                                        protected                                        string
+                </td>
+                <td>$num_model_const_name</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_doc_model_const_name">
+                                        protected                                        string
+                </td>
+                <td>$doc_model_const_name</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_doc_model_type">
+                                        protected                                        string
+                </td>
+                <td>$doc_model_type</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_doc_model_preview_picture">
+                                        protected                                        string
+                </td>
+                <td>$doc_model_preview_picture</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_doc_object_class">
+                                        protected                                        string
+                </td>
+                <td>$doc_object_class</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_doc_object_path">
+                                        protected                                        string
+                </td>
+                <td>$doc_object_path</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_disable_default_actions">
+                                        protected                                        boolean
+                </td>
+                <td>$disable_default_actions</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_title_link">
+                                        protected                                        string
+                </td>
+                <td>$title_link</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_add_extrafields_tab">
+                                        protected                                        boolean
+                </td>
+                <td>$add_extrafields_tab</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+            </table>
+
+    
+            <h2>Methods</h2>
+
+            <div class="container-fluid underlined">
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method___construct">__construct</a>($page_title = &#039;Setup&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $disable_default_actions = false, $add_extrafields_tab = false, $const_name_prefix = &#039;&#039;, $doc_model_type = &#039;&#039;, $doc_object_class = &#039;&#039;, $doc_object_path = &#039;&#039;)
+        
+                                            <p>Constructor</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTitle">setTitle</a>($page_title)
+        
+                                            <p>Set page title</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setMainSubtitle">setMainSubtitle</a>($title, $picture = &#039;title_generic.png&#039;)
+        
+                                            <p>Set page main subtitle</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setMainSubtitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadLang">loadLang</a>($lang_file, $is_module_file = true)
+        
+                                            <p>Load a language file</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_loadLang">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendToHead">appendToHead</a>($content)
+        
+                                            <p>Append content to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_appendToHead">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addJsFile">addJsFile</a>($js_file)
+        
+                                            <p>Add js file to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addJsFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCssFile">addCssFile</a>($css_file)
+        
+                                            <p>Add css file to page head</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addCssFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addTab">addTab</a>($title, $url, $is_active = false, $position = -1)
+        
+                                            <p>Add a tab to the page</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addTab">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTabsPicture">setTabsPicture</a>($picture)
+        
+                                            <p>Set tabs picture</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTabsPicture">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTabsTitle">setTabsTitle</a>($title)
+        
+                                            <p>Set tabs title</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_setTabsTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generateTabs">generateTabs</a>($noheader = -1)
+        
+                                            <p>Generate tabs</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addSubTitle">addSubTitle</a>($title, $picture = &#039;title_generic.png&#039;, $morehtmlright = &#039;&#039;)
+        
+                                            <p>Add a subtitle</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addSubTitle">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openForm">openForm</a>($action = &#039;create&#039;)
+        
+                                            <p>Open a form only if not already opened</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openForm">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeForm">closeForm</a>()
+        
+                                            <p>Close an opened form</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeForm">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openTable">openTable</a>($header_columns = array(), $attr = &#039;class=&quot;noborder allwidth&quot;&#039;, $print_fiche_head = false, $summary = &#039;&#039;)
+        
+                                            <p>Opens a new html table</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openTable">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeTable">closeTable</a>($print_fiche_end = false)
+        
+                                            <p>Close an opened html table</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeTable">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openRow">openRow</a>($odd = true, $more_attr = &#039;&#039;)
+        
+                                            <p>Open a table row</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_openRow">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeRow">closeRow</a>()
+        
+                                            <p>Close a table row</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_closeRow">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addColumn">addColumn</a>($content, $attr = &#039;&#039;)
+        
+                                            <p>Add a table column</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addColumn">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addLineBreak">addLineBreak</a>($repeat = 0)
+        
+                                            <p>Add a line break (or many)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addLineBreak">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_loadDefaultActions">loadDefaultActions</a>()
+        
+                                            <p>Load default actions</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_begin">begin</a>()
+        
+                                            <p>Generate page begining</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_begin">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_generate">generate</a>()
+        
+                                            <p>Generate page body</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_redirect">redirect</a>($url)
+        
+                                            <p>Redirect to a url (alias for dolibase_redirect function)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_redirect">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_end">end</a>()
+        
+                                            <p>Generate page end</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_end">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkFields">checkFields</a>()
+        
+                                            <p>Check page fields</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_checkFields">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    boolean|int
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_checkField">checkField</a>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
+        
+                                            <p>Check specified field</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_checkField">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    <a href="Field.html">Field</a>|empty
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getField">getField</a>($field_name)
+        
+                                            <p>Return specified field if found</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_getField">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_askForConfirmation">askForConfirmation</a>($url, $title, $question, $action, $question_param = &#039;&#039;)
+        
+                                            <p>Show a confirmation message</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_askForConfirmation">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_appendToBody">appendToBody</a>($content)
+        
+                                            <p>Append a content to page body</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_appendToBody">FormPage</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setTitleLink">setTitleLink</a>($link, $label, $enable = &#039;$user-&gt;admin&#039;)
+        
+                                            <p>Set Title link</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setDocModelPreviewPicture">setDocModelPreviewPicture</a>($picture)
+        
+                                            <p>Set Document model(s) preview picture</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_newOptionsTable">newOptionsTable</a>($first_column_name = &#039;Option&#039;)
+        
+                                            <p>Create a new table for options</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addOption">addOption</a>($option_desc, $option_content, $const_name = &#039;&#039;, $morehtmlright = &#039;&#039;, $width = 300, $form_enctype = &#039;&#039;)
+        
+                                            <p>Add a new option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addSwitchOption">addSwitchOption</a>($option_desc, $const_name, $disabled = false, $morehtmlright = &#039;&#039;)
+        
+                                            <p>Add a new switch option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addTextOption">addTextOption</a>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $size = 16, $width = 300)
+        
+                                            <p>Add a new text option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addNumberOption">addNumberOption</a>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
+        
+                                            <p>Add a new number only option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addRangeOption">addRangeOption</a>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
+        
+                                            <p>Add a new range option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addListOption">addListOption</a>($option_desc, $const_name, $list, $morehtmlright = &#039;&#039;, $width = 300)
+        
+                                            <p>Add a new list option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addColorOption">addColorOption</a>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $width = 300)
+        
+                                            <p>Add a new color picker option</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addButton">addButton</a>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
+        
+                                            <p>Add a button to the page</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printNumModels">printNumModels</a>($model_name = &#039;&#039;)
+        
+                                            <p>Print numbering models</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_printDocModels">printDocModels</a>()
+        
+                                            <p>Print document models</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+            </div>
+
+
+        <h2>Details</h2>
+
+            <div id="method-details">
+                    <div class="method-item">
+                    <h3 id="method___construct">
+        <div class="location">at         line 85</div>
+        <code>                    
+    <strong>__construct</strong>($page_title = &#039;Setup&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $disable_default_actions = false, $add_extrafields_tab = false, $const_name_prefix = &#039;&#039;, $doc_model_type = &#039;&#039;, $doc_object_class = &#039;&#039;, $doc_object_path = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Constructor</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$page_title</td>
+                <td>HTML page title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$access_perm</td>
+                <td>Access permission</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$disable_default_actions</td>
+                <td>Disable default actions</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$add_extrafields_tab</td>
+                <td>Add extrafields tab</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name_prefix</td>
+                <td>Constant name prefix</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$doc_model_type</td>
+                <td>Document model type</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$doc_object_class</td>
+                <td>Document object class</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$doc_object_path</td>
+                <td>Document object path</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTitle">
+        <div class="location">in <a href="Page.html#method_setTitle">Page</a> at         line 114</div>
+        <code>                    
+    <strong>setTitle</strong>($page_title)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set page title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$page_title</td>
+                <td>Page title</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setMainSubtitle">
+        <div class="location">in <a href="Page.html#method_setMainSubtitle">Page</a> at         line 125</div>
+        <code>                    
+    <strong>setMainSubtitle</strong>($title, $picture = &#039;title_generic.png&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set page main subtitle</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>subtitle picture</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadLang">
+        <div class="location">in <a href="Page.html#method_loadLang">Page</a> at         line 136</div>
+        <code>                    
+    <strong>loadLang</strong>($lang_file, $is_module_file = true)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load a language file</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$lang_file</td>
+                <td>Language file</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_module_file</td>
+                <td>File is in module 'langs' directory or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendToHead">
+        <div class="location">in <a href="Page.html#method_appendToHead">Page</a> at         line 152</div>
+        <code>                    
+    <strong>appendToHead</strong>($content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Append content to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>content to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addJsFile">
+        <div class="location">in <a href="Page.html#method_addJsFile">Page</a> at         line 162</div>
+        <code>                    
+    <strong>addJsFile</strong>($js_file)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add js file to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$js_file</td>
+                <td>Javascript file</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addCssFile">
+        <div class="location">in <a href="Page.html#method_addCssFile">Page</a> at         line 174</div>
+        <code>                    
+    <strong>addCssFile</strong>($css_file)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add css file to page head</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$css_file</td>
+                <td>CSS file</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTab">
+        <div class="location">in <a href="Page.html#method_addTab">Page</a> at         line 189</div>
+        <code>                    
+    <strong>addTab</strong>($title, $url, $is_active = false, $position = -1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a tab to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>tab title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td>tab url</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$is_active</td>
+                <td>should this tab be the activated one (true or false)</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$position</td>
+                <td>tab position (-1 means add to the end)</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTabsPicture">
+        <div class="location">in <a href="Page.html#method_setTabsPicture">Page</a> at         line 219</div>
+        <code>                    
+    <strong>setTabsPicture</strong>($picture)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set tabs picture</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>tabs picture</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTabsTitle">
+        <div class="location">in <a href="Page.html#method_setTabsTitle">Page</a> at         line 229</div>
+        <code>                    
+    <strong>setTabsTitle</strong>($title)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set tabs title</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>tabs title</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generateTabs">
+        <div class="location">at         line 364</div>
+        <code>            protected        
+    <strong>generateTabs</strong>($noheader = -1)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate tabs</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$noheader</td>
+                <td>-1 or 0=Add tab header, 1=no tab header.</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addSubTitle">
+        <div class="location">in <a href="Page.html#method_addSubTitle">Page</a> at         line 273</div>
+        <code>                    
+    <strong>addSubTitle</strong>($title, $picture = &#039;title_generic.png&#039;, $morehtmlright = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a subtitle</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>subtitle title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>subtitle picture</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to show on the right</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openForm">
+        <div class="location">in <a href="Page.html#method_openForm">Page</a> at         line 287</div>
+        <code>                    
+    <strong>openForm</strong>($action = &#039;create&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open a form only if not already opened</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$action</td>
+                <td>form action</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeForm">
+        <div class="location">in <a href="Page.html#method_closeForm">Page</a> at         line 304</div>
+        <code>                    
+    <strong>closeForm</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close an opened form</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openTable">
+        <div class="location">in <a href="Page.html#method_openTable">Page</a> at         line 327</div>
+        <code>                    
+    <strong>openTable</strong>($header_columns = array(), $attr = &#039;class=&quot;noborder allwidth&quot;&#039;, $print_fiche_head = false, $summary = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Opens a new html table</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$header_columns</td>
+                <td>table header columns, e.: array(
+                                                        array('name' => 'Column1', 'attr' => 'align="center"'),
+                                                        array('name' => 'Column2', 'attr' => 'align="center" width="20"')
+                                                    )</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>table attributes</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$print_fiche_head</td>
+                <td>print Dolibarr fiche head</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$summary</td>
+                <td>table summary</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeTable">
+        <div class="location">in <a href="Page.html#method_closeTable">Page</a> at         line 363</div>
+        <code>                    
+    <strong>closeTable</strong>($print_fiche_end = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close an opened html table</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$print_fiche_end</td>
+                <td>print Dolibarr fiche end</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_openRow">
+        <div class="location">in <a href="Page.html#method_openRow">Page</a> at         line 387</div>
+        <code>                    
+    <strong>openRow</strong>($odd = true, $more_attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open a table row</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$odd</td>
+                <td>row is odd or peer</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$more_attr</td>
+                <td>more attributes to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeRow">
+        <div class="location">in <a href="Page.html#method_closeRow">Page</a> at         line 398</div>
+        <code>                    
+    <strong>closeRow</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close a table row</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addColumn">
+        <div class="location">in <a href="Page.html#method_addColumn">Page</a> at         line 409</div>
+        <code>                    
+    <strong>addColumn</strong>($content, $attr = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a table column</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>column content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$attr</td>
+                <td>column attributes</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addLineBreak">
+        <div class="location">in <a href="Page.html#method_addLineBreak">Page</a> at         line 419</div>
+        <code>                    
+    <strong>addLineBreak</strong>($repeat = 0)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a line break (or many)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$repeat</td>
+                <td>repeat line breaks</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_loadDefaultActions">
+        <div class="location">at         line 143</div>
+        <code>            protected        
+    <strong>loadDefaultActions</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Load default actions</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_begin">
+        <div class="location">in <a href="Page.html#method_begin">Page</a> at         line 441</div>
+        <code>                    
+    <strong>begin</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page begining</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_generate">
+        <div class="location">at         line 337</div>
+        <code>            protected        
+    <strong>generate</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page body</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_redirect">
+        <div class="location">in <a href="Page.html#method_redirect">Page</a> at         line 474</div>
+        <code>                    
+    <strong>redirect</strong>($url)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Redirect to a url (alias for dolibase_redirect function)</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_end">
+        <div class="location">in <a href="Page.html#method_end">Page</a> at         line 483</div>
+        <code>                    
+    <strong>end</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Generate page end</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkFields">
+        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         line 71</div>
+        <code>                    boolean
+    <strong>checkFields</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check page fields</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean</td>
+            <td>true or false</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_checkField">
+        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         line 91</div>
+        <code>                    boolean|int
+    <strong>checkField</strong>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Check specified field</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td>Field name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_trans</td>
+                <td>Field translation</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$field_validation_rules</td>
+                <td>Field validatin rules</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$return_err_number</td>
+                <td>return errors number or boolean value</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>boolean|int</td>
+            <td>true/false | errors number</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_getField">
+        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         line 148</div>
+        <code>            protected        <a href="Field.html">Field</a>|empty
+    <strong>getField</strong>($field_name)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return specified field if found</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$field_name</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td><a href="Field.html">Field</a>|empty</td>
+            <td>field object or empty value</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_askForConfirmation">
+        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         line 168</div>
+        <code>                    
+    <strong>askForConfirmation</strong>($url, $title, $question, $action, $question_param = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Show a confirmation message</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$url</td>
+                <td>Page url</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$title</td>
+                <td>Message title</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$question</td>
+                <td>Message question / content</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$action</td>
+                <td>Action to do after confirmation</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$question_param</td>
+                <td>Question parameter</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_appendToBody">
+        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         line 180</div>
+        <code>                    
+    <strong>appendToBody</strong>($content)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Append a content to page body</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$content</td>
+                <td>content to add</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setTitleLink">
+        <div class="location">at         line 120</div>
+        <code>                    
+    <strong>setTitleLink</strong>($link, $label, $enable = &#039;$user-&gt;admin&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set Title link</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$link</td>
+                <td>Link href</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$label</td>
+                <td>Link label</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$enable</td>
+                <td>Condition to enable</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_setDocModelPreviewPicture">
+        <div class="location">at         line 134</div>
+        <code>                    
+    <strong>setDocModelPreviewPicture</strong>($picture)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set Document model(s) preview picture</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$picture</td>
+                <td>Document model preview picture</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_newOptionsTable">
+        <div class="location">at         line 374</div>
+        <code>                    
+    <strong>newOptionsTable</strong>($first_column_name = &#039;Option&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Create a new table for options</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$first_column_name</td>
+                <td>First column name</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addOption">
+        <div class="location">at         line 394</div>
+        <code>                    
+    <strong>addOption</strong>($option_desc, $option_content, $const_name = &#039;&#039;, $morehtmlright = &#039;&#039;, $width = 300, $form_enctype = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$option_content</td>
+                <td>Option content, it can be HTML or even a string</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$form_enctype</td>
+                <td>Form enctype attribute</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addSwitchOption">
+        <div class="location">at         line 422</div>
+        <code>                    
+    <strong>addSwitchOption</strong>($option_desc, $const_name, $disabled = false, $morehtmlright = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new switch option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$disabled</td>
+                <td>disable option or not</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addTextOption">
+        <div class="location">at         line 451</div>
+        <code>                    
+    <strong>addTextOption</strong>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $size = 16, $width = 300)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new text option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$size</td>
+                <td>Option textbox size</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addNumberOption">
+        <div class="location">at         line 470</div>
+        <code>                    
+    <strong>addNumberOption</strong>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new number only option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>Option minimum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>Option maximum number</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addRangeOption">
+        <div class="location">at         line 489</div>
+        <code>                    
+    <strong>addRangeOption</strong>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new range option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$min</td>
+                <td>Option minimum value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$max</td>
+                <td>Option maximum value</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addListOption">
+        <div class="location">at         line 507</div>
+        <code>                    
+    <strong>addListOption</strong>($option_desc, $const_name, $list, $morehtmlright = &#039;&#039;, $width = 300)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new list option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$list</td>
+                <td>Options list array</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addColorOption">
+        <div class="location">at         line 524</div>
+        <code>                    
+    <strong>addColorOption</strong>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $width = 300)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a new color picker option</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$option_desc</td>
+                <td>Option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$const_name</td>
+                <td>Option constant name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$morehtmlright</td>
+                <td>more HTML to add on the right of the option description</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$width</td>
+                <td>Option last column/td width</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_addButton">
+        <div class="location">at         line 542</div>
+        <code>                    
+    <strong>addButton</strong>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add a button to the page</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$name</td>
+                <td>button name</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$href</td>
+                <td>button href</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$target</td>
+                <td>button target</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$class</td>
+                <td>button class</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$close_parent_div</td>
+                <td>should close parent div or not</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printNumModels">
+        <div class="location">at         line 565</div>
+        <code>                    
+    <strong>printNumModels</strong>($model_name = &#039;&#039;)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print numbering models</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$model_name</td>
+                <td>Numbering model name</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_printDocModels">
+        <div class="location">at         line 676</div>
+        <code>                    
+    <strong>printDocModels</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Print document models</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+            </div>
+
+    
+            </div>
+                <div id="footer">
+        Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+    </div>
+
+        </div>
+    </div>
+    </body>
+
+</html>
