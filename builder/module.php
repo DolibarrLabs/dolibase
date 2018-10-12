@@ -209,6 +209,7 @@ if ($action == 'generate')
 		// Add a copy of dolibase
 		$dolibase_filter = array(
 			'builder',
+			'docs',
 			'test',
 			'LICENSE',
 			'changelog.md',
