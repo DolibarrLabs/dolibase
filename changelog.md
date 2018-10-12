@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.4.2 - OCT18
+
+*   NEW: support for custom numbering & document models.
+*   NEW: numbering & document model builder.
+*   FIX: use get_modulepart funtcion to get modulepart value to avoid confusion with get_rights_class function.
+
+---
+
 #### 2.4.1 - OCT18
 
 *   NEW: page builder.
