@@ -5,7 +5,7 @@
 
 *   NEW: support for custom numbering & document models.
 *   NEW: numbering & document model builder.
-*   FIX: use get_modulepart funtcion to get modulepart value to avoid confusion with get_rights_class function.
+*   FIX: use get_modulepart function to get modulepart value to avoid confusion with get_rights_class function.
 
 ---
 
