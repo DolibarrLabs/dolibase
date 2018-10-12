@@ -144,7 +144,7 @@ class SetupPage extends FormPage
 	{
 		if (! $this->disable_default_actions)
 		{
-			global $conf, $db, $langs;
+			global $conf, $db, $langs, $dolibase_config;
 
 			// Libraries
 			require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
@@ -287,7 +287,7 @@ class SetupPage extends FormPage
 				// Search template files
 				$dirmodels = array(
 					dolibase_buildpath("/core/doc_models/"),
-					dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/doc_models/")
+					dol_buildpath("/".$dolibase_config['module']['folder']."/core/doc_models/")
 				);
 				$error = 0;
 
@@ -581,7 +581,7 @@ class SetupPage extends FormPage
 
 		$dirmodels = array(
 			dolibase_buildpath("/core/num_models/"),
-			dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/num_models/")
+			dol_buildpath("/".$dolibase_config['module']['folder']."/core/num_models/")
 		);
 
 		foreach ($dirmodels as $dir)
@@ -716,7 +716,7 @@ class SetupPage extends FormPage
 
 		$dirmodels = array(
 			dolibase_buildpath("/core/doc_models/"),
-			dol_buildpath("/".$dolibase_config['module']['folder']."/core/modules/doc_models/")
+			dol_buildpath("/".$dolibase_config['module']['folder']."/core/doc_models/")
 		);
 
 		foreach ($dirmodels as $dir)

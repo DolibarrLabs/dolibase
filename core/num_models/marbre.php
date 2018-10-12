@@ -103,9 +103,12 @@ class NumModelMarbre extends NumModel
 		if ($resql)
 		{
 			$row = $db->fetch_row($resql);
-			if ($row) { $coyymm = substr($row[0],0,6); $max=$row[0]; }
+			if ($row) {
+				$coyymm = substr($row[0], 0, 6);
+				$max = $row[0];
+			}
 		}
-		if ($coyymm && ! preg_match('/'.$this->prefix.'[0-9][0-9][0-9][0-9]/i',$coyymm))
+		if ($coyymm && ! preg_match('/'.$this->prefix.'[0-9][0-9][0-9][0-9]/i', $coyymm))
 		{
 			$langs->load("errors");
 			$this->error = $langs->trans('ErrorNumRefModel', $max);

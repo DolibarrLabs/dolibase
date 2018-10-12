@@ -105,6 +105,15 @@ if ($action == 'generate')
 		}
 		if ($add_doc_models_settings) {
 			$setup_data['settings'] .= ($add_num_models_settings ? "\n\n" : '').'$page->addSubtitle("DocumentModels");'."\n\n".'$page->printDocModels();';
+			// Add doc model class into module (to fix documents block on card page)
+			$doc_model_dir = $module_path.'/core/modules/'.$data['folder'];
+			$doc_model_data = array(
+				'module_folder' => $data['folder'],
+				'model_class' => ucfirst($module_name)
+			);
+			mkdir_r(array($doc_model_dir), 0777);
+			$doc_model_template = getTemplate(__DIR__ . '/tpl/module/doc_model_class.php', $doc_model_data);
+			file_put_contents($doc_model_dir.'/modules_'.$data['folder'].'.php', $doc_model_template);
 		}
 		$setup_template = getTemplate(__DIR__ . '/tpl/module/setup.php', $setup_data);
 		file_put_contents($module_path.'/admin/setup.php', $setup_template);

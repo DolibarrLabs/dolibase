@@ -110,7 +110,7 @@ else if ($action == 'save')
 	else
 	{
 		// Create lang folder if not exist
-		@mkdir($translation_path, 0777);
+		mkdir_r(array($translation_path), 0777);
 
 		// Generate translation strings
 		foreach ($translation_values as $key => $value) {

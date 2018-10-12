@@ -1,60 +1,35 @@
 <?php
-/**
- * Dolibase
- * 
- * Open source framework for Dolibarr ERP/CRM
- *
- * Copyright (c) 2018 - 2019
- *
- *
- * @package     Dolibase
- * @author      AXeL
- * @copyright   Copyright (c) 2018 - 2019, AXeL-dev
- * @license     MIT
- * @link        https://github.com/AXeL-dev/dolibase
- * 
- */
 
+// Load Dolibase NumModel class
 dolibase_include_once('/core/class/num_model.php');
 
 /**
- * NumModelSaphir class
+ * ${model_classname} class
  *
- * Class to manage module numbering rules Saphir
+ * Class to manage module numbering rules ${model_name}
  */
 
-class NumModelSaphir extends NumModel
+class ${model_classname} extends NumModel
 {
-	public $version       = 'dolibarr'; // 'development', 'experimental', 'dolibarr'
-	public $nom           = 'Saphir';
-	protected $const_name = '';
-	protected $table_name = '';
-	protected $field_name = 'ref';
+	public $nom;
+	public $version;
+	public $description;
+	protected $const_name;
+	protected $table_name;
+	protected $field_name;
 
 	/**
 	 * Constructor
 	 *
-	 * @param     $const_name_prefix     Constant name prefix
-	 * @param     $model_name            Numbering model name
 	 */
 	public function __construct($const_name_prefix, $model_name = '')
 	{
-		global $dolibase_config;
-
-		// Generate constant name
-		$this->const_name = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true)) . '_SAPHIR_MASK';
-
-		// Set parameters
-		if (! empty($model_name))
-		{
-			$this->table_name = $dolibase_config['numbering_model'][$model_name]['table'];
-			$this->field_name = $dolibase_config['numbering_model'][$model_name]['field'];
-		}
-		else
-		{
-			$this->table_name = $dolibase_config['numbering_model']['table'];
-			$this->field_name = $dolibase_config['numbering_model']['field'];
-		}
+		$this->nom = '${model_name}';
+		$this->version = '${model_version}'; // 'development', 'experimental', 'dolibarr'
+		$this->description = '${model_description}';
+		$this->const_name = '${const_name}';
+		$this->table_name = '${table_name}';
+		$this->field_name = '${field_name}';
 	}
 
 	/**
@@ -71,7 +46,7 @@ class NumModelSaphir extends NumModel
 		$module_name = $langs->transnoentities($dolibase_config['module']['name']);
 		$form = new Form($db);
 
-		$text = $langs->trans('GenericNumRefModelDesc')."<br>\n";
+		$text = $langs->trans($this->description)."<br>\n";
 		$text.= '<form action="'.$_SERVER["PHP_SELF"].'" method="POST">';
 		$text.= '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
 		$text.= '<input type="hidden" name="action" value="updateMask">';

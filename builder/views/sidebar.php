@@ -15,7 +15,9 @@ $items = array(
 		'log' => array('label' => 'Log Page', 'link' => 'page/log.php', 'active' => false)
 	)),
 	'model' => array('label' => 'Model', 'link' => '#', 'icon' => 'clone', 'active' => false, 'menu' => array(
-		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false)
+		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false),
+		'num_model' => array('label' => 'Numbering Model', 'link' => 'model/num_model.php', 'active' => false),
+		'doc_model' => array('label' => 'Document Model', 'link' => 'model/doc_model.php', 'active' => false)
 	)),
 	'translation' => array('label' => 'Translation', 'link' => 'translation.php', 'icon' => 'language', 'active' => false)
 );

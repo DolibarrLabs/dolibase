@@ -2,7 +2,7 @@
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="px-2">
 	<div class="form-group">
 		<label for="module_folder">Module</label>
-		<select class="form-control" id="module_folder" name="module_folder">
+		<select class="form-control" id="module_folder" name="module_folder" required>
 			<?php foreach ($options['modules_list'] as $module) { ?>
 				<option value="<?php echo $module; ?>"><?php echo $module; ?></option>
 			<?php } ?>

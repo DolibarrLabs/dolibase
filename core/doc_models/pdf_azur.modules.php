@@ -272,11 +272,11 @@ class pdf_azur extends DocModel
 
 				// Page foot
 				$this->_pagefoot($pdf,$object,$outputlangs);
-				if (method_exists($pdf,'AliasNbPages')) $pdf->AliasNbPages();
+				if (method_exists($pdf, 'AliasNbPages')) $pdf->AliasNbPages();
 
 				$pdf->Close();
 
-				$pdf->Output($file,'F');
+				$pdf->Output($file, 'F');
 
 				// Add pdfgeneration hook
 				$hookmanager->initHooks(array('pdfgeneration'));
@@ -298,7 +298,7 @@ class pdf_azur extends DocModel
 		}
 		else
 		{
-			$this->error=$langs->trans("ErrorConstantNotDefined", $this->const_prefix . "_OUTPUTDIR");
+			$this->error = $langs->trans("ErrorConstantNotDefined", $this->const_prefix . "_OUTPUTDIR");
 			return 0;
 		}
 	}

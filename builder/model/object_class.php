@@ -31,7 +31,7 @@ if ($action == 'generate')
 	$date_fields = getPostData('date_fields');
 	$data = array(
 		'module_folder' => getPostData('module_folder'),
-		'object_classname' => $object_classname, 
+		'object_classname' => ucfirst($object_classname), 
 		'object_element' => getPostData('object_element'),
 		'object_table' => getPostData('object_table'),
 		'fetch_fields' => getPostData('fetch_fields'),
