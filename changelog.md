@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.4.3 - OCT18
+
+*   NEW: add documentation.
+*   NEW: add statistics page into page builder.
+*   FIX: some errors related to documentation.
+
+---
+
 #### 2.4.2 - OCT18
 
 *   NEW: support for custom numbering & document models.
