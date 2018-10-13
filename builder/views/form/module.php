@@ -14,7 +14,7 @@
 			<a class="nav-link" data-toggle="tab" href="#permissions" role="tab" aria-controls="permissions" aria-selected="false">Permissions</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#pages" role="tab" aria-controls="pages" aria-selected="false">Pages</a>
+			<a class="nav-link" data-toggle="tab" href="#admin_pages" role="tab" aria-controls="admin_pages" aria-selected="false">Admin Pages</a>
 		</li>
 	</ul>
 
@@ -132,7 +132,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="pages" role="tabpanel" aria-labelledby="pages-tab">
+		<div class="tab-pane fade" id="admin_pages" role="tabpanel" aria-labelledby="admin_pages-tab">
 			<div class="form-group">
 				<div class="form-check mb-2">
 					<input type="checkbox" class="form-check-input" id="add_setup_page" name="add_setup_page" checked disabled>
