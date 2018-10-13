@@ -203,7 +203,7 @@ class ${model_classname} extends DocModel
 		}
 		else
 		{
-			$this->error = $langs->trans("ErrorConstantNotDefined", $this->const_prefix . "_OUTPUTDIR");
+			$this->error = $langs->trans("ErrorConstantNotDefined", "OUTPUTDIR");
 			return 0;
 		}
 	}
