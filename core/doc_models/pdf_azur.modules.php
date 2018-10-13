@@ -405,7 +405,7 @@ class pdf_azur extends DocModel
 	 *   @param		string		$currency		Currency code
 	 *   @return	void
 	 */
-	public function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop=0, $hidebottom=0)
+	public function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop=0, $hidebottom=0, $currency='')
 	{
 		// Force to disable hidetop and hidebottom
 		$hidebottom = 0;

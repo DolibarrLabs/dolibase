@@ -630,9 +630,7 @@ class CrudObject extends CommonObject
 	/**
 	 * Delete all links between an object $this
 	 *
-	 * @param  string  $where     where clause (without 'WHERE')
-	 * @param  int     $notrigger 0=launch triggers after, 1=disable triggers
-	 * @return int                <0 if KO, >0 if OK
+	 * @return     int     <0 if KO, >0 if OK
 	 */
 	protected function deleteAllObjectLinked()
 	{

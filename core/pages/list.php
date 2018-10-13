@@ -305,7 +305,10 @@ class ListPage extends FormPage
 	/**
 	 * Fetch extrafields
 	 *
-	 * @param   $obj   object
+	 * @param   $elementtype   element type
+	 * @param   $more_fields   more fields to add separated by ','
+	 * @param   $join          join clause
+	 * @param   $where         where clause
 	 */
 	public function fetchExtraFields($elementtype, &$more_fields, &$join, &$where)
 	{

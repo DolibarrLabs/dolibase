@@ -506,11 +506,11 @@ class CardPage extends CreatePage
 	 * @param     $selected         selected checkbox input
 	 * @param     $action_prefix    action prefix
 	 */
-	public function editCheckListField($field_name, $radio_name, $radio_list, $selected = '', $action_prefix = 'set_')
+	public function editCheckListField($field_name, $check_name, $check_list, $selected = '', $action_prefix = 'set_')
 	{
-		$field_content = $this->form->checkList($radio_name, $radio_list, $selected, true);
+		$field_content = $this->form->checkList($check_name, $check_list, $selected, true);
 
-		$this->editField($field_name, $field_content, $action_prefix.$radio_name);
+		$this->editField($field_name, $field_content, $action_prefix.$check_name);
 	}
 
 	/**
