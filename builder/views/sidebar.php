@@ -10,6 +10,7 @@ $items = array(
 		'create' => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
 		'card' => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
 		'list' => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false),
+		'stats' => array('label' => 'Statistics Page', 'link' => 'page/stats.php', 'active' => false),
 		'calendar' => array('label' => 'Calendar Page', 'link' => 'page/calendar.php', 'active' => false),
 		'document' => array('label' => 'Document Page', 'link' => 'page/document.php', 'active' => false),
 		'log' => array('label' => 'Log Page', 'link' => 'page/log.php', 'active' => false)
