@@ -943,7 +943,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_editCheckListField">editCheckListField</a>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+                    <a href="#method_editCheckListField">editCheckListField</a>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         
                                             <p>add a table field with a checkbox input(s)</p>                </div>
                 <div class="col-md-2"></div>
@@ -3493,7 +3493,7 @@
                     <h3 id="method_editCheckListField">
         <div class="location">at         line 509</div>
         <code>                    
-    <strong>editCheckListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
+    <strong>editCheckListField</strong>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
     </h3>
     <div class="details">
@@ -3509,27 +3509,27 @@
                     <tr>
                 <td></td>
                 <td>$field_name</td>
-                <td></td>
+                <td>field name</td>
             </tr>
                     <tr>
                 <td></td>
-                <td>$radio_name</td>
-                <td></td>
+                <td>$check_name</td>
+                <td>checkbox inputs name</td>
             </tr>
                     <tr>
                 <td></td>
-                <td>$radio_list</td>
-                <td></td>
+                <td>$check_list</td>
+                <td>list of checkbox inputs, e.: array('check_1' => 'Check 1', 'check_2' => 'Check 2')</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$selected</td>
-                <td></td>
+                <td>selected checkbox input</td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$action_prefix</td>
-                <td></td>
+                <td>action prefix</td>
             </tr>
             </table>
 
