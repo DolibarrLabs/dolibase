@@ -4,7 +4,7 @@
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
-Dolibase is a set of reusable code & architecture that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
+Dolibase is a set of reusable code & architecture that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster :rocket: and easier.
 
 ## How it works?
 
@@ -102,22 +102,22 @@ class modMyFirstModule extends DolibaseModule
 	public function loadSettings()
 	{
 		// Add constant(s)
-		$this->addConstant("MY_FIRST_MODULE_CONST", "test");
+		$this->addConstant('MY_FIRST_MODULE_CONST', 'test');
 
 		// Add widget(s)
-		$this->addWidget("mybox.php");
+		$this->addWidget('mybox.php');
 
 		// Add CSS & JS files
-		$this->addCssFile("mycss.css.php");
-		$this->addJsFile("myjs.js.php");
+		$this->addCssFile('mycss.css.php');
+		$this->addJsFile('myjs.js.php');
 
 		// Set user permissions
-		$this->addPermission("read", "Read permission", "r");
+		$this->addPermission('read', 'Read permission', 'r');
 
 		// Add menu(s)
-		$this->addTopMenu($this->config['other']['top_menu_name'], "MyFirstMenu", "/myfirstmodule/index.php?test=1");
-		$this->addLeftMenu($this->config['other']['top_menu_name'], "myleftmenu", "MyLeftMenu", "/myfirstmodule/index.php?test=2");
-		$this->addLeftSubMenu($this->config['other']['top_menu_name'], "myleftmenu", "mysubleftmenu", "MySubLeftMenu", "/myfirstmodule/index.php?test=3");
+		$this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/myfirstmodule/index.php?test=1');
+		$this->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/myfirstmodule/index.php?test=2');
+		$this->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/myfirstmodule/index.php?test=3');
 	}
 }
 
@@ -136,7 +136,7 @@ include_once 'config.php';
 dolibase_include_once('/core/class/page.php');
 
 // Create Page using Dolibase
-$page = new Page("My Page Title", '$user->rights->myfirstmodule->read'); // set page title & control user access
+$page = new Page('My Page Title', '$user->rights->myfirstmodule->read'); // set page title & control user access
 
 // Print page header & dolibarr's main menus
 $page->begin();
