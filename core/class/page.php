@@ -418,7 +418,9 @@ class Page
 	 */
 	public function addLineBreak($repeat = 0)
 	{
-		$repeat = $repeat < 0 ? 0 : $repeat;
+		if ($repeat < 0) {
+			$repeat = 0;
+		}
 
 		for ($i = 0; $i <= $repeat; $i++) {
 			echo "<br>\n";
