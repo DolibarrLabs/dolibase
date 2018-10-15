@@ -39,6 +39,16 @@ $dolibase_config['author'] = array(
 );
 
 /**
+ * Numbering model (optional)
+ */
+
+$dolibase_config['numbering_model'] = array(
+	'table'  => '${num_model_table}',
+	'field'  => '${num_model_field}',
+	'prefix' => '${num_model_prefix}'
+);
+
+/**
  * Other (default)
  */
 

@@ -52,7 +52,10 @@ if ($action == 'generate')
 		'author_name' => getPostData('author_name'),
 		'author_url' => getPostData('author_url'),
 		'author_email' => getPostData('author_email'),
-		'author_dolistore_url' => getPostData('author_dolistore_url')
+		'author_dolistore_url' => getPostData('author_dolistore_url'),
+		'num_model_table' => getPostData('num_model_table'),
+		'num_model_field' => getPostData('num_model_field'),
+		'num_model_prefix' => getPostData('num_model_prefix')
 	);
 
 	// Create module folder & sub-folders

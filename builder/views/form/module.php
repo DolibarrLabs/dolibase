@@ -8,6 +8,9 @@
 			<a class="nav-link" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">Author</a>
 		</li>
 		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#num_model" role="tab" aria-controls="num_model" aria-selected="false">Numbering Model</a>
+		</li>
+		<li class="nav-item">
 			<a class="nav-link" data-toggle="tab" href="#menus" role="tab" aria-controls="menus" aria-selected="false">Menus</a>
 		</li>
 		<li class="nav-item">
@@ -109,6 +112,24 @@
 			<div class="form-group">
 				<label for="author_dolistore_url">Dolistore Url</label>
 				<input type="text" class="form-control" id="author_dolistore_url" name="author_dolistore_url" placeholder="#" value="<?php echo (isset($options['author_info']['dolistore_url']) ? $options['author_info']['dolistore_url'] : ''); ?>">
+			</div>
+		</div>
+
+		<div class="tab-pane fade" id="num_model" role="tabpanel" aria-labelledby="num_model-tab">
+			<div class="form-group">
+				<label for="num_model_table">Table Name</label>
+				<input type="text" class="form-control" id="num_model_table" name="num_model_table" aria-describedby="numModelTableHelp" placeholder="mysqltable">
+				<small id="numModelTableHelp" class="form-text text-muted">without table prefix (llx_)</small>
+			</div>
+			<div class="form-group">
+				<label for="num_model_field">Table Field</label>
+				<input type="text" class="form-control" id="num_model_field" name="num_model_field" aria-describedby="numModelFieldHelp" placeholder="ref">
+				<small id="numModelFieldHelp" class="form-text text-muted">table field that will be associated with the default numbering models of dolibase</small>
+			</div>
+			<div class="form-group">
+				<label for="num_model_prefix">Model Prefix</label>
+				<input type="text" class="form-control" id="num_model_prefix" name="num_model_prefix" aria-describedby="numModelPrefixHelp" placeholder="PR">
+				<small id="numModelPrefixHelp" class="form-text text-muted">prefix used in marbre numbering model</small>
 			</div>
 		</div>
 
