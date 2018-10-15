@@ -51,57 +51,58 @@ $page->addFilterForm($filter_fields, $data, 'Filter');
 $page->addLineBreak();
 
 // Data table
-$page->openTable(array(array('name' => 'Year', 'attr' => 'align="center"'),
-                       array('name' => 'Number', 'attr' => 'align="center"'),
-                       array('name' => '%', 'attr' => 'align="center"'),
-                       array('name' => 'TotalAmount', 'attr' => 'align="center"'),
-                       array('name' => '%', 'attr' => 'align="center"'),
-                ));
+$page->openTable(array(
+	array('name' => 'Year', 'attr' => 'align="center"'),
+	array('name' => 'Number', 'attr' => 'align="center"'),
+	array('name' => '%', 'attr' => 'align="center"'),
+	array('name' => 'TotalAmount', 'attr' => 'align="center"'),
+	array('name' => '%', 'attr' => 'align="center"'),
+));
 
 $oldyear = 0;
 $odd = true;
 foreach ($data as $val)
 {
-    $year = $val['year'];
+	$year = $val['year'];
 
-    // If we have empty year
-    while (! empty($year) && $oldyear > $year+1)
-    {
-        $oldyear--;
-        $odd = ! $odd;
-        $page->openRow($odd);
+	// If we have empty year
+	while (! empty($year) && $oldyear > $year+1)
+	{
+		$oldyear--;
+		$odd = ! $odd;
+		$page->openRow($odd);
 
-        $page->addColumn('<a href="'.$_SERVER["PHP_SELF"].'?year='.$oldyear.'">'.$oldyear.'</a>', 'align="center"');
-        $page->addColumn('0', 'align="center"');
-        $page->addColumn('', 'align="center"');
-        $page->addColumn('0', 'align="center"');
-        $page->addColumn('', 'align="center"');
-        
-        $page->closeRow();
-    }
+		$page->addColumn('<a href="'.$_SERVER["PHP_SELF"].'?year='.$oldyear.'">'.$oldyear.'</a>', 'align="center"');
+		$page->addColumn('0', 'align="center"');
+		$page->addColumn('', 'align="center"');
+		$page->addColumn('0', 'align="center"');
+		$page->addColumn('', 'align="center"');
 
-    $odd = ! $odd;
-    $page->openRow($odd);
+		$page->closeRow();
+	}
 
-    // Year
-    $page->addColumn('<a href="'.$_SERVER["PHP_SELF"].'?year='.$year.'">'.$year.'</a>', 'align="center"');
+	$odd = ! $odd;
+	$page->openRow($odd);
 
-    // Number
-    $page->addColumn($val['nb'], 'align="center"');
+	// Year
+	$page->addColumn('<a href="'.$_SERVER["PHP_SELF"].'?year='.$year.'">'.$year.'</a>', 'align="center"');
 
-    // %
-    $page->addColumn(round($val['nb_diff']), 'align="center" style="'.(($val['nb_diff'] >= 0) ? 'color: green;':'color: red;').'"');
+	// Number
+	$page->addColumn($val['nb'], 'align="center"');
 
-    // Amount
-    $total = price2num($val['total'], 'MT');
-    $page->addColumn(price_with_currency($total), 'align="center"');
+	// %
+	$page->addColumn(round($val['nb_diff']), 'align="center" style="'.(($val['nb_diff'] >= 0) ? 'color: green;':'color: red;').'"');
 
-    // %
-    $page->addColumn(round($val['total_diff']), 'align="center" style="'.(($val['total_diff'] >= 0) ? 'color: green;':'color: red;').'"');
+	// Amount
+	$total = price2num($val['total'], 'MT');
+	$page->addColumn(price_with_currency($total), 'align="center"');
 
-    $page->closeRow();
+	// %
+	$page->addColumn(round($val['total_diff']), 'align="center" style="'.(($val['total_diff'] >= 0) ? 'color: green;':'color: red;').'"');
 
-    $oldyear = $year;
+	$page->closeRow();
+
+	$oldyear = $year;
 }
 
 $page->closeTable();

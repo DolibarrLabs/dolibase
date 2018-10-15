@@ -65,14 +65,14 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	{
 		if ($action == 'delete')
 		{
-	        $page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $book->id, 'Delete', 'Confirm Delete', 'confirm_delete', $book->ref);
-	    }
+			$page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $book->id, 'Delete', 'Confirm Delete', 'confirm_delete', $book->ref);
+		}
 		else if ($action == 'confirm_delete' && $confirm == 'yes')
 		{
 			$result = $book->delete();
 			if ($result > 0) {
 				dolibase_redirect('list.php');
-	        }
+			}
 		}
 	}
 
@@ -182,7 +182,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 	// Created by
 	$userstatic = new User($book->db);
-    $userstatic->fetch($book->created_by);
+	$userstatic->fetch($book->created_by);
 	$page->showField('Created by', $userstatic->getNomUrl(1));
 
 	// Extra fields

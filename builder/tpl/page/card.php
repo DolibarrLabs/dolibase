@@ -59,14 +59,14 @@ if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 	{
 		if ($action == 'delete')
 		{
-	        $page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $object->id, 'Delete', 'Confirm Delete', 'confirm_delete', $object->ref);
-	    }
+			$page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $object->id, 'Delete', 'Confirm Delete', 'confirm_delete', $object->ref);
+		}
 		else if ($action == 'confirm_delete' && $confirm == 'yes')
 		{
 			$result = $object->delete();
 			if ($result > 0) {
 				dolibase_redirect('list.php');
-	        }
+			}
 		}
 	}
 
