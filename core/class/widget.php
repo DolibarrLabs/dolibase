@@ -15,20 +15,18 @@
  * 
  */
 
+include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
+
+if (! class_exists('Widget')) {
+
 /**
+ * Widget class
+ *
  * Known issue: This class is also affected by the same kind of issue as in DolibaseModule class (@see module.php).
  *
  * Fast solution:
  *                + Use Dolibase widget builder.
  */
-
-include_once DOL_DOCUMENT_ROOT . "/core/boxes/modules_boxes.php";
-
-/**
- * Widget class
- */
-
-if (! class_exists('Widget')) {
 
 class Widget extends ModeleBoxes
 {

@@ -15,10 +15,21 @@
  * 
  */
 
+include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
+
+if (! class_exists('DolibaseModule')) {
+
 /**
- * Known issue: Dolibase class is loaded/included only one time on "dolibarr/admin/modules.php" file,
- * so if a module with an older version of Dolibase is loaded first, then you may face some errors like :
- * Undefined function xxx in DolibaseModule class.
+ * DolibaseModule class
+ *
+ * Known issue: When Dolibase is installed globally, DolibaseModule class will be loaded/included only once
+ * on "dolibarr/admin/modules.php" file, & when it is installed internally (in each module) then the class
+ * will be included from the first loaded module & in the rest of modules the inclusion will be stopped by
+ * the if condition above, otherwise you will get this error: DolibaseModule class already exists.
+ *
+ * So the issue here is, if a module with an older version of Dolibase is loaded first & one of your modules
+ * requires a new version of this class to work properly, then you may face some errors like:
+ * Undefined function or attribute xxx in DolibaseModule class.
  *
  * Solutions:
  *            + Use Dolibase module builder (will generate a custom class copy in your module directory).
@@ -30,14 +41,6 @@
  *
  * P.S: This issue affects only DolibaseModule & Widget class & not the other classes of Dolibase.
  */
-
-include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
-
-/**
- * DolibaseModule class
- */
-
-if (! class_exists('DolibaseModule')) {
 
 class DolibaseModule extends DolibarrModules
 {
@@ -125,6 +128,9 @@ class DolibaseModule extends DolibarrModules
 			'num' => array(),
 			'doc' => array()
 		);
+
+		// Cron Jobs
+		$this->cronjobs = array();
 
 		// Load module settings
 		$this->loadSettings();
@@ -577,6 +583,76 @@ class DolibaseModule extends DolibarrModules
 	public function activateDocModel($name, $type = '', $const_prefix = '')
 	{
 		$this->addons['doc'][] = array('name' => $name, 'type' => $type, 'const_prefix' => $const_prefix);
+	}
+
+	/**
+	 * Add a cron job
+	 *
+	 * @param     $label                 Job label
+	 * @param     $type                  Job type, possible values: 'command', 'method'
+	 * @param     $command               Job shell command (if $type = 'command')
+	 * @param     $class                 Job class (if $type = 'method'), e.: '/mymodule/class/myobject.class.php'
+	 * @param     $object_name           Object name (if $type = 'method'), e.: 'MyObject'
+	 * @param     $object_method         Object method (if $type = 'method'), e.: 'doScheduledJob'
+	 * @param     $method_parameters     Method parameters (if $type = 'method'), e.: 'param1, param2'
+	 * @param     $comment               Job comment
+	 * @param     $frequency             Job frequency or execution time, e.: 2 (if $frequency_unit = 3600 it will be considered as every 2 hours)
+	 * @param     $frequency_unit        Job frequency unit, e.: 3600 (1 hour), 3600*24 (1 day), 3600*24*7 (1 week)
+	 * @param     $status                Job status at module installation: 0 = disabled, 1 = enabled
+	 * @param     $priority              Job priority (number from 0 to 100)
+	 */
+	protected function addCronJob($label, $type, $command = '', $class = '', $object_name = '', $object_method = '', $method_parameters = '', $comment = '', $frequency = 2, $frequency_unit = 3600, $status = 0, $priority = 0)
+	{
+		$this->cronjobs[] = array(
+			'label' => $label,
+			'jobtype' => $type,
+			'class' => $class,
+			'objectname' => $object_name,
+			'method' => $object_method,
+			'command' => $command,
+			'parameters' => $method_parameters,
+			'comment' => $comment,
+			'frequency' => $frequency,
+			'unitfrequency' => $frequency_unit,
+			'status' => $status,
+			'priority' => $priority,
+			'test' => true
+		);
+	}
+
+	/**
+	 * Add a cron job using a command
+	 *
+	 * @param     $label                 Job label
+	 * @param     $command               Job shell command
+	 * @param     $frequency             Job frequency or execution time, e.: 2 (if $frequency_unit = 3600 it will be considered as every 2 hours)
+	 * @param     $frequency_unit        Job frequency unit, e.: 3600 (1 hour), 3600*24 (1 day), 3600*24*7 (1 week)
+	 * @param     $comment               Job comment
+	 * @param     $priority              Job priority (number from 0 to 100)
+	 * @param     $status                Job status at module installation: 0 = disabled, 1 = enabled
+	 */
+	public function addCronCommand($label, $command, $frequency, $frequency_unit, $comment = '', $priority = 0, $status = 1)
+	{
+		$this->addCronJob($label, 'command', $command, '', '', '', '', $comment, $frequency, $frequency_unit, $status, $priority);
+	}
+
+	/**
+	 * Add a cron job using a method
+	 *
+	 * @param     $label                 Job label
+	 * @param     $class                 Job class, e.: '/mymodule/class/myobject.class.php'
+	 * @param     $object_name           Object name, e.: 'MyObject'
+	 * @param     $object_method         Object method, e.: 'doScheduledJob'
+	 * @param     $method_parameters     Method parameters, e.: 'param1, param2'
+	 * @param     $frequency             Job frequency or execution time, e.: 2 (if $frequency_unit = 3600 it will be considered as every 2 hours)
+	 * @param     $frequency_unit        Job frequency unit, e.: 3600 (1 hour), 3600*24 (1 day), 3600*24*7 (1 week)
+	 * @param     $comment               Job comment
+	 * @param     $priority              Job priority (number from 0 to 100)
+	 * @param     $status                Job status at module installation: 0 = disabled, 1 = enabled
+	 */
+	public function addCronMethod($label, $class, $object_name, $object_method, $method_parameters, $frequency, $frequency_unit, $comment = '', $priority = 0, $status = 1)
+	{
+		$this->addCronJob($label, 'method', '', $class, $object_name, $object_method, $method_parameters, $comment, $frequency, $frequency_unit, $status, $priority);
 	}
 }
 
