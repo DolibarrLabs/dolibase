@@ -78,6 +78,15 @@
         
     
 
+            <div class="description">
+            <p>Widget class</p>            <p>Known issue: This class is also affected by the same kind of issue as in DolibaseModule class (see module.php).</p>
+
+<p>Fast solution:</p>
+
+<ul>
+<li>Use Dolibase widget builder.</li>
+</ul>
+</p>                    </div>
     
     
     
@@ -177,7 +186,7 @@
                     void
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showBox">showBox</a>($head = null, $contents = null, $nooutput = 0)
+                    <a href="#method_showBox">showBox</a>(array $head = null, array $contents = null, int $nooutput = 0)
         
                                             <p>Method to show box. Called by Dolibarr eatch time it wants to display the box.</p>                </div>
                 <div class="col-md-2"></div>
@@ -190,7 +199,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L59">line 59</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L58">line 58</a></div>
         <code>                    
     <strong>__construct</strong>($db, $param = &#039;&#039;)
         </code>
@@ -226,7 +235,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setTitle">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L87">line 87</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L86">line 86</a></div>
         <code>                    
     <strong>setTitle</strong>($title, $max = 5)
         </code>
@@ -262,7 +271,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setLink">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L124">line 124</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L123">line 123</a></div>
         <code>                    
     <strong>setLink</strong>($link, $picture, $tooltip = &#039;&#039;, $target = &#039;_self&#039;, $class = &#039;center&quot; style=&quot;margin-right: 5px;&#039;)
         </code>
@@ -313,7 +322,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addContent">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L144">line 144</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L143">line 143</a></div>
         <code>                    
     <strong>addContent</strong>($text, $attr = &#039;align=&quot;center&quot;&#039;, $clean_text = false, $max_length = 0, $first_col_attr = &#039;&#039;)
         </code>
@@ -364,7 +373,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_newLine">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L185">line 185</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L184">line 184</a></div>
         <code>                    
     <strong>newLine</strong>()
         </code>
@@ -387,7 +396,7 @@
                     <h3 id="method_showBox">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/widget.php#L199">line 199</a></div>
         <code>                    void
-    <strong>showBox</strong>($head = null, $contents = null, $nooutput = 0)
+    <strong>showBox</strong>(array $head = null, array $contents = null, int $nooutput = 0)
         </code>
     </h3>
     <div class="details">
@@ -401,19 +410,19 @@
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$head</td>
-                <td></td>
+                <td>Array with properties of box title</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>array</td>
                 <td>$contents</td>
-                <td></td>
+                <td>Array with properties of box lines</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$nooutput</td>
-                <td></td>
+                <td>No print, only return string</td>
             </tr>
             </table>
 

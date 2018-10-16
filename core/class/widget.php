@@ -25,7 +25,8 @@ if (! class_exists('Widget')) {
  * Known issue: This class is also affected by the same kind of issue as in DolibaseModule class (@see module.php).
  *
  * Fast solution:
- *                + Use Dolibase widget builder.
+ *
+ * - Use Dolibase widget builder.
  */
 
 class Widget extends ModeleBoxes
@@ -192,7 +193,7 @@ class Widget extends ModeleBoxes
 	 *
 	 * @param   array   $head       Array with properties of box title
 	 * @param   array   $contents   Array with properties of box lines
-	 * @param	int		$nooutput	No print, only return string
+	 * @param   int     $nooutput   No print, only return string
 	 * @return  void
 	 */
 	public function showBox($head = null, $contents = null, $nooutput = 0)

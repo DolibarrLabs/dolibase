@@ -147,7 +147,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page begining&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_printDocuments", "name": "DocumentPage::printDocuments", "doc": "&quot;Print documents\/linked files&quot;"},
             
-            {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;&quot;"},
+            {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;DolibaseModule class&quot;"},
                                                         {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method___construct", "name": "DolibaseModule::__construct", "doc": "&quot;Constructor&quot;"},
                     {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_loadSettings", "name": "DolibaseModule::loadSettings", "doc": "&quot;Function called after module configuration.&quot;"},
                     {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_checkUpdates", "name": "DolibaseModule::checkUpdates", "doc": "&quot;Function to check module updates.&quot;"},
@@ -175,6 +175,9 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_addModulePart", "name": "DolibaseModule::addModulePart", "doc": "&quot;Add a module part&quot;"},
                     {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_activateNumModel", "name": "DolibaseModule::activateNumModel", "doc": "&quot;Activate a numbering model&quot;"},
                     {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_activateDocModel", "name": "DolibaseModule::activateDocModel", "doc": "&quot;Activate a document model&quot;"},
+                    {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_addCronJob", "name": "DolibaseModule::addCronJob", "doc": "&quot;Add a cron job&quot;"},
+                    {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_addCronCommand", "name": "DolibaseModule::addCronCommand", "doc": "&quot;Add a cron job using a command&quot;"},
+                    {"type": "Method", "fromName": "DolibaseModule", "fromLink": "DolibaseModule.html", "link": "DolibaseModule.html#method_addCronMethod", "name": "DolibaseModule::addCronMethod", "doc": "&quot;Add a cron job using a method&quot;"},
             
             {"type": "Class",  "link": "ExtraFieldsPage.html", "name": "ExtraFieldsPage", "doc": "&quot;ExtraFieldsPage class&quot;"},
                                                         {"type": "Method", "fromName": "ExtraFieldsPage", "fromLink": "ExtraFieldsPage.html", "link": "ExtraFieldsPage.html#method___construct", "name": "ExtraFieldsPage::__construct", "doc": "&quot;Constructor&quot;"},
@@ -316,7 +319,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_addFilterForm", "name": "StatsPage::addFilterForm", "doc": "&quot;Add a filter form&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_addGraph", "name": "StatsPage::addGraph", "doc": "&quot;Add a statistics graph&quot;"},
             
-            {"type": "Class",  "link": "Widget.html", "name": "Widget", "doc": "&quot;&quot;"},
+            {"type": "Class",  "link": "Widget.html", "name": "Widget", "doc": "&quot;Widget class&quot;"},
                                                         {"type": "Method", "fromName": "Widget", "fromLink": "Widget.html", "link": "Widget.html#method___construct", "name": "Widget::__construct", "doc": "&quot;Constructor&quot;"},
                     {"type": "Method", "fromName": "Widget", "fromLink": "Widget.html", "link": "Widget.html#method_setTitle", "name": "Widget::setTitle", "doc": "&quot;Set widget title&quot;"},
                     {"type": "Method", "fromName": "Widget", "fromLink": "Widget.html", "link": "Widget.html#method_setLink", "name": "Widget::setLink", "doc": "&quot;Set widget link&quot;"},

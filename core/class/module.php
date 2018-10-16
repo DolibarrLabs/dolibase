@@ -32,12 +32,14 @@ if (! class_exists('DolibaseModule')) {
  * Undefined function or attribute xxx in DolibaseModule class.
  *
  * Solutions:
- *            + Use Dolibase module builder (will generate a custom class copy in your module directory).
- *            + Keep always your modules up-to-date with the latest version of Dolibase (painful solution).
- *            + Each time you add a function in this class/file, you need to add the same function into your
- *              module(s) class also (just copy & paste).
- *            + Use namespaces to separate module file(s) from each others (complicated solution,
- *              may even not work with Dolibarr).
+ *
+ * - Use Dolibase module builder (will generate a custom class copy in your module directory).
+ *
+ * - Keep always your modules up-to-date with the latest version of Dolibase (painful solution).
+ *
+ * - Each time you add a function in this class/file, you need to copy & paste it into your module(s) class also.
+ *
+ * - Use namespaces to separate module file(s) from each others (complicated solution, may even not work on Dolibarr).
  *
  * P.S: This issue affects only DolibaseModule & Widget class & not the other classes of Dolibase.
  */
