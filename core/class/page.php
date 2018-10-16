@@ -145,6 +145,19 @@ class Page
 	}
 
 	/**
+	 * Load an array of language files
+	 *
+	 * @param     $lang_files_array   Language files array
+	 * @param     $from_module        Files should be loaded from module 'langs' directory or not
+	 */
+	public function loadLangs($lang_files_array, $from_module = false)
+	{
+		foreach ($lang_files_array as $lang_file) {
+			$this->loadLang($lang_file, $from_module);
+		}
+	}
+
+	/**
 	 * Append content to page head
 	 *
 	 * @param     $content     content to add
