@@ -8,7 +8,13 @@ $(document).ready(function() {
 		$('#folder').val(sanitizedName.replace(/_/g, ''));
 	});
 
-	$('form input').on('invalid', function() {
-		alert($("label[for='" + $(this).attr('id') + "']").text() + ' field is required!');
+	$('button[type="submit"]').on('click', function() {
+		$(':input[required]').each(function() {
+			if ($(this).val() == '') {
+				var tabId = $(this).parents('div[class*="tab-pane"]').attr('id');
+				$('.nav-tabs a[href="#' + tabId + '"]').tab('show');
+				return false;
+			}
+		});
 	});
 });
