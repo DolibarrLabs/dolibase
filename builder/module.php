@@ -134,6 +134,16 @@ if ($action == 'generate')
 			$element_type = sanitizeString(strtolower($module_name));
 			$extrafields_template = getTemplate(__DIR__ . '/tpl/module/extrafields.php', array('element_type' => $element_type));
 			file_put_contents($module_path.'/admin/extrafields.php', $extrafields_template);
+			// Create extrafields table
+			$extrafields_table_data = array(
+				'current_year' => date('Y'),
+				'author_name' => $data['author_name'],
+				'table_name' => $element_type.'_extrafields' // without prefix (llx_)
+			);
+			$extrafields_table_template = getTemplate(__DIR__ . '/tpl/module/extrafields.sql', $extrafields_table_data);
+			file_put_contents($module_path.'/sql/llx_'.$extrafields_table_data['table_name'].'.sql', $extrafields_table_template);
+			$extrafields_key_sql_template = getTemplate(__DIR__ . '/tpl/module/extrafields.key.sql', $extrafields_table_data);
+			file_put_contents($module_path.'/sql/llx_'.$extrafields_table_data['table_name'].'.key.sql', $extrafields_key_sql_template);
 		}
 
 		// Create module class

@@ -140,16 +140,16 @@
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_generic_left_menu" name="add_generic_left_menu">
-				<label class="form-check-label" for="add_generic_left_menu" aria-describedby="AddGenericLeftMenuHelp">Add generic left menu</label>
-				<small id="AddGenericLeftMenuHelp" class="form-text text-muted">adds left menu entries for index/create/list pages</small>
+				<label class="form-check-label" for="add_generic_left_menu" aria-describedby="addGenericLeftMenuHelp">Add generic left menu</label>
+				<small id="addGenericLeftMenuHelp" class="form-text text-muted">adds left menu entries for index/create/list pages</small>
 			</div>
 		</div>
 
 		<div class="tab-pane fade" id="permissions" role="tabpanel" aria-labelledby="permissions-tab">
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_crud_perms" name="add_crud_perms">
-				<label class="form-check-label" for="add_crud_perms" aria-describedby="AddCrudPermsHelp">Add CRUD permissions</label>
-				<small id="AddCrudPermsHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
+				<label class="form-check-label" for="add_crud_perms" aria-describedby="addCrudPermsHelp">Add CRUD permissions</label>
+				<small id="addCrudPermsHelp" class="form-text text-muted">adds 4 permissions for Create/Read/Update/Delete actions</small>
 			</div>
 		</div>
 
@@ -174,7 +174,8 @@
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_extrafields_page" name="add_extrafields_page">
-				<label class="form-check-label" for="add_extrafields_page">Add extrafields page</label>
+				<label class="form-check-label" for="add_extrafields_page" aria-describedby="addExtrafieldsPageHelp">Add extrafields page</label>
+				<small id="addExtrafieldsPageHelp" class="form-text text-muted">adds also an extrafields table into sql folder</small>
 			</div>
 		</div>
 
