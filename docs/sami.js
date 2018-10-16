@@ -262,6 +262,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_setTitle", "name": "Page::setTitle", "doc": "&quot;Set page title&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_setMainSubtitle", "name": "Page::setMainSubtitle", "doc": "&quot;Set page main subtitle&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_loadLang", "name": "Page::loadLang", "doc": "&quot;Load a language file&quot;"},
+                    {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_loadLangs", "name": "Page::loadLangs", "doc": "&quot;Load an array of language files&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_appendToHead", "name": "Page::appendToHead", "doc": "&quot;Append content to page head&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_addJsFile", "name": "Page::addJsFile", "doc": "&quot;Add js file to page head&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_addCssFile", "name": "Page::addCssFile", "doc": "&quot;Add css file to page head&quot;"},
