@@ -117,7 +117,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_create", "name": "CustomObject::create", "doc": "&quot;Create object into database&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_update", "name": "CustomObject::update", "doc": "&quot;Update object into database&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_delete", "name": "CustomObject::delete", "doc": "&quot;Delete object in database&quot;"},
-                    {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_getNextNumRef", "name": "CustomObject::getNextNumRef", "doc": "&quot;Returns the reference to the following non used object depending on the active numbering model\n defined into MODULE_RIGHTS_CLASS_ADDON&quot;"},
+                    {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_getNextNumRef", "name": "CustomObject::getNextNumRef", "doc": "&quot;Returns the reference to the following non used object depending on the active numbering model\ndefined into MODULE_RIGHTS_CLASS_ADDON&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_getNomUrl", "name": "CustomObject::getNomUrl", "doc": "&quot;Return clicable name (with picto eventually)&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_getLibStatut", "name": "CustomObject::getLibStatut", "doc": "&quot;Return label of status of object (draft, validated, .&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_getImage", "name": "CustomObject::getImage", "doc": "&quot;Get object image(s)&quot;"},
@@ -144,7 +144,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_generateTabs", "name": "DocumentPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_showBanner", "name": "DocumentPage::showBanner", "doc": "&quot;Show banner&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_getTabTitle", "name": "DocumentPage::getTabTitle", "doc": "&quot;Return Tab title&quot;"},
-                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page begining + print documents\/linked files&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_printDocuments", "name": "DocumentPage::printDocuments", "doc": "&quot;Print documents\/linked files&quot;"},
             
             {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;DolibaseModule class&quot;"},
@@ -205,7 +205,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "IndexPage.html", "name": "IndexPage", "doc": "&quot;IndexPage class&quot;"},
                                                         {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method___construct", "name": "IndexPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page begin&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_end", "name": "IndexPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_openLeftSection", "name": "IndexPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_closeLeftSection", "name": "IndexPage::closeLeftSection", "doc": "&quot;Close a left section&quot;"},
@@ -224,7 +224,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_fetchExtraFields", "name": "ListPage::fetchExtraFields", "doc": "&quot;Fetch extrafields&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_addButtons", "name": "ListPage::addButtons", "doc": "&quot;Add buttons to the list&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeList", "name": "ListPage::closeList", "doc": "&quot;Close list&quot;"},
-                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close a table row&quot;"},
+                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close table row&quot;"},
             
             {"type": "Class",  "link": "LogPage.html", "name": "LogPage", "doc": "&quot;LogPage class&quot;"},
                                                         {"type": "Method", "fromName": "LogPage", "fromLink": "LogPage.html", "link": "LogPage.html#method___construct", "name": "LogPage::__construct", "doc": "&quot;Constructor&quot;"},
@@ -309,7 +309,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "StatsPage.html", "name": "StatsPage", "doc": "&quot;StatsPage class&quot;"},
                                                         {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method___construct", "name": "StatsPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page begin&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_generateTabs", "name": "StatsPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_end", "name": "StatsPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_openLeftSection", "name": "StatsPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},

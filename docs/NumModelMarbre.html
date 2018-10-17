@@ -193,7 +193,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNextValue">getNextValue</a>($objsoc = &#039;&#039;, $object = &#039;&#039;)
+                    <a href="#method_getNextValue">getNextValue</a>(Societe $objsoc = &#039;&#039;, Object $object = &#039;&#039;)
         
                                             <p>Return next free value</p>                </div>
                 <div class="col-md-2"></div>
@@ -266,7 +266,7 @@
     
 
                     <div class="method-description">
-                                    <p>Return description of numbering model</p>                    <p>@return     string      Text with description</p>                            </div>
+                                    <p>Return description of numbering model</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -296,7 +296,7 @@
     
 
                     <div class="method-description">
-                                    <p>Return an example of numbering</p>                    <p>@return     string      Example</p>                            </div>
+                                    <p>Return an example of numbering</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -326,7 +326,7 @@
     
 
                     <div class="method-description">
-                                    <p>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</p>                    <p>@return     boolean     false if conflict, true if ok</p>                            </div>
+                                    <p>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -348,7 +348,7 @@
                     <h3 id="method_getNextValue">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/num_models/marbre.php#L128">line 128</a></div>
         <code>                    string
-    <strong>getNextValue</strong>($objsoc = &#039;&#039;, $object = &#039;&#039;)
+    <strong>getNextValue</strong>(Societe $objsoc = &#039;&#039;, Object $object = &#039;&#039;)
         </code>
     </h3>
     <div class="details">
@@ -356,20 +356,20 @@
     
 
                     <div class="method-description">
-                                    <p>Return next free value</p>                    <p>@param  Societe     $objsoc     Object thirdparty</p>                            </div>
+                                    <p>Return next free value</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>Societe</td>
                 <td>$objsoc</td>
-                <td></td>
+                <td>Object thirdparty</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>Object</td>
                 <td>$object</td>
-                <td></td>
+                <td>Object we need next value for</td>
             </tr>
             </table>
 

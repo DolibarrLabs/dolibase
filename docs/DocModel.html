@@ -102,10 +102,10 @@
             <div class="container-fluid underlined">
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    static&nbsp;array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getModelsList">getModelsList</a>($db, $maxfilenamelength = 0, $type = &#039;&#039;)
+                    <a href="#method_getModelsList">getModelsList</a>(DoliDB $db, integer $maxfilenamelength = 0, string $type = &#039;&#039;)
         
                                             <p>Return list of active generation models</p>                </div>
                 <div class="col-md-2"></div>
@@ -119,8 +119,8 @@
                     <div class="method-item">
                     <h3 id="method_getModelsList">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/doc_model.php#L37">line 37</a></div>
-        <code>        static            
-    <strong>getModelsList</strong>($db, $maxfilenamelength = 0, $type = &#039;&#039;)
+        <code>        static            array
+    <strong>getModelsList</strong>(DoliDB $db, integer $maxfilenamelength = 0, string $type = &#039;&#039;)
         </code>
     </h3>
     <div class="details">
@@ -128,29 +128,38 @@
     
 
                     <div class="method-description">
-                                    <p>Return list of active generation models</p>                    <p>@param  DoliDB  $db                 Database handler</p>                            </div>
+                                    <p>Return list of active generation models</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>DoliDB</td>
                 <td>$db</td>
-                <td></td>
+                <td>Database handler</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>integer</td>
                 <td>$maxfilenamelength</td>
-                <td></td>
+                <td>Max length of value to show</td>
             </tr>
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$type</td>
-                <td></td>
+                <td>Model(s) type</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td>List of templates</td>
+        </tr>
+    </table>
+
             
             
                     </div>
