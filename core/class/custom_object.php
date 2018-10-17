@@ -141,13 +141,13 @@ class CustomObject extends CrudObject
 	}
 
 	/**
-	 *  Returns the reference to the following non used object depending on the active numbering model
-	 *  defined into MODULE_RIGHTS_CLASS_ADDON
+	 * Returns the reference to the following non used object depending on the active numbering model
+	 * defined into MODULE_RIGHTS_CLASS_ADDON
 	 *
-	 *  @param  string      $const_name_prefix     Constant name prefix
-	 *  @param  string      $model_name            Numbering model name
-	 *  @param  Societe     $soc                   Object thirdparty
-	 *  @return string      Reference
+	 * @param  string      $const_name_prefix     Constant name prefix
+	 * @param  string      $model_name            Numbering model name
+	 * @param  Societe     $soc                   Object thirdparty
+	 * @return string      Reference
 	 */
 	public function getNextNumRef($const_name_prefix = '', $model_name = '', $soc = '')
 	{

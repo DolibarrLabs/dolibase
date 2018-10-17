@@ -21,6 +21,8 @@ class ${model_classname} extends NumModel
 	/**
 	 * Constructor
 	 *
+	 * @param     $const_name_prefix     Constant name prefix
+	 * @param     $model_name            Numbering model name
 	 */
 	public function __construct($const_name_prefix, $model_name = '')
 	{
@@ -33,9 +35,9 @@ class ${model_classname} extends NumModel
 	}
 
 	/**
-	 *  Return description of numbering model
+	 * Return description of numbering model
 	 *
-	 *  @return     string      Text with description
+	 * @return     string      Text with description
 	 */
 	public function info()
 	{
@@ -73,9 +75,9 @@ class ${model_classname} extends NumModel
 	}
 
 	/**
-	 *  Return an example of numbering
+	 * Return an example of numbering
 	 *
-	 *  @return string      Example
+	 * @return string      Example
 	 */
 	public function getExample()
 	{
@@ -91,11 +93,11 @@ class ${model_classname} extends NumModel
 	}
 
 	/**
-	 * 	Return next free value
+	 * Return next free value
 	 *
-	 *  @param	Societe		$objsoc     Object thirdparty
-	 *  @param  Object		$object		Object we need next value for
-	 *  @return string      			Value if KO, <0 if KO
+	 * @param  Societe		$objsoc     Object thirdparty
+	 * @param  Object		$object		Object we need next value for
+	 * @return string      			Value if KO, <0 if KO
 	 */
 	public function getNextValue($objsoc = '', $object = '')
 	{

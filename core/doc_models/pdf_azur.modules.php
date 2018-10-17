@@ -51,9 +51,9 @@ class pdf_azur extends DocModel
 	protected $const_prefix;
 
 	/**
-	 *	Constructor
+	 * Constructor
 	 *
-	 *  @param		DoliDB		$db      Database handler
+	 * @param		DoliDB		$db      Database handler
 	 */
 	public function __construct($db)
 	{
@@ -96,15 +96,15 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *  Function to build pdf onto disk
+	 * Function to build pdf onto disk
 	 *
-	 *  @param		Object		$object				Object to generate
-	 *  @param		Translate	$outputlangs		Lang output object
-	 *  @param		string		$srctemplatepath	Full path of source filename for generator using a template file
-	 *  @param		int			$hidedetails		Do not show line details
-	 *  @param		int			$hidedesc			Do not show desc
-	 *  @param		int			$hideref			Do not show ref
-	 *  @return     int             			    1=OK, 0=KO
+	 * @param		Object		$object				Object to generate
+	 * @param		Translate	$outputlangs		Lang output object
+	 * @param		string		$srctemplatepath	Full path of source filename for generator using a template file
+	 * @param		int			$hidedetails		Do not show line details
+	 * @param		int			$hidedesc			Do not show desc
+	 * @param		int			$hideref			Do not show ref
+	 * @return		int								1=OK, 0=KO
 	 */
 	public function write_file($object, $outputlangs, $srctemplatepath='', $hidedetails=0, $hidedesc=0, $hideref=0)
 	{
@@ -304,16 +304,16 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *  Function to write pdf content
+	 * Function to write pdf content
 	 *
-	 *  @param		TCPDF		$pdf				PDF object
-	 *  @param		Object		$object				Object to generate
-	 *  @param		Translate	$outputlangs		Lang output object
-	 *  @param		int			$default_font_size	Default font size
-	 *  @param		int			$tab_top			Table top position
-	 *  @param		int			$heightforinfotot	Info height
-	 *  @param		int			$heightforfreetext	Free text height
-	 *  @param		int			$heightforfooter	Footer height
+	 * @param		TCPDF		$pdf				PDF object
+	 * @param		Object		$object				Object to generate
+	 * @param		Translate	$outputlangs		Lang output object
+	 * @param		int			$default_font_size	Default font size
+	 * @param		int			$tab_top			Table top position
+	 * @param		int			$heightforinfotot	Info height
+	 * @param		int			$heightforfreetext	Free text height
+	 * @param		int			$heightforfooter	Footer height
 	 */
 	protected function write_content(&$pdf, $object, $outputlangs, $default_font_size, $tab_top, $heightforinfotot, $heightforfreetext, $heightforfooter)
 	{
@@ -342,16 +342,16 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *  Function to print table line
+	 * Function to print table line
 	 *
-	 *  @param		TCPDF		$pdf				PDF object
-	 *  @param		string		$name				Row name
-	 *  @param		string		$value				Row value
-	 *  @param		int			$curY				Current Y position
-	 *  @param		Translate	$outputlangs		Lang output object
-	 *  @param		int			$default_font_size	Default font size
-	 *  @param		int			$add_separator		Should add a row separator or not
-	 *  @return     int             				next Y position
+	 * @param		TCPDF		$pdf				PDF object
+	 * @param		string		$name				Row name
+	 * @param		string		$value				Row value
+	 * @param		int			$curY				Current Y position
+	 * @param		Translate	$outputlangs		Lang output object
+	 * @param		int			$default_font_size	Default font size
+	 * @param		int			$add_separator		Should add a row separator or not
+	 * @return		int								next Y position
 	 */
 	protected function print_line(&$pdf, $name, $value, $curY, $outputlangs, $default_font_size, $add_separator=1)
 	{
@@ -393,17 +393,17 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *   Show table for lines
+	 * Show table for lines
 	 *
-	 *   @param		TCPDF		$pdf     		Object PDF
-	 *   @param		string		$tab_top		Top position of table
-	 *   @param		string		$tab_height		Height of table (rectangle)
-	 *   @param		int			$nexY			Y (not used)
-	 *   @param		Translate	$outputlangs	Langs object
-	 *   @param		int			$hidetop		1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
-	 *   @param		int			$hidebottom		Hide bottom bar of array
-	 *   @param		string		$currency		Currency code
-	 *   @return	void
+	 * @param		TCPDF		$pdf     		Object PDF
+	 * @param		string		$tab_top		Top position of table
+	 * @param		string		$tab_height		Height of table (rectangle)
+	 * @param		int			$nexY			Y (not used)
+	 * @param		Translate	$outputlangs	Langs object
+	 * @param		int			$hidetop		1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
+	 * @param		int			$hidebottom		Hide bottom bar of array
+	 * @param		string		$currency		Currency code
+	 * @return		void
 	 */
 	public function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop=0, $hidebottom=0, $currency='')
 	{
@@ -423,14 +423,14 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *  Show top header of page.
+	 * Show top header of page.
 	 *
-	 *  @param	TCPDF		$pdf     		Object PDF
-	 *  @param  Object		$object     	Object to show
-	 *  @param  int	    	$showaddress    0=no, 1=yes
-	 *  @param  Translate	$outputlangs	Object lang for output
-	 *  @param	string		$titlekey		Translation key to show as title of document
-	 *  @return	void
+	 * @param	TCPDF		$pdf			Object PDF
+	 * @param	Object		$object			Object to show
+	 * @param	int			$showaddress	0=no, 1=yes
+	 * @param	Translate	$outputlangs	Object lang for output
+	 * @param	string		$titlekey		Translation key to show as title of document
+	 * @return	void
 	 */
 	public function _pagehead(&$pdf, $object, $showaddress, $outputlangs, $titlekey='')
 	{
@@ -578,13 +578,13 @@ class pdf_azur extends DocModel
 	}
 
 	/**
-	 *  Show footer of page. Need this->emetteur object
+	 * Show footer of page. Need this->emetteur object
 	 *
-	 *  @param	TCPDF		$pdf     			PDF
-	 *  @param	Object		$object				Object to show
-	 *  @param	Translate	$outputlangs		Object lang for output
-	 *  @param	int			$hidefreetext		1=Hide free text
-	 *  @return	int								Return height of bottom margin including footer text
+	 * @param	TCPDF		$pdf				PDF
+	 * @param	Object		$object				Object to show
+	 * @param	Translate	$outputlangs		Object lang for output
+	 * @param	int			$hidefreetext		1=Hide free text
+	 * @return	int								Return height of bottom margin including footer text
 	 */
 	public function _pagefoot(&$pdf, $object, $outputlangs, $hidefreetext=0)
 	{

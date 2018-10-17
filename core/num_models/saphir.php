@@ -58,9 +58,9 @@ class NumModelSaphir extends NumModel
 	}
 
 	/**
-	 *  Return description of numbering model
+	 * Return description of numbering model
 	 *
-	 *  @return     string      Text with description
+	 * @return     string      Text with description
 	 */
 	public function info()
 	{
@@ -98,9 +98,9 @@ class NumModelSaphir extends NumModel
 	}
 
 	/**
-	 *  Return an example of numbering
+	 * Return an example of numbering
 	 *
-	 *  @return string      Example
+	 * @return string      Example
 	 */
 	public function getExample()
 	{
@@ -116,11 +116,11 @@ class NumModelSaphir extends NumModel
 	}
 
 	/**
-	 * 	Return next free value
+	 * Return next free value
 	 *
-	 *  @param	Societe		$objsoc     Object thirdparty
-	 *  @param  Object		$object		Object we need next value for
-	 *  @return string      			Value if KO, <0 if KO
+	 * @param  Societe		$objsoc     Object thirdparty
+	 * @param  Object		$object		Object we need next value for
+	 * @return string      			Value if KO, <0 if KO
 	 */
 	public function getNextValue($objsoc = '', $object = '')
 	{

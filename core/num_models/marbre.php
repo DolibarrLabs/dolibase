@@ -61,9 +61,9 @@ class NumModelMarbre extends NumModel
 	}
 
 	/**
-	 *  Return description of numbering model
+	 * Return description of numbering model
 	 *
-	 *  @return     string      Text with description
+	 * @return     string      Text with description
 	 */
 	public function info()
 	{
@@ -73,9 +73,9 @@ class NumModelMarbre extends NumModel
 	}
 
 	/**
-	 *  Return an example of numbering
+	 * Return an example of numbering
 	 *
-	 *  @return     string      Example
+	 * @return     string      Example
 	 */
 	public function getExample()
 	{
@@ -83,9 +83,9 @@ class NumModelMarbre extends NumModel
 	}
 
 	/**
-	 *  Check if the numbers already existing in the database doesn't have conflicts with this numbering model
+	 * Check if the numbers already existing in the database doesn't have conflicts with this numbering model
 	 *
-	 *  @return     boolean     false if conflict, true if ok
+	 * @return     boolean     false if conflict, true if ok
 	 */
 	public function canBeActivated()
 	{
@@ -119,11 +119,11 @@ class NumModelMarbre extends NumModel
 	}
 
 	/**
-	 * 	Return next free value
+	 * Return next free value
 	 *
-	 *  @param	Societe		$objsoc     Object thirdparty
-	 *  @param  Object		$object		Object we need next value for
-	 *  @return string      			Value if KO, <0 if KO
+	 * @param  Societe		$objsoc     Object thirdparty
+	 * @param  Object		$object		Object we need next value for
+	 * @return string      			Value if KO, <0 if KO
 	 */
 	public function getNextValue($objsoc = '', $object = '')
 	{
