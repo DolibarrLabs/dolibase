@@ -22,6 +22,10 @@
 		<small id="objectTableHelp" class="form-text text-muted">without table prefix (llx_)</small>
 	</div>
 	<div class="form-group">
+		<label for="pk_name">Primary Key Field Name</label>
+		<input type="text" class="form-control" id="pk_name" name="pk_name" placeholder="rowid" value="rowid" required>
+	</div>
+	<div class="form-group">
 		<label for="fetch_fields">Fetch Fields</label>
 		<input type="text" class="form-control" id="fetch_fields" name="fetch_fields" aria-describedby="fetchFieldsHelp" placeholder="rowid, name, creation_date" required>
 		<small id="fetchFieldsHelp" class="form-text text-muted">fields to always fetch when calling fetch method(s)</small>
