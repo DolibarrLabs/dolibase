@@ -25,37 +25,13 @@ dolibase_include_once('/core/class/logs.php');
 class CustomObject extends CrudObject
 {
 	/**
-	 * @var string Id to identify managed object
-	 */
-	public $element = ''; // e.: 'my_object'
-	/**
-	 * @var string Name of table without prefix where object is stored
-	 */
-	public $table_element = ''; // e.: 'my_table'
-	/**
 	 * @var string Banner picture
 	 */
 	public $picto = ''; // e.: 'my_picture@my_module'
 	/**
-	 * @var array Fetch fields
-	 */
-	public $fetch_fields = array(); // e.: array('field_1', 'field_2', 'field_3')
-	/**
-	 * @var array Date fields
-	 */
-	public $date_fields = array(); // e.: array('creation_date')
-	/**
 	 * @var array Tooltip details
 	 */
 	public $tooltip_details = array(); // e.: array('detail_1' => 'value_1', 'detail_2' => 'value_2')
-	/**
-	 * @var string Primary key name (id field)
-	 */
-	public $pk_name = 'rowid';
-	/**
-	 * @var string Ref. field name
-	 */
-	public $ref_field_name = 'ref';
 	/**
 	 * @var string Document title
 	 */
