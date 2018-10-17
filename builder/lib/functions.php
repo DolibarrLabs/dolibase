@@ -478,14 +478,13 @@ function recurse_copy($source, $destination, $filter = array())
  * Replace contents of a file.
  *
  */
-function file_replace_contents($file, $str_to_replace, $replace_with_str)
+function file_replace_contents($file, $regex, $replacement, $regex_start = '/', $regex_end = '/')
 {
 	// Read file content
 	$file_content = file_get_contents($file);
 
 	// Do the replacements on $file_content
-	$file_content = str_replace($str_to_replace, $replace_with_str, $file_content);
-	//$file_content = preg_replace('/'.$str_to_replace.'/', $replace_with_str, $file_content);
+	$file_content = preg_replace($regex_start.$regex.$regex_end, $replacement, $file_content);
 
 	// Write the content to a new file
 	file_put_contents($file, $file_content);

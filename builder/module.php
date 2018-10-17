@@ -199,6 +199,7 @@ if ($action == 'generate')
 					foreach ($version_numbers as $num) {
 						$module_class_data['dolibase_class_name'] .= num2Alpha((int) $num);
 					}
+					file_replace_contents($module_path.'/class/module.php', '({\n+)\/\*.*?\*\/\n+(class)', '$1$2', '/', '/s'); // remove class comment
 					file_replace_contents($module_path.'/class/module.php', 'DolibaseModule', $module_class_data['dolibase_class_name']);
 					$module_class_data['dolibase_class_include'] = "dol_include_once('/".$data['folder']."/class/module.php');";
 				}
