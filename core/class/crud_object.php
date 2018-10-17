@@ -36,6 +36,10 @@ class CrudObject extends CommonObject
 	 */
 	public $fetch_fields = array(); // e.: array('field_1', 'field_2', 'field_3')
 	/**
+	 * @var array Date fields
+	 */
+	public $date_fields = array(); // e.: array('creation_date')
+	/**
 	 * @var string Primary key name (id field)
 	 */
 	public $pk_name = 'rowid';
@@ -182,6 +186,11 @@ class CrudObject extends CommonObject
 					$this->id = $obj->{$this->pk_name};
 				}
 
+				// Fix error: dol_print_date function call with deprecated value of time
+				foreach ($this->date_fields as $field) {
+					$this->$field = $this->db->jdate($this->$field);
+				}
+
 				$this->db->free($resql);
 
 				return 1;
@@ -301,6 +310,11 @@ class CrudObject extends CommonObject
 					// enssure that $this->id is filled because we use it in update/delete/getNomUrl functions
 					if ($set_id) {
 						$this->lines[$i]->id = $obj->{$this->pk_name};
+					}
+
+					// Fix error: dol_print_date function call with deprecated value of time
+					foreach ($this->date_fields as $field) {
+						$this->lines[$i]->$field = $this->db->jdate($this->lines[$i]->$field);
 					}
 
 					$i++;

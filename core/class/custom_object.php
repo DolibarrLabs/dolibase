@@ -41,6 +41,10 @@ class CustomObject extends CrudObject
 	 */
 	public $fetch_fields = array(); // e.: array('field_1', 'field_2', 'field_3')
 	/**
+	 * @var array Date fields
+	 */
+	public $date_fields = array(); // e.: array('creation_date')
+	/**
 	 * @var array Tooltip details
 	 */
 	public $tooltip_details = array(); // e.: array('detail_1' => 'value_1', 'detail_2' => 'value_2')
