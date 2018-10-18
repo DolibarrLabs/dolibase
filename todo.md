@@ -1,6 +1,5 @@
 ### ToDo
 
-* SQL files Builder?
 * Module export/import options
 
 ## v3

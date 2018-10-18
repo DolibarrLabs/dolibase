@@ -6,7 +6,7 @@
 *   NEW: improve builder.
 *   NEW: add some validation rules to Field class.
 *   NEW: CRON support.
-*   NEW: add $date_fields array to CrudObject & CustomObject classes.
+*   NEW: add $date_fields array to CrudObject class.
 
 ---
 
