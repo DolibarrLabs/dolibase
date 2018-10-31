@@ -28,4 +28,3 @@ abstract class ModeleBooks extends DocModel
 
 // Fix for dolibarr 8
 abstract class ModelePDFBooks extends ModeleBooks {}
-

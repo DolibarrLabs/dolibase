@@ -31,17 +31,18 @@ if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book
 	if (! empty($ref))
 	{
 		global $user;
-		
-		$data = array('ref' => $ref,
-					  'name' => str_escape(GETPOST('name')),
-					  'desc' => str_escape(GETPOST('desc')),
-					  'type' => GETPOST('type'),
-					  'qty' => GETPOST('qty'),
-					  'price' => empty_to_null(GETPOST('price')),
-					  'publication_date' => GETPOSTDATE('publication_date', true),
-					  'creation_date' => dolibase_now(true),
-					  'created_by' => $user->id
-					);
+
+		$data = array(
+			'ref' => $ref,
+			'name' => str_escape(GETPOST('name')),
+			'desc' => str_escape(GETPOST('desc')),
+			'type' => GETPOST('type'),
+			'qty' => GETPOST('qty'),
+			'price' => empty_to_null(GETPOST('price')),
+			'publication_date' => GETPOSTDATE('publication_date', true),
+			'creation_date' => dolibase_now(true),
+			'created_by' => $user->id
+		);
 
 		$id = $book->create($data);
 
