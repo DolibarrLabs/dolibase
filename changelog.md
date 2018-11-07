@@ -6,6 +6,8 @@
 *   NEW: better assets handling in page class.
 *   FIX: use DISTINCT in fetchAll query to avoid double results.
 
+---
+
 #### 2.5.0 - OCT18
 
 *   NEW: improve builder.
