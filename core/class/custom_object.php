@@ -139,8 +139,8 @@ class CustomObject extends CrudObject
 
 			// Include file with class
 			$dirmodels = array(
-				dolibase_buildpath("/core/num_models/"),
-				dol_buildpath("/".$dolibase_config['module']['folder']."/core/num_models/")
+				dolibase_buildpath("core/num_models/"),
+				dol_buildpath($dolibase_config['module']['folder']."/core/num_models/")
 			);
 
 			foreach ($dirmodels as $dir)
@@ -317,8 +317,8 @@ class CustomObject extends CrudObject
 		// Get model path
 		$modelpath = $dolibase_config['main']['path'] . '/core/doc_models/';
 		$dirmodels = array(
-			$dolibase_config['main']['path'] . '/core/doc_models/' => dolibase_buildpath("/core/doc_models/"),
-			$dolibase_config['module']['folder'] . '/core/doc_models/' => dol_buildpath("/".$dolibase_config['module']['folder']."/core/doc_models/")
+			$dolibase_config['main']['path'] . '/core/doc_models/' => dolibase_buildpath("core/doc_models/"),
+			$dolibase_config['module']['folder'] . '/core/doc_models/' => dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
 		);
 
 		foreach ($dirmodels as $path => $dir)

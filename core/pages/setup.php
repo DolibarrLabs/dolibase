@@ -286,8 +286,8 @@ class SetupPage extends FormPage
 
 				// Search template files
 				$dirmodels = array(
-					dolibase_buildpath("/core/doc_models/"),
-					dol_buildpath("/".$dolibase_config['module']['folder']."/core/doc_models/")
+					dolibase_buildpath("core/doc_models/"),
+					dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
 				);
 				$error = 0;
 
@@ -580,8 +580,8 @@ class SetupPage extends FormPage
 		clearstatcache();
 
 		$dirmodels = array(
-			dolibase_buildpath("/core/num_models/"),
-			dol_buildpath("/".$dolibase_config['module']['folder']."/core/num_models/")
+			dolibase_buildpath("core/num_models/"),
+			dol_buildpath($dolibase_config['module']['folder']."/core/num_models/")
 		);
 
 		foreach ($dirmodels as $dir)
@@ -715,8 +715,8 @@ class SetupPage extends FormPage
 		clearstatcache();
 
 		$dirmodels = array(
-			dolibase_buildpath("/core/doc_models/"),
-			dol_buildpath("/".$dolibase_config['module']['folder']."/core/doc_models/")
+			dolibase_buildpath("core/doc_models/"),
+			dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
 		);
 
 		foreach ($dirmodels as $dir)

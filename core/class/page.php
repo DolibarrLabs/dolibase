@@ -183,7 +183,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		//$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/js/'.$js_file, 1).'"></script>'."\n");
+		//$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath($dolibase_config['module']['folder'].'/js/'.$js_file, 1).'"></script>'."\n");
 
 		$this->assets['js'][] = $dolibase_config['module']['folder'].'/js/'.$js_file;
 	}
@@ -197,7 +197,7 @@ class Page
 	{
 		global $dolibase_config;
 
-		//$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
+		//$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath($dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
 
 		$this->assets['css'][] = $dolibase_config['module']['folder'].'/css/'.$css_file;
 	}
