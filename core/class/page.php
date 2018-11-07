@@ -73,6 +73,13 @@ class Page
 	 * @var string Module part
 	 */
 	protected $modulepart;
+	/**
+	 * @var array Page assets
+	 */
+	protected $assets = array(
+		'css' => array(),
+		'js'  => array()
+	);
 
 
 	/**
@@ -176,7 +183,9 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/js/'.$js_file, 1).'"></script>'."\n");
+		//$this->appendToHead('<script type="text/javascript" src="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/js/'.$js_file, 1).'"></script>'."\n");
+
+		$this->assets['js'][] = $dolibase_config['module']['folder'].'/js/'.$js_file;
 	}
 
 	/**
@@ -188,7 +197,9 @@ class Page
 	{
 		global $dolibase_config;
 
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
+		//$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath('/'.$dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
+
+		$this->assets['css'][] = $dolibase_config['module']['folder'].'/css/'.$css_file;
 	}
 
 	/**
@@ -461,7 +472,7 @@ class Page
 		start_time_measure('after_begin_call', __METHOD__, 'after_construct_call');
 
 		// Load Page Header (Dolibarr header, menus, ...)
-		llxHeader($this->head, $langs->trans($this->title));
+		llxHeader($this->head, $langs->trans($this->title), '', '', 0, 0, $this->assets['js'], $this->assets['css']);
 
 		// Generate page
 		$this->generate();
