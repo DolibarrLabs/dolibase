@@ -61,5 +61,5 @@ if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs dir
  */
 
 if (false === (@include DOL_DOCUMENT_ROOT.'/dolibase/autoload.php')) { // From htdocs directory
-	@include dol_buildpath('/'.$dolibase_config['module']['folder'].'/dolibase/autoload.php'); // From module directory
+	@include dol_buildpath($dolibase_config['module']['folder'].'/dolibase/autoload.php'); // From module directory
 }
