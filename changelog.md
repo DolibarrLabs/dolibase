@@ -4,7 +4,7 @@
 #### 2.6.1 - NOV18
 
 *   NEW: extra folder renamed to vendor.
-*   NEW: README & documentation updated.
+*   FIX: code cleaned.
 
 ---
 
