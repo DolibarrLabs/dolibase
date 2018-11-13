@@ -172,3 +172,11 @@ Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tre
       - Go to **Home** > **Setup** > **Modules** > **Other setup**.
       - Search for the entry name `MAIN_FEATURES_LEVEL` (or add it if it don't exist), then set the value to `2`.
       - Confirm using **Modify** button at the bottom.
+
+## Changelog
+
+Check [changelog file](changelog.md).
+
+## License
+
+Dolibase is licensed under the [MIT](LICENSE) license.
