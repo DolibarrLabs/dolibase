@@ -385,7 +385,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getLibStatut">getLibStatut</a>(int $mode = 0)
@@ -408,14 +408,14 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
                     int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_generateDocument">generateDocument</a>($model)
+                    <a href="#method_generateDocument">generateDocument</a>(string $model)
         
                                             <p>Create a document onto disk according to template module.</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    int
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_deleteDocument">deleteDocument</a>()
@@ -1171,7 +1171,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
                     <div class="method-item">
                     <h3 id="method_getLibStatut">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L227">line 227</a></div>
-        <code>                    
+        <code>                    string
     <strong>getLibStatut</strong>(int $mode = 0)
         </code>
     </h3>
@@ -1188,12 +1188,20 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
                     <tr>
                 <td>int</td>
                 <td>$mode</td>
-                <td>0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto
- @return     string      Label</td>
+                <td>0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto</td>
             </tr>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>Label</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1235,7 +1243,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
                     <h3 id="method_generateDocument">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L275">line 275</a></div>
         <code>                    int
-    <strong>generateDocument</strong>($model)
+    <strong>generateDocument</strong>(string $model)
         </code>
     </h3>
     <div class="details">
@@ -1243,15 +1251,15 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
     
 
                     <div class="method-description">
-                                    <p>Create a document onto disk according to template module.</p>                    <p>@param      string      $model          Force template to use ('' to not force)</p>                            </div>
+                                    <p>Create a document onto disk according to template module.</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>string</td>
                 <td>$model</td>
-                <td></td>
+                <td>Force template to use ('' to not force)</td>
             </tr>
             </table>
 
@@ -1274,7 +1282,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
                     <div class="method-item">
                     <h3 id="method_deleteDocument">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L349">line 349</a></div>
-        <code>                    
+        <code>                    int
     <strong>deleteDocument</strong>()
         </code>
     </h3>
@@ -1283,9 +1291,18 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
     
 
                     <div class="method-description">
-                                    <p>Delete document from disk.</p>                    <p>@return     int                         0 if KO, 1 if OK</p>                            </div>
+                                    <p>Delete document from disk.</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>int</td>
+            <td>0 if KO, 1 if OK</td>
+        </tr>
+    </table>
+
             
             
                     </div>
