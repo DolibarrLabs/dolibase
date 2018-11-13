@@ -1,25 +1,9 @@
 <?php
 /**
- * Dolibase
- * 
- * Open source framework for Dolibarr ERP/CRM
+ * This file is only used to maintain backward compatibility with older dolibase modules.
  *
- * Copyright (c) 2018 - 2019
- *
- *
- * @package     Dolibase
- * @author      AXeL
- * @copyright   Copyright (c) 2018 - 2019, AXeL-dev
- * @license     MIT
- * @link        https://github.com/AXeL-dev/dolibase
- * 
+ * @deprecated deprecated since version 2.6.0 & may be removed on version 3.0.0
  */
 
-// Dolibarr detection
-if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection failed.');
-
-// Load Dolibase functions
-require_once __DIR__ . '/core/lib/functions.php';
-
-// Load Dolibase config
-require_once __DIR__ . '/config.php';
+// Load Dolibase
+require_once __DIR__ . '/main.php';
