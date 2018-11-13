@@ -98,6 +98,10 @@ if ($action == 'generate')
 		$template = getTemplate(__DIR__ . '/tpl/module/config.php', $data);
 		file_put_contents($module_path.'/config.php', $template);
 
+		// Create module autoload file
+		$template = getTemplate(__DIR__ . '/tpl/module/autoload.php');
+		file_put_contents($module_path.'/autoload.php', $template);
+
 		// Create setup page
 		$setup_data = array(
 			'add_extrafields_tab' => bool2Alpha($add_extrafields_page),
