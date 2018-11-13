@@ -344,7 +344,7 @@ class CustomObject extends CrudObject
 	/**
 	 * Delete document from disk.
 	 *
-	 * @return     int     <0 if KO, >0 if OK
+	 * @return     int     0 if KO, 1 if OK
 	 */
 	public function deleteDocument()
 	{
