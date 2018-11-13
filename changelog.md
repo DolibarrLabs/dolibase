@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.1 - NOV18
+
+*   NEW: extra folder renamed to vendor.
+*   NEW: README & documentation updated.
+
+---
+
 #### 2.6.0 - NOV18
 
 *   NEW: `autoload.php` added to module root directory (this little guy will now be responsible of loading the module configuration, dolibase requirements, etc..).
