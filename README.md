@@ -64,7 +64,7 @@ dolibarr module                                         dolibase module
 - `js` folder is for your javascript files.
 - `myfirstpage.php` is considered as your first module page in the example above.
 - `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/config.default.php).
-- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want it to be always loaded @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
+- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want to be auto-loaded @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
 
 ## Installation
 
@@ -159,10 +159,10 @@ Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tre
 
 1. **Disable automatic check for module updates**:
 
-   Dolibase may check automatically for a newer module(s) version(s) on [Dolistore](https://www.dolistore.com/) & this feature may slowdown your modules list page if you have a slow connection or if you are using many modules based on dolibase, so to disable the feature for all the modules at once:
+   Dolibase may check automatically for a newer module(s) version(s) on [Dolistore](https://www.dolistore.com/) & it may slowdown your modules list page if you have a slow connection or if you are using many modules based on dolibase, so to disable this feature for all the modules at once:
 
       - Go to **Home** > **Setup** > **Modules** > **Other setup**.
-      - Then add a new entry as `DOLIBASE_DISABLE_CHECK_FOR_UPDATES` & give it the value `1`.
+      - Add a new entry as `DOLIBASE_DISABLE_CHECK_FOR_UPDATES` & give it the value `1`.
       - Confirm using **Add** button & that's it.
 
 2. **Enable experimental & development modules**:
@@ -175,7 +175,7 @@ Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tre
 
 ## Changelog
 
-Check [changelog file](changelog.md).
+See [changelog](changelog.md).
 
 ## License
 

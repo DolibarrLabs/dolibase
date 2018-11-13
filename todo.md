@@ -2,6 +2,7 @@
 
 * Module export/import options
 * Hierarchical view page?
+* Arabic translation/lang files.
 
 ## v3
 
