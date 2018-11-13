@@ -1,7 +1,7 @@
 <?php
 
-// Load Dolibase config file for this module (mandatory)
-include_once 'config.php';
+// Load Dolibase
+include_once 'autoload.php';
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/index.php');
 // Load Book class

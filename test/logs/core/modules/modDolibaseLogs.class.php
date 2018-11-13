@@ -1,7 +1,7 @@
 <?php
 
-// Load Dolibase config file for this module (mandatory)
-dol_include_once('/logs/config.php');
+// Load Dolibase
+dol_include_once('/logs/autoload.php');
 // Load Dolibase Module class
 dolibase_include_once('/core/class/module.php');
 
