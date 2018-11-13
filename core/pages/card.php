@@ -103,9 +103,9 @@ class CardPage extends CreatePage
 		// Add JS files
 		$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/dropdown.js.php').'"></script>'."\n");
 		if ($enable_save_as) {
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/jsPDF/jspdf.min.js').'"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/jsPDF/jspdf.plugin.autotable.min.js').'"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/extra/table2csv/table2csv.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/jsPDF/jspdf.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/jsPDF/jspdf.plugin.autotable.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/table2csv/table2csv.js').'"></script>'."\n");
 			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/save_as.js.php').'"></script>'."\n");
 		}
 		
