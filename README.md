@@ -46,7 +46,8 @@ dolibarr module                                         dolibase module
 └── myfirstpage.php                                     ├── js
                                                         │   └── *.js
                                                         ├── myfirstpage.php
-                                                        └── config.php (mandatory)
+                                                        ├── config.php (mandatory)
+                                                        └── autoload.php (mandatory)
 ```
 
 **Explanation:**
@@ -63,6 +64,7 @@ dolibarr module                                         dolibase module
 - `js` folder is for your javascript files.
 - `myfirstpage.php` is considered as your first module page in the example above.
 - `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/config.default.php).
+- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
 
 ## Installation
 
@@ -91,8 +93,8 @@ Note that `localhost/dolibarr` may change depending on your dolibarr installatio
 ```php
 <?php
 
-// Load Dolibase config file for this module (mandatory)
-dol_include_once('/myfirstmodule/config.php');
+// Load Dolibase
+dol_include_once('/myfirstmodule/autoload.php');
 
 // Load Dolibase Module class
 dolibase_include_once('/core/class/module.php');
@@ -129,8 +131,8 @@ class modMyFirstModule extends DolibaseModule
 ```php
 <?php
 
-// Load Dolibase config file for this module (mandatory)
-include_once 'config.php';
+// Load Dolibase
+include_once 'autoload.php';
 
 // Load Dolibase Page class
 dolibase_include_once('/core/class/page.php');
