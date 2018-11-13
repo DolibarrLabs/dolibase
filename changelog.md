@@ -1,6 +1,16 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.0 - NOV18
+
+*   NEW: autoload.php added to module root directory (this little guy will now be responsible of loading the module configuration, dolibase requirements, etc..).
+*   NEW: dolibase/autoload.php renamed to dolibase/main.php (to avoid confusion with module autoload file & because it makes more sense i guess).
+*   FIX: keep dolibase/autoload.php for backward compatibility (but it's deprecated anyway & will not be used anymore on new modules).
+*   NEW: module builder updated (to fit changes above).
+*   FIX: empty <option> added to the type <select> in extrafields page.
+
+---
+
 #### 2.5.1 - NOV18
 
 *   NEW: better assets handling in page class.

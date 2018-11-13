@@ -1,6 +1,6 @@
 # Dolibase
 
-[![Stable Version](https://img.shields.io/badge/stable-v2.3.8-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.3.8)
+[![Stable Version](https://img.shields.io/badge/stable-v2.6.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.6.0)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
@@ -64,7 +64,7 @@ dolibarr module                                         dolibase module
 - `js` folder is for your javascript files.
 - `myfirstpage.php` is considered as your first module page in the example above.
 - `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/config.default.php).
-- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
+- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want it to be always loaded @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
 
 ## Installation
 
