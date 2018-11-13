@@ -28,7 +28,7 @@ class pdf_crabe extends pdf_azur
 	/**
 	 * Constructor
 	 *
-	 * @param		DoliDB		$db      Database handler
+	 * @param      DoliDB      $db      Database handler
 	 */
 	public function __construct($db)
 	{
@@ -43,14 +43,14 @@ class pdf_crabe extends pdf_azur
 	/**
 	 * Function to write pdf content
 	 *
-	 * @param		TCPDF		$pdf				PDF object
-	 * @param		Object		$object				Object to generate
-	 * @param		Translate	$outputlangs		Lang output object
-	 * @param		int			$default_font_size	Default font size
-	 * @param		int			$tab_top			Table top position
-	 * @param		int			$heightforinfotot	Info height
-	 * @param		int			$heightforfreetext	Free text height
-	 * @param		int			$heightforfooter	Footer height
+	 * @param       TCPDF       $pdf                PDF object
+	 * @param       Object      $object             Object to generate
+	 * @param       Translate   $outputlangs        Lang output object
+	 * @param       int         $default_font_size  Default font size
+	 * @param       int         $tab_top            Table top position
+	 * @param       int         $heightforinfotot   Info height
+	 * @param       int         $heightforfreetext  Free text height
+	 * @param       int         $heightforfooter    Footer height
 	 */
 	protected function write_content(&$pdf, $object, $outputlangs, $default_font_size, $tab_top, $heightforinfotot, $heightforfreetext, $heightforfooter)
 	{
@@ -96,18 +96,18 @@ class pdf_crabe extends pdf_azur
 	/**
 	 * Function to print table line
 	 *
-	 * @param		TCPDF		$pdf				PDF object
-	 * @param		string		$text				Column text
-	 * @param		int			$curX				Current X position
-	 * @param		int			$curY				Current Y position
-	 * @param		int			$nexY				Next Y position
-	 * @param		int			$col_width			Column width
-	 * @param		int			$tab_top			Table top position
-	 * @param		int			$tab_height			Table height
-	 * @param		Translate	$outputlangs		Lang output object
-	 * @param		int			$default_font_size	Default font size
-	 * @param		int			$add_separator		Should add a row separator or not
-	 * @return		int								next X position
+	 * @param       TCPDF       $pdf                PDF object
+	 * @param       string      $text               Column text
+	 * @param       int         $curX               Current X position
+	 * @param       int         $curY               Current Y position
+	 * @param       int         $nexY               Next Y position
+	 * @param       int         $col_width          Column width
+	 * @param       int         $tab_top            Table top position
+	 * @param       int         $tab_height         Table height
+	 * @param       Translate   $outputlangs        Lang output object
+	 * @param       int         $default_font_size  Default font size
+	 * @param       int         $add_separator      Should add a row separator or not
+	 * @return      int                             next X position
 	 */
 	protected function print_column(&$pdf, $text, $curX, $curY, &$nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size, $add_separator=0)
 	{
@@ -145,15 +145,15 @@ class pdf_crabe extends pdf_azur
 	/**
 	 * Show table for lines
 	 *
-	 * @param		TCPDF		$pdf			Object PDF
-	 * @param		string		$tab_top		Top position of table
-	 * @param		string		$tab_height		Height of table (rectangle)
-	 * @param		int			$nexY			Y (not used)
-	 * @param		Translate	$outputlangs	Langs object
-	 * @param		int			$hidetop		1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
-	 * @param		int			$hidebottom		Hide bottom bar of array
-	 * @param		string		$currency		Currency code
-	 * @return		void
+	 * @param       TCPDF       $pdf            Object PDF
+	 * @param       string      $tab_top        Top position of table
+	 * @param       string      $tab_height     Height of table (rectangle)
+	 * @param       int         $nexY           Y (not used)
+	 * @param       Translate   $outputlangs    Langs object
+	 * @param       int         $hidetop        1=Hide top bar of array and title, 0=Hide nothing, -1=Hide only title
+	 * @param       int         $hidebottom     Hide bottom bar of array
+	 * @param       string      $currency       Currency code
+	 * @return      void
 	 */
 	public function _tableau(&$pdf, $tab_top, $tab_height, $nexY, $outputlangs, $hidetop=0, $hidebottom=0, $currency='')
 	{

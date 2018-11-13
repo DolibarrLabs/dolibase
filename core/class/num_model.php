@@ -24,9 +24,9 @@ abstract class NumModel
 	public $error = '';
 
 	/**
-	 *	Return if a model can be used or not
+	 * Return if a model can be used or not
 	 *
-	 *	@return		boolean     true if model can be used
+	 * @return     boolean     true if model can be used
 	 */
 	public function isEnabled()
 	{
@@ -34,9 +34,9 @@ abstract class NumModel
 	}
 
 	/**
-	 *	Return the default description of the numbering model
+	 * Return the default description of the numbering model
 	 *
-	 *	@return     string      Text description
+	 * @return     string      Text description
 	 */
 	public function info()
 	{
@@ -46,9 +46,9 @@ abstract class NumModel
 	}
 
 	/**
-	 *	Return an example of numbering
+	 * Return an example of numbering
 	 *
-	 *	@return     string      Example
+	 * @return     string      Example
 	 */
 	public function getExample()
 	{
@@ -58,9 +58,9 @@ abstract class NumModel
 	}
 
 	/**
-	 *	Check if the numbers already existing in the database doesn't have conflicts with this numbering model
+	 * Check if the numbers already existing in the database doesn't have conflicts with this numbering model
 	 *
-	 *	@return     boolean     false if conflict, true if ok
+	 * @return     boolean     false if conflict, true if ok
 	 */
 	public function canBeActivated()
 	{
@@ -68,9 +68,9 @@ abstract class NumModel
 	}
 
 	/**
-	 *	Return next numbering value
+	 * Return next numbering value
 	 *
-	 *	@return	string      value
+	 * @return     string      value
 	 */
 	public function getNextValue()
 	{
@@ -80,9 +80,9 @@ abstract class NumModel
 	}
 
 	/**
-	 *	Return numbering model version
+	 * Return numbering model version
 	 *
-	 *	@return     string      value
+	 * @return     string      value
 	 */
 	public function getVersion()
 	{

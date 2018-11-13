@@ -743,7 +743,7 @@ class CardPage extends CreatePage
 	/**
 	 * Generate page end
 	 *
-	 * @param     $object            Object
+	 * @param     $object       Object
 	 */
 	public function end($object = '')
 	{

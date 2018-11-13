@@ -121,9 +121,9 @@ class NumModelMarbre extends NumModel
 	/**
 	 * Return next free value
 	 *
-	 * @param  Societe		$objsoc     Object thirdparty
-	 * @param  Object		$object		Object we need next value for
-	 * @return string      			Value if KO, <0 if KO
+	 * @param  Societe      $objsoc     Object thirdparty
+	 * @param  Object       $object     Object we need next value for
+	 * @return string                   Value if KO, <0 if KO
 	 */
 	public function getNextValue($objsoc = '', $object = '')
 	{

@@ -234,8 +234,8 @@ class IndexPage extends FormPage
 	/**
 	 * Add a statistics graph from predefined data
 	 *
-	 * @param     $data       		Data to show
-	 * @param     $legend       	Legend array
+	 * @param     $data             Data to show
+	 * @param     $legend           Legend array
 	 * @param     $graph_type       Type of graph ('pie', 'bars', 'lines')
 	 * @param     $graph_title      Graph title
 	 */
