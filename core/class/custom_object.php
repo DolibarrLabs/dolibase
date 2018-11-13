@@ -183,11 +183,11 @@ class CustomObject extends CrudObject
 	}
 
 	/**
-	 *	Return clicable name (with picto eventually)
+	 * Return clicable name (with picto eventually)
 	 *
-	 *	@param		int		$withpicto		0=No picto, 1=Include picto into link, 2=Only picto
-	 *	@param		string	$title			Tooltip title
-	 *	@return		string					Chain with URL
+	 * @param       int     $withpicto      0=No picto, 1=Include picto into link, 2=Only picto
+	 * @param       string  $title          Tooltip title
+	 * @return      string                  Chain with URL
 	 */
 	public function getNomUrl($withpicto = 0, $title = '')
 	{
@@ -219,10 +219,10 @@ class CustomObject extends CrudObject
 	}
 
 	/**
-	 *  Return label of status of object (draft, validated, ...)
+	 * Return label of status of object (draft, validated, ...)
 	 *
-	 *  @param      int         $mode        0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto
-	 *  @return     string      Label
+	 * @param      int         $mode        0=long label, 1=short label, 2=Picto + short label, 3=Picto, 4=Picto + long label, 5=Short label + Picto
+	 * @return     string      Label
 	 */
 	public function getLibStatut($mode = 0)
 	{
@@ -267,10 +267,10 @@ class CustomObject extends CrudObject
 	}
 
 	/**
-	 *  Create a document onto disk according to template module.
+	 * Create a document onto disk according to template module.
 	 *
-	 *  @param	    string		$model			Force template to use ('' to not force)
-	 *  @return     int         				0 if KO, 1 if OK
+	 * @param      string       $model          Force template to use ('' to not force)
+	 * @return     int                          0 if KO, 1 if OK
 	 */
 	public function generateDocument($model)
 	{
@@ -342,9 +342,9 @@ class CustomObject extends CrudObject
 	}
 
 	/**
-	 *  Delete document from disk.
+	 * Delete document from disk.
 	 *
-	 *  @return     int         				0 if KO, 1 if OK
+	 * @return     int                      0 if KO, 1 if OK
 	 */
 	public function deleteDocument()
 	{
@@ -358,10 +358,12 @@ class CustomObject extends CrudObject
 			$upload_dir = $conf->{$this->modulepart}->dir_output;
 			$file = $upload_dir . '/' . GETPOST('file');
 			$result = dol_delete_file($file, 0, 0, 0, $object);
-			if ($result)
+			if ($result) {
 				setEventMessages($langs->trans("FileWasRemoved", GETPOST('file')), null, 'mesgs');
-			else
+			}
+			else {
 				setEventMessages($langs->trans("ErrorFailToDeleteFile", GETPOST('file')), null, 'errors');
+			}
 
 			return $result;
 		}
