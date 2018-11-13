@@ -154,3 +154,15 @@ $page->end();
 :tada: So simple isn't it ?!
 
 Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
+
+## Tips
+
+1. **Disable automatic check for module updates**. Dolibase may check automatically for a newer module(s) version(s) on [Dolistore](https://www.dolistore.com/) & this feature may slowdown your modules list page if you have a slow connection or if you are using many modules based on dolibase, so to disable the feature for all the modules at once:
+	- Go to **Home** > **Setup** > **Modules** > **Other setup**.
+	- Then add a new entry as `DOLIBASE_DISABLE_CHECK_FOR_UPDATES` & give it the value `1`.
+	- Confirm using **Add** button & that's it.
+
+2. **Enable experimental & development modules.** By default experimental & development modules are disabled on Dolibarr, if you want to enable them:
+	- Go to **Home** > **Setup** > **Modules** > **Other setup**.
+	- Search for the entry name `MAIN_FEATURES_LEVEL` (or add it if it don't exist), then change the value to `2`.
+	- Confirm using **Modify** button at the bottom.
