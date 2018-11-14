@@ -747,7 +747,7 @@ class SetupPage extends FormPage
 							{
 								$var=!$var;
 								echo '<tr '.$bc[$var].'><td width="100">'.$model->name."</td><td>\n";
-								if (method_exists($model,'info')) echo $model->info($langs);
+								if (method_exists($model, 'info')) echo $model->info($langs);
 								else echo $model->description;
 								echo '</td>';
 

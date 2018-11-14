@@ -1,10 +1,17 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.2 - NOV18
+
+*   FIX: missing $subject var in azur pdf model.
+*   FIX: code cleaned.
+
+---
+
 #### 2.6.1 - NOV18
 
 *   NEW: extra folder renamed to vendor.
-*   FIX: code cleaned.
+*   FIX: comments indentation.
 
 ---
 
