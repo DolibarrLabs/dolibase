@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.3 - NOV18
+
+*   NEW: mailing library.
+*   NEW: dolibase_error() & dolibase_flash_message() global functions added.
+
+---
+
 #### 2.6.2 - NOV18
 
 *   FIX: missing $subject var in azur pdf model.
