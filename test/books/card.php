@@ -104,10 +104,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Send by mail
 	if ($action == 'send')
 	{
-		$object = $book;
-		$object->fk_thirdparty = 1; // only to fix 'ErrorFailedToReadObject' error message
-		include DOL_DOCUMENT_ROOT.'/core/actions_sendmails.inc.php';
-		unset($object->fk_thirdparty);
+		send_mail($book);
 	}
 
 	// --- End actions
