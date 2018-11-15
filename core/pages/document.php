@@ -97,9 +97,9 @@ class DocumentPage extends Page
 	 *
 	 * @param     $object         object
 	 */
-	public function begin($object = '')
+	public function begin($object = null)
 	{
-		if (! empty($object) && isset($object->id))
+		if (is_object($object))
 		{
 			global $langs, $conf, $db, $hookmanager, $maxwidthmini, $maxheightmini;
 

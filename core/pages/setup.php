@@ -611,16 +611,16 @@ class SetupPage extends FormPage
 
 							if ($model->isEnabled())
 							{
-								$var=!$var;
+								$var = !$var;
 								echo '<tr '.$bc[$var].'><td>'.$model->nom."</td><td>\n";
 								echo $model->info();
 								echo '</td>';
 
 								// Show example of numbering model
 								echo '<td class="nowrap">';
-								$tmp=$model->getExample();
+								$tmp = $model->getExample();
 								if (preg_match('/^Error/',$tmp)) echo '<div class="error">'.$langs->trans($tmp).'</div>';
-								elseif ($tmp=='NotConfigured') echo $langs->trans($tmp);
+								elseif ($tmp == 'NotConfigured') echo $langs->trans($tmp);
 								else echo $tmp;
 								echo '</td>'."\n";
 
@@ -638,18 +638,18 @@ class SetupPage extends FormPage
 								echo '</td>';
 
 								// Info
-								$htmltooltip='';
-								$htmltooltip.=''.$langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
-								$nextval=$model->getNextValue();
+								$htmltooltip = '';
+								$htmltooltip.= $langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
+								$nextval = $model->getNextValue();
 								if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
-									$htmltooltip.=''.$langs->trans("NextValue").': ';
+									$htmltooltip.= $langs->trans("NextValue").': ';
 									if ($nextval) {
 										if (preg_match('/^Error/',$nextval) || $nextval=='NotConfigured') {
 											$nextval = $langs->trans($nextval);
 										}
-										$htmltooltip.=$nextval.'<br>';
+										$htmltooltip.= $nextval.'<br>';
 									} else {
-										$htmltooltip.=$langs->trans($model->error).'<br>';
+										$htmltooltip.= $langs->trans($model->error).'<br>';
 									}
 								}
 

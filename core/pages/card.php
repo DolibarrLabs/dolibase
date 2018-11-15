@@ -537,7 +537,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printRelatedObjects($object)
 	{
-		if (! empty($object) && isset($object->id))
+		if (is_object($object))
 		{
 			global $conf, $langs, $dolibase_config;
 
@@ -577,7 +577,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printDocuments($object)
 	{
-		if (! empty($object) && isset($object->id))
+		if (is_object($object))
 		{
 			global $db, $conf, $user;
 			
@@ -615,7 +615,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printMailForm($object)
 	{
-		if (! empty($object) && isset($object->id))
+		if (is_object($object))
 		{
 			global $langs, $user, $conf;
 
@@ -687,7 +687,7 @@ class CardPage extends CreatePage
 	 *
 	 * @param     $object       Object
 	 */
-	public function end($object = '')
+	public function end($object = null)
 	{
 		if ($this->close_buttons_div) echo '</div>';
 
