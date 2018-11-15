@@ -16,9 +16,9 @@ abstract class Modele${model_class} extends DocModel
 	/**
 	 *  Return list of active generation models
 	 *
-	 *  @param	DoliDB	$db     			Database handler
-	 *  @param  integer	$maxfilenamelength  Max length of value to show
-	 *  @return	array						List of templates
+	 *  @param  DoliDB  $db                 Database handler
+	 *  @param  integer $maxfilenamelength  Max length of value to show
+	 *  @return array                       List of templates
 	 */
 	public static function liste_modeles($db, $maxfilenamelength=0)
 	{

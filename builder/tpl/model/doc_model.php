@@ -30,7 +30,7 @@ class ${model_classname} extends DocModel
 	/**
 	 * Constructor
 	 *
-	 * @param		DoliDB		$db      Database handler
+	 * @param      DoliDB      $db      Database handler
 	 */
 	public function __construct($db)
 	{
@@ -57,10 +57,10 @@ class ${model_classname} extends DocModel
 	/**
 	 * Function to write pdf content
 	 *
-	 * @param		TCPDF		$pdf				PDF object
-	 * @param		Object		$object				Object to generate
-	 * @param		Translate	$outputlangs		Lang output object
-	 * @param		int			$default_font_size	Default font size
+	 * @param       TCPDF       $pdf                PDF object
+	 * @param       Object      $object             Object to generate
+	 * @param       Translate   $outputlangs        Lang output object
+	 * @param       int         $default_font_size  Default font size
 	 */
 	protected function write_content(&$pdf, $object, $outputlangs, $default_font_size)
 	{
@@ -75,13 +75,13 @@ class ${model_classname} extends DocModel
 	/**
 	 * Function to build pdf onto disk
 	 *
-	 * @param		Object		$object				Object to generate
-	 * @param		Translate	$outputlangs		Lang output object
-	 * @param		string		$srctemplatepath	Full path of source filename for generator using a template file
-	 * @param		int			$hidedetails		Do not show line details
-	 * @param		int			$hidedesc			Do not show desc
-	 * @param		int			$hideref			Do not show ref
-	 * @return		int								1=OK, 0=KO
+	 * @param       Object      $object             Object to generate
+	 * @param       Translate   $outputlangs        Lang output object
+	 * @param       string      $srctemplatepath    Full path of source filename for generator using a template file
+	 * @param       int         $hidedetails        Do not show line details
+	 * @param       int         $hidedesc           Do not show desc
+	 * @param       int         $hideref            Do not show ref
+	 * @return      int                             1=OK, 0=KO
 	 */
 	public function write_file($object, $outputlangs, $srctemplatepath='', $hidedetails=0, $hidedesc=0, $hideref=0)
 	{
@@ -161,7 +161,7 @@ class ${model_classname} extends DocModel
 				$pdf->SetSubject($outputlangs->transnoentities($object->doc_title));
 				$pdf->SetCreator("Dolibarr ".DOL_VERSION);
 				$pdf->SetAuthor($outputlangs->convToOutputCharset($user->getFullName($outputlangs)));
-				$pdf->SetKeyWords($outputlangs->convToOutputCharset($object->ref)." ".$outputlangs->transnoentities($subject)." ".$outputlangs->convToOutputCharset($object->thirdparty->name));
+				$pdf->SetKeyWords($outputlangs->convToOutputCharset($object->ref)." ".$outputlangs->transnoentities($object->doc_title)." ".$outputlangs->convToOutputCharset($object->thirdparty->name));
 				if (! empty($conf->global->MAIN_DISABLE_PDF_COMPRESSION)) $pdf->SetCompression(false);
 
 				$pdf->SetMargins($this->marge_gauche, $this->marge_haute, $this->marge_droite); // Left, Top, Right

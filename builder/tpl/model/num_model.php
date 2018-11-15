@@ -83,7 +83,7 @@ class ${model_classname} extends NumModel
 	{
 		global $langs;
 
-		$example = $this->getNextValue($this->table_name, $this->field_name);
+		$example = $this->getNextValue();
 
 		if (! $example)
 		{
@@ -95,11 +95,10 @@ class ${model_classname} extends NumModel
 	/**
 	 * Return next free value
 	 *
-	 * @param  Societe		$objsoc     Object thirdparty
-	 * @param  Object		$object		Object we need next value for
-	 * @return string      			Value if KO, <0 if KO
+	 * @param  Societe      $objsoc     Object thirdparty
+	 * @return string                   Value if KO, <0 if KO
 	 */
-	public function getNextValue($objsoc = '', $object = '')
+	public function getNextValue($objsoc = null)
 	{
 		global $db, $conf, $langs;
 

@@ -31,11 +31,11 @@ class ${object_classname} extends CustomObject
 	}
 
 	/**
-	 *	Return clicable name (with picto eventually)
+	 * Return clicable name (with picto eventually)
 	 *
-	 *	@param		int		$withpicto		0=No picto, 1=Include picto into link, 2=Only picto
-	 *	@param		string	$title			Tooltip title
-	 *	@return		string					Chain with URL
+	 * @param      int        $withpicto     0=No picto, 1=Include picto into link, 2=Only picto
+	 * @param      string     $title         Tooltip title
+	 * @return     string                    Chain with URL
 	 */
 	public function getNomUrl($withpicto = 0, $title = '${tooltip_title}')
 	{
