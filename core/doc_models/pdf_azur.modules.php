@@ -16,9 +16,9 @@
  */
 
 dolibase_include_once('/core/class/doc_model.php');
-include_once DOL_DOCUMENT_ROOT.'/core/lib/company.lib.php';
-include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
-include_once DOL_DOCUMENT_ROOT.'/core/lib/pdf.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/company.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/pdf.lib.php';
 
 /**
  * pdf_azur class

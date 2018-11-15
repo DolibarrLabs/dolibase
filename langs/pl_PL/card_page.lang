@@ -8,4 +8,4 @@
 SaveAs = Zapisz jako
 SendByMail = Wyślij pocztą
 MailSubject = Przedłożenie dokumentu __REF__
-MailTemplate = Cześć __CONTACTCIVNAME__\n\nZnajdziesz tu dokument __REF__\n\n__PERSONALIZED__Pozdrowienia\n\n__SIGNATURE__
+MailTemplate = Cześć,\n\nZnajdziesz tu dokument __REF__.\n\nPozdrowienia\n\n__SIGNATURE__

@@ -17,6 +17,7 @@
 
 dolibase_include_once('/core/pages/create.php');
 dolibase_include_once('/core/lib/related_objects.php');
+dolibase_include_once('/core/lib/mailing.php');
 
 /**
  * CardPage class
@@ -616,7 +617,7 @@ class CardPage extends CreatePage
 	{
 		if (! empty($object) && isset($object->id))
 		{
-			global $db, $conf, $langs, $user;
+			global $langs, $user, $conf;
 
 			if (! $this->close_buttons_div) {
 				dol_fiche_end();
@@ -627,22 +628,7 @@ class CardPage extends CreatePage
 			echo load_fiche_titre($langs->trans('SendByMail'));
 			dol_fiche_head();
 
-			// Create mail form
-			include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
-			$formmail = new FormMail($db);
-			$formmail->param['langsmodels'] = (empty($newlang)?$langs->defaultlang:$newlang);
-			$formmail->fromtype = (GETPOST('fromtype')?GETPOST('fromtype'):(!empty($conf->global->MAIN_MAIL_DEFAULT_FROMTYPE)?$conf->global->MAIN_MAIL_DEFAULT_FROMTYPE:'user'));
-			if($formmail->fromtype === 'user'){
-				$formmail->fromid = $user->id;
-				$formmail->frommail = $user->email; // fix for dolibarr 3.9
-			}
-			$formmail->trackid = $this->rights_class.$object->id;
-			if (! empty($conf->global->MAIN_EMAIL_ADD_TRACK_ID) && ($conf->global->MAIN_EMAIL_ADD_TRACK_ID & 2)) // If bit 2 is set
-			{
-				include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
-				$formmail->frommail = dolAddEmailTrackId($formmail->frommail, $formmail->trackid);
-			}
-			$formmail->withfrom = 1;
+			// Get receivers
 			$receivers = array();
 			if ($object->fetch_thirdparty() > 0)
 			{
@@ -650,56 +636,23 @@ class CardPage extends CreatePage
 					$receivers[$key] = $value;
 				}
 			}
-			$formmail->withto              = GETPOST('sendto') ? GETPOST('sendto') : $receivers;
-			$formmail->withtocc            = $receivers;
-			$formmail->withtoccc           = $conf->global->MAIN_EMAIL_USECCC;
-			$formmail->withtopic           = $langs->trans($this->mail_subject, '__REF__');
-			$formmail->withfile            = 2;
-			$formmail->withbody            = $langs->trans($this->mail_template);
-			$formmail->withdeliveryreceipt = 1;
-			$formmail->withcancel          = 1;
-			// Substitutions Array
-			if (method_exists($formmail,"setSubstitFromObject")) { // fix for dolibarr 3.9
-				$formmail->setSubstitFromObject($object, $langs);
-				$formmail->substit['__CONTACTCIVNAME__'] = '';
-				$formmail->substit['__PERSONALIZED__']   = '';
-			}
-			else {
-				$formmail->substit = array(
-					'__CONTACTCIVNAME__' => '',
-					'__PERSONALIZED__'   => '',
-					'__SIGNATURE__'      => $user->signature
-				);
-			}
-			$formmail->substit['__REF__'] = $object->ref;
+
+			// Set substitutions
+			$substitutions = array(
+				'__REF__'       => $object->ref,
+				'__SIGNATURE__' => $user->signature
+			);
+
 			// Add custom substitutions
 			foreach ($this->mail_substitutions as $key => $value) {
-				$formmail->substit[$key] = $value;
-			}
-			// Enable mail delivery receipt
-			if ($this->enable_mail_delivery_receipt && ! isset($_POST["deliveryreceipt"])) {
-				$_POST["deliveryreceipt"] = 1;
+				$substitutions[$key] = $value;
 			}
 
-			$custcontact = '';
-			$contactarr  = array();
-			$contactarr  = $object->liste_contact(-1, 'external');
-
-			if (is_array($contactarr) && count($contactarr) > 0)
-			{
-				foreach ($contactarr as $contact)
-				{
-					if ($contact['libelle'] == $langs->trans('TypeContact_external_CUSTOMER')) { // TODO Use code and not label
-						$contactstatic = new Contact($db);
-						$contactstatic->fetch($contact['id']);
-						$custcontact = $contactstatic->getFullName($langs, 1);
-					}
-				}
-
-				if (! empty($custcontact)) {
-					$formmail->substit['__CONTACTCIVNAME__'] = $custcontact;
-				}
-			}
+			// Set additional parameters
+			$params = array(
+				'id'        => $object->id,
+				'returnurl' => $_SERVER["PHP_SELF"] . '?id=' . $object->id
+			);
 
 			// Get file/attachment
 			$ref = dol_sanitizeFileName($object->ref);
@@ -707,22 +660,11 @@ class CardPage extends CreatePage
 			$fileparams = dol_most_recent_file($conf->{$this->modulepart}->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
 			$file = $fileparams['fullname'];
 
-			// Array of additional parameters
-			$formmail->param['action']    = 'send';
-			$formmail->param['models']    = 'body';
-			$formmail->param['models_id'] = GETPOST('modelmailselected', 'int');
-			$formmail->param['id']        = $object->id;
-			$formmail->param['returnurl'] = $_SERVER["PHP_SELF"] . '?id=' . $object->id;
-			$formmail->param['fileinit']  = array($file);
-
-			// Init list of files
-			if (GETPOST('mode') == 'init') {
-				$formmail->clear_attached_files();
-				$formmail->add_attached_files($file, basename($file), dol_mimetype($file));
-			}
-
 			// Show form
-			echo $formmail->get_form();
+			$trackid  = $this->rights_class.$object->id;
+			$subject  = $langs->trans($this->mail_subject, '__REF__');
+			$template = $langs->trans($this->mail_template);
+			echo get_mail_form($trackid, $subject, $template, $substitutions, array($file), $this->enable_mail_delivery_receipt, $receivers, $params);
 		}
 	}
 

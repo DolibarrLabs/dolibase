@@ -15,8 +15,8 @@
  * 
  */
 
-include_once DOL_DOCUMENT_ROOT.'/core/class/commondocgenerator.class.php';
-include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/class/commondocgenerator.class.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
 
 /**
  * DocModel class

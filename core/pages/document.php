@@ -16,8 +16,8 @@
  */
 
 dolibase_include_once('/core/class/page.php');
-include_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
-include_once DOL_DOCUMENT_ROOT.'/core/class/html.formfile.class.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
 
 /**
  * DocumentPage class

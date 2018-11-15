@@ -17,7 +17,7 @@
 
 dolibase_include_once('/core/class/form_page.php');
 dolibase_include_once('/core/class/logs.php');
-include_once DOL_DOCUMENT_ROOT.'/core/lib/date.lib.php';
+include_once DOL_DOCUMENT_ROOT . '/core/lib/date.lib.php';
 
 /**
  * LogPage class

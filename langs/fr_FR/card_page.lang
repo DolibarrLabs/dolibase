@@ -8,4 +8,4 @@
 SaveAs = Enregistrer au format
 SendByMail = Envoyer par mail
 MailSubject = Envoi du document __REF__
-MailTemplate = Bonjour __CONTACTCIVNAME__\n\nVeuillez trouver ci-joint le document __REF__\n\n__PERSONALIZED__Cordialement\n\n__SIGNATURE__
+MailTemplate = Bonjour,\n\nVeuillez trouver ci-joint le document __REF__.\n\nCordialement\n\n__SIGNATURE__
