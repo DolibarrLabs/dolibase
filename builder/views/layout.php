@@ -1,5 +1,5 @@
 
-<?php if (! isset($options) || ! is_array($options)) die('Dolibase::Builder::Error options array not set.'); ?>
+<?php if (! isset($options) || ! is_array($options)) die('BuilderError: options array not set.'); ?>
 
 <?php $assets_prefix = isset($options['path_prefix']) ? $options['path_prefix'] : ''; ?>
 

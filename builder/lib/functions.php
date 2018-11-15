@@ -55,7 +55,7 @@ function num2Alpha($num) {
 		case 9:
 			return 'Nine';
 		default:
-			die('Dolibase::Builder::Error non numeric value provided to num2Alpha function.');
+			die('BuilderError: non numeric value provided to num2Alpha function.');
 	}
 }
 
@@ -144,7 +144,7 @@ function getModuleFileName($module_path)
 		return $filename;
 	}
 
-	die('Dolibase::Builder::Error getModuleFileName function, could not get module filename.');
+	die('BuilderError: getModuleFileName function, could not get module filename.');
 }
 
 /**

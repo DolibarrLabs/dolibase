@@ -66,7 +66,7 @@ class DolibaseModule extends DolibarrModules
 		global $dolibase_config, $langs, $conf;
 
 		// Check if config array is empty
-		if (empty($dolibase_config)) die('Dolibase::Module::Error module configuration not found.');
+		if (empty($dolibase_config)) dolibase_error('Module configuration not found.', true);
 
 		// Save module config for further use
 		$this->config = $dolibase_config;

@@ -16,7 +16,7 @@
  */
 
 // Dolibarr detection
-if (! defined('DOL_VERSION')) die('Dolibase::autoload::error Dolibarr detection failed.');
+if (! defined('DOL_VERSION')) die('DolibaseError: Dolibarr detection failed.');
 
 // Load Dolibase functions
 require_once __DIR__ . '/core/lib/functions.php';

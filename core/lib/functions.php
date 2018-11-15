@@ -49,7 +49,7 @@ if (! function_exists('compare_version'))
 		}
 		else
 		{
-			die('Dolibase::Functions::Error wrong sign provided to '.__FUNCTION__.'.');
+			dolibase_error('Wrong sign='.$sign.' provided to '.__FUNCTION__, true);
 		}
 	}
 }
@@ -292,6 +292,51 @@ if (! function_exists('get_func_output'))
 		ob_end_clean();
 
 		return $out;
+	}
+}
+
+/**
+ * Add a flash message to session
+ * Note: message rendering will be done by $page->end() or more exactly llxFooter() function
+ *
+ * @param     $message     Message
+ * @param     $type        Message type, possible values: 'success' by default, 'warning', 'error'
+ */
+if (! function_exists('dolibase_flash_message'))
+{
+	function dolibase_flash_message($message, $type = 'success')
+	{
+		$types_array = array(
+			'success' => 'mesgs',
+			'warning' => 'warnings',
+			'error'   => 'errors'
+		);
+
+		if (! isset($types_array[$type])) {
+			dolibase_error('Bad parameter type='.$type.' provided to '.__FUNCTION__);
+		} else if (! empty($message)) {
+			setEventMessage($message, $types_array[$type]);
+		}
+	}
+}
+
+/**
+ * Displays error message with all the information to facilitate the diagnosis.
+ *
+ * @param     $error       Error message
+ * @param     $die         Use PHP die() function instead of dol_print_error()
+ */
+if (! function_exists('dolibase_error'))
+{
+	function dolibase_error($error, $die = false)
+	{
+		$error_prefix = 'DolibaseError: ';
+
+		if ($die) {
+			die($error_prefix.$error);
+		} else {
+			dol_print_error('', $error_prefix.$error);
+		}
 	}
 }
 

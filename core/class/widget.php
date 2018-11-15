@@ -60,7 +60,7 @@ class Widget extends ModeleBoxes
 		global $dolibase_config, $langs;
 
 		// Check if config array is empty
-		if (empty($dolibase_config)) die('Dolibase::Widget::Error module configuration not found.');
+		if (empty($dolibase_config)) dolibase_error('Module configuration not found.', true);
 
 		// Load language files
 		$langs->load('boxes');
