@@ -90,6 +90,10 @@
 				<label class="form-check-label" for="enable_logs">Enable logs</label>
 			</div>
 			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="enable_triggers" name="enable_triggers">
+				<label class="form-check-label" for="enable_logs">Enable triggers</label>
+			</div>
+			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="use_custom_class" name="use_custom_class" checked>
 				<label class="form-check-label" for="use_custom_class">Use custom class name to fix compatibility with old dolibase versions</label>
 			</div>

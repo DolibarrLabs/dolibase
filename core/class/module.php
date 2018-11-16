@@ -134,6 +134,11 @@ class DolibaseModule extends DolibarrModules
 		// Cron Jobs
 		$this->cronjobs = array();
 
+		// Enable triggers
+		if (isset($this->config['module']['enable_triggers']) && $this->config['module']['enable_triggers']) {
+			$this->module_parts['triggers'] = 1;
+		}
+
 		// Load module settings
 		$this->loadSettings();
 

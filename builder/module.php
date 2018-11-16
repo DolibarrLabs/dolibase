@@ -49,6 +49,7 @@ if ($action == 'generate')
 		'picture' => sanitizeString(strtolower($module_name)).'.'.getFileExtension($_FILES['picture']['name']),
 		'check_updates' => bool2Alpha(getPostData('check_updates')),
 		'enable_logs' => bool2Alpha(getPostData('enable_logs')),
+		'enable_triggers' => bool2Alpha(getPostData('enable_triggers')),
 		'author_name' => getPostData('author_name'),
 		'author_url' => getPostData('author_url'),
 		'author_email' => getPostData('author_email'),
