@@ -1,0 +1,14 @@
+# Dolibase About Page - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+#
+# Generic
+#
+Settings = إعدادات
+About = معلومات
+DevelopedBy = طور من طرف
+DolibaseVersion = هذه الوحدة تستخدم إصدار Dolibase
+ForAnyQuestions = لأية أسئلة أو تعليقات ، يرجى إرسال بريد إلكتروني إلى
+FindMyModules = يمكنك إيجاد وحداتي الأخرى على
+Dolistore = Dolistore

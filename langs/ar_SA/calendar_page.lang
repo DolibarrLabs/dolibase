@@ -1,0 +1,16 @@
+# Dolibase Calendar Page - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+#
+# Generic
+#
+DayView = يومي
+WeekView = أسبوعي
+MonthView = شهري
+Refresh = تحديث
+Print = طباعة
+Previous = السابق
+Next = التالي
+Today = اليوم
+Week = أسبوع

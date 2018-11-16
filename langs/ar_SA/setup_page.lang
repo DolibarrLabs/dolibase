@@ -1,0 +1,17 @@
+# Dolibase Setup Page - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+#
+# Generic
+#
+Setup = ضبط الإعدادات
+Settings = إعدادات
+About = معلومات
+Option = الخيار
+Value = القيمة
+NumberingModels = نماذج الترقيم
+DocumentModels = نماذج الوثائق
+DocModelAzurDescription = قالب PDF Azur. نموذج مستند كامل (نموذج موصى به)
+DocModelCrabeDescription = قالب PDF Crabe. نموذج مستند كامل (الشعار ...)
+NoSetupAvailable = ليست هنالك إعدادت متاحة.

@@ -2,7 +2,6 @@
 
 * Module export/import options
 * Hierarchical view page?
-* Arabic translation/lang files.
 * Enhance widget class with graph(s) support.
 
 ## v3

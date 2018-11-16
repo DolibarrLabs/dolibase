@@ -1,0 +1,20 @@
+# Dolibase Log Page - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+#
+# Generic
+#
+LogAction = العملية
+LogUser = المستخدم
+LogDate = التاريخ
+CurrentHour = وقت PHP (خادم)
+ClientHour = وقت العميل (المستخدم)
+NoLogsAvailable = ليست هنالك سجلات متاحة.
+
+#
+# Actions
+#
+CREATE_OBJECT = <b>إضافة</b>
+UPDATE_OBJECT = <b>تعديل</b>
+DELETE_OBJECT = <b>حذف</b>

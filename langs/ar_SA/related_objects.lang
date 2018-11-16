@@ -1,0 +1,11 @@
+# Dolibase Related objects - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+#
+# Generic
+#
+AddRelated = إضافة رابط
+ElementToLink = روابط ممتدة
+RelationAdded = لقد تمت إضافة الرابط
+RelationCantBeAdded = لم تتم إضافة الرابط
