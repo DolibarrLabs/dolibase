@@ -26,7 +26,7 @@ $dolibase_config['main'] = array(
 	'link'                => 'https://github.com/AXeL-dev/dolibase',
 	'path'                => get_dolibase_path(),
 	'tables'              => array('logs'),
-	'use_ajax_on_confirm' => 1 // value should be 1/0 instead of true/false
+	'use_ajax_on_confirm' => true
 );
 
 /**

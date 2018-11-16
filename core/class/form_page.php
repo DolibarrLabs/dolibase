@@ -187,7 +187,9 @@ class FormPage extends Page
 	{
 		global $langs, $dolibase_config;
 
-		$this->body = $this->form->formconfirm($url, $langs->trans($title), $langs->trans($question, $question_param), $action, '', '', $dolibase_config['main']['use_ajax_on_confirm']);
+		$use_ajax = $dolibase_config['main']['use_ajax_on_confirm'] ? 1 : 0;
+
+		$this->body = $this->form->formconfirm($url, $langs->trans($title), $langs->trans($question, $question_param), $action, '', '', $use_ajax);
 	}
 
 	/**
