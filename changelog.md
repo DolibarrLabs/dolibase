@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.4 - NOV18
+
+*   NEW: Arabic translation.
+*   FIX: builder templates.
+
+---
+
 #### 2.6.3 - NOV18
 
 *   NEW: mailing library.
