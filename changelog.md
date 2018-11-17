@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.6.5 - NOV18
+
+*   NEW: possibility to enable triggers from module config file.
+
+---
+
 #### 2.6.4 - NOV18
 
 *   NEW: Arabic translation.
