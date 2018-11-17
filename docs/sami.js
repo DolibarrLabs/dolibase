@@ -205,7 +205,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "IndexPage.html", "name": "IndexPage", "doc": "&quot;IndexPage class&quot;"},
                                                         {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method___construct", "name": "IndexPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page begin&quot;"},
+                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page begining&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_end", "name": "IndexPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_openLeftSection", "name": "IndexPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_closeLeftSection", "name": "IndexPage::closeLeftSection", "doc": "&quot;Close a left section&quot;"},
@@ -224,7 +224,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_fetchExtraFields", "name": "ListPage::fetchExtraFields", "doc": "&quot;Fetch extrafields&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_addButtons", "name": "ListPage::addButtons", "doc": "&quot;Add buttons to the list&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeList", "name": "ListPage::closeList", "doc": "&quot;Close list&quot;"},
-                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close table row&quot;"},
+                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close a table row&quot;"},
             
             {"type": "Class",  "link": "LogPage.html", "name": "LogPage", "doc": "&quot;LogPage class&quot;"},
                                                         {"type": "Method", "fromName": "LogPage", "fromLink": "LogPage.html", "link": "LogPage.html#method___construct", "name": "LogPage::__construct", "doc": "&quot;Constructor&quot;"},
@@ -313,7 +313,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "StatsPage.html", "name": "StatsPage", "doc": "&quot;StatsPage class&quot;"},
                                                         {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method___construct", "name": "StatsPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page begin&quot;"},
+                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page begining&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_generateTabs", "name": "StatsPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_end", "name": "StatsPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_openLeftSection", "name": "StatsPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},

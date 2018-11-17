@@ -23,7 +23,7 @@ if (! class_exists('DolibaseModule')) {
  * DolibaseModule class
  *
  * Known issue: When Dolibase is installed globally, DolibaseModule class will be loaded/included only once
- * on "dolibarr/admin/modules.php" file, & when it is installed internally (in each module) then the class
+ * on "dolibarr/admin/modules.php" file, but when it's installed internally (in each module) then the class
  * will be included from the first loaded module & in the rest of modules the inclusion will be stopped by
  * the if condition above, otherwise you will get this error: DolibaseModule class already exists.
  *
