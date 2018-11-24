@@ -72,7 +72,7 @@ class DolibaseModule extends DolibarrModules
 		$this->config = $dolibase_config;
 
 		// Load lang files
-		$langs->load("module@".$this->config['main']['path']);
+		$langs->load("module@".$this->config['langs']['path']);
 
 		// Module configuration
 		$this->db              = $db;
