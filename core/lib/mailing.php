@@ -71,7 +71,7 @@ function get_mail_form($trackid, $subject, $template, $substitutions = array(), 
 	global $db, $conf, $langs, $user;
 
 	// Create mail form
-	include_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
+	require_once DOL_DOCUMENT_ROOT . '/core/class/html.formmail.class.php';
 	$formmail = new FormMail($db);
 	$formmail->param['langsmodels'] = (empty($newlang)?$langs->defaultlang:$newlang);
 	$formmail->fromtype = (GETPOST('fromtype')?GETPOST('fromtype'):(!empty($conf->global->MAIN_MAIL_DEFAULT_FROMTYPE)?$conf->global->MAIN_MAIL_DEFAULT_FROMTYPE:'user'));
@@ -81,7 +81,7 @@ function get_mail_form($trackid, $subject, $template, $substitutions = array(), 
 	}
 	$formmail->trackid = $trackid;
 	if (! empty($conf->global->MAIN_EMAIL_ADD_TRACK_ID) && ($conf->global->MAIN_EMAIL_ADD_TRACK_ID & 2)) { // If bit 2 is set
-		include_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
+		require_once DOL_DOCUMENT_ROOT.'/core/lib/functions2.lib.php';
 		$formmail->frommail = dolAddEmailTrackId($formmail->frommail, $formmail->trackid);
 	}
 	$formmail->withfrom            = 1;

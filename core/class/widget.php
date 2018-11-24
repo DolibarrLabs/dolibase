@@ -15,7 +15,7 @@
  * 
  */
 
-include_once DOL_DOCUMENT_ROOT . '/core/boxes/modules_boxes.php';
+require_once DOL_DOCUMENT_ROOT . '/core/boxes/modules_boxes.php';
 
 if (! class_exists('Widget')) {
 

@@ -16,7 +16,7 @@
  */
 
 dolibase_include_once('/core/class/form_page.php');
-include_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 
 /**
  * CreatePage class

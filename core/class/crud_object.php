@@ -687,7 +687,7 @@ class CrudObject extends CommonObject
 		$error = 0;
 
 		// Call triggers
-		include_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
+		require_once DOL_DOCUMENT_ROOT . "/core/class/interfaces.class.php";
 		$interface = new Interfaces($this->db);
 		$action = $this->triggers_prefix.$action_suffix;
 		$result = $interface->run_triggers($action, $this, $user, $langs, $conf);

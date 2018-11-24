@@ -581,7 +581,7 @@ class CardPage extends CreatePage
 		{
 			global $db, $conf, $user;
 			
-			include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
+			require_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
 			
 			$formfile = new FormFile($db);
 
@@ -656,7 +656,7 @@ class CardPage extends CreatePage
 
 			// Get file/attachment
 			$ref = dol_sanitizeFileName($object->ref);
-			include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
+			require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
 			$fileparams = dol_most_recent_file($conf->{$this->modulepart}->dir_output . '/' . $ref, preg_quote($ref, '/').'[^\-]+');
 			$file = $fileparams['fullname'];
 

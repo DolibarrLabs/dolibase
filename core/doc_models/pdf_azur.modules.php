@@ -16,9 +16,9 @@
  */
 
 dolibase_include_once('/core/class/doc_model.php');
-include_once DOL_DOCUMENT_ROOT . '/core/lib/company.lib.php';
-include_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
-include_once DOL_DOCUMENT_ROOT . '/core/lib/pdf.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/company.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/pdf.lib.php';
 
 /**
  * pdf_azur class
@@ -149,7 +149,7 @@ class pdf_azur extends DocModel
 				// Add pdfgeneration hook
 				if (! is_object($hookmanager))
 				{
-					include_once DOL_DOCUMENT_ROOT.'/core/class/hookmanager.class.php';
+					require_once DOL_DOCUMENT_ROOT.'/core/class/hookmanager.class.php';
 					$hookmanager = new HookManager($this->db);
 				}
 				$hookmanager->initHooks(array('pdfgeneration'));

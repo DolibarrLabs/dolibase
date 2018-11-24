@@ -23,7 +23,7 @@ if (false === (@include '../../../main.inc.php')) { // From htdocs directory (do
 }
 
 // Load related objects lib
-include_once '../lib/related_objects.php';
+require_once '../lib/related_objects.php';
 
 top_httphead();
 

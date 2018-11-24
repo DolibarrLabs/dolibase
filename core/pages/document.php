@@ -16,8 +16,8 @@
  */
 
 dolibase_include_once('/core/class/page.php');
-include_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
-include_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
 
 /**
  * DocumentPage class
@@ -81,7 +81,7 @@ class DocumentPage extends Page
 	{
 		global $conf, $db, $langs;
 
-		include_once DOL_DOCUMENT_ROOT.'/core/class/link.class.php';
+		require_once DOL_DOCUMENT_ROOT.'/core/class/link.class.php';
 
 		$modulepart  = get_modulepart(); // cannot use '$this->modulepart' because this function is static
 		$upload_dir  = $conf->$modulepart->dir_output . "/" . dol_sanitizeFileName($object->ref);
@@ -110,8 +110,8 @@ class DocumentPage extends Page
 			$confirm = GETPOST('confirm','alpha');
 
 			// Actions
-			include_once DOL_DOCUMENT_ROOT . '/core/lib/images.lib.php'; // should be here
-			include_once DOL_DOCUMENT_ROOT . '/core/actions_linkedfiles.inc.php';
+			require_once DOL_DOCUMENT_ROOT . '/core/lib/images.lib.php'; // should be here
+			require_once DOL_DOCUMENT_ROOT . '/core/actions_linkedfiles.inc.php';
 
 			// Fix documents number after upload a file or add a link by refreshing the page
 			if ((GETPOST('sendit','none') || GETPOST('linkit','none')) && ! empty($conf->global->MAIN_UPLOAD_DOC))

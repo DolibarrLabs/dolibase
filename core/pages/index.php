@@ -16,7 +16,7 @@
  */
 
 dolibase_include_once('/core/class/form_page.php');
-include_once DOL_DOCUMENT_ROOT . '/core/class/dolgraph.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/dolgraph.class.php';
 
 /**
  * IndexPage class

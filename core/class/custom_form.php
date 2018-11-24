@@ -15,10 +15,10 @@
  * 
  */
 
-include_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
-include_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
-include_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
-include_once DOL_DOCUMENT_ROOT . '/core/class/doleditor.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/html.form.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/html.formother.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/doleditor.class.php';
 
 /**
  * CustomForm class

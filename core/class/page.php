@@ -480,7 +480,7 @@ class Page
 	}
 
 	/**
-	 * Show page_under_construction template
+	 * Show page_under_construction template (only once)
 	 *
 	 */
 	public function isUnderConstruction()
