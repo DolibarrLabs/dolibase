@@ -469,7 +469,8 @@ class Page
 		if ($path_is_absolute) {
 			$path = $template_path;
 		} else {
-			$path = dol_buildpath($dolibase_config['module']['folder'].'/tpl/'.$path);
+			$relative_path = preg_replace('/^\//', '', $template_path); // Clean the path
+			$path = dol_buildpath($dolibase_config['module']['folder'].'/tpl/'.$relative_path);
 		}
 
 		if ($use_require_once) {
