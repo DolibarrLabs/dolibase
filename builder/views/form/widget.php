@@ -30,7 +30,7 @@
 		<label class="form-check-label" for="enable_widget">Enable widget</label>
 	</div>
 	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="use_custom_class" name="use_custom_class" checked>
+		<input type="checkbox" class="form-check-input" id="use_custom_class" name="use_custom_class">
 		<label class="form-check-label" for="use_custom_class">Use custom class name to fix compatibility with old dolibase versions</label>
 	</div>
 	<input type="hidden" name="action" value="generate">
