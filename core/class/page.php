@@ -204,6 +204,7 @@ class Page
 
 	/**
 	 * Add a tab to the page
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $title         tab title
 	 * @param     $url           tab url
@@ -324,6 +325,7 @@ class Page
 	/**
 	 * Close an opened form
 	 *
+	 * @return  $this
 	 */
 	public function closeForm()
 	{
@@ -334,7 +336,7 @@ class Page
 			$this->close_form = false;
 		}
 
-		return $this; // allow chaining this function with another (need PHP >= 5)
+		return $this;
 	}
 
 	/**
@@ -383,6 +385,7 @@ class Page
 	 * Close an opened html table
 	 *
 	 * @param   $print_fiche_end   print Dolibarr fiche end
+	 * @return  $this
 	 */
 	public function closeTable($print_fiche_end = false)
 	{
@@ -399,7 +402,7 @@ class Page
 			$this->close_table = false;
 		}
 
-		return $this; // allow chaining this function with another (need PHP >= 5)
+		return $this;
 	}
 
 	/**
@@ -449,6 +452,42 @@ class Page
 		for ($i = 0; $i <= $repeat; $i++) {
 			echo "<br>\n";
 		}
+	}
+
+	/**
+	 * Include a template into the page.
+	 * Note: the template should be inside module tpl folder when $path_is_absolute parameter equal false.
+	 *
+	 * @param   $template_path      template path
+	 * @param   $path_is_absolute   define whether the template path is absolute or not
+	 * @param   $use_require_once   permit to avoid including the template many times on the same page
+	 */
+	public function showTemplate($template_path, $path_is_absolute = false, $use_require_once = false)
+	{
+		global $dolibase_config;
+
+		if ($path_is_absolute) {
+			$path = $template_path;
+		} else {
+			$path = dol_buildpath($dolibase_config['module']['folder'].'/tpl/'.$path);
+		}
+
+		if ($use_require_once) {
+			require_once $path;
+		} else {
+			require $path;
+		}
+	}
+
+	/**
+	 * Show page_under_construction template
+	 *
+	 */
+	public function isUnderConstruction()
+	{
+		$template_path = dolibase_buildpath('/core/tpl/page_under_construction.php');
+
+		$this->showTemplate($template_path, true, true);
 	}
 
 	/**
