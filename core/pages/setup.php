@@ -221,12 +221,11 @@ class SetupPage extends FormPage
 			else if ($action == 'deldoc')
 			{
 				$value = GETPOST('value', 'alpha');
-				$const_name = $this->doc_model_const_name;
-
 				$ret = delDocumentModel($value, $this->doc_model_type);
-				if ($ret > 0)
+
+				if ($ret > 0 && $conf->global->{$this->doc_model_const_name} == $value)
 				{
-					if ($conf->global->$const_name == $value) dolibarr_del_const($db, $const_name, $conf->entity);
+					dolibarr_del_const($db, $this->doc_model_const_name, $conf->entity);
 				}
 			}
 
@@ -234,13 +233,12 @@ class SetupPage extends FormPage
 			else if ($action == 'setdefaultdoc')
 			{
 				$value = GETPOST('value', 'alpha');
-				$const_name = $this->doc_model_const_name;
 
-				if (dolibarr_set_const($db, $const_name, $value, 'chaine', 0, '', $conf->entity))
+				if (dolibarr_set_const($db, $this->doc_model_const_name, $value, 'chaine', 0, '', $conf->entity))
 				{
 					// The constant that was read before the new set
 					// We therefore requires a variable to have a coherent view
-					$conf->global->$const_name = $value;
+					$conf->global->{$this->doc_model_const_name} = $value;
 				}
 
 				// activate model
@@ -566,8 +564,6 @@ class SetupPage extends FormPage
 	{
 		global $conf, $langs, $dolibase_config;
 
-		$const_name = $this->num_model_const_name;
-
 		echo '<table class="noborder" width="100%">';
 		echo '<tr class="liste_titre">';
 		echo '<td>'.$langs->trans("Name").'</td>';
@@ -625,26 +621,25 @@ class SetupPage extends FormPage
 								echo '</td>'."\n";
 
 								echo '<td align="center">';
-								if ($conf->global->$const_name == $file)
+								if ($conf->global->{$this->num_model_const_name} == $file)
 								{
-									echo img_picto($langs->trans("Activated"),'switch_on');
+									echo img_picto($langs->trans("Activated"), 'switch_on');
 								}
 								else
 								{
 									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
-									echo img_picto($langs->trans("Disabled"),'switch_off');
+									echo img_picto($langs->trans("Disabled"), 'switch_off');
 									echo '</a>';
 								}
 								echo '</td>';
 
 								// Info
-								$htmltooltip = '';
-								$htmltooltip.= $langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
+								$htmltooltip = $langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
 								$nextval = $model->getNextValue();
 								if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
 									$htmltooltip.= $langs->trans("NextValue").': ';
 									if ($nextval) {
-										if (preg_match('/^Error/',$nextval) || $nextval=='NotConfigured') {
+										if (preg_match('/^Error/',$nextval) || $nextval == 'NotConfigured') {
 											$nextval = $langs->trans($nextval);
 										}
 										$htmltooltip.= $nextval.'<br>';
@@ -654,7 +649,7 @@ class SetupPage extends FormPage
 								}
 
 								echo '<td align="center">';
-								echo $this->form->textwithpicto('',$htmltooltip,1,0);
+								echo $this->form->textwithpicto('', $htmltooltip, 1, 0);
 								echo '</td>';
 
 								echo "</tr>\n";
@@ -676,8 +671,6 @@ class SetupPage extends FormPage
 	public function printDocModels()
 	{
 		global $db, $conf, $langs, $dolibase_config;
-
-		$const_name = $this->doc_model_const_name;
 
 		// Load array def with activated templates
 		$def = array();
@@ -745,7 +738,7 @@ class SetupPage extends FormPage
 
 							if ($modelqualified)
 							{
-								$var=!$var;
+								$var = !$var;
 								echo '<tr '.$bc[$var].'><td width="100">'.$model->name."</td><td>\n";
 								if (method_exists($model, 'info')) echo $model->info($langs);
 								else echo $model->description;
@@ -756,22 +749,22 @@ class SetupPage extends FormPage
 								{
 									echo '<td align="center">'."\n";
 									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=deldoc&value='.$model->name.'">';
-									echo img_picto($langs->trans("Enabled"),'switch_on');
+									echo img_picto($langs->trans("Enabled"), 'switch_on');
 									echo '</a>';
 									echo '</td>';
 								}
 								else
 								{
 									echo '<td align="center">'."\n";
-									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
 									echo "</td>";
 								}
 
 								// Default
 								echo '<td align="center">';
-								if ($conf->global->$const_name == $model->name)
+								if ($conf->global->{$this->doc_model_const_name} == $model->name)
 								{
-									echo img_picto($langs->trans("Default"),'on');
+									echo img_picto($langs->trans("Default"), 'on');
 								}
 								else
 								{
@@ -780,19 +773,19 @@ class SetupPage extends FormPage
 								echo '</td>';
 
 								// Info
-								$htmltooltip =    ''.$langs->trans("Name").': '.$model->name;
-								$htmltooltip.='<br>'.$langs->trans("Type").': '.($model->type?$model->type:$langs->trans("Unknown"));
+								$htmltooltip = $langs->trans("Name").': '.$model->name;
+								$htmltooltip.= '<br>'.$langs->trans("Type").': '.($model->type?$model->type:$langs->trans("Unknown"));
 								if ($model->type == 'pdf')
 								{
-									$htmltooltip.='<br>'.$langs->trans("Width").'/'.$langs->trans("Height").': '.$model->page_largeur.'/'.$model->page_hauteur;
+									$htmltooltip.= '<br>'.$langs->trans("Width").'/'.$langs->trans("Height").': '.$model->page_largeur.'/'.$model->page_hauteur;
 								}
-								$htmltooltip.='<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
-								$htmltooltip.='<br>'.$langs->trans("Logo").': '.yn($model->option_logo,1,1);
-								$htmltooltip.='<br>'.$langs->trans("MultiLanguage").': '.yn($model->option_multilang,1,1);
-								$htmltooltip.='<br>'.$langs->trans("WatermarkOnDraft").': '.yn($model->option_draft_watermark,1,1);
+								$htmltooltip.= '<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
+								$htmltooltip.= '<br>'.$langs->trans("Logo").': '.yn($model->option_logo, 1, 1);
+								$htmltooltip.= '<br>'.$langs->trans("MultiLanguage").': '.yn($model->option_multilang, 1, 1);
+								$htmltooltip.= '<br>'.$langs->trans("WatermarkOnDraft").': '.yn($model->option_draft_watermark, 1, 1);
 
 								echo '<td align="center">';
-								echo $this->form->textwithpicto('',$htmltooltip,1,0);
+								echo $this->form->textwithpicto('', $htmltooltip, 1, 0);
 								echo '</td>';
 
 								// Preview
@@ -800,11 +793,11 @@ class SetupPage extends FormPage
 								if ($model->type == 'pdf')
 								{
 									$picto = (! empty($this->doc_model_preview_picture) ? $this->doc_model_preview_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
-									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"),$picto).'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"), $picto).'</a>';
 								}
 								else
 								{
-									echo img_object($langs->trans("PreviewNotAvailable"),'generic');
+									echo img_object($langs->trans("PreviewNotAvailable"), 'generic');
 								}
 								echo '</td>';
 
