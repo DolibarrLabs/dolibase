@@ -189,7 +189,7 @@ class CalendarPage extends FormPage
 		echo '<div style="width: 100%; position: relative;">';
 
 		foreach ($this->template_files as $template) {
-			include dol_buildpath($template);
+			include $this->getTemplatePath($template);
 		}
 
 		echo '</div>';

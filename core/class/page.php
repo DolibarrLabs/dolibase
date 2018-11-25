@@ -455,6 +455,21 @@ class Page
 	}
 
 	/**
+	 * Return template absolute path
+	 *
+	 * @param   $template      template relative path or name
+	 * @return  string         template absolute path
+	 */
+	protected function getTemplatePath($template)
+	{
+		global $dolibase_config;
+
+		$path = preg_replace('/^\//', '', $template); // Clean the path
+
+		return dol_buildpath($dolibase_config['module']['folder'].'/tpl/'.$path);
+	}
+
+	/**
 	 * Include a template into the page.
 	 * Note: the template should be inside module tpl folder when $path_is_absolute parameter equal false.
 	 *
@@ -464,14 +479,7 @@ class Page
 	 */
 	public function showTemplate($template_path, $path_is_absolute = false, $use_require_once = false)
 	{
-		global $dolibase_config;
-
-		if ($path_is_absolute) {
-			$path = $template_path;
-		} else {
-			$relative_path = preg_replace('/^\//', '', $template_path); // Clean the path
-			$path = dol_buildpath($dolibase_config['module']['folder'].'/tpl/'.$relative_path);
-		}
+		$path = $path_is_absolute ? $template_path : $this->getTemplatePath($template_path);
 
 		if ($use_require_once) {
 			require_once $path;
