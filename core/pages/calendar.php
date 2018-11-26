@@ -188,8 +188,14 @@ class CalendarPage extends FormPage
 		echo '<tr height="'.$minheight.'"><td valign="top" colspan="2" class="sortable" style="padding-bottom: 2px;">';
 		echo '<div style="width: 100%; position: relative;">';
 
+		$template_params = array(
+			'day'   => $day,
+			'month' => $month,
+			'year'  => $year
+		);
+
 		foreach ($this->template_files as $template) {
-			include $this->getTemplatePath($template);
+			$this->showTemplate($template, false, false, $template_params);
 		}
 
 		echo '</div>';

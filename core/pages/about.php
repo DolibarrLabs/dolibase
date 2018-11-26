@@ -47,6 +47,9 @@ class AboutPage extends Page
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;
 
+		// Add some custom css
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/about.css.php').'">'."\n");
+
 		parent::__construct($page_title, $access_perm);
 	}
 
@@ -91,23 +94,11 @@ class AboutPage extends Page
 	 */
 	public function printModuleInformations($picture = '')
 	{
-		global $langs, $dolibase_config;
+		$template_path = dolibase_buildpath('/core/tpl/about_module.php');
+		$template_params = array(
+			'picture' => $picture
+		);
 
-		if (empty($picture)) {
-			$picture = 'object_'.$dolibase_config['module']['picture'];
-		}
-
-		echo '<br/>';
-		echo '<div style="float: left; margin-right: 20px;"><img src="../img/'.$picture.'" /></div>';
-		echo '<div>';
-		echo '<a href="'.$dolibase_config['module']['url'].'" target="_blank">';
-		echo '<b>'.$langs->trans($dolibase_config['module']['name']).'</b>';
-		echo '</a> : '.$langs->trans($dolibase_config['module']['desc']);
-		echo '<br/><br/>'.$langs->trans('DevelopedBy').' <a href="'.$dolibase_config['author']['url'].'" target="_blank">'.$dolibase_config['author']['name'].'</a>';
-		echo '. '.$langs->trans('DolibaseVersion').' <a href="'.$dolibase_config['main']['link'].'" target="_blank">'.$dolibase_config['main']['version'].'</a>';
-		echo '<br/><br/>'.$langs->trans('ForAnyQuestions').' <a href="mailto:'.$dolibase_config['author']['email'].'">'.$dolibase_config['author']['email'].'</a>';
-		echo '<br><br>'.$langs->trans('FindMyModules').' <a href="'.$dolibase_config['author']['dolistore_url'].'" target="_blank">'.$langs->trans('Dolistore').'</a>';
-		echo '</div>';
-		echo '<br/><br/>';
+		$this->showTemplate($template_path, true, true, $template_params);
 	}
 }

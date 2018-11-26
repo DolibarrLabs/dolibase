@@ -476,10 +476,15 @@ class Page
 	 * @param   $template_path      template path
 	 * @param   $path_is_absolute   define whether the template path is absolute or not
 	 * @param   $use_require_once   permit to avoid including the template many times on the same page
+	 * @param   $template_params    template parameters
 	 */
-	public function showTemplate($template_path, $path_is_absolute = false, $use_require_once = false)
+	public function showTemplate($template_path, $path_is_absolute = false, $use_require_once = false, $template_params = array())
 	{
 		$path = $path_is_absolute ? $template_path : $this->getTemplatePath($template_path);
+
+		foreach ($template_params as $param => $value) {
+			${$param} = $value;
+		}
 
 		if ($use_require_once) {
 			require_once $path;
