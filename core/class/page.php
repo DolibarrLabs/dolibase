@@ -480,6 +480,9 @@ class Page
 	 */
 	public function showTemplate($template_path, $path_is_absolute = false, $use_require_once = false, $template_params = array())
 	{
+		// Stop measuring time after begin call & Start measuring time after showTemplate call
+		start_time_measure('after_showTemplate_call', __METHOD__, 'after_begin_call');
+
 		$path = $path_is_absolute ? $template_path : $this->getTemplatePath($template_path);
 
 		foreach ($template_params as $param => $value) {
@@ -491,6 +494,8 @@ class Page
 		} else {
 			require $path;
 		}
+
+		stop_time_measure('after_showTemplate_call');
 	}
 
 	/**

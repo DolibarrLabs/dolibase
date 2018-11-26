@@ -411,7 +411,7 @@ if (! function_exists('start_time_measure'))
 
 		if (is_object($debugbar)) {
 			if (! empty($stop_name)) {
-				$debugbar['time']->stopMeasure($stop_name);
+				stop_time_measure($stop_name);
 			}
 			$debugbar['time']->startMeasure($name, $label);
 		}
@@ -429,7 +429,7 @@ if (! function_exists('stop_time_measure'))
 	{
 		global $debugbar;
 
-		if (is_object($debugbar)) {
+		if (is_object($debugbar) && $debugbar['time']->hasStartedMeasure($name)) {
 			$debugbar['time']->stopMeasure($name);
 		}
 	}
