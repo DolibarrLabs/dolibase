@@ -1,6 +1,16 @@
 ### Dolibase Framework
 ------
 
+#### 2.7.0 - NOV18
+
+*   NEW: date select form added to calendar page navigation bar.
+*   NEW: introduce showTemplate, getTemplatePath, isUnderConstruction functions into page class.
+*   NEW: uncheck use custom class name option by default in module & widget builder.
+*   FIX: remove deprecated `dolibase/autoload.php`.
+*   FIX: other minor fixes & optimisations.
+
+---
+
 #### 2.6.5 - NOV18
 
 *   NEW: possibility to enable triggers from module config file.
