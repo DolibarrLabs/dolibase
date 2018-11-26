@@ -54,13 +54,23 @@ class CalendarPage extends FormPage
 			'action' => GETPOST('action', 'alpha'),
 			'year' => GETPOST('year', 'int') ? GETPOST('year', 'int') : date('Y'),
 			'month' => GETPOST('month', 'int') ? GETPOST('month', 'int') : date('m'),
-			'week' => GETPOST('week', 'int') ? GETPOST('week', 'int') : date('W'),
 			'day' => GETPOST('day', 'int') ? GETPOST('day', 'int') : date('d'),
-			'wich_week' => GETPOST('wich_week', 'alpha')
+			'wich_week' => GETPOST('wich_week', 'alpha'),
+			'dateselect' => GETPOST('dateselect')
 		);
 
 		if (empty($this->params['action']) && ! empty($default_view)) {
 			$this->params['action'] = 'show_'.$default_view;
+		}
+
+		if (! empty($this->params['dateselect'])) {
+			$day   = GETPOST('dateselectday', 'int');
+			$month = GETPOST('dateselectmonth', 'int');
+			$year  = GETPOST('dateselectyear', 'int');
+			$this->params['dateselect'] = dol_mktime(0, 0, 0, $month, $day, $year);
+			$this->params['day']   = $day;
+			$this->params['month'] = $month;
+			$this->params['year']  = $year;
 		}
 
 		parent::__construct($page_title, $access_perm);
@@ -158,7 +168,22 @@ class CalendarPage extends FormPage
 	 */
 	protected function showNavBar($nav)
 	{
-		echo load_fiche_titre('', $nav, '', 0, 0, 'tablelistofcalendars');
+		$form = '';
+
+		if ($this->params['optioncss'] != 'print')
+		{
+			global $langs;
+
+			// Date select form
+			$form.= '<form action="'.$_SERVER["PHP_SELF"].'" method="post">';
+			$form.= '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
+			$form.= '<input type="hidden" name="action" value="' . $this->params['action'] . '">';
+			$form.= $this->form->select_date($this->params['dateselect'], 'dateselect', 0, 0, 1, '', 1, 0, 1);
+			$form.= '<input type="submit" class="button" value="'.$langs->trans("Refresh").'">';
+			$form.= '</form>';
+		}
+
+		echo load_fiche_titre($form, $nav, '', 0, 0, 'tablelistofcalendars');
 	}
 
 	/**
@@ -229,7 +254,7 @@ class CalendarPage extends FormPage
 		// Set url parameters for navigation bar
 		$param = '';
 		foreach ($this->params as $key => $value) {
-			if (! in_array($key, array('day', 'month', 'year'))) $param.= '&'.$key.'='.$value;
+			if (! in_array($key, array('day', 'month', 'year', 'wich_week', 'dateselect'))) $param.= '&'.$key.'='.$value;
 		}
 
 		/*
@@ -348,6 +373,7 @@ class CalendarPage extends FormPage
 			}
 			else if ($this->params['wich_week'] == 'next')
 			{
+				$week = date('W');
 				$next = dol_get_next_week($day, $week, $month, $year);
 				$year  = $next['year'];
 				$month = $next['month'];
