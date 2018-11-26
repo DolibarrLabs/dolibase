@@ -93,7 +93,7 @@ class DocumentPage extends Page
 	}
 
 	/**
-	 * Generate page begining + print documents/linked files
+	 * Generate page beginning + print documents/linked files
 	 *
 	 * @param     $object         object
 	 */

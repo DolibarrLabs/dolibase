@@ -417,10 +417,20 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    string
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_getTemplatePath">getTemplatePath</a>($template)
+        
+                                            <p>Return template absolute path</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_showTemplate">showTemplate</a>($template_path, $path_is_absolute = false, $use_require_once = false)
+                    <a href="#method_showTemplate">showTemplate</a>($template_path, $path_is_absolute = false, $use_require_once = false, $template_params = array())
         
                                             <p>Include a template into the page.</p>                </div>
                 <div class="col-md-2"></div>
@@ -452,7 +462,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <div class="col-md-8 type">
                     <a href="#method_begin">begin</a>()
         
-                                            <p>Generate page begining</p>                </div>
+                                            <p>Generate page beginning</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -1215,10 +1225,50 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_getTemplatePath">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L463">line 463</a></div>
+        <code>            protected        string
+    <strong>getTemplatePath</strong>($template)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Return template absolute path</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$template</td>
+                <td>template relative path or name</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>template absolute path</td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_showTemplate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L465">line 465</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L481">line 481</a></div>
         <code>                    
-    <strong>showTemplate</strong>($template_path, $path_is_absolute = false, $use_require_once = false)
+    <strong>showTemplate</strong>($template_path, $path_is_absolute = false, $use_require_once = false, $template_params = array())
         </code>
     </h3>
     <div class="details">
@@ -1246,6 +1296,11 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <td>$use_require_once</td>
                 <td>permit to avoid including the template many times on the same page</td>
             </tr>
+                    <tr>
+                <td></td>
+                <td>$template_params</td>
+                <td>template parameters</td>
+            </tr>
             </table>
 
             
@@ -1257,7 +1312,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_isUnderConstruction">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L486">line 486</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L505">line 505</a></div>
         <code>                    
     <strong>isUnderConstruction</strong>()
         </code>
@@ -1278,7 +1333,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_loadDefaultActions">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L497">line 497</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L516">line 516</a></div>
         <code>            protected        
     <strong>loadDefaultActions</strong>()
         </code>
@@ -1299,7 +1354,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L506">line 506</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L525">line 525</a></div>
         <code>                    
     <strong>begin</strong>()
         </code>
@@ -1309,7 +1364,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Generate page begining</p>                                                </div>
+                                    <p>Generate page beginning</p>                                                </div>
                 <div class="tags">
             
             
@@ -1320,7 +1375,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L524">line 524</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L543">line 543</a></div>
         <code>            protected        
     <strong>generate</strong>()
         </code>
@@ -1341,7 +1396,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_redirect">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L539">line 539</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L558">line 558</a></div>
         <code>                    
     <strong>redirect</strong>($url)
         </code>
@@ -1372,7 +1427,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_end">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L548">line 548</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L567">line 567</a></div>
         <code>                    
     <strong>end</strong>()
         </code>

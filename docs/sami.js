@@ -62,7 +62,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_printRelatedObjects", "name": "CardPage::printRelatedObjects", "doc": "&quot;Print related objects block&quot;"},
                     {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_printDocuments", "name": "CardPage::printDocuments", "doc": "&quot;Print documents block&quot;"},
                     {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_printMailForm", "name": "CardPage::printMailForm", "doc": "&quot;Print mail form&quot;"},
-                    {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_begin", "name": "CardPage::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_begin", "name": "CardPage::begin", "doc": "&quot;Generate page beginning&quot;"},
                     {"type": "Method", "fromName": "CardPage", "fromLink": "CardPage.html", "link": "CardPage.html#method_end", "name": "CardPage::end", "doc": "&quot;Generate page end&quot;"},
             
             {"type": "Class",  "link": "CreatePage.html", "name": "CreatePage", "doc": "&quot;CreatePage class&quot;"},
@@ -144,7 +144,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_generateTabs", "name": "DocumentPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_showBanner", "name": "DocumentPage::showBanner", "doc": "&quot;Show banner&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_getTabTitle", "name": "DocumentPage::getTabTitle", "doc": "&quot;Return Tab title&quot;"},
-                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page begining + print documents\/linked files&quot;"},
+                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page beginning + print documents\/linked files&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_printDocuments", "name": "DocumentPage::printDocuments", "doc": "&quot;Print documents\/linked files&quot;"},
             
             {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;DolibaseModule class&quot;"},
@@ -205,7 +205,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "IndexPage.html", "name": "IndexPage", "doc": "&quot;IndexPage class&quot;"},
                                                         {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method___construct", "name": "IndexPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page begin&quot;"},
+                    {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_begin", "name": "IndexPage::begin", "doc": "&quot;Generate page beginning&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_end", "name": "IndexPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_openLeftSection", "name": "IndexPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},
                     {"type": "Method", "fromName": "IndexPage", "fromLink": "IndexPage.html", "link": "IndexPage.html#method_closeLeftSection", "name": "IndexPage::closeLeftSection", "doc": "&quot;Close a left section&quot;"},
@@ -286,10 +286,11 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_closeRow", "name": "Page::closeRow", "doc": "&quot;Close a table row&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_addColumn", "name": "Page::addColumn", "doc": "&quot;Add a table column&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_addLineBreak", "name": "Page::addLineBreak", "doc": "&quot;Add a line break (or many)&quot;"},
+                    {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_getTemplatePath", "name": "Page::getTemplatePath", "doc": "&quot;Return template absolute path&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_showTemplate", "name": "Page::showTemplate", "doc": "&quot;Include a template into the page.&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_isUnderConstruction", "name": "Page::isUnderConstruction", "doc": "&quot;Show page_under_construction template (only once)&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_loadDefaultActions", "name": "Page::loadDefaultActions", "doc": "&quot;Load default actions&quot;"},
-                    {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_begin", "name": "Page::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_begin", "name": "Page::begin", "doc": "&quot;Generate page beginning&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_generate", "name": "Page::generate", "doc": "&quot;Generate page body&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_redirect", "name": "Page::redirect", "doc": "&quot;Redirect to a url (alias for dolibase_redirect function)&quot;"},
                     {"type": "Method", "fromName": "Page", "fromLink": "Page.html", "link": "Page.html#method_end", "name": "Page::end", "doc": "&quot;Generate page end&quot;"},
@@ -315,7 +316,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "StatsPage.html", "name": "StatsPage", "doc": "&quot;StatsPage class&quot;"},
                                                         {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method___construct", "name": "StatsPage::__construct", "doc": "&quot;Constructor&quot;"},
-                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page begining&quot;"},
+                    {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_begin", "name": "StatsPage::begin", "doc": "&quot;Generate page beginning&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_generateTabs", "name": "StatsPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_end", "name": "StatsPage::end", "doc": "&quot;Generate page end&quot;"},
                     {"type": "Method", "fromName": "StatsPage", "fromLink": "StatsPage.html", "link": "StatsPage.html#method_openLeftSection", "name": "StatsPage::openLeftSection", "doc": "&quot;Opens a left section&quot;"},

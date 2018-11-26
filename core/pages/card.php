@@ -669,7 +669,7 @@ class CardPage extends CreatePage
 	}
 
 	/**
-	 * Generate page begining
+	 * Generate page beginning
 	 *
 	 */
 	public function begin()

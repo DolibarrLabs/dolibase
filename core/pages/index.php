@@ -41,7 +41,7 @@ class IndexPage extends FormPage
 	}
 
 	/**
-	 * Generate page begin
+	 * Generate page beginning
 	 *
 	 */
 	public function begin()

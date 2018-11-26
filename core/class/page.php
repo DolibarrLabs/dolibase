@@ -519,7 +519,7 @@ class Page
 	}
 
 	/**
-	 * Generate page begining
+	 * Generate page beginning
 	 *
 	 */
 	public function begin()
