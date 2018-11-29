@@ -365,6 +365,17 @@ class SetupPage extends FormPage
 	}
 
 	/**
+	 * Show setup_not_available template (only once)
+	 *
+	 */
+	public function setupNotAvailable()
+	{
+		$template_path = dolibase_buildpath('/core/tpl/setup_not_available.php');
+
+		$this->showTemplate($template_path, true, true);
+	}
+
+	/**
 	 * Create a new table for options
 	 *
 	 * @param     $first_column_name     First column name

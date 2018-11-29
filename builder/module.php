@@ -106,7 +106,7 @@ if ($action == 'generate')
 		// Create setup page
 		$setup_data = array(
 			'add_extrafields_tab' => bool2Alpha($add_extrafields_page),
-			'settings' => ($add_num_models_settings || $add_doc_models_settings ? '' : 'global $langs;'."\n\n".'echo $langs->trans("NoSetupAvailable");')
+			'settings' => ($add_num_models_settings || $add_doc_models_settings ? '' : '$page->setupNotAvailable();')
 		);
 		if ($add_num_models_settings) {
 			$setup_data['settings'] .= '$page->addSubtitle("NumberingModels");'."\n\n".'$page->printNumModels();';
