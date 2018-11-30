@@ -537,7 +537,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printRelatedObjects($object)
 	{
-		if (is_object($object))
+		if (is_object($object) && isset($object->id))
 		{
 			global $conf, $langs, $dolibase_config;
 
@@ -577,7 +577,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printDocuments($object)
 	{
-		if (is_object($object))
+		if (is_object($object) && isset($object->id))
 		{
 			global $db, $conf, $user;
 			
@@ -615,7 +615,7 @@ class CardPage extends CreatePage
 	 */
 	protected function printMailForm($object)
 	{
-		if (is_object($object))
+		if (is_object($object) && isset($object->id))
 		{
 			global $langs, $user, $conf;
 
