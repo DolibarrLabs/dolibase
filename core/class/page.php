@@ -175,7 +175,7 @@ class Page
 	}
 
 	/**
-	 * Add js file to page head
+	 * Add JS file to page head
 	 *
 	 * @param     $js_file     Javascript file
 	 */
@@ -189,7 +189,19 @@ class Page
 	}
 
 	/**
-	 * Add css file to page head
+	 * Add an array of JS files
+	 *
+	 * @param     $js_files_array     Javascript files array
+	 */
+	public function addJsFiles($js_files_array)
+	{
+		foreach ($js_files_array as $js_file) {
+			$this->addJsFile($js_file);
+		}
+	}
+
+	/**
+	 * Add CSS file to page head
 	 *
 	 * @param     $css_file     CSS file
 	 */
@@ -200,6 +212,18 @@ class Page
 		//$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dol_buildpath($dolibase_config['module']['folder'].'/css/'.$css_file, 1).'">'."\n");
 
 		$this->assets['css'][] = $dolibase_config['module']['folder'].'/css/'.$css_file;
+	}
+
+	/**
+	 * Add an array of CSS files
+	 *
+	 * @param     $css_files_array     CSS files array
+	 */
+	public function addCssFiles($css_files_array)
+	{
+		foreach ($css_files_array as $css_file) {
+			$this->addCssFile($css_file);
+		}
 	}
 
 	/**
