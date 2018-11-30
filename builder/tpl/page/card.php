@@ -109,6 +109,6 @@ if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 		}
 	}
 }
-else $page->begin();
+else $page->begin()->notFound();
 
 $page->end($object);

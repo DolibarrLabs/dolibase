@@ -29,6 +29,6 @@ if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 	// Logs
 	$page->printLogs($object->id);
 }
-else $page->begin();
+else $page->begin()->notFound();
 
 $page->end();

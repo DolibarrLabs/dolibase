@@ -32,6 +32,6 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Documents
 	$page->printDocuments($book);
 }
-else $page->begin();
+else $page->begin()->notFound();
 
 $page->end();

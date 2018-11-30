@@ -33,6 +33,6 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Logs
 	$page->printLogs($book->id);
 }
-else $page->begin();
+else $page->begin()->notFound();
 
 $page->end();
