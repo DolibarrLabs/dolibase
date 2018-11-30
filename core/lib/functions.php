@@ -306,6 +306,8 @@ if (! function_exists('dolibase_flash_message'))
 {
 	function dolibase_flash_message($message, $type = 'success')
 	{
+		global $langs;
+
 		$types_array = array(
 			'success' => 'mesgs',
 			'warning' => 'warnings',
@@ -315,7 +317,7 @@ if (! function_exists('dolibase_flash_message'))
 		if (! isset($types_array[$type])) {
 			dolibase_error('Bad parameter type='.$type.' provided to '.__FUNCTION__);
 		} else if (! empty($message)) {
-			setEventMessage($message, $types_array[$type]);
+			setEventMessage($langs->trans($message), $types_array[$type]);
 		}
 	}
 }
