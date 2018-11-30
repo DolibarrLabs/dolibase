@@ -43,12 +43,15 @@ class IndexPage extends FormPage
 	/**
 	 * Generate page beginning
 	 *
+	 * @return  $this
 	 */
 	public function begin()
 	{
 		parent::begin();
 
 		echo '<div class="fichecenter">';
+
+		return $this;
 	}
 
 	/**

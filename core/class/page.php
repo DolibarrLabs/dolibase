@@ -526,9 +526,20 @@ class Page
 	 * Show page_under_construction template (only once)
 	 *
 	 */
-	public function isUnderConstruction()
+	public function underConstruction()
 	{
 		$template_path = dolibase_buildpath('/core/tpl/page_under_construction.php');
+
+		$this->showTemplate($template_path, true, true);
+	}
+
+	/**
+	 * Show page_not_found template (only once)
+	 *
+	 */
+	public function notFound()
+	{
+		$template_path = dolibase_buildpath('/core/tpl/page_not_found.php');
 
 		$this->showTemplate($template_path, true, true);
 	}
@@ -545,6 +556,7 @@ class Page
 	/**
 	 * Generate page beginning
 	 *
+	 * @return  $this
 	 */
 	public function begin()
 	{
@@ -558,6 +570,8 @@ class Page
 
 		// Generate page
 		$this->generate();
+
+		return $this;
 	}
 
 	/**

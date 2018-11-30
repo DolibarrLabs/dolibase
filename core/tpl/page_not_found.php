@@ -19,13 +19,13 @@ global $langs, $dolibase_config;
 
 $langs->load("page@".$dolibase_config['langs']['path']);
 
-$title = $langs->trans('PageUnderConstruction');
+$title = $langs->trans('PageNotFound');
 
 ?>
 
 <br><br><br>
 <div class="center">
-	<img src="<?php echo dolibase_buildurl('/core/img/under-construction.png'); ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
+	<img src="<?php echo dolibase_buildurl('/core/img/not-found.png'); ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
 	<h1 style="color: orange;">
 		<strong>
 			<i><?php echo $title; ?></i>

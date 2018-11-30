@@ -205,6 +205,6 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 		}
 	}
 }
-else $page->begin();
+else $page->begin()->notFound();
 
 $page->end($book);

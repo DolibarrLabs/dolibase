@@ -671,6 +671,7 @@ class CardPage extends CreatePage
 	/**
 	 * Generate page beginning
 	 *
+	 * @return  $this
 	 */
 	public function begin()
 	{
@@ -679,7 +680,7 @@ class CardPage extends CreatePage
 		// Select mail models is same action as presend
 		if (GETPOST('modelselected')) $action = 'presend';
 
-		parent::begin();
+		return parent::begin();
 	}
 
 	/**
