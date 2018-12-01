@@ -1,6 +1,16 @@
 ### Dolibase Framework
 ------
 
+#### 2.7.1 - DEC18
+
+*   NEW: isUnderConstruction function renamed to underConstruction + notFound, addCssfiles & addJsfiles functions added into page class.
+*   NEW: setupNotAvailbale function added into Setup page.
+*   FIX: translate $message string in dolibase_flash_message global function.
+*   FIX: issue when id does not exist in Card page.
+*   FIX: some HTML tweaks & corrections.
+
+---
+
 #### 2.7.0 - NOV18
 
 *   NEW: date select form added to calendar page navigation bar.
