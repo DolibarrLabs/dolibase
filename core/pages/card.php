@@ -493,7 +493,7 @@ class CardPage extends CreatePage
 	 */
 	public function editRadioListField($field_name, $radio_name, $radio_list, $selected = '', $action_prefix = 'set_')
 	{
-		$field_content = $this->form->radioList($radio_name, $radio_list, $selected, true);
+		$field_content = $this->form->radioList($radio_name, $radio_list, $selected);
 
 		$this->editField($field_name, $field_content, $action_prefix.$radio_name);
 	}
@@ -509,7 +509,7 @@ class CardPage extends CreatePage
 	 */
 	public function editCheckListField($field_name, $check_name, $check_list, $selected = '', $action_prefix = 'set_')
 	{
-		$field_content = $this->form->checkList($check_name, $check_list, $selected, true);
+		$field_content = $this->form->checkList($check_name, $check_list, $selected);
 
 		$this->editField($field_name, $field_content, $action_prefix.$check_name);
 	}

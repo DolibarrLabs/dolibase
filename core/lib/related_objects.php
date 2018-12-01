@@ -278,7 +278,7 @@ function show_related_objects($object)
 
 			<table class="noborder allwidth">
 				<tr class="liste_titre">
-					<td><?php echo $langs->trans("Ref"); ?> <input type="text" id="add_related_object" name="add_related_object" value="" class="flat" /> <input type="submit" id="add_related_object_btn" name="add_related_object_btn" class="button" value="<?php echo $langs->trans('AddRelated') ?>" style="display:none;" /></td>
+					<td><?php echo $langs->trans("Ref"); ?> <input type="text" id="add_related_object" name="add_related_object" value="" class="flat" /> <input type="submit" id="add_related_object_btn" name="add_related_object_btn" class="button hidden" value="<?php echo $langs->trans('AddRelated') ?>" /></td>
 					<td align="center"><?php echo $langs->trans("Date"); ?></td>
 					<td align="center"><?php echo $langs->trans("Status"); ?></td>
 					<td align="center"><?php echo $langs->trans("Action"); ?></td>
@@ -394,7 +394,7 @@ function show_related_objects($object)
 						$('#add_related_object').val(ui.item.label.trim());
 						$('#related_object_type').val(ui.item.object);
 
-						$('#add_related_object_btn').css('display','inline-block');
+						$('#add_related_object_btn').removeClass('hidden');
 
 						return false;
 					}

@@ -52,9 +52,6 @@ class FormPage extends Page
 		// Initialise form object
 		$this->form = new CustomForm($db);
 
-		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/form.css.php').'">'."\n");
-
 		// Add custom js
 		if ($conf->use_javascript_ajax) {
 			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/form.js.php').'"></script>'."\n");

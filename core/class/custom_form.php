@@ -77,13 +77,12 @@ class CustomForm extends Form
 	 *
 	 * @param   $name           text area name
 	 * @param   $value          text area value
-	 * @param   $style          text area style
 	 * @param   $rows           text area rows
 	 * @return  string          text area HTML
 	 */
-	public function textArea($name, $value, $style = 'margin-top: 5px; width: 90%', $rows = '3')
+	public function textArea($name, $value, $rows = '3')
 	{
-		return '<textarea name="'.$name.'" class="flat" style="'.$style.'" rows="'.$rows.'">'.$value.'</textarea>';
+		return '<textarea name="'.$name.'" class="flat centpercent" rows="'.$rows.'">'.$value.'</textarea>';
 	}
 
 	/**
@@ -174,10 +173,9 @@ class CustomForm extends Form
 	 * @param   $name      list name
 	 * @param   $values    list values
 	 * @param   $selected  list selected value
-	 * @param   $add_br    add a line break in the end
 	 * @return  string     list HTML
 	 */
-	public function radioList($name, $values, $selected, $add_br = false)
+	public function radioList($name, $values, $selected)
 	{
 		global $langs;
 
@@ -190,17 +188,12 @@ class CustomForm extends Form
 				$content = $label['content'];
 				$label = $label['label'];
 			}
-			if ($count > 0) $out.= "<br>\n";
-			$out.= '<span>';
-			$out.= '<input type="radio" class="dolibase_radio" name="'.$name.'" id="'.$name.'-'.$val.'" value="'.$val.'"'.($selected == $val || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
-			$out.= ' <label for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
-			$out.= '</span>';
+			$out.= '<div class="notopnoleftnoright">';
+			$out.= '<input type="radio" class="valignmiddle" name="'.$name.'" id="'.$name.'-'.$val.'" value="'.$val.'"'.($selected == $val || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
+			$out.= ' <label class="valignmiddle" for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
+			$out.= '</div>';
 			$out.= $content;
 			$count++;
-		}
-
-		if ($add_br) {
-			$out.= "<br>\n";
 		}
 
 		return $out;
@@ -212,14 +205,12 @@ class CustomForm extends Form
 	 * @param   $name      list name
 	 * @param   $values    list values
 	 * @param   $selected  list selected value(s)
-	 * @param   $add_br    add a line break in the end
 	 * @return  string     list HTML
 	 */
-	public function checkList($name, $values, $selected, $add_br = false)
+	public function checkList($name, $values, $selected)
 	{
 		global $langs;
 
-		$count = 0;
 		$out = '';
 		foreach ($values as $val => $label) {
 			$content = '';
@@ -228,17 +219,11 @@ class CustomForm extends Form
 				$content = $label['content'];
 				$label = $label['label'];
 			}
-			if ($count > 0) $out.= "<br>\n";
-			$out.= '<span>';
-			$out.= '<input type="checkbox" class="dolibase_radio" name="'.$name.'[]" id="'.$name.'-'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
-			$out.= ' <label for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
-			$out.= '</span>';
+			$out.= '<div class="notopnoleftnoright">';
+			$out.= '<input type="checkbox" class="valignmiddle" name="'.$name.'[]" id="'.$name.'-'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
+			$out.= ' <label class="valignmiddle" for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
+			$out.= '</div>';
 			$out.= $content;
-			$count++;
-		}
-
-		if ($add_br) {
-			$out.= "<br>\n";
 		}
 
 		return $out;

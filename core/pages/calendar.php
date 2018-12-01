@@ -153,7 +153,7 @@ class CalendarPage extends FormPage
 
 			// Close fichecenter & form
 			echo '</div>';
-			echo '<div style="clear:both"></div>';
+			echo '<div class="clearboth"></div>';
 			echo '</form>';
 
 			dol_fiche_end();

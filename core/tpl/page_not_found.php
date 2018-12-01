@@ -23,10 +23,9 @@ $title = $langs->trans('PageNotFound');
 
 ?>
 
-<br><br><br>
-<div class="center">
+<div class="center margin-top-fifth">
 	<img src="<?php echo dolibase_buildurl('/core/img/not-found.png'); ?>" title="<?php echo $title; ?>" alt="<?php echo $title; ?>">
-	<h1 style="color: orange;">
+	<h1 class="color-orange">
 		<strong>
 			<i><?php echo $title; ?></i>
 		</strong>

@@ -94,14 +94,14 @@ foreach ($data as $val)
 	$page->addColumn($val['nb'], 'align="center"');
 
 	// %
-	$page->addColumn(round($val['nb_diff']), 'align="center" style="'.(($val['nb_diff'] >= 0) ? 'color: green;':'color: red;').'"');
+	$page->addColumn(round($val['nb_diff']), 'align="center" class="'.(($val['nb_diff'] >= 0) ? 'color-green':'color-red').'"');
 
 	// Amount
 	$total = price2num($val['total'], 'MT');
 	$page->addColumn(price_with_currency($total), 'align="center"');
 
 	// %
-	$page->addColumn(round($val['total_diff']), 'align="center" style="'.(($val['total_diff'] >= 0) ? 'color: green;':'color: red;').'"');
+	$page->addColumn(round($val['total_diff']), 'align="center" class="'.(($val['total_diff'] >= 0) ? 'color-green':'color-red').'"');
 
 	$page->closeRow();
 

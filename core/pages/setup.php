@@ -554,7 +554,7 @@ class SetupPage extends FormPage
 
 		if (! $this->close_buttons_div) {
 			dol_fiche_end();
-			echo '<div class="tabsAction" style="text-align: center;">';
+			echo '<div class="tabsAction force-center">';
 			$this->close_buttons_div = true;
 		}
 

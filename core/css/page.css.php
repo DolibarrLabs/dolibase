@@ -19,9 +19,33 @@ header('Content-Type: text/css');
 
 ?>
 
-.dolibase_radio {
-	height: 26px !important;
-	vertical-align: middle;
+html, body, div#id-container {
+	height: 100%;
+}
+
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+
+.force-center {
+	text-align: center !important;
+}
+
+.margin-top-fifth {
+	margin-top: 20%;
+}
+
+.color-green {
+	color: green;
+}
+
+.color-red {
+	color: red;
+}
+
+.color-orange {
+	color: orange;
 }
 
 <?php

@@ -109,6 +109,9 @@ class Page
 			accessforbidden();
 		}
 
+		// Add some custom css
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/page.css.php').'">'."\n");
+
 		// Load default actions
 		$this->loadDefaultActions();
 	}

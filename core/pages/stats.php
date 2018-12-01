@@ -72,7 +72,7 @@ class StatsPage extends FormPage
 	{
 		echo '</div>';
 
-		echo '<div style="clear:both"></div>';
+		echo '<div class="clearboth"></div>';
 
 		parent::end();
 	}
