@@ -135,7 +135,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_textArea">textArea</a>($name, $value, $style = &#039;margin-top: 5px; width: 90%&#039;, $rows = &#039;3&#039;)
+                    <a href="#method_textArea">textArea</a>($name, $value, $rows = &#039;3&#039;)
         
                                             <p>Return a text area</p>                </div>
                 <div class="col-md-2"></div>
@@ -195,7 +195,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_radioList">radioList</a>($name, $values, $selected, $add_br = false)
+                    <a href="#method_radioList">radioList</a>($name, $values, $selected)
         
                                             <p>Return a radio list</p>                </div>
                 <div class="col-md-2"></div>
@@ -205,7 +205,7 @@
                     string
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_checkList">checkList</a>($name, $values, $selected, $add_br = false)
+                    <a href="#method_checkList">checkList</a>($name, $values, $selected)
         
                                             <p>Return a check list</p>                </div>
                 <div class="col-md-2"></div>
@@ -384,9 +384,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_textArea">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L84">line 84</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L83">line 83</a></div>
         <code>                    string
-    <strong>textArea</strong>($name, $value, $style = &#039;margin-top: 5px; width: 90%&#039;, $rows = &#039;3&#039;)
+    <strong>textArea</strong>($name, $value, $rows = &#039;3&#039;)
         </code>
     </h3>
     <div class="details">
@@ -408,11 +408,6 @@
                 <td></td>
                 <td>$value</td>
                 <td>text area value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$style</td>
-                <td>text area style</td>
             </tr>
                     <tr>
                 <td></td>
@@ -439,7 +434,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_textEditor">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L98">line 98</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L97">line 97</a></div>
         <code>                    string
     <strong>textEditor</strong>($name, $value, $toolbarname = &#039;dolibarr_details&#039;, $height = 100)
         </code>
@@ -494,7 +489,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_numberInput">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L118">line 118</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L117">line 117</a></div>
         <code>                    string
     <strong>numberInput</strong>($name, $value, $min = 0, $max = 100)
         </code>
@@ -549,7 +544,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_rangeInput">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L132">line 132</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L131">line 131</a></div>
         <code>                    string
     <strong>rangeInput</strong>($name, $value, $min = 0, $max = 100)
         </code>
@@ -604,7 +599,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_dateInput">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L145">line 145</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L144">line 144</a></div>
         <code>                    string
     <strong>dateInput</strong>($name, $value, $addnowlink = 1)
         </code>
@@ -654,7 +649,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_listInput">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L159">line 159</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L158">line 158</a></div>
         <code>                    string
     <strong>listInput</strong>($name, $values, $selected, $show_empty = 0)
         </code>
@@ -709,9 +704,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_radioList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L180">line 180</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L178">line 178</a></div>
         <code>                    string
-    <strong>radioList</strong>($name, $values, $selected, $add_br = false)
+    <strong>radioList</strong>($name, $values, $selected)
         </code>
     </h3>
     <div class="details">
@@ -739,11 +734,6 @@
                 <td>$selected</td>
                 <td>list selected value</td>
             </tr>
-                    <tr>
-                <td></td>
-                <td>$add_br</td>
-                <td>add a line break in the end</td>
-            </tr>
             </table>
 
             
@@ -764,9 +754,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_checkList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L218">line 218</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L210">line 210</a></div>
         <code>                    string
-    <strong>checkList</strong>($name, $values, $selected, $add_br = false)
+    <strong>checkList</strong>($name, $values, $selected)
         </code>
     </h3>
     <div class="details">
@@ -794,11 +784,6 @@
                 <td>$selected</td>
                 <td>list selected value(s)</td>
             </tr>
-                    <tr>
-                <td></td>
-                <td>$add_br</td>
-                <td>add a line break in the end</td>
-            </tr>
             </table>
 
             
@@ -819,7 +804,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_colorInput">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L254">line 254</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L239">line 239</a></div>
         <code>                    string
     <strong>colorInput</strong>($name, $value)
         </code>
@@ -864,7 +849,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_productList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L267">line 267</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_form.php#L252">line 252</a></div>
         <code>                    string
     <strong>productList</strong>($name, $value, $show_empty = &#039;1&#039;)
         </code>

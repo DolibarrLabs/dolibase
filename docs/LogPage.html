@@ -295,8 +295,18 @@
                 <div class="col-md-8 type">
                     <a href="#method_addJsFile">addJsFile</a>($js_file)
         
-                                            <p>Add js file to page head</p>                </div>
+                                            <p>Add JS file to page head</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addJsFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addJsFiles">addJsFiles</a>($js_files_array)
+        
+                                            <p>Add an array of JS files</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addJsFiles">Page</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -305,8 +315,18 @@
                 <div class="col-md-8 type">
                     <a href="#method_addCssFile">addCssFile</a>($css_file)
         
-                                            <p>Add css file to page head</p>                </div>
+                                            <p>Add CSS file to page head</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addCssFile">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_addCssFiles">addCssFiles</a>($css_files_array)
+        
+                                            <p>Add an array of CSS files</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addCssFiles">Page</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -464,10 +484,20 @@ Note: this function should be called before $page->begin() function, otherwise i
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_isUnderConstruction">isUnderConstruction</a>()
+                    <a href="#method_underConstruction">underConstruction</a>()
         
                                             <p>Show page_under_construction template (only once)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_isUnderConstruction">Page</a></small></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_underConstruction">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_notFound">notFound</a>()
+        
+                                            <p>Show page_not_found template (only once)</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_notFound">Page</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -481,7 +511,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_begin">begin</a>()
@@ -633,7 +663,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setTitle">
-        <div class="location">in <a href="Page.html#method_setTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L121">line 121</a></div>
+        <div class="location">in <a href="Page.html#method_setTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L124">line 124</a></div>
         <code>                    
     <strong>setTitle</strong>($page_title)
         </code>
@@ -664,7 +694,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setMainSubtitle">
-        <div class="location">in <a href="Page.html#method_setMainSubtitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L132">line 132</a></div>
+        <div class="location">in <a href="Page.html#method_setMainSubtitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L135">line 135</a></div>
         <code>                    
     <strong>setMainSubtitle</strong>($title, $picture = &#039;title_generic.png&#039;)
         </code>
@@ -700,7 +730,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_loadLang">
-        <div class="location">in <a href="Page.html#method_loadLang">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L143">line 143</a></div>
+        <div class="location">in <a href="Page.html#method_loadLang">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L146">line 146</a></div>
         <code>                    
     <strong>loadLang</strong>($lang_file, $is_module_file = true)
         </code>
@@ -736,7 +766,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_loadLangs">
-        <div class="location">in <a href="Page.html#method_loadLangs">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L160">line 160</a></div>
+        <div class="location">in <a href="Page.html#method_loadLangs">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L163">line 163</a></div>
         <code>                    
     <strong>loadLangs</strong>($lang_files_array, $from_module = false)
         </code>
@@ -772,7 +802,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_appendToHead">
-        <div class="location">in <a href="Page.html#method_appendToHead">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L172">line 172</a></div>
+        <div class="location">in <a href="Page.html#method_appendToHead">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L175">line 175</a></div>
         <code>                    
     <strong>appendToHead</strong>($content)
         </code>
@@ -803,7 +833,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addJsFile">
-        <div class="location">in <a href="Page.html#method_addJsFile">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L182">line 182</a></div>
+        <div class="location">in <a href="Page.html#method_addJsFile">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L185">line 185</a></div>
         <code>                    
     <strong>addJsFile</strong>($js_file)
         </code>
@@ -813,7 +843,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Add js file to page head</p>                                                </div>
+                                    <p>Add JS file to page head</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -833,8 +863,39 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_addJsFiles">
+        <div class="location">in <a href="Page.html#method_addJsFiles">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L199">line 199</a></div>
+        <code>                    
+    <strong>addJsFiles</strong>($js_files_array)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add an array of JS files</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$js_files_array</td>
+                <td>Javascript files array</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_addCssFile">
-        <div class="location">in <a href="Page.html#method_addCssFile">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L196">line 196</a></div>
+        <div class="location">in <a href="Page.html#method_addCssFile">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L211">line 211</a></div>
         <code>                    
     <strong>addCssFile</strong>($css_file)
         </code>
@@ -844,7 +905,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Add css file to page head</p>                                                </div>
+                                    <p>Add CSS file to page head</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -864,8 +925,39 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_addCssFiles">
+        <div class="location">in <a href="Page.html#method_addCssFiles">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L225">line 225</a></div>
+        <code>                    
+    <strong>addCssFiles</strong>($css_files_array)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Add an array of CSS files</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$css_files_array</td>
+                <td>CSS files array</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_addTab">
-        <div class="location">in <a href="Page.html#method_addTab">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L214">line 214</a></div>
+        <div class="location">in <a href="Page.html#method_addTab">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L241">line 241</a></div>
         <code>                    
     <strong>addTab</strong>($title, $url, $is_active = false, $position = -1)
         </code>
@@ -912,7 +1004,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setTabsPicture">
-        <div class="location">in <a href="Page.html#method_setTabsPicture">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L244">line 244</a></div>
+        <div class="location">in <a href="Page.html#method_setTabsPicture">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L271">line 271</a></div>
         <code>                    
     <strong>setTabsPicture</strong>($picture)
         </code>
@@ -943,7 +1035,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setTabsTitle">
-        <div class="location">in <a href="Page.html#method_setTabsTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L254">line 254</a></div>
+        <div class="location">in <a href="Page.html#method_setTabsTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L281">line 281</a></div>
         <code>                    
     <strong>setTabsTitle</strong>($title)
         </code>
@@ -1005,7 +1097,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addSubTitle">
-        <div class="location">in <a href="Page.html#method_addSubTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L298">line 298</a></div>
+        <div class="location">in <a href="Page.html#method_addSubTitle">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L325">line 325</a></div>
         <code>                    
     <strong>addSubTitle</strong>($title, $picture = &#039;title_generic.png&#039;, $morehtmlright = &#039;&#039;)
         </code>
@@ -1046,7 +1138,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_openForm">
-        <div class="location">in <a href="Page.html#method_openForm">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L312">line 312</a></div>
+        <div class="location">in <a href="Page.html#method_openForm">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L339">line 339</a></div>
         <code>                    
     <strong>openForm</strong>($action = &#039;create&#039;)
         </code>
@@ -1077,7 +1169,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeForm">
-        <div class="location">in <a href="Page.html#method_closeForm">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L330">line 330</a></div>
+        <div class="location">in <a href="Page.html#method_closeForm">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L357">line 357</a></div>
         <code>                    $this
     <strong>closeForm</strong>()
         </code>
@@ -1107,7 +1199,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_openTable">
-        <div class="location">in <a href="Page.html#method_openTable">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L353">line 353</a></div>
+        <div class="location">in <a href="Page.html#method_openTable">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L380">line 380</a></div>
         <code>                    
     <strong>openTable</strong>($header_columns = array(), $attr = &#039;class=&quot;noborder allwidth&quot;&#039;, $print_fiche_head = false, $summary = &#039;&#039;)
         </code>
@@ -1156,7 +1248,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeTable">
-        <div class="location">in <a href="Page.html#method_closeTable">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L390">line 390</a></div>
+        <div class="location">in <a href="Page.html#method_closeTable">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L417">line 417</a></div>
         <code>                    $this
     <strong>closeTable</strong>($print_fiche_end = false)
         </code>
@@ -1196,7 +1288,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_openRow">
-        <div class="location">in <a href="Page.html#method_openRow">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L414">line 414</a></div>
+        <div class="location">in <a href="Page.html#method_openRow">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L441">line 441</a></div>
         <code>                    
     <strong>openRow</strong>($odd = true, $more_attr = &#039;&#039;)
         </code>
@@ -1232,7 +1324,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeRow">
-        <div class="location">in <a href="Page.html#method_closeRow">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L425">line 425</a></div>
+        <div class="location">in <a href="Page.html#method_closeRow">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L452">line 452</a></div>
         <code>                    
     <strong>closeRow</strong>()
         </code>
@@ -1253,7 +1345,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addColumn">
-        <div class="location">in <a href="Page.html#method_addColumn">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L436">line 436</a></div>
+        <div class="location">in <a href="Page.html#method_addColumn">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L463">line 463</a></div>
         <code>                    
     <strong>addColumn</strong>($content, $attr = &#039;&#039;)
         </code>
@@ -1289,7 +1381,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addLineBreak">
-        <div class="location">in <a href="Page.html#method_addLineBreak">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L446">line 446</a></div>
+        <div class="location">in <a href="Page.html#method_addLineBreak">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L473">line 473</a></div>
         <code>                    
     <strong>addLineBreak</strong>($repeat = 0)
         </code>
@@ -1320,7 +1412,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_getTemplatePath">
-        <div class="location">in <a href="Page.html#method_getTemplatePath">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L463">line 463</a></div>
+        <div class="location">in <a href="Page.html#method_getTemplatePath">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L490">line 490</a></div>
         <code>            protected        string
     <strong>getTemplatePath</strong>($template)
         </code>
@@ -1360,7 +1452,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showTemplate">
-        <div class="location">in <a href="Page.html#method_showTemplate">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L481">line 481</a></div>
+        <div class="location">in <a href="Page.html#method_showTemplate">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L508">line 508</a></div>
         <code>                    
     <strong>showTemplate</strong>($template_path, $path_is_absolute = false, $use_require_once = false, $template_params = array())
         </code>
@@ -1405,10 +1497,10 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_isUnderConstruction">
-        <div class="location">in <a href="Page.html#method_isUnderConstruction">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L505">line 505</a></div>
+                    <h3 id="method_underConstruction">
+        <div class="location">in <a href="Page.html#method_underConstruction">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L532">line 532</a></div>
         <code>                    
-    <strong>isUnderConstruction</strong>()
+    <strong>underConstruction</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1417,6 +1509,27 @@ Note: this function should be called before $page->begin() function, otherwise i
 
                     <div class="method-description">
                                     <p>Show page_under_construction template (only once)</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_notFound">
+        <div class="location">in <a href="Page.html#method_notFound">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L543">line 543</a></div>
+        <code>                    
+    <strong>notFound</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Show page_not_found template (only once)</p>                                                </div>
                 <div class="tags">
             
             
@@ -1448,8 +1561,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location">in <a href="Page.html#method_begin">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L525">line 525</a></div>
-        <code>                    
+        <div class="location">in <a href="Page.html#method_begin">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L564">line 564</a></div>
+        <code>                    $this
     <strong>begin</strong>()
         </code>
     </h3>
@@ -1461,6 +1574,15 @@ Note: this function should be called before $page->begin() function, otherwise i
                                     <p>Generate page beginning</p>                                                </div>
                 <div class="tags">
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1469,7 +1591,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">in <a href="FormPage.html#method_generate">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L209">line 209</a></div>
+        <div class="location">in <a href="FormPage.html#method_generate">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L206">line 206</a></div>
         <code>            protected        
     <strong>generate</strong>()
         </code>
@@ -1490,7 +1612,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_redirect">
-        <div class="location">in <a href="Page.html#method_redirect">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L558">line 558</a></div>
+        <div class="location">in <a href="Page.html#method_redirect">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L599">line 599</a></div>
         <code>                    
     <strong>redirect</strong>($url)
         </code>
@@ -1521,7 +1643,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_end">
-        <div class="location">in <a href="Page.html#method_end">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L567">line 567</a></div>
+        <div class="location">in <a href="Page.html#method_end">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L608">line 608</a></div>
         <code>                    
     <strong>end</strong>()
         </code>
@@ -1542,7 +1664,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_checkFields">
-        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L71">line 71</a></div>
+        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L68">line 68</a></div>
         <code>                    boolean
     <strong>checkFields</strong>()
         </code>
@@ -1572,7 +1694,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_checkField">
-        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L91">line 91</a></div>
+        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L88">line 88</a></div>
         <code>                    boolean|int
     <strong>checkField</strong>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
         </code>
@@ -1627,7 +1749,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_getField">
-        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L166">line 166</a></div>
+        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L163">line 163</a></div>
         <code>            protected        <a href="Field.html">Field</a>|empty
     <strong>getField</strong>($field_name)
         </code>
@@ -1667,7 +1789,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_askForConfirmation">
-        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L186">line 186</a></div>
+        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L183">line 183</a></div>
         <code>                    
     <strong>askForConfirmation</strong>($url, $title, $question, $action, $question_param = &#039;&#039;)
         </code>
@@ -1718,7 +1840,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_appendToBody">
-        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L200">line 200</a></div>
+        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L197">line 197</a></div>
         <code>                    
     <strong>appendToBody</strong>($content)
         </code>
