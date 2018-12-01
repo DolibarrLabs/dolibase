@@ -340,10 +340,10 @@ class CrudObject extends CommonObject
 	 * Load object in memory from database
 	 *
 	 * @param  array   $fields       fields to fetch
-	 * @param  array   $conditions   fetch conditions
+	 * @param  string  $where        where clause (without 'WHERE')
 	 * @return int     <0 if KO, >0 if OK
 	 */
-	public function fetchWhere($fields, $conditions = array())
+	public function fetchWhere($fields, $where)
 	{
 		// SELECT request
 		$sql = "SELECT ";
@@ -352,12 +352,7 @@ class CrudObject extends CommonObject
 		}
 		$sql = substr($sql, 0, -1); // Remove the last ','
 		$sql.= " FROM " . MAIN_DB_PREFIX . $this->table_element;
-		$sql.= " WHERE ";
-		$i = 0;
-		foreach ($conditions as $field => $value) {
-			$sql.= ($i > 0 ? ' AND ' : '') . $field . " = '" . $value . "'";
-			$i++;
-		}
+		$sql.= " WHERE " . $where;
 
 		dol_syslog(__METHOD__ . " sql=" . $sql, LOG_DEBUG);
 		$resql = $this->db->query($sql);

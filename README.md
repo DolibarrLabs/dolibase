@@ -123,7 +123,6 @@ class modMyFirstModule extends DolibaseModule
 	}
 }
 
-?>
 ```
 
 2. Module page:
@@ -148,7 +147,85 @@ echo 'Hello world!';
 // Print page footer
 $page->end();
 
-?>
+```
+
+3. Query builder:
+
+```php
+<?php
+
+// Load Dolibase
+include_once 'autoload.php';
+
+// Load Dolibase Page class
+dolibase_include_once('/core/class/page.php');
+
+// Load Query Builder class
+dolibase_include_once('/core/class/query_builder.php');
+
+// Create Page using Dolibase
+$page = new Page("Test Query Builder");
+
+$page->begin();
+
+$titles = array();
+$queries = array();
+
+// 1st query
+$titles[]  = 'Select * with order by & limit';
+$queries[] = QueryBuilder::getInstance()
+	->select()
+	->from('mytable')
+	->where('id = 1')
+	->orderBy('id', 'ASC')
+	->limit(5)
+	->get();
+
+// 2nd query
+$titles[]  = 'Simple Insert';
+$queries[] = QueryBuilder::getInstance()
+	->insert('mytable', array('name' => 'axel', 'age' => '23'))
+	->get();
+
+// 3rd query
+$titles[]  = 'Simple Update';
+$queries[] = QueryBuilder::getInstance()
+	->update('mytable', array('age' => '24'))
+	->where('id = 1')
+	->get();
+
+// 4th query
+$titles[]  = 'Delete';
+$queries[] = QueryBuilder::getInstance()
+	->delete('mytable')
+	->where('id = 1')
+	->orWhere('age = 24')
+	->get();
+
+// 5th query
+$titles[]  = 'Left join';
+$queries[] = QueryBuilder::getInstance()
+	->select()
+	->from('mytable')
+	->join('table2', 'table2.id = mytable.table2_fk', 'left')
+	->get();
+
+// 6th query
+$titles[]  = 'Simple Join with Select (IQ join)';
+$queries[] = QueryBuilder::getInstance()
+	->select('t.name')
+	->from('mytable as t, table2 as t2')
+	->where('t2.id = 1')
+	->get();
+
+// Show queries
+foreach ($queries as $key => $query) {
+	echo '<h2>'.$titles[$key].'</h2>';
+	echo $query.'<br>';
+}
+
+$page->end();
+
 ```
 
 :tada: So simple isn't it ?!

@@ -328,11 +328,7 @@ function show_related_objects($object)
 							}
 
 							// Fetch relation
-							$relation->fetchWhere(array('rowid'), array('fk_source'  => $sourceid,
-																		'fk_target'  => $object->id,
-																		'sourcetype' => $sourcetype,
-																		'targettype' => $object->element
-																	));
+							$relation->fetchWhere(array('rowid'), "fk_source = $sourceid AND fk_target = $object->id AND sourcetype = '$sourcetype' AND targettype = '$object->element'");
 
 							?>
 							<tr class="<?php echo $class; ?>">
