@@ -36,6 +36,10 @@ html, body, div#id-container {
 	margin-top: 20%;
 }
 
+.padding-bottom-5 {
+	padding-bottom: 5px;
+}
+
 .color-green {
 	color: green;
 }

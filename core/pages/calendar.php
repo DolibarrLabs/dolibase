@@ -136,14 +136,14 @@ class CalendarPage extends FormPage
 			echo '<div class="formleftzone">';
 
 			// Refresh
-			echo '<input type="submit" class="butAction" style="min-width:120px" name="refresh" value="' . $langs->trans("Refresh") . '">';
+			echo '<input type="submit" class="butAction minwidth100" name="refresh" value="' . $langs->trans("Refresh") . '">';
 
 			// Print
 			$qs = dol_escape_htmltag($_SERVER["QUERY_STRING"]);
 			foreach($_POST as $key => $value) {
 				if ($key != 'token' && ! is_array($value)) $qs.= '&'.$key.'='.urlencode($value);
 			}
-			echo '<a class="butAction" style="min-width: 120px;" href="'.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.$qs.(empty($qs) ? '' : '&').'optioncss=print" target="_blank">' . $langs->trans("Print") . '</a>';
+			echo '<a class="butAction minwidth100" href="'.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.$qs.(empty($qs) ? '' : '&').'optioncss=print" target="_blank">' . $langs->trans("Print") . '</a>';
 
 			echo '</div>';
 			echo '</td></tr>';
@@ -210,8 +210,8 @@ class CalendarPage extends FormPage
 		echo '</td></tr>'."\n";
 
 		// Line with td contains all div of each event
-		echo '<tr height="'.$minheight.'"><td valign="top" colspan="2" class="sortable" style="padding-bottom: 2px;">';
-		echo '<div style="width: 100%; position: relative;">';
+		echo '<tr height="'.$minheight.'"><td valign="top" colspan="2" class="sortable">';
+		echo '<div class="centpercent">';
 
 		$template_params = array(
 			'day'   => $day,
