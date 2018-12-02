@@ -26,10 +26,25 @@ class QueryBuilder
 	 */
 	protected static $instance = null;
 	/**
+	 * @var DoliDb Database handler
+	 */
+	protected $db;
+	/**
 	 * @var bool|null Query result
 	 */
 	protected $result = null;
 
+
+	/**
+	 * Constructor
+	 *
+	 */
+	public function __construct()
+	{
+		global $db;
+
+		$this->db = $db;
+	}
 
 	/**
 	 * Return Query Builder instance
@@ -48,10 +63,34 @@ class QueryBuilder
 	 */
 	public function get()
 	{
-		$parts = (array)$this;
+		$parts = array();
+
+		foreach (get_object_vars($this) as $key => $value)
+		{
+			if (! in_array($key, array('db', 'result'))) {
+				$parts[$key] = $value;
+			}
+		}
+
 		$query = implode(" ", $parts);
 
 		return $query;
+	}
+
+	/**
+	 * Reset Query Builder
+	 *
+	 */
+	public function reset()
+	{
+		foreach (get_object_vars($this) as $key => $value)
+		{
+			if (! in_array($key, array('db', 'result'))) {
+				unset($this->$key);
+			}
+		}
+
+		$this->result = null;
 	}
 
 	/**
@@ -61,12 +100,10 @@ class QueryBuilder
 	 */
 	public function execute()
 	{
-		global $db;
-
 		$query = $this->get();
 
-		if (! empty($query) && is_object($db)) {
-			$this->result = $db->query($query);
+		if (! empty($query) && is_object($this->db)) {
+			$this->result = $this->db->query($query);
 		}
 		else {
 			$this->result = null;
@@ -82,8 +119,6 @@ class QueryBuilder
 	 */
 	public function result()
 	{
-		global $db;
-
 		if (is_null($this->result)) {
 			$this->execute();
 		}
@@ -92,11 +127,11 @@ class QueryBuilder
 
 		if (! is_null($this->result) && $this->result)
 		{
-			$rows_count = $db->num_rows($this->result);
+			$rows_count = $this->db->num_rows($this->result);
 			$row_num = 0;
 
 			while($row_num < $rows_count) {
-				$rows[] = $db->fetch_object($this->result);
+				$rows[] = $this->db->fetch_object($this->result);
 				$row_num++;
 			}
 		}
@@ -111,14 +146,12 @@ class QueryBuilder
 	 */
 	public function count()
 	{
-		global $db;
-
 		if (is_null($this->result)) {
 			$this->execute();
 		}
 
 		if (! is_null($this->result) && $this->result) {
-			return $db->num_rows($this->result);
+			return $this->db->num_rows($this->result);
 		}
 
 		return null;
@@ -131,14 +164,12 @@ class QueryBuilder
 	 */
 	public function affected()
 	{
-		global $db;
-
 		if (is_null($this->result)) {
 			$this->execute();
 		}
 
 		if (! is_null($this->result) && $this->result && (isset($this->insert) || isset($this->update) || isset($this->delete))) {
-			return $db->affected_rows($this->result);
+			return $this->db->affected_rows($this->result);
 		}
 
 		return null;
@@ -159,7 +190,7 @@ class QueryBuilder
 	 *
 	 * @param     $select_options     select options string or array
 	 * @param     $distinct           use DISTINCT or not
-	 * @param     $table_alias        table alias
+	 * @param     $table_alias        table alias (works only when $select_options is an array)
 	 * @return    $this
 	 */
 	public function select($select_options = '*', $distinct = false, $table_alias = '')
@@ -170,10 +201,10 @@ class QueryBuilder
 			$this->select.= "DISTINCT ";
 		}
 
-		$alias = (! empty($table_alias) ? $table_alias.'.' : '');
-
 		if (is_array($select_options))
 		{
+			$alias = (! empty($table_alias) ? $table_alias.'.' : '');
+
 			foreach ($this->select_options as $field) {
 				$this->select.= $alias."`" . $field . "`,";
 			}
@@ -191,9 +222,10 @@ class QueryBuilder
 	 * Add FROM clause to query
 	 *
 	 * @param     $table_name     table name string or array
+	 * @param     $table_alias    table alias (works only when $table_name is a string)
 	 * @return    $this
 	 */
-	public function from($table_name)
+	public function from($table_name, $table_alias = '')
 	{
 		$this->from = "FROM ";
 
@@ -207,6 +239,10 @@ class QueryBuilder
 		else
 		{
 			$this->from.= MAIN_DB_PREFIX.$table_name;
+
+			if (! empty($table_alias)) {
+				$this->from.= " AS ".$table_alias;
+			}
 		}
 
 		return $this;

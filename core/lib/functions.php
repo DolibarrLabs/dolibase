@@ -461,7 +461,7 @@ if (! function_exists('object_to_array'))
 }
 
 /**
- * Create an HTML table from an array
+ * Create an HTML table from a two-dimensional array
  *
  * @param     $array           array
  * @param     $show_header     show table header or not
