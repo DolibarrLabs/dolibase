@@ -248,8 +248,7 @@ $queries[] = QueryBuilder::getInstance()
 foreach ($queries as $i => $query) {
     echo '<h2><u>'.($i + 1).') '.$titles[$i].'</u></h2>';
     echo '<h3>query:</h3>'.$query->get();
-    echo '<h3>result:</h3>';
-    echo array_to_table($query->result());
+    echo '<h3>result:</h3>'.array_to_table($query->result());
     echo '<h3>result count:</h3>'.$query->count();
     echo '<h3>affected rows:</h3>'.$query->affected();
 }

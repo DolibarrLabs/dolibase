@@ -116,7 +116,7 @@
                 </td>
                 <td>$date_fields</td>
                 <td class="last"></td>
-                <td><small>from&nbsp;<a href="CrudObject.html#property_date_fields">CrudObject</a></small></td>
+                <td></td>
             </tr>
                     <tr>
                 <td class="type" id="property_pk_name">
@@ -210,24 +210,24 @@
                     <a href="#method_fetch">fetch</a>(int $id, string $ref = &#039;&#039;)
         
                                             <p>Load object in memory from database</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_fetch">CrudObject</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fetchAll">fetchAll</a>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false)
+                    <a href="#method_fetchAll">fetchAll</a>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false, boolean $table_alias = &#039;t&#039;)
         
                                             <p>Load all object entries in memory from database</p>                </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_fetchAll">CrudObject</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     int
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fetchWhere">fetchWhere</a>(array $fields, array $conditions = array())
+                    <a href="#method_fetchWhere">fetchWhere</a>(array $fields, string $where)
         
                                             <p>Load object in memory from database</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="CrudObject.html#method_fetchWhere">CrudObject</a></small></div>
@@ -340,7 +340,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L44">line 44</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L48">line 48</a></div>
         <code>                    
     <strong>__construct</strong>()
         </code>
@@ -361,7 +361,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setTableName">
-        <div class="location">in <a href="CrudObject.html#method_setTableName">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L85">line 85</a></div>
+        <div class="location">in <a href="CrudObject.html#method_setTableName">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L87">line 87</a></div>
         <code>                    
     <strong>setTableName</strong>($table_name)
         </code>
@@ -392,7 +392,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">in <a href="CrudObject.html#method_create">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L97">line 97</a></div>
+        <div class="location">in <a href="CrudObject.html#method_create">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L99">line 99</a></div>
         <code>                    int
     <strong>create</strong>(array $data, int $notrigger = 1)
         </code>
@@ -437,7 +437,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetch">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L60">line 60</a></div>
+        <div class="location">in <a href="CrudObject.html#method_fetch">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L159">line 159</a></div>
         <code>                    int
     <strong>fetch</strong>(int $id, string $ref = &#039;&#039;)
         </code>
@@ -482,9 +482,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchAll">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L83">line 83</a></div>
+        <div class="location">in <a href="CrudObject.html#method_fetchAll">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L226">line 226</a></div>
         <code>                    int
-    <strong>fetchAll</strong>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false)
+    <strong>fetchAll</strong>(int $limit = 0, int $offset = 0, string $sort_field = &#039;&#039;, string $sort_order = &#039;DESC&#039;, string $more_fields = &#039;&#039;, string $join = &#039;&#039;, string $where = &#039;&#039;, boolean $get_total = false, boolean $table_alias = &#039;t&#039;)
         </code>
     </h3>
     <div class="details">
@@ -537,6 +537,11 @@
                 <td>$get_total</td>
                 <td>get total number of records or not</td>
             </tr>
+                    <tr>
+                <td>boolean</td>
+                <td>$table_alias</td>
+                <td>Alias to use for table name, leave it empty if you won't</td>
+            </tr>
             </table>
 
             
@@ -557,9 +562,9 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchWhere">
-        <div class="location">in <a href="CrudObject.html#method_fetchWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L346">line 346</a></div>
+        <div class="location">in <a href="CrudObject.html#method_fetchWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L348">line 348</a></div>
         <code>                    int
-    <strong>fetchWhere</strong>(array $fields, array $conditions = array())
+    <strong>fetchWhere</strong>(array $fields, string $where)
         </code>
     </h3>
     <div class="details">
@@ -578,9 +583,9 @@
                 <td>fields to fetch</td>
             </tr>
                     <tr>
-                <td>array</td>
-                <td>$conditions</td>
-                <td>fetch conditions</td>
+                <td>string</td>
+                <td>$where</td>
+                <td>where clause (without 'WHERE')</td>
             </tr>
             </table>
 
@@ -602,7 +607,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">in <a href="CrudObject.html#method_update">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L400">line 400</a></div>
+        <div class="location">in <a href="CrudObject.html#method_update">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L397">line 397</a></div>
         <code>                    int
     <strong>update</strong>(array $data, int $notrigger = 1)
         </code>
@@ -647,7 +652,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateWhere">
-        <div class="location">in <a href="CrudObject.html#method_updateWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L457">line 457</a></div>
+        <div class="location">in <a href="CrudObject.html#method_updateWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L454">line 454</a></div>
         <code>                    int
     <strong>updateWhere</strong>(array $data, string $where, int $notrigger = 1)
         </code>
@@ -697,7 +702,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateAll">
-        <div class="location">in <a href="CrudObject.html#method_updateAll">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L470">line 470</a></div>
+        <div class="location">in <a href="CrudObject.html#method_updateAll">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L467">line 467</a></div>
         <code>                    int
     <strong>updateAll</strong>(array $data, string $where = &#039;&#039;, int $notrigger = 1)
         </code>
@@ -747,7 +752,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">in <a href="CrudObject.html#method_delete">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L520">line 520</a></div>
+        <div class="location">in <a href="CrudObject.html#method_delete">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L517">line 517</a></div>
         <code>                    int
     <strong>delete</strong>(int $notrigger = 1)
         </code>
@@ -787,7 +792,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteWhere">
-        <div class="location">in <a href="CrudObject.html#method_deleteWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L571">line 571</a></div>
+        <div class="location">in <a href="CrudObject.html#method_deleteWhere">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L568">line 568</a></div>
         <code>                    int
     <strong>deleteWhere</strong>(string $where, int $notrigger = 1)
         </code>
@@ -832,7 +837,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteAll">
-        <div class="location">in <a href="CrudObject.html#method_deleteAll">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L583">line 583</a></div>
+        <div class="location">in <a href="CrudObject.html#method_deleteAll">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L580">line 580</a></div>
         <code>                    int
     <strong>deleteAll</strong>(string $where = &#039;&#039;, int $notrigger = 1)
         </code>
@@ -877,7 +882,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteAllObjectLinked">
-        <div class="location">in <a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L649">line 649</a></div>
+        <div class="location">in <a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L646">line 646</a></div>
         <code>            protected        int
     <strong>deleteAllObjectLinked</strong>()
         </code>
@@ -907,7 +912,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_escape">
-        <div class="location">in <a href="CrudObject.html#method_escape">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L672">line 672</a></div>
+        <div class="location">in <a href="CrudObject.html#method_escape">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L669">line 669</a></div>
         <code>            protected        
     <strong>escape</strong>($value)
         </code>
@@ -938,7 +943,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_run_triggers">
-        <div class="location">in <a href="CrudObject.html#method_run_triggers">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L683">line 683</a></div>
+        <div class="location">in <a href="CrudObject.html#method_run_triggers">CrudObject</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/crud_object.php#L680">line 680</a></div>
         <code>            protected        int
     <strong>run_triggers</strong>($action_suffix)
         </code>
@@ -978,7 +983,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_add">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L103">line 103</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/logs.php#L67">line 67</a></div>
         <code>                    int
     <strong>add</strong>(object $object, string $action, int $notrigger = 1)
         </code>

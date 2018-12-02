@@ -78,7 +78,7 @@
                                                 <li><a href="#letterG">G</a></li>
                                                 <li class="disabled"><a href="#letterH">H</a></li>
                                                 <li><a href="#letterI">I</a></li>
-                                                <li class="disabled"><a href="#letterJ">J</a></li>
+                                                <li><a href="#letterJ">J</a></li>
                                                 <li class="disabled"><a href="#letterK">K</a></li>
                                                 <li><a href="#letterL">L</a></li>
                                                 <li><a href="#letterM">M</a></li>
@@ -162,7 +162,8 @@
 Note: this function should be called before $page->begin() function, otherwise it will not work as expected.</dd><dt><a href="Page.html#method_addSubTitle">Page::addSubTitle</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add a subtitle</dd><dt><a href="Page.html#method_addColumn">Page::addColumn</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add a table column</dd><dt><a href="Page.html#method_addLineBreak">Page::addLineBreak</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Add a line break (or many)</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Add a line break (or many)</dd><dt><a href="QueryBuilder.html#method_affected">QueryBuilder::affected</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Execute query if not executed &amp; return affected rows count of an INSERT, UPDATE or DELETE query</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_addOption">SetupPage::addOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new option</dd><dt><a href="SetupPage.html#method_addSwitchOption">SetupPage::addSwitchOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new switch option</dd><dt><a href="SetupPage.html#method_addTextOption">SetupPage::addTextOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
@@ -221,7 +222,8 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd></dd><dt><a href="Page.html#method_closeForm">Page::closeForm</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Close an opened form</dd><dt><a href="Page.html#method_closeTable">Page::closeTable</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Close an opened html table</dd><dt><a href="Page.html#method_closeRow">Page::closeRow</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Close a table row</dd><dt>$<a href="SetupPage.html#property_const_name_prefix">SetupPage#const_name_prefix</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Close a table row</dd><dt><a href="QueryBuilder.html#method_count">QueryBuilder::count</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Execute query if not executed &amp; return query result(s) count</dd><dt>$<a href="SetupPage.html#property_const_name_prefix">SetupPage#const_name_prefix</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="StatsPage.html#method_closeLeftSection">StatsPage::closeLeftSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Close a left section</dd><dt><a href="StatsPage.html#method_closeRightSection">StatsPage::closeRightSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Close a right section</dd><dt>$<a href="pdf_azur.html#property_const_prefix">pdf_azur#const_prefix</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
@@ -241,8 +243,11 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd>Dictionary class</dd><dt><a href="DocModel.html">DocModel</a></em></dt>
                     <dd>DocModel class</dd><dt><a href="DocumentPage.html">DocumentPage</a></em></dt>
                     <dd>DocumentPage class</dd><dt><a href="DolibaseModule.html">DolibaseModule</a></em></dt>
-                    <dd>DolibaseModule class</dd><dt>$<a href="MailObject.html#property_db">MailObject#db</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_const_name">SetupPage#doc_model_const_name</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>DolibaseModule class</dd><dt>$<a href="Logs.html#property_date_fields">Logs#date_fields</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
+                    <dd></dd><dt>$<a href="MailObject.html#property_db">MailObject#db</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
+                    <dd></dd><dt>$<a href="QueryBuilder.html#property_db">QueryBuilder#db</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_delete">QueryBuilder::delete</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add DELETE statement to query</dd><dt>$<a href="SetupPage.html#property_doc_model_const_name">SetupPage#doc_model_const_name</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_type">SetupPage#doc_model_type</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_preview_picture">SetupPage#doc_model_preview_picture</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt>$<a href="SetupPage.html#property_doc_object_class">SetupPage#doc_object_class</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
@@ -280,7 +285,9 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd></dd><dt>$<a href="MailObject.html#property_element">MailObject#element</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
                     <dd></dd><dt>$<a href="NumModel.html#property_error">NumModel#error</a> &mdash; <em>Property in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_end">Page::end</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Generate page end</dd><dt><a href="StatsPage.html#method_end">StatsPage::end</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
+                    <dd>Generate page end</dd><dt><a href="QueryBuilder.html#method_execute">QueryBuilder::execute</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Execute query</dd><dt><a href="QueryBuilder.html#method_escape">QueryBuilder::escape</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Escape field value</dd><dt><a href="StatsPage.html#method_end">StatsPage::end</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Generate page end</dd><dt>$<a href="Widget.html#property_enabled">Widget#enabled</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
                     <dd></dd><dt>$<a href="pdf_azur.html#property_emetteur">pdf_azur#emetteur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterF">F</h2>
@@ -295,12 +302,11 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd></dd><dt>$<a href="FormPage.html#property_fields">FormPage#fields</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd></dd><dt><a href="ListPage.html#method_fetchExtraFields">ListPage::fetchExtraFields</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Fetch extrafields</dd><dt>$<a href="Logs.html#property_fetch_fields">Logs#fetch_fields</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd></dd><dt><a href="Logs.html#method_fetch">Logs::fetch</a>() &mdash; <em>Method in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd>Load object in memory from database</dd><dt><a href="Logs.html#method_fetchAll">Logs::fetchAll</a>() &mdash; <em>Method in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd>Load all object entries in memory from database</dd><dt><a href="MailObject.html#method_fetch">MailObject::fetch</a>() &mdash; <em>Method in class <a href="MailObject.html">MailObject</a></em></dt>
+                    <dd></dd><dt><a href="MailObject.html#method_fetch">MailObject::fetch</a>() &mdash; <em>Method in class <a href="MailObject.html">MailObject</a></em></dt>
                     <dd>Load object in memory from database</dd><dt>$<a href="NumModelMarbre.html#property_field_name">NumModelMarbre#field_name</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt>$<a href="NumModelSaphir.html#property_field_name">NumModelSaphir#field_name</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_format">pdf_azur#format</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_from">QueryBuilder::from</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add FROM clause to query</dd><dt>$<a href="pdf_azur.html#property_format">pdf_azur#format</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterG">G</h2>
         <dl id="index"><dt><a href="AboutPage.html#method_generate">AboutPage::generate</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
                     <dd>Generate page body</dd><dt><a href="AboutPage.html#method_generateTabs">AboutPage::generateTabs</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
@@ -338,7 +344,10 @@ defined into MODULE_RIGHTS_CLASS_ADDON</dd><dt><a href="CustomObject.html#method
                     <dd>Return next free value</dd><dt><a href="Page.html#method_generateTabs">Page::generateTabs</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Generate tabs</dd><dt><a href="Page.html#method_getTemplatePath">Page::getTemplatePath</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Return template absolute path</dd><dt><a href="Page.html#method_generate">Page::generate</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Generate page body</dd><dt><a href="SetupPage.html#method_generate">SetupPage::generate</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Generate page body</dd><dt><a href="QueryBuilder.html#method_getInstance">QueryBuilder::getInstance</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Return Query Builder instance</dd><dt><a href="QueryBuilder.html#method_get">QueryBuilder::get</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Return query</dd><dt><a href="QueryBuilder.html#method_groupBy">QueryBuilder::groupBy</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add GROUP BY clause to query</dd><dt><a href="SetupPage.html#method_generate">SetupPage::generate</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Generate page body</dd><dt><a href="SetupPage.html#method_generateTabs">SetupPage::generateTabs</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Generate tabs</dd><dt><a href="StatsPage.html#method_generateTabs">StatsPage::generateTabs</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Generate tabs</dd>        </dl><h2 id="letterH">H</h2>
@@ -352,9 +361,12 @@ defined into MODULE_RIGHTS_CLASS_ADDON</dd><dt><a href="CustomObject.html#method
                     <dd>Return if a model can be used or not</dd><dt><a href="NumModel.html#method_info">NumModel::info</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd>Return the default description of the numbering model</dd><dt><a href="NumModelMarbre.html#method_info">NumModelMarbre::info</a>() &mdash; <em>Method in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd>Return description of numbering model</dd><dt><a href="NumModelSaphir.html#method_info">NumModelSaphir::info</a>() &mdash; <em>Method in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd>Return description of numbering model</dd>        </dl><h2 id="letterJ">J</h2>
+                    <dd>Return description of numbering model</dd><dt>$<a href="QueryBuilder.html#property_instance">QueryBuilder#instance</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_insert">QueryBuilder::insert</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add INSERT statement to query</dd>        </dl><h2 id="letterJ">J</h2>
         <dl id="index"><dt>$<a href="CustomStats.html#property_join">CustomStats#join</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
-                    <dd></dd>        </dl><h2 id="letterL">L</h2>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_join">QueryBuilder::join</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add JOIN clause to query (multiple calls allowed)</dd>        </dl><h2 id="letterL">L</h2>
         <dl id="index"><dt>$<a href="CrudObject.html#property_lines">CrudObject#lines</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CustomForm.html#method_listInput">CustomForm::listInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a list</dd><dt><a href="DolibaseModule.html#method_loadSettings">DolibaseModule::loadSettings</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
@@ -371,7 +383,8 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Logs class</dd><dt><a href="Page.html#method_loadLang">Page::loadLang</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Load a language file</dd><dt><a href="Page.html#method_loadLangs">Page::loadLangs</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Load an array of language files</dd><dt><a href="Page.html#method_loadDefaultActions">Page::loadDefaultActions</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Load default actions</dd><dt><a href="SetupPage.html#method_loadDefaultActions">SetupPage::loadDefaultActions</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Load default actions</dd><dt><a href="QueryBuilder.html#method_limit">QueryBuilder::limit</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add LIMIT clause to query</dd><dt><a href="SetupPage.html#method_loadDefaultActions">SetupPage::loadDefaultActions</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Load default actions</dd>        </dl><h2 id="letterM">M</h2>
         <dl id="index"><dt>$<a href="CardPage.html#property_mail_subject">CardPage#mail_subject</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt>$<a href="CardPage.html#property_mail_template">CardPage#mail_template</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -406,7 +419,9 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Open list / print list head</dd><dt><a href="Page.html#method_openForm">Page::openForm</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Open a form only if not already opened</dd><dt><a href="Page.html#method_openTable">Page::openTable</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Opens a new html table</dd><dt><a href="Page.html#method_openRow">Page::openRow</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Open a table row</dd><dt>$<a href="SetupPage.html#property_odd">SetupPage#odd</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Open a table row</dd><dt><a href="QueryBuilder.html#method_orWhere">QueryBuilder::orWhere</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add OR to WHERE clause (multiple calls allowed)</dd><dt><a href="QueryBuilder.html#method_orderBy">QueryBuilder::orderBy</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add ORDER BY clause to query</dd><dt>$<a href="SetupPage.html#property_odd">SetupPage#odd</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="StatsPage.html#method_openLeftSection">StatsPage::openLeftSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Opens a left section</dd><dt><a href="StatsPage.html#method_openRightSection">StatsPage::openRightSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Opens a right section</dd>        </dl><h2 id="letterP">P</h2>
@@ -435,7 +450,9 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd></dd><dt><a href="pdf_azur.html#method_print_line">pdf_azur::print_line</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd>Function to print table line</dd><dt><a href="pdf_crabe.html">pdf_crabe</a></em></dt>
                     <dd>pdf_crabe class</dd><dt><a href="pdf_crabe.html#method_print_column">pdf_crabe::print_column</a>() &mdash; <em>Method in class <a href="pdf_crabe.html">pdf_crabe</a></em></dt>
-                    <dd>Function to print table line</dd>        </dl><h2 id="letterR">R</h2>
+                    <dd>Function to print table line</dd>        </dl><h2 id="letterQ">Q</h2>
+        <dl id="index"><dt><a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>QueryBuilder class</dd>        </dl><h2 id="letterR">R</h2>
         <dl id="index"><dt>$<a href="CrudObject.html#property_ref_field_name">CrudObject#ref_field_name</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_run_triggers">CrudObject::run_triggers</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Run Dolibarr triggers (from other modules)</dd><dt><a href="CustomForm.html#method_rangeInput">CustomForm::rangeInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
@@ -443,7 +460,10 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Return a radio list</dd><dt><a href="DolibaseModule.html#method_remove">DolibaseModule::remove</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Function called when module is disabled.</dd><dt>$<a href="Page.html#property_rights_class">Page#rights_class</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_redirect">Page::redirect</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Redirect to a url (alias for dolibase_redirect function)</dd>        </dl><h2 id="letterS">S</h2>
+                    <dd>Redirect to a url (alias for dolibase_redirect function)</dd><dt>$<a href="QueryBuilder.html#property_result">QueryBuilder#result</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_reset">QueryBuilder::reset</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Reset Query Builder</dd><dt><a href="QueryBuilder.html#method_result">QueryBuilder::result</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Execute query if not executed &amp; return an array of result(s)</dd>        </dl><h2 id="letterS">S</h2>
         <dl id="index"><dt><a href="CalendarPage.html#method_showNavBar">CalendarPage::showNavBar</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>Show navigation bar</dd><dt><a href="CalendarPage.html#method_showEvents">CalendarPage::showEvents</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>Show calendar events</dd><dt>$<a href="CardPage.html#property_show_documents">CardPage#show_documents</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -466,7 +486,8 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Set page main subtitle</dd><dt><a href="Page.html#method_setTabsPicture">Page::setTabsPicture</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Set tabs picture</dd><dt><a href="Page.html#method_setTabsTitle">Page::setTabsTitle</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Set tabs title</dd><dt><a href="Page.html#method_showTemplate">Page::showTemplate</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Include a template into the page.</dd><dt><a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Include a template into the page.</dd><dt><a href="QueryBuilder.html#method_select">QueryBuilder::select</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add SELECT statement to query</dd><dt><a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>SetupPage class</dd><dt><a href="SetupPage.html#method_setTitleLink">SetupPage::setTitleLink</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Set Title link</dd><dt><a href="SetupPage.html#method_setDocModelPreviewPicture">SetupPage::setDocModelPreviewPicture</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Set Document model(s) preview picture</dd><dt><a href="SetupPage.html#method_setupNotAvailable">SetupPage::setupNotAvailable</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
@@ -491,7 +512,8 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd></dd><dt>$<a href="Page.html#property_tabs">Page#tabs</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt>$<a href="Page.html#property_tabs_picture">Page#tabs_picture</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt>$<a href="Page.html#property_tabs_title">Page#tabs_title</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_title_link">SetupPage#title_link</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_truncate">QueryBuilder::truncate</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add TRUNCATE statement to query</dd><dt>$<a href="SetupPage.html#property_title_link">SetupPage#title_link</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt>$<a href="pdf_azur.html#property_type">pdf_azur#type</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterU">U</h2>
         <dl id="index"><dt><a href="CardPage.html#method_updateExtraFields">CardPage::updateExtraFields</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -500,14 +522,16 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Update row(s) into database (wrapper for updateAll function)</dd><dt><a href="CrudObject.html#method_updateAll">CrudObject::updateAll</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Update all object rows into database</dd><dt><a href="CustomObject.html#method_update">CustomObject::update</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Update object into database</dd><dt><a href="Page.html#method_underConstruction">Page::underConstruction</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Show page_under_construction template (only once)</dd>        </dl><h2 id="letterV">V</h2>
+                    <dd>Show page_under_construction template (only once)</dd><dt><a href="QueryBuilder.html#method_update">QueryBuilder::update</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add UPDATE statement to query</dd>        </dl><h2 id="letterV">V</h2>
         <dl id="index"><dt>$<a href="Field.html#property_validation_rules">Field#validation_rules</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
                     <dd></dd><dt>$<a href="NumModelMarbre.html#property_version">NumModelMarbre#version</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt>$<a href="NumModelSaphir.html#property_version">NumModelSaphir#version</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
                     <dd></dd><dt>$<a href="pdf_azur.html#property_version">pdf_azur#version</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterW">W</h2>
         <dl id="index"><dt>$<a href="CustomStats.html#property_where">CustomStats#where</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
-                    <dd></dd><dt><a href="Widget.html">Widget</a></em></dt>
+                    <dd></dd><dt><a href="QueryBuilder.html#method_where">QueryBuilder::where</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add WHERE clause to query (multiple calls allowed)</dd><dt><a href="Widget.html">Widget</a></em></dt>
                     <dd>Widget class</dd><dt>$<a href="pdf_azur.html#property_watermark_text">pdf_azur#watermark_text</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd><dt><a href="pdf_azur.html#method_write_file">pdf_azur::write_file</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd>Function to build pdf onto disk</dd><dt><a href="pdf_azur.html#method_write_content">pdf_azur::write_content</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
@@ -534,6 +558,7 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Constructor</dd><dt><a href="NumModelMarbre.html#method___construct">NumModelMarbre::__construct</a>() &mdash; <em>Method in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd>Constructor</dd><dt><a href="NumModelSaphir.html#method___construct">NumModelSaphir::__construct</a>() &mdash; <em>Method in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
                     <dd>Constructor</dd><dt><a href="Page.html#method___construct">Page::__construct</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
+                    <dd>Constructor</dd><dt><a href="QueryBuilder.html#method___construct">QueryBuilder::__construct</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Constructor</dd><dt><a href="SetupPage.html#method___construct">SetupPage::__construct</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Constructor</dd><dt><a href="StatsPage.html#method___construct">StatsPage::__construct</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Constructor</dd><dt><a href="Widget.html#method___construct">Widget::__construct</a>() &mdash; <em>Method in class <a href="Widget.html">Widget</a></em></dt>
