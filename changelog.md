@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.0 - DEC18
+
+*   NEW: QueryBuilder class.
+*   FIX: add "?mainmenu=home" in setup page redirect urls.
+*   FIX: CSS tweaks.
+
+---
+
 #### 2.7.1 - DEC18
 
 *   NEW: isUnderConstruction function renamed to underConstruction + notFound, addCssfiles & addJsfiles functions added into page class.
