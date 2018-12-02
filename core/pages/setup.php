@@ -160,7 +160,7 @@ class SetupPage extends FormPage
 
 				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
 				{
-					dolibase_redirect($_SERVER["PHP_SELF"]);
+					dolibase_redirect($_SERVER["PHP_SELF"].'?mainmenu=home');
 				}
 				else
 				{
@@ -174,7 +174,7 @@ class SetupPage extends FormPage
 				
 				if (dolibarr_del_const($db, $code, $conf->entity) > 0)
 				{
-					dolibase_redirect($_SERVER["PHP_SELF"]);
+					dolibase_redirect($_SERVER["PHP_SELF"].'?mainmenu=home');
 				}
 				else
 				{

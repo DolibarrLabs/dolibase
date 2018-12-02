@@ -164,7 +164,7 @@ dolibase_include_once('/core/class/page.php');
 dolibase_include_once('/core/class/query_builder.php');
 
 // Create Page using Dolibase
-$page = new Page("Test Query Builder");
+$page = new Page('Test Query Builder');
 
 $page->begin();
 
