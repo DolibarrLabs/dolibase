@@ -440,6 +440,7 @@ if (! function_exists('stop_time_measure'))
 /**
  * Dumps all the object propreties and its associations recursively into an array
  *
+ * @see http://php.net/manual/fr/function.get-object-vars.php#62470
  * @param     $obj     Object
  * @return    array
  */
@@ -448,11 +449,53 @@ if (! function_exists('object_to_array'))
 	function object_to_array($obj)
 	{
 		$_arr = is_object($obj) ? get_object_vars($obj) : $obj;
+		$arr = array();
+
 		foreach ($_arr as $key => $val) {
 			$val = (is_array($val) || is_object($val)) ? object_to_array($val) : $val;
 			$arr[$key] = $val;
 		}
 
 		return $arr;
+	}
+}
+
+/**
+ * Create an HTML table from an array
+ *
+ * @param     $array           array
+ * @param     $show_header     show table header or not
+ * @return    string           HTML table
+ */
+if (! function_exists('array_to_table'))
+{
+	function array_to_table($array, $show_header = true)
+	{
+		$out = '<table class="liste">';
+		$count = 0;
+
+		foreach ($array as $row)
+		{
+			if ($count == 0 && $show_header)
+			{
+				$out.= '<tr class="liste_titre">';
+				foreach ((array)$row as $key => $value) {
+					$out.= '<th><strong>'.$key.'</strong></th>';
+				}
+				$out.= '</tr>';
+			}
+
+			$out.= '<tr>';
+			foreach ((array)$row as $value) {
+				$out.= '<td>'.$value.'</td>';
+			}
+			$out.= '</tr>';
+
+			$count++;
+		}
+
+		$out.= '</table>';
+
+		return $out;
 	}
 }

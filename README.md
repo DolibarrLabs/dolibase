@@ -172,56 +172,70 @@ $titles = array();
 $queries = array();
 
 // 1st query
-$titles[]  = 'Select * with order by & limit';
+$titles[]  = 'Select with order by & limit';
 $queries[] = QueryBuilder::getInstance()
-	->select()
-	->from('mytable')
-	->where('id = 1')
-	->orderBy('id', 'ASC')
-	->limit(5)
-	->get();
+	->select('login, firstname, lastname')
+	->from('user')
+	->orderBy('rowid', 'ASC')
+	->limit(5);
 
 // 2nd query
-$titles[]  = 'Simple Insert';
+$titles[]  = 'Count';
 $queries[] = QueryBuilder::getInstance()
-	->insert('mytable', array('name' => 'axel', 'age' => '23'))
-	->get();
+	->select('count(*) as count')
+	->from('user');
 
 // 3rd query
-$titles[]  = 'Simple Update';
+$titles[]  = 'Insert';
 $queries[] = QueryBuilder::getInstance()
-	->update('mytable', array('age' => '24'))
-	->where('id = 1')
-	->get();
+	->insert('user', array('login' => 'axel', 'lastname' => 'AXeL'));
 
 // 4th query
-$titles[]  = 'Delete';
+$titles[]  = 'Update';
 $queries[] = QueryBuilder::getInstance()
-	->delete('mytable')
-	->where('id = 1')
-	->orWhere('age = 24')
-	->get();
+	->update('user', array('firstname' => 'Dev'))
+	->where("login = 'axel'");
 
 // 5th query
-$titles[]  = 'Left join';
+$titles[]  = 'Delete';
 $queries[] = QueryBuilder::getInstance()
-	->select()
-	->from('mytable')
-	->join('table2', 'table2.id = mytable.table2_fk', 'left')
-	->get();
+	->delete('user')
+	//->where(array('login' => 'axel', 'lastname' => 'AXeL'))
+	->where("login = 'axel'")
+	->where("lastname = 'AXeL'")
+	->orWhere("firstname = 'Dev'");
 
 // 6th query
-$titles[]  = 'Simple Join with Select (IQ join)';
+$titles[]  = 'Left join';
 $queries[] = QueryBuilder::getInstance()
-	->select('t.name')
-	->from('mytable as t, table2 as t2')
-	->where('t2.id = 1')
-	->get();
+	->select('p.ref as product, u.login as user')
+	->from('product as p')
+	->join('user as u', 'u.rowid = p.fk_user_author', 'left');
+
+// 7th query
+$titles[]  = 'IQ Join with Select';
+$queries[] = QueryBuilder::getInstance()
+	->select('p.ref as product, u.login as user')
+	->from(array('product as p', 'user as u'))
+	->where('p.fk_user_author = u.rowid');
+
+// 8th query
+$titles[]  = 'Multi Left join';
+$queries[] = QueryBuilder::getInstance()
+	->select('p.ref as product, u.login as user, pl.ref as propal')
+	->from('product as p')
+	->join('user as u', 'u.rowid = p.fk_user_author', 'left')
+	->join('propaldet as pd', 'pd.fk_product = p.rowid', 'left')
+	->join('propal as pl', 'pl.rowid = pd.fk_propal', 'left');
 
 // Show queries
-foreach ($queries as $key => $query) {
-	echo '<h2>'.$titles[$key].'</h2>';
-	echo $query.'<br>';
+foreach ($queries as $i => $query) {
+	echo '<h2><u>'.($i + 1).') '.$titles[$i].'</u></h2>';
+	echo '<h3>query:</h3>'.$query->get();
+	echo '<h3>result:</h3>';
+	echo array_to_table($query->result());
+	echo '<h3>result count:</h3>'.$query->count();
+	echo '<h3>affected rows:</h3>'.$query->affected();
 }
 
 $page->end();

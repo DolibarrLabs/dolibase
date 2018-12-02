@@ -22,9 +22,13 @@
 class QueryBuilder
 {
 	/**
-	 * @var object Quey Builder Instance
+	 * @var object Query Builder Instance
 	 */
 	protected static $instance = null;
+	/**
+	 * @var bool|null Query result
+	 */
+	protected $result = null;
 
 
 	/**
@@ -40,7 +44,7 @@ class QueryBuilder
 	/**
 	 * Return query
 	 *
-	 * @return    query string
+	 * @return    string    query
 	 */
 	public function get()
 	{
@@ -53,7 +57,7 @@ class QueryBuilder
 	/**
 	 * Execute query
 	 *
-	 * @return    query result
+	 * @return    bool|null    query execution result
 	 */
 	public function execute()
 	{
@@ -62,7 +66,79 @@ class QueryBuilder
 		$query = $this->get();
 
 		if (! empty($query) && is_object($db)) {
-			return $db->query($query);
+			$this->result = $db->query($query);
+		}
+		else {
+			$this->result = null;
+		}
+
+		return $this->result;
+	}
+
+	/**
+	 * Execute query if not executed & return an array of result(s)
+	 *
+	 * @return    array    query result rows
+	 */
+	public function result()
+	{
+		global $db;
+
+		if (is_null($this->result)) {
+			$this->execute();
+		}
+
+		$rows = array();
+
+		if (! is_null($this->result) && $this->result)
+		{
+			$rows_count = $db->num_rows($this->result);
+			$row_num = 0;
+
+			while($row_num < $rows_count) {
+				$rows[] = $db->fetch_object($this->result);
+				$row_num++;
+			}
+		}
+
+		return $rows;
+	}
+
+	/**
+	 * Execute query if not executed & return query result(s) count
+	 *
+	 * @return    int|null    query result rows count
+	 */
+	public function count()
+	{
+		global $db;
+
+		if (is_null($this->result)) {
+			$this->execute();
+		}
+
+		if (! is_null($this->result) && $this->result) {
+			return $db->num_rows($this->result);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Execute query if not executed & return affected rows count of an INSERT, UPDATE or DELETE query
+	 *
+	 * @return    int|null    query affected rows count
+	 */
+	public function affected()
+	{
+		global $db;
+
+		if (is_null($this->result)) {
+			$this->execute();
+		}
+
+		if (! is_null($this->result) && $this->result && (isset($this->insert) || isset($this->update) || isset($this->delete))) {
+			return $db->affected_rows($this->result);
 		}
 
 		return null;
@@ -96,13 +172,15 @@ class QueryBuilder
 
 		$alias = (! empty($table_alias) ? $table_alias.'.' : '');
 
-		if (is_array($select_options)) {
+		if (is_array($select_options))
+		{
 			foreach ($this->select_options as $field) {
 				$this->select.= $alias."`" . $field . "`,";
 			}
 			$this->select = substr($this->select, 0, -1); // Remove the last ','
 		}
-		else {
+		else
+		{
 			$this->select.= $select_options;
 		}
 
@@ -112,39 +190,57 @@ class QueryBuilder
 	/**
 	 * Add FROM clause to query
 	 *
-	 * @param     $table_name     table name
-	 * @param     $table_alias    table alias
+	 * @param     $table_name     table name string or array
 	 * @return    $this
 	 */
-	public function from($table_name, $table_alias = '')
+	public function from($table_name)
 	{
-		$this->from = "FROM ".$table_name;
+		$this->from = "FROM ";
 
-		if (! empty($table_alias)) {
-			$this->from.= " AS ".$table_alias;
+		if (is_array($table_name))
+		{
+			foreach ($table_name as $table) {
+				$this->from.= MAIN_DB_PREFIX.$table.", ";
+			}
+			$this->from = substr($this->from, 0, -2); // Remove the last ', '
+		}
+		else
+		{
+			$this->from.= MAIN_DB_PREFIX.$table_name;
 		}
 
 		return $this;
 	}
 
 	/**
-	 * Add WHERE clause to query
+	 * Add WHERE clause to query (multiple calls allowed)
 	 *
 	 * @param     $where_options     where options string or array
 	 * @return    $this
 	 */
 	public function where($where_options)
 	{
-		$this->where = "WHERE ";
+		if (isset($this->where)) {
+			$this->where.= " AND ";
+		}
+		else {
+			$this->where = "WHERE ";
+		}
 
-		if (is_array($where_options)) {
+		if (is_array($where_options))
+		{
 			$count = 0;
-			foreach ($where_options as $field => $value) {
-				$this->where.= ($count > 0 ? ' AND ' : '') . $field . " = '" . $value . "'";
+			foreach ($where_options as $field => $value)
+			{
+				if ($count > 0) {
+					$this->where.= " AND ";
+				}
+				$this->where.= $field . " = '" . $value . "'";
 				$count++;
 			}
 		}
-		else {
+		else
+		{
 			$this->where.= $where_options;
 		}
 
@@ -152,23 +248,34 @@ class QueryBuilder
 	}
 
 	/**
-	 * Add OR to WHERE clause
+	 * Add OR to WHERE clause (multiple calls allowed)
 	 *
 	 * @param     $where_options     where options string or array
 	 * @return    $this
 	 */
 	public function orWhere($where_options)
 	{
-		$this->orWhere = " OR ";
+		if (isset($this->orWhere)) {
+			$this->orWhere.= " OR ";
+		}
+		else {
+			$this->orWhere = "OR ";
+		}
 
-		if (is_array($where_options)) {
+		if (is_array($where_options))
+		{
 			$count = 0;
-			foreach ($where_options as $field => $value) {
-				$this->orWhere.= ($count > 0 ? ' OR ' : '') . $field . " = '" . $value . "'";
+			foreach ($where_options as $field => $value)
+			{
+				if ($count > 0) {
+					$this->orWhere.= " OR ";
+				}
+				$this->orWhere.= $field . " = '" . $value . "'";
 				$count++;
 			}
 		}
-		else {
+		else
+		{
 			$this->orWhere.= $where_options;
 		}
 
@@ -220,7 +327,7 @@ class QueryBuilder
 	}
 
 	/**
-	 * Add JOIN clause to query
+	 * Add JOIN clause to query (multiple calls allowed)
 	 *
 	 * @param     $table_name     table name
 	 * @param     $join_options   join options string
@@ -229,13 +336,18 @@ class QueryBuilder
 	 */
 	public function join($table_name, $join_options, $join_type = '')
 	{
-		$this->join = strtoupper($join_type);
+		if (isset($this->join)) {
+			$this->join.= " ".strtoupper($join_type);
+		}
+		else {
+			$this->join = strtoupper($join_type);
+		}
 
 		if (! empty($join_type)) {
 			$this->join.= " ";
 		}
 
-		$this->join.= "JOIN ".$table_name." ON ".$join_options;
+		$this->join.= "JOIN ".MAIN_DB_PREFIX.$table_name." ON ".$join_options;
 
 		return $this;
 	}
@@ -249,7 +361,7 @@ class QueryBuilder
 	 */
 	public function insert($table_name, $data)
 	{
-		$this->insert = "INSERT INTO ".$table_name." (";
+		$this->insert = "INSERT INTO ".MAIN_DB_PREFIX.$table_name." (";
 
 		foreach ($data as $key => $value) {
 			$this->insert.= "`" . $key . "`,";
@@ -277,7 +389,7 @@ class QueryBuilder
 	 */
 	public function update($table_name, $data)
 	{
-		$this->update = "UPDATE ".$table_name." SET ";
+		$this->update = "UPDATE ".MAIN_DB_PREFIX.$table_name." SET ";
 
 		foreach ($data as $key => $value) {
 			$this->update.= "`" . $key . "` = " . $this->escape($value) . ",";
@@ -295,7 +407,7 @@ class QueryBuilder
 	 */
 	public function delete($table_name)
 	{
-		$this->delete = "DELETE FROM ".$table_name;
+		$this->delete = "DELETE FROM ".MAIN_DB_PREFIX.$table_name;
 		return $this;
 	}
 
@@ -307,7 +419,7 @@ class QueryBuilder
 	 */
 	public function truncate($table_name)
 	{
-		$this->truncate = "TRUNCATE ".$table_name;
+		$this->truncate = "TRUNCATE ".MAIN_DB_PREFIX.$table_name;
 		return $this;
 	}
 }
