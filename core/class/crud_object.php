@@ -20,7 +20,7 @@ require_once DOL_DOCUMENT_ROOT . '/core/class/commonobject.class.php';
 /**
  * CrudObject class (Create/Read/Update/Delete)
  *
- * @deprecated since v2.8.0, use QueryBuilder class instead
+ * @deprecated since version 2.8.0, use QueryBuilder class instead
  */
 
 class CrudObject extends CommonObject

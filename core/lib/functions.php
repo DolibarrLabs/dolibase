@@ -207,6 +207,32 @@ if (! function_exists('dolibase_now'))
 }
 
 /**
+ * Output date in a string format
+ *
+ * @since      2.8.1
+ * @param      $date            date in db format or GM Timestamps date if $convert_to_tms is false
+ * @param      $format          output date format (tag of strftime function)
+ *                              "%d %b %Y",
+ *                              "%d/%m/%Y %H:%M",
+ *                              "%d/%m/%Y %H:%M:%S",
+ *                              "%B"=Long text of month, "%A"=Long text of day, "%b"=Short text of month, "%a"=Short text of day
+ *                              "day", "daytext", "dayhour", "dayhourldap", "dayhourtext", "dayrfc", "dayhourrfc", "...reduceformat"
+ * @param      $convert_to_tms  convert the $date parameter to timestamp or not
+ * @return     string           formated date or '' if date is null
+ */
+if (! function_exists('dolibase_print_date'))
+{
+	function dolibase_print_date($date, $format, $convert_to_tms = true)
+	{
+		global $db;
+
+		$time = $convert_to_tms ? $db->jdate($date) : $date;
+
+		return dol_print_date($time, $format);
+	}
+}
+
+/**
  * Escape a string from ' or " to avoid errors when dealing with database
  *
  * @param      $str       string to escape
@@ -463,6 +489,7 @@ if (! function_exists('object_to_array'))
 /**
  * Create an HTML table from a two-dimensional array
  *
+ * @since     2.8.0
  * @param     $array           array
  * @param     $show_header     show table header or not
  * @return    string           HTML table

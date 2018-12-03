@@ -17,6 +17,8 @@
 
 /**
  * QueryBuilder class
+ *
+ * @since 2.8.0
  */
 
 class QueryBuilder
@@ -179,6 +181,7 @@ class QueryBuilder
 	 * Escape field value
 	 *
 	 * @param     $value     field value
+	 * @return    string     escaped value
 	 */
 	protected function escape($value)
 	{
