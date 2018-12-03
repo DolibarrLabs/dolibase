@@ -1,6 +1,18 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.1 - DEC18
+
+*   NEW: enable function chaining for DolibaseModule class public functions.
+*   NEW: start replacing deprecated CrudObject class with QueryBuilder.
+*   NEW: lastId function added to QueryBuilder class.
+*   NEW: setFields function added to FormPage class.
+*   NEW: dolibase_print_date global function added.
+*   NEW: use $object->doc_lines instead of $object->lines for document build.
+*   FIX: typo error on QueryBuilder class.
+
+---
+
 #### 2.8.0 - DEC18
 
 *   NEW: QueryBuilder class.
