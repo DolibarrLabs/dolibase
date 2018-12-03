@@ -221,9 +221,7 @@ function show_related_objects($object)
 {
 	global $langs, $db;
 
-	dolibase_include_once('/core/class/crud_object.php');
-	$relation = new CrudObject();
-	$relation->setTableName('element_element');
+	dolibase_include_once('/core/class/query_builder.php');
 
 	$action = GETPOST('action');
 
@@ -253,8 +251,7 @@ function show_related_objects($object)
 		$idLink = GETPOST('id_link');
 
 		if($idLink) {
-			$relation->id = $idLink;
-			$res = $relation->delete();
+			$res = QueryBuilder::getInstance()->delete('element_element')->where("rowid = $idLink")->execute();
 		}
 	}
 
@@ -328,7 +325,7 @@ function show_related_objects($object)
 							}
 
 							// Fetch relation
-							$relation->fetchWhere(array('rowid'), "fk_source = $sourceid AND fk_target = $object->id AND sourcetype = '$sourcetype' AND targettype = '$object->element'");
+							$relation = QueryBuilder::getInstance()->select('rowid as id')->from('element_element')->where("fk_source = $sourceid AND fk_target = $object->id AND sourcetype = '$sourcetype' AND targettype = '$object->element'")->result()[0];
 
 							?>
 							<tr class="<?php echo $class; ?>">

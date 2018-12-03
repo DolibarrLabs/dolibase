@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/crud_object.php');
+dolibase_include_once('/core/class/query_builder.php');
 
 /**
  * Dictionary class
@@ -70,17 +70,19 @@ class Dictionary
 
 		$list = array();
 
-		$dict = new CrudObject();
-		$dict->setTableName($dict_table);
-		$dict->fetch_fields = array($key_field, $value_field);
-		$where = $only_active ? 'active = 1' : '';
+		$qb = new QueryBuilder();
+		$qb->select(array($key_field, $value_field))->from($dict_table);
 
-		$result = $dict->fetchAll(0, 0, $sort_field, $sort_order, '', '', $where);
+		if ($only_active) {
+			$qb->where('active = 1');
+		}
 
-		if ($result) {
-			foreach ($dict->lines as $line) {
-				$list[$line->$key_field] = $langs->trans($line->$value_field);
-			}
+		if (! empty($sort_field)) {
+			$qb->orderBy($sort_field, $sort_order);
+		}
+
+		foreach ($qb->result() as $row) {
+			$list[$row->$key_field] = $langs->trans($row->$value_field);
 		}
 
 		return $list;

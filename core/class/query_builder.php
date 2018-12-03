@@ -208,7 +208,7 @@ class QueryBuilder
 		{
 			$alias = (! empty($table_alias) ? $table_alias.'.' : '');
 
-			foreach ($this->select_options as $field) {
+			foreach ($select_options as $field) {
 				$this->select.= $alias."`" . $field . "`,";
 			}
 			$this->select = substr($this->select, 0, -1); // Remove the last ','
