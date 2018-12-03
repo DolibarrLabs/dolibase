@@ -2,6 +2,7 @@
 
 // Load Dolibase
 dol_include_once('/books/autoload.php');
+
 // Load Dolibase DocModel class
 dolibase_include_once('/core/class/doc_model.php');
 

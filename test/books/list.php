@@ -2,10 +2,13 @@
 
 // Load Dolibase
 include_once 'autoload.php';
+
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/list.php');
+
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+
 // Load Dolibase Dictionary Class
 dolibase_include_once('/core/class/dict.php');
 

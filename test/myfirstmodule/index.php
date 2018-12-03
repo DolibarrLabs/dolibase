@@ -2,6 +2,7 @@
 
 // Load Dolibase
 include_once 'autoload.php';
+
 // Load Dolibase Page class
 dolibase_include_once('/core/class/page.php');
 

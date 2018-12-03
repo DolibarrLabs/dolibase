@@ -63,10 +63,10 @@ class pdf_crabe extends pdf_azur
 		if (! empty($conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR)) $pdf->Rect($this->marge_gauche, $tab_top, $cols_width, $cols_height, 'F', null, explode(',',$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR));
 
 		// Print lines
-		if (isset($object->lines))
+		if (isset($object->doc_lines))
 		{
 			// header
-			$cols_count = count($object->lines);
+			$cols_count = count($object->doc_lines);
 			$col_width = $cols_width / $cols_count;
 			$curY = $tab_top + 1;// + 7;
 			$curX = $this->marge_gauche + 1;
@@ -74,7 +74,7 @@ class pdf_crabe extends pdf_azur
 			$tab_height = $this->page_hauteur - $tab_top - $heightforinfotot - $heightforfreetext - $heightforfooter;
 			$i = 0;
 
-			foreach ($object->lines as $line)
+			foreach ($object->doc_lines as $line)
 			{
 				$add_separator = ($i == $cols_count - 1 ? 0 : 1);
 				$curX = $this->print_column($pdf, $line['name'], $curX, $curY, $nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size, $add_separator);
@@ -86,7 +86,7 @@ class pdf_crabe extends pdf_azur
 			// values
 			$curX = $this->marge_gauche + 1;
 			$curY = $nexY + 3;
-			foreach ($object->lines as $line)
+			foreach ($object->doc_lines as $line)
 			{
 				$curX = $this->print_column($pdf, $line['value'], $curX, $curY, $nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size);
 			}

@@ -326,13 +326,13 @@ class pdf_azur extends DocModel
 		if (! empty($conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR)) $pdf->Rect($this->marge_gauche, $tab_top, $cols_width, $cols_height, 'F', null, explode(',',$conf->global->MAIN_PDF_TITLE_BACKGROUND_COLOR));
 
 		// Print lines
-		if (isset($object->lines))
+		if (isset($object->doc_lines))
 		{
-			$lines_count = count($object->lines);
+			$lines_count = count($object->doc_lines);
 			$curY = $tab_top + 1;// + 7;
 			$i = 0;
 
-			foreach ($object->lines as $line)
+			foreach ($object->doc_lines as $line)
 			{
 				$add_separator = ($i == $lines_count - 1 ? 0 : 1);
 				$curY = $this->print_line($pdf, $line['name'], $line['value'], $curY, $outputlangs, $default_font_size, $add_separator);

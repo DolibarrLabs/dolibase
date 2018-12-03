@@ -2,11 +2,14 @@
 
 // Load Dolibase
 include_once 'autoload.php';
+
 // Load Dolibase Page class
 dolibase_include_once('/core/pages/card.php');
 dolibase_include_once('/core/pages/document.php');
+
 // Load Book class
 dol_include_once('/books/class/book.class.php');
+
 // Load Dolibase Dictionary Class
 dolibase_include_once('/core/class/dict.php');
 
@@ -83,7 +86,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	{
 		$list = Dictionary::get_all('books_dict');
 
-		$book->lines = array(
+		$book->doc_lines = array(
 			array('name' => 'Ref', 'value' => $book->ref),
 			array('name' => 'Name', 'value' => $book->name),
 			array('name' => 'Description', 'value' => $book->desc),
