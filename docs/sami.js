@@ -191,6 +191,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "FormPage.html", "name": "FormPage", "doc": "&quot;FormPage class&quot;"},
                                                         {"type": "Method", "fromName": "FormPage", "fromLink": "FormPage.html", "link": "FormPage.html#method___construct", "name": "FormPage::__construct", "doc": "&quot;Constructor&quot;"},
+                    {"type": "Method", "fromName": "FormPage", "fromLink": "FormPage.html", "link": "FormPage.html#method_setFields", "name": "FormPage::setFields", "doc": "&quot;Set page fields&quot;"},
                     {"type": "Method", "fromName": "FormPage", "fromLink": "FormPage.html", "link": "FormPage.html#method_checkFields", "name": "FormPage::checkFields", "doc": "&quot;Check page fields&quot;"},
                     {"type": "Method", "fromName": "FormPage", "fromLink": "FormPage.html", "link": "FormPage.html#method_checkField", "name": "FormPage::checkField", "doc": "&quot;Check specified field&quot;"},
                     {"type": "Method", "fromName": "FormPage", "fromLink": "FormPage.html", "link": "FormPage.html#method_getField", "name": "FormPage::getField", "doc": "&quot;Return specified field if found&quot;"},
@@ -304,7 +305,8 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_execute", "name": "QueryBuilder::execute", "doc": "&quot;Execute query&quot;"},
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_result", "name": "QueryBuilder::result", "doc": "&quot;Execute query if not executed &amp;amp; return an array of result(s)&quot;"},
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_count", "name": "QueryBuilder::count", "doc": "&quot;Execute query if not executed &amp;amp; return query result(s) count&quot;"},
-                    {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_affected", "name": "QueryBuilder::affected", "doc": "&quot;Execute query if not executed &amp;amp; return affected rows count of an INSERT, UPDATE or DELETE query&quot;"},
+                    {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_affected", "name": "QueryBuilder::affected", "doc": "&quot;Return affected rows count of an INSERT, UPDATE or DELETE query&quot;"},
+                    {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_lastId", "name": "QueryBuilder::lastId", "doc": "&quot;Return last id after an INSERT query&quot;"},
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_escape", "name": "QueryBuilder::escape", "doc": "&quot;Escape field value&quot;"},
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_select", "name": "QueryBuilder::select", "doc": "&quot;Add SELECT statement to query&quot;"},
                     {"type": "Method", "fromName": "QueryBuilder", "fromLink": "QueryBuilder.html", "link": "QueryBuilder.html#method_from", "name": "QueryBuilder::from", "doc": "&quot;Add FROM clause to query&quot;"},

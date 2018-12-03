@@ -216,7 +216,7 @@
             </tr>
                     <tr>
                 <td class="type" id="property_fields">
-                                                                                array
+                                        protected                                        array
                 </td>
                 <td>$fields</td>
                 <td class="last"></td>
@@ -564,6 +564,16 @@ Note: this function should be called before $page->begin() function, otherwise i
         
                                             <p>Generate page end</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_end">Page</a></small></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_setFields">setFields</a>($fields)
+        
+                                            <p>Set page fields</p>                </div>
+                <div class="col-md-2"><small>from&nbsp;<a href="FormPage.html#method_setFields">FormPage</a></small></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
@@ -1674,8 +1684,48 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_setFields">
+        <div class="location">in <a href="FormPage.html#method_setFields">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L70">line 70</a></div>
+        <code>                    $this
+    <strong>setFields</strong>($fields)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set page fields</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$fields</td>
+                <td>array of fields</td>
+            </tr>
+            </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_checkFields">
-        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L68">line 68</a></div>
+        <div class="location">in <a href="FormPage.html#method_checkFields">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L82">line 82</a></div>
         <code>                    boolean
     <strong>checkFields</strong>()
         </code>
@@ -1705,7 +1755,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_checkField">
-        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L88">line 88</a></div>
+        <div class="location">in <a href="FormPage.html#method_checkField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L102">line 102</a></div>
         <code>                    boolean|int
     <strong>checkField</strong>($field_name, $field_trans = &#039;&#039;, $field_validation_rules = &#039;&#039;, $return_err_number = false)
         </code>
@@ -1760,7 +1810,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_getField">
-        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L163">line 163</a></div>
+        <div class="location">in <a href="FormPage.html#method_getField">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L177">line 177</a></div>
         <code>            protected        <a href="Field.html">Field</a>|empty
     <strong>getField</strong>($field_name)
         </code>
@@ -1800,7 +1850,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_askForConfirmation">
-        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L183">line 183</a></div>
+        <div class="location">in <a href="FormPage.html#method_askForConfirmation">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L197">line 197</a></div>
         <code>                    
     <strong>askForConfirmation</strong>($url, $title, $question, $action, $question_param = &#039;&#039;)
         </code>
@@ -1851,7 +1901,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_appendToBody">
-        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L197">line 197</a></div>
+        <div class="location">in <a href="FormPage.html#method_appendToBody">FormPage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/form_page.php#L211">line 211</a></div>
         <code>                    
     <strong>appendToBody</strong>($content)
         </code>
