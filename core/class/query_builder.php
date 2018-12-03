@@ -160,18 +160,31 @@ class QueryBuilder
 	}
 
 	/**
-	 * Execute query if not executed & return affected rows count of an INSERT, UPDATE or DELETE query
+	 * Return affected rows count of an INSERT, UPDATE or DELETE query
 	 *
 	 * @return    int|null    query affected rows count
 	 */
 	public function affected()
 	{
-		if (is_null($this->result)) {
-			$this->execute();
-		}
-
 		if (! is_null($this->result) && $this->result && (isset($this->insert) || isset($this->update) || isset($this->delete))) {
 			return $this->db->affected_rows($this->result);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Return last id after an INSERT query
+	 *
+	 * @since     2.8.1
+	 * @param     $table_name     table name
+	 * @param     $pk_name        primary key/id field name
+	 * @return    int|null        id or -1 on error
+	 */
+	public function lastId($table_name, $pk_name)
+	{
+		if (! is_null($this->result) && $this->result && isset($this->insert)) {
+			return $this->db->last_insert_id(MAIN_DB_PREFIX.$table_name, $pk_name);
 		}
 
 		return null;
