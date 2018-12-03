@@ -6,6 +6,12 @@
 
 Dolibase is a set of reusable code & architecture that make coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster :rocket: and easier.
 
+## Why to use it?
+
+- **Open source**: You can check the source code & contribute to the project if you want.
+- **Ensure backward compatibility**: Your module(s) will work even on old Dolibarr versions (starting from version 3.8).
+- **Less & clean code**: Write less code in a clean way & reduce repetitive code frequency.
+
 ## How it works?
 
 Dolibase is following the main dolibarr design pattern with some few adjustments to fit its needs.
@@ -101,26 +107,26 @@ dolibase_include_once('/core/class/module.php');
 
 class modMyFirstModule extends DolibaseModule
 {
-	public function loadSettings()
-	{
-		// Add constant(s)
-		$this->addConstant('MY_FIRST_MODULE_CONST', 'test');
+    public function loadSettings()
+    {
+        // Add constant(s)
+        $this->addConstant('MY_FIRST_MODULE_CONST', 'test');
 
-		// Add widget(s)
-		$this->addWidget('mybox.php');
+        // Add widget(s)
+        $this->addWidget('mybox.php');
 
-		// Add CSS & JS files
-		$this->addCssFile('mycss.css.php');
-		$this->addJsFile('myjs.js.php');
+        // Add CSS & JS files
+        $this->addCssFile('mycss.css.php')
+             ->addJsFile('myjs.js.php');
 
-		// Set user permissions
-		$this->addPermission('read', 'Read permission', 'r');
+        // Set user permissions
+        $this->addPermission('read', 'Read permission', 'r');
 
-		// Add menu(s)
-		$this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/myfirstmodule/index.php?test=1');
-		$this->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/myfirstmodule/index.php?test=2');
-		$this->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/myfirstmodule/index.php?test=3');
-	}
+        // Add menu(s)
+        $this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/myfirstmodule/index.php?test=1')
+             ->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/myfirstmodule/index.php?test=2')
+             ->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/myfirstmodule/index.php?test=3');
+    }
 }
 
 ```
