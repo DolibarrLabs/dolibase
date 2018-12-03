@@ -12,18 +12,20 @@ dolibase_include_once('/core/class/dict.php');
 // Create Page using Dolibase
 $page = new CreatePage("New book", '$user->rights->books->create');
 
-// Set fields
-$page->fields[] = new Field('name', 'Name', 'required');
-$page->fields[] = new Field('type', 'Type', 'required');
-$page->fields[] = new Field('qty', 'Qty', 'numeric|required');
-$page->fields[] = new Field('price', 'Price', 'numeric');
-
 // Set actions
 $action = GETPOST('action', 'alpha');
 
 // Init object
 $book = new Book();
 
+// Set fields
+$fields[] = new Field('name', 'Name', 'required');
+$fields[] = new Field('type', 'Type', 'required');
+$fields[] = new Field('qty', 'Qty', 'numeric|required');
+$fields[] = new Field('price', 'Price', 'numeric');
+$page->setFields($fields);
+
+// Create object
 if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book))
 {
 	$ref = $book->getNextNumRef();

@@ -13,12 +13,6 @@ dolibase_include_once('/core/class/dict.php');
 // Create Page using Dolibase
 $page = new CardPage("Book Card", '$user->rights->books->read', '$user->rights->books->modify', '$user->rights->books->delete', true, true);
 
-// Set fields
-$page->fields[] = new Field('name', 'Name', 'required');
-$page->fields[] = new Field('type', 'Type', 'required');
-$page->fields[] = new Field('qty', 'Qty', 'numeric|required');
-$page->fields[] = new Field('price', 'Price', 'numeric');
-
 // Get parameters
 $id = GETPOST('id', 'int');
 $ref = GETPOST('ref', 'alpha');
@@ -30,6 +24,14 @@ $model = GETPOST('model', 'alpha');
 // Init object
 $book = new Book();
 
+// Set fields
+$fields[] = new Field('name', 'Name', 'required');
+$fields[] = new Field('type', 'Type', 'required');
+$fields[] = new Field('qty', 'Qty', 'numeric|required');
+$fields[] = new Field('price', 'Price', 'numeric');
+$page->setFields($fields);
+
+// Fetch object
 if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 {
 	// Set actions ---

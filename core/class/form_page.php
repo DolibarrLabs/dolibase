@@ -36,7 +36,7 @@ class FormPage extends Page
 	/**
 	 * @var array Fields to check on validation
 	 */
-	public $fields = array();
+	protected $fields = array();
 
 
 	/**
@@ -58,6 +58,20 @@ class FormPage extends Page
 		}
 
 		parent::__construct($page_title, $access_perm);
+	}
+
+	/**
+	 * Set page fields
+	 *
+	 * @since     2.8.1
+	 * @param     $fields     array of fields
+	 * @return    $this
+	 */
+	public function setFields($fields)
+	{
+		$this->fields = $fields;
+
+		return $this;
 	}
 
 	/**

@@ -12,15 +12,17 @@ ${object_class_include}
 // Create Page using Dolibase
 $page = new CreatePage('${page_title}', '${access_perms}');
 
-// Set fields
-// $page->fields[] = new Field(...);
-
 // Get parameters
 $action = GETPOST('action', 'alpha');
 
 // Init object
 ${object_init}
 
+// Set fields
+// $fields[] = new Field(...);
+// $page->setFields($fields);
+
+// Create object
 if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($object))
 {
 	// ...

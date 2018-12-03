@@ -12,9 +12,6 @@ ${object_class_include}
 // Create Page using Dolibase
 $page = new CardPage('${page_title}', '${access_perms}', '${modify_perms}', '${delete_perms}', ${show_documents_block});
 
-// Set fields
-// $page->fields[] = new Field(...);
-
 // Get parameters
 $id = GETPOST('id', 'int');
 $ref = GETPOST('ref', 'alpha');
@@ -26,6 +23,11 @@ $model = GETPOST('model', 'alpha');
 // Init object
 ${object_init}
 
+// Set fields
+// $fields[] = new Field(...);
+// $page->setFields($fields);
+
+// Fetch object
 if (($id > 0 || ! empty($ref)) && $object->fetch($id, $ref))
 {
 	// Set actions ---
