@@ -82,6 +82,7 @@ class Widget extends ModeleBoxes
 	 *
 	 * @param     $title     widget title
 	 * @param     $max       maximum number of rows to show (will be added to translated title if so)
+	 * @return    $this
 	 */
 	public function setTitle($title, $max = 5)
 	{
@@ -109,6 +110,8 @@ class Widget extends ModeleBoxes
 			// Adds translated " (Graph)" to a hidden form value's input (?)
 			'graph' => false
 		);
+
+		return $this;
 	}
 
 	/**
@@ -119,6 +122,7 @@ class Widget extends ModeleBoxes
 	 * @param     $tooltip   tooltip text
 	 * @param     $target    link target, use '' or '_blank' to open in a new window / tab
 	 * @param     $class     link css class
+	 * @return    $this
 	 */
 	public function setLink($link, $picture, $tooltip = '', $target = '_self', $class = 'center" style="margin-right: 5px;')
 	{
@@ -129,6 +133,8 @@ class Widget extends ModeleBoxes
 		$this->info_box_head['subtext']  = $langs->trans($tooltip);
 		$this->info_box_head['target']   = $target;
 		$this->info_box_head['subclass'] = $class;
+
+		return $this;
 	}
 
 	/**
@@ -139,6 +145,7 @@ class Widget extends ModeleBoxes
 	 * @param     $clean_text          allow HTML cleaning & truncation
 	 * @param     $max_length          maximum text length (0 = disabled)
 	 * @param     $first_col_attr      first column attributes
+	 * @return    $this
 	 */
 	public function addContent($text, $attr = 'align="center"', $clean_text = false, $max_length = 0, $first_col_attr = '')
 	{
@@ -175,17 +182,22 @@ class Widget extends ModeleBoxes
 			//  HTML properties of the TR element. Only available on the first column.
 			$this->info_box_contents[$current_line][0]['tr'] = $first_col_attr;
 		}
+
+		return $this;
 	}
 
 	/**
 	 * Add a new line to widget
 	 *
+	 * @return    $this
 	 */
 	public function newLine()
 	{
 		$new_line = count($this->info_box_contents);
 
 		$this->info_box_contents[$new_line] = array();
+
+		return $this;
 	}
 
 	/**
