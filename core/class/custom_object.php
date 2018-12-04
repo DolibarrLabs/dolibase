@@ -37,6 +37,10 @@ class CustomObject extends CrudObject
 	 */
 	public $doc_title = '';
 	/**
+	 * @var array Document lines/rows
+	 */
+	public $doc_lines = array();
+	/**
 	 * @var string Card url
 	 */
 	public $card_url = '';
