@@ -16,7 +16,7 @@
  */
 
 dolibase_include_once('/core/class/form_page.php');
-dolibase_include_once('/core/class/logs.php');
+dolibase_include_once('/core/class/query_builder.php');
 require_once DOL_DOCUMENT_ROOT . '/core/lib/date.lib.php';
 
 /**
@@ -94,7 +94,7 @@ class LogPage extends FormPage
 	 */
 	public function printLogs($object_id, $object_element = '')
 	{
-		global $langs, $conf, $dolibase_config;
+		global $langs, $conf, $dolibase_config, $db;
 
 		// Get parameters
 		$search = array(
@@ -120,23 +120,27 @@ class LogPage extends FormPage
 		if ($limit > 0 && $limit != $conf->liste_limit) $param.= '&limit='.urlencode($limit);
 
 		// Fetch logs
-		$log = new Logs();
 		$where = "(module_id = ".$dolibase_config['module']['number'];
 		$where.= " || module_name = '".$dolibase_config['module']['name']."'";
 		$where.= ") AND object_id = ".$object_id;
 		if (! empty($object_element)) {
 			$where.= " AND object_element = '".$object_element."'";
 		}
-		if ($search['ds']) $where .= " AND date(t.datec) >= date('".$log->db->idate($search['ds'])."')";
-		if ($search['de']) $where .= " AND date(t.datec) <= date('".$log->db->idate($search['de'])."')";
+		if ($search['ds']) $where .= " AND date(t.datec) >= date('".$db->idate($search['ds'])."')";
+		if ($search['de']) $where .= " AND date(t.datec) <= date('".$db->idate($search['de'])."')";
 		if ($search['user'] > 0) $where .= natural_search('t.fk_user', $search['user']);
 
-		$log->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
+		$qb = new QueryBuilder();
+		$qb->select()->from('dolibase_logs', 't')->where($where)->orderBy($sortfield, $sortorder);
+
+		$total = $qb->count();
+		$qb->limit($limit+1, $offset)->execute(); // $limit+1 for list pagination (check print_barre_liste function)
+		$count = $qb->count();
 
 		// List
 		echo '<form method="POST" action="'.$_SERVER["PHP_SELF"].'?id='.$object_id.'">';
 
-		print_barre_liste('', $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $log->count, $log->total, '', 0, '', '', $limit);
+		print_barre_liste('', $page, $_SERVER["PHP_SELF"], $param, $sortfield, $sortorder, '', $count, $total, '', 0, '', '', $limit);
 
 		echo '<div class="div-table-responsive">';
 		echo '<table class="liste" width="100%">';
@@ -173,31 +177,31 @@ class LogPage extends FormPage
 		echo "</tr>\n";
 
 		// Show logs
-		if ($log->count > 0)
+		if ($count > 0)
 		{
 			$deltadateforserver = getServerTimeZoneInt('now');
 			$deltadateforclient = ((int) $_SESSION['dol_tz'] + (int) $_SESSION['dol_dst']);
 			$deltadateforuser   = round($deltadateforclient-$deltadateforserver);
-			$userstatic = new User($log->db);
+			$userstatic = new User($db);
 
-			foreach ($log->lines as $line)
+			foreach ($qb->result($limit) as $row)
 			{
 				echo '<tr class="oddeven">';
 
 				// Action
-				echo '<td align="left">'.$langs->trans($line->action).'</td>';
+				echo '<td align="left">'.$langs->trans($row->action).'</td>';
 
 				// Date
 				echo '<td align="center">';
-				echo dol_print_date($line->datec, 'dayhour');
+				echo dolibase_print_date($row->datec, 'dayhour');
 				if ($deltadateforuser) {
-					echo ' '.$langs->trans("CurrentHour").' &nbsp; / &nbsp; '.dol_print_date($line->datec+($deltadateforuser*3600), "dayhour").' &nbsp;'.$langs->trans("ClientHour");
+					echo ' '.$langs->trans("CurrentHour").' / '.dol_print_date($db->jdate($row->datec)+($deltadateforuser*3600), "dayhour").' '.$langs->trans("ClientHour");
 				}
 				echo '</td>';
 
 				// User
 				echo '<td align="left" colspan="2">';
-				$userstatic->fetch($line->fk_user);
+				$userstatic->fetch($row->fk_user);
 				echo $userstatic->getNomUrl(1, '', 0, 0, 0);
 				echo '</td>';
 

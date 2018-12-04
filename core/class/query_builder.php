@@ -117,9 +117,10 @@ class QueryBuilder
 	/**
 	 * Execute query if not executed & return an array of result(s)
 	 *
+	 * @param     $limit   result limit
 	 * @return    array    query result rows
 	 */
-	public function result()
+	public function result($limit = 0)
 	{
 		if (is_null($this->result)) {
 			$this->execute();
@@ -130,6 +131,11 @@ class QueryBuilder
 		if (! is_null($this->result) && $this->result)
 		{
 			$rows_count = $this->db->num_rows($this->result);
+
+			if ($limit > 0) {
+				$rows_count = min($rows_count, $limit);
+			}
+
 			$row_num = 0;
 
 			while($row_num < $rows_count) {
