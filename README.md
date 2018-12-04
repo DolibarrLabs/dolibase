@@ -16,7 +16,7 @@ Dolibase is a set of reusable code & architecture that make coding [Dolibarr](ht
 
 Dolibase is following the main dolibarr design pattern with some few adjustments to fit its needs.
 
-Below a simple graph that demonstrate directory structure differences between a basic dolibarr module & dolibase module.
+Below a simple graph that demonstrate directory structure differences between a basic dolibarr module & a dolibase module.
 
 ```bash
 dolibarr module                                         dolibase module
@@ -26,9 +26,8 @@ dolibarr module                                         dolibase module
 │   ├── modules                                         ├── core
 │   │   └── modMyModule.class.php                       │   ├── modules
 │   ├── boxes                                           │   │   └── modMyModule.class.php
-│   │   ├── widget1.php                                 │   ├── boxes
-│   │   └── widget2.php                                 │   │   ├── widget1.php
-│   └── triggers                                        │   │   └── widget2.php
+│   │   └── mywidget.php                                │   ├── boxes
+│   └── triggers                                        │   │   └── mywidget.php
 │       └── interface_**_modMyModule_*.class.php        │   └── triggers
 ├── class                                               │       └── interface_**_modMyModule_*.class.php
 │   └── *.class.php                                     ├── class
@@ -37,9 +36,7 @@ dolibarr module                                         dolibase module
 ├── langs                                               ├── img
 │   ├── en_US                                           │   └── object_mypicture.png
 │   │   └── mymodule.lang                               ├── langs
-│   ├── fr_FR                                           │   ├── en_US
-│   │   └── mymodule.lang                               │   │   └── mymodule.lang
-│   └── **_**                                           │   ├── fr_FR
+│   └── **_**                                           │   ├── en_US
 │       └── mymodule.lang                               │   │   └── mymodule.lang
 ├── sql                                                 │   └── **_**
 │   ├── *.sql                                           │       └── mymodule.lang
@@ -59,11 +56,11 @@ dolibarr module                                         dolibase module
 **Explanation:**
 - `admin/setup.php` and `admin/about.php` contains module settings & author informations (they can only be consulted by an administrator).
 - `core/modules/modMyModule.class.php` is the module main configuration file or class, it contains all the informations about the module: name, description, menus, user permissions, etc.. In dolibase, this is a bit different, some of the module configuration are set in the `config.php` file in a way to allow reusing them in other parts of the module.
-- `core/boxes/widget1.php` is one of the module widgets that can be displayed in the dashboard of Dolibarr.
+- `core/boxes/mywidget.php` is a module widget that can be displayed in the dashboard of Dolibarr.
 - `core/triggers` contains [trigger](https://wiki.dolibarr.org/index.php/Triggers) files that allows you to execute personalized code after a Dolibarr event.
 - `class` folder may contains your objects class & functions, sql queries, etc.. It's a kind of model(s) container if you're familiar with the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
 - `dolibase` folder contains all the code & logic of dolibase.
-- `img` is a folder for your images (note that module's picture should start with the \`**object_**\` prefix).
+- `img` is a folder for your images (note that module's picture should start with the `object_` prefix).
 - `langs` folder contains all the translations related to your module.
 - `sql` folder contains the sql files to create or update the tables of your module.
 - `css` folder should contain your css files.
@@ -90,7 +87,7 @@ To create a new module, simply go to the dolibase builder page & follow the inst
 http://localhost/dolibarr/htdocs/dolibase/builder
 ```
 
-Note that `localhost/dolibarr` may change depending on your dolibarr installation & your domain name.
+**Note** that `localhost/dolibarr` may change depending on your dolibarr installation & your domain name.
 
 ## Examples
 
