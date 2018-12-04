@@ -189,10 +189,12 @@ class CustomForm extends Form
 				$label = $label['label'];
 			}
 			$out.= '<div class="minheight20 padding-bottom-5">';
+			$out.= '<span>';
 			$out.= '<input type="radio" class="valignmiddle" name="'.$name.'" id="'.$name.'-'.$val.'" value="'.$val.'"'.($selected == $val || ($count == 0 && empty($selected)) ? ' checked' : '').'>';
 			$out.= ' <label class="valignmiddle" for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
-			$out.= '</div>';
+			$out.= '</span>';
 			$out.= $content;
+			$out.= '</div>';
 			$count++;
 		}
 
@@ -220,10 +222,12 @@ class CustomForm extends Form
 				$label = $label['label'];
 			}
 			$out.= '<div class="minheight20 padding-bottom-5">';
+			$out.= '<span>';
 			$out.= '<input type="checkbox" class="valignmiddle" name="'.$name.'[]" id="'.$name.'-'.$val.'" value="'.$val.'"'.(! empty($selected) && in_array($val, $selected) ? ' checked' : '').'>';
 			$out.= ' <label class="valignmiddle" for="'.$name.'-'.$val.'">' . $langs->trans($label) . '</label>';
-			$out.= '</div>';
+			$out.= '</span>';
 			$out.= $content;
+			$out.= '</div>';
 		}
 
 		return $out;
