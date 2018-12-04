@@ -1,6 +1,19 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.2 - DEC18
+
+*   NEW: enable function chaining on some public functions of Widget class.
+*   NEW: set CrudObject class to abstract.
+*   NEW: fetchAll & fetchWhere functions rewrited in CrudObject class.
+*   NEW: fetchAll function calls replaced in builder & test modules.
+*   NEW: addSelect function added to QueryBuilder class.
+*   NEW: replace Logs class with QueryBuilder in log page.
+*   FIX: missing $doc_lines attribute added into CustomObject class.
+*   FIX: some HTML tweaks in CustomForm class.
+
+---
+
 #### 2.8.1 - DEC18
 
 *   NEW: enable function chaining for DolibaseModule class public functions.
