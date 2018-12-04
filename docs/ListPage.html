@@ -476,7 +476,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <div class="col-md-8 type">
                     <a href="#method_closeRow">closeRow</a>()
         
-                                            <p>Close a table row</p>                </div>
+                                            <p>Close table row</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -674,7 +674,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_fetchExtraFields">fetchExtraFields</a>($elementtype, $more_fields, $join, $where)
+                    <a href="#method_fetchExtraFields">fetchExtraFields</a>($elementtype, $qb)
         
                                             <p>Fetch extrafields</p>                </div>
                 <div class="col-md-2"></div>
@@ -1409,7 +1409,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeRow">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L397">line 397</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L399">line 399</a></div>
         <code>                    
     <strong>closeRow</strong>()
         </code>
@@ -1419,7 +1419,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Close a table row</p>                                                </div>
+                                    <p>Close table row</p>                                                </div>
                 <div class="tags">
             
             
@@ -2108,9 +2108,9 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L313">line 313</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L311">line 311</a></div>
         <code>                    
-    <strong>fetchExtraFields</strong>($elementtype, $more_fields, $join, $where)
+    <strong>fetchExtraFields</strong>($elementtype, $qb)
         </code>
     </h3>
     <div class="details">
@@ -2130,18 +2130,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </tr>
                     <tr>
                 <td></td>
-                <td>$more_fields</td>
-                <td>more fields to add separated by ','</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$join</td>
-                <td>join clause</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$where</td>
-                <td>where clause</td>
+                <td>$qb</td>
+                <td>query builder instance</td>
             </tr>
             </table>
 
@@ -2154,7 +2144,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addButtons">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L360">line 360</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L362">line 362</a></div>
         <code>            protected        
     <strong>addButtons</strong>($buttons, $hide_buttons)
         </code>
@@ -2190,7 +2180,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L382">line 382</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L384">line 384</a></div>
         <code>                    
     <strong>closeList</strong>($buttons = array(), $hide_buttons = false)
         </code>

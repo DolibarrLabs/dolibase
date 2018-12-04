@@ -163,7 +163,8 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd>Add a subtitle</dd><dt><a href="Page.html#method_addColumn">Page::addColumn</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add a table column</dd><dt><a href="Page.html#method_addLineBreak">Page::addLineBreak</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add a line break (or many)</dd><dt><a href="QueryBuilder.html#method_affected">QueryBuilder::affected</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Return affected rows count of an INSERT, UPDATE or DELETE query</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Return affected rows count of an INSERT, UPDATE or DELETE query</dd><dt><a href="QueryBuilder.html#method_addSelect">QueryBuilder::addSelect</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Add more options to SELECT statement (multiple calls allowed)</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_addOption">SetupPage::addOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new option</dd><dt><a href="SetupPage.html#method_addSwitchOption">SetupPage::addSwitchOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new switch option</dd><dt><a href="SetupPage.html#method_addTextOption">SetupPage::addTextOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
@@ -194,8 +195,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd>Return if the current user can delete the object or not</dd><dt><a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>CreatePage class</dd><dt><a href="CreatePage.html#method_checkExtraFields">CreatePage::checkExtraFields</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>Check page extrafields</dd><dt><a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd>CrudObject class (Create/Read/Update/Delete)</dd><dt>$<a href="CrudObject.html#property_count">CrudObject#count</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd></dd><dt><a href="CrudObject.html#method_create">CrudObject::create</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>CrudObject class (Create/Read/Update/Delete)</dd><dt><a href="CrudObject.html#method_create">CrudObject::create</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Create object into database</dd><dt><a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>CustomForm class</dd><dt><a href="CustomForm.html#method_checkBox">CustomForm::checkBox</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a checkbox</dd><dt><a href="CustomForm.html#method_checkList">CustomForm::checkList</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
@@ -213,7 +213,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd>Close a right section</dd><dt>$<a href="ListPage.html#property_contextpage">ListPage#contextpage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd></dd><dt><a href="ListPage.html#method_closeList">ListPage::closeList</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Close list</dd><dt><a href="ListPage.html#method_closeRow">ListPage::closeRow</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
-                    <dd>Close a table row</dd><dt><a href="NumModel.html#method_canBeActivated">NumModel::canBeActivated</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
+                    <dd>Close table row</dd><dt><a href="NumModel.html#method_canBeActivated">NumModel::canBeActivated</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelMarbre.html#property_const_name">NumModelMarbre#const_name</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt><a href="NumModelMarbre.html#method_canBeActivated">NumModelMarbre::canBeActivated</a>() &mdash; <em>Method in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelSaphir.html#property_const_name">NumModelSaphir#const_name</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
@@ -236,6 +236,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd>Delete all object rows in database</dd><dt><a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject::deleteAllObjectLinked</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Delete all links between an object $this</dd><dt><a href="CustomForm.html#method_dateInput">CustomForm::dateInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a date input</dd><dt>$<a href="CustomObject.html#property_doc_title">CustomObject#doc_title</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd></dd><dt>$<a href="CustomObject.html#property_doc_lines">CustomObject#doc_lines</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd></dd><dt><a href="CustomObject.html#method_delete">CustomObject::delete</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Delete object in database</dd><dt><a href="CustomObject.html#method_deleteDocument">CustomObject::deleteDocument</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Delete document from disk.</dd><dt>$<a href="CustomStats.html#property_date_field">CustomStats#date_field</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
@@ -293,9 +294,9 @@ Note: this function should be called before $page->begin() function, otherwise i
                     <dd></dd>        </dl><h2 id="letterF">F</h2>
         <dl id="index"><dt>$<a href="CrudObject.html#property_fetch_fields">CrudObject#fetch_fields</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_fetch">CrudObject::fetch</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd>Load object in memory from database</dd><dt><a href="CrudObject.html#method_fetchAll">CrudObject::fetchAll</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd>Load all object entries in memory from database</dd><dt><a href="CrudObject.html#method_fetchWhere">CrudObject::fetchWhere</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd>Load object in memory from database</dd><dt>$<a href="CustomStats.html#property_from">CustomStats#from</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+                    <dd>Load object in memory from database</dd><dt><a href="CrudObject.html#method_fetchWhere">CrudObject::fetchWhere</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>Load object in memory from database (wrapper for fetchAll function)</dd><dt><a href="CrudObject.html#method_fetchAll">CrudObject::fetchAll</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>Load all object entries in memory from database</dd><dt>$<a href="CustomStats.html#property_from">CustomStats#from</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="Field.html">Field</a></em></dt>
                     <dd>Field class</dd><dt><a href="FormPage.html">FormPage</a></em></dt>
                     <dd>FormPage class</dd><dt>$<a href="FormPage.html#property_form">FormPage#form</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
@@ -367,8 +368,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</dd><dt><a href="CustomObject.html#method
         <dl id="index"><dt>$<a href="CustomStats.html#property_join">CustomStats#join</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_join">QueryBuilder::join</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add JOIN clause to query (multiple calls allowed)</dd>        </dl><h2 id="letterL">L</h2>
-        <dl id="index"><dt>$<a href="CrudObject.html#property_lines">CrudObject#lines</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd></dd><dt><a href="CustomForm.html#method_listInput">CustomForm::listInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
+        <dl id="index"><dt><a href="CustomForm.html#method_listInput">CustomForm::listInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a list</dd><dt><a href="DolibaseModule.html#method_loadSettings">DolibaseModule::loadSettings</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Function called after module configuration.</dd><dt><a href="DolibaseModule.html#method_loadTables">DolibaseModule::loadTables</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Create tables, keys and data required by module
@@ -455,6 +455,7 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
         <dl id="index"><dt><a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>QueryBuilder class</dd>        </dl><h2 id="letterR">R</h2>
         <dl id="index"><dt>$<a href="CrudObject.html#property_ref_field_name">CrudObject#ref_field_name</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd></dd><dt>$<a href="CrudObject.html#property_rows">CrudObject#rows</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_run_triggers">CrudObject::run_triggers</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Run Dolibarr triggers (from other modules)</dd><dt><a href="CustomForm.html#method_rangeInput">CustomForm::rangeInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a range input</dd><dt><a href="CustomForm.html#method_radioList">CustomForm::radioList</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
@@ -500,7 +501,6 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Method to show box. Called by Dolibarr eatch time it wants to display the box.</dd>        </dl><h2 id="letterT">T</h2>
         <dl id="index"><dt>$<a href="CalendarPage.html#property_template_files">CalendarPage#template_files</a> &mdash; <em>Property in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd></dd><dt>$<a href="CrudObject.html#property_table_element">CrudObject#table_element</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd></dd><dt>$<a href="CrudObject.html#property_total">CrudObject#total</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt>$<a href="CrudObject.html#property_triggers_prefix">CrudObject#triggers_prefix</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CustomForm.html#method_textInput">CustomForm::textInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a text input</dd><dt><a href="CustomForm.html#method_textArea">CustomForm::textArea</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
