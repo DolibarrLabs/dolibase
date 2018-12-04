@@ -28,14 +28,6 @@ class Logs extends CrudObject
 	 */
 	public $table_element = 'dolibase_logs'; // e.: 'my_table'
 	/**
-	 * @var array Fetch fields
-	 */
-	public $fetch_fields = array(); // e.: array('field_1', 'field_2', 'field_3')
-	/**
-	 * @var array Date fields
-	 */
-	public $date_fields = array(); // e.: array('creation_date')
-	/**
 	 * @var string Primary key name (id field)
 	 */
 	public $pk_name = 'rowid';
