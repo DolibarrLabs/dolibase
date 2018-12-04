@@ -9,6 +9,9 @@ dolibase_include_once('/core/pages/list.php');
 // Load Object class
 ${object_class_include}
 
+// Load Dolibase QueryBuilder class
+dolibase_include_once('/core/class/query_builder.php');
+
 // Create Page using Dolibase
 $page = new ListPage('${page_title}', '${access_perms}');
 
@@ -33,25 +36,32 @@ $fieldstosearchall = array();
 $where = '1=1';
 // ...
 
-// Fetch extrafields
-$more_fields = '';
-$join = '';
-$page->fetchExtraFields($object->table_element, $more_fields, $join, $where);
-
 // Fetch
-$object->fetchAll($limit, $offset, $sortfield, $sortorder, $more_fields, $join, $where, true);
+$qb = new QueryBuilder();
+$qb->select($object->fetch_fields, true, 't')
+   ->from($object->table_element, 't')
+   ->where($where)
+   ->orderBy($sortfield, $sortorder);
+
+// Fetch extrafields
+$page->fetchExtraFields($object->table_element, $qb);
+
+// Get total & result count
+$total = $qb->count();
+$qb->limit($limit+1, $offset)->execute();
+$count = $qb->count();
 
 // List fields
 $list_fields = array();
 // $list_fields[] = array(...);
 
 // Print list head
-$page->openList('${page_title}', 'title_generic.png', $list_fields, $search, $object->count, $object->total, $fieldstosearchall, $sortfield, $sortorder);
+$page->openList('${page_title}', 'title_generic.png', $list_fields, $search, $count, $total, $fieldstosearchall, $sortfield, $sortorder);
 
 $odd = true;
 
-// Print lines
-foreach ($object->lines as $obj)
+// Print rows
+foreach ($qb->result($limit) as $row)
 {
 	$odd = !$odd;
 	$page->openRow($odd);
@@ -60,7 +70,7 @@ foreach ($object->lines as $obj)
 	//$page->addColumn(...);
 
 	// Extrafields
-	$page->addExtraFields($obj);
+	$page->addExtraFields($row);
 
 	$page->closeRow();
 }

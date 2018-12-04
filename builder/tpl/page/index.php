@@ -9,6 +9,9 @@ dolibase_include_once('/core/pages/index.php');
 // Load Object class
 ${object_class_include}
 
+// Load Dolibase QueryBuilder class
+dolibase_include_once('/core/class/query_builder.php');
+
 // Create Page using Dolibase
 $page = new IndexPage('${page_title}', '${access_perms}');
 
@@ -37,20 +40,25 @@ $page->openTable(array(
 	array('name' => 'Last 10 rows', 'attr' => 'colspan="3"')
 ));
 
-if ($object->fetchAll(10, 0, 't.creation_date'))
+// Fetch
+$qb = new QueryBuilder();
+$qb->select($object->fetch_fields, true, 't')
+   ->from($object->table_element, 't')
+   //->orderBy('t.creation_date', 'DESC')
+   ->limit(10);
+
+// Fetch result
+$odd = true;
+
+foreach ($qb->result() as $row)
 {
-	$odd = true;
+	$odd = ! $odd;
+	$page->openRow($odd);
 
-	foreach ($object->lines as $obj)
-	{
-		$odd = ! $odd;
-		$page->openRow($odd);
+	// Column
+	//$page->addColumn(...);
 
-		// Column
-		//$page->addColumn(...);
-
-		$page->closeRow();
-	}
+	$page->closeRow();
 }
 
 $page->closeTable()->addLineBreak();

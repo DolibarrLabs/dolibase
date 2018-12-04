@@ -9,6 +9,9 @@ dolibase_include_once('/core/pages/list.php');
 // Load object class
 dolibase_include_once('/core/class/logs.php');
 
+// Load Dolibase QueryBuilder class
+dolibase_include_once('/core/class/query_builder.php');
+
 // Create Page using Dolibase
 $page = new ListPage("DolibaseLogs", '$user->rights->dolibase_logs->read');
 
@@ -62,7 +65,16 @@ if ($search['de']) $where .= " AND date(t.datec) <= date('".$log->db->idate($sea
 if ($search['user'] > 0) $where .= natural_search('t.fk_user', $search['user']);
 
 // Fetch
-$log->fetchAll($limit, $offset, $sortfield, $sortorder, '', '', $where, true);
+$qb = new QueryBuilder();
+$qb->select($log->fetch_fields, true, 't')
+   ->from($log->table_element, 't')
+   ->where($where)
+   ->orderBy($sortfield, $sortorder);
+
+// Get total & result count
+$total = $qb->count();
+$qb->limit($limit+1, $offset)->execute();
+$count = $qb->count();
 
 // List fields
 $list_fields = array();
@@ -76,44 +88,44 @@ $list_fields[] = array('name' => 't.fk_user', 'label' => 'LogUser', 'align' => '
 
 // Print list head
 $purge_button = '<a class="butActionDelete" href="'.$_SERVER["PHP_SELF"].'?action=purge">'.$langs->trans("Purge").'</a>';
-$page->openList('DolibaseLogs', 'title_generic.png', $list_fields, $search, $log->count, $log->total, array(), $sortfield, $sortorder, $purge_button);
+$page->openList('DolibaseLogs', 'title_generic.png', $list_fields, $search, $count, $total, array(), $sortfield, $sortorder, $purge_button);
 
 $odd = true;
 
-// Print lines
-foreach ($log->lines as $line)
+// Print rows
+foreach ($qb->result($limit) as $row)
 {
 	$odd = !$odd;
 	$page->openRow($odd);
 
 	// Action
-	$page->addColumn('t.action', $line->action);
+	$page->addColumn('t.action', $row->action);
 
 	// Module name
-	$page->addColumn('t.module_name', $line->module_name);
+	$page->addColumn('t.module_name', $row->module_name);
 
 	// Module id
-	$page->addColumn('t.module_id', $line->module_id);
+	$page->addColumn('t.module_id', $row->module_id);
 
 	// Object id + link
-	if (in_array($line->module_name, array('Maintenance'))) {
-		$url = '/'.strtolower($line->module_name).'/'.$line->object_element.'/card.php?id='.$line->object_id;
+	if (in_array($row->module_name, array('Maintenance'))) {
+		$url = '/'.strtolower($row->module_name).'/'.$row->object_element.'/card.php?id='.$row->object_id;
 	}
 	else {
-		$url = '/'.strtolower($line->module_name).'/card.php?id='.$line->object_id;
+		$url = '/'.strtolower($row->module_name).'/card.php?id='.$row->object_id;
 	}
-	$link = '<a href="'.dol_buildpath($url, 1).'" target="_blank">'.$line->object_id.'</a>';
+	$link = '<a href="'.dol_buildpath($url, 1).'" target="_blank">'.$row->object_id.'</a>';
 	$page->addColumn('t.object_id', $link);
 
 	// Object element
-	$page->addColumn('t.object_element', $line->object_element);
+	$page->addColumn('t.object_element', $row->object_element);
 
 	// Date
-	$datec = dol_print_date($line->datec, "day");
+	$datec = dolibase_print_date($row->datec, "day");
 	$page->addColumn('t.datec', $datec, 'align="center"');
 
 	// User
-	$userstatic->fetch($line->fk_user);
+	$userstatic->fetch($row->fk_user);
 	$page->addColumn('t.fk_user', $userstatic->getNomUrl(1), 'align="center"');
 
 	$page->closeRow();

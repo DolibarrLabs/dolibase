@@ -9,7 +9,10 @@ dolibase_include_once('/core/pages/list.php');
 // Load Book class
 dol_include_once('/books/class/book.class.php');
 
-// Load Dolibase Dictionary Class
+// Load Dolibase QueryBuilder class
+dolibase_include_once('/core/class/query_builder.php');
+
+// Load Dolibase Dictionary class
 dolibase_include_once('/core/class/dict.php');
 
 // Create Page using Dolibase
@@ -34,8 +37,9 @@ $search['user'] = GETPOST('user');
 
 $page->begin();
 
-// Init object
-$books = new Book();
+// Init objects
+$book = new Book();
+$userstatic = new User($book->db);
 
 // Adjust query
 $fieldstosearchall = array('t.ref' => 'Ref.', 't.name' => 'Name');
@@ -45,17 +49,24 @@ if ($search['all']) $where .= natural_search(array_keys($fieldstosearchall), $se
 if ($search['ref']) $where .= natural_search('t.ref', $search['ref']);
 if ($search['name']) $where .= natural_search('t.name', $search['name']);
 if ($search['type'] && $search['type'] != -1) $where .= " AND t.type = '".$search['type']."'";
-if ($search['pd']) $where .= " AND date(t.publication_date) = date('".$books->db->idate($search['pd'])."')";
-if ($search['cd']) $where .= " AND date(t.creation_date) = date('".$books->db->idate($search['cd'])."')";
+if ($search['pd']) $where .= " AND date(t.publication_date) = date('".$book->db->idate($search['pd'])."')";
+if ($search['cd']) $where .= " AND date(t.creation_date) = date('".$book->db->idate($search['cd'])."')";
 if ($search['user'] > 0) $where .= natural_search('t.created_by', $search['user']);
 
-// Fetch extrafields
-$more_fields = '';
-$join = '';
-$page->fetchExtraFields($books->table_element, $more_fields, $join, $where);
-
 // Fetch
-$books->fetchAll($limit, $offset, $sortfield, $sortorder, $more_fields, $join, $where, true);
+$qb = new QueryBuilder();
+$qb->select($book->fetch_fields, true, 't')
+   ->from($book->table_element, 't')
+   ->where($where)
+   ->orderBy($sortfield, $sortorder);
+
+// Fetch extrafields
+$page->fetchExtraFields($book->table_element, $qb);
+
+// Get total & result count
+$total = $qb->count();
+$qb->limit($limit+1, $offset)->execute();
+$count = $qb->count();
 
 $type_list = Dictionary::get_active('books_dict');
 $full_type_list = Dictionary::get_all('books_dict');
@@ -72,46 +83,46 @@ $list_fields[] = array('name' => 't.creation_date', 'label' => 'Creation date', 
 $list_fields[] = array('name' => 't.created_by', 'label' => 'Created by', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
 
 // Print list head
-$page->openList('Books List', 'title_generic.png', $list_fields, $search, $books->count, $books->total, $fieldstosearchall, $sortfield, $sortorder);
+$page->openList('Books List', 'title_generic.png', $list_fields, $search, $count, $total, $fieldstosearchall, $sortfield, $sortorder);
 
 $odd = true;
 
-// Print lines
-foreach ($books->lines as $book)
+// Print rows
+foreach ($qb->result($limit) as $row)
 {
 	$odd = !$odd;
 	$page->openRow($odd);
 
 	// Ref.
+	$book->fetch($row->rowid);
 	$page->addColumn('t.ref', $book->getNomUrl(1));
 
 	// Name
-	$page->addColumn('t.name', $book->name);
+	$page->addColumn('t.name', $row->name);
 
 	// Type
-	$page->addColumn('t.type', $full_type_list[$book->type]);
+	$page->addColumn('t.type', $full_type_list[$row->type]);
 
 	// Qty
-	$page->addColumn('t.qty', $book->qty);
+	$page->addColumn('t.qty', $row->qty);
 
 	// Price
-	$page->addColumn('t.price', price($book->price));
+	$page->addColumn('t.price', price($row->price));
 
 	// Publication date
-	$pub_date = empty($book->publication_date) ? '-' : dol_print_date($book->publication_date, "day");
+	$pub_date = empty($row->publication_date) ? '-' : dolibase_print_date($row->publication_date, "day");
 	$page->addColumn('t.publication_date', $pub_date, 'align="center"');
 
 	// Creation date
-	$creation_date = empty($book->creation_date) ? '-' : dol_print_date($book->creation_date, "day");
+	$creation_date = empty($row->creation_date) ? '-' : dolibase_print_date($row->creation_date, "day");
 	$page->addColumn('t.creation_date', $creation_date, 'align="center"');
 
 	// Created by
-	$userstatic = new User($book->db);
-	$userstatic->fetch($book->created_by);
+	$userstatic->fetch($row->created_by);
 	$page->addColumn('t.created_by', $userstatic->getNomUrl(1), 'align="center"');
 
 	// Extrafields
-	$page->addExtraFields($book);
+	$page->addExtraFields($row);
 
 	$page->closeRow();
 }

@@ -306,11 +306,9 @@ class ListPage extends FormPage
 	 * Fetch extrafields
 	 *
 	 * @param   $elementtype   element type
-	 * @param   $more_fields   more fields to add separated by ','
-	 * @param   $join          join clause
-	 * @param   $where         where clause
+	 * @param   $qb            query builder instance
 	 */
-	public function fetchExtraFields($elementtype, &$more_fields, &$join, &$where)
+	public function fetchExtraFields($elementtype, &$qb)
 	{
 		global $db;
 
@@ -319,14 +317,17 @@ class ListPage extends FormPage
 		$this->search_array_options = $this->extrafields->getOptionalsFromPost($this->extralabels, '', 'search_');
 
 		// Add fields from extrafields
+		$more_fields = '';
 		foreach ($this->extrafields->attribute_label as $key => $val) {
 			$more_fields.= ($this->extrafields->attribute_type[$key] != 'separate' ? ', ef.'.$key.' as options_'.$key : '');
 		}
+		$qb->addSelect($more_fields);
 		if (is_array($this->extrafields->attribute_label) && count($this->extrafields->attribute_label)) {
-			$join.= " LEFT JOIN ".MAIN_DB_PREFIX.$elementtype."_extrafields as ef on (t.rowid = ef.fk_object)";
+			$qb->join($elementtype.'_extrafields as ef', '(t.rowid = ef.fk_object)', 'left');
 		}
 
 		// Loop to complete the sql search criterias from extrafields
+		$where = '';
 		foreach ($this->search_array_options as $key => $val)
 		{
 			$tmpkey = preg_replace('/search_options_/','',$key);
@@ -349,6 +350,7 @@ class ListPage extends FormPage
 				}
 			}
 		}
+		$qb->where($where);
 	}
 
 	/**

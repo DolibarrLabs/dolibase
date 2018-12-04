@@ -7,7 +7,7 @@
 
 ## v3
 
-* Merge deprecated CrudObject class into CustomObject (+ remove fetchAll function & use QueryBuilder class instead) ?
+* Merge deprecated CrudObject class into CustomObject?
 * Use spaces instead of tabulations to follow PSR-2?
 * New PDF models?
 * Introduce namespaces to dolibase?

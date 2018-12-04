@@ -46,6 +46,9 @@ class QueryBuilder
 		global $db;
 
 		$this->db = $db;
+		$this->select = '';
+		$this->from = '';
+		$this->join = ''; // why only those 3? => just to keep the right order for them when getting the query
 	}
 
 	/**
@@ -69,7 +72,7 @@ class QueryBuilder
 
 		foreach (get_object_vars($this) as $key => $value)
 		{
-			if (! in_array($key, array('db', 'result'))) {
+			if (! in_array($key, array('db', 'result')) && ! empty($value)) {
 				$parts[$key] = $value;
 			}
 		}
@@ -241,6 +244,40 @@ class QueryBuilder
 	}
 
 	/**
+	 * Add more options to SELECT statement (multiple calls allowed)
+	 *
+	 * @since     2.8.2
+	 * @param     $select_options     select options string or array
+	 * @param     $table_alias        table alias (works only when $select_options is an array)
+	 * @return    $this
+	 */
+	public function addSelect($select_options, $table_alias = '')
+	{
+		if (isset($this->select) && ! empty($this->select)) {
+			$this->select.= (is_string($select_options) && (empty($select_options) || $select_options[0] == ",") ? "" : ",");
+		}
+		else {
+			$this->select = "SELECT ";
+		}
+
+		if (is_array($select_options))
+		{
+			$alias = (! empty($table_alias) ? $table_alias.'.' : '');
+
+			foreach ($select_options as $field) {
+				$this->select.= $alias."`" . $field . "`,";
+			}
+			$this->select = substr($this->select, 0, -1); // Remove the last ','
+		}
+		else
+		{
+			$this->select.= $select_options;
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Add FROM clause to query
 	 *
 	 * @param     $table_name     table name string or array
@@ -279,7 +316,7 @@ class QueryBuilder
 	public function where($where_options)
 	{
 		if (isset($this->where)) {
-			$this->where.= " AND ";
+			$this->where.= (is_string($where_options) && (empty($where_options) || preg_match('/^\s*(AND|OR)/i', $where_options)) ? "" : " AND ");
 		}
 		else {
 			$this->where = "WHERE ";
@@ -314,7 +351,7 @@ class QueryBuilder
 	public function orWhere($where_options)
 	{
 		if (isset($this->orWhere)) {
-			$this->orWhere.= " OR ";
+			$this->orWhere.= (is_string($where_options) && (empty($where_options) || preg_match('/^\s*(AND|OR)/i', $where_options)) ? "" : " OR ");
 		}
 		else {
 			$this->orWhere = "OR ";
@@ -394,7 +431,7 @@ class QueryBuilder
 	 */
 	public function join($table_name, $join_options, $join_type = '')
 	{
-		if (isset($this->join)) {
+		if (isset($this->join) && ! empty($this->join)) {
 			$this->join.= " ".strtoupper($join_type);
 		}
 		else {
