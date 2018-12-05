@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.3 - DEC18
+
+*   FIX: specimen pdf generation.
+
+---
+
 #### 2.8.2 - DEC18
 
 *   NEW: enable function chaining on some public functions of Widget class.
