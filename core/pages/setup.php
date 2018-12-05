@@ -275,7 +275,7 @@ class SetupPage extends FormPage
 					$object->ref           = 'SPECIMEN';
 					$object->specimen      = 1;
 					$object->creation_date = time();
-					$object->lines         = array(
+					$object->doc_lines     = array(
 						array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'),
 						array('name' => 'Lorem ipsum', 'value' => 'Aliquam tincidunt mauris eu risus.'),
 						array('name' => 'Lorem ipsum', 'value' => 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.')
