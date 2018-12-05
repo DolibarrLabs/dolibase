@@ -50,7 +50,7 @@ $qb->select($book->fetch_fields, true, 't')
    ->orderBy('t.creation_date', 'DESC')
    ->limit(10);
 
-// Fetch result
+// Print rows
 $odd = true;
 
 foreach ($qb->result() as $row)
