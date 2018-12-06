@@ -114,6 +114,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "CustomObject.html", "name": "CustomObject", "doc": "&quot;CustomObject class&quot;"},
                                                         {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method___construct", "name": "CustomObject::__construct", "doc": "&quot;Constructor&quot;"},
+                    {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_clone", "name": "CustomObject::clone", "doc": "&quot;Clone an object&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_create", "name": "CustomObject::create", "doc": "&quot;Create object into database&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_update", "name": "CustomObject::update", "doc": "&quot;Update object into database&quot;"},
                     {"type": "Method", "fromName": "CustomObject", "fromLink": "CustomObject.html", "link": "CustomObject.html#method_delete", "name": "CustomObject::delete", "doc": "&quot;Delete object in database&quot;"},

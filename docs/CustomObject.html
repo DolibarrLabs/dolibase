@@ -356,6 +356,16 @@
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_clone">clone</a>($obj)
+        
+                                            <p>Clone an object</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     string
                 </div>
                 <div class="col-md-8 type">
@@ -475,7 +485,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_create">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L71">line 71</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L94">line 94</a></div>
         <code>                    int
     <strong>create</strong>(array $data, int $notrigger = 0)
         </code>
@@ -645,7 +655,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_update">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L91">line 91</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L114">line 114</a></div>
         <code>                    int
     <strong>update</strong>(array $data, int $notrigger = 0)
         </code>
@@ -790,7 +800,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_delete">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L110">line 110</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L133">line 133</a></div>
         <code>                    int
     <strong>delete</strong>(int $notrigger = 0)
         </code>
@@ -1029,8 +1039,39 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_clone">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L69">line 69</a></div>
+        <code>                    
+    <strong>clone</strong>($obj)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Clone an object</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$obj</td>
+                <td>object to clone from</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_getNextNumRef">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L132">line 132</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L155">line 155</a></div>
         <code>                    string
     <strong>getNextNumRef</strong>(string $const_name_prefix = &#039;&#039;, string $model_name = &#039;&#039;, Societe $soc = &#039;&#039;)
         </code>
@@ -1081,7 +1122,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
             </div>
                     <div class="method-item">
                     <h3 id="method_getNomUrl">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L196">line 196</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L219">line 219</a></div>
         <code>                    string
     <strong>getNomUrl</strong>(int $withpicto = 0, string $title = &#039;&#039;)
         </code>
@@ -1126,7 +1167,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
             </div>
                     <div class="method-item">
                     <h3 id="method_getLibStatut">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L231">line 231</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L254">line 254</a></div>
         <code>                    string
     <strong>getLibStatut</strong>(int $mode = 0)
         </code>
@@ -1166,7 +1207,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
             </div>
                     <div class="method-item">
                     <h3 id="method_getImage">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L241">line 241</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L264">line 264</a></div>
         <code>                    
     <strong>getImage</strong>($default_image)
         </code>
@@ -1197,7 +1238,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
             </div>
                     <div class="method-item">
                     <h3 id="method_generateDocument">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L279">line 279</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L302">line 302</a></div>
         <code>                    int
     <strong>generateDocument</strong>(string $model)
         </code>
@@ -1237,7 +1278,7 @@ defined into MODULE_RIGHTS_CLASS_ADDON</p>                                      
             </div>
                     <div class="method-item">
                     <h3 id="method_deleteDocument">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L353">line 353</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_object.php#L376">line 376</a></div>
         <code>                    int
     <strong>deleteDocument</strong>()
         </code>
