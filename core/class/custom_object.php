@@ -62,6 +62,29 @@ class CustomObject extends CrudObject
 	}
 
 	/**
+	 * Clone an object
+	 *
+	 * @param  $obj  object to clone from
+	 */
+	public function clone($obj)
+	{
+		foreach (get_object_vars($obj) as $key => $value)
+		{
+			if (in_array($key, $this->date_fields)) {
+				$this->$key = $this->db->jdate($value); // Fix error: dol_print_date function call with deprecated value of time
+			}
+			else {
+				$this->$key = $value;
+			}
+		}
+
+		// enssure that $this->id is filled because we use it in update & delete functions
+		if (! in_array('id', $this->fetch_fields)) {
+			$this->id = $obj->{$this->pk_name};
+		}
+	}
+
+	/**
 	 * Create object into database
 	 *
 	 * @param  array  data array, e.: array('my_field_name' => 'my_field_value', 'second_field_name' => 'second_field_value')

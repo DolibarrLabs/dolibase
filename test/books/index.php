@@ -59,7 +59,7 @@ foreach ($qb->result() as $row)
 	$page->openRow($odd);
 
 	// Ref
-	$book->fetch($row->rowid);
+	$book->clone($row); //$book->fetch($row->rowid);
 	$page->addColumn($book->getNomUrl(1), 'width="20%" class="nowrap"');
 
 	// Creation date
