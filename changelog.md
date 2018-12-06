@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.4 - DEC18
+
+*   NEW: clone function added to CustomObject class.
+
+---
+
 #### 2.8.3 - DEC18
 
 *   FIX: specimen pdf generation.
