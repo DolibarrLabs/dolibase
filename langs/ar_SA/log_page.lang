@@ -2,9 +2,6 @@
 #
 # Copyright (C) 2018 AXeL
 
-#
-# Generic
-#
 LogAction = العملية
 LogUser = المستخدم
 LogDate = التاريخ

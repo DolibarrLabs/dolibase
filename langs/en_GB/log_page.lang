@@ -2,9 +2,6 @@
 #
 # Copyright (C) 2018 AXeL
 
-#
-# Generic
-#
 LogAction = Action
 LogUser = User
 LogDate = Date

@@ -2,9 +2,6 @@
 #
 # Copyright (C) 2018 AXeL
 
-#
-# Generic
-#
 SaveAs = Zapisz jako
 SendByMail = Wyślij pocztą
 MailSubject = Przedłożenie dokumentu __REF__

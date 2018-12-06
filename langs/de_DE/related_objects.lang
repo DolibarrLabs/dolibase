@@ -2,9 +2,6 @@
 #
 # Copyright (C) 2018 AXeL
 
-#
-# Generic
-#
 AddRelated = Link hinzufügen
 ElementToLink = Erweiterte Links
 RelationAdded = Verbunden

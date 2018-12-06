@@ -2,9 +2,6 @@
 #
 # Copyright (C) 2018 AXeL
 
-#
-# Générique
-#
 SaveAs = Enregistrer au format
 SendByMail = Envoyer par mail
 MailSubject = Envoi du document __REF__
