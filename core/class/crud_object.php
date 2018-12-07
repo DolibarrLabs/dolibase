@@ -171,18 +171,19 @@ abstract class CrudObject extends CommonObject
 			if ($this->db->num_rows($resql)) {
 				$obj = $this->db->fetch_object($resql);
 
-				foreach ($this->fetch_fields as $field) {
-					$this->$field = $obj->$field;
+				foreach ($this->fetch_fields as $field)
+				{
+					if (in_array($field, $this->date_fields)) {
+						$this->$field = $this->db->jdate($obj->$field); // Fix error: dol_print_date function call with deprecated value of time
+					}
+					else {
+						$this->$field = $obj->$field;
+					}
 				}
 
 				// enssure that $this->id is filled because we use it in update & delete functions
 				if (! in_array('id', $this->fetch_fields)) {
 					$this->id = $obj->{$this->pk_name};
-				}
-
-				// Fix error: dol_print_date function call with deprecated value of time
-				foreach ($this->date_fields as $field) {
-					$this->$field = $this->db->jdate($this->$field);
 				}
 
 				$this->db->free($resql);
@@ -252,18 +253,19 @@ abstract class CrudObject extends CommonObject
 
 					$this->rows[$i] = new $classname();
 
-					foreach ($this->fetch_fields as $field) {
-						$this->rows[$i]->$field = $obj->$field;
+					foreach ($this->fetch_fields as $field)
+					{
+						if (in_array($field, $this->date_fields)) {
+							$this->rows[$i]->$field = $this->db->jdate($obj->$field); // Fix error: dol_print_date function call with deprecated value of time
+						}
+						else {
+							$this->rows[$i]->$field = $obj->$field;
+						}
 					}
 
 					// enssure that $this->id is filled because we use it in update/delete/getNomUrl functions
 					if ($set_id) {
 						$this->rows[$i]->id = $obj->{$this->pk_name};
-					}
-
-					// Fix error: dol_print_date function call with deprecated value of time
-					foreach ($this->date_fields as $field) {
-						$this->rows[$i]->$field = $this->db->jdate($this->rows[$i]->$field);
 					}
 
 					$i++;
