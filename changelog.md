@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.5 - DEC18
+
+*   NEW: more validation rules added, to know: minLength, maxLength, lessThan, greaterThan (revamped).
+
+---
+
 #### 2.8.4 - DEC18
 
 *   NEW: clone function added to CustomObject class.
