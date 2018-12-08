@@ -101,9 +101,10 @@ class FormPage extends Page
 	 */
 	public function checkField($field_name, $field_trans = '', $field_validation_rules = '', $return_err_number = false)
 	{
-		global $langs;
+		global $dolibase_config, $langs;
 
 		$langs->load("errors");
+		$langs->load("validation@".$dolibase_config['langs']['path']);
 
 		$error = 0;
 
@@ -154,10 +155,28 @@ class FormPage extends Page
 			$error++;
 		}
 
-		// greaterThanZero (escape if empty)
-		else if (in_array('greaterThanZero', $validation_rules) && $field_value != '' && is_numeric($field_value) && $field_value <= 0) {
-			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
-			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
+		// greaterThan (escape if empty)
+		else if (array_match('/^greaterThan\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && is_numeric($field_value) && $field_value <= $matches[1]) {
+			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldMustBeGreaterThan");
+			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			$error++;
+		}
+
+		// lessThan (escape if empty)
+		else if (array_match('/^lessThan\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && is_numeric($field_value) && $field_value >= $matches[1]) {
+			setEventMessage($langs->transnoentities("ErrorFieldMustBeLessThan", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			$error++;
+		}
+
+		// minLength (escape if empty)
+		else if (array_match('/^minLength\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && strlen($field_value) < $matches[1]) {
+			setEventMessage($langs->transnoentities("ErrorFieldMustHaveMinLength", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			$error++;
+		}
+
+		// maxLength (escape if empty)
+		else if (array_match('/^maxLength\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && strlen($field_value) > $matches[1]) {
+			setEventMessage($langs->transnoentities("ErrorFieldMustHaveMaxLength", $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 

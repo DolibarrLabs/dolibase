@@ -526,3 +526,27 @@ if (! function_exists('array_to_table'))
 		return $out;
 	}
 }
+
+/**
+ * Loops on an array values & check if a value matches the pattern using preg_match
+ *
+ * @since     2.8.5
+ * @param     $pattern   Regular expression pattern
+ * @param     $array     Array to check
+ * @param     $matches   Pattern matches
+ * @return    int|bool   1 if the pattern matches given array, 0 if it does not, or FALSE if an error occurred.
+ */
+if (! function_exists('array_match'))
+{
+	function array_match($pattern, $array, &$matches)
+	{
+		foreach ($array as $value) {
+			$result = preg_match($pattern, $value, $matches);
+			if ($result) {
+				return $result;
+			}
+		}
+
+		return 0;
+	}
+}

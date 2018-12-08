@@ -39,7 +39,7 @@ class Field
 	 * 
 	 * @param     $name                    Field name
 	 * @param     $trans                   Field translation
-	 * @param     $validation_rules        Field validation rules, possible values: 'required|numeric|string|email|tel|greaterThanZero'
+	 * @param     $validation_rules        Field validation rules, possible values: 'required|numeric|string|email|tel|greaterThan()|lessThan()|minLength()|maxLength()'
 	 */
 	public function __construct($name, $trans, $validation_rules = '')
 	{

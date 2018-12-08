@@ -1,0 +1,8 @@
+# Dolibase Setup Page - ar_SA
+#
+# Copyright (C) 2018 AXeL
+
+ErrorFieldMustBeGreaterThan = قيمة الحقل '%s' يجب أن تكون أكبر من %s
+ErrorFieldMustBeLessThan = قيمة الحقل '%s' يجب أن تكون أصغر من %s
+ErrorFieldMustHaveMinLength = قيمة الحقل '%s' يجب أن يكون الحد الأدنى لطولها %s حرف
+ErrorFieldMustHaveMaxLength = قيمة الحقل '%s' يجب أن يكون الحد الأقصى لطولها %s حرف

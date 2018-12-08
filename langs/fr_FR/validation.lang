@@ -1,0 +1,8 @@
+# Dolibase Setup Page - fr_FR
+#
+# Copyright (C) 2018 AXeL
+
+ErrorFieldMustBeGreaterThan = Le champ '%s' doit avoir une valeur supérieur à %s
+ErrorFieldMustBeLessThan = Le champ '%s' doit avoir une valeur inférieur à %s
+ErrorFieldMustHaveMinLength = Le champ '%s' doit avoir une longueur minimale de %s caractères
+ErrorFieldMustHaveMaxLength = Le champ '%s' doit avoir une longueur maximale de %s caractères

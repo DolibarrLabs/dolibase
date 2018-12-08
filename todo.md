@@ -3,7 +3,6 @@
 * Module export/import options
 * Hierarchical view page?
 * Enhance widget class with graph(s) support.
-* Add more validation rules like minLength, maxLength, ... & add validation.lang file for error messages translations.
 * Menu class with functions to add or remove menu(s)?
 
 ## v3
