@@ -226,7 +226,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_fetchExtraFields", "name": "ListPage::fetchExtraFields", "doc": "&quot;Fetch extrafields&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_addButtons", "name": "ListPage::addButtons", "doc": "&quot;Add buttons to the list&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeList", "name": "ListPage::closeList", "doc": "&quot;Close list&quot;"},
-                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close table row&quot;"},
+                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close a table row&quot;"},
             
             {"type": "Class",  "link": "LogPage.html", "name": "LogPage", "doc": "&quot;LogPage class&quot;"},
                                                         {"type": "Method", "fromName": "LogPage", "fromLink": "LogPage.html", "link": "LogPage.html#method___construct", "name": "LogPage::__construct", "doc": "&quot;Constructor&quot;"},

@@ -3,7 +3,7 @@
 * Module export/import options
 * Hierarchical view page?
 * Enhance widget class with graph(s) support.
-* Menu class with functions to add or remove menu(s)?
+* Menu class with functions to add/remove menu(s)?
 
 ## v3
 
