@@ -143,22 +143,28 @@ class FormPage extends Page
 			$error++;
 		}
 
-		// email (escape if empty)
-		else if (in_array('email', $validation_rules) && $field_value != '' && ! preg_match('/^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i', $field_value)) {
+		// validEmail (escape if empty)
+		else if (in_array('validEmail', $validation_rules) && $field_value != '' && ! preg_match('/^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i', $field_value)) {
 			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
-		// tel (escape if empty)
-		else if (in_array('tel', $validation_rules) && $field_value != '' && ! preg_match('/^[0-9\-\(\)\/\+\s]*$/', $field_value)) {
+		// validTel (escape if empty)
+		else if (in_array('validTel', $validation_rules) && $field_value != '' && ! preg_match('/^[0-9\-\(\)\/\+\s]*$/', $field_value)) {
 			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+			$error++;
+		}
+
+		// validID (escape if empty)
+		else if (in_array('validID', $validation_rules) && $field_value != '' && is_numeric($field_value) && $field_value <= 0) {
+			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
+			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// greaterThan (escape if empty)
 		else if (array_match('/^greaterThan\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && is_numeric($field_value) && $field_value <= $matches[1]) {
-			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldMustBeGreaterThan");
-			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			setEventMessage($langs->transnoentities("ErrorFieldMustBeGreaterThan", $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 
