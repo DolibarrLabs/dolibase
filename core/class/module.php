@@ -84,7 +84,7 @@ class DolibaseModule extends DolibarrModules
 		$this->module_position = $this->config['module']['position'];
 		$this->name            = $this->config['module']['name'];
 		$this->description     = $this->config['module']['desc'];
-		$this->version         = $this->config['module']['version'];
+		$this->version         = ($this->config['module']['version'] == 'dolibase' ? $this->config['main']['version'] : $this->config['module']['version']);
 		$this->const_name      = "MAIN_MODULE_".strtoupper($this->name);
 		$this->special         = 0;
 		$this->picto           = $this->config['module']['picture']."@".$this->config['module']['folder'];
