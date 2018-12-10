@@ -2,6 +2,7 @@
 
 // Load Dolibase
 dol_include_once('/myfirstmodule/autoload.php');
+
 // Load Dolibase Widget class
 dolibase_include_once('/core/class/widget.php');
 

@@ -20,6 +20,8 @@ class modBooks extends DolibaseModule
 		$this->activateNumModel("marbre");
 		$this->activateDocModel("azur");
 
+		$this->addWidget("bookswidget.php");
+
 		$this->addPermission("read", "Read permission", "r");
 		$this->addPermission("create", "Create permission", "c");
 		$this->addPermission("modify", "Modify permission", "m");

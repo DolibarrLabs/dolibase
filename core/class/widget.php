@@ -153,8 +153,6 @@ class Widget extends ModeleBoxes
 
 		$current_line = $lines_count > 0 ? $lines_count - 1 : 0;
 
-		$cols_count = count($this->info_box_contents[$current_line]);
-
 		$this->info_box_contents[$current_line][] = array(
 			// HTML properties of the TD element
 			'td'           => $attr,
@@ -178,7 +176,9 @@ class Widget extends ModeleBoxes
 			//'asis2'        => true
 		);
 
-		if ($cols_count == 0 && ! empty($first_col_attr)) {
+		$cols_count = count($this->info_box_contents[$current_line]);
+
+		if ($cols_count == 1 && ! empty($first_col_attr)) {
 			//  HTML properties of the TR element. Only available on the first column.
 			$this->info_box_contents[$current_line][0]['tr'] = $first_col_attr;
 		}
