@@ -1,9 +1,17 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.6 - DEC18
+
+*   NEW: `tel`/`email` validation rules renamed & `validID` added.
+*   NEW: test modules version is now set to the same as dolibase version.
+*   FIX: PHP warning on widget class.
+
+---
+
 #### 2.8.5 - DEC18
 
-*   NEW: more validation rules added, to know: minLength, maxLength, lessThan, greaterThan (revamped).
+*   NEW: more validation rules added, to know: `minLength`, `maxLength`, `lessThan`, `greaterThan` (revamped).
 
 ---
 
