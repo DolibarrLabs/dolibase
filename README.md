@@ -40,10 +40,9 @@ dolibarr module                                         dolibase module
 │       └── mymodule.lang                               │   │   └── mymodule.lang
 ├── sql                                                 │   └── **_**
 │   ├── *.sql                                           │       └── mymodule.lang
-│   ├── *.key.sql                                       ├── sql
-│   └── data.sql (optional)                             │   ├── *.sql
-├── css                                                 │   ├── *.key.sql
-│   └── *.css                                           │   └── data.sql (optional)
+│   └── *.key.sql                                       ├── sql
+├── css                                                 │   ├── *.sql
+│   └── *.css                                           │   └── *.key.sql
 ├── js                                                  ├── css
 │   └── *.js                                            │   └── *.css
 └── myfirstpage.php                                     ├── js
