@@ -3,9 +3,10 @@
 
 #### 2.8.6 - DEC18
 
-*   NEW: `tel`/`email` validation rules renamed & `validID` added.
+*   NEW: `tel`, `email` validation rules renamed & `validID` added.
 *   NEW: test modules version is now set to the same as dolibase version.
-*   FIX: PHP warning on widget class.
+*   NEW: widget added for books module.
+*   FIX: PHP warning on Widget class.
 
 ---
 
