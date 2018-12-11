@@ -453,18 +453,18 @@ class DolibaseModule extends DolibarrModules
 	protected function addMenu($type, $fk_menu, $main_menu, $left_menu, $title, $url, $position, $enabled = '1', $perms = '1', $target = '')
 	{
 		$this->menu[] = array(
-					'fk_menu' => $fk_menu,
-					'type' => $type,
-					'titre' => $title,
-					'mainmenu' => $main_menu,
-					'leftmenu' => $left_menu,
-					'url' => $url,
-					'langs' => $this->config['other']['menu_lang_file'],
-					'position' => $position,
-					'enabled' => $enabled,
-					'perms' => $perms,
-					'target' => $target,
-					'user' => 2 // 0=Menu for internal users, 1=external users, 2=both
+			'fk_menu' => $fk_menu,
+			'type' => $type,
+			'titre' => $title,
+			'mainmenu' => $main_menu,
+			'leftmenu' => $left_menu,
+			'url' => $url,
+			'langs' => $this->config['other']['menu_lang_file'],
+			'position' => $position,
+			'enabled' => $enabled,
+			'perms' => $perms,
+			'target' => $target,
+			'user' => 2 // 0=Menu for internal users, 1=external users, 2=both
 		);
 	}
 
