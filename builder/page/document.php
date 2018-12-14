@@ -65,15 +65,15 @@ if ($action == 'generate')
 
 		// Add card page tab
 		if ($add_card_tab) {
-			$data['tabs'] .= '$page->addTab("Card", "/'.$module_folder.'/card.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= '$page->addTab("Card", "'.$module_folder.'/card.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add document page tab
-		$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab(DocumentPage::getTabTitle($object), "/'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);';
+		$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab(DocumentPage::getTabTitle($object), "'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);';
 
 		// Add log page tab
 		if ($add_log_tab) {
-			$data['tabs'] .= "\n\t".'$page->addTab("Log", "/'.$module_folder.'/log.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= "\n\t".'$page->addTab("Log", "'.$module_folder.'/log.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add page into module

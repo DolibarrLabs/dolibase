@@ -42,7 +42,7 @@ if ($action == 'generate')
 		'show_documents_block' => bool2Alpha(getPostData('show_documents_block')),
 		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
 		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);',
-		'tabs' => '$page->addTab("Card", "/'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);'
+		'tabs' => '$page->addTab("Card", "'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);'
 	);
 
 	// Check if page already exist
@@ -69,12 +69,12 @@ if ($action == 'generate')
 		// Add document page tab
 		if ($add_document_tab) {
 			$data['object_class_include'] .= "\n// Load Document Page class\ndolibase_include_once('/core/pages/document.php');";
-			$data['tabs'] .= "\n\t".'$page->addTab(DocumentPage::getTabTitle($object), "/'.$module_folder.'/document.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= "\n\t".'$page->addTab(DocumentPage::getTabTitle($object), "'.$module_folder.'/document.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add log page tab
 		if ($add_log_tab) {
-			$data['tabs'] .= "\n\t".'$page->addTab("Log", "/'.$module_folder.'/log.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= "\n\t".'$page->addTab("Log", "'.$module_folder.'/log.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add page into module

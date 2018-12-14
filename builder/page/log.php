@@ -65,17 +65,17 @@ if ($action == 'generate')
 
 		// Add card page tab
 		if ($add_card_tab) {
-			$data['tabs'] .= '$page->addTab("Card", "/'.$module_folder.'/card.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= '$page->addTab("Card", "'.$module_folder.'/card.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add document page tab
 		if ($add_document_tab) {
 			$data['object_class_include'] .= "\n// Load Document Page class\ndolibase_include_once('/core/pages/document.php');";
-			$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab(DocumentPage::getTabTitle($object), "/'.$module_folder.'/document.php?id=".$id."&ref=".$ref);';
+			$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab(DocumentPage::getTabTitle($object), "'.$module_folder.'/document.php?id=".$id."&ref=".$ref);';
 		}
 
 		// Add log page tab
-		$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab("Log", "/'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);';
+		$data['tabs'] .= (empty($data['tabs']) ? '' : "\n\t").'$page->addTab("Log", "'.$module_folder.'/'.$page_name.'?id=".$id."&ref=".$ref, true);';
 
 		// Add page into module
 		$template = getTemplate(__DIR__ . '/../tpl/page/log.php', $data);

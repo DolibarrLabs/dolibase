@@ -232,7 +232,7 @@ class CustomObject extends CrudObject
 			$label .= '<br><b>' . $langs->trans($key) . ':</b> ' . $value;
 		}
 
-		$url = dol_buildpath((! empty($this->card_url) ? $this->card_url : '/'.$dolibase_config['module']['folder'].'/card.php') . '?id='.$this->id, 1);
+		$url = dol_buildpath((! empty($this->card_url) ? $this->card_url : $dolibase_config['module']['folder'].'/card.php') . '?id='.$this->id, 1);
 		$link = '<a href="'.$url.'" title="'.dol_escape_htmltag($label, 1).'" class="classfortooltip">';
 		$linkend = '</a>';
 
