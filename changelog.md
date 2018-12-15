@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 2.8.7 - DEC18
+
+*   FIX: `set_*` action in Setup page.
+
+---
+
 #### 2.8.6 - DEC18
 
 *   NEW: `tel`, `email` validation rules renamed & `validID` added.
