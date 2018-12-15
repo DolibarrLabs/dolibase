@@ -157,6 +157,9 @@ class SetupPage extends FormPage
 			{
 				$code = $reg[1];
 				$value = GETPOST($code);
+				if ($value == '') {
+					$value = 1;
+				}
 
 				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
 				{
