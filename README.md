@@ -1,6 +1,6 @@
 # Dolibase
 
-[![Stable Version](https://img.shields.io/badge/stable-v2.8.6-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.8.6)
+[![Stable Version](https://img.shields.io/badge/stable-v2.8.7-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v2.8.7)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
@@ -74,7 +74,7 @@ Dolibase can act in 2 different ways:
  - **Globally**: this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
  - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those who use a new one.
 
-So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory.
+So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory or use the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
 
 ## Quick start
 
@@ -109,11 +109,11 @@ class modMyFirstModule extends DolibaseModule
         $this->addConstant('MY_FIRST_MODULE_CONST', 'test');
 
         // Add widget(s)
-        $this->addWidget('mybox.php');
+        $this->addWidget('mywidget.php');
 
         // Add CSS & JS files
-        $this->addCssFile('mycss.css.php')
-             ->addJsFile('myjs.js.php');
+        $this->addCssFile('mycss.css')
+             ->addJsFile('myjs.js');
 
         // Set user permissions
         $this->addPermission('read', 'Read permission', 'r');
@@ -262,24 +262,6 @@ $page->end();
 :tada: So simple isn't it ?!
 
 Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
-
-## Tips
-
-1. **Disable automatic check for module updates**:
-
-   Dolibase may check automatically for a newer module(s) version(s) on [Dolistore](https://www.dolistore.com/) & it may slowdown your modules list page if you have a slow connection or if you are using many modules based on dolibase, so to disable this feature for all the modules at once:
-
-      - Go to **Home** > **Setup** > **Modules** > **Other setup**.
-      - Add a new entry as `DOLIBASE_DISABLE_CHECK_FOR_UPDATES` & give it the value `1`.
-      - Confirm using **Add** button & that's it.
-
-2. **Enable experimental & development modules**:
-
-   By default experimental & development modules are disabled/hidden on Dolibarr, if you want to enable them:
-
-      - Go to **Home** > **Setup** > **Modules** > **Other setup**.
-      - Search for the entry name `MAIN_FEATURES_LEVEL` (or add it if it don't exist), then set the value to `2`.
-      - Confirm using **Modify** button at the bottom.
 
 ## Changelog
 
