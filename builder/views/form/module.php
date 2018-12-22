@@ -91,7 +91,11 @@
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="enable_triggers" name="enable_triggers">
-				<label class="form-check-label" for="enable_logs">Enable triggers</label>
+				<label class="form-check-label" for="enable_triggers">Enable triggers</label>
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="enable_for_external_users" name="enable_for_external_users">
+				<label class="form-check-label" for="enable_for_external_users">Enable for external users</label>
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="use_custom_class" name="use_custom_class">

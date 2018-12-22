@@ -50,6 +50,7 @@ if ($action == 'generate')
 		'check_updates' => bool2Alpha(getPostData('check_updates')),
 		'enable_logs' => bool2Alpha(getPostData('enable_logs')),
 		'enable_triggers' => bool2Alpha(getPostData('enable_triggers')),
+		'enable_for_external_users' => bool2Alpha(getPostData('enable_for_external_users')),
 		'author_name' => getPostData('author_name'),
 		'author_url' => getPostData('author_url'),
 		'author_email' => getPostData('author_email'),
