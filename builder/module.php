@@ -34,6 +34,7 @@ if ($action == 'generate')
 	$add_generic_left_menu = getPostData('add_generic_left_menu');
 	$add_crud_perms = getPostData('add_crud_perms');
 	$add_extrafields_page = getPostData('add_extrafields_page');
+	$add_changelog_page = getPostData('add_changelog_page');
 	$add_num_models_settings = getPostData('add_num_models_settings');
 	$add_doc_models_settings = getPostData('add_doc_models_settings');
 	$data = array(
@@ -107,6 +108,7 @@ if ($action == 'generate')
 		// Create setup page
 		$setup_data = array(
 			'add_extrafields_tab' => bool2Alpha($add_extrafields_page),
+			'add_changelog_tab' => bool2Alpha($add_changelog_page),
 			'settings' => ($add_num_models_settings || $add_doc_models_settings ? '' : '$page->setupNotAvailable();')
 		);
 		if ($add_num_models_settings) {
@@ -130,6 +132,7 @@ if ($action == 'generate')
 		// Create about page
 		$about_data = array(
 			'add_extrafields_tab' => $setup_data['add_extrafields_tab'],
+			'add_changelog_tab' => $setup_data['add_changelog_tab'],
 			'picture' => $data['picture']
 		);
 		$about_template = getTemplate(__DIR__ . '/tpl/module/about.php', $about_data);
@@ -138,7 +141,11 @@ if ($action == 'generate')
 		// Create extrafields page
 		if ($add_extrafields_page) {
 			$element_type = sanitizeString(strtolower($module_name));
-			$extrafields_template = getTemplate(__DIR__ . '/tpl/module/extrafields.php', array('element_type' => $element_type));
+			$extrafields_data = array(
+				'element_type' => $element_type,
+				'add_changelog_tab' => $setup_data['add_changelog_tab']
+			);
+			$extrafields_template = getTemplate(__DIR__ . '/tpl/module/extrafields.php', $extrafields_data);
 			file_put_contents($module_path.'/admin/extrafields.php', $extrafields_template);
 			// Create extrafields table
 			$extrafields_table_data = array(
@@ -150,6 +157,22 @@ if ($action == 'generate')
 			file_put_contents($module_path.'/sql/llx_'.$extrafields_table_data['table_name'].'.sql', $extrafields_table_template);
 			$extrafields_key_sql_template = getTemplate(__DIR__ . '/tpl/module/extrafields.key.sql', $extrafields_table_data);
 			file_put_contents($module_path.'/sql/llx_'.$extrafields_table_data['table_name'].'.key.sql', $extrafields_key_sql_template);
+		}
+
+		// Create changelog page
+		if ($add_changelog_page) {
+			$changelog_data = array(
+				'add_extrafields_tab' => $setup_data['add_extrafields_tab']
+			);
+			$changelog_template = getTemplate(__DIR__ . '/tpl/module/changelog.php', $changelog_data);
+			file_put_contents($module_path.'/admin/changelog.php', $changelog_template);
+			// Create changelog.json file
+			$changelog_json_data = array(
+				'version' => $data['version'],
+				'current_date' => date('Y/m/d')
+			);
+			$changelog_json_template = getTemplate(__DIR__ . '/tpl/module/changelog.json', $changelog_json_data);
+			file_put_contents($module_path.'/changelog.json', $changelog_json_template);
 		}
 
 		// Create module class

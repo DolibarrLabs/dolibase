@@ -7,7 +7,7 @@ include_once '../autoload.php';
 dolibase_include_once('/core/pages/extrafields.php');
 
 // Create ExtraFields Page using Dolibase
-$page = new ExtraFieldsPage('${element_type}');
+$page = new ExtraFieldsPage('${element_type}', 'ExtraFields', '$user->admin', ${add_changelog_tab});
 
 $page->begin();
 

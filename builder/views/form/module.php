@@ -185,6 +185,11 @@
 				<label class="form-check-label" for="add_extrafields_page" aria-describedby="addExtrafieldsPageHelp">Add extrafields page</label>
 				<small id="addExtrafieldsPageHelp" class="form-text text-muted">adds also an extrafields table into sql folder</small>
 			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="add_changelog_page" name="add_changelog_page" checked>
+				<label class="form-check-label" for="add_changelog_page" aria-describedby="addChangelogPageHelp">Add changelog page</label>
+				<small id="addChangelogPageHelp" class="form-text text-muted">adds also a changelog.json file into module folder</small>
+			</div>
 		</div>
 
 		<input type="hidden" name="action" value="generate">
