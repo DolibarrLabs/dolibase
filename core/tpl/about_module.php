@@ -15,7 +15,7 @@
  * 
  */
 
-global $langs, $dolibase_config;
+global $langs, $dolibase_config, $db;
 
 if (empty($picture)) {
 	$picture = 'object_'.$dolibase_config['module']['picture'];
@@ -51,7 +51,50 @@ if (empty($picture)) {
 		<span><?php echo $langs->trans('FindMyModules'); ?></span>
 		<a href="<?php echo $dolibase_config['author']['dolistore_url']; ?>" target="_blank"><?php echo $langs->trans('Dolistore'); ?></a>
 	</div>
+	<div class="tabsAction force-center">
+		<a href="<?php echo dol_buildpath($dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home&action=report_bug', 1); ?>" class="buttonDelete"><?php echo $langs->trans('ReportBug'); ?></a>
+	</div>
 </div>
-<br>
 
 <?php
+
+$action = GETPOST('action', 'alpha');
+
+if ($action == 'report_bug')
+{
+
+?>
+
+<table class="noborder allwidth">
+	<tr class="liste_titre">
+		<td width="20%"><?php echo $langs->trans("TechnicalInformations"); ?></td>
+		<td><?php echo $langs->trans("Value"); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $langs->trans("DolibarrVersion"); ?></td>
+		<td><?php echo DOL_VERSION; ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $langs->trans("ModuleVersion"); ?></td>
+		<td><?php echo $dolibase_config['module']['version']; ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $langs->trans("PHPVersion"); ?></td>
+		<td><?php echo version_php(); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $langs->trans("DatabaseVersion"); ?></td>
+		<td><?php echo $db->getVersion(); ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $langs->trans("WebServerVersion"); ?></td>
+		<td><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></td>
+	</tr>
+	<tr>
+		<td colspan="2"><br><i><?php echo $langs->trans("ReportBugNote"); ?></i></td>
+	</tr>
+</table>
+
+<?php
+
+}
