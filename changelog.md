@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.0 - DEC18
+
+*   NEW: Report bug button added to about page template (under module informations).
+*   NEW: Changelog page.
+*   NEW: functions to enable/disable module(s) for external users added into DolibaseModule class.
+
+---
+
 #### 2.8.7 - DEC18
 
 *   FIX: `set_*` action in Setup page.
