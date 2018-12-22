@@ -238,6 +238,14 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_add_changelog_tab">
+                                        protected                                        boolean
+                </td>
+                <td>$add_changelog_tab</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -249,7 +257,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($elementtype, $page_title = &#039;ExtraFields&#039;, $access_perm = &#039;$user-&gt;admin&#039;)
+                    <a href="#method___construct">__construct</a>($elementtype, $page_title = &#039;ExtraFields&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_changelog_tab = false)
         
                                             <p>Constructor</p>                </div>
                 <div class="col-md-2"></div>
@@ -643,9 +651,9 @@ Note: this function should be called before $page->begin() function, otherwise i
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L45">line 45</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L50">line 50</a></div>
         <code>                    
-    <strong>__construct</strong>($elementtype, $page_title = &#039;ExtraFields&#039;, $access_perm = &#039;$user-&gt;admin&#039;)
+    <strong>__construct</strong>($elementtype, $page_title = &#039;ExtraFields&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_changelog_tab = false)
         </code>
     </h3>
     <div class="details">
@@ -672,6 +680,11 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <td></td>
                 <td>$access_perm</td>
                 <td>Access permission</td>
+            </tr>
+                    <tr>
+                <td></td>
+                <td>$add_changelog_tab</td>
+                <td>Add changelog tab</td>
             </tr>
             </table>
 
@@ -1087,7 +1100,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generateTabs">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L86">line 86</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L96">line 96</a></div>
         <code>            protected        
     <strong>generateTabs</strong>($noheader = -1)
         </code>
@@ -1561,7 +1574,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_loadDefaultActions">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L95">line 95</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L105">line 105</a></div>
         <code>            protected        
     <strong>loadDefaultActions</strong>()
         </code>
@@ -1612,7 +1625,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L63">line 63</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L70">line 70</a></div>
         <code>            protected        
     <strong>generate</strong>()
         </code>
@@ -1932,7 +1945,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_printExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L112">line 112</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/extrafields.php#L122">line 122</a></div>
         <code>                    
     <strong>printExtraFields</strong>()
         </code>

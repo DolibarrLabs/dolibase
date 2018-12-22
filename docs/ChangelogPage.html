@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>AboutPage | Dolibase Documentation</title>
+    <title>ChangelogPage | Dolibase Documentation</title>
 
             <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -19,7 +19,7 @@
     
     </head>
 
-    <body id="class" data-name="class:AboutPage" data-root-path="">
+    <body id="class" data-name="class:ChangelogPage" data-root-path="">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
@@ -66,20 +66,20 @@
                 
     <div class="page-header">
         <h1>
-            AboutPage
+            ChangelogPage
                 
         </h1>
     </div>
 
     <p>    class
-    <strong>AboutPage</strong>        extends <a href="Page.html">Page</a>        (<a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/about.php">View source</a>)
+    <strong>ChangelogPage</strong>        extends <a href="Page.html">Page</a>        (<a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/changelog.php">View source</a>)
 </p>
 
         
     
 
             <div class="description">
-            <p>AboutPage class</p>                                </div>
+            <p>ChangelogPage class</p>                                </div>
     
     
     
@@ -206,14 +206,6 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
-                    <tr>
-                <td class="type" id="property_add_changelog_tab">
-                                        protected                                        boolean
-                </td>
-                <td>$add_changelog_tab</td>
-                <td class="last"></td>
-                <td></td>
-            </tr>
             </table>
 
     
@@ -225,7 +217,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>($page_title = &#039;About&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_extrafields_tab = false, $add_changelog_tab = false)
+                    <a href="#method___construct">__construct</a>($page_title = &#039;Changelog&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_extrafields_tab = false)
         
                                             <p>Constructor</p>                </div>
                 <div class="col-md-2"></div>
@@ -546,9 +538,9 @@ Note: this function should be called before $page->begin() function, otherwise i
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_printModuleInformations">printModuleInformations</a>($picture = &#039;&#039;)
+                    <a href="#method_printChangelog">printChangelog</a>()
         
-                                            <p>Print module informations</p>                </div>
+                                            <p>Print module changelog</p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -559,9 +551,9 @@ Note: this function should be called before $page->begin() function, otherwise i
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/about.php#L44">line 44</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/changelog.php#L39">line 39</a></div>
         <code>                    
-    <strong>__construct</strong>($page_title = &#039;About&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_extrafields_tab = false, $add_changelog_tab = false)
+    <strong>__construct</strong>($page_title = &#039;Changelog&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $add_extrafields_tab = false)
         </code>
     </h3>
     <div class="details">
@@ -588,11 +580,6 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <td></td>
                 <td>$add_extrafields_tab</td>
                 <td>Add extrafields tab</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$add_changelog_tab</td>
-                <td>Add changelog tab</td>
             </tr>
             </table>
 
@@ -1008,7 +995,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generateTabs">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/about.php#L94">line 94</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/changelog.php#L86">line 86</a></div>
         <code>            protected        
     <strong>generateTabs</strong>($noheader = -1)
         </code>
@@ -1533,7 +1520,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/about.php#L66">line 66</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/changelog.php#L60">line 60</a></div>
         <code>            protected        
     <strong>generate</strong>()
         </code>
@@ -1605,10 +1592,10 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_printModuleInformations">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/about.php#L104">line 104</a></div>
+                    <h3 id="method_printChangelog">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/changelog.php#L95">line 95</a></div>
         <code>                    
-    <strong>printModuleInformations</strong>($picture = &#039;&#039;)
+    <strong>printChangelog</strong>()
         </code>
     </h3>
     <div class="details">
@@ -1616,18 +1603,8 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Print module informations</p>                                                </div>
+                                    <p>Print module changelog</p>                                                </div>
                 <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$picture</td>
-                <td>Picture to show, prefered size: 128x128 (leave empty to use the module picture)</td>
-            </tr>
-            </table>
-
             
             
             

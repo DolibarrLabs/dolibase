@@ -171,6 +171,26 @@ Undefined function or attribute xxx in DolibaseModule class.</p>
                     
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_enableModuleForExternalUsers">enableModuleForExternalUsers</a>($module_rights_class)
+        
+                                            <p>Enable module for external users</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_disableModuleForExternalUsers">disableModuleForExternalUsers</a>($module_rights_class)
+        
+                                            <p>Disable module for external users</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setAddons">setAddons</a>()
         
                                             <p>Set/Activate addons required by module</p>                </div>
@@ -561,8 +581,70 @@ It also creates data directories</p>                            </div>
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_enableModuleForExternalUsers">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L225">line 225</a></div>
+        <code>            protected        
+    <strong>enableModuleForExternalUsers</strong>($module_rights_class)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Enable module for external users</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$module_rights_class</td>
+                <td>Module rights class</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_disableModuleForExternalUsers">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L240">line 240</a></div>
+        <code>            protected        
+    <strong>disableModuleForExternalUsers</strong>($module_rights_class)
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Disable module for external users</p>                                                </div>
+                <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td></td>
+                <td>$module_rights_class</td>
+                <td>Module rights class</td>
+            </tr>
+            </table>
+
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setAddons">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L219">line 219</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L265">line 265</a></div>
         <code>            protected        
     <strong>setAddons</strong>()
         </code>
@@ -583,7 +665,7 @@ It also creates data directories</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_loadTables">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L248">line 248</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L294">line 294</a></div>
         <code>            protected        int
     <strong>loadTables</strong>()
         </code>
@@ -616,7 +698,7 @@ This function is called by this->init</p>                                       
             </div>
                     <div class="method-item">
                     <h3 id="method_remove">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L267">line 267</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L313">line 313</a></div>
         <code>                    int
     <strong>remove</strong>(string $options = &#039;&#039;)
         </code>
@@ -657,7 +739,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addConstant">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L283">line 283</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L334">line 334</a></div>
         <code>                    $this
     <strong>addConstant</strong>($name, $value, $desc = &#039;&#039;, $type = &#039;chaine&#039;)
         </code>
@@ -712,7 +794,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addWidget">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L306">line 306</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L357">line 357</a></div>
         <code>                    $this
     <strong>addWidget</strong>($widget_filename, $note = &#039;&#039;, $enabled_by_default_on = &#039;Home&#039;)
         </code>
@@ -762,7 +844,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addPermission">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L326">line 326</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L377">line 377</a></div>
         <code>                    $this
     <strong>addPermission</strong>($name, $desc = &#039;&#039;, $type = &#039;&#039;, $enabled_by_default = 1)
         </code>
@@ -817,7 +899,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addSubPermission">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L349">line 349</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L400">line 400</a></div>
         <code>                    $this
     <strong>addSubPermission</strong>($perm_name, $subperm_name, $desc = &#039;&#039;, $type = &#039;&#039;, $enabled_by_default = 1)
         </code>
@@ -877,7 +959,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_generatePermissionID">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L374">line 374</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L425">line 425</a></div>
         <code>            protected        int
     <strong>generatePermissionID</strong>()
         </code>
@@ -907,7 +989,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addTopMenu">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L391">line 391</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L442">line 442</a></div>
         <code>                    $this
     <strong>addTopMenu</strong>($name, $title, $url, $perms = &#039;1&#039;, $enabled = &#039;1&#039;, $position = 100, $target = &#039;&#039;)
         </code>
@@ -977,7 +1059,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addLeftMenu">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L411">line 411</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L462">line 462</a></div>
         <code>                    $this
     <strong>addLeftMenu</strong>($main_menu, $name, $title, $url, $perms = &#039;1&#039;, $enabled = &#039;1&#039;, $position = 100, $target = &#039;&#039;)
         </code>
@@ -1052,7 +1134,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addLeftSubMenu">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L432">line 432</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L483">line 483</a></div>
         <code>                    $this
     <strong>addLeftSubMenu</strong>($main_menu, $left_menu, $name, $title, $url, $perms = &#039;1&#039;, $enabled = &#039;1&#039;, $position = 100, $target = &#039;&#039;)
         </code>
@@ -1132,7 +1214,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addMenu">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L453">line 453</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L504">line 504</a></div>
         <code>            protected        
     <strong>addMenu</strong>($type, $fk_menu, $main_menu, $left_menu, $title, $url, $position, $enabled = &#039;1&#039;, $perms = &#039;1&#039;, $target = &#039;&#039;)
         </code>
@@ -1208,7 +1290,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCssFile">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L477">line 477</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L528">line 528</a></div>
         <code>                    $this
     <strong>addCssFile</strong>($css_filename)
         </code>
@@ -1248,7 +1330,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCssFiles">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L490">line 490</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L541">line 541</a></div>
         <code>                    $this
     <strong>addCssFiles</strong>($css_files_array)
         </code>
@@ -1288,7 +1370,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addJsFile">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L505">line 505</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L556">line 556</a></div>
         <code>                    $this
     <strong>addJsFile</strong>($js_filename)
         </code>
@@ -1328,7 +1410,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addJsFiles">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L518">line 518</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L569">line 569</a></div>
         <code>                    $this
     <strong>addJsFiles</strong>($js_files_array)
         </code>
@@ -1368,7 +1450,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_enableHook">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L533">line 533</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L584">line 584</a></div>
         <code>                    $this
     <strong>enableHook</strong>($hook)
         </code>
@@ -1408,7 +1490,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_enableHooks">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L546">line 546</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L597">line 597</a></div>
         <code>                    $this
     <strong>enableHooks</strong>($hooks_array)
         </code>
@@ -1448,7 +1530,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_enableTriggers">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L560">line 560</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L611">line 611</a></div>
         <code>                    $this
     <strong>enableTriggers</strong>()
         </code>
@@ -1478,7 +1560,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addDictionary">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L581">line 581</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L632">line 632</a></div>
         <code>                    $this
     <strong>addDictionary</strong>($table_name, $table_label, $select_fields = &#039;rowid, label, active&#039;, $table_sort = &#039;label ASC&#039;, $fields_to_show = &#039;label&#039;, $fields_to_update = &#039;label&#039;, $fields_to_insert = &#039;label&#039;, $table_pk_field = &#039;rowid&#039;, $fields_help = array())
         </code>
@@ -1558,7 +1640,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addModulePart">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L612">line 612</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L663">line 663</a></div>
         <code>            protected        
     <strong>addModulePart</strong>($module_part, $value)
         </code>
@@ -1594,7 +1676,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_activateNumModel">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L624">line 624</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L675">line 675</a></div>
         <code>                    $this
     <strong>activateNumModel</strong>($name, $const_prefix = &#039;&#039;)
         </code>
@@ -1639,7 +1721,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_activateDocModel">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L639">line 639</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L690">line 690</a></div>
         <code>                    $this
     <strong>activateDocModel</strong>($name, $type = &#039;&#039;, $const_prefix = &#039;&#039;)
         </code>
@@ -1689,7 +1771,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCronJob">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L662">line 662</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L713">line 713</a></div>
         <code>            protected        
     <strong>addCronJob</strong>($label, $type, $command = &#039;&#039;, $class = &#039;&#039;, $object_name = &#039;&#039;, $object_method = &#039;&#039;, $method_parameters = &#039;&#039;, $comment = &#039;&#039;, $frequency = 2, $frequency_unit = 3600, $status = 0, $priority = 0)
         </code>
@@ -1775,7 +1857,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCronCommand">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L693">line 693</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L744">line 744</a></div>
         <code>                    $this
     <strong>addCronCommand</strong>($label, $command, $frequency, $frequency_unit, $comment = &#039;&#039;, $priority = 0, $status = 1)
         </code>
@@ -1845,7 +1927,7 @@ Data directories are not deleted</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_addCronMethod">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L715">line 715</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/module.php#L766">line 766</a></div>
         <code>                    $this
     <strong>addCronMethod</strong>($label, $class, $object_name, $object_method, $method_parameters, $frequency, $frequency_unit, $comment = &#039;&#039;, $priority = 0, $status = 1)
         </code>
