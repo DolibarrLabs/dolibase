@@ -33,25 +33,32 @@ class ExtraFieldsPage extends FormPage
 	 * @var object extra fields
 	 */
 	protected $extrafields;
+	/**
+	 * @var boolean used to add changelog tab
+	 */
+	protected $add_changelog_tab = false;
 
 
 	/**
 	 * Constructor
 	 * 
-	 * @param     $elementtype    Must be the $table_element of the class that manage extrafield
-	 * @param     $page_title     HTML page title
-	 * @param     $access_perm    Access permission
+	 * @param     $elementtype           Must be the $table_element of the class that manage extrafield
+	 * @param     $page_title            HTML page title
+	 * @param     $access_perm           Access permission
+	 * @param     $add_changelog_tab     Add changelog tab
 	 */
-	public function __construct($elementtype, $page_title = 'ExtraFields', $access_perm = '$user->admin')
+	public function __construct($elementtype, $page_title = 'ExtraFields', $access_perm = '$user->admin', $add_changelog_tab = false)
 	{
 		global $db, $langs;
 
 		// Load lang files
 		$langs->load("admin");
+		$langs->load("extrafields_page@".$dolibase_config['langs']['path']);
 
 		// Set attributes
-		$this->elementtype = $elementtype;
-		$this->extrafields = new ExtraFields($db);
+		$this->elementtype       = $elementtype;
+		$this->extrafields       = new ExtraFields($db);
+		$this->add_changelog_tab = $add_changelog_tab;
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -72,6 +79,9 @@ class ExtraFieldsPage extends FormPage
 		if (empty($this->tabs)) {
 			$this->addTab("Settings", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home");
 			$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home", true);
+			if ($this->add_changelog_tab) {
+				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
+			}
 			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
 		}
 

@@ -18,19 +18,15 @@
 dolibase_include_once('/core/class/page.php');
 
 /**
- * AboutPage class
+ * ChangelogPage class
  */
 
-class AboutPage extends Page
+class ChangelogPage extends Page
 {
 	/**
 	 * @var boolean used to add extrafields tab
 	 */
 	protected $add_extrafields_tab = false;
-	/**
-	 * @var boolean used to add changelog tab
-	 */
-	protected $add_changelog_tab = false;
 
 
 	/**
@@ -39,22 +35,20 @@ class AboutPage extends Page
 	 * @param     $page_title                 HTML page title
 	 * @param     $access_perm                Access permission
 	 * @param     $add_extrafields_tab        Add extrafields tab
-	 * @param     $add_changelog_tab          Add changelog tab
 	 */
-	public function __construct($page_title = 'About', $access_perm = '$user->admin', $add_extrafields_tab = false, $add_changelog_tab = false)
+	public function __construct($page_title = 'Changelog', $access_perm = '$user->admin', $add_extrafields_tab = false)
 	{
 		global $langs, $dolibase_config;
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['langs']['path']);
+		$langs->load("changelog_page@".$dolibase_config['langs']['path']);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;
-		$this->add_changelog_tab   = $add_changelog_tab;
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/about.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/changelog.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -77,10 +71,8 @@ class AboutPage extends Page
 			if ($this->add_extrafields_tab) {
 				$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
 			}
-			if ($this->add_changelog_tab) {
-				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
-			}
-			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home", true);
+			$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home", true);
+			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
 		}
 
 		parent::generate();
@@ -97,17 +89,13 @@ class AboutPage extends Page
 	}
 
 	/**
-	 * Print module informations
+	 * Print module changelog
 	 *
-	 * @param     $picture     Picture to show, prefered size: 128x128 (leave empty to use the module picture)
 	 */
-	public function printModuleInformations($picture = '')
+	public function printChangelog()
 	{
-		$template_path = dolibase_buildpath('/core/tpl/about_module.php');
-		$template_params = array(
-			'picture' => $picture
-		);
+		$template_path = dolibase_buildpath('/core/tpl/module_changelog.php');
 
-		$this->showTemplate($template_path, true, true, $template_params);
+		$this->showTemplate($template_path, true, true);
 	}
 }

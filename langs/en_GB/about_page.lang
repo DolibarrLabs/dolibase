@@ -3,6 +3,7 @@
 # Copyright (C) 2018 AXeL
 
 Settings = Settings
+Changelog = Changelog
 About = About
 DevelopedBy = Developed by
 DolibaseVersion = This module use Dolibase version

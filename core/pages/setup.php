@@ -68,6 +68,10 @@ class SetupPage extends FormPage
 	 * @var boolean used to add extrafields tab
 	 */
 	protected $add_extrafields_tab = false;
+	/**
+	 * @var boolean used to add changelog tab
+	 */
+	protected $add_changelog_tab = false;
 
 
 	/**
@@ -77,12 +81,13 @@ class SetupPage extends FormPage
 	 * @param     $access_perm                Access permission
 	 * @param     $disable_default_actions    Disable default actions
 	 * @param     $add_extrafields_tab        Add extrafields tab
+	 * @param     $add_changelog_tab          Add changelog tab
 	 * @param     $const_name_prefix          Constant name prefix
 	 * @param     $doc_model_type             Document model type
 	 * @param     $doc_object_class           Document object class
 	 * @param     $doc_object_path            Document object path
 	 */
-	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $const_name_prefix = '', $doc_model_type = '', $doc_object_class = '', $doc_object_path = '')
+	public function __construct($page_title = 'Setup', $access_perm = '$user->admin', $disable_default_actions = false, $add_extrafields_tab = false, $add_changelog_tab = false, $const_name_prefix = '', $doc_model_type = '', $doc_object_class = '', $doc_object_path = '')
 	{
 		global $langs, $dolibase_config;
 
@@ -93,6 +98,7 @@ class SetupPage extends FormPage
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
 		$this->add_extrafields_tab     = $add_extrafields_tab;
+		$this->add_changelog_tab       = $add_changelog_tab;
 		$this->const_name_prefix       = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true));
 
 		// Set numbering model constant name
@@ -350,6 +356,9 @@ class SetupPage extends FormPage
 			$this->addTab("Settings", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home", true);
 			if ($this->add_extrafields_tab) {
 				$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
+			}
+			if ($this->add_changelog_tab) {
+				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
 			}
 			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
 		}

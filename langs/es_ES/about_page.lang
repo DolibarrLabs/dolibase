@@ -3,6 +3,7 @@
 # Copyright (C) 2018 AXeL
 
 Settings = Configuraciones
+Changelog = Registro de cambios
 About = Acerca de
 DevelopedBy = Desarrollado por
 DolibaseVersion = Este módulo usa la versión Dolibase
