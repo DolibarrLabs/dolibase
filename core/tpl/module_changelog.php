@@ -56,7 +56,7 @@ if (file_exists($changelog_file))
 						$badge = '<span class="'.$badge_class.'">'.$entry->badge.'</span>';
 					}
 
-					echo '<div class="release-details">'.$badge.$entry->title.'</div>';
+					echo '<div class="release-details">'.$badge.$entry->text.'</div>';
 				} ?>
 			</td>
 		</tr>
