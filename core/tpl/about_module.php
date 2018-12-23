@@ -80,7 +80,7 @@ if ($action == 'report_bug')
 	</tr>
 	<tr>
 		<td><?php echo $langs->trans("PHPVersion"); ?></td>
-		<td><?php echo version_php(); ?></td>
+		<td><?php echo phpversion(); ?></td>
 	</tr>
 	<tr>
 		<td><?php echo $langs->trans("DatabaseVersion"); ?></td>
