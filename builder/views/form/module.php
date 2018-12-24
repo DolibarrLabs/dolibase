@@ -82,7 +82,7 @@
 				<small id="pictureHelp" class="form-text text-muted">preferred size (128 x 128)</small>
 			</div>
 			<div class="form-group form-check">
-				<input type="checkbox" class="form-check-input" id="check_updates" name="check_updates">
+				<input type="checkbox" class="form-check-input" id="check_updates" name="check_updates" checked>
 				<label class="form-check-label" for="check_updates">Enable check for module updates</label>
 			</div>
 			<div class="form-group form-check">
