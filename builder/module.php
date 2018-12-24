@@ -180,7 +180,7 @@ if ($action == 'generate')
 			'module_folder' => $data['folder'],
 			'module_class_name' => sanitizeString(ucfirst($module_name)),
 			'dolibase_class_name' => 'DolibaseModule',
-			'dolibase_class_include' => "dolibase_include_once('/core/class/module.php');",
+			'dolibase_class_include' => "dolibase_include_once('core/class/module.php');",
 			'module_settings' => ''
 		);
 		$perms_translation = '';

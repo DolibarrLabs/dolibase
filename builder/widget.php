@@ -73,7 +73,7 @@ if ($action == 'generate')
 		// Create widget class
 		$data['widget_class_name'] = sanitizeString(ucfirst($widget_name));
 		$data['dolibase_class_name'] = 'Widget';
-		$data['dolibase_class_include']  = "dolibase_include_once('/core/class/widget.php');";
+		$data['dolibase_class_include']  = "dolibase_include_once('core/class/widget.php');";
 		if ($use_custom_class) {
 			// Copy widget class into module folder & rename it from Widget to WidgetXXX where XXX represent the current version of dolibase
 			$dolibase_version = getDolibaseVersion($root);
