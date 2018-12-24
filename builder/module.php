@@ -242,6 +242,7 @@ if ($action == 'generate')
 			'module_name' => strtoupper($module_name),
 			'current_year' => date('Y'),
 			'author_name' => $data['author_name'],
+			'module_name_translation' => 'Module'.$data['number'].'Name = '.$module_name,
 			'permissions_translation' => $perms_translation
 		);
 		$english_template = getTemplate(__DIR__ . '/tpl/module/en_US.lang', $lang_data);
