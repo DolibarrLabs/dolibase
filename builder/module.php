@@ -73,7 +73,8 @@ if ($action == 'generate')
 		'img',
 		'langs/en_US',
 		'langs/fr_FR',
-		'sql'
+		'sql',
+		'tpl'
 	);
 
 	if (! mkdir_r($module_sub_folders, 0777, $module_path))
