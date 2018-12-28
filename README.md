@@ -96,10 +96,10 @@ http://localhost/dolibarr/htdocs/dolibase/builder
 <?php
 
 // Load Dolibase
-dol_include_once('/myfirstmodule/autoload.php');
+dol_include_once('myfirstmodule/autoload.php');
 
 // Load Dolibase Module class
-dolibase_include_once('/core/class/module.php');
+dolibase_include_once('core/class/module.php');
 
 class modMyFirstModule extends DolibaseModule
 {
@@ -136,7 +136,7 @@ class modMyFirstModule extends DolibaseModule
 include_once 'autoload.php';
 
 // Load Dolibase Page class
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('core/class/page.php');
 
 // Create Page using Dolibase
 $page = new Page('My Page Title', '$user->rights->myfirstmodule->read'); // set page title & control user access
@@ -160,10 +160,10 @@ $page->end();
 include_once 'autoload.php';
 
 // Load Dolibase Page class
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('core/class/page.php');
 
 // Load Query Builder class
-dolibase_include_once('/core/class/query_builder.php');
+dolibase_include_once('core/class/query_builder.php');
 
 // Create Page using Dolibase
 $page = new Page('Test Query Builder');
