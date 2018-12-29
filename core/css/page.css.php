@@ -24,8 +24,7 @@ html, body, div#id-container {
 }
 
 .hidden {
-	display: none !important;
-	visibility: hidden;
+	display: none;
 }
 
 .force-center {

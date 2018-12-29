@@ -109,7 +109,7 @@ class CardPage extends CreatePage
 			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/table2csv/table2csv.js').'"></script>'."\n");
 			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/save_as.js.php').'"></script>'."\n");
 		}
-		
+
 		parent::__construct($page_title, $access_perm);
 	}
 

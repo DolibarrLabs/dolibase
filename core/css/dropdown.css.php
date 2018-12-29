@@ -99,7 +99,6 @@ header('Content-Type: text/css');
 
 .hidden {
 	display: none;
-	visibility: hidden;
 }
 
 .align-middle {
