@@ -16,7 +16,8 @@
 		trimContent: true,
 		excludeColumns: '',
 		excludeRows: '',
-		excludeTags: ''
+		excludeTags: '',
+		filter: ':visible'
 	};
 	
 	function quote(text) {
@@ -42,10 +43,10 @@
 			
 		var rows = table.find('> tbody > tr').not(options.excludeRows);
 		
-		var numCols = rows.first().find("> td,> th").filter(":visible").not(options.excludeColumns).length;
+		var numCols = rows.first().find("> td,> th").filter(options.filter).not(options.excludeColumns).length;
 		
 		rows.each(function() {
-			$(this).find("> td,> th").filter(":visible").not(options.excludeColumns)
+			$(this).find("> td,> th").filter(options.filter).not(options.excludeColumns)
 			.each(function(i, col) {
 				col = $(col);
 
