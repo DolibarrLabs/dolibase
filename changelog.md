@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.1 - DEC18
+
+*   NEW: enhance table2csv plugin.
+*   FIX: minor fixes.
+
+---
+
 #### 2.9.0 - DEC18
 
 *   NEW: Report bug button added to about page template (under module informations).
