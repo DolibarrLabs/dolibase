@@ -229,7 +229,7 @@ abstract class CrudObject extends CommonObject
 		}
 
 		// SELECT request
-		$sql = "SELECT ";
+		$sql = "SELECT DISTINCT ";
 		foreach ($this->fetch_fields as $field) {
 			$sql.= "`" . $field . "`,";
 		}
