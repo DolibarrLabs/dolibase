@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/form_page.php');
+dolibase_include_once('core/class/form_page.php');
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
 
 /**
@@ -111,7 +111,7 @@ class SetupPage extends FormPage
 		$this->doc_object_path      = $doc_object_path;
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/setup.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/setup.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -268,7 +268,7 @@ class SetupPage extends FormPage
 					$classname = $this->doc_object_class;
 				}
 				else {
-					dolibase_include_once('/core/class/custom_object.php');
+					dolibase_include_once('core/class/custom_object.php');
 					$classname = 'CustomObject';
 				}
 
@@ -382,7 +382,7 @@ class SetupPage extends FormPage
 	 */
 	public function setupNotAvailable()
 	{
-		$template_path = dolibase_buildpath('/core/tpl/setup_not_available.php');
+		$template_path = dolibase_buildpath('core/tpl/setup_not_available.php');
 
 		$this->showTemplate($template_path, true, true);
 	}

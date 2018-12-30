@@ -221,7 +221,7 @@ function show_related_objects($object)
 {
 	global $langs, $db;
 
-	dolibase_include_once('/core/class/query_builder.php');
+	dolibase_include_once('core/class/query_builder.php');
 
 	$action = GETPOST('action');
 
@@ -352,7 +352,7 @@ function show_related_objects($object)
 			$('#add_related_object').autocomplete({
 				source: function(request, response) {
 					$.ajax({
-						url: "<?php echo dolibase_buildurl('/core/ajax/related_objects.php'); ?>",
+						url: "<?php echo dolibase_buildurl('core/ajax/related_objects.php'); ?>",
 						dataType: "json",
 						data: {
 							key: request.term,

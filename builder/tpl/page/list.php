@@ -4,13 +4,13 @@
 include_once 'autoload.php';
 
 // Load Dolibase Page class
-dolibase_include_once('/core/pages/list.php');
+dolibase_include_once('core/pages/list.php');
 
 // Load Object class
 ${object_class_include}
 
 // Load Dolibase QueryBuilder class
-dolibase_include_once('/core/class/query_builder.php');
+dolibase_include_once('core/class/query_builder.php');
 
 // Create Page using Dolibase
 $page = new ListPage('${page_title}', '${access_perms}');

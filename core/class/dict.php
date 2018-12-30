@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/query_builder.php');
+dolibase_include_once('core/class/query_builder.php');
 
 /**
  * Dictionary class

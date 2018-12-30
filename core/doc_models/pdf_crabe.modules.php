@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/doc_models/pdf_azur.modules.php');
+dolibase_include_once('core/doc_models/pdf_azur.modules.php');
 
 /**
  * pdf_crabe class

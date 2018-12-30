@@ -15,8 +15,8 @@
  * 
  */
 
-dolibase_include_once('/core/class/form_page.php');
-dolibase_include_once('/core/class/query_builder.php');
+dolibase_include_once('core/class/form_page.php');
+dolibase_include_once('core/class/query_builder.php');
 require_once DOL_DOCUMENT_ROOT . '/core/lib/date.lib.php';
 
 /**
@@ -39,7 +39,7 @@ class LogPage extends FormPage
 		$langs->load("log_page@".$dolibase_config['langs']['path']);
 
 		// Add CSS files
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/banner.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}

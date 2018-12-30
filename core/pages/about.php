@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('core/class/page.php');
 
 /**
  * AboutPage class
@@ -54,7 +54,7 @@ class AboutPage extends Page
 		$this->add_changelog_tab   = $add_changelog_tab;
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/about.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/about.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -103,7 +103,7 @@ class AboutPage extends Page
 	 */
 	public function printModuleInformations($picture = '')
 	{
-		$template_path = dolibase_buildpath('/core/tpl/about_module.php');
+		$template_path = dolibase_buildpath('core/tpl/about_module.php');
 		$template_params = array(
 			'picture' => $picture
 		);

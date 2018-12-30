@@ -1,7 +1,7 @@
 <?php
 
 // Load Dolibase CustomObject class
-dolibase_include_once('/core/class/custom_object.php');
+dolibase_include_once('core/class/custom_object.php');
 
 class ${object_classname} extends CustomObject
 {

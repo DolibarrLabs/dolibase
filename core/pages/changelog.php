@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('core/class/page.php');
 
 /**
  * ChangelogPage class
@@ -48,7 +48,7 @@ class ChangelogPage extends Page
 		$this->add_extrafields_tab = $add_extrafields_tab;
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/changelog.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/changelog.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}
@@ -94,7 +94,7 @@ class ChangelogPage extends Page
 	 */
 	public function printChangelog()
 	{
-		$template_path = dolibase_buildpath('/core/tpl/module_changelog.php');
+		$template_path = dolibase_buildpath('core/tpl/module_changelog.php');
 
 		$this->showTemplate($template_path, true, true);
 	}

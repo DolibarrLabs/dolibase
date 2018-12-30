@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/crud_object.php');
+dolibase_include_once('core/class/crud_object.php');
 
 /**
  * Logs class

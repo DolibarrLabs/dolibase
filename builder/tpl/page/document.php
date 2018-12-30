@@ -4,7 +4,7 @@
 include_once 'autoload.php';
 
 // Load Dolibase Page class
-dolibase_include_once('/core/pages/document.php');
+dolibase_include_once('core/pages/document.php');
 
 // Load Object class
 ${object_class_include}

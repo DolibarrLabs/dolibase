@@ -15,9 +15,9 @@
  * 
  */
 
-dolibase_include_once('/core/pages/create.php');
-dolibase_include_once('/core/lib/related_objects.php');
-dolibase_include_once('/core/lib/mailing.php');
+dolibase_include_once('core/pages/create.php');
+dolibase_include_once('core/lib/related_objects.php');
+dolibase_include_once('core/lib/mailing.php');
 
 /**
  * CardPage class
@@ -96,18 +96,18 @@ class CardPage extends CreatePage
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
 		if ($optioncss == 'print') {
-			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/print.css.php').'">'."\n");
+			$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/print.css.php').'">'."\n");
 		}
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/dropdown.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/banner.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/dropdown.css.php').'">'."\n");
 
 		// Add JS files
-		$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/dropdown.js.php').'"></script>'."\n");
+		$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('core/js/dropdown.js.php').'"></script>'."\n");
 		if ($enable_save_as) {
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/jsPDF/jspdf.min.js').'"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/jsPDF/jspdf.plugin.autotable.min.js').'"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/table2csv/table2csv.js').'"></script>'."\n");
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/save_as.js.php').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('vendor/jsPDF/jspdf.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('vendor/jsPDF/jspdf.plugin.autotable.min.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('vendor/table2csv/table2csv.js').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('core/js/save_as.js.php').'"></script>'."\n");
 		}
 
 		parent::__construct($page_title, $access_perm);
@@ -219,7 +219,7 @@ class CardPage extends CreatePage
 		}
 
 		echo '<div class="dropdown-click">';
-		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.dolibase_buildurl('/core/img/arrow-down.png').'" /></label>';
+		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.dolibase_buildurl('core/img/arrow-down.png').'" /></label>';
 		echo '<div class="dropdown-content dropdown-bottom">';
 
 		// buttons list
@@ -256,8 +256,8 @@ class CardPage extends CreatePage
 	public function addSaveAsButton($close_parent_div = false)
 	{
 		$buttons = array(
-			array('name' => 'CSV', 'picto' => dolibase_buildurl('/core/img/csv.png'), 'id' => 'save_as_csv', 'style' => 'text-align: center;'),
-			array('name' => 'PDF', 'picto' => dolibase_buildurl('/core/img/pdf.png'), 'id' => 'save_as_pdf', 'style' => 'text-align: center;')
+			array('name' => 'CSV', 'picto' => dolibase_buildurl('core/img/csv.png'), 'id' => 'save_as_csv', 'style' => 'text-align: center;'),
+			array('name' => 'PDF', 'picto' => dolibase_buildurl('core/img/pdf.png'), 'id' => 'save_as_pdf', 'style' => 'text-align: center;')
 		);
 
 		$this->addListButton('SaveAs', $buttons, 'butAction', $close_parent_div);

@@ -1,10 +1,10 @@
 <?php
 
 // Load Dolibase
-dol_include_once('/${module_folder}/autoload.php');
+dol_include_once('${module_folder}/autoload.php');
 
 // Load Dolibase DocModel class
-dolibase_include_once('/core/class/doc_model.php');
+dolibase_include_once('core/class/doc_model.php');
 
 /**
  * Modele${model_class} class

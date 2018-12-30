@@ -34,7 +34,7 @@ if ($action == 'generate')
 		'module_folder' => $module_folder,
 		'page_title' => getPostData('page_title'),
 		'access_perms' => getPostData('access_perms'),
-		'object_class_include' => "dolibase_include_once('/core/class/custom_object.php');",
+		'object_class_include' => "dolibase_include_once('core/class/custom_object.php');",
 		'object_init' => '$object = new CustomObject();'."\n".'// $object->setTableName(...);'
 	);
 
@@ -55,7 +55,7 @@ if ($action == 'generate')
 	{
 		// Set object class include & init
 		if (! empty($object_class)) {
-			$data['object_class_include'] = "dol_include_once('/".$module_folder."/class/".$object_class."');";
+			$data['object_class_include'] = "dol_include_once('".$module_folder."/class/".$object_class."');";
 			$data['object_init'] = '$object = new '.getClassName($module_path.'/class/'.$object_class).'();';
 		}
 

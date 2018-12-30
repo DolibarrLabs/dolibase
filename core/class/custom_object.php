@@ -15,8 +15,8 @@
  * 
  */
 
-dolibase_include_once('/core/class/crud_object.php');
-dolibase_include_once('/core/class/logs.php');
+dolibase_include_once('core/class/crud_object.php');
+dolibase_include_once('core/class/logs.php');
 
 /**
  * CustomObject class

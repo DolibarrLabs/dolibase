@@ -1,7 +1,7 @@
 <?php
 
 // Load Dolibase DocModel class
-dolibase_include_once('/core/class/doc_model.php');
+dolibase_include_once('core/class/doc_model.php');
 
 // Load Dolibarr pdf lib
 include_once DOL_DOCUMENT_ROOT.'/core/lib/pdf.lib.php';

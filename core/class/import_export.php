@@ -28,11 +28,11 @@ class ImportExport
 	 */
 	public static function addJsFiles(&$page)
 	{
-		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/vendor/FileSaver/FileSaver.min.js').'"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('vendor/FileSaver/FileSaver.min.js').'"></script>'."\n");
 
-		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/import.js.php').'"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('core/js/import.js.php').'"></script>'."\n");
 
-		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/export.js.php').'"></script>'."\n");
+		$page->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('core/js/export.js.php').'"></script>'."\n");
 	}
 
 	/**

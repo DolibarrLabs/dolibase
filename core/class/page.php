@@ -110,7 +110,7 @@ class Page
 		}
 
 		// Add some custom css
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/page.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/page.css.php').'">'."\n");
 
 		// Load default actions
 		$this->loadDefaultActions();
@@ -531,7 +531,7 @@ class Page
 	 */
 	public function underConstruction()
 	{
-		$template_path = dolibase_buildpath('/core/tpl/page_under_construction.php');
+		$template_path = dolibase_buildpath('core/tpl/page_under_construction.php');
 
 		$this->showTemplate($template_path, true, true);
 	}
@@ -542,7 +542,7 @@ class Page
 	 */
 	public function notFound()
 	{
-		$template_path = dolibase_buildpath('/core/tpl/page_not_found.php');
+		$template_path = dolibase_buildpath('core/tpl/page_not_found.php');
 
 		$this->showTemplate($template_path, true, true);
 	}

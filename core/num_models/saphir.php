@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/num_model.php');
+dolibase_include_once('core/class/num_model.php');
 
 /**
  * NumModelSaphir class

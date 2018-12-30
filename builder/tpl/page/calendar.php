@@ -4,7 +4,7 @@
 include_once 'autoload.php';
 
 // Load Dolibase Page class
-dolibase_include_once('/core/pages/calendar.php');
+dolibase_include_once('core/pages/calendar.php');
 
 // Load Object class
 ${object_class_include}

@@ -15,7 +15,7 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
+dolibase_include_once('core/class/page.php');
 require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
 require_once DOL_DOCUMENT_ROOT . '/core/class/html.formfile.class.php';
 
@@ -39,7 +39,7 @@ class DocumentPage extends Page
 		$langs->load("other");
 
 		// Add CSS files
-		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('/core/css/banner.css.php').'">'."\n");
+		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/banner.css.php').'">'."\n");
 
 		parent::__construct($page_title, $access_perm);
 	}

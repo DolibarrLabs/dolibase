@@ -25,7 +25,7 @@ function send_mail($object = null)
 	global $action, $mysoc, $db, $conf, $user, $langs;
 
 	if (! is_object($object)) {
-		dolibase_include_once('/core/class/mail_object.php');
+		dolibase_include_once('core/class/mail_object.php');
 		$object = new MailObject($db);
 	}
 

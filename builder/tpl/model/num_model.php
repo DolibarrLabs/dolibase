@@ -1,7 +1,7 @@
 <?php
 
 // Load Dolibase NumModel class
-dolibase_include_once('/core/class/num_model.php');
+dolibase_include_once('core/class/num_model.php');
 
 /**
  * ${model_classname} class

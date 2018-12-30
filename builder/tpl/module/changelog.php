@@ -4,7 +4,7 @@
 include_once '../autoload.php';
 
 // Load Dolibase ChangelogPage class
-dolibase_include_once('/core/pages/changelog.php');
+dolibase_include_once('core/pages/changelog.php');
 
 // Create Changelog Page using Dolibase
 $page = new ChangelogPage('Changelog', '$user->admin', ${add_extrafields_tab});

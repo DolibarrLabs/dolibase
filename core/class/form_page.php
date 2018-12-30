@@ -15,9 +15,9 @@
  * 
  */
 
-dolibase_include_once('/core/class/page.php');
-dolibase_include_once('/core/class/custom_form.php');
-dolibase_include_once('/core/class/field.php');
+dolibase_include_once('core/class/page.php');
+dolibase_include_once('core/class/custom_form.php');
+dolibase_include_once('core/class/field.php');
 
 /**
  * FormPage class
@@ -54,7 +54,7 @@ class FormPage extends Page
 
 		// Add custom js
 		if ($conf->use_javascript_ajax) {
-			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('/core/js/form.js.php').'"></script>'."\n");
+			$this->appendToHead('<script type="text/javascript" src="'.dolibase_buildurl('core/js/form.js.php').'"></script>'."\n");
 		}
 
 		parent::__construct($page_title, $access_perm);

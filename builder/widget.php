@@ -85,7 +85,7 @@ if ($action == 'generate')
 					}
 					file_replace_contents($module_path.'/class/widget.php', '({\n+)\/\*.*?\*\/\n+(class)', '$1$2', '/', '/s'); // remove class comment
 					file_replace_contents($module_path.'/class/widget.php', 'Widget', $data['dolibase_class_name']);
-					$data['dolibase_class_include'] = "dol_include_once('/".$data['module_folder']."/class/widget.php');";
+					$data['dolibase_class_include'] = "dol_include_once('".$data['module_folder']."/class/widget.php');";
 				}
 			}
 		}
