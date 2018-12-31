@@ -163,7 +163,7 @@ class SetupPage extends FormPage
 			{
 				$code = $reg[1];
 				$value = GETPOST($code);
-				if ($value == '') {
+				if (! is_submitted($code)) {
 					$value = 1;
 				}
 
