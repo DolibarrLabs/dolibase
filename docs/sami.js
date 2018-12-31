@@ -151,7 +151,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_generateTabs", "name": "DocumentPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_showBanner", "name": "DocumentPage::showBanner", "doc": "&quot;Show banner&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_getTabTitle", "name": "DocumentPage::getTabTitle", "doc": "&quot;Return Tab title&quot;"},
-                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page beginning + print documents\/linked files&quot;"},
+                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page beginning&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_printDocuments", "name": "DocumentPage::printDocuments", "doc": "&quot;Print documents\/linked files&quot;"},
             
             {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;DolibaseModule class&quot;"},
@@ -234,7 +234,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_fetchExtraFields", "name": "ListPage::fetchExtraFields", "doc": "&quot;Fetch extrafields&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_addButtons", "name": "ListPage::addButtons", "doc": "&quot;Add buttons to the list&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeList", "name": "ListPage::closeList", "doc": "&quot;Close list&quot;"},
-                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close table row&quot;"},
+                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close a table row&quot;"},
             
             {"type": "Class",  "link": "LogPage.html", "name": "LogPage", "doc": "&quot;LogPage class&quot;"},
                                                         {"type": "Method", "fromName": "LogPage", "fromLink": "LogPage.html", "link": "LogPage.html#method___construct", "name": "LogPage::__construct", "doc": "&quot;Constructor&quot;"},
