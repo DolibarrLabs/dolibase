@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.2 - DEC18
+
+*   NEW: allow function chaining of `core/class` public functions.
+*   FIX: in setup page, `set_*` action value should be set to 1 only if not submitted.
+*   FIX: add DISTINCT to fetchAll function in CrudObject class.
+
+---
+
 #### 2.9.1 - DEC18
 
 *   NEW: enhance table2csv plugin.

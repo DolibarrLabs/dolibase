@@ -22,7 +22,7 @@ global $dolibase_config;
  */
 
 $dolibase_config['main'] = array(
-	'version'             => '2.9.1', // possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
+	'version'             => '2.9.2', // possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
 	'link'                => 'https://github.com/AXeL-dev/dolibase',
 	'path'                => get_dolibase_path(),
 	'tables'              => array('logs'),
