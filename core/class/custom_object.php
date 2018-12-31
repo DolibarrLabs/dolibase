@@ -65,6 +65,7 @@ class CustomObject extends CrudObject
 	 * Clone an object
 	 *
 	 * @param  $obj  object to clone from
+	 * @return $this
 	 */
 	public function clone($obj)
 	{
@@ -82,6 +83,8 @@ class CustomObject extends CrudObject
 		if (! in_array('id', $this->fetch_fields)) {
 			$this->id = $obj->{$this->pk_name};
 		}
+
+		return $this;
 	}
 
 	/**
@@ -260,6 +263,7 @@ class CustomObject extends CrudObject
 	 * Get object image(s)
 	 *
 	 * @param     $default_image     Default image to show if no image is available
+	 * @return    string             Object image(s) HTML output
 	 */
 	public function getImage($default_image)
 	{

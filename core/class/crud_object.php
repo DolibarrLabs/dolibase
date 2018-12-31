@@ -75,10 +75,13 @@ abstract class CrudObject extends CommonObject
 	 * Set table name
 	 * 
 	 * @param  $table_name  table name
+	 * @return $this
 	 */
 	public function setTableName($table_name)
 	{
 		$this->table_element = $table_name;
+
+		return $this;
 	}
 
 	/**

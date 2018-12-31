@@ -218,6 +218,7 @@ class FormPage extends Page
 	 * @param     $question           Message question / content
 	 * @param     $action             Action to do after confirmation
 	 * @param     $question_param     Question parameter
+	 * @return    $this
 	 */
 	public function askForConfirmation($url, $title, $question, $action, $question_param = '')
 	{
@@ -226,16 +227,21 @@ class FormPage extends Page
 		$use_ajax = $dolibase_config['main']['use_ajax_on_confirm'] ? 1 : 0;
 
 		$this->body = $this->form->formconfirm($url, $langs->trans($title), $langs->trans($question, $question_param), $action, '', '', $use_ajax);
+
+		return $this;
 	}
 
 	/**
 	 * Append a content to page body
 	 *
 	 * @param     $content     content to add
+	 * @return    $this
 	 */
 	public function appendToBody($content)
 	{
 		$this->body = $content;
+
+		return $this;
 	}
 
 	/**
