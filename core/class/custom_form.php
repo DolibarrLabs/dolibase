@@ -130,7 +130,7 @@ class CustomForm extends Form
 	 */
 	public function rangeInput($name, $value, $min = 0, $max = 100)
 	{
-		return '<input type="range" min="'.$min.'" max="'.$max.'" class="flat" name="'.$name.'" value="'.$value.'">';
+		return '<input type="range" min="'.$min.'" max="'.$max.'" class="flat valignmiddle" name="'.$name.'" value="'.$value.'">';
 	}
 
 	/**
