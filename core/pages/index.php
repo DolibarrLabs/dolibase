@@ -68,37 +68,49 @@ class IndexPage extends FormPage
 	/**
 	 * Opens a left section
 	 *
+	 * @return  $this
 	 */
 	public function openLeftSection()
 	{
 		echo '<div class="fichethirdleft">';
+
+		return $this;
 	}
 
 	/**
 	 * Close a left section
 	 *
+	 * @return  $this
 	 */
 	public function closeLeftSection()
 	{
 		echo '</div>';
+
+		return $this;
 	}
 
 	/**
 	 * Opens a right section
 	 *
+	 * @return  $this
 	 */
 	public function openRightSection()
 	{
 		echo '<div class="fichetwothirdright"><div class="ficheaddleft">';
+
+		return $this;
 	}
 
 	/**
 	 * Close a right section
 	 *
+	 * @return  $this
 	 */
 	public function closeRightSection()
 	{
 		echo '</div></div>';
+
+		return $this;
 	}
 
 	/**
@@ -108,6 +120,7 @@ class IndexPage extends FormPage
 	 * @param     $url        form url
 	 * @param     $title      form title
 	 * @param     $summary    form summary
+	 * @return    $this
 	 */
 	public function addSearchForm($fields, $url, $title = 'Search', $summary = '')
 	{
@@ -132,6 +145,8 @@ class IndexPage extends FormPage
 			$count++;
 		}
 		echo "</table></form><br>\n";
+
+		return $this;
 	}
 
 	/**
@@ -143,6 +158,7 @@ class IndexPage extends FormPage
 	 * @param     $graph_type       Type of graph ('pie', 'bars', 'lines')
 	 * @param     $graph_title      Graph title
 	 * @param     $pk_field_name    Table primary key name
+	 * @return    $this
 	 */
 	public function addStatsGraph($table_name, $field_name, $field_values = array(), $graph_type = 'pie', $graph_title = 'Statistics', $pk_field_name = 'rowid')
 	{
@@ -232,6 +248,8 @@ class IndexPage extends FormPage
 		{
 			dol_print_error($db);
 		}
+
+		return $this;
 	}
 
 	/**
@@ -241,6 +259,7 @@ class IndexPage extends FormPage
 	 * @param     $legend           Legend array
 	 * @param     $graph_type       Type of graph ('pie', 'bars', 'lines')
 	 * @param     $graph_title      Graph title
+	 * @return    $this
 	 */
 	public function addStatsGraphFromData($data, $legend = array(), $graph_type = 'pie', $graph_title = 'Statistics')
 	{
@@ -274,5 +293,7 @@ class IndexPage extends FormPage
 
 		echo '</td></tr>';
 		echo "</table><br>";
+
+		return $this;
 	}
 }

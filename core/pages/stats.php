@@ -80,41 +80,53 @@ class StatsPage extends FormPage
 	/**
 	 * Opens a left section
 	 *
+	 * @return    $this
 	 */
 	public function openLeftSection()
 	{
 		echo '<div class="fichethirdleft">';
+
+		return $this;
 	}
 
 	/**
 	 * Close a left section
 	 *
+	 * @return    $this
 	 */
 	public function closeLeftSection()
 	{
 		echo '</div>';
+
+		return $this;
 	}
 
 	/**
 	 * Opens a right section
 	 *
+	 * @return    $this
 	 */
 	public function openRightSection()
 	{
 		echo '<div class="fichetwothirdright"><div class="ficheaddleft">';
 
 		echo '<table class="border" width="100%"><tr valign="top"><td align="center">';
+
+		return $this;
 	}
 
 	/**
 	 * Close a right section
 	 *
+	 * @return    $this
 	 */
 	public function closeRightSection()
 	{
 		echo '</td></tr></table>';
 
 		echo '</div></div>';
+
+		return $this;
 	}
 
 	/**
@@ -124,6 +136,7 @@ class StatsPage extends FormPage
 	 * @param     $data       object data (to set years array)
 	 * @param     $title      form title
 	 * @param     $summary    form summary
+	 * @return    $this
 	 */
 	public function addFilterForm($fields, $data, $title = 'Filter', $summary = '')
 	{
@@ -164,6 +177,8 @@ class StatsPage extends FormPage
 		// Submit button
 		echo '<tr><td align="center" colspan="2"><input type="submit" name="submit" class="button" value="'.$langs->trans("Refresh").'"></td></tr>';
 		echo "</table></form><br>\n";
+
+		return $this;
 	}
 
 	/**
@@ -172,6 +187,7 @@ class StatsPage extends FormPage
 	 * @param     $title          graph title
 	 * @param     $data           grapĥ data
 	 * @param     $suffix         graph filename suffix
+	 * @return    $this
 	 */
 	public function addGraph($title, $data, $suffix)
 	{
@@ -230,5 +246,7 @@ class StatsPage extends FormPage
 
 			echo $graph->show();
 		}
+
+		return $this;
 	}
 }

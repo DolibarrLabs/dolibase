@@ -99,6 +99,7 @@ class CalendarPage extends FormPage
 	 * Add a filter form
 	 *
 	 * @param     $fields     an array of form fields, e.: array('Field label' => 'Field content')
+	 * @return    $this
 	 */
 	public function addFilterForm($fields)
 	{
@@ -159,6 +160,8 @@ class CalendarPage extends FormPage
 			dol_fiche_end();
 			$this->add_fiche_end = false;
 		}
+
+		return $this;
 	}
 
 	/**
@@ -233,6 +236,7 @@ class CalendarPage extends FormPage
 	 * Print a calendar
 	 *
 	 * @param     $template_files     Template files array
+	 * @return    $this
 	 */
 	public function printCalendar($template_files = array())
 	{
@@ -504,5 +508,7 @@ class CalendarPage extends FormPage
 			echo "</tr>\n";
 			echo "</table>\n";
 		}
+
+		return $this;
 	}
 }

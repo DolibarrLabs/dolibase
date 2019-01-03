@@ -101,6 +101,7 @@ class ListPage extends FormPage
 	 * @param   $sortfield           Sort field
 	 * @param   $sortorder           Sort order
 	 * @param   $morehtmlright       More HTML to show on the right of the list title
+	 * @return  $this
 	 */
 	public function openList($title, $picture = 'title_generic.png', $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = '', $sortorder = '', $morehtmlright = '')
 	{
@@ -251,6 +252,8 @@ class ListPage extends FormPage
 			echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
 			echo "</td></tr>\n";
 		}
+
+		return $this;
 	}
 
 	/**
@@ -259,18 +262,22 @@ class ListPage extends FormPage
 	 * @param   $field_name   field name
 	 * @param   $content      column content
 	 * @param   $attr         column attributes
+	 * @return  $this
 	 */
 	public function addColumn($field_name, $content, $attr = '')
 	{
 		if (! empty($this->arrayfields[$field_name]['checked'])) {
 			parent::addColumn($content, $attr);
 		}
+
+		return $this;
 	}
 
 	/**
 	 * Add extrafields columns
 	 *
 	 * @param   $obj   object
+	 * @return  $this
 	 */
 	public function addExtraFields($obj)
 	{
@@ -300,6 +307,8 @@ class ListPage extends FormPage
 				}
 			}
 		}
+
+		return $this;
 	}
 
 	/**
@@ -307,6 +316,7 @@ class ListPage extends FormPage
 	 *
 	 * @param   $elementtype   element type
 	 * @param   $qb            query builder instance
+	 * @return  $this
 	 */
 	public function fetchExtraFields($elementtype, &$qb)
 	{
@@ -351,6 +361,8 @@ class ListPage extends FormPage
 			}
 		}
 		$qb->where($where);
+
+		return $this;
 	}
 
 	/**
@@ -358,6 +370,7 @@ class ListPage extends FormPage
 	 *
 	 * @param   $buttons        buttons to add
 	 * @param   $hide_buttons   hide buttons by default
+	 * @return  $this
 	 */
 	protected function addButtons($buttons, $hide_buttons)
 	{
@@ -373,6 +386,8 @@ class ListPage extends FormPage
 		}
 
 		echo '</div>';
+
+		return $this;
 	}
 
 	/**
@@ -380,6 +395,7 @@ class ListPage extends FormPage
 	 *
 	 * @param   $buttons        buttons to add before close list
 	 * @param   $hide_buttons   hide buttons by default
+	 * @return  $this
 	 */
 	public function closeList($buttons = array(), $hide_buttons = false)
 	{
@@ -390,16 +406,21 @@ class ListPage extends FormPage
 		if (! empty($buttons) && $optioncss != 'print') $this->addButtons($buttons, $hide_buttons);
 
 		echo "</div></form>\n";
+
+		return $this;
 	}
 
 	/**
 	 * Close table row
 	 *
+	 * @return  $this
 	 */
 	public function closeRow()
 	{
 		echo '<td></td>';
 
 		parent::closeRow();
+
+		return $this;
 	}
 }

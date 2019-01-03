@@ -63,13 +63,14 @@ class CreatePage extends FormPage
 	}
 
 	/**
-	 * add a table field
+	 * Add a table field
 	 *
 	 * @param     $field_name     field name
 	 * @param     $field_content  field content
 	 * @param     $is_required    is field required or not
 	 * @param     $field_summary  field summary
 	 * @param     $more_attr      more attributes to add
+	 * @return    $this
 	 */
 	public function addField($field_name, $field_content, $is_required = false, $field_summary = '', $more_attr = '')
 	{
@@ -81,10 +82,12 @@ class CreatePage extends FormPage
 		if (! empty($field_summary)) echo $this->form->textwithpicto(' ', $langs->trans($field_summary));
 		echo '</td>';
 		echo '</tr>';
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a text input
+	 * Add a table field with a text input
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
@@ -92,16 +95,19 @@ class CreatePage extends FormPage
 	 * @param     $is_required       is field required or not
 	 * @param     $field_summary     field summary
 	 * @param     $input_size        input size
+	 * @return    $this
 	 */
 	public function addTextField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '', $input_size = 20)
 	{
 		$field_content = $this->form->textInput($input_name, $input_value, $input_size);
 
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a text area
+	 * Add a table field with a text area
 	 *
 	 * @param     $field_name            field name
 	 * @param     $text_area_name        text area name
@@ -111,17 +117,21 @@ class CreatePage extends FormPage
 	 * @param     $toolbarname           Editor toolbar name, values: 'Full', dolibarr_details', 'dolibarr_notes', 'dolibarr_mailings', 'dolibarr_readonly'
 	 * @param     $height                text area height
 	 * @param     $valign                field vertical align
+	 * @return    $this
 	 */
 	public function addTextAreaField($field_name, $text_area_name, $text_area_value = '', $is_required = false, $field_summary = '', $toolbarname = 'dolibarr_details', $height = 100, $valign = 'top')
 	{
 		$field_content = $this->form->textEditor($text_area_name, $text_area_value, $toolbarname, $height);
 
 		$more_attr = ' valign="'.$valign.'"';
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a number input
+	 * Add a table field with a number input
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
@@ -130,6 +140,7 @@ class CreatePage extends FormPage
 	 * @param     $field_summary     field summary
 	 * @param     $min               input minimum number
 	 * @param     $max               input maximum number
+	 * @return    $this
 	 */
 	public function addNumberField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '', $min = 0, $max = 100)
 	{
@@ -138,26 +149,31 @@ class CreatePage extends FormPage
 		$field_content = $this->form->numberInput($input_name, $input_value, $min, $max);
 
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a date picker
+	 * Add a table field with a date picker
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
 	 * @param     $input_value       input value
 	 * @param     $is_required       is field required or not
 	 * @param     $field_summary     field summary
+	 * @return    $this
 	 */
 	public function addDateField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '')
 	{
 		$field_content = $this->form->dateInput($input_name, $input_value);
 
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a list
+	 * Add a table field with a list
 	 *
 	 * @param     $field_name       field name
 	 * @param     $list_name        list name
@@ -166,16 +182,19 @@ class CreatePage extends FormPage
 	 * @param     $is_required      is field required or not
 	 * @param     $field_summary    field summary
 	 * @param     $show_empty       show empty value
+	 * @return    $this
 	 */
 	public function addListField($field_name, $list_name, $list_choices, $selected_choice = '', $is_required = false, $field_summary = '', $show_empty = 0)
 	{
 		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice, $show_empty);
 
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a radio input(s)
+	 * Add a table field with a radio input(s)
 	 *
 	 * @param     $field_name       field name
 	 * @param     $radio_name       radio inputs name
@@ -184,17 +203,21 @@ class CreatePage extends FormPage
 	 * @param     $is_required      is field required or not
 	 * @param     $field_summary    field summary
 	 * @param     $valign           field vertical align
+	 * @return    $this
 	 */
 	public function addRadioListField($field_name, $radio_name, $radio_list, $selected = '', $is_required = false, $field_summary = '', $valign = 'middle')
 	{
 		$field_content = $this->form->radioList($radio_name, $radio_list, $selected);
 
 		$more_attr = ' valign="'.$valign.'"';
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a checkbox input(s)
+	 * Add a table field with a checkbox input(s)
 	 *
 	 * @param     $field_name       field name
 	 * @param     $check_name       checkbox inputs name
@@ -203,35 +226,43 @@ class CreatePage extends FormPage
 	 * @param     $is_required      is field required or not
 	 * @param     $field_summary    field summary
 	 * @param     $valign           field vertical align
+	 * @return    $this
 	 */
 	public function addCheckListField($field_name, $check_name, $check_list, $selected = '', $is_required = false, $field_summary = '', $valign = 'middle')
 	{
 		$field_content = $this->form->checkList($check_name, $check_list, $selected);
 
 		$more_attr = ' valign="'.$valign.'"';
+
 		$this->addField($field_name, $field_content, $is_required, $field_summary, $more_attr);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a color picker
+	 * Add a table field with a color picker
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
 	 * @param     $input_value       input value
 	 * @param     $is_required       is field required or not
 	 * @param     $field_summary     field summary
+	 * @return    $this
 	 */
 	public function addColorField($field_name, $input_name, $input_value = '', $is_required = false, $field_summary = '')
 	{
 		$field_content = $this->form->colorInput($input_name, $input_value);
 		
 		$this->addField($field_name, $field_content, $is_required, $field_summary);
+
+		return $this;
 	}
 
 	/**
-	 * add extra fields
+	 * Add extra fields
 	 *
 	 * @param      $object     Object
+	 * @return     $this
 	 */
 	public function addExtraFields($object)
 	{
@@ -247,11 +278,14 @@ class CreatePage extends FormPage
 		if (empty($reshook) && ! empty($this->extrafields->attribute_label)) {
 			echo $object->showOptionals($this->extrafields, 'edit');
 		}
+
+		return $this;
 	}
 
 	/**
-	 * generate form buttons
+	 * Generate form buttons
 	 *
+	 * @return    $this
 	 */
 	public function generateFormButtons()
 	{
@@ -264,5 +298,7 @@ class CreatePage extends FormPage
 		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 		echo '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
 		echo '</div>';
+
+		return $this;
 	}
 }

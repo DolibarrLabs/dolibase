@@ -100,6 +100,7 @@ class AboutPage extends Page
 	 * Print module informations
 	 *
 	 * @param     $picture     Picture to show, prefered size: 128x128 (leave empty to use the module picture)
+	 * @return    $this
 	 */
 	public function printModuleInformations($picture = '')
 	{
@@ -109,5 +110,7 @@ class AboutPage extends Page
 		);
 
 		$this->showTemplate($template_path, true, true, $template_params);
+
+		return $this;
 	}
 }

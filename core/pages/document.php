@@ -60,6 +60,7 @@ class DocumentPage extends Page
 	 * @param     $object         object
 	 * @param     $list_link      link to list
 	 * @param     $morehtmlleft   more html in the left
+	 * @return    $this
 	 */
 	public function showBanner($object, $list_link = '', $morehtmlleft = '')
 	{
@@ -70,12 +71,15 @@ class DocumentPage extends Page
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
 		echo '<div class="underbanner clearboth"></div>';
+
+		return $this;
 	}
 
 	/**
 	 * Return Tab title
 	 *
 	 * @param     $object         object
+	 * @return    string          tab title
 	 */
 	public static function getTabTitle($object)
 	{
@@ -96,6 +100,7 @@ class DocumentPage extends Page
 	 * Generate page beginning + print documents/linked files
 	 *
 	 * @param     $object         object
+	 * @return    $this
 	 */
 	public function begin($object = null)
 	{
@@ -120,13 +125,14 @@ class DocumentPage extends Page
 			}
 		}
 
-		parent::begin();
+		return parent::begin();
 	}
 
 	/**
 	 * Print documents/linked files
 	 *
 	 * @param     $object         object
+	 * @return    $this
 	 */
 	public function printDocuments($object)
 	{
@@ -168,5 +174,7 @@ class DocumentPage extends Page
 			$param        = '';
 			include_once DOL_DOCUMENT_ROOT . '/core/tpl/document_actions_post_headers.tpl.php';
 		}
+
+		return $this;
 	}
 }

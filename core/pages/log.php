@@ -74,6 +74,7 @@ class LogPage extends FormPage
 	 * @param     $object         object
 	 * @param     $list_link      link to list
 	 * @param     $morehtmlleft   more html in the left
+	 * @return    $this
 	 */
 	public function showBanner($object, $list_link = '', $morehtmlleft = '')
 	{
@@ -84,6 +85,8 @@ class LogPage extends FormPage
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
 		//echo '<div class="underbanner clearboth"></div>';
+
+		return $this;
 	}
 
 	/**
@@ -91,6 +94,7 @@ class LogPage extends FormPage
 	 *
 	 * @param     $object_id          object id
 	 * @param     $object_element     object element
+	 * @return    $this
 	 */
 	public function printLogs($object_id, $object_element = '')
 	{
@@ -218,5 +222,7 @@ class LogPage extends FormPage
 		echo '</div>';
 
 		echo '</form>';
+
+		return $this;
 	}
 }

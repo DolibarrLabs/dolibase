@@ -118,6 +118,7 @@ class ExtraFieldsPage extends FormPage
 	/**
 	 * Print extra fields table
 	 *
+	 * @return    $this
 	 */
 	public function printExtraFields()
 	{
@@ -166,5 +167,7 @@ class ExtraFieldsPage extends FormPage
 
 			include_once DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_edit.tpl.php';
 		}
+
+		return $this;
 	}
 }

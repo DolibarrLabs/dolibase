@@ -137,39 +137,51 @@ class CardPage extends CreatePage
 	 * Set mail subject
 	 *
 	 * @param     $mail_subject     Mail subject string
+	 * @return    $this
 	 */
 	public function setMailSubject($mail_subject)
 	{
 		$this->mail_subject = $mail_subject;
+
+		return $this;
 	}
 
 	/**
 	 * Set mail template
 	 *
 	 * @param     $mail_template     Mail template string
+	 * @return    $this
 	 */
 	public function setMailTemplate($mail_template)
 	{
 		$this->mail_template = $mail_template;
+
+		return $this;
 	}
 
 	/**
 	 * Enables mail delivery receipt
 	 *
+	 * @return    $this
 	 */
 	public function enableMailDeliveryReceipt()
 	{
 		$this->enable_mail_delivery_receipt = true;
+
+		return $this;
 	}
 
 	/**
 	 * Set mail substitutions
 	 *
 	 * @param     $mail_substitutions_array     Mail substitutions array
+	 * @return    $this
 	 */
 	public function setMailSubstitutions($mail_substitutions_array)
 	{
 		$this->mail_substitutions = $mail_substitutions_array;
+
+		return $this;
 	}
 
 	/**
@@ -180,6 +192,7 @@ class CardPage extends CreatePage
 	 * @param     $target               button target
 	 * @param     $class                button class
 	 * @param     $close_parent_div     should close parent div or not
+	 * @return    $this
 	 */
 	public function addButton($name, $href = '#', $target = '_self', $class = 'butAction', $close_parent_div = false)
 	{
@@ -198,6 +211,8 @@ class CardPage extends CreatePage
 			echo '</div>';
 			$this->close_buttons_div = false;
 		}
+
+		return $this;
 	}
 
 	/**
@@ -207,6 +222,7 @@ class CardPage extends CreatePage
 	 * @param     $buttons              buttons list
 	 * @param     $class                button class
 	 * @param     $close_parent_div     should close parent div or not
+	 * @return    $this
 	 */
 	public function addListButton($name, $buttons = array(), $class = 'butAction', $close_parent_div = false)
 	{
@@ -246,12 +262,15 @@ class CardPage extends CreatePage
 			echo '</div>';
 			$this->close_buttons_div = false;
 		}
+
+		return $this;
 	}
 
 	/**
 	 * Add save as button to the page
 	 *
 	 * @param     $close_parent_div     should close parent div or not
+	 * @return    $this
 	 */
 	public function addSaveAsButton($close_parent_div = false)
 	{
@@ -261,16 +280,19 @@ class CardPage extends CreatePage
 		);
 
 		$this->addListButton('SaveAs', $buttons, 'butAction', $close_parent_div);
+
+		return $this;
 	}
 
 	/**
-	 * show a table field
+	 * Show a table field
 	 *
 	 * @param     $field_name     field name
 	 * @param     $field_content  field content
 	 * @param     $is_editable    is field editable or not
 	 * @param     $edit_link      edition link
 	 * @param     $attr           HTML attributes
+	 * @return    $this
 	 */
 	public function showField($field_name, $field_content, $is_editable = false, $edit_link = '', $attr = '')
 	{
@@ -285,14 +307,17 @@ class CardPage extends CreatePage
 		echo '</tr></table></td>';
 		echo '<td colspan="5">' . $field_content . '</td>';
 		echo '</tr>';
+
+		return $this;
 	}
 
 	/**
-	 * show reference/Ref. field
+	 * Show reference/Ref. field
 	 *
 	 * @param     $field_name     field name
 	 * @param     $object         object
 	 * @param     $list_link      link to list
+	 * @return    $this
 	 */
 	public function showRefField($field_name, $object, $list_link = '')
 	{
@@ -302,12 +327,15 @@ class CardPage extends CreatePage
 		$field_content = $this->form->showrefnav($object, $object->ref_field_name, $morehtml, 1, $object->ref_field_name, $object->ref_field_name);
 
 		$this->showField($field_name, $field_content);
+
+		return $this;
 	}
 
 	/**
-	 * show extra fields
+	 * Show extra fields
 	 *
 	 * @param      $object     Object
+	 * @return     $this
 	 */
 	public function showExtraFields($object)
 	{
@@ -325,12 +353,15 @@ class CardPage extends CreatePage
 		}
 
 		include_once DOL_DOCUMENT_ROOT . '/core/tpl/extrafields_view.tpl.php';
+
+		return $this;
 	}
 
 	/**
-	 * update extra fields
+	 * Update extra fields
 	 *
 	 * @param      $object     Object
+	 * @return     int         >0 if KO, 0 if OK
 	 */
 	public function updateExtraFields($object)
 	{
@@ -355,11 +386,12 @@ class CardPage extends CreatePage
 	}
 
 	/**
-	 * show banner
+	 * Show banner
 	 *
 	 * @param     $object         object
 	 * @param     $list_link      link to list
 	 * @param     $morehtmlleft   more html in the left
+	 * @return    $this
 	 */
 	public function showBanner($object, $list_link = '', $morehtmlleft = '')
 	{
@@ -370,6 +402,8 @@ class CardPage extends CreatePage
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
 		echo '<div class="underbanner clearboth"></div>';
+
+		return $this;
 	}
 
 	/**
@@ -378,6 +412,7 @@ class CardPage extends CreatePage
 	 * @param     $field_name     field name
 	 * @param     $field_content  field content
 	 * @param     $action_name    action name
+	 * @return    $this
 	 */
 	public function editField($field_name, $field_content, $action_name)
 	{
@@ -396,26 +431,31 @@ class CardPage extends CreatePage
 		echo '</form>';
 		echo '</td>';
 		echo '</tr>';
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a text input
+	 * Add a table field with a text input
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
 	 * @param     $input_value       input value
 	 * @param     $input_size        input size
 	 * @param     $action_prefix     action prefix
+	 * @return    $this
 	 */
 	public function editTextField($field_name, $input_name, $input_value = '', $input_size = 20, $action_prefix = 'set_')
 	{
 		$field_content = $this->form->textInput($input_name, $input_value, $input_size);
 
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a text area
+	 * Add a table field with a text area
 	 *
 	 * @param     $field_name            field name
 	 * @param     $text_area_name        text area name
@@ -423,16 +463,19 @@ class CardPage extends CreatePage
 	 * @param     $toolbarname           Editor toolbar name, values: 'Full', dolibarr_details', 'dolibarr_notes', 'dolibarr_mailings', 'dolibarr_readonly'
 	 * @param     $height                text area height
 	 * @param     $action_prefix         action prefix
+	 * @return    $this
 	 */
 	public function editTextAreaField($field_name, $text_area_name, $text_area_value = '', $toolbarname = 'dolibarr_details', $height = 100, $action_prefix = 'set_')
 	{
 		$field_content = $this->form->textEditor($text_area_name, $text_area_value, $toolbarname, $height);
 
 		$this->editField($field_name, $field_content, $action_prefix.$text_area_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a number input
+	 * Add a table field with a number input
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
@@ -440,6 +483,7 @@ class CardPage extends CreatePage
 	 * @param     $min               input minimum number
 	 * @param     $max               input maximum number
 	 * @param     $action_prefix     action prefix
+	 * @return    $this
 	 */
 	public function editNumberField($field_name, $input_name, $input_value = '', $min = 0, $max = 100, $action_prefix = 'set_')
 	{
@@ -448,25 +492,30 @@ class CardPage extends CreatePage
 		$field_content = $this->form->numberInput($input_name, $input_value, $min, $max);
 
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a date picker
+	 * Add a table field with a date picker
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
 	 * @param     $input_value       input value
 	 * @param     $action_prefix     action prefix
+	 * @return    $this
 	 */
 	public function editDateField($field_name, $input_name, $input_value = '', $action_prefix = 'set_date_')
 	{
 		$field_content = $this->form->dateInput($input_name, $input_value);
 
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a list
+	 * Add a table field with a list
 	 *
 	 * @param     $field_name       field name
 	 * @param     $list_name        list name
@@ -474,59 +523,71 @@ class CardPage extends CreatePage
 	 * @param     $selected_choice  selected choice
 	 * @param     $show_empty       show empty value
 	 * @param     $action_prefix    action prefix
+	 * @return    $this
 	 */
 	public function editListField($field_name, $list_name, $list_choices, $selected_choice = '', $show_empty = 0, $action_prefix = 'set_')
 	{
 		$field_content = $this->form->listInput($list_name, $list_choices, $selected_choice, $show_empty);
 
 		$this->editField($field_name, $field_content, $action_prefix.$list_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a radio input(s)
+	 * Add a table field with a radio input(s)
 	 *
 	 * @param     $field_name       field name
 	 * @param     $radio_name       radio inputs name
 	 * @param     $radio_list       list of radio inputs, e.: array('radio_1' => 'Radio 1', 'radio_2' => 'Radio 2')
 	 * @param     $selected         selected radio input
 	 * @param     $action_prefix    action prefix
+	 * @return    $this
 	 */
 	public function editRadioListField($field_name, $radio_name, $radio_list, $selected = '', $action_prefix = 'set_')
 	{
 		$field_content = $this->form->radioList($radio_name, $radio_list, $selected);
 
 		$this->editField($field_name, $field_content, $action_prefix.$radio_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a checkbox input(s)
+	 * Add a table field with a checkbox input(s)
 	 *
 	 * @param     $field_name       field name
 	 * @param     $check_name       checkbox inputs name
 	 * @param     $check_list       list of checkbox inputs, e.: array('check_1' => 'Check 1', 'check_2' => 'Check 2')
 	 * @param     $selected         selected checkbox input
 	 * @param     $action_prefix    action prefix
+	 * @return    $this
 	 */
 	public function editCheckListField($field_name, $check_name, $check_list, $selected = '', $action_prefix = 'set_')
 	{
 		$field_content = $this->form->checkList($check_name, $check_list, $selected);
 
 		$this->editField($field_name, $field_content, $action_prefix.$check_name);
+
+		return $this;
 	}
 
 	/**
-	 * add a table field with a color picker
+	 * Add a table field with a color picker
 	 *
 	 * @param     $field_name        field name
 	 * @param     $input_name        input name
 	 * @param     $input_value       input value
 	 * @param     $action_prefix     action prefix
+	 * @return    $this
 	 */
 	public function editColorField($field_name, $input_name, $input_value = '', $action_prefix = 'set_')
 	{
 		$field_content = $this->form->colorInput($input_name, $input_value);
 		
 		$this->editField($field_name, $field_content, $action_prefix.$input_name);
+
+		return $this;
 	}
 
 	/**

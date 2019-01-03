@@ -91,11 +91,14 @@ class ChangelogPage extends Page
 	/**
 	 * Print module changelog
 	 *
+	 * @return    $this
 	 */
 	public function printChangelog()
 	{
 		$template_path = dolibase_buildpath('core/tpl/module_changelog.php');
 
 		$this->showTemplate($template_path, true, true);
+
+		return $this;
 	}
 }
