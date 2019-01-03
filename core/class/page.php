@@ -383,7 +383,8 @@ class Page
 		{
 			echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
 			echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
-			echo '<input type="hidden" name="action" value="'.$action.'">';
+			echo '<input type="hidden" name="mainmenu" value="' . $_SESSION ['mainmenu'] . '">';
+			echo '<input type="hidden" name="action" value="' . $action . '">';
 
 			$this->close_form = true;
 		}
