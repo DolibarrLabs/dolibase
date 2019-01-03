@@ -162,10 +162,7 @@ class SetupPage extends FormPage
 			if (preg_match('/set_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
-				$value = GETPOST($code);
-				if (! is_submitted($code)) {
-					$value = 1;
-				}
+				$value = (is_submitted($code) ? GETPOST($code) : 1);
 
 				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
 				{
