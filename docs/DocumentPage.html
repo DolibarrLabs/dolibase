@@ -492,7 +492,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <div class="col-md-8 type">
                     <a href="#method_begin">begin</a>($object = null)
         
-                                            <p>Generate page beginning</p>                </div>
+                                            <p>Generate page beginning + print documents/linked files</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -527,7 +527,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_showBanner">showBanner</a>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
@@ -537,7 +537,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    static&nbsp;
+                    static&nbsp;string
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_getTabTitle">getTabTitle</a>($object)
@@ -547,7 +547,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_printDocuments">printDocuments</a>($object)
@@ -1695,7 +1695,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L100">line 100</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L105">line 105</a></div>
         <code>                    $this
     <strong>begin</strong>($object = null)
         </code>
@@ -1705,7 +1705,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Generate page beginning</p>                                                </div>
+                                    <p>Generate page beginning + print documents/linked files</p>                                                </div>
                 <div class="tags">
                             <h4>Parameters</h4>
 
@@ -1808,8 +1808,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showBanner">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L64">line 64</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L65">line 65</a></div>
+        <code>                    $this
     <strong>showBanner</strong>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
         </code>
     </h3>
@@ -1841,6 +1841,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1849,8 +1858,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_getTabTitle">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L80">line 80</a></div>
-        <code>        static            
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L84">line 84</a></div>
+        <code>        static            string
     <strong>getTabTitle</strong>($object)
         </code>
     </h3>
@@ -1872,6 +1881,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>string</td>
+            <td>tab title</td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -1880,8 +1898,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_printDocuments">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L131">line 131</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/document.php#L137">line 137</a></div>
+        <code>                    $this
     <strong>printDocuments</strong>($object)
         </code>
     </h3>
@@ -1903,6 +1921,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>

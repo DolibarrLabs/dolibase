@@ -476,7 +476,7 @@ Note: this function should be called before $page->begin() function, otherwise i
                 <div class="col-md-8 type">
                     <a href="#method_closeRow">closeRow</a>()
         
-                                            <p>Close a table row</p>                </div>
+                                            <p>Close table row</p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
@@ -651,7 +651,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_openList">openList</a>($title, $picture = &#039;title_generic.png&#039;, $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = &#039;&#039;, $sortorder = &#039;&#039;, $morehtmlright = &#039;&#039;)
@@ -661,7 +661,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_addExtraFields">addExtraFields</a>($obj)
@@ -671,7 +671,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_fetchExtraFields">fetchExtraFields</a>($elementtype, $qb)
@@ -681,7 +681,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_addButtons">addButtons</a>($buttons, $hide_buttons)
@@ -691,7 +691,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    $this
                 </div>
                 <div class="col-md-8 type">
                     <a href="#method_closeList">closeList</a>($buttons = array(), $hide_buttons = false)
@@ -1553,7 +1553,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeRow">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L399">line 399</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L418">line 418</a></div>
         <code>                    $this
     <strong>closeRow</strong>()
         </code>
@@ -1563,7 +1563,7 @@ Note: this function should be called before $page->begin() function, otherwise i
     
 
                     <div class="method-description">
-                                    <p>Close a table row</p>                                                </div>
+                                    <p>Close table row</p>                                                </div>
                 <div class="tags">
             
                             <h4>Return Value</h4>
@@ -1583,7 +1583,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addColumn">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L263">line 263</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L267">line 267</a></div>
         <code>                    $this
     <strong>addColumn</strong>($field_name, $content, $attr = &#039;&#039;)
         </code>
@@ -2217,8 +2217,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_openList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L105">line 105</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L106">line 106</a></div>
+        <code>                    $this
     <strong>openList</strong>($title, $picture = &#039;title_generic.png&#039;, $list_fields, $search_fields, $nbofshownrecords, $nbtotalofrecords, $fieldstosearchall = array(), $sortfield = &#039;&#039;, $sortorder = &#039;&#039;, $morehtmlright = &#039;&#039;)
         </code>
     </h3>
@@ -2285,6 +2285,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -2293,8 +2302,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L275">line 275</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L282">line 282</a></div>
+        <code>                    $this
     <strong>addExtraFields</strong>($obj)
         </code>
     </h3>
@@ -2316,6 +2325,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -2324,8 +2342,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_fetchExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L311">line 311</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L321">line 321</a></div>
+        <code>                    $this
     <strong>fetchExtraFields</strong>($elementtype, $qb)
         </code>
     </h3>
@@ -2352,6 +2370,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -2360,8 +2387,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addButtons">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L362">line 362</a></div>
-        <code>            protected        
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L375">line 375</a></div>
+        <code>            protected        $this
     <strong>addButtons</strong>($buttons, $hide_buttons)
         </code>
     </h3>
@@ -2388,6 +2415,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
@@ -2396,8 +2432,8 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_closeList">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L384">line 384</a></div>
-        <code>                    
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/list.php#L400">line 400</a></div>
+        <code>                    $this
     <strong>closeList</strong>($buttons = array(), $hide_buttons = false)
         </code>
     </h3>
@@ -2424,6 +2460,15 @@ Note: this function should be called before $page->begin() function, otherwise i
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
             
             
                     </div>
