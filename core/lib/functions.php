@@ -550,3 +550,49 @@ if (! function_exists('array_match'))
 		return 0;
 	}
 }
+
+/**
+ * Converts an array values to string separated by a delimiter
+ *
+ * @since     2.9.3
+ * @param     $array     Array
+ * @param     $delimiter Values delimiter
+ * @return    string     array values string separated by the delimiter or empty string if array is empty
+ */
+if (! function_exists('array_to_string'))
+{
+	function array_to_string($array, $delimiter = ',')
+	{
+		return (is_array($array) && ! empty($array) ? join($delimiter, $array) : '');
+	}
+}
+
+/**
+ * Converts a string into an array using a delimiter to separate/get the values
+ *
+ * @since     2.9.3
+ * @param     $str       String
+ * @param     $delimiter Values delimiter
+ * @param     $trim      Trim array values or not
+ * @return    array      array filled with values from string or empty array if string is empty
+ */
+if (! function_exists('string_to_array'))
+{
+	function string_to_array($str, $delimiter = ',', $trim = true)
+	{
+		$arr = array();
+
+		if (! empty($str))
+		{
+			$arr = explode($delimiter, $str);
+
+			if ($trim) {
+				foreach ($arr as $key => $value) {
+					$arr[$key] = trim($value);
+				}
+			}
+		}
+
+		return $arr;
+	}
+}
