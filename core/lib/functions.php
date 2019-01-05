@@ -596,3 +596,19 @@ if (! function_exists('string_to_array'))
 		return $arr;
 	}
 }
+
+/**
+ * Returns if javascript/jquery is enabled
+ *
+ * @since     2.9.3
+ * @return    boolean    true if enabled, else false
+ */
+if (! function_exists('js_enabled'))
+{
+	function js_enabled()
+	{
+		global $conf;
+
+		return (! empty($conf->use_javascript_ajax) && empty($conf->dol_use_jmobile));
+	}
+}
