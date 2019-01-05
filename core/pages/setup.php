@@ -73,6 +73,10 @@ class SetupPage extends FormPage
 	 * @var boolean used to add changelog tab
 	 */
 	protected $add_changelog_tab = false;
+	/**
+	 * @var boolean used to force page reload on change
+	 */
+	protected $force_page_reload_on_change = false;
 
 
 	/**
@@ -184,7 +188,7 @@ class SetupPage extends FormPage
 			else if (preg_match('/del_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
-				
+
 				if (dolibarr_del_const($db, $code, $conf->entity) > 0)
 				{
 					dolibase_redirect($_SERVER["PHP_SELF"].'?mainmenu=home');
@@ -381,6 +385,18 @@ class SetupPage extends FormPage
 	}
 
 	/**
+	 * Set $force_page_reload_on_change attribute to true
+	 *
+	 * @return   $this
+	 */
+	public function forcePageReloadOnChange()
+	{
+		$this->force_page_reload_on_change = true;
+
+		return $this;
+	}
+
+	/**
 	 * Show setup_not_available template (only once)
 	 *
 	 * @return   $this
@@ -463,7 +479,7 @@ class SetupPage extends FormPage
 
 		echo '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
 		echo '<td'.$more_attr.' align="right">'."\n";
-		if (! empty($conf->use_javascript_ajax) && function_exists('ajax_constantonoff'))
+		if (! $this->force_page_reload_on_change && ! empty($conf->use_javascript_ajax) && function_exists('ajax_constantonoff'))
 		{
 			echo ajax_constantonoff($const_name);
 		}
