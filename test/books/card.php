@@ -68,16 +68,16 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 	// Delete
 	if ($page->canDelete())
 	{
-		if ($action == 'delete')
-		{
-			$page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $book->id, 'Delete', 'Confirm Delete', 'confirm_delete', $book->ref);
-		}
-		else if ($action == 'confirm_delete' && $confirm == 'yes')
+		if ($action == 'confirm_delete' && $confirm == 'yes')
 		{
 			$result = $book->delete();
 			if ($result > 0) {
 				dolibase_redirect('list.php');
 			}
+		}
+		else if ($action == 'delete' || js_enabled())
+		{
+			$page->askForConfirmation($_SERVER["PHP_SELF"] . '?id=' . $book->id, 'Delete', 'Confirm Delete', 'confirm_delete', $book->ref, 'action-delete');
 		}
 	}
 
@@ -206,7 +206,7 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 
 		// Delete
 		if ($page->canDelete()) {
-			$page->addButton('Delete', $_SERVER["PHP_SELF"] . '?id=' . $book->id . '&action=delete', '', 'butActionDelete', true);
+			$page->addConfirmButton('Delete', 'action-delete', $_SERVER["PHP_SELF"] . '?id=' . $book->id . '&action=delete', '', 'butActionDelete', true);
 		}
 	}
 }
