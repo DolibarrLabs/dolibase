@@ -318,6 +318,14 @@
                 <td class="last"></td>
                 <td></td>
             </tr>
+                    <tr>
+                <td class="type" id="property_use_ajax_to_switch_on_off">
+                                        protected                                        boolean
+                </td>
+                <td>$use_ajax_to_switch_on_off</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
             </table>
 
     
@@ -730,6 +738,16 @@ Note: this function should be called before $page->begin() function, otherwise i
                     $this
                 </div>
                 <div class="col-md-8 type">
+                    <a href="#method_useAjaxToSwitchOnOff">useAjaxToSwitchOnOff</a>()
+        
+                                            <p>Set $use_ajax_to_switch_on_off attribute to true</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    $this
+                </div>
+                <div class="col-md-8 type">
                     <a href="#method_setupNotAvailable">setupNotAvailable</a>()
         
                                             <p>Show setup_not_available template (only once)</p>                </div>
@@ -853,7 +871,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L91">line 91</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L95">line 95</a></div>
         <code>                    
     <strong>__construct</strong>($page_title = &#039;Setup&#039;, $access_perm = &#039;$user-&gt;admin&#039;, $disable_default_actions = false, $add_extrafields_tab = false, $add_changelog_tab = false, $const_name_prefix = &#039;&#039;, $doc_model_type = &#039;&#039;, $doc_object_class = &#039;&#039;, $doc_object_path = &#039;&#039;)
         </code>
@@ -1435,7 +1453,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generateTabs">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L378">line 378</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L382">line 382</a></div>
         <code>            protected        
     <strong>generateTabs</strong>($noheader = -1)
         </code>
@@ -1999,7 +2017,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_loadDefaultActions">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L156">line 156</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L160">line 160</a></div>
         <code>            protected        
     <strong>loadDefaultActions</strong>()
         </code>
@@ -2050,7 +2068,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_generate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L348">line 348</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L352">line 352</a></div>
         <code>            protected        
     <strong>generate</strong>()
         </code>
@@ -2393,7 +2411,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setTitleLink">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L128">line 128</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L132">line 132</a></div>
         <code>                    $this
     <strong>setTitleLink</strong>($link, $label, $enable = &#039;$user-&gt;admin&#039;)
         </code>
@@ -2443,7 +2461,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_setDocModelPreviewPicture">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L145">line 145</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L149">line 149</a></div>
         <code>                    $this
     <strong>setDocModelPreviewPicture</strong>($picture)
         </code>
@@ -2482,8 +2500,38 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_useAjaxToSwitchOnOff">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L392">line 392</a></div>
+        <code>                    $this
+    <strong>useAjaxToSwitchOnOff</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Set $use_ajax_to_switch_on_off attribute to true</p>                                                </div>
+                <div class="tags">
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>$this</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_setupNotAvailable">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L388">line 388</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L404">line 404</a></div>
         <code>                    $this
     <strong>setupNotAvailable</strong>()
         </code>
@@ -2513,7 +2561,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_newOptionsTable">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L403">line 403</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L419">line 419</a></div>
         <code>                    $this
     <strong>newOptionsTable</strong>($first_column_name = &#039;Option&#039;)
         </code>
@@ -2553,7 +2601,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L426">line 426</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L442">line 442</a></div>
         <code>                    $this
     <strong>addOption</strong>($option_desc, $option_content, $const_name = &#039;&#039;, $morehtmlright = &#039;&#039;, $width = 300, $form_enctype = &#039;&#039;)
         </code>
@@ -2618,7 +2666,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addSwitchOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L457">line 457</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L473">line 473</a></div>
         <code>                    $this
     <strong>addSwitchOption</strong>($option_desc, $const_name, $disabled = false, $morehtmlright = &#039;&#039;)
         </code>
@@ -2673,7 +2721,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addTextOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L496">line 496</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L512">line 512</a></div>
         <code>                    $this
     <strong>addTextOption</strong>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $size = 16, $width = 300)
         </code>
@@ -2733,7 +2781,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addNumberOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L518">line 518</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L534">line 534</a></div>
         <code>                    $this
     <strong>addNumberOption</strong>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
         </code>
@@ -2798,7 +2846,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addRangeOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L540">line 540</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L556">line 556</a></div>
         <code>                    $this
     <strong>addRangeOption</strong>($option_desc, $const_name, $min = 0, $max = 100, $morehtmlright = &#039;&#039;, $width = 300)
         </code>
@@ -2863,7 +2911,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addListOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L561">line 561</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L577">line 577</a></div>
         <code>                    $this
     <strong>addListOption</strong>($option_desc, $const_name, $list, $morehtmlright = &#039;&#039;, $width = 300)
         </code>
@@ -2923,7 +2971,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addColorOption">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L581">line 581</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L597">line 597</a></div>
         <code>                    $this
     <strong>addColorOption</strong>($option_desc, $const_name, $morehtmlright = &#039;&#039;, $width = 300)
         </code>
@@ -2978,7 +3026,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L602">line 602</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L618">line 618</a></div>
         <code>                    $this
     <strong>addButton</strong>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3038,7 +3086,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_printNumModels">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L628">line 628</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L644">line 644</a></div>
         <code>                    $this
     <strong>printNumModels</strong>($model_name = &#039;&#039;)
         </code>
@@ -3078,7 +3126,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_printDocModels">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L739">line 739</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/setup.php#L755">line 755</a></div>
         <code>                    $this
     <strong>printDocModels</strong>()
         </code>
