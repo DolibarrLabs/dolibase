@@ -17,6 +17,7 @@
 
 dolibase_include_once('core/class/form_page.php');
 require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
+require_once DOL_DOCUMENT_ROOT . '/core/lib/ajax.lib.php';
 
 /**
  * SetupPage class
@@ -462,13 +463,20 @@ class SetupPage extends FormPage
 
 		echo '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
 		echo '<td'.$more_attr.' align="right">'."\n";
-		if (empty($conf->global->$const_name))
+		if (! empty($conf->use_javascript_ajax) && function_exists('ajax_constantonoff'))
 		{
-			echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=1">'.img_picto($langs->trans("Disabled"),'switch_off').'</a>'."\n";
+			echo ajax_constantonoff($const_name);
 		}
 		else
 		{
-			echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'&amp;'.$const_name.'=0">'.img_picto($langs->trans("Enabled"),'switch_on').'</a>'."\n";
+			if (empty($conf->global->$const_name))
+			{
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>'."\n";
+			}
+			else
+			{
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=del_'.$const_name.'">'.img_picto($langs->trans("Enabled"), 'switch_on').'</a>'."\n";
+			}
 		}
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;</td>\n</tr>\n";
 
