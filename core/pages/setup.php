@@ -74,9 +74,9 @@ class SetupPage extends FormPage
 	 */
 	protected $add_changelog_tab = false;
 	/**
-	 * @var boolean used to force page reload on change
+	 * @var boolean used to enable/disable ajax for switch options
 	 */
-	protected $force_page_reload_on_change = false;
+	protected $use_ajax_to_switch_on_off = false;
 
 
 	/**
@@ -385,13 +385,13 @@ class SetupPage extends FormPage
 	}
 
 	/**
-	 * Set $force_page_reload_on_change attribute to true
+	 * Set $use_ajax_to_switch_on_off attribute to true
 	 *
 	 * @return   $this
 	 */
-	public function forcePageReloadOnChange()
+	public function useAjaxToSwitchOnOff()
 	{
-		$this->force_page_reload_on_change = true;
+		$this->use_ajax_to_switch_on_off = true;
 
 		return $this;
 	}
@@ -479,7 +479,7 @@ class SetupPage extends FormPage
 
 		echo '<tr '.$bc[$this->odd].'><td'.$more_attr.'>'.$langs->trans($option_desc).$morehtmlright.'</td>'."\n";
 		echo '<td'.$more_attr.' align="right">'."\n";
-		if (! $this->force_page_reload_on_change && ! empty($conf->use_javascript_ajax) && function_exists('ajax_constantonoff'))
+		if ($this->use_ajax_to_switch_on_off && ! empty($conf->use_javascript_ajax) && function_exists('ajax_constantonoff'))
 		{
 			echo ajax_constantonoff($const_name);
 		}
