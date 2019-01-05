@@ -170,7 +170,7 @@ class SetupPage extends FormPage
 			$action = GETPOST('action', 'alpha');
 
 			// Actions
-			if (preg_match('/set_(.*)/', $action, $reg))
+			if (preg_match('/^set_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
 				$value = (is_submitted($code) ? GETPOST($code) : 1);
@@ -185,7 +185,7 @@ class SetupPage extends FormPage
 				}
 			}
 
-			else if (preg_match('/del_(.*)/', $action, $reg))
+			else if (preg_match('/^del_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
 
