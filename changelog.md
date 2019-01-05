@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.3 - DEC18
+
+*   NEW: use ajax to avoid page reload for actions confirmation & switch options in setup page.
+*   NEW: `string_to_array`, `array_to_string` & `js_enabled` global functions added.
+*   NEW: allow function chaining of `core/pages` public functions.
+*   FIX: minor issues.
+
+---
+
 #### 2.9.2 - DEC18
 
 *   NEW: allow function chaining of `core/class` public functions.

@@ -601,7 +601,7 @@ if (! function_exists('string_to_array'))
  * Returns if javascript/jquery is enabled
  *
  * @since     2.9.3
- * @return    boolean    true if enabled, else false
+ * @return    boolean    true if javascript is enabled, else false
  */
 if (! function_exists('js_enabled'))
 {
