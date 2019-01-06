@@ -219,7 +219,8 @@ class ListPage extends FormPage
 			{
 				foreach($this->extrafields->attribute_label as $key => $val)
 				{
-					if (! empty($this->arrayfields['ef.'.$key]['checked'])) {
+					if (! empty($this->arrayfields['ef.'.$key]['checked']))
+					{
 						$align = $this->extrafields->getAlignFlag($key);
 						$typeofextrafield = $this->extrafields->attribute_type[$key];
 						echo '<td class="liste_titre'.($align?' '.$align:'').'">';
@@ -227,21 +228,33 @@ class ListPage extends FormPage
 						{
 							$tmpkey = preg_replace('/search_options_/', '', $key);
 							$searchclass = '';
-							if (in_array($typeofextrafield, array('varchar', 'select'))) $searchclass='searchstring';
-							if (in_array($typeofextrafield, array('int', 'double'))) $searchclass='searchnum';
-							echo '<input class="flat'.($searchclass?' '.$searchclass:'').'" size="4" type="text" name="search_options_'.$tmpkey.'" value="'.dol_escape_htmltag($this->search_array_options['search_options_'.$tmpkey]).'">';
+							if (in_array($typeofextrafield, array('varchar', 'select'))) {
+								$searchclass = 'searchstring';
+							}
+							else if (in_array($typeofextrafield, array('int', 'double'))) {
+								$searchclass = 'searchnum';
+							}
+
+							if ($typeofextrafield == 'select') {
+								echo $this->form->listInput('search_options_'.$tmpkey, $this->extrafields->attribute_param[$tmpkey]['options'], dol_escape_htmltag($this->search_array_options['search_options_'.$tmpkey]), 1);
+							}
+							else {
+								echo '<input class="flat'.($searchclass?' '.$searchclass:'').'" size="4" type="text" name="search_options_'.$tmpkey.'" value="'.dol_escape_htmltag($this->search_array_options['search_options_'.$tmpkey]).'">';
+							}
 						}
-						elseif (! in_array($typeofextrafield, array('datetime','timestamp')))
-						{
-							// for the type as 'checkbox', 'chkbxlst', 'sellist' we should use code instead of id (example: I declare a 'chkbxlst' to have a link with dictionnairy, I have to extend it with the 'code' instead 'rowid')
-							$morecss = '';
-							if ($typeofextrafield == 'sellist') $morecss = 'maxwidth200';
-							echo $this->extrafields->showInputField($key, $this->search_array_options['search_options_'.$key], '', '', 'search_', $morecss);
-						}
-						elseif (in_array($typeofextrafield, array('datetime','timestamp')))
+						/*else if (in_array($typeofextrafield, array('datetime', 'timestamp')))
 						{
 							// TODO
 							// Use showInputField in a particular manner to have input with a comparison operator, not input for a specific value date-hour-minutes
+						}*/
+						else
+						{
+							// for the type as 'checkbox', 'chkbxlst', 'sellist' we should use code instead of id (example: I declare a 'chkbxlst' to have a link with dictionnairy, I have to extend it with the 'code' instead of 'rowid')
+							$morecss = '';
+							if ($typeofextrafield == 'sellist') {
+								$morecss = 'maxwidth200';
+							}
+							echo $this->extrafields->showInputField($key, $this->search_array_options['search_options_'.$key], '', '', 'search_', $morecss);
 						}
 						echo '</td>';
 					}
@@ -352,9 +365,14 @@ class ListPage extends FormPage
 				$crit = $val;
 				$mode_search = 0;
 
-				if (in_array($type, array('int', 'double', 'real'))) $mode_search = 1; // Search on a numeric
-				if (in_array($type, array('sellist', 'link', 'chkbxlst', 'checkbox')) && $crit != '0' && $crit != '-1') $mode_search = 2; // Search on a foreign key int
-				if ($crit != '' && (! in_array($type, array('select','sellist')) || $crit != '0') && (! in_array($type, array('link')) || $crit != '-1'))
+				if (in_array($type, array('int', 'double', 'real'))) {
+					$mode_search = 1; // Search on a numeric
+				}
+				else if (in_array($type, array('sellist', 'link', 'chkbxlst', 'checkbox')) && $crit != '0' && $crit != '-1') {
+					$mode_search = 2; // Search on a foreign key int
+				}
+
+				if ($crit != '' && (! in_array($type, array('select', 'sellist')) || ($crit != '0' && $crit != '-1')) && (! in_array($type, array('link')) || $crit != '-1'))
 				{
 					$where .= natural_search('ef.'.$tmpkey, $crit, $mode_search);
 				}
