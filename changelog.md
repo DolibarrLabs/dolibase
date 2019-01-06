@@ -1,7 +1,17 @@
 ### Dolibase Framework
 ------
 
-#### 2.9.3 - DEC18
+#### 2.9.4 - JAN19
+
+*   NEW: `GETPOSTDATETIME` global function added.
+*   NEW: `datetimeInput` function added to CustomForm class.
+*   NEW: customize some extrafields types in ListPage class.
+*   FIX: missing concatenation operator for $body attribute in FormPage class.
+*   FIX: disable using ajax by default for switch options in setup page (did not fit well with some modules).
+
+---
+
+#### 2.9.3 - JAN19
 
 *   NEW: use ajax to avoid page reload for actions confirmation & switch options in setup page.
 *   NEW: `string_to_array`, `array_to_string` & `js_enabled` global functions added.
