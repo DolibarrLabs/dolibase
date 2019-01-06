@@ -113,6 +113,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_numberInput", "name": "CustomForm::numberInput", "doc": "&quot;Return a number input&quot;"},
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_rangeInput", "name": "CustomForm::rangeInput", "doc": "&quot;Return a range input&quot;"},
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_dateInput", "name": "CustomForm::dateInput", "doc": "&quot;Return a date input&quot;"},
+                    {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_datetimeInput", "name": "CustomForm::datetimeInput", "doc": "&quot;Return a datetime input&quot;"},
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_listInput", "name": "CustomForm::listInput", "doc": "&quot;Return a list&quot;"},
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_radioList", "name": "CustomForm::radioList", "doc": "&quot;Return a radio list&quot;"},
                     {"type": "Method", "fromName": "CustomForm", "fromLink": "CustomForm.html", "link": "CustomForm.html#method_checkList", "name": "CustomForm::checkList", "doc": "&quot;Return a check list&quot;"},
@@ -235,7 +236,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_fetchExtraFields", "name": "ListPage::fetchExtraFields", "doc": "&quot;Fetch extrafields&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_addButtons", "name": "ListPage::addButtons", "doc": "&quot;Add buttons to the list&quot;"},
                     {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeList", "name": "ListPage::closeList", "doc": "&quot;Close list&quot;"},
-                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close a table row&quot;"},
+                    {"type": "Method", "fromName": "ListPage", "fromLink": "ListPage.html", "link": "ListPage.html#method_closeRow", "name": "ListPage::closeRow", "doc": "&quot;Close table row&quot;"},
             
             {"type": "Class",  "link": "LogPage.html", "name": "LogPage", "doc": "&quot;LogPage class&quot;"},
                                                         {"type": "Method", "fromName": "LogPage", "fromLink": "LogPage.html", "link": "LogPage.html#method___construct", "name": "LogPage::__construct", "doc": "&quot;Constructor&quot;"},
