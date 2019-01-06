@@ -174,6 +174,36 @@ if (! function_exists('GETPOSTDATE'))
 }
 
 /**
+ * Return posted datetime
+ *
+ * @since      2.9.4
+ * @param      $datetime_input_name   datetime input name
+ * @param      $convert_to_db_format  should convert the datetime to database format or not
+ * @return     string                 datetime in your db format, null if error/empty
+ */
+if (! function_exists('GETPOSTDATETIME'))
+{
+	function GETPOSTDATETIME($datetime_input_name, $convert_to_db_format = false)
+	{
+		if (is_submitted($datetime_input_name.'hour') && is_submitted($datetime_input_name.'min') && is_submitted($datetime_input_name.'month') && is_submitted($datetime_input_name.'day') && is_submitted($datetime_input_name.'year')) {
+			$date = dol_mktime(GETPOST($datetime_input_name.'hour'), GETPOST($datetime_input_name.'min'), 0, GETPOST($datetime_input_name.'month'), GETPOST($datetime_input_name.'day'), GETPOST($datetime_input_name.'year'));
+		}
+		else {
+			$date = GETPOST($datetime_input_name);
+		}
+
+		if ($convert_to_db_format) {
+			global $db;
+
+			return empty($date) ? null : $db->idate($date);
+		}
+		else {
+			return $date;
+		}
+	}
+}
+
+/**
  * Convert empty values to null
  *
  * @param      $value          value to convert
