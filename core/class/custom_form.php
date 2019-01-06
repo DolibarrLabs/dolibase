@@ -147,6 +147,20 @@ class CustomForm extends Form
 	}
 
 	/**
+	 * Return a datetime input
+	 *
+	 * @since   2.9.4
+	 * @param   $name         input name
+	 * @param   $value        input value
+	 * @param   $addnowlink   add now link
+	 * @return  string        input HTML
+	 */
+	public function datetimeInput($name, $value, $addnowlink = 1)
+	{
+		return $this->select_date($value, $name, 1, 1, 1, '', 1, $addnowlink, 1);
+	}
+
+	/**
 	 * Return a list
 	 *
 	 * @param   $name       list name
@@ -164,7 +178,7 @@ class CustomForm extends Form
 			$values[$key] = $langs->trans($value);
 		}
 
-		return $this->selectarray($name, $values, $selected, $show_empty);
+		return $this->selectarray($name, $values, $selected, $show_empty, 0, 0, '', 0, 0, 0, '', 'dolibase_select');
 	}
 
 	/**
