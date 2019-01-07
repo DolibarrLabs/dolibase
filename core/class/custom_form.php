@@ -182,6 +182,27 @@ class CustomForm extends Form
 	}
 
 	/**
+	 * Return a multi select list
+	 *
+	 * @param   $name       list name
+	 * @param   $values     list values
+	 * @param   $selected   list selected value
+	 * @param   $width      list width
+	 * @return  string      list HTML
+	 */
+	public function multiSelectListInput($name, $values, $selected, $width = '100%')
+	{
+		global $langs;
+
+		// Translate list values
+		foreach ($values as $key => $value) {
+			$values[$key] = $langs->trans($value);
+		}
+
+		return $this->multiselectarray($name, $values, $selected, 0, 0, '', 0, $width);
+	}
+
+	/**
 	 * Return a radio list
 	 *
 	 * @param   $name      list name

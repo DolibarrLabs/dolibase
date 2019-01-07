@@ -603,23 +603,19 @@ if (! function_exists('array_to_string'))
  * @since     2.9.3
  * @param     $str       String
  * @param     $delimiter Values delimiter
- * @param     $trim      Trim array values or not
- * @return    array      array filled with values from string or empty array if string is empty
+ * @return    array      array filled with values from string as ['value' => 'value'] or empty array if string is empty
  */
 if (! function_exists('string_to_array'))
 {
-	function string_to_array($str, $delimiter = ',', $trim = true)
+	function string_to_array($str, $delimiter = ',')
 	{
 		$arr = array();
 
 		if (! empty($str))
 		{
-			$arr = explode($delimiter, $str);
-
-			if ($trim) {
-				foreach ($arr as $key => $value) {
-					$arr[$key] = trim($value);
-				}
+			foreach (explode($delimiter, $str) as $value) {
+				$trimed_value = trim($value);
+				$arr[$trimed_value] = $trimed_value;
 			}
 		}
 

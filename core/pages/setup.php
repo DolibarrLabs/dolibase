@@ -173,7 +173,12 @@ class SetupPage extends FormPage
 			if (preg_match('/^set_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
-				$value = (is_submitted($code) ? GETPOST($code) : 1);
+				$type = GETPOST('option_type', 'alpha');
+				$value = (is_submitted($code) ? GETPOST($code) : (in_array($type, array('text', 'multiselect')) ? '' : 1));
+
+				if (is_array($value)) {
+					$value = array_to_string($value);
+				}
 
 				if (dolibarr_set_const($db, $code, $value, 'chaine', 0, '', $conf->entity) > 0)
 				{
@@ -579,6 +584,30 @@ class SetupPage extends FormPage
 		global $conf;
 
 		$option_content = $this->form->listInput($const_name, $list, $conf->global->$const_name);
+
+		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
+
+		return $this;
+	}
+
+	/**
+	 * Add a new multi select list option
+	 *
+	 * @param     $option_desc       Option description
+	 * @param     $const_name        Option constant name
+	 * @param     $list              Options list array
+	 * @param     $morehtmlright     more HTML to add on the right of the option description
+	 * @param     $width             Option last column/td width
+	 * @return    $this
+	 */
+	public function addMultiSelectListOption($option_desc, $const_name, $list, $morehtmlright = '', $width = 300)
+	{
+		global $conf;
+
+		$selected = string_to_array($conf->global->$const_name);
+
+		$option_content = '<input type="hidden" name="option_type" value="multiselect" />'."\n";
+		$option_content.= $this->form->multiSelectListInput($const_name, $list, $selected, '60%');
 
 		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 
