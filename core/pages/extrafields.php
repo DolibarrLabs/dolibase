@@ -118,15 +118,17 @@ class ExtraFieldsPage extends FormPage
 	/**
 	 * Print extra fields table
 	 *
+	 * @param     $object_trans     Object translation
 	 * @return    $this
 	 */
-	public function printExtraFields()
+	public function printExtraFields($object_trans = '')
 	{
 		global $conf, $langs;
 
 		// Get parameters
 		$action      = GETPOST('action', 'alpha');
 		$attrname    = GETPOST('attrname', 'alpha');
+		$textobject  = (empty($object_trans) ? '' : $langs->trans($object_trans));
 		$elementtype = $this->elementtype;
 		$extrafields = $this->extrafields;
 		$form        = $this->form;
