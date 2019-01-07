@@ -169,7 +169,11 @@ class SetupPage extends FormPage
 			// Parameters
 			$action = GETPOST('action', 'alpha');
 
-			// Actions
+			/**
+			 * Actions
+			 */
+
+			// Set a constant
 			if (preg_match('/^set_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
@@ -190,6 +194,7 @@ class SetupPage extends FormPage
 				}
 			}
 
+			// Delete a constant
 			else if (preg_match('/^del_(.*)/', $action, $reg))
 			{
 				$code = $reg[1];
@@ -204,6 +209,7 @@ class SetupPage extends FormPage
 				}
 			}
 
+			// Update numbering model mask
 			else if ($action == 'updateMask')
 			{
 				$maskconst = GETPOST('maskconst','alpha');
@@ -224,6 +230,7 @@ class SetupPage extends FormPage
 				}
 			}
 
+			// Set/Activate a numbering model
 			else if ($action == 'setmod')
 			{
 				$value = GETPOST('value', 'alpha');
@@ -271,7 +278,7 @@ class SetupPage extends FormPage
 				}
 			}
 
-			// specimen
+			// Generate specimen document
 			else if ($action == 'specimen')
 			{
 				$model = GETPOST('model','alpha');
@@ -424,9 +431,9 @@ class SetupPage extends FormPage
 	public function newOptionsTable($first_column_name = 'Option')
 	{
 		$options_table_cols = array(
-								array('name' => $first_column_name),
-								array('name' => 'Value', 'attr' => 'align="center" width="100"')
-							);
+			array('name' => $first_column_name),
+			array('name' => 'Value', 'attr' => 'align="center" width="100"')
+		);
 
 		$this->openTable($options_table_cols);
 
