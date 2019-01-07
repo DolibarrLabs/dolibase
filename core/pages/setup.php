@@ -607,7 +607,7 @@ class SetupPage extends FormPage
 		$selected = string_to_array($conf->global->$const_name);
 
 		$option_content = '<input type="hidden" name="option_type" value="multiselect" />'."\n";
-		$option_content.= $this->form->multiSelectListInput($const_name, $list, $selected, '60%');
+		$option_content.= $this->form->multiSelectListInput($const_name, $list, $selected, false, '60%');
 
 		$this->addOption($option_desc, $option_content, $const_name, $morehtmlright, $width);
 

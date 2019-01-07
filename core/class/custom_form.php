@@ -141,7 +141,7 @@ class CustomForm extends Form
 	 * @param   $addnowlink   add now link
 	 * @return  string        input HTML
 	 */
-	public function dateInput($name, $value, $addnowlink = 1)
+	public function dateInput($name, $value, $addnowlink = true)
 	{
 		return $this->select_date($value, $name, 0, 0, 1, '', 1, $addnowlink, 1);
 	}
@@ -155,7 +155,7 @@ class CustomForm extends Form
 	 * @param   $addnowlink   add now link
 	 * @return  string        input HTML
 	 */
-	public function datetimeInput($name, $value, $addnowlink = 1)
+	public function datetimeInput($name, $value, $addnowlink = true)
 	{
 		return $this->select_date($value, $name, 1, 1, 1, '', 1, $addnowlink, 1);
 	}
@@ -166,19 +166,13 @@ class CustomForm extends Form
 	 * @param   $name       list name
 	 * @param   $values     list values
 	 * @param   $selected   list selected value
-	 * @param   $show_empty show empty value
+	 * @param   $show_empty show empty value, 0 no empty value allowed, 1 or string to add an empty value into list (key is -1 and value is '' or '&nbsp;' if 1, key is -1 and value is text if string), <0 to add an empty value with key that is this value.
+	 * @param   $translate  translate values
 	 * @return  string      list HTML
 	 */
-	public function listInput($name, $values, $selected, $show_empty = 0)
+	public function listInput($name, $values, $selected, $show_empty = 0, $translate = true)
 	{
-		global $langs;
-
-		// Translate list values
-		foreach ($values as $key => $value) {
-			$values[$key] = $langs->trans($value);
-		}
-
-		return $this->selectarray($name, $values, $selected, $show_empty, 0, 0, '', 0, 0, 0, '', 'dolibase_select');
+		return $this->selectarray($name, $values, $selected, $show_empty, 0, 0, '', $translate, 0, 0, '', 'dolibase_select');
 	}
 
 	/**
@@ -187,19 +181,13 @@ class CustomForm extends Form
 	 * @param   $name       list name
 	 * @param   $values     list values
 	 * @param   $selected   list selected value
+	 * @param   $translate  translate values
 	 * @param   $width      list width
 	 * @return  string      list HTML
 	 */
-	public function multiSelectListInput($name, $values, $selected, $width = '100%')
+	public function multiSelectListInput($name, $values, $selected, $translate = true, $width = '100%')
 	{
-		global $langs;
-
-		// Translate list values
-		foreach ($values as $key => $value) {
-			$values[$key] = $langs->trans($value);
-		}
-
-		return $this->multiselectarray($name, $values, $selected, 0, 0, '', 0, $width);
+		return $this->multiselectarray($name, $values, $selected, 0, 0, '', $translate, $width);
 	}
 
 	/**
