@@ -24,6 +24,7 @@ $changelog_file = dol_buildpath($dolibase_config['module']['folder'].'/changelog
 <table class="noborder allwidth">
 	<tr class="liste_titre">
 		<td align="center"><?php echo $langs->trans('Version'); ?></td>
+		<td align="center" width="2%"></td>
 		<td align="center"><?php echo $langs->trans('PublicationDate'); ?></td>
 		<td align="left" width="70%"><?php echo $langs->trans('Details'); ?></td>
 	</tr>
@@ -40,6 +41,7 @@ if (file_exists($changelog_file))
 		?>
 		<tr>
 			<td align="center"><?php echo $release->version; ?></td>
+			<td align="center"><?php if (isset($release->note)) echo img_warning($release->note); ?></td>
 			<td align="center"><?php echo $release->date; ?></td>
 			<td align="left">
 				<?php foreach ($release->details as $entry) {
@@ -67,7 +69,7 @@ else
 {
 	?>
 	<tr>
-		<td align="left" colspan="3"><?php echo $langs->trans('NoChangelogAvailable'); ?></td>
+		<td align="left" colspan="4"><?php echo $langs->trans('NoChangelogAvailable'); ?></td>
 	</tr>
 	<?php
 }
