@@ -16,7 +16,7 @@
  */
 
 dolibase_include_once('core/class/form_page.php');
-require_once DOL_DOCUMENT_ROOT . '/core/class/dolgraph.class.php';
+dolibase_include_once('core/class/chart.php');
 
 /**
  * IndexPage class
@@ -222,21 +222,12 @@ class IndexPage extends FormPage
 			{
 				echo '<tr class="impair"><td align="center" colspan="2">';
 
-				$graph = new DolGraph();
-				$width = DolGraph::getDefaultGraphSizeForStats('width');
-				$height = DolGraph::getDefaultGraphSizeForStats('height');
-				$graph->SetData($dataseries);
-				if (in_array($graph_type, array('bars', 'lines'))) {
-					$graph->SetMaxValue($graph->GetCeilMaxValue());
-					$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
-				}
-				$graph->setShowLegend(1);
+				// Generate graph
+				$graph = new Chart();
+				$graph->generate($graph_type, $dataseries);
+				$graph->setShowLegend(1); // force show legend
 				$graph->setShowPercent(1);
-				$graph->SetType(array($graph_type));
-				$graph->setWidth($width);
-				$graph->setHeight($height);
-				$graph->draw('stats_'.($this->stats_id++));
-				echo $graph->show();
+				$graph->display('stats_'.($this->stats_id++));
 
 				echo '</td></tr>';
 			}
@@ -270,26 +261,10 @@ class IndexPage extends FormPage
 		echo '<tr class="impair"><td align="center" colspan="2">';
 
 		// Generate graph
-		$graph = new DolGraph();
-		$width = DolGraph::getDefaultGraphSizeForStats('width');
-		$height = DolGraph::getDefaultGraphSizeForStats('height');
-		$show_legend = empty($legend) ? 0 : 1;
-		if (! $graph->isGraphKo())
-		{
-			$graph->SetData($data);
-			$graph->SetLegend($legend);
-			if (in_array($graph_type, array('bars', 'lines'))) {
-				$graph->SetMaxValue($graph->GetCeilMaxValue());
-				$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
-			}
-			$graph->setShowLegend($show_legend);
-			$graph->setShowPercent(1);
-			$graph->SetType(array($graph_type));
-			$graph->setWidth($width);
-			$graph->setHeight($height);
-			$graph->draw('stats_'.($this->stats_id++));
-			echo $graph->show();
-		}
+		$graph = new Chart();
+		$graph->generate($graph_type, $data, $legend);
+		$graph->setShowPercent(1);
+		$graph->display('stats_'.($this->stats_id++));
 
 		echo '</td></tr>';
 		echo "</table><br>";

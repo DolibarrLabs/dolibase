@@ -2,7 +2,6 @@
 
 * Module export/import options
 * Hierarchical view page?
-* Enhance widget class with graph(s) support.
 * Menu class with functions to add/remove/setPosition/enable/disable menu(s)?
 * Hooks/Triggers class builder, think to associate all dolibarr hooks with their functions to simplify hooks implementation?
 * Merge $page->checkFields() & checkExtraFields() functions?

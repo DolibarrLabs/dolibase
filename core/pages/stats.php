@@ -16,7 +16,7 @@
  */
 
 dolibase_include_once('core/class/form_page.php');
-require_once DOL_DOCUMENT_ROOT . '/core/class/dolgraph.class.php';
+dolibase_include_once('core/class/chart.php');
 
 /**
  * StatsPage class
@@ -216,36 +216,24 @@ class StatsPage extends FormPage
 			$fileurl = DOL_URL_ROOT.'/viewimage.php?modulepart='.$this->modulepart.'stats&file='.$this->modulepart.$suffix.'-'.$year.'.png';
 		}
 
-		// Generate graph
-		$graph = new DolGraph();
-		$width = DolGraph::getDefaultGraphSizeForStats('width');
-		$height = DolGraph::getDefaultGraphSizeForStats('height');
-		if (! $graph->isGraphKo())
+		// Set legend
+		$i = $startyear;
+		$legend = array();
+		while ($i <= $endyear)
 		{
-			$i = $startyear;
-			$legend = array();
-			while ($i <= $endyear)
-			{
-				$legend[] = $i;
-				$i++;
-			}
-			$graph->SetData($data);
-			$graph->SetLegend($legend);
-			$graph->SetMaxValue($graph->GetCeilMaxValue());
-			$graph->SetMinValue(min(0, $graph->GetFloorMinValue()));
-			$graph->SetWidth($width);
-			$graph->SetHeight($height);
-			//$graph->SetYLabel($langs->trans("YLabel"));
-			$graph->SetShading(3);
-			$graph->SetHorizTickIncrement(1);
-			$graph->SetPrecisionY(0);
-			$graph->mode = 'depth';
-			$graph->SetTitle($langs->trans($title));
-
-			$graph->draw($filename, $fileurl);
-
-			echo $graph->show();
+			$legend[] = $i;
+			$i++;
 		}
+
+		// Generate graph
+		$graph = new Chart();
+		$graph->generate('bars', $data, $legend, $title);
+		//$graph->SetYLabel($langs->trans("YLabel"));
+		$graph->SetShading(3);
+		$graph->SetHorizTickIncrement(1);
+		$graph->SetPrecisionY(0);
+		$graph->mode = 'depth';
+		$graph->display($filename, $fileurl);
 
 		return $this;
 	}
