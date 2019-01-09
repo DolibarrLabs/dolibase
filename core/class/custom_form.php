@@ -106,6 +106,19 @@ class CustomForm extends Form
 	}
 
 	/**
+	 * Return a file input
+	 *
+	 * @since   2.9.5
+	 * @param   $name    input name
+	 * @param   $accept  input accept attribute
+	 * @return  string   input HTML
+	 */
+	public function fileInput($name, $accept = '')
+	{
+		return '<input type="file" class="flat" name="'.$name.'"'.(! empty($accept) ? ' accept="'.$accept.'"' : '').'>';
+	}
+
+	/**
 	 * Return a number input
 	 *
 	 * @param   $name    input name
