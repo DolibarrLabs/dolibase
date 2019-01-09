@@ -374,14 +374,15 @@ class Page
 	 * Open a form only if not already opened
 	 *
 	 * @param     $action     form action
+	 * @param     $enctype    form enctype attribute
 	 * @return    $this
 	 */
-	public function openForm($action = 'create')
+	public function openForm($action = 'create', $enctype = '')
 	{
 		// i.: HTML form inside another never works, so better not allow it
 		if (! $this->close_form)
 		{
-			echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST">';
+			echo '<form action="' . $_SERVER["PHP_SELF"] . '" method="POST"'.(! empty($enctype) ? ' enctype="'.$enctype.'"' : '').'>';
 			echo '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
 			echo '<input type="hidden" name="mainmenu" value="' . $_SESSION ['mainmenu'] . '">';
 			echo '<input type="hidden" name="action" value="' . $action . '">';
