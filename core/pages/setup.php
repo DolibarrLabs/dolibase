@@ -467,8 +467,9 @@ class SetupPage extends FormPage
 		echo $option_content."\n";
 		if (! empty($const_name)) {
 			echo '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
+			echo "</form>\n";
 		}
-		echo "</form>\n</td>\n</tr>\n";
+		echo "</td>\n</tr>\n";
 
 		return $this;
 	}
