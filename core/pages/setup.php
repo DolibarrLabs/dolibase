@@ -673,6 +673,44 @@ class SetupPage extends FormPage
 	}
 
 	/**
+	 * Add a confirmation button to the page
+	 *
+	 * @param     $name                 button name
+	 * @param     $id                   button id (used to display the confirmation dialog)
+	 * @param     $href                 button href
+	 * @param     $target               button target
+	 * @param     $class                button class
+	 * @param     $close_parent_div     should close parent div or not
+	 * @return    $this
+	 */
+	public function addConfirmButton($name, $id, $href = '#', $target = '_self', $class = 'butAction', $close_parent_div = false)
+	{
+		if (js_enabled())
+		{
+			global $langs;
+
+			if (! $this->close_buttons_div) {
+				dol_fiche_end();
+				echo '<div class="tabsAction force-center">';
+				$this->close_buttons_div = true;
+			}
+
+			echo '<span class="'.$class.'" id="'.$id.'">'.$langs->trans($name).'</span>';
+
+			if ($close_parent_div) {
+				echo '</div>';
+				$this->close_buttons_div = false;
+			}
+		}
+		else
+		{
+			$this->addButton($name, $href, $target, $class, $close_parent_div);
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Print numbering models
 	 *
 	 * @param     $model_name     Numbering model name
