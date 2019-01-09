@@ -185,6 +185,32 @@ class CardPage extends CreatePage
 	}
 
 	/**
+	 * Open buttons div (if not already opened)
+	 *
+	 */
+	protected function openButtonsDiv()
+	{
+		if (! $this->close_buttons_div) {
+			dol_fiche_end();
+			echo '<div class="tabsAction">';
+			$this->close_buttons_div = true;
+			$this->add_fiche_end = false;
+		}
+	}
+
+	/**
+	 * Close buttons div (if opened)
+	 *
+	 */
+	protected function closeButtonsDiv()
+	{
+		if ($this->close_buttons_div) {
+			echo '</div>';
+			$this->close_buttons_div = false;
+		}
+	}
+
+	/**
 	 * Add a button to the page
 	 *
 	 * @param     $name                 button name
@@ -198,18 +224,12 @@ class CardPage extends CreatePage
 	{
 		global $langs;
 
-		if (! $this->close_buttons_div) {
-			dol_fiche_end();
-			echo '<div class="tabsAction">';
-			$this->close_buttons_div = true;
-			$this->add_fiche_end = false;
-		}
+		$this->openButtonsDiv();
 
 		echo '<a class="'.$class.'" href="'.$href.'" target="'.$target.'">'.$langs->trans($name).'</a>';
 
 		if ($close_parent_div) {
-			echo '</div>';
-			$this->close_buttons_div = false;
+			$this->closeButtonsDiv();
 		}
 
 		return $this;
@@ -232,18 +252,12 @@ class CardPage extends CreatePage
 		{
 			global $langs;
 
-			if (! $this->close_buttons_div) {
-				dol_fiche_end();
-				echo '<div class="tabsAction">';
-				$this->close_buttons_div = true;
-				$this->add_fiche_end = false;
-			}
+			$this->openButtonsDiv();
 
 			echo '<span class="'.$class.'" id="'.$id.'">'.$langs->trans($name).'</span>';
 
 			if ($close_parent_div) {
-				echo '</div>';
-				$this->close_buttons_div = false;
+				$this->closeButtonsDiv();
 			}
 		}
 		else
@@ -267,11 +281,7 @@ class CardPage extends CreatePage
 	{
 		global $langs;
 
-		if (! $this->close_buttons_div) {
-			dol_fiche_end();
-			echo '<div class="tabsAction">';
-			$this->close_buttons_div = true;
-		}
+		$this->openButtonsDiv();
 
 		echo '<div class="dropdown-click">';
 		echo '<label class="drop-btn button '.$class.'">'.$langs->trans($name).'&nbsp;&nbsp;<img class="align-middle" title="" alt="" src="'.dolibase_buildurl('core/img/arrow-down.png').'" /></label>';
@@ -298,8 +308,7 @@ class CardPage extends CreatePage
 		echo '</div></div>';
 
 		if ($close_parent_div) {
-			echo '</div>';
-			$this->close_buttons_div = false;
+			$this->closeButtonsDiv();
 		}
 
 		return $this;
