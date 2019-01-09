@@ -358,6 +358,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_addMultiSelectListOption", "name": "SetupPage::addMultiSelectListOption", "doc": "&quot;Add a new multi select list option&quot;"},
                     {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_addColorOption", "name": "SetupPage::addColorOption", "doc": "&quot;Add a new color picker option&quot;"},
                     {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_addButton", "name": "SetupPage::addButton", "doc": "&quot;Add a button to the page&quot;"},
+                    {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_addConfirmButton", "name": "SetupPage::addConfirmButton", "doc": "&quot;Add a confirmation button to the page&quot;"},
                     {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_printNumModels", "name": "SetupPage::printNumModels", "doc": "&quot;Print numbering models&quot;"},
                     {"type": "Method", "fromName": "SetupPage", "fromLink": "SetupPage.html", "link": "SetupPage.html#method_printDocModels", "name": "SetupPage::printDocModels", "doc": "&quot;Print document models&quot;"},
             
