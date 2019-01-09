@@ -90,7 +90,7 @@ class CustomForm extends Form
 	 *
 	 * @param   $name           text area name
 	 * @param   $value          text area value
-	 * @param   $toolbarname    toolbar name
+	 * @param   $toolbarname    toolbar name, possible values: 'dolibarr_details', 'dolibarr_readonly', 'dolibarr_notes', 'dolibarr_mailings'
 	 * @param   $height         text area height
 	 * @return  string          text area HTML
 	 */
@@ -178,6 +178,7 @@ class CustomForm extends Form
 	/**
 	 * Return a multi select list
 	 *
+	 * @since   2.9.5
 	 * @param   $name       list name
 	 * @param   $values     list values
 	 * @param   $selected   list selected value

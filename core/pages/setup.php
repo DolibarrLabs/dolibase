@@ -600,6 +600,7 @@ class SetupPage extends FormPage
 	/**
 	 * Add a new multi select list option
 	 *
+	 * @since     2.9.5
 	 * @param     $option_desc       Option description
 	 * @param     $const_name        Option constant name
 	 * @param     $list              Options list array

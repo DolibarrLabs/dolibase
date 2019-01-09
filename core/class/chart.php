@@ -19,6 +19,8 @@ require_once DOL_DOCUMENT_ROOT . '/core/class/dolgraph.class.php';
 
 /**
  * Chart class
+ *
+ * @since 2.9.5
  */
 
 class Chart extends DolGraph
