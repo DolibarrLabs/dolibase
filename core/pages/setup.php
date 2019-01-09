@@ -98,7 +98,7 @@ class SetupPage extends FormPage
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_config['langs']['path']);
+		$langs->load("setup_page@".$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;

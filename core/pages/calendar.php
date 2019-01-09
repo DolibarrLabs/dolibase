@@ -46,7 +46,7 @@ class CalendarPage extends FormPage
 		global $langs, $dolibase_config;
 
 		// Load lang files
-		$langs->load('calendar_page@'.$dolibase_config['langs']['path']);
+		$langs->load('calendar_page@'.$dolibase_config['main']['path']);
 
 		// Set page attributes
 		$this->params = array(

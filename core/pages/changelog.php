@@ -42,7 +42,7 @@ class ChangelogPage extends Page
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("changelog_page@".$dolibase_config['langs']['path']);
+		$langs->load("changelog_page@".$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;

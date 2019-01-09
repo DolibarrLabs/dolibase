@@ -104,7 +104,7 @@ class FormPage extends Page
 		global $dolibase_config, $langs;
 
 		$langs->load("errors");
-		$langs->load("validation@".$dolibase_config['langs']['path']);
+		$langs->load("validation@".$dolibase_config['main']['path']);
 
 		$error = 0;
 

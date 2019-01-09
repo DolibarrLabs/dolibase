@@ -28,11 +28,3 @@ $dolibase_config['main'] = array(
 	'tables'              => array('logs'),
 	'use_ajax_on_confirm' => true
 );
-
-/**
- * Dolibase langs configuration
- */
-
-$dolibase_config['langs'] = array(
-	'path' => preg_replace('/^\//', '', $dolibase_config['main']['path']) // the same as main path but without the first slash '/'
-);

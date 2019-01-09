@@ -53,7 +53,7 @@ class ExtraFieldsPage extends FormPage
 
 		// Load lang files
 		$langs->load("admin");
-		$langs->load("extrafields_page@".$dolibase_config['langs']['path']);
+		$langs->load("extrafields_page@".$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->elementtype       = $elementtype;

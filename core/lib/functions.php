@@ -90,7 +90,7 @@ if (! function_exists('dolibase_buildpath'))
 
 		$path = preg_replace('/^\//', '', $component_path); // Clean the path
 
-		if ($dolibase_config['main']['path'] == '/dolibase') {
+		if (preg_match('/^\/?dolibase$/', $dolibase_config['main']['path'])) {
 			return ($as_url ? DOL_URL_ROOT : DOL_DOCUMENT_ROOT).'/dolibase/'.$path;
 		}
 
@@ -115,19 +115,19 @@ if (! function_exists('dolibase_buildurl'))
 /**
  * Return Dolibase relative path
  *
- * @return     string     Dolibase path as '/dolibase' or '/module/dolibase'
+ * @return     string     Dolibase relative path as 'dolibase' or 'module/dolibase'
  */
 if (! function_exists('get_dolibase_path'))
 {
 	function get_dolibase_path()
 	{
 		if (file_exists(DOL_DOCUMENT_ROOT . '/dolibase')) {
-			return '/dolibase';
+			return 'dolibase';
 		}
 		else {
 			global $dolibase_config;
 
-			return '/'.$dolibase_config['module']['folder'].'/dolibase';
+			return $dolibase_config['module']['folder'].'/dolibase';
 		}
 	}
 }
