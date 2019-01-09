@@ -6,7 +6,7 @@
 *   NEW: Chart class.
 *   NEW: add support for note field in changelog template.
 *   NEW: `addMultiSelectListOption` function added to SetupPage class.
-*   NEW: `multiSelectListInput` function added to CustomForm class.
+*   NEW: `multiSelectListInput`, `fileInput` functions added to CustomForm class.
 *   FIX: add missing $textobject var to ExtrafieldsPage class.
 
 ---
