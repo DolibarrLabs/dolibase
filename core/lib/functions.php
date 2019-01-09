@@ -80,6 +80,7 @@ if (! function_exists('dolibase_include_once'))
  *
  * @param     $component_path     Dolibase component path
  * @param     $as_url             Return path as url
+ * @return    string              File path or url
  */
 if (! function_exists('dolibase_buildpath'))
 {
@@ -101,6 +102,7 @@ if (! function_exists('dolibase_buildpath'))
  * Return Dolibase components full url (alias for dolibase_buildpath function)
  *
  * @param     $component_path     Dolibase component path
+ * @return    string              File url
  */
 if (! function_exists('dolibase_buildurl'))
 {
@@ -113,7 +115,7 @@ if (! function_exists('dolibase_buildurl'))
 /**
  * Return Dolibase relative path
  *
- * Possible values: '/dolibase', '/module/dolibase'
+ * @return     string     Dolibase path as '/dolibase' or '/module/dolibase'
  */
 if (! function_exists('get_dolibase_path'))
 {
@@ -498,7 +500,7 @@ if (! function_exists('stop_time_measure'))
  *
  * @see http://php.net/manual/fr/function.get-object-vars.php#62470
  * @param     $obj     Object
- * @return    array
+ * @return    array    Object as an array
  */
 if (! function_exists('object_to_array'))
 {
