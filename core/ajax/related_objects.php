@@ -33,7 +33,8 @@ $action = GETPOST('action');
 
 if ($action == 'search')
 {
-	$result = search_object(GETPOST('key'));
+	$key = GETPOST('key');
+	$result = search_object($key);
 
 	echo json_encode($result);
 }
