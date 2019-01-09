@@ -77,7 +77,7 @@ class QueryBuilder
 			}
 		}
 
-		$query = implode(" ", $parts);
+		$query = implode(' ', $parts);
 
 		return $query;
 	}

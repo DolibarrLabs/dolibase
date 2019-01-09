@@ -139,7 +139,7 @@ class IndexPage extends FormPage
 			echo '<tr><td>'.$langs->trans($key);
 			echo '</td><td><input type="text" class="flat inputsearch" name="'.$value.'" size="18"'.$autofocus.'></td>';
 			if ($count == 0) {
-				echo '<td class="noborderbottom" rowspan="'.count($fields).'"><input type="submit" value="'.$langs->trans("Search").'" class="button"></td>';
+				echo '<td class="noborderbottom" rowspan="'.count($fields).'"><input type="submit" value="'.$langs->trans('Search').'" class="button"></td>';
 			}
 			echo '</tr>';
 			$count++;
@@ -232,8 +232,8 @@ class IndexPage extends FormPage
 				echo '</td></tr>';
 			}
 
-			echo '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td align="right">'.$total.'</td></tr>';
-			echo "</table><br>";
+			echo '<tr class="liste_total"><td>'.$langs->trans('Total').'</td><td align="right">'.$total.'</td></tr>';
+			echo '</table><br>';
 		}
 		else
 		{

@@ -59,11 +59,11 @@ class pdf_azur extends DocModel
 	{
 		global $conf, $langs, $mysoc;
 
-		$langs->load("main");
-		$langs->load("companies");
+		$langs->load('main');
+		$langs->load('companies');
 
 		$this->db          = $db;
-		$this->name        = "azur";
+		$this->name        = 'azur';
 		$this->description = $langs->trans('DocModelAzurDescription');
 
 		// Page dimensions for A4 format
@@ -114,9 +114,9 @@ class pdf_azur extends DocModel
 		// For backward compatibility with FPDF, force output charset to ISO, because FPDF expect text to be encoded in ISO
 		if (! empty($conf->global->MAIN_USE_FPDF)) $outputlangs->charset_output = 'ISO-8859-1';
 
-		$outputlangs->load("main");
-		$outputlangs->load("dict");
-		$outputlangs->load("companies");
+		$outputlangs->load('main');
+		$outputlangs->load('dict');
+		$outputlangs->load('companies');
 
 		if ($conf->{$this->modulepart}->dir_output)
 		{
@@ -126,20 +126,20 @@ class pdf_azur extends DocModel
 			if ($object->specimen)
 			{
 				$dir = $conf->{$this->modulepart}->dir_output;
-				$file = $dir . "/SPECIMEN.pdf";
+				$file = $dir . '/SPECIMEN.pdf';
 			}
 			else
 			{
 				$objectref = dol_sanitizeFileName($object->ref);
-				$dir = $conf->{$this->modulepart}->dir_output . "/" . $objectref;
-				$file = $dir . "/" . $objectref . ".pdf";
+				$dir = $conf->{$this->modulepart}->dir_output . '/' . $objectref;
+				$file = $dir . '/' . $objectref . '.pdf';
 			}
 
 			if (! file_exists($dir))
 			{
 				if (dol_mkdir($dir) < 0)
 				{
-					$this->error = $langs->transnoentities("ErrorCanNotCreateDir", $dir);
+					$this->error = $langs->transnoentities('ErrorCanNotCreateDir', $dir);
 					return 0;
 				}
 			}
@@ -186,9 +186,9 @@ class pdf_azur extends DocModel
 
 				$pdf->SetTitle($outputlangs->convToOutputCharset($object->ref));
 				$pdf->SetSubject($outputlangs->transnoentities($object->doc_title));
-				$pdf->SetCreator("Dolibarr ".DOL_VERSION);
+				$pdf->SetCreator('Dolibarr '.DOL_VERSION);
 				$pdf->SetAuthor($outputlangs->convToOutputCharset($user->getFullName($outputlangs)));
-				$pdf->SetKeyWords($outputlangs->convToOutputCharset($object->ref)." ".$outputlangs->transnoentities($object->doc_title)." ".$outputlangs->convToOutputCharset($object->thirdparty->name));
+				$pdf->SetKeyWords($outputlangs->convToOutputCharset($object->ref).' '.$outputlangs->transnoentities($object->doc_title).' '.$outputlangs->convToOutputCharset($object->thirdparty->name));
 				if (! empty($conf->global->MAIN_DISABLE_PDF_COMPRESSION)) $pdf->SetCompression(false);
 
 				$pdf->SetMargins($this->marge_gauche, $this->marge_haute, $this->marge_droite); // Left, Top, Right
@@ -292,13 +292,13 @@ class pdf_azur extends DocModel
 			}
 			else
 			{
-				$this->error = $langs->trans("ErrorCanNotCreateDir", $dir);
+				$this->error = $langs->trans('ErrorCanNotCreateDir', $dir);
 				return 0;
 			}
 		}
 		else
 		{
-			$this->error = $langs->trans("ErrorConstantNotDefined", $this->const_prefix . "_OUTPUTDIR");
+			$this->error = $langs->trans('ErrorConstantNotDefined', $this->const_prefix . '_OUTPUTDIR');
 			return 0;
 		}
 	}
@@ -366,12 +366,12 @@ class pdf_azur extends DocModel
 		// Field
 		$curX = $this->posxfield-1;
 		$field = $langs->trans($name);
-		$pdf->writeHTMLCell($this->posxvalue-$curX-1, 3, $curX, $curY, $outputlangs->convToOutputCharset($field), 0, 1, false, true, 'J',true);
+		$pdf->writeHTMLCell($this->posxvalue-$curX-1, 3, $curX, $curY, $outputlangs->convToOutputCharset($field), 0, 1, false, true, 'J', true);
 		$nexY = $pdf->GetY(); // must be here
 
 		// Value
 		$curX = $this->posxvalue-1;
-		$pdf->writeHTMLCell($this->page_largeur-$this->marge_droite-$curX, 3, $curX, $curY, $outputlangs->convToOutputCharset($value), 0, 1, false, true, 'J',true);
+		$pdf->writeHTMLCell($this->page_largeur-$this->marge_droite-$curX, 3, $curX, $curY, $outputlangs->convToOutputCharset($value), 0, 1, false, true, 'J', true);
 		$nextY = $pdf->GetY();
 		if ($nextY > $nexY) $nexY = $nextY;
 
@@ -436,8 +436,8 @@ class pdf_azur extends DocModel
 	{
 		global $conf, $langs, $hookmanager;
 
-		$outputlangs->load("main");
-		$outputlangs->load("companies");
+		$outputlangs->load('main');
+		$outputlangs->load('companies');
 
 		$default_font_size = pdf_getPDFFontSize($outputlangs);
 
@@ -470,8 +470,8 @@ class pdf_azur extends DocModel
 			{
 				$pdf->SetTextColor(200, 0, 0);
 				$pdf->SetFont('', 'B', $default_font_size - 2);
-				$pdf->MultiCell(100, 3, $outputlangs->transnoentities("ErrorLogoFileNotFound", $logo), 0, 'L');
-				$pdf->MultiCell(100, 3, $outputlangs->transnoentities("ErrorGoToGlobalSetup"), 0, 'L');
+				$pdf->MultiCell(100, 3, $outputlangs->transnoentities('ErrorLogoFileNotFound', $logo), 0, 'L');
+				$pdf->MultiCell(100, 3, $outputlangs->transnoentities('ErrorGoToGlobalSetup'), 0, 'L');
 			}
 		}
 		else
@@ -495,14 +495,14 @@ class pdf_azur extends DocModel
 		$posy += 5;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
-		$pdf->MultiCell(100, 4, $outputlangs->transnoentities("Ref")." : " . $outputlangs->convToOutputCharset($object->ref), '', 'R');
+		$pdf->MultiCell(100, 4, $outputlangs->transnoentities('Ref').' : ' . $outputlangs->convToOutputCharset($object->ref), '', 'R');
 
 		// Date
 		$pdf->SetFont('', '', $default_font_size - 1);
 		$posy += 5;
 		$pdf->SetXY($posx, $posy);
 		$pdf->SetTextColor(0, 0, 60);
-		$pdf->MultiCell(100, 3, $outputlangs->transnoentities("Date")." : " . dol_print_date($object->creation_date, "%d %b %Y", false, $outputlangs, true), '', 'R');
+		$pdf->MultiCell(100, 3, $outputlangs->transnoentities('Date').' : ' . dol_print_date($object->creation_date, '%d %b %Y', false, $outputlangs, true), '', 'R');
 
 		if ($showaddress)
 		{
@@ -519,10 +519,10 @@ class pdf_azur extends DocModel
 			$pdf->SetTextColor(0, 0, 0);
 			$pdf->SetFont('', '', $default_font_size - 2);
 			$pdf->SetXY($posx, $posy-5);
-			$pdf->MultiCell(66, 5, $outputlangs->transnoentities("From").":", 0, 'L');
+			$pdf->MultiCell(66, 5, $outputlangs->transnoentities('From').':', 0, 'L');
 			$pdf->SetXY($posx, $posy);
 			$pdf->SetFillColor(230, 230, 230);
-			$pdf->MultiCell(82, $hautcadre, "", 0, 'R', 1);
+			$pdf->MultiCell(82, $hautcadre, '', 0, 'R', 1);
 			$pdf->SetTextColor(0, 0, 60);
 
 			// Show sender name
@@ -558,7 +558,7 @@ class pdf_azur extends DocModel
 			$pdf->SetTextColor(0, 0, 0);
 			$pdf->SetFont('', '', $default_font_size - 2);
 			$pdf->SetXY($posx+2, $posy-5);
-			$pdf->MultiCell($widthrecbox, 5, $outputlangs->transnoentities("To").":", 0, 'L');
+			$pdf->MultiCell($widthrecbox, 5, $outputlangs->transnoentities('To').':', 0, 'L');
 			$pdf->Rect($posx, $posy, $widthrecbox, $hautcadre);
 
 			// Show recipient name

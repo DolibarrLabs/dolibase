@@ -78,16 +78,16 @@ class NumModelSaphir extends NumModel
 		$text.= '<input type="hidden" name="maskconst" value="'.$this->const_name.'">';
 		$text.= '<table class="nobordernopadding" width="100%">';
 
-		$tooltip = $langs->trans("GenericMaskCodes", $module_name, $module_name);
-		$tooltip.= $langs->trans("GenericMaskCodes2");
-		$tooltip.= $langs->trans("GenericMaskCodes3");
-		$tooltip.= $langs->trans("GenericMaskCodes4a", $module_name, $module_name);
-		$tooltip.= $langs->trans("GenericMaskCodes5");
+		$tooltip = $langs->trans('GenericMaskCodes', $module_name, $module_name);
+		$tooltip.= $langs->trans('GenericMaskCodes2');
+		$tooltip.= $langs->trans('GenericMaskCodes3');
+		$tooltip.= $langs->trans('GenericMaskCodes4a', $module_name, $module_name);
+		$tooltip.= $langs->trans('GenericMaskCodes5');
 
-		$text.= '<tr><td>'.$langs->trans("Mask").':</td>';
+		$text.= '<tr><td>'.$langs->trans('Mask').':</td>';
 		$text.= '<td align="right">'.$form->textwithpicto('<input type="text" class="flat" size="24" name="mask" value="'.$conf->global->{$this->const_name}.'">', $tooltip, 1, 1).'</td>';
 
-		$text.= '<td align="left" rowspan="2">&nbsp; <input type="submit" class="button" value="'.$langs->trans("Modify").'" name="Button"></td>';
+		$text.= '<td align="left" rowspan="2">&nbsp; <input type="submit" class="button" value="'.$langs->trans('Modify').'" name="Button"></td>';
 
 		$text.= '</tr>';
 
@@ -112,6 +112,7 @@ class NumModelSaphir extends NumModel
 		{
 			$example = $langs->trans('NotConfigured');
 		}
+
 		return $example;
 	}
 

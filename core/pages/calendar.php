@@ -144,7 +144,7 @@ class CalendarPage extends FormPage
 			foreach($_POST as $key => $value) {
 				if ($key != 'token' && ! is_array($value)) $qs.= '&'.$key.'='.urlencode($value);
 			}
-			echo '<a class="butAction minwidth100" href="'.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.$qs.(empty($qs) ? '' : '&').'optioncss=print" target="_blank">' . $langs->trans("Print") . '</a>';
+			echo '<a class="butAction minwidth100" href="'.dol_escape_htmltag($_SERVER["PHP_SELF"]).'?'.$qs.(empty($qs) ? '' : '&').'optioncss=print" target="_blank">' . $langs->trans('Print') . '</a>';
 
 			echo '</div>';
 			echo '</td></tr>';
@@ -182,7 +182,7 @@ class CalendarPage extends FormPage
 			$form.= '<input type="hidden" name="token" value="' . $_SESSION ['newtoken'] . '">';
 			$form.= '<input type="hidden" name="action" value="' . $this->params['action'] . '">';
 			$form.= $this->form->select_date($this->params['dateselect'], 'dateselect', 0, 0, 1, '', 1, 0, 1);
-			$form.= '<input type="submit" class="button" value="'.$langs->trans("Refresh").'">';
+			$form.= '<input type="submit" class="button" value="'.$langs->trans('Refresh').'">';
 			$form.= '</form>';
 		}
 
@@ -199,7 +199,7 @@ class CalendarPage extends FormPage
 	 */
 	protected function showEvents($day, $month, $year, $minheight = 60)
 	{
-		$ymd = sprintf("%04d", $year).sprintf("%02d", $month).sprintf("%02d", $day);
+		$ymd = sprintf('%04d', $year).sprintf('%02d', $month).sprintf('%02d', $day);
 		$curtime = dol_mktime(0, 0, 0, $month, $day, $year);
 
 		// Line with title of day
@@ -273,10 +273,10 @@ class CalendarPage extends FormPage
 			$next = dol_get_next_month($month, $year);
 			$next_year  = $next['year'];
 			$next_month = $next['month'];
-			$max_day_in_prev_month = date("t", dol_mktime(0, 0, 0, $prev_month, 1, $prev_year));  // Nb of days in previous month
-			$max_day_in_month = date("t", dol_mktime(0, 0, 0, $month, 1, $year));                 // Nb of days in next month
+			$max_day_in_prev_month = date('t', dol_mktime(0, 0, 0, $prev_month, 1, $prev_year));  // Nb of days in previous month
+			$max_day_in_month = date('t', dol_mktime(0, 0, 0, $month, 1, $year));                 // Nb of days in next month
 			// tmpday is a negative or null cursor to know how many days before the 1st to show on month view (if tmpday=0, 1st is monday)
-			$tmpday = -date("w", dol_mktime(0, 0, 0, $month, 1, $year, true))+2; // date('w') is 0 fo sunday
+			$tmpday = -date('w', dol_mktime(0, 0, 0, $month, 1, $year, true))+2; // date('w') is 0 fo sunday
 			$tmpday+= ((isset($conf->global->MAIN_START_WEEK)?$conf->global->MAIN_START_WEEK:1)-1);
 			if ($tmpday >= 1) $tmpday -= 7; // If tmpday is 0 we start with sunday, if -6, we start with monday of previous week.
 			// Define firstdaytoshow and lastdaytoshow (warning: lastdaytoshow is last second to show + 1)
@@ -307,7 +307,7 @@ class CalendarPage extends FormPage
 					$labelshort = array(0 => 'SundayMin', 1 => 'MondayMin', 2 => 'TuesdayMin', 3 => 'WednesdayMin', 4 => 'ThursdayMin', 5 => 'FridayMin', 6 => 'SaturdayMin');
 					echo $langs->trans($labelshort[$numdayinweek]);
 				}
-				else echo $langs->trans("Day".$numdayinweek);
+				else echo $langs->trans('Day'.$numdayinweek);
 				echo "</td>\n";
 				$i++;
 			}
@@ -401,11 +401,11 @@ class CalendarPage extends FormPage
 			// Define firstdaytoshow and lastdaytoshow (warning: lastdaytoshow is last second to show + 1)
 			$firstdaytoshow = dol_mktime(0, 0, 0, $first_month, $first_day, $first_year);
 			$lastdaytoshow = dol_time_plus_duree($firstdaytoshow, 7, 'd');
-			$max_day_in_month = date("t", dol_mktime(0, 0, 0, $month, 1, $year));
+			$max_day_in_month = date('t', dol_mktime(0, 0, 0, $month, 1, $year));
 			$tmpday = $first_day;
 
 			$nav = "<a href=\"?year=".$prev_year."&amp;month=".$prev_month."&amp;day=".$prev_day.$param."\">".img_previous($langs->trans("Previous"), 'class="valignbottom"')."</a>\n";
-			$nav.= "<span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $first_month, $first_day, $first_year),"%Y").", ".$langs->trans("Week")." ".$week;
+			$nav.= "<span id=\"month_name\">".dol_print_date(dol_mktime(0, 0, 0, $first_month, $first_day, $first_year), "%Y").", ".$langs->trans("Week")." ".$week;
 			$nav.= "</span>\n";
 			$nav.= "<a href=\"?year=".$next_year."&amp;month=".$next_month."&amp;day=".$next_day.$param."\">".img_next($langs->trans("Next"), 'class="valignbottom"')."</a>\n";
 			$nav.= " &nbsp; (<a href=\"?year=".$nowyear."&amp;month=".$nowmonth."&amp;day=".$nowday.$param."\">".$langs->trans("Today")."</a>)";
@@ -419,14 +419,15 @@ class CalendarPage extends FormPage
 			$i = 0;
 			while ($i < 7)
 			{
-				$curtime = strtotime('+'.$i.' day', $firstdaytoshow); //dol_time_plus_duree($firstdaytoshow, $i, 'd'); // this function is bugged on week view (when week start from Sunday 29 Oct 2017)
+				//$curtime = dol_time_plus_duree($firstdaytoshow, $i, 'd'); // this function is bugged on week view (when week start from Sunday 29 Oct 2017)
+				$curtime = strtotime('+'.$i.' day', $firstdaytoshow);
 				$tmparray = dol_getdate($curtime, true);
 				$tmpday = $tmparray['mday'];
 				$tmpmonth = $tmparray['mon'];
 				$tmpyear = $tmparray['year'];
 
 				echo '<td align="center"'.($i == 0 ? ' colspan="2"': '').'>';
-				echo $langs->trans("Day".(($i+(isset($conf->global->MAIN_START_WEEK)?$conf->global->MAIN_START_WEEK:1)) % 7));
+				echo $langs->trans('Day'.(($i+(isset($conf->global->MAIN_START_WEEK)?$conf->global->MAIN_START_WEEK:1)) % 7));
 				echo "</td>\n";
 				$i++;
 			}
@@ -437,7 +438,8 @@ class CalendarPage extends FormPage
 			for ($iter_day = 0; $iter_day < 7; $iter_day++)
 			{
 				// Show days of the current week
-				$curtime = strtotime('+'.$iter_day.' day', $firstdaytoshow); //dol_time_plus_duree($firstdaytoshow, $iter_day, 'd'); // this function is bugged on week view (when week start from Sunday 29 Oct 2017)
+				//$curtime = dol_time_plus_duree($firstdaytoshow, $iter_day, 'd'); // this function is bugged on week view (when week start from Sunday 29 Oct 2017)
+				$curtime = strtotime('+'.$iter_day.' day', $firstdaytoshow);
 				$tmparray = dol_getdate($curtime, true);
 				$tmpday = $tmparray['mday'];
 				$tmpmonth = $tmparray['mon'];
@@ -498,7 +500,7 @@ class CalendarPage extends FormPage
 			echo '<table width="100%" class="noborder nocellnopadd cal_pannel cal_month">';
 			echo '<tr class="liste_titre">';
 			echo '<td align="center" colspan="2">';
-			echo $langs->trans("Day".$arraytimestamp['wday']);
+			echo $langs->trans('Day'.$arraytimestamp['wday']);
 			echo "</td>\n";
 			echo "</tr>\n";
 			echo "<tr>\n";

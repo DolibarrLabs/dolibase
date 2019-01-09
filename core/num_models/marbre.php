@@ -69,7 +69,7 @@ class NumModelMarbre extends NumModel
 	{
 		global $langs;
 
-		return $langs->trans("SimpleNumRefModelDesc", $this->prefix);
+		return $langs->trans('SimpleNumRefModelDesc', $this->prefix);
 	}
 
 	/**
@@ -79,7 +79,7 @@ class NumModelMarbre extends NumModel
 	 */
 	public function getExample()
 	{
-		return $this->prefix."1801-0001";
+		return $this->prefix.'1801-0001';
 	}
 
 	/**
@@ -91,9 +91,10 @@ class NumModelMarbre extends NumModel
 	{
 		global $conf, $langs, $db;
 
-		$coyymm = ''; $max = '';
-
+		$coyymm = '';
+		$max = '';
 		$posindice = 8;
+
 		$sql = "SELECT MAX(CAST(SUBSTRING(".$this->field_name." FROM ".$posindice.") AS SIGNED)) as max";
 		$sql.= " FROM ".MAIN_DB_PREFIX.$this->table_name;
 		$sql.= " WHERE ".$this->field_name." LIKE '".$this->prefix."____-%'";
@@ -110,7 +111,7 @@ class NumModelMarbre extends NumModel
 		}
 		if ($coyymm && ! preg_match('/'.$this->prefix.'[0-9][0-9][0-9][0-9]/i', $coyymm))
 		{
-			$langs->load("errors");
+			$langs->load('errors');
 			$this->error = $langs->trans('ErrorNumRefModel', $max);
 			return false;
 		}
@@ -144,17 +145,18 @@ class NumModelMarbre extends NumModel
 		}
 		else
 		{
-			dol_syslog($this->const_name."::getNextValue", LOG_DEBUG);
+			dol_syslog($this->const_name.'::getNextValue', LOG_DEBUG);
 			return -1;
 		}
 
 		$date = time();
-		$yymm = strftime("%y%m",$date);
+		$yymm = strftime('%y%m',$date);
 
 		if ($max >= (pow(10, 4) - 1)) $num = $max+1; // If counter > 9999, we do not format on 4 chars, we take number as it is
-		else $num = sprintf("%04s", $max+1);
+		else $num = sprintf('%04s', $max+1);
 
-		dol_syslog($this->const_name."::getNextValue return ".$this->prefix.$yymm."-".$num);
-		return $this->prefix.$yymm."-".$num;
+		dol_syslog($this->const_name.'::getNextValue return '.$this->prefix.$yymm.'-'.$num);
+
+		return $this->prefix.$yymm.'-'.$num;
 	}
 }

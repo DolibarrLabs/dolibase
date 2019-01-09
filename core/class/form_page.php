@@ -103,8 +103,8 @@ class FormPage extends Page
 	{
 		global $dolibase_config, $langs;
 
-		$langs->load("errors");
-		$langs->load("validation@".$dolibase_config['main']['path']);
+		$langs->load('errors');
+		$langs->load('validation@'.$dolibase_config['main']['path']);
 
 		$error = 0;
 
@@ -127,62 +127,62 @@ class FormPage extends Page
 		// required
 		$is_required = in_array('required', $validation_rules);
 		if ($is_required && $field_value == '') {
-			setEventMessage($langs->transnoentities("ErrorFieldRequired", $langs->transnoentities($field_trans)), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldRequired', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// numeric (escape if empty)
 		else if (in_array('numeric', $validation_rules) && $field_value != '' && ! is_numeric($field_value)) {
-			setEventMessage($langs->transnoentities("ErrorFieldMustBeANumeric", $langs->transnoentities($field_trans)), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldMustBeANumeric', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// string (escape if empty)
 		else if (in_array('string', $validation_rules) && $field_value != '' && ! is_string($field_value)) {
-			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// validEmail (escape if empty)
 		else if (in_array('validEmail', $validation_rules) && $field_value != '' && ! preg_match('/^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i', $field_value)) {
-			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// validTel (escape if empty)
 		else if (in_array('validTel', $validation_rules) && $field_value != '' && ! preg_match('/^[0-9\-\(\)\/\+\s]*$/', $field_value)) {
-			setEventMessage($langs->transnoentities("ErrorFieldFormat", $langs->transnoentities($field_trans)), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// validID (escape if empty)
 		else if (in_array('validID', $validation_rules) && $field_value != '' && is_numeric($field_value) && $field_value <= 0) {
-			$error_msg = ($is_required ? "ErrorFieldRequired" : "ErrorFieldFormat");
+			$error_msg = ($is_required ? 'ErrorFieldRequired' : 'ErrorFieldFormat');
 			setEventMessage($langs->transnoentities($error_msg, $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// greaterThan (escape if empty)
 		else if (array_match('/^greaterThan\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && is_numeric($field_value) && $field_value <= $matches[1]) {
-			setEventMessage($langs->transnoentities("ErrorFieldMustBeGreaterThan", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldMustBeGreaterThan', $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 
 		// lessThan (escape if empty)
 		else if (array_match('/^lessThan\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && is_numeric($field_value) && $field_value >= $matches[1]) {
-			setEventMessage($langs->transnoentities("ErrorFieldMustBeLessThan", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldMustBeLessThan', $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 
 		// minLength (escape if empty)
 		else if (array_match('/^minLength\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && strlen($field_value) < $matches[1]) {
-			setEventMessage($langs->transnoentities("ErrorFieldMustHaveMinLength", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldMustHaveMinLength', $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 
 		// maxLength (escape if empty)
 		else if (array_match('/^maxLength\(([0-9]+)\)$/i', $validation_rules, $matches) && $field_value != '' && strlen($field_value) > $matches[1]) {
-			setEventMessage($langs->transnoentities("ErrorFieldMustHaveMaxLength", $langs->transnoentities($field_trans), $matches[1]), 'errors');
+			setEventMessage($langs->transnoentities('ErrorFieldMustHaveMaxLength', $langs->transnoentities($field_trans), $matches[1]), 'errors');
 			$error++;
 		}
 

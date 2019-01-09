@@ -17,4 +17,4 @@
 
 global $langs;
 
-echo $langs->trans("NoSetupAvailable");
+echo $langs->trans('NoSetupAvailable');

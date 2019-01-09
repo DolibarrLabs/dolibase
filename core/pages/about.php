@@ -46,8 +46,8 @@ class AboutPage extends Page
 		global $langs, $dolibase_config;
 
 		// Load lang files
-		$langs->load("admin");
-		$langs->load("about_page@".$dolibase_config['main']['path']);
+		$langs->load('admin');
+		$langs->load('about_page@'.$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->add_extrafields_tab = $add_extrafields_tab;
@@ -68,19 +68,19 @@ class AboutPage extends Page
 		global $langs, $dolibase_config;
 
 		// Add sub title
-		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
+		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans('BackToModuleList').'</a>';
 		$this->addSubTitle($this->title, 'title_generic.png', $linkback);
 
 		// Add default tabs
 		if (empty($this->tabs)) {
-			$this->addTab("Settings", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home");
+			$this->addTab('Settings', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['setup_page'].'?mainmenu=home');
 			if ($this->add_extrafields_tab) {
-				$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
+				$this->addTab('ExtraFields', $dolibase_config['module']['folder'].'/admin/extrafields.php?mainmenu=home');
 			}
 			if ($this->add_changelog_tab) {
-				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
+				$this->addTab('Changelog', $dolibase_config['module']['folder'].'/admin/changelog.php?mainmenu=home');
 			}
-			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home", true);
+			$this->addTab('About', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home', true);
 		}
 
 		parent::generate();

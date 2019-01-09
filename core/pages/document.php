@@ -36,7 +36,7 @@ class DocumentPage extends Page
 		global $langs;
 
 		// Load lang files
-		$langs->load("other");
+		$langs->load('other');
 
 		// Add CSS files
 		$this->appendToHead('<link rel="stylesheet" type="text/css" href="'.dolibase_buildurl('core/css/banner.css.php').'">'."\n");
@@ -66,7 +66,7 @@ class DocumentPage extends Page
 	{
 		global $langs;
 
-		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans("BackToList").'</a>');
+		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans('BackToList').'</a>');
 
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 
@@ -161,8 +161,8 @@ class DocumentPage extends Page
 			echo '<table class="border" width="100%">';
 
 			// Files infos
-			echo '<tr><td class="titlefield">'.$langs->trans("NbOfAttachedFiles").'</td><td>'.count($filearray).'</td></tr>';
-			echo '<tr><td>'.$langs->trans("TotalSizeOfAttachedFiles").'</td><td>'.$totalsize.' '.$langs->trans("bytes").'</td></tr>';
+			echo '<tr><td class="titlefield">'.$langs->trans('NbOfAttachedFiles').'</td><td>'.count($filearray).'</td></tr>';
+			echo '<tr><td>'.$langs->trans('TotalSizeOfAttachedFiles').'</td><td>'.$totalsize.' '.$langs->trans('bytes').'</td></tr>';
 
 			echo "</table>\n";
 			echo '</div>';

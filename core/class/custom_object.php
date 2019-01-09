@@ -169,8 +169,8 @@ class CustomObject extends CrudObject
 
 			// Include file with class
 			$dirmodels = array(
-				dolibase_buildpath("core/num_models/"),
-				dol_buildpath($dolibase_config['module']['folder']."/core/num_models/")
+				dolibase_buildpath('core/num_models/'),
+				dol_buildpath($dolibase_config['module']['folder'].'/core/num_models/')
 			);
 
 			foreach ($dirmodels as $dir)
@@ -178,21 +178,21 @@ class CustomObject extends CrudObject
 				if (is_dir($dir))
 				{
 					// Load file with numbering class (if found)
-					$exists|=@include_once $dir.$file.".php";
+					$exists|=@include_once $dir.$file.'.php';
 				}
 			}
 
 			if (! $exists)
 			{
-				dol_print_error('',"Failed to include file ".$file);
+				dol_print_error('', 'Failed to include file '.$file);
 				return '';
 			}
 
 			$obj = new $classname($const_name_prefix, $model_name);
-			$numref = "";
+			$numref = '';
 			$numref = $obj->getNextValue($soc);
 
-			if ($numref != "")
+			if ($numref != '')
 			{
 				return $numref;
 			}
@@ -200,15 +200,15 @@ class CustomObject extends CrudObject
 			{
 				$this->error = $obj->error;
 				setEventMessage($this->error, 'errors');
-				return "";
+				return '';
 			}
 		}
 		else
 		{
-			$langs->load("errors");
-			$this->error = $langs->trans("ErrorModuleSetupNotComplete");
+			$langs->load('errors');
+			$this->error = $langs->trans('ErrorModuleSetupNotComplete');
 			setEventMessage($this->error, 'errors');
-			return "";
+			return '';
 		}
 	}
 
@@ -326,7 +326,7 @@ class CustomObject extends CrudObject
 		if ($conf->global->MAIN_MULTILANGS && empty($newlang))
 			$newlang = $this->thirdparty->default_lang;
 		if (! empty($newlang)) {
-			$outputlangs = new Translate("", $conf);
+			$outputlangs = new Translate('', $conf);
 			$outputlangs->setDefaultLang($newlang);
 		}
 
@@ -348,15 +348,15 @@ class CustomObject extends CrudObject
 		// Get model path
 		$modelpath = $dolibase_config['main']['path'] . '/core/doc_models/';
 		$dirmodels = array(
-			$dolibase_config['main']['path'] . '/core/doc_models/' => dolibase_buildpath("core/doc_models/"),
-			$dolibase_config['module']['folder'] . '/core/doc_models/' => dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
+			$dolibase_config['main']['path'] . '/core/doc_models/' => dolibase_buildpath('core/doc_models/'),
+			$dolibase_config['module']['folder'] . '/core/doc_models/' => dol_buildpath($dolibase_config['module']['folder'].'/core/doc_models/')
 		);
 
 		foreach ($dirmodels as $path => $dir)
 		{
 			foreach(array('doc', 'pdf') as $prefix)
 			{
-				if (file_exists($dir.$prefix."_".$model.".modules.php")) {
+				if (file_exists($dir.$prefix.'_'.$model.'.modules.php')) {
 					$modelpath = $path;
 					break 2;
 				}
@@ -385,15 +385,15 @@ class CustomObject extends CrudObject
 		{
 			require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
 
-			$langs->load("other");
+			$langs->load('other');
 			$upload_dir = $conf->{$this->modulepart}->dir_output;
 			$file = $upload_dir . '/' . GETPOST('file');
 			$result = dol_delete_file($file, 0, 0, 0, $object);
 			if ($result) {
-				setEventMessages($langs->trans("FileWasRemoved", GETPOST('file')), null, 'mesgs');
+				setEventMessages($langs->trans('FileWasRemoved', GETPOST('file')), null, 'mesgs');
 			}
 			else {
-				setEventMessages($langs->trans("ErrorFailToDeleteFile", GETPOST('file')), null, 'errors');
+				setEventMessages($langs->trans('ErrorFailToDeleteFile', GETPOST('file')), null, 'errors');
 			}
 
 			return $result;

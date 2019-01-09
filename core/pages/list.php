@@ -81,7 +81,7 @@ class ListPage extends FormPage
 		include DOL_DOCUMENT_ROOT.'/core/actions_changeselectedfields.inc.php';
 
 		// Purge search criteria
-		if (GETPOST("button_removefilter_x") || GETPOST("button_removefilter")) // Both test are required to be compatible with all browsers
+		if (GETPOST('button_removefilter_x') || GETPOST('button_removefilter')) // Both test are required to be compatible with all browsers
 		{
 			$_POST = array();
 			$_GET  = array();
@@ -148,7 +148,7 @@ class ListPage extends FormPage
 			foreach($fieldstosearchall as $key => $val) {
 				$fieldstosearchall[$key] = $langs->trans($val);
 			}
-			echo $langs->trans("FilterOnInto", $sall) . join(', ',$fieldstosearchall);
+			echo $langs->trans('FilterOnInto', $sall) . join(', ',$fieldstosearchall);
 		}
 
 		echo '<div class="div-table-responsive">';
@@ -261,8 +261,8 @@ class ListPage extends FormPage
 				}
 			}
 			// search buttons
-			echo '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans("Search"),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("Search")).'" title="'.dol_escape_htmltag($langs->trans("Search")).'">';
-			echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans("Search"),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'" title="'.dol_escape_htmltag($langs->trans("RemoveFilter")).'">';
+			echo '<td class="liste_titre" align="right"><input type="image" class="liste_titre" name="button_search" src="'.img_picto($langs->trans('Search'),'search.png','','',1).'" value="'.dol_escape_htmltag($langs->trans('Search')).'" title="'.dol_escape_htmltag($langs->trans('Search')).'">';
+			echo '<input type="image" class="liste_titre" name="button_removefilter" src="'.img_picto($langs->trans('Search'),'searchclear.png','','',1).'" value="'.dol_escape_htmltag($langs->trans('RemoveFilter')).'" title="'.dol_escape_htmltag($langs->trans('RemoveFilter')).'">';
 			echo "</td></tr>\n";
 		}
 

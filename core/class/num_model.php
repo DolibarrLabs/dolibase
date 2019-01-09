@@ -42,7 +42,7 @@ abstract class NumModel
 	{
 		global $langs;
 
-		return $langs->trans("NoDescription");
+		return $langs->trans('NoDescription');
 	}
 
 	/**
@@ -54,7 +54,7 @@ abstract class NumModel
 	{
 		global $langs;
 
-		return $langs->trans("NoExample");
+		return $langs->trans('NoExample');
 	}
 
 	/**
@@ -76,7 +76,7 @@ abstract class NumModel
 	{
 		global $langs;
 
-		return $langs->trans("NotAvailable");
+		return $langs->trans('NotAvailable');
 	}
 
 	/**
@@ -87,12 +87,12 @@ abstract class NumModel
 	public function getVersion()
 	{
 		global $langs;
-		$langs->load("admin");
+		$langs->load('admin');
 
-		if ($this->version == 'development') return $langs->trans("VersionDevelopment");
-		if ($this->version == 'experimental') return $langs->trans("VersionExperimental");
+		if ($this->version == 'development') return $langs->trans('VersionDevelopment');
+		if ($this->version == 'experimental') return $langs->trans('VersionExperimental');
 		if ($this->version == 'dolibarr') return DOL_VERSION;
 		if ($this->version) return $this->version;
-		return $langs->trans("NotAvailable");
+		return $langs->trans('NotAvailable');
 	}
 }

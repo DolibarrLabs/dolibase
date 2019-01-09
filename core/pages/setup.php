@@ -97,8 +97,8 @@ class SetupPage extends FormPage
 		global $langs, $dolibase_config;
 
 		// Load lang files
-		$langs->load("admin");
-		$langs->load("setup_page@".$dolibase_config['main']['path']);
+		$langs->load('admin');
+		$langs->load('setup_page@'.$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->disable_default_actions = $disable_default_actions;
@@ -164,7 +164,7 @@ class SetupPage extends FormPage
 			global $conf, $db, $langs, $dolibase_config;
 
 			// Libraries
-			require_once DOL_DOCUMENT_ROOT . "/core/lib/admin.lib.php";
+			require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
 
 			// Parameters
 			$action = GETPOST('action', 'alpha');
@@ -222,11 +222,11 @@ class SetupPage extends FormPage
 
 				if (! $error)
 				{
-					setEventMessages($langs->trans("SetupSaved"), null, 'mesgs');
+					setEventMessages($langs->trans('SetupSaved'), null, 'mesgs');
 				}
 				else
 				{
-					setEventMessages($langs->trans("Error"), null, 'errors');
+					setEventMessages($langs->trans('Error'), null, 'errors');
 				}
 			}
 
@@ -313,14 +313,14 @@ class SetupPage extends FormPage
 
 				// Search template files
 				$dirmodels = array(
-					dolibase_buildpath("core/doc_models/"),
-					dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
+					dolibase_buildpath('core/doc_models/'),
+					dol_buildpath($dolibase_config['module']['folder'].'/core/doc_models/')
 				);
 				$error = 0;
 
 				foreach ($dirmodels as $dir)
 				{
-					$file = $dir."pdf_".$model.".modules.php";
+					$file = $dir.'pdf_'.$model.'.modules.php';
 					if (file_exists($file))
 					{
 						$error = 0;
@@ -332,7 +332,7 @@ class SetupPage extends FormPage
 						// Generate document
 						if ($module->write_file($object, $langs) > 0)
 						{
-							dolibase_redirect(DOL_URL_ROOT."/document.php?modulepart=".$this->modulepart."&file=SPECIMEN.pdf");
+							dolibase_redirect(DOL_URL_ROOT.'/document.php?modulepart='.$this->modulepart.'&file=SPECIMEN.pdf');
 						}
 						else
 						{
@@ -350,8 +350,8 @@ class SetupPage extends FormPage
 
 				if ($error)
 				{
-					setEventMessages($langs->trans("ErrorModuleNotFound"), null, 'errors');
-					dol_syslog($langs->trans("ErrorModuleNotFound"), LOG_ERR);
+					setEventMessages($langs->trans('ErrorModuleNotFound'), null, 'errors');
+					dol_syslog($langs->trans('ErrorModuleNotFound'), LOG_ERR);
 				}
 			}
 		}
@@ -367,20 +367,20 @@ class SetupPage extends FormPage
 
 		// Add sub title
 		if (empty($this->title_link) && $user->admin) {
-			$this->title_link = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
+			$this->title_link = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans('BackToModuleList').'</a>';
 		}
 		$this->addSubTitle($this->title, 'title_setup.png', $this->title_link);
 
 		// Add default tabs
 		if (empty($this->tabs)) {
-			$this->addTab("Settings", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home", true);
+			$this->addTab('Settings', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['setup_page'].'?mainmenu=home', true);
 			if ($this->add_extrafields_tab) {
-				$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home");
+				$this->addTab('ExtraFields', $dolibase_config['module']['folder'].'/admin/extrafields.php?mainmenu=home');
 			}
 			if ($this->add_changelog_tab) {
-				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
+				$this->addTab('Changelog', $dolibase_config['module']['folder'].'/admin/changelog.php?mainmenu=home');
 			}
-			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
+			$this->addTab('About', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home');
 		}
 		
 		parent::generate();
@@ -466,7 +466,7 @@ class SetupPage extends FormPage
 		}
 		echo $option_content."\n";
 		if (! empty($const_name)) {
-			echo '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans("Modify").'">&nbsp;&nbsp;'."\n";
+			echo '&nbsp;&nbsp;<input type="submit" class="button" value="'.$langs->trans('Modify').'">&nbsp;&nbsp;'."\n";
 			echo "</form>\n";
 		}
 		echo "</td>\n</tr>\n";
@@ -500,11 +500,11 @@ class SetupPage extends FormPage
 		{
 			if (empty($conf->global->$const_name))
 			{
-				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>'."\n";
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=set_'.$const_name.'">'.img_picto($langs->trans('Disabled'), 'switch_off').'</a>'."\n";
 			}
 			else
 			{
-				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=del_'.$const_name.'">'.img_picto($langs->trans("Enabled"), 'switch_on').'</a>'."\n";
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?action=del_'.$const_name.'">'.img_picto($langs->trans('Enabled'), 'switch_on').'</a>'."\n";
 			}
 		}
 		echo "&nbsp;&nbsp;&nbsp;&nbsp;</td>\n</tr>\n";
@@ -739,18 +739,18 @@ class SetupPage extends FormPage
 
 		echo '<table class="noborder" width="100%">';
 		echo '<tr class="liste_titre">';
-		echo '<td>'.$langs->trans("Name").'</td>';
-		echo '<td>'.$langs->trans("Description").'</td>';
-		echo '<td class="nowrap">'.$langs->trans("Example").'</td>';
-		echo '<td align="center" width="60">'.$langs->trans("Status").'</td>';
-		echo '<td align="center" width="16">'.$langs->trans("ShortInfo").'</td>';
+		echo '<td>'.$langs->trans('Name').'</td>';
+		echo '<td>'.$langs->trans('Description').'</td>';
+		echo '<td class="nowrap">'.$langs->trans('Example').'</td>';
+		echo '<td align="center" width="60">'.$langs->trans('Status').'</td>';
+		echo '<td align="center" width="16">'.$langs->trans('ShortInfo').'</td>';
 		echo '</tr>'."\n";
 
 		clearstatcache();
 
 		$dirmodels = array(
-			dolibase_buildpath("core/num_models/"),
-			dol_buildpath($dolibase_config['module']['folder']."/core/num_models/")
+			dolibase_buildpath('core/num_models/'),
+			dol_buildpath($dolibase_config['module']['folder'].'/core/num_models/')
 		);
 
 		foreach ($dirmodels as $dir)
@@ -796,21 +796,21 @@ class SetupPage extends FormPage
 								echo '<td align="center">';
 								if ($conf->global->{$this->num_model_const_name} == $file)
 								{
-									echo img_picto($langs->trans("Activated"), 'switch_on');
+									echo img_picto($langs->trans('Activated'), 'switch_on');
 								}
 								else
 								{
 									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setmod&amp;value='.$file.'">';
-									echo img_picto($langs->trans("Disabled"), 'switch_off');
+									echo img_picto($langs->trans('Disabled'), 'switch_off');
 									echo '</a>';
 								}
 								echo '</td>';
 
 								// Info
-								$htmltooltip = $langs->trans("Version").': <b>'.$model->getVersion().'</b><br>';
+								$htmltooltip = $langs->trans('Version').': <b>'.$model->getVersion().'</b><br>';
 								$nextval = $model->getNextValue();
-								if ("$nextval" != $langs->trans("NotAvailable")) {  // Keep " on nextval
-									$htmltooltip.= $langs->trans("NextValue").': ';
+								if ("$nextval" != $langs->trans('NotAvailable')) { // Keep " on nextval
+									$htmltooltip.= $langs->trans('NextValue').': ';
 									if ($nextval) {
 										if (preg_match('/^Error/',$nextval) || $nextval == 'NotConfigured') {
 											$nextval = $langs->trans($nextval);
@@ -873,19 +873,19 @@ class SetupPage extends FormPage
 
 		echo '<table class="noborder" width="100%">';
 		echo '<tr class="liste_titre">';
-		echo '<td>'.$langs->trans("Name").'</td>';
-		echo '<td>'.$langs->trans("Description").'</td>';
-		echo '<td align="center" width="60">'.$langs->trans("Status").'</td>';
-		echo '<td align="center" width="60">'.$langs->trans("Default").'</td>';
-		echo '<td align="center" width="38">'.$langs->trans("ShortInfo").'</td>';
-		echo '<td align="center" width="38">'.$langs->trans("Preview").'</td>';
+		echo '<td>'.$langs->trans('Name').'</td>';
+		echo '<td>'.$langs->trans('Description').'</td>';
+		echo '<td align="center" width="60">'.$langs->trans('Status').'</td>';
+		echo '<td align="center" width="60">'.$langs->trans('Default').'</td>';
+		echo '<td align="center" width="38">'.$langs->trans('ShortInfo').'</td>';
+		echo '<td align="center" width="38">'.$langs->trans('Preview').'</td>';
 		echo '</tr>'."\n";
 
 		clearstatcache();
 
 		$dirmodels = array(
-			dolibase_buildpath("core/doc_models/"),
-			dol_buildpath($dolibase_config['module']['folder']."/core/doc_models/")
+			dolibase_buildpath('core/doc_models/'),
+			dol_buildpath($dolibase_config['module']['folder'].'/core/doc_models/')
 		);
 
 		foreach ($dirmodels as $dir)
@@ -925,14 +925,14 @@ class SetupPage extends FormPage
 								{
 									echo '<td align="center">'."\n";
 									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=deldoc&value='.$model->name.'">';
-									echo img_picto($langs->trans("Enabled"), 'switch_on');
+									echo img_picto($langs->trans('Enabled'), 'switch_on');
 									echo '</a>';
 									echo '</td>';
 								}
 								else
 								{
 									echo '<td align="center">'."\n";
-									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans("Disabled"), 'switch_off').'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdoc&value='.$model->name.'">'.img_picto($langs->trans('Disabled'), 'switch_off').'</a>';
 									echo "</td>";
 								}
 
@@ -940,25 +940,25 @@ class SetupPage extends FormPage
 								echo '<td align="center">';
 								if ($conf->global->{$this->doc_model_const_name} == $model->name)
 								{
-									echo img_picto($langs->trans("Default"), 'on');
+									echo img_picto($langs->trans('Default'), 'on');
 								}
 								else
 								{
-									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdefaultdoc&value='.$model->name.'" alt="'.$langs->trans("Default").'">'.img_picto($langs->trans("Disabled"),'off').'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=setdefaultdoc&value='.$model->name.'" alt="'.$langs->trans('Default').'">'.img_picto($langs->trans('Disabled'), 'off').'</a>';
 								}
 								echo '</td>';
 
 								// Info
-								$htmltooltip = $langs->trans("Name").': '.$model->name;
-								$htmltooltip.= '<br>'.$langs->trans("Type").': '.($model->type?$model->type:$langs->trans("Unknown"));
+								$htmltooltip = $langs->trans('Name').': '.$model->name;
+								$htmltooltip.= '<br>'.$langs->trans('Type').': '.($model->type?$model->type:$langs->trans('Unknown'));
 								if ($model->type == 'pdf')
 								{
-									$htmltooltip.= '<br>'.$langs->trans("Width").'/'.$langs->trans("Height").': '.$model->page_largeur.'/'.$model->page_hauteur;
+									$htmltooltip.= '<br>'.$langs->trans('Width').'/'.$langs->trans('Height').': '.$model->page_largeur.'/'.$model->page_hauteur;
 								}
-								$htmltooltip.= '<br><br><u>'.$langs->trans("FeaturesSupported").':</u>';
-								$htmltooltip.= '<br>'.$langs->trans("Logo").': '.yn($model->option_logo, 1, 1);
-								$htmltooltip.= '<br>'.$langs->trans("MultiLanguage").': '.yn($model->option_multilang, 1, 1);
-								$htmltooltip.= '<br>'.$langs->trans("WatermarkOnDraft").': '.yn($model->option_draft_watermark, 1, 1);
+								$htmltooltip.= '<br><br><u>'.$langs->trans('FeaturesSupported').':</u>';
+								$htmltooltip.= '<br>'.$langs->trans('Logo').': '.yn($model->option_logo, 1, 1);
+								$htmltooltip.= '<br>'.$langs->trans('MultiLanguage').': '.yn($model->option_multilang, 1, 1);
+								$htmltooltip.= '<br>'.$langs->trans('WatermarkOnDraft').': '.yn($model->option_draft_watermark, 1, 1);
 
 								echo '<td align="center">';
 								echo $this->form->textwithpicto('', $htmltooltip, 1, 0);
@@ -969,11 +969,11 @@ class SetupPage extends FormPage
 								if ($model->type == 'pdf')
 								{
 									$picto = (! empty($this->doc_model_preview_picture) ? $this->doc_model_preview_picture : $dolibase_config['module']['picture'].'@'.$dolibase_config['module']['folder']);
-									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans("Preview"), $picto).'</a>';
+									echo '<a href="'.$_SERVER["PHP_SELF"].'?action=specimen&model='.$model->name.'">'.img_object($langs->trans('Preview'), $picto).'</a>';
 								}
 								else
 								{
-									echo img_object($langs->trans("PreviewNotAvailable"), 'generic');
+									echo img_object($langs->trans('PreviewNotAvailable'), 'generic');
 								}
 								echo '</td>';
 

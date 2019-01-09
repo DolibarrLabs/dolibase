@@ -91,7 +91,7 @@ class CardPage extends CreatePage
 		$this->sub_permission    = $sub_permission;
 
 		// Load lang files
-		$langs->load("card_page@".$dolibase_config['main']['path']);
+		$langs->load('card_page@'.$dolibase_config['main']['path']);
 
 		// Add CSS files
 		$optioncss = GETPOST('optioncss', 'alpha');
@@ -371,7 +371,7 @@ class CardPage extends CreatePage
 	{
 		global $langs;
 
-		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans("BackToList").'</a>');
+		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans('BackToList').'</a>');
 		$field_content = $this->form->showrefnav($object, $object->ref_field_name, $morehtml, 1, $object->ref_field_name, $object->ref_field_name);
 
 		$this->showField($field_name, $field_content);
@@ -445,7 +445,7 @@ class CardPage extends CreatePage
 	{
 		global $langs;
 
-		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans("BackToList").'</a>');
+		$morehtml = (empty($list_link) ? '' : '<a href="'.dol_buildpath($list_link, 1).'">'.$langs->trans('BackToList').'</a>');
 
 		dol_banner_tab($object, 'ref', $morehtml, 1, 'ref', 'ref', '', '', 0, $morehtmlleft);
 

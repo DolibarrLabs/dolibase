@@ -143,7 +143,7 @@ class StatsPage extends FormPage
 		global $langs;
 
 		// Get parameters
-		$nowyear = strftime("%Y", dol_now());
+		$nowyear = strftime('%Y', dol_now());
 		$year = GETPOST('year') > 0 ? GETPOST('year') : $nowyear;
 
 		// Set years array
@@ -168,14 +168,14 @@ class StatsPage extends FormPage
 			echo '<tr><td align="left">'.$langs->trans($label).'</td><td align="left">'.$content.'</td></tr>';
 		}
 		// Year field
-		echo '<tr><td align="left">'.$langs->trans("Year").'</td><td align="left">';
+		echo '<tr><td align="left">'.$langs->trans('Year').'</td><td align="left">';
 		if (! in_array($year, $arrayyears)) $arrayyears[$year] = $year;
 		if (! in_array($nowyear, $arrayyears)) $arrayyears[$nowyear] = $nowyear;
 		arsort($arrayyears);
 		echo $this->form->selectarray('year', $arrayyears, $year, 0);
 		echo '</td></tr>';
 		// Submit button
-		echo '<tr><td align="center" colspan="2"><input type="submit" name="submit" class="button" value="'.$langs->trans("Refresh").'"></td></tr>';
+		echo '<tr><td align="center" colspan="2"><input type="submit" name="submit" class="button" value="'.$langs->trans('Refresh').'"></td></tr>';
 		echo "</table></form><br>\n";
 
 		return $this;
@@ -194,7 +194,7 @@ class StatsPage extends FormPage
 		global $langs, $user, $conf;
 
 		// Get parameters
-		$nowyear = strftime("%Y", dol_now());
+		$nowyear = strftime('%Y', dol_now());
 		$year = GETPOST('year') > 0 ? GETPOST('year') : $nowyear;
 		$startyear = $year-1; // $year-2;
 		$endyear = $year;
@@ -228,7 +228,7 @@ class StatsPage extends FormPage
 		// Generate graph
 		$graph = new Chart();
 		$graph->generate('bars', $data, $legend, $title);
-		//$graph->SetYLabel($langs->trans("YLabel"));
+		//$graph->SetYLabel($langs->trans('YLabel'));
 		$graph->SetShading(3);
 		$graph->SetHorizTickIncrement(1);
 		$graph->SetPrecisionY(0);

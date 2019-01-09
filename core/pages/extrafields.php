@@ -52,8 +52,8 @@ class ExtraFieldsPage extends FormPage
 		global $db, $langs;
 
 		// Load lang files
-		$langs->load("admin");
-		$langs->load("extrafields_page@".$dolibase_config['main']['path']);
+		$langs->load('admin');
+		$langs->load('extrafields_page@'.$dolibase_config['main']['path']);
 
 		// Set attributes
 		$this->elementtype       = $elementtype;
@@ -72,17 +72,17 @@ class ExtraFieldsPage extends FormPage
 		global $langs, $dolibase_config;
 
 		// Add sub title
-		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans("BackToModuleList").'</a>';
+		$linkback = '<a href="'.DOL_URL_ROOT.'/admin/modules.php?mainmenu=home">'.$langs->trans('BackToModuleList').'</a>';
 		$this->addSubTitle($this->title, 'title_generic.png', $linkback);
 
 		// Add default tabs
 		if (empty($this->tabs)) {
-			$this->addTab("Settings", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['setup_page']."?mainmenu=home");
-			$this->addTab("ExtraFields", $dolibase_config['module']['folder']."/admin/extrafields.php?mainmenu=home", true);
+			$this->addTab('Settings', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['setup_page'].'?mainmenu=home');
+			$this->addTab('ExtraFields', $dolibase_config['module']['folder'].'/admin/extrafields.php?mainmenu=home', true);
 			if ($this->add_changelog_tab) {
-				$this->addTab("Changelog", $dolibase_config['module']['folder']."/admin/changelog.php?mainmenu=home");
+				$this->addTab('Changelog', $dolibase_config['module']['folder'].'/admin/changelog.php?mainmenu=home');
 			}
-			$this->addTab("About", $dolibase_config['module']['folder']."/admin/".$dolibase_config['other']['about_page']."?mainmenu=home");
+			$this->addTab('About', $dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home');
 		}
 
 		parent::generate();
@@ -148,7 +148,7 @@ class ExtraFieldsPage extends FormPage
 		if ($action != 'create' && $action != 'edit')
 		{
 			echo '<div class="tabsAction">';
-			echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER["PHP_SELF"].'?action=create">'.$langs->trans("NewAttribute").'</a></div>';
+			echo '<div class="inline-block divButAction"><a class="butAction" href="'.$_SERVER["PHP_SELF"].'?action=create">'.$langs->trans('NewAttribute').'</a></div>';
 			echo '</div>';
 		}
 
@@ -165,7 +165,7 @@ class ExtraFieldsPage extends FormPage
 		if ($action == 'edit' && ! empty($attrname))
 		{
 			echo '<br>';
-			echo load_fiche_titre($langs->trans("FieldEdition", $attrname));
+			echo load_fiche_titre($langs->trans('FieldEdition', $attrname));
 
 			include_once DOL_DOCUMENT_ROOT.'/core/tpl/admin_extrafields_edit.tpl.php';
 		}

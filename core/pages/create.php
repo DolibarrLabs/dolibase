@@ -292,11 +292,11 @@ class CreatePage extends FormPage
 		global $langs;
 
 		echo '<div class="center">';
-		echo '<input type="submit" class="button" value="' . $langs->trans("Create") . '">';
+		echo '<input type="submit" class="button" value="' . $langs->trans('Create') . '">';
 		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-		echo '<input type="button" class="button" value="' . $langs->trans("Cancel") . '" onClick="javascript:history.go(-1)">';
+		echo '<input type="button" class="button" value="' . $langs->trans('Cancel') . '" onClick="javascript:history.go(-1)">';
 		echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-		echo '<input type="reset" class="button" value="' . $langs->trans("Reset") . '">';
+		echo '<input type="reset" class="button" value="' . $langs->trans('Reset') . '">';
 		echo '</div>';
 
 		return $this;

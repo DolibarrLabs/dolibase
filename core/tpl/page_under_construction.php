@@ -17,7 +17,7 @@
 
 global $langs, $dolibase_config;
 
-$langs->load("page@".$dolibase_config['main']['path']);
+$langs->load('page@'.$dolibase_config['main']['path']);
 
 $title = $langs->trans('PageUnderConstruction');
 
