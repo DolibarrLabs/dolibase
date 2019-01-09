@@ -879,6 +879,26 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_openButtonsDiv">openButtonsDiv</a>()
+        
+                                            <p>Open buttons div (if not already opened)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
+                    
+                </div>
+                <div class="col-md-8 type">
+                    <a href="#method_closeButtonsDiv">closeButtonsDiv</a>()
+        
+                                            <p>Close buttons div (if opened)</p>                </div>
+                <div class="col-md-2"></div>
+            </div>
+                    <div class="row">
+                <div class="col-md-2 type">
                     $this
                 </div>
                 <div class="col-md-8 type">
@@ -2262,7 +2282,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L776">line 776</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L785">line 785</a></div>
         <code>                    $this
     <strong>begin</strong>()
         </code>
@@ -2344,7 +2364,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_end">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L791">line 791</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L800">line 800</a></div>
         <code>                    
     <strong>end</strong>($object = null)
         </code>
@@ -3564,8 +3584,50 @@ Note: this function should be called before $page->begin() function, otherwise i
 
             </div>
                     <div class="method-item">
+                    <h3 id="method_openButtonsDiv">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L191">line 191</a></div>
+        <code>            protected        
+    <strong>openButtonsDiv</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Open buttons div (if not already opened)</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
+                    <h3 id="method_closeButtonsDiv">
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L205">line 205</a></div>
+        <code>            protected        
+    <strong>closeButtonsDiv</strong>()
+        </code>
+    </h3>
+    <div class="details">
+            
+    
+
+                    <div class="method-description">
+                                    <p>Close buttons div (if opened)</p>                                                </div>
+                <div class="tags">
+            
+            
+            
+                    </div>
+    </div>
+
+            </div>
+                    <div class="method-item">
                     <h3 id="method_addButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L197">line 197</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L223">line 223</a></div>
         <code>                    $this
     <strong>addButton</strong>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3625,7 +3687,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addConfirmButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L229">line 229</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L249">line 249</a></div>
         <code>                    $this
     <strong>addConfirmButton</strong>($name, $id, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3690,7 +3752,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addListButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L266">line 266</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L280">line 280</a></div>
         <code>                    $this
     <strong>addListButton</strong>($name, $buttons = array(), $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3745,7 +3807,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_addSaveAsButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L314">line 314</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L323">line 323</a></div>
         <code>                    $this
     <strong>addSaveAsButton</strong>($close_parent_div = false)
         </code>
@@ -3785,7 +3847,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L336">line 336</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L345">line 345</a></div>
         <code>                    $this
     <strong>showField</strong>($field_name, $field_content, $is_editable = false, $edit_link = &#039;&#039;, $attr = &#039;&#039;)
         </code>
@@ -3845,7 +3907,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showRefField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L361">line 361</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L370">line 370</a></div>
         <code>                    $this
     <strong>showRefField</strong>($field_name, $object, $list_link = &#039;&#039;)
         </code>
@@ -3895,7 +3957,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L379">line 379</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L388">line 388</a></div>
         <code>                    $this
     <strong>showExtraFields</strong>($object)
         </code>
@@ -3935,7 +3997,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_updateExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L405">line 405</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L414">line 414</a></div>
         <code>                    int
     <strong>updateExtraFields</strong>($object)
         </code>
@@ -3978,7 +4040,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_showBanner">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L435">line 435</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L444">line 444</a></div>
         <code>                    $this
     <strong>showBanner</strong>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
         </code>
@@ -4028,7 +4090,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L456">line 456</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L465">line 465</a></div>
         <code>                    $this
     <strong>editField</strong>($field_name, $field_content, $action_name)
         </code>
@@ -4078,7 +4140,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editTextField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L487">line 487</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L496">line 496</a></div>
         <code>                    $this
     <strong>editTextField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $input_size = 20, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4138,7 +4200,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editTextAreaField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L507">line 507</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L516">line 516</a></div>
         <code>                    $this
     <strong>editTextAreaField</strong>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4203,7 +4265,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editNumberField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L527">line 527</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L536">line 536</a></div>
         <code>                    $this
     <strong>editNumberField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $min = 0, $max = 100, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4268,7 +4330,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editDateField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L547">line 547</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L556">line 556</a></div>
         <code>                    $this
     <strong>editDateField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_date_&#039;)
         </code>
@@ -4323,7 +4385,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L567">line 567</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L576">line 576</a></div>
         <code>                    $this
     <strong>editListField</strong>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $show_empty = 0, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4388,7 +4450,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editRadioListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L586">line 586</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L595">line 595</a></div>
         <code>                    $this
     <strong>editRadioListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4448,7 +4510,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editCheckListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L605">line 605</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L614">line 614</a></div>
         <code>                    $this
     <strong>editCheckListField</strong>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4508,7 +4570,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_editColorField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L623">line 623</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L632">line 632</a></div>
         <code>                    $this
     <strong>editColorField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4563,7 +4625,7 @@ Note: this function should be called before $page->begin() function, otherwise i
             </div>
                     <div class="method-item">
                     <h3 id="method_printRelatedObjects">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L638">line 638</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L647">line 647</a></div>
         <code>            protected        
     <strong>printRelatedObjects</strong>($object)
         </code>
@@ -4595,7 +4657,7 @@ Note: To enable the linking feature, you must define a constant in each module a
             </div>
                     <div class="method-item">
                     <h3 id="method_printDocuments">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L678">line 678</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L687">line 687</a></div>
         <code>            protected        
     <strong>printDocuments</strong>($object)
         </code>
@@ -4626,7 +4688,7 @@ Note: To enable the linking feature, you must define a constant in each module a
             </div>
                     <div class="method-item">
                     <h3 id="method_printMailForm">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L716">line 716</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L725">line 725</a></div>
         <code>            protected        
     <strong>printMailForm</strong>($object)
         </code>
