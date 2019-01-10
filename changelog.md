@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.6 - JAN19
+
+*   NEW: useless global var `$dolibase_config['langs']['path']` removed/replaced with `$dolibase_config['main']['path']`.
+*   NEW: `addConfirmButton` function added to SetupPage class.
+*   FIX: minor issues.
+
+---
+
 #### 2.9.5 - JAN19
 
 *   NEW: Chart class.
