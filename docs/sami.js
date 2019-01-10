@@ -161,7 +161,7 @@ window.projectVersion = 'master';
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_generateTabs", "name": "DocumentPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_showBanner", "name": "DocumentPage::showBanner", "doc": "&quot;Show banner&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_getTabTitle", "name": "DocumentPage::getTabTitle", "doc": "&quot;Return Tab title&quot;"},
-                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page beginning&quot;"},
+                    {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_begin", "name": "DocumentPage::begin", "doc": "&quot;Generate page beginning + print documents\/linked files&quot;"},
                     {"type": "Method", "fromName": "DocumentPage", "fromLink": "DocumentPage.html", "link": "DocumentPage.html#method_printDocuments", "name": "DocumentPage::printDocuments", "doc": "&quot;Print documents\/linked files&quot;"},
             
             {"type": "Class",  "link": "DolibaseModule.html", "name": "DolibaseModule", "doc": "&quot;DolibaseModule class&quot;"},
