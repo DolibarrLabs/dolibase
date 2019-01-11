@@ -6,6 +6,7 @@
 # Générique
 #
 ${module_name_translation}
+${module_desc_translation}
 
 #
 # Permissions
