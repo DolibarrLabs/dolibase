@@ -14,9 +14,9 @@ Dolibase is a set of reusable code & architecture that make coding [Dolibarr](ht
 
 ## How it works?
 
-Dolibase is following the main dolibarr design pattern with some few adjustments to fit its needs.
+Dolibase is following the main design pattern of dolibarr with some few adjustments to fit its needs.
 
-Below a simple graph that demonstrate directory structure differences between a basic dolibarr module & a dolibase module.
+Below a simple graph that demonstrate the directory structure differences between a basic dolibarr module & a dolibase module.
 
 ```bash
 dolibarr module                                         dolibase module
@@ -53,11 +53,11 @@ dolibarr module                                         dolibase module
 ```
 
 **Explanation:**
-- `admin/setup.php` and `admin/about.php` contains module settings & author informations (they can only be consulted by an administrator).
-- `core/modules/modMyModule.class.php` is the module main configuration file or class, it contains all the informations about the module: name, description, menus, user permissions, etc.. In dolibase, this is a bit different, some of the module configuration are set in the `config.php` file in a way to allow reusing them in other parts of the module.
+- `admin/setup.php` and `admin/about.php` contains the module settings & the author informations (they can only be consulted by an administrator).
+- `core/modules/modMyModule.class.php` is the module main configuration file or class, it contains all the informations about the module: name, description, menus, user permissions, etc.. In dolibase, this is a bit different, the module main configuration is set in the `config.php` file in a way to allow reusing it in other parts of the module.
 - `core/boxes/mywidget.php` is a module widget that can be displayed in the dashboard of Dolibarr.
-- `core/triggers` contains [trigger](https://wiki.dolibarr.org/index.php/Triggers) files that allows you to execute personalized code after a Dolibarr event.
-- `class` folder may contains your objects class & functions, sql queries, etc.. It's a kind of model(s) container if you're familiar with the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
+- `core/triggers` contains [trigger](https://wiki.dolibarr.org/index.php/Triggers) files that allows you to execute personalized code after a dolibarr event.
+- `class` folder may contain your objects class & functions, sql queries, etc.. It's a kind of model(s) container if you're familiar with the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) architecture.
 - `dolibase` folder contains all the code & logic of dolibase.
 - `img` is a folder for your images (note that module's picture should start with the `object_` prefix).
 - `langs` folder contains all the translations related to your module.
@@ -66,13 +66,13 @@ dolibarr module                                         dolibase module
 - `js` folder is for your javascript files.
 - `myfirstpage.php` is considered as your first module page in the example above.
 - `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/config.default.php).
-- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want to be auto-loaded @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
+- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want to be auto-loaded inside it @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
 
 ## Installation
 
 Dolibase can act in 2 different ways:
  - **Globally**: this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
- - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those who use a new one.
+ - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those using a new one.
 
 So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory or use the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
 
