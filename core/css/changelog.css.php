@@ -26,7 +26,7 @@ header('Content-Type: text/css');
 .badge {
 	margin-right: 5px;
 	border-radius: 2px;
-	width: 50px;
+	min-width: 50px;
 	padding: 4px;
 }
 
@@ -34,7 +34,7 @@ header('Content-Type: text/css');
 	background-color: #2ecc71;
 }
 
-.badge.upgrade {
+.badge.upgrade, .badge.experimental {
 	background-color: #f1c40f;
 }
 

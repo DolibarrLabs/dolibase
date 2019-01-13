@@ -50,7 +50,7 @@ if (file_exists($changelog_file))
 					{
 						$badge_class = 'badge ';
 						$badge_to_lower = strtolower($entry->badge);
-						if (in_array($badge_to_lower, array('new', 'upgrade', 'fix'))) {
+						if (in_array($badge_to_lower, array('new', 'upgrade', 'fix', 'experimental'))) {
 							$badge_class.= $badge_to_lower;
 						} else {
 							$badge_class.= 'other';
