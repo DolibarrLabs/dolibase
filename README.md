@@ -155,6 +155,12 @@ $page->end();
 
 Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
 
+## Useful links
+
+* [Dolibarr documentation](https://www.dolibarr.org/documentation-home).
+* [Developer documentation](https://wiki.dolibarr.org/index.php/Developer_documentation).
+* [Module development](https://wiki.dolibarr.org/index.php/Module_development).
+
 ## Changelog
 
 See [changelog](changelog.md).
