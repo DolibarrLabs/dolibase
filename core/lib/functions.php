@@ -411,12 +411,12 @@ if (! function_exists('dolibase_error'))
 {
 	function dolibase_error($error, $die = false)
 	{
-		$error_prefix = 'DolibaseError: ';
+		$error_message = 'DolibaseError: '.$error;
 
 		if ($die) {
-			die($error_prefix.$error);
+			die($error_message);
 		} else {
-			dol_print_error('', $error_prefix.$error);
+			dol_print_error('', $error_message);
 		}
 	}
 }
@@ -490,7 +490,8 @@ if (! function_exists('start_time_measure'))
 	{
 		global $debugbar;
 
-		if (is_object($debugbar)) {
+		if (is_object($debugbar))
+		{
 			if (! empty($stop_name)) {
 				stop_time_measure($stop_name);
 			}
@@ -593,7 +594,8 @@ if (! function_exists('array_match'))
 {
 	function array_match($pattern, $array, &$matches)
 	{
-		foreach ($array as $value) {
+		foreach ($array as $value)
+		{
 			$result = preg_match($pattern, $value, $matches);
 			if ($result) {
 				return $result;
