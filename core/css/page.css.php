@@ -19,10 +19,6 @@ header('Content-Type: text/css');
 
 ?>
 
-html, body, div#id-container {
-	height: 100%;
-}
-
 .hidden {
 	display: none;
 }
