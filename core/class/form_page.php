@@ -144,13 +144,19 @@ class FormPage extends Page
 		}
 
 		// validEmail (escape if empty)
-		else if (in_array('validEmail', $validation_rules) && $field_value != '' && ! preg_match('/^[\w.-]+@[\w.-]+\.[a-z]{2,6}$/i', $field_value)) {
+		else if (in_array('validEmail', $validation_rules) && $field_value != '' && ! filter_var($field_value, FILTER_VALIDATE_EMAIL)) {
 			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
 
 		// validTel (escape if empty)
 		else if (in_array('validTel', $validation_rules) && $field_value != '' && ! preg_match('/^[0-9\-\(\)\/\+\s]*$/', $field_value)) {
+			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
+			$error++;
+		}
+
+		// validUrl (escape if empty)
+		else if (in_array('validUrl', $validation_rules) && $field_value != '' && ! filter_var($field_value, FILTER_VALIDATE_URL)) {
 			setEventMessage($langs->transnoentities('ErrorFieldFormat', $langs->transnoentities($field_trans)), 'errors');
 			$error++;
 		}
