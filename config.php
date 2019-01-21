@@ -28,3 +28,5 @@ $dolibase_config['main'] = array(
 	'tables'              => array('logs'),
 	'use_ajax_on_confirm' => true
 );
+
+$dolibase_config['langs']['path'] = $dolibase_config['main']['path']; // for backward compatibility
