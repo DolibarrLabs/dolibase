@@ -79,7 +79,7 @@ class CustomObject extends CrudObject
 			}
 		}
 
-		// enssure that $this->id is filled because we use it in update & delete functions
+		// ensure that $this->id is filled because we use it in update & delete functions
 		if (! in_array('id', $this->fetch_fields)) {
 			$this->id = $obj->{$this->pk_name};
 		}
