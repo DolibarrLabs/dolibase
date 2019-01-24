@@ -216,4 +216,4 @@ class Widget extends ModeleBoxes
 	}
 }
 
-}
+} // end if (! class_exists('Widget'))

@@ -15,6 +15,8 @@
  * 
  */
 
+if (! class_exists('QueryBuilder')) {
+
 /**
  * QueryBuilder class
  *
@@ -518,3 +520,5 @@ class QueryBuilder
 		return $this;
 	}
 }
+
+} // end if (! class_exists('QueryBuilder'))

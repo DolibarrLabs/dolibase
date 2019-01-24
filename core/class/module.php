@@ -771,4 +771,4 @@ class DolibaseModule extends DolibarrModules
 	}
 }
 
-}
+} // end if (! class_exists('DolibaseModule'))
