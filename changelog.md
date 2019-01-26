@@ -1,6 +1,14 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.7 - JAN19
+
+*   NEW: `ValidUrl` validation rule added.
+*   NEW: `Experimental` badge added to changelog page.
+*   FIX: ensure backward compatibility + other minor fixes.
+
+---
+
 #### 2.9.6 - JAN19
 
 *   NEW: useless global var `$dolibase_config['langs']['path']` removed/replaced with `$dolibase_config['main']['path']`.
