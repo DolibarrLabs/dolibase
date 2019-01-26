@@ -118,6 +118,7 @@ class Page
 
 	/**
 	 * Set page title
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $page_title     Page title
 	 * @return    $this
@@ -131,6 +132,7 @@ class Page
 
 	/**
 	 * Set page main subtitle
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $title     title
 	 * @param     $picture   subtitle picture
@@ -181,6 +183,7 @@ class Page
 
 	/**
 	 * Append content to page head
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $content     content to add
 	 * @return    $this
@@ -194,6 +197,7 @@ class Page
 
 	/**
 	 * Add JS file to page head
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $js_file     Javascript file
 	 * @return    $this
@@ -211,6 +215,7 @@ class Page
 
 	/**
 	 * Add an array of JS files
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $js_files_array     Javascript files array
 	 * @return    $this
@@ -226,6 +231,7 @@ class Page
 
 	/**
 	 * Add CSS file to page head
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $css_file     CSS file
 	 * @return    $this
@@ -243,6 +249,7 @@ class Page
 
 	/**
 	 * Add an array of CSS files
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $css_files_array     CSS files array
 	 * @return    $this
@@ -295,6 +302,7 @@ class Page
 
 	/**
 	 * Set tabs picture
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $picture      tabs picture
 	 * @return    $this
@@ -308,6 +316,7 @@ class Page
 
 	/**
 	 * Set tabs title
+	 * Note: this function should be called before $page->begin() function, otherwise it will not work as expected.
 	 *
 	 * @param     $title      tabs title
 	 * @return    $this
@@ -662,6 +671,7 @@ class Page
 
 	/**
 	 * Redirect to a url (alias for dolibase_redirect function)
+	 * Note: this function should be called before any output, so before $page->begin() function.
 	 *
 	 */
 	public function redirect($url)
@@ -671,6 +681,7 @@ class Page
 
 	/**
 	 * Generate page end
+	 * Note: this function should be called after $page->begin() call.
 	 *
 	 */
 	public function end()
