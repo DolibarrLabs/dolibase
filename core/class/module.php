@@ -295,7 +295,7 @@ class DolibaseModule extends DolibarrModules
 	{
 		// Load Dolibase tables
 		foreach ($this->config['main']['tables'] as $table) {
-			$this->_load_tables($this->config['main']['path'].'/sql/'.$table.'/');
+			$this->_load_tables('/'.$this->config['main']['path'].'/sql/'.$table.'/');
 		}
 
 		// Load module tables
