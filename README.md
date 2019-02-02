@@ -88,6 +88,8 @@ http://localhost/dolibarr/htdocs/dolibase/builder
 
 **Note** that `localhost/dolibarr` may change depending on your dolibarr installation & your domain name.
 
+Check the [demonstration video](https://youtu.be/BmbAXGRQqyA) for a quick example.
+
 ## Examples
 
 1. Module class:
