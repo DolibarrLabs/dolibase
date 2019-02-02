@@ -124,7 +124,7 @@ class Widget extends ModeleBoxes
 	 * @param     $class     link css class
 	 * @return    $this
 	 */
-	public function setLink($link, $picture, $tooltip = '', $target = '_self', $class = 'center" style="margin-right: 5px;')
+	public function setLink($link, $picture, $tooltip = '', $target = '_self', $class = 'center" style="vertical-align: middle;margin-right: 5px;')
 	{
 		global $dolibase_config, $langs;
 
