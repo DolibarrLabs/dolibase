@@ -22,7 +22,8 @@
  *     posted data
  *     empty string if data name doesn't exist
  */
-function getPostData($name) {
+function getPostData($name)
+{
 	return ! empty($name) && isset($_POST[$name]) ? $_POST[$name] : '';
 }
 
@@ -32,7 +33,8 @@ function getPostData($name) {
  * @return string
  *     alphabet number
  */
-function num2Alpha($num) {
+function num2Alpha($num)
+{
 	switch ($num) {
 		case 0:
 			return 'Zero';
@@ -55,7 +57,7 @@ function num2Alpha($num) {
 		case 9:
 			return 'Nine';
 		default:
-			die('BuilderError: non numeric value provided to num2Alpha function.');
+			die('BuilderError: non 0-9 numeric value provided to num2Alpha function.');
 	}
 }
 
@@ -65,7 +67,8 @@ function num2Alpha($num) {
  * @return string
  *     'true' or 'false'
  */
-function bool2Alpha($bool) {
+function bool2Alpha($bool)
+{
 	return $bool ? 'true' : 'false';
 }
 
@@ -75,7 +78,8 @@ function bool2Alpha($bool) {
  * @return integer
  *     1 or 0
  */
-function bool2Int($bool) {
+function bool2Int($bool)
+{
 	return $bool ? 1 : 0;
 }
 
@@ -327,7 +331,8 @@ function sortArrayByKey(&$array, $array_key, $sort_order = SORT_ASC)
  * @return string
  *     template
  */
-function getTemplate($file, $hooks = array()) {
+function getTemplate($file, $hooks = array())
+{
 	// Read our template in as a string.
 	$template = file_get_contents($file);
 
