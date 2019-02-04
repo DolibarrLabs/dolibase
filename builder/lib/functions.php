@@ -105,7 +105,7 @@ function sanitizeString($str, $no_underscores = false)
 function getDolibarrRootDirectory()
 {
 	$path = defined(__DIR__) ? __DIR__ : dirname(__FILE__); // should be: .../dolibarr/dolibase/builder/lib
-	$parts = explode('/', $path);
+	$parts = explode(DIRECTORY_SEPARATOR, $path);
 	array_splice($parts, -3); // remove '/dolibase/builder/lib'
 	$root_path = implode('/', $parts);
 
