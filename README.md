@@ -163,6 +163,10 @@ Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tre
 * [Developer documentation](https://wiki.dolibarr.org/index.php/Developer_documentation).
 * [Module development](https://wiki.dolibarr.org/index.php/Module_development).
 
+## Support me
+
+Check my own modules collection on [Dolistore](https://www.dolistore.com/en/search?orderby=position&orderway=desc&search_query=axel).
+
 ## Changelog
 
 See [changelog](changelog.md).
