@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 2.9.8 - FEB19
+
+*   NEW: option to use a lite version of dolibase when creating a module using the module builder.
+*   FIX: builder issues [#1](https://github.com/AXeL-dev/dolibase/issues/1).
+*   FIX: missing slash on module `loadTables` function.
+*   FIX: widget link align issue on dolibarr 9.
+
+---
+
 #### 2.9.7 - JAN19
 
 *   NEW: `ValidUrl` validation rule added.
