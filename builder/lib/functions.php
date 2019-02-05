@@ -458,10 +458,10 @@ function mkdir_r($folders, $perm_code = 0777, $path_prefix = '')
 /**
  * Copy entire contents of a directory to another.
  *
- * @see https://stackoverflow.com/questions/2050859/copy-entire-contents-of-a-directory-to-another-using-php
+ * @see https://stackoverflow.com/questions/2050859/copy-entire-contents-of-a-directory-to-another-using-php#2050909
  *
  */
-function recurse_copy($source, $destination, $filter = array())
+function recurse_copy($source, $destination, $filter = array(), $include_only = array())
 {
 	$dir = opendir($source);
 	@mkdir($destination);
@@ -471,9 +471,9 @@ function recurse_copy($source, $destination, $filter = array())
 			if (! in_array($file, $filter))
 			{
 				if ( is_dir($source . '/' . $file) ) {
-					recurse_copy($source . '/' . $file, $destination . '/' . $file);
+					recurse_copy($source . '/' . $file, $destination . '/' . $file, $filter, $include_only);
 				}
-				else {
+				else if (empty($include_only) || in_array($file, $include_only)) {
 					copy($source . '/' . $file, $destination . '/' . $file);
 				}
 			}

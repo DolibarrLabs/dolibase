@@ -30,6 +30,7 @@ if ($action == 'generate')
 	// Get data
 	$module_name = getPostData('name');
 	$use_custom_class = getPostData('use_custom_class');
+	$use_lite_dolibase = getPostData('use_lite_dolibase');
 	$add_top_menu = getPostData('add_top_menu');
 	$add_generic_left_menu = getPostData('add_generic_left_menu');
 	$add_crud_perms = getPostData('add_crud_perms');
@@ -260,11 +261,70 @@ if ($action == 'generate')
 			'LICENSE',
 			'changelog.md',
 			'todo.md',
+			'lite.md',
 			'README.md',
 			'.git',
 			'.gitignore'
 		);
-		recurse_copy($root.'/dolibase', $module_path.'/dolibase', $dolibase_filter);
+		$dolibase_include_only = array();
+		if ($use_lite_dolibase) {
+			$dolibase_lite_filter = array(
+				'sql',
+				'vendor',
+				// core/
+				'ajax',
+				'doc_models',
+				'num_models'
+			);
+			$dolibase_filter = array_merge($dolibase_filter, $dolibase_lite_filter);
+			$dolibase_include_only = array(
+				// core/class/
+				'module.php',
+				'widget.php',
+				'page.php',
+				'field.php',
+				'form_page.php',
+				'custom_form.php',
+				'query_builder.php',
+				// core/css/
+				'page.css.php',
+				'about.css.php',
+				'setup.css.php',
+				'changelog.css.php',
+				// core/js/
+				'form.js.php',
+				// core/img/
+				'not-found.png',
+				'under-construction.png',
+				'update.png',
+				// core/lib/
+				'functions.php',
+				// core/pages/
+				'about.php',
+				'setup.php',
+				'changelog.php',
+				// core/tpl/
+				'about_module.php',
+				'module_changelog.php',
+				'page_not_found.php',
+				'page_under_construction.php',
+				'setup_not_available.php',
+				// langs/
+				'module.lang',
+				'page.lang',
+				'validation.lang',
+				'about_page.lang',
+				'setup_page.lang',
+				'changelog_page.lang',
+				// config & main
+				'config.php',
+				'main.php'
+			);
+		}
+		recurse_copy($root.'/dolibase', $module_path.'/dolibase', $dolibase_filter, $dolibase_include_only);
+		if ($use_lite_dolibase) {
+			file_replace_contents($module_path.'/dolibase/config.php', '\'version\'(\s+)=> \'(.*)\'', '\'version\'$1=> \'$2-lite\''); // add '-lite' string to dolibase version in config file
+		}
 
 		// Set files/folders permissions
 		chmod_r($module_path, 0777, 0777);

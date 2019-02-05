@@ -99,7 +99,12 @@
 			</div>
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="use_custom_class" name="use_custom_class">
-				<label class="form-check-label" for="use_custom_class">Use custom class name to fix compatibility with old dolibase versions</label>
+				<label class="form-check-label" for="use_custom_class">Use a custom class name to fix compatibility with old dolibase versions</label>
+			</div>
+			<div class="form-group form-check">
+				<input type="checkbox" class="form-check-input" id="use_lite_dolibase" name="use_lite_dolibase">
+				<label class="form-check-label" for="use_lite_dolibase" aria-describedby="useLiteDolibaseHelp">Use a lite version of dolibase</label>
+				<small id="useLiteDolibaseHelp" class="form-text text-muted">Check <a href="https://github.com/AXeL-dev/dolibase/blob/master/lite.md" target="_blank">Lite</a> for more details</small>
 			</div>
 		</div>
 
