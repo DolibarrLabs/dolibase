@@ -181,13 +181,17 @@ function getModuleRightsCLass($module_folder)
 function getDirFilesList($pattern, $no_path = false, $dir_only = false)
 {
 	$list = array();
+	$files = glob($pattern);
 
-	foreach(glob($pattern) as $filename) {
-		if ($dir_only && ! is_dir($filename)) {
-			continue;
+	if (is_array($files))
+	{
+		foreach($files as $filename) {
+			if ($dir_only && ! is_dir($filename)) {
+				continue;
+			}
+
+			$list[] = ($no_path ? basename($filename) : $filename);
 		}
-
-		$list[] = ($no_path ? basename($filename) : $filename);
 	}
 
 	return $list;
