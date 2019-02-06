@@ -144,8 +144,13 @@ function getDolibaseVersion($root = '')
  */
 function getModuleFileName($module_path)
 {
-	foreach(glob($module_path.'/core/modules/mod*.class.php') as $filename) {
-		return $filename;
+	$files = glob($module_path.'/core/modules/mod*.class.php');
+
+	if (is_array($files))
+	{
+		foreach($files as $filename) {
+			return $filename;
+		}
 	}
 
 	die('BuilderError: getModuleFileName function, could not get module filename.');

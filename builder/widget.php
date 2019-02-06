@@ -94,7 +94,7 @@ if ($action == 'generate')
 
 		// Add widget in module class
 		$module_file = getModuleFileName($module_path);
-		file_replace_contents($module_file, "public function loadSettings()\n\t{", "public function loadSettings()\n\t{\n\t\t".'// '.$widget_name."\n\t\t".'$this->addWidget("'.$widget_filename.'");'."\n");
+		file_replace_contents($module_file, 'public function loadSettings\(\)(.*?)\{', "public function loadSettings()\n\t{\n\t\t".'// '.$widget_name."\n\t\t".'$this->addWidget("'.$widget_filename.'");'."\n", '/', '/s');
 
 		// Set files/folders permissions
 		chmod_r($module_path, 0777, 0777);
