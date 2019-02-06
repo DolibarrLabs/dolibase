@@ -65,8 +65,8 @@ dolibarr module                                         dolibase module
 - `css` folder should contain your css files.
 - `js` folder is for your javascript files.
 - `myfirstpage.php` is considered as your first module page in the example above.
-- `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/config.default.php).
-- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want to be auto-loaded inside it @see [autoload.default.php](https://github.com/AXeL-dev/dolibase/blob/master/test/autoload.default.php).
+- `config.php` is the configuration file used by dolibase, it contains the main configuration for your module @see [config.default.php](test/config.default.php).
+- `autoload.php` is responsible of loading the module configuration, dolibarr environment & dolibase requirements. You can even add any php file you want to be auto-loaded inside it @see [autoload.default.php](test/autoload.default.php).
 
 ## Installation
 
@@ -98,17 +98,17 @@ Check the [demonstration video](https://youtu.be/BmbAXGRQqyA) for a quick exampl
 <?php
 
 // Load Dolibase
-dol_include_once('myfirstmodule/autoload.php');
+dol_include_once('mymodule/autoload.php');
 
 // Load Dolibase Module class
 dolibase_include_once('core/class/module.php');
 
-class modMyFirstModule extends DolibaseModule
+class modMyModule extends DolibaseModule
 {
     public function loadSettings()
     {
         // Add constant(s)
-        $this->addConstant('MY_FIRST_MODULE_CONST', 'test');
+        $this->addConstant('MY_MODULE_CONST', 'test');
 
         // Add widget(s)
         $this->addWidget('mywidget.php');
@@ -121,9 +121,9 @@ class modMyFirstModule extends DolibaseModule
         $this->addPermission('read', 'Read permission', 'r');
 
         // Add menu(s)
-        $this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/myfirstmodule/index.php?test=1')
-             ->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/myfirstmodule/index.php?test=2')
-             ->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/myfirstmodule/index.php?test=3');
+        $this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/mymodule/index.php?test=1')
+             ->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/mymodule/index.php?test=2')
+             ->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/mymodule/index.php?test=3');
     }
 }
 
@@ -141,7 +141,7 @@ include_once 'autoload.php';
 dolibase_include_once('core/class/page.php');
 
 // Create Page using Dolibase
-$page = new Page('My Page Title', '$user->rights->myfirstmodule->read'); // set page title & control user access
+$page = new Page('My Page Title', '$user->rights->mymodule->read'); // set page title & control user access
 
 // Print page header & dolibarr's main menus
 $page->begin();
@@ -153,9 +153,72 @@ $page->end();
 
 ```
 
+3. Widget class:
+
+```php
+<?php
+
+// Load Dolibase
+dol_include_once('mymodule/autoload.php');
+
+// Load Dolibase Widget class
+dolibase_include_once('core/class/widget.php');
+
+// Load Dolibase QueryBuilder class
+dolibase_include_once('core/class/query_builder.php');
+
+class MyWidget extends Widget
+{
+    /**
+     * @var Widget Label
+     */
+    public $boxlabel = 'MyWidget';
+    /**
+     * @var Widget Picture
+     */
+    public $boximg = 'mywidget.png';
+    /**
+     * @var Widget Position
+     */
+    public $position = 1;
+    /**
+     * @var Widget is Enabled
+     */
+    public $enabled = 1;
+
+
+    /**
+     * Load data into info_box_contents array to show array later. Called by Dolibarr before displaying the box.
+     *
+     * @param int $max Maximum number of records to load
+     * @return void
+     */
+    public function loadBox($max = 5)
+    {
+        // Set title
+        $this->setTitle('Users List');
+
+        // Get users login, firstname & lastname from database
+        $qb = QueryBuilder::getInstance()
+                          ->select('login, firstname, lastname')
+                          ->from('user')
+                          ->orderBy('rowid', 'ASC');
+
+        // Show users
+        foreach ($qb->result() as $row) {
+            $this->addContent($row->login);
+            $this->addContent($row->firstname);
+            $this->addContent($row->lastname);
+            $this->newLine();
+        }
+    }
+}
+
+```
+
 :tada: So simple isn't it ?!
 
-Find more module examples in the [test](https://github.com/AXeL-dev/dolibase/tree/master/test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
+Find more module examples in the [test](test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
 
 ## Useful links
 
