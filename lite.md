@@ -1,6 +1,6 @@
 # 🚀 Dolibase Lite
 
-Lite is a micro-version of dolibase with a very small size, it only includes the basic requirements for your module(s) wich means that some dolibase features may be disabled or may not work until you add the required dolibase file(s).
+Lite is a micro-version of dolibase with a very small size & few components, it includes only the basic requirements for your module(s) wich means that some dolibase features may be disabled or may not work until you add the required dolibase file(s).
 
 The below graph shows the dolibase lite structure & files:
 
@@ -52,4 +52,4 @@ dolibase
 
 ## How to get it?
 
-You will find an option to use/include Lite in your module(s) at the bottom of the Dolibase Builder module page.
+You will find an option at the bottom of the module builder to use/include Lite in your module(s).
