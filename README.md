@@ -117,11 +117,11 @@ class modMyModule extends DolibaseModule
         $this->addCssFile('mycss.css')
              ->addJsFile('myjs.js');
 
-        // Set user permissions
+        // Set user permission(s)
         $this->addPermission('read', 'Read permission', 'r');
 
         // Add menu(s)
-        $this->addTopMenu($this->config['other']['top_menu_name'], 'MyFirstMenu', '/mymodule/index.php?test=1')
+        $this->addTopMenu($this->config['other']['top_menu_name'], 'MyTopMenu', '/mymodule/index.php?test=1')
              ->addLeftMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'MyLeftMenu', '/mymodule/index.php?test=2')
              ->addLeftSubMenu($this->config['other']['top_menu_name'], 'myleftmenu', 'mysubleftmenu', 'MySubLeftMenu', '/mymodule/index.php?test=3');
     }
@@ -206,10 +206,10 @@ class MyWidget extends Widget
 
         // Show users
         foreach ($qb->result() as $row) {
-            $this->addContent($row->login);
-            $this->addContent($row->firstname);
-            $this->addContent($row->lastname);
-            $this->newLine();
+            $this->addContent($row->login)
+                 ->addContent($row->firstname)
+                 ->addContent($row->lastname)
+                 ->newLine();
         }
     }
 }
