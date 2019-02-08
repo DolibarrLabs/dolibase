@@ -663,3 +663,19 @@ if (! function_exists('js_enabled'))
 		return (! empty($conf->use_javascript_ajax) && empty($conf->dol_use_jmobile));
 	}
 }
+
+/**
+ * Return current module path
+ *
+ * @param     $as_url    Return path as url
+ * @return    string     Module path
+ */
+if (! function_exists('get_module_path'))
+{
+	function get_module_path($as_url = false)
+	{
+		global $dolibase_config;
+
+		return dol_buildpath($dolibase_config['module']['folder'], ($as_url ? 1 : 0));
+	}
+}
