@@ -38,7 +38,7 @@
 			</div>
 			<div class="form-group">
 				<label for="number">Number</label>
-				<input type="number" class="form-control" id="number" name="number" aria-describedby="numberHelp" placeholder="110000" min="1" value="<?php echo rand(500, 1000).'000'; ?>" required>
+				<input type="number" class="form-control" id="number" name="number" aria-describedby="numberHelp" placeholder="110000" min="1" max="2147483647" value="<?php echo rand(500, 1000).'000'; ?>" required>
 				<small id="numberHelp" class="form-text text-muted">avoid small numbers because they are used for core modules</small>
 			</div>
 			<div class="form-group">
