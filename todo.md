@@ -9,6 +9,8 @@
 * Add support for dolibarr max version in module config?
 * CalendarPage: show only the 3 first events & hide the others by default.
 * CalendarPage: add support for per user view.
+* StepByStep/StepToStep Page class (as in native export/import module).
+* Builder: add settings.json file to save last created module number & generate the next module number based on the last saved number, or maybe use the ASCII code of the 4 first letters of the module name?
 
 ## v3
 
