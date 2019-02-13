@@ -199,7 +199,7 @@ function getModuleVersion($module_folder)
 	if (file_exists($config_file_path)) {
 		$module_config = file_get_contents($config_file_path);
 
-		// Extract module rights class
+		// Extract module version
 		preg_match("/'version'\s+=> '(.*?)'/", $module_config, $version);
 	}
 

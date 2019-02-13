@@ -12,7 +12,7 @@
 * StepByStep/StepToStep Page class (as in native export/import module).
 * Builder: add settings.json file to save last created module number & generate the next module number based on the last saved number, or maybe use the ASCII code of the 4 first letters of the module name?
 
-## other suggestions
+### Other suggestions
 
 * Merge deprecated CrudObject class into CustomObject?
 * Use spaces instead of tabulations to follow PSR-2?
