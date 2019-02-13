@@ -3,22 +3,25 @@
 
 // List/Array of nabvar items
 $items = array(
-	'module' => array('label' => 'Module', 'link' => 'module.php', 'icon' => 'cube', 'active' => false),
+	'module' => array('label' => 'Module', 'link' => 'module.php', 'icon' => 'cube', 'active' => false, 'menu' => array(
+		'new'    => array('label' => 'New Module', 'link' => 'module.php', 'active' => false),
+		'deploy' => array('label' => 'Deploy Module', 'link' => 'deploy.php', 'active' => false)
+	)),
 	'widget' => array('label' => 'Widget', 'link' => 'widget.php', 'icon' => 'dashboard', 'active' => false),
 	'page' => array('label' => 'Page', 'link' => '#', 'icon' => 'file-o', 'active' => false, 'menu' => array(
-		'index' => array('label' => 'Index Page', 'link' => 'page/index.php', 'active' => false),
-		'create' => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
-		'card' => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
-		'list' => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false),
-		'stats' => array('label' => 'Statistics Page', 'link' => 'page/stats.php', 'active' => false),
+		'index'    => array('label' => 'Index Page', 'link' => 'page/index.php', 'active' => false),
+		'create'   => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
+		'card'     => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
+		'list'     => array('label' => 'List Page', 'link' => 'page/list.php', 'active' => false),
+		'stats'    => array('label' => 'Statistics Page', 'link' => 'page/stats.php', 'active' => false),
 		'calendar' => array('label' => 'Calendar Page', 'link' => 'page/calendar.php', 'active' => false),
 		'document' => array('label' => 'Document Page', 'link' => 'page/document.php', 'active' => false),
-		'log' => array('label' => 'Log Page', 'link' => 'page/log.php', 'active' => false)
+		'log'      => array('label' => 'Log Page', 'link' => 'page/log.php', 'active' => false)
 	)),
 	'model' => array('label' => 'Model', 'link' => '#', 'icon' => 'clone', 'active' => false, 'menu' => array(
 		'object_class' => array('label' => 'Object Class', 'link' => 'model/object_class.php', 'active' => false),
-		'num_model' => array('label' => 'Numbering Model', 'link' => 'model/num_model.php', 'active' => false),
-		'doc_model' => array('label' => 'Document Model', 'link' => 'model/doc_model.php', 'active' => false)
+		'num_model'    => array('label' => 'Numbering Model', 'link' => 'model/num_model.php', 'active' => false),
+		'doc_model'    => array('label' => 'Document Model', 'link' => 'model/doc_model.php', 'active' => false)
 	)),
 	'translation' => array('label' => 'Translation', 'link' => 'translation.php', 'icon' => 'language', 'active' => false)
 );

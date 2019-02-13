@@ -1,9 +1,9 @@
-# ${module_name} MODULE - fr_FR
+# ${module_name} MODULE - ${translation_name}
 #
 # Copyright (C) ${current_year} ${author_name}
 
 #
-# Générique
+# Generic
 #
 ${module_name_translation}
 ${module_desc_translation}

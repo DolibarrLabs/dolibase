@@ -1,28 +1,47 @@
 
+<?php
+
+// List of translations
+$translations = array(
+	'english'    => array('label' => 'English', 'name' => 'en_US', 'checked' => true, 'disabled' => true),
+	'french'     => array('label' => 'French', 'name' => 'fr_FR', 'checked' => true),
+	'arabic'     => array('label' => 'Arabic', 'name' => 'ar_SA', 'checked' => false),
+	'deutsch'    => array('label' => 'Deutsch', 'name' => 'de_DE', 'checked' => false),
+	'spanish'    => array('label' => 'Spanish', 'name' => 'es_ES', 'checked' => false),
+	'italian'    => array('label' => 'Italian', 'name' => 'it_IT', 'checked' => false),
+	'polish'     => array('label' => 'Polish', 'name' => 'pl_PL', 'checked' => false),
+	'english_gb' => array('label' => 'English Great Britain', 'name' => 'en_GB', 'checked' => false)
+);
+
+?>
+
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 	<ul class="nav nav-tabs" role="tablist">
 		<li class="nav-item">
-			<a class="nav-link active" data-toggle="tab" href="#module" role="tab" aria-controls="module" aria-selected="true">Module</a>
+			<a class="nav-link active" data-toggle="tab" href="#module_tab" role="tab" aria-controls="module_tab" aria-selected="true">Module</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#author" role="tab" aria-controls="author" aria-selected="false">Author</a>
+			<a class="nav-link" data-toggle="tab" href="#author_tab" role="tab" aria-controls="author_tab" aria-selected="false">Author</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#num_model" role="tab" aria-controls="num_model" aria-selected="false">Numbering Model</a>
+			<a class="nav-link" data-toggle="tab" href="#num_model_tab" role="tab" aria-controls="num_model_tab" aria-selected="false">Numbering Model</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#menus" role="tab" aria-controls="menus" aria-selected="false">Menus</a>
+			<a class="nav-link" data-toggle="tab" href="#menus_tab" role="tab" aria-controls="menus_tab" aria-selected="false">Menus</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#permissions" role="tab" aria-controls="permissions" aria-selected="false">Permissions</a>
+			<a class="nav-link" data-toggle="tab" href="#permissions_tab" role="tab" aria-controls="permissions_tab" aria-selected="false">Permissions</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#admin_pages" role="tab" aria-controls="admin_pages" aria-selected="false">Admin Pages</a>
+			<a class="nav-link" data-toggle="tab" href="#admin_pages_tab" role="tab" aria-controls="admin_pages_tab" aria-selected="false">Admin Pages</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#translations_tab" role="tab" aria-controls="translations_tab" aria-selected="false">Translations</a>
 		</li>
 	</ul>
 
 	<div class="tab-content p-3">
-		<div class="tab-pane fade show active" id="module" role="tabpanel" aria-labelledby="module-tab">
+		<div class="tab-pane fade show active" id="module_tab" role="tabpanel" aria-labelledby="module-tab">
 			<div class="form-group">
 				<label for="name">Name</label>
 				<input type="text" class="form-control" id="name" name="name" placeholder="MyModule" required>
@@ -108,7 +127,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+		<div class="tab-pane fade" id="author_tab" role="tabpanel" aria-labelledby="author-tab">
 			<div class="form-group">
 				<label for="author_name">Name</label>
 				<input type="text" class="form-control" id="author_name" name="author_name" aria-describedby="authorHelp" placeholder="YourName" value="<?php echo (isset($options['author_info']['name']) ? $options['author_info']['name'] : ''); ?>" required>
@@ -128,7 +147,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="num_model" role="tabpanel" aria-labelledby="num_model-tab">
+		<div class="tab-pane fade" id="num_model_tab" role="tabpanel" aria-labelledby="num_model-tab">
 			<div class="form-group">
 				<label for="num_model_table">Table Name</label>
 				<input type="text" class="form-control" id="num_model_table" name="num_model_table" aria-describedby="numModelTableHelp" placeholder="mysqltable">
@@ -146,7 +165,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="menus" role="tabpanel" aria-labelledby="menus-tab">
+		<div class="tab-pane fade" id="menus_tab" role="tabpanel" aria-labelledby="menus-tab">
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_top_menu" name="add_top_menu">
 				<label class="form-check-label" for="add_top_menu">Add top menu</label>
@@ -158,7 +177,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="permissions" role="tabpanel" aria-labelledby="permissions-tab">
+		<div class="tab-pane fade" id="permissions_tab" role="tabpanel" aria-labelledby="permissions-tab">
 			<div class="form-group form-check">
 				<input type="checkbox" class="form-check-input" id="add_crud_perms" name="add_crud_perms">
 				<label class="form-check-label" for="add_crud_perms" aria-describedby="addCrudPermsHelp">Add CRUD permissions</label>
@@ -166,7 +185,7 @@
 			</div>
 		</div>
 
-		<div class="tab-pane fade" id="admin_pages" role="tabpanel" aria-labelledby="admin_pages-tab">
+		<div class="tab-pane fade" id="admin_pages_tab" role="tabpanel" aria-labelledby="admin_pages-tab">
 			<div class="form-group">
 				<div class="form-check mb-2">
 					<input type="checkbox" class="form-check-input" id="add_setup_page" name="add_setup_page" checked disabled>
@@ -195,6 +214,15 @@
 				<label class="form-check-label" for="add_changelog_page" aria-describedby="addChangelogPageHelp">Add changelog page</label>
 				<small id="addChangelogPageHelp" class="form-text text-muted">adds also a changelog.json file into module folder</small>
 			</div>
+		</div>
+
+		<div class="tab-pane fade" id="translations_tab" role="tabpanel" aria-labelledby="translations-tab">
+			<?php foreach ($translations as $key => $value) { ?>
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="<?php echo $key; ?>_translation" name="translations[]" value="<?php echo $value['name']; ?>"<?php echo ($value['checked'] ? ' checked' : '').(isset($value['disabled']) && $value['disabled'] ? ' disabled' : ''); ?>>
+					<label class="form-check-label" for="<?php echo $key; ?>_translation"><?php echo $value['label'].' ('.$value['name'].')'; ?></label>
+				</div>
+			<?php } ?>
 		</div>
 
 		<input type="hidden" name="action" value="generate">
