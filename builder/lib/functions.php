@@ -22,9 +22,17 @@
  *     posted data
  *     empty string if data name doesn't exist
  */
-function getPostData($name)
+function getPostData($name, $method = 'post')
 {
-	return ! empty($name) && isset($_POST[$name]) ? $_POST[$name] : '';
+	if ($method == 'post') {
+		return ! empty($name) && isset($_POST[$name]) ? $_POST[$name] : '';
+	}
+	else if ($method == 'get') {
+		return ! empty($name) && isset($_GET[$name]) ? $_GET[$name] : '';
+	}
+	else {
+		return ! empty($name) ? (isset($_POST[$name]) ? $_POST[$name] : (isset($_GET[$name]) ? $_GET[$name] : '')) : '';
+	}
 }
 
 /**
@@ -131,7 +139,7 @@ function getDolibaseVersion($root = '')
 	$dolibase_config = file_get_contents($root.'/dolibase/config.php');
 
 	// Extract dolibase version
-	preg_match("/'version'\s+=> '(.*)'/", $dolibase_config, $dolibase_version);
+	preg_match("/'version'\s+=> '(.*?)'/", $dolibase_config, $dolibase_version);
 
 	return isset($dolibase_version[1]) ? $dolibase_version[1] : '';
 }
@@ -171,10 +179,31 @@ function getModuleRightsCLass($module_folder)
 		$module_config = file_get_contents($config_file_path);
 
 		// Extract module rights class
-		preg_match("/'rights_class'\s+=> '(.*)'/", $module_config, $rights_class);
+		preg_match("/'rights_class'\s+=> '(.*?)'/", $module_config, $rights_class);
 	}
 
 	return isset($rights_class) && isset($rights_class[1]) ? $rights_class[1] : '';
+}
+
+/**
+ * Return Module version
+ *
+ * @return string
+ *     module version
+ */
+function getModuleVersion($module_folder)
+{
+	$root = getDolibarrRootDirectory();
+	$config_file_path = $root.'/custom/'.$module_folder.'/config.php';
+
+	if (file_exists($config_file_path)) {
+		$module_config = file_get_contents($config_file_path);
+
+		// Extract module rights class
+		preg_match("/'version'\s+=> '(.*?)'/", $module_config, $version);
+	}
+
+	return isset($version) && isset($version[1]) ? $version[1] : '';
 }
 
 /**

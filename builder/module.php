@@ -328,7 +328,7 @@ if ($action == 'generate')
 		}
 		recurse_copy($root.'/dolibase', $module_path.'/dolibase', $dolibase_filter, $dolibase_include_only);
 		if ($use_lite_dolibase) {
-			file_replace_contents($module_path.'/dolibase/config.php', '\'version\'(\s+)=> \'(.*)\'', '\'version\'$1=> \'$2-lite\''); // add '-lite' string to dolibase version in config file
+			file_replace_contents($module_path.'/dolibase/config.php', '\'version\'(\s+)=> \'(.*?)\'', '\'version\'$1=> \'$2-lite\''); // add '-lite' string to dolibase version in config file
 		}
 
 		// Set files/folders permissions
@@ -348,7 +348,7 @@ if ($action == 'generate')
 
 $options = array(
 	'title' => 'Module Builder',
-	'navbar_active' => 'module/new',
+	'navbar_active' => 'module',
 	'form_name' => 'module',
 	'css' => array(),
 	'js' => array('module.js'),

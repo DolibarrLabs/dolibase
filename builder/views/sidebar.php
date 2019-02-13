@@ -3,12 +3,9 @@
 
 // List/Array of nabvar items
 $items = array(
-	'module' => array('label' => 'Module', 'link' => 'module.php', 'icon' => 'cube', 'active' => false, 'menu' => array(
-		'new'    => array('label' => 'New Module', 'link' => 'module.php', 'active' => false),
-		'deploy' => array('label' => 'Deploy Module', 'link' => 'deploy.php', 'active' => false)
-	)),
+	'module' => array('label' => 'Module', 'link' => 'module.php', 'icon' => 'cube', 'active' => false),
 	'widget' => array('label' => 'Widget', 'link' => 'widget.php', 'icon' => 'dashboard', 'active' => false),
-	'page' => array('label' => 'Page', 'link' => '#', 'icon' => 'file-o', 'active' => false, 'menu' => array(
+	'page'   => array('label' => 'Page', 'link' => '#', 'icon' => 'file-o', 'active' => false, 'menu' => array(
 		'index'    => array('label' => 'Index Page', 'link' => 'page/index.php', 'active' => false),
 		'create'   => array('label' => 'Create Page', 'link' => 'page/create.php', 'active' => false),
 		'card'     => array('label' => 'Card Page', 'link' => 'page/card.php', 'active' => false),
@@ -23,7 +20,8 @@ $items = array(
 		'num_model'    => array('label' => 'Numbering Model', 'link' => 'model/num_model.php', 'active' => false),
 		'doc_model'    => array('label' => 'Document Model', 'link' => 'model/doc_model.php', 'active' => false)
 	)),
-	'translation' => array('label' => 'Translation', 'link' => 'translation.php', 'icon' => 'language', 'active' => false)
+	'translation' => array('label' => 'Translation', 'link' => 'translation.php', 'icon' => 'language', 'active' => false),
+	'package' => array('label' => 'Package', 'link' => 'package.php', 'icon' => 'download', 'active' => false)
 );
 
 // Set active item
