@@ -7,6 +7,8 @@
 *   NEW: translations tab added to module builder.
 *   NEW: `get_module_path` global function added.
 
+---
+
 #### 2.9.8 - FEB19
 
 *   NEW: option to use a lite version of dolibase when creating a module using the module builder.
