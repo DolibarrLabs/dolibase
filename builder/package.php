@@ -27,10 +27,10 @@ $message = array();
 $links = array();
 $packages_folder = 'packages';
 
-if ($action == 'generate')
+if (in_array($action, array('generate', 'regenerate')))
 {
 	// Get data
-	$module_folder = getPostData('module_folder');
+	$module_folder = getPostData('module_folder', '');
 	$module_version = getModuleVersion($module_folder);
 	if ($module_version == 'dolibase') {
 		$module_version = getDolibaseVersion();
@@ -72,18 +72,13 @@ if ($action == 'generate')
 		$package_file = $package_path.'/'.$package_name;
 
 		// Check if package file already exist
-		if (file_exists($package_file))
+		if (! file_exists($package_file) || $action == 'regenerate')
 		{
-			// Set error message
-			$message = array(
-				'text' => 'Package <strong>'.$package_file.'</strong> already exists.',
-				'type' => 'danger'
-			);
-			// Set delete link
-			$links[] = array('text' => 'Delete', 'href' => $_SERVER['PHP_SELF'].'?action=delete&package_name='.$package_name, 'class' => 'btn btn-danger');
-		}
-		else
-		{
+			// Delete package when regenerate
+			if (file_exists($package_file)) {
+				unlink($package_file);
+			}
+
 			// Set current directory path to 'dolibarr/custom'
 			chdir($root.'/custom');
 
@@ -107,6 +102,18 @@ if ($action == 'generate')
 					'type' => 'danger'
 				);
 			}
+		}
+		else
+		{
+			// Set error message
+			$message = array(
+				'text' => 'Package <strong>'.$package_file.'</strong> already exists.',
+				'type' => 'danger'
+			);
+			// Set regenerate link
+			$links[] = array('text' => 'Regenerate', 'href' => $_SERVER['PHP_SELF'].'?action=regenerate&module_folder='.$module_folder, 'class' => 'btn btn-primary');
+			// Set delete link
+			$links[] = array('text' => 'Delete', 'href' => $_SERVER['PHP_SELF'].'?action=delete&package_name='.$package_name, 'class' => 'btn btn-danger');
 		}
 
 		// Set download link
