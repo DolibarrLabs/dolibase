@@ -17,4 +17,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	$('#use_lite_dolibase').on('change', function() {
+		if ($(this).is(':checked')) {
+			$('a[href="#num_model_tab"]').parent('li').hide();
+			$('#add_num_models_settings, #add_doc_models_settings, #add_extrafields_page').attr('disabled', true).parent().hide();
+		}
+		else {
+			$('a[href="#num_model_tab"]').parent('li').show();
+			$('#add_num_models_settings, #add_doc_models_settings, #add_extrafields_page').removeAttr('disabled').parent().show();
+		}
+	});
 });
