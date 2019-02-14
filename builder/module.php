@@ -148,6 +148,7 @@ if ($action == 'generate')
 		if ($add_extrafields_page) {
 			$element_type = sanitizeString(strtolower($module_name));
 			$extrafields_data = array(
+				'module_name' => $module_name,
 				'element_type' => $element_type,
 				'add_changelog_tab' => $setup_data['add_changelog_tab']
 			);

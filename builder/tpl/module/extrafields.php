@@ -11,6 +11,6 @@ $page = new ExtraFieldsPage('${element_type}', 'ExtraFields', '$user->admin', ${
 
 $page->begin();
 
-$page->printExtraFields();
+$page->printExtraFields('${module_name}');
 
 $page->end();
