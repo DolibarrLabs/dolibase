@@ -276,7 +276,9 @@ if ($action == 'generate')
 		if ($use_lite_dolibase) {
 			$dolibase_lite_filter = array(
 				'sql',
-				'vendor',
+				// vendor/
+				'jsPDF',
+				'table2csv',
 				// core/
 				'ajax',
 				'doc_models',
@@ -292,6 +294,7 @@ if ($action == 'generate')
 				'form_page.php',
 				'custom_form.php',
 				'query_builder.php',
+				'import_export.php',
 				// core/css/
 				'page.css.php',
 				'about.css.php',
@@ -299,6 +302,8 @@ if ($action == 'generate')
 				'changelog.css.php',
 				// core/js/
 				'form.js.php',
+				'import.js.php',
+				'export.js.php',
 				// core/img/
 				'not-found.png',
 				'under-construction.png',
@@ -322,6 +327,8 @@ if ($action == 'generate')
 				'about_page.lang',
 				'setup_page.lang',
 				'changelog_page.lang',
+				// vendor/FileSaver/
+				'FileSaver.min.js',
 				// config & main
 				'config.php',
 				'main.php'

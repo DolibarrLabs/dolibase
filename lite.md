@@ -14,14 +14,17 @@ dolibase
 │   │   ├── field.php
 │   │   ├── form_page.php
 │   │   ├── custom_form.php
-│   │   └── query_builder.php
+│   │   ├── query_builder.php
+│   │   └── import_export.php
 │   ├── css
 │   │   ├── page.css.php
 │   │   ├── about.css.php
 │   │   ├── setup.css.php
 │   │   └── changelog.css.php
 │   ├── js
-│   │   └── form.js.php
+│   │   ├── form.js.php
+│   │   ├── import.js.php
+│   │   └── export.js.php
 │   ├── img
 │   │   ├── not-found.png
 │   │   ├── under-construction.png
@@ -46,6 +49,9 @@ dolibase
 │       ├── about_page.lang
 │       ├── setup_page.lang
 │       └── changelog_page.lang
+├── vendor
+│   └── FileSaver
+│       └── FileSaver.min.js
 ├── config.php
 └── main.php
 ```
