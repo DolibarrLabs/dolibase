@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 3.0.1 - FEB19
+
+*   NEW: `import_export` class added to lite version.
+*   NEW: module & package builder improved.
+
+---
+
 #### 3.0.0 - FEB19
 
 *   NEW: package builder.
@@ -11,7 +18,7 @@
 
 #### 2.9.8 - FEB19
 
-*   NEW: option to use a lite version of dolibase when creating a module using the module builder.
+*   NEW: option to use a [lite](https://github.com/AXeL-dev/dolibase/blob/master/lite.md) version of dolibase when creating a module using the module builder.
 *   FIX: builder issues [#1](https://github.com/AXeL-dev/dolibase/issues/1).
 *   FIX: missing slash on module `loadTables` function.
 *   FIX: widget link align issue on dolibarr 9.
