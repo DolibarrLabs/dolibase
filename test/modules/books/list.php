@@ -26,14 +26,15 @@ $limit = GETPOST('limit') ? GETPOST('limit', 'int') : $conf->liste_limit;
 $offset = $limit * (GETPOST('page', 'int') ? GETPOST('page', 'int') : 0);
 
 // search parameters
-$search = array();
-$search['all'] = GETPOST('all', 'alphanohtml');
-$search['ref'] = GETPOST('ref');
-$search['name'] = GETPOST('name');
-$search['type'] = GETPOST('type');
-$search['pd'] = GETPOSTDATE('pd'); // publication date
-$search['cd'] = GETPOSTDATE('cd'); // creation date
-$search['user'] = GETPOST('user');
+$search = array(
+	'all' => GETPOST('all', 'alphanohtml'),
+	'ref' => GETPOST('ref'),
+	'name' => GETPOST('name'),
+	'type' => GETPOST('type'),
+	'pd' => GETPOST('pd'), // publication date
+	'cd' => GETPOST('cd'), // creation date
+	'user' => GETPOST('user')
+);
 
 $page->begin();
 
@@ -72,15 +73,16 @@ $type_list = Dictionary::get_active('books_dict');
 $full_type_list = Dictionary::get_all('books_dict');
 
 // List fields
-$list_fields = array();
-$list_fields[] = array('name' => 't.ref', 'label' => 'Ref.', 'search_input' => $page->form->textInput('ref', $search['ref']));
-$list_fields[] = array('name' => 't.name', 'label' => 'Name', 'search_input' => $page->form->textInput('name', $search['name']));
-$list_fields[] = array('name' => 't.type', 'label' => 'Type', 'search_input' => $page->form->listInput('type', $type_list, $search['type'], 1));
-$list_fields[] = array('name' => 't.qty', 'label' => 'Qty');
-$list_fields[] = array('name' => 't.price', 'label' => 'Price');
-$list_fields[] = array('name' => 't.publication_date', 'label' => 'Publication date', 'align' => 'center', 'search_input' => $page->form->dateInput('pd', $search['pd'], 0));
-$list_fields[] = array('name' => 't.creation_date', 'label' => 'Creation date', 'align' => 'center', 'search_input' => $page->form->dateInput('cd', $search['cd'], 0));
-$list_fields[] = array('name' => 't.created_by', 'label' => 'Created by', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
+$list_fields = array(
+	array('name' => 't.ref', 'label' => 'Ref.', 'search_input' => $page->form->textInput('ref', $search['ref'])),
+	array('name' => 't.name', 'label' => 'Name', 'search_input' => $page->form->textInput('name', $search['name'])),
+	array('name' => 't.type', 'label' => 'Type', 'search_input' => $page->form->listInput('type', $type_list, $search['type'], 1)),
+	array('name' => 't.qty', 'label' => 'Qty'),
+	array('name' => 't.price', 'label' => 'Price'),
+	array('name' => 't.publication_date', 'label' => 'Publication date', 'align' => 'center', 'search_input' => $page->form->dateInput('pd', $search['pd'], 0)),
+	array('name' => 't.creation_date', 'label' => 'Creation date', 'align' => 'center', 'search_input' => $page->form->dateInput('cd', $search['cd'], 0)),
+	array('name' => 't.created_by', 'label' => 'Created by', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'))
+);
 
 // Print list head
 $page->openList('Books List', 'title_generic.png', $list_fields, $search, $count, $total, $fieldstosearchall, $sortfield, $sortorder);

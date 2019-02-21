@@ -25,15 +25,16 @@ $action = GETPOST('action', 'alpha');
 $confirm = GETPOST('confirm', 'alpha');
 
 // search parameters
-$search = array();
-$search['log_action'] = GETPOST('log_action');
-$search['mod_name'] = GETPOST('mod_name');
-$search['mod_id'] = GETPOST('mod_id');
-$search['obj_id'] = GETPOST('obj_id');
-$search['obj_element'] = GETPOST('obj_element');
-$search['ds'] = GETPOSTDATE('ds'); // date start
-$search['de'] = GETPOSTDATE('de'); // date end
-$search['user'] = GETPOST('user');
+$search = array(
+	'log_action' => GETPOST('log_action'),
+	'mod_name' => GETPOST('mod_name'),
+	'mod_id' => GETPOST('mod_id'),
+	'obj_id' => GETPOST('obj_id'),
+	'obj_element' => GETPOST('obj_element'),
+	'ds' => GETPOST('ds'), // date start
+	'de' => GETPOST('de'), // date end
+	'user' => GETPOST('user')
+);
 
 // Init objects
 $log = new Logs();
@@ -77,14 +78,15 @@ $qb->limit($limit+1, $offset)->execute();
 $count = $qb->count();
 
 // List fields
-$list_fields = array();
-$list_fields[] = array('name' => 't.action', 'label' => 'LogAction', 'search_input' => $page->form->textInput('log_action', $search['log_action']));
-$list_fields[] = array('name' => 't.module_name', 'label' => 'ModuleName', 'search_input' => $page->form->textInput('mod_name', $search['mod_name']));
-$list_fields[] = array('name' => 't.module_id', 'label' => 'ModuleID', 'search_input' => $page->form->textInput('mod_id', $search['mod_id']));
-$list_fields[] = array('name' => 't.object_id', 'label' => 'ObjectID', 'search_input' => $page->form->textInput('obj_id', $search['obj_id']));
-$list_fields[] = array('name' => 't.object_element', 'label' => 'ObjectElement', 'search_input' => $page->form->textInput('obj_element', $search['obj_element']));
-$list_fields[] = array('name' => 't.datec', 'label' => 'LogDate', 'align' => 'center', 'search_input' => $page->form->dateInput('ds', $search['ds'], 0).$page->form->dateInput('de', $search['de'], 0));
-$list_fields[] = array('name' => 't.fk_user', 'label' => 'LogUser', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'));
+$list_fields = array(
+	array('name' => 't.action', 'label' => 'LogAction', 'search_input' => $page->form->textInput('log_action', $search['log_action'])),
+	array('name' => 't.module_name', 'label' => 'ModuleName', 'search_input' => $page->form->textInput('mod_name', $search['mod_name'])),
+	array('name' => 't.module_id', 'label' => 'ModuleID', 'search_input' => $page->form->textInput('mod_id', $search['mod_id'])),
+	array('name' => 't.object_id', 'label' => 'ObjectID', 'search_input' => $page->form->textInput('obj_id', $search['obj_id'])),
+	array('name' => 't.object_element', 'label' => 'ObjectElement', 'search_input' => $page->form->textInput('obj_element', $search['obj_element'])),
+	array('name' => 't.datec', 'label' => 'LogDate', 'align' => 'center', 'search_input' => $page->form->dateInput('ds', $search['ds'], 0).$page->form->dateInput('de', $search['de'], 0)),
+	array('name' => 't.fk_user', 'label' => 'LogUser', 'align' => 'center', 'search_input' => $page->form->select_dolusers($search['user'], 'user', 1, '', 0, '', '', 0, 0, 0, '', 0, '', 'maxwidth300'))
+);
 
 // Print list head
 $purge_button = '<a class="butActionDelete" href="'.$_SERVER["PHP_SELF"].'?action=purge">'.$langs->trans("Purge").'</a>';

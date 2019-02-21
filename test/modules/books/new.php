@@ -22,11 +22,12 @@ $action = GETPOST('action', 'alpha');
 $book = new Book();
 
 // Set fields
-$fields[] = new Field('name', 'Name', 'required');
-$fields[] = new Field('type', 'Type', 'required');
-$fields[] = new Field('qty', 'Qty', 'numeric|required');
-$fields[] = new Field('price', 'Price', 'numeric');
-$page->setFields($fields);
+$page->setFields(array(
+	new Field('name', 'Name', 'required'),
+	new Field('type', 'Type', 'required'),
+	new Field('qty', 'Qty', 'numeric|required'),
+	new Field('price', 'Price', 'numeric')
+));
 
 // Create object
 if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($book))
