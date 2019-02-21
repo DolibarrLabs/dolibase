@@ -23,8 +23,9 @@ $limit = GETPOST('limit') ? GETPOST('limit', 'int') : $conf->liste_limit;
 $offset = $limit * (GETPOST('page', 'int') ? GETPOST('page', 'int') : 0);
 
 // search parameters
-$search = array();
-// ...
+$search = array(
+	// ...
+);
 
 // Init object
 ${object_init}
@@ -52,8 +53,9 @@ $qb->limit($limit+1, $offset)->execute();
 $count = $qb->count();
 
 // List fields
-$list_fields = array();
-// $list_fields[] = array(...);
+//$list_fields = array(
+//	array(...)
+//);
 
 // Print list head
 $page->openList('${page_title}', 'title_generic.png', $list_fields, $search, $count, $total, $fieldstosearchall, $sortfield, $sortorder);

@@ -19,8 +19,9 @@ $action = GETPOST('action', 'alpha');
 ${object_init}
 
 // Set fields
-// $fields[] = new Field(...);
-// $page->setFields($fields);
+//$page->setFields(array(
+//	new Field(...)
+//));
 
 // Create object
 if ($action == 'create' && $page->checkFields() && $page->checkExtraFields($object))
