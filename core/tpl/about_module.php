@@ -63,10 +63,11 @@ $action = GETPOST('action', 'alpha');
 if ($action == 'report_bug')
 {
 
-$log_file_link = '<a href="'.DOL_URL_ROOT.'/document.php?modulepart=logs&file=dolibarr.log" title="'.$langs->transnoentities('Download').'">dolibarr.log</a>';
+$log_file_name = basename($conf->global->SYSLOG_FILE);
+$log_file_link = '<a href="'.DOL_URL_ROOT.'/document.php?modulepart=logs&file='.$log_file_name.'" title="'.$langs->transnoentities('Download').'">'.$log_file_name.'</a>';
 echo $langs->trans('ReportBugNotice', $log_file_link);
 
-if (! $conf->syslog->enabled) {
+if (empty($conf->syslog->enabled)) {
 	$enable_log_link = '<a href="'.dol_buildpath($dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home&action=enable_log', 1).'">'.img_picto($langs->trans('ClickToEnable'), 'switch_off').'</a>';
 	echo img_warning().'&nbsp;'.$langs->trans('EnableLogModule', $enable_log_link);
 }

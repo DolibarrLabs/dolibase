@@ -74,7 +74,7 @@ class AboutPage extends Page
 		$action = GETPOST('action', 'alpha');
 
 		// Enable log module
-		if ($action == 'enable_log' && ! $conf->syslog->enabled)
+		if ($action == 'enable_log' && empty($conf->syslog->enabled))
 		{
 			activateModule('modSyslog');
 			dolibase_redirect($_SERVER["PHP_SELF"].'?mainmenu=home&action=report_bug');
