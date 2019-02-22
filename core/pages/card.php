@@ -639,10 +639,10 @@ class CardPage extends CreatePage
 	}
 
 	/**
-	 * Print related objects block
+	 * Print related objects block.
+	 * Note: To enable the linking feature, you must define a constant in each module as 'your_module_right_class_in_capital_letters'.'_ENABLE_EXPANDED_LINKS'
 	 *
 	 * @param     $object     Object
-	 * Note: To enable the linking feature, you must define a constant in each module as 'your_module_right_class_in_capital_letters'.'_ENABLE_EXPANDED_LINKS'
 	 */
 	protected function printRelatedObjects($object)
 	{

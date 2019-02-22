@@ -375,7 +375,7 @@ if (! function_exists('get_func_output'))
 }
 
 /**
- * Add a flash message to session
+ * Add a flash message to session.
  * Note: message rendering will be done by $page->end() or more exactly llxFooter() function
  *
  * @param     $message     Message
