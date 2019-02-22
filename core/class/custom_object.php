@@ -96,15 +96,15 @@ class CustomObject extends CrudObject
 	 */
 	public function create($data, $notrigger = 0)
 	{
-		$res = parent::create($data, $notrigger);
+		$result = parent::create($data, $notrigger);
 
 		// Add log
-		if ($res > 0) {
+		if ($result > 0) {
 			$log = new Logs();
 			$log->add($this, 'CREATE_OBJECT');
 		}
 
-		return $res;
+		return $result;
 	}
 
 	/**
@@ -116,15 +116,15 @@ class CustomObject extends CrudObject
 	 */
 	public function update($data, $notrigger = 0)
 	{
-		$res = parent::update($data, $notrigger);
+		$result = parent::update($data, $notrigger);
 
 		// Add log
-		if ($res > 0) {
+		if ($result > 0) {
 			$log = new Logs();
 			$log->add($this, 'UPDATE_OBJECT');
 		}
 
-		return $res;
+		return $result;
 	}
 
 	/**
@@ -135,15 +135,42 @@ class CustomObject extends CrudObject
 	 */
 	public function delete($notrigger = 0)
 	{
-		$res = parent::delete($notrigger);
+		$result = parent::delete($notrigger);
 
 		// Add log
-		if ($res > 0) {
+		if ($result > 0) {
 			$log = new Logs();
 			$log->add($this, 'DELETE_OBJECT');
 		}
 
-		return $res;
+		return $result;
+	}
+
+	/**
+	 * Returns object extrafields as a ['label' => 'value'] array
+	 *
+	 * @return array  Extrafields array
+	 */
+	public function getExtraFields()
+	{
+		$result = array();
+
+		require_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
+		$extrafields = new ExtraFields($this->db);
+
+		// Get extrafields
+		$extralabels = $extrafields->fetch_name_optionals_label($this->table_element, true);
+		$this->fetch_optionals($this->id, $extralabels);
+
+		// Fill ['label' => 'value'] array
+		if (! empty($extrafields->attributes[$this->table_element]['label']))
+		{
+			foreach ($extrafields->attributes[$this->table_element]['label'] as $key => $label) {
+				$result[$label] = $extrafields->showOutputField($key, $this->array_options['options_' . $key]);
+			}
+		}
+
+		return $result;
 	}
 
 	/**

@@ -5,7 +5,6 @@
 * Menu class with functions to add/remove/setPosition/enable/disable menu(s)?
 * Hooks/Triggers class builder, think to associate all dolibarr hooks with their functions to simplify hooks implementation?
 * Merge $page->checkFields() & checkExtraFields() functions?
-* Find a way to display extrafields on PDFs? (think about submodules case too)
 * Add support for dolibarr max version in module config?
 * CalendarPage: show only the 3 first events & hide the others by default.
 * CalendarPage: add support for per user view.

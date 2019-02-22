@@ -353,7 +353,7 @@ class ListPage extends FormPage
 		$where = '';
 		foreach ($this->search_array_options as $key => $val)
 		{
-			$tmpkey = preg_replace('/search_options_/','',$key);
+			$tmpkey = preg_replace('/search_options_/', '', $key);
 			$type = $this->extrafields->attribute_type[$tmpkey];
 
 			if (in_array($type, array('date', 'datetime')) && ! empty($val))
