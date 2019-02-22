@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>CustomStats | Dolibase Documentation</title>
+    <title>CustomStats | Dolibase</title>
 
             <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -11,6 +11,7 @@
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/typeahead.min.js"></script>
+        <script src="js/scroll.js"></script>
         <script src="sami.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
@@ -21,7 +22,15 @@
 
     <body id="class" data-name="class:CustomStats" data-root-path="">
             <div id="content">
-        <div id="left-column">
+            <nav id="roadiz-header">
+        <h1 class="roadiz-title"><a id="roadiz-title-link" href="index.html"><span id="roadiz-title-link-text">Dolibase</span></a></h1>
+        <ul id="roadiz-header-links-list" class="hidden-xs">
+            <li class="roadiz-header-link-item active"><a class="roadiz-header-link" href="index.html">Documentation</a></li>
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link social-link roadiz-icon-github" ttarget="_blank" href="https://github.com/AXeL-dev/dolibase"></a></li>
+        </ul>
+    </nav>
+    <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="control-nav-bar-cont">
                 <div id="control-panel">
                 <script>
             $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
@@ -35,33 +44,21 @@
         </form>
     </div>
 
+            <ul class="nav navbar-nav hidden-xs" id='navbar-elements'>
+                <li><a href="classes.html">Classes</a></li>
+                                <li><a href="interfaces.html">Interfaces</a></li>
+                <li><a href="traits.html">Traits</a></li>
+                <li><a href="doc-index.html">Index</a></li>
+                <li><a href="search.html">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <div id="left-column">
                 <div id="api-tree"></div>
 
         </div>
         <div id="right-column">
-                <nav id="site-nav" class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-elements">
-                <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
-                                        <li><a href="interfaces.html">Interfaces</a></li>
-                    <li><a href="traits.html">Traits</a></li>
-                    <li><a href="doc-index.html">Index</a></li>
-                    <li><a href="search.html">Search</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
                             <div id="page-content">
                 
     <div class="page-header">
@@ -147,7 +144,7 @@
                     array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getNbByMonth">getNbByMonth</a>(int $year, int $format = 0)
+                    <a href="#method_getNbByMonth">getNbByMonth</a>(int $year, int $format)
         
                                             <p>Return object number by month for a year</p>                </div>
                 <div class="col-md-2"></div>
@@ -177,7 +174,7 @@
                     array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAmountByMonth">getAmountByMonth</a>(int $year, int $format = 0)
+                    <a href="#method_getAmountByMonth">getAmountByMonth</a>(int $year, int $format)
         
                                             <p>Return object amount by month for a year</p>                </div>
                 <div class="col-md-2"></div>
@@ -187,7 +184,7 @@
                     array
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_getAverageByMonth">getAverageByMonth</a>(int $year, int $format = 0)
+                    <a href="#method_getAverageByMonth">getAverageByMonth</a>(int $year, int $format)
         
                                             <p>Return object amount average by month for a year</p>                </div>
                 <div class="col-md-2"></div>
@@ -253,7 +250,7 @@
                     <h3 id="method_getNbByMonth">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_stats.php#L82">line 82</a></div>
         <code>                    array
-    <strong>getNbByMonth</strong>(int $year, int $format = 0)
+    <strong>getNbByMonth</strong>(int $year, int $format)
         </code>
     </h3>
     <div class="details">
@@ -358,7 +355,7 @@
                     <h3 id="method_getAmountByMonth">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_stats.php#L139">line 139</a></div>
         <code>                    array
-    <strong>getAmountByMonth</strong>(int $year, int $format = 0)
+    <strong>getAmountByMonth</strong>(int $year, int $format)
         </code>
     </h3>
     <div class="details">
@@ -403,7 +400,7 @@
                     <h3 id="method_getAverageByMonth">
         <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/custom_stats.php#L159">line 159</a></div>
         <code>                    array
-    <strong>getAverageByMonth</strong>(int $year, int $format = 0)
+    <strong>getAverageByMonth</strong>(int $year, int $format)
         </code>
     </h3>
     <div class="details">

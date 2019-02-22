@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>FormPage | Dolibase Documentation</title>
+    <title>FormPage | Dolibase</title>
 
             <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -11,6 +11,7 @@
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/typeahead.min.js"></script>
+        <script src="js/scroll.js"></script>
         <script src="sami.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
@@ -21,7 +22,15 @@
 
     <body id="class" data-name="class:FormPage" data-root-path="">
             <div id="content">
-        <div id="left-column">
+            <nav id="roadiz-header">
+        <h1 class="roadiz-title"><a id="roadiz-title-link" href="index.html"><span id="roadiz-title-link-text">Dolibase</span></a></h1>
+        <ul id="roadiz-header-links-list" class="hidden-xs">
+            <li class="roadiz-header-link-item active"><a class="roadiz-header-link" href="index.html">Documentation</a></li>
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link social-link roadiz-icon-github" ttarget="_blank" href="https://github.com/AXeL-dev/dolibase"></a></li>
+        </ul>
+    </nav>
+    <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="control-nav-bar-cont">
                 <div id="control-panel">
                 <script>
             $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
@@ -35,33 +44,21 @@
         </form>
     </div>
 
+            <ul class="nav navbar-nav hidden-xs" id='navbar-elements'>
+                <li><a href="classes.html">Classes</a></li>
+                                <li><a href="interfaces.html">Interfaces</a></li>
+                <li><a href="traits.html">Traits</a></li>
+                <li><a href="doc-index.html">Index</a></li>
+                <li><a href="search.html">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <div id="left-column">
                 <div id="api-tree"></div>
 
         </div>
         <div id="right-column">
-                <nav id="site-nav" class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-elements">
-                <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
-                                        <li><a href="interfaces.html">Interfaces</a></li>
-                    <li><a href="traits.html">Traits</a></li>
-                    <li><a href="doc-index.html">Index</a></li>
-                    <li><a href="search.html">Search</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
                             <div id="page-content">
                 
     <div class="page-header">
@@ -363,7 +360,7 @@
                     
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_generateTabs">generateTabs</a>($noheader = 0)
+                    <a href="#method_generateTabs">generateTabs</a>($noheader)
         
                                             <p>Generate tabs</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_generateTabs">Page</a></small></div>
@@ -453,7 +450,7 @@
                     $this
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_addLineBreak">addLineBreak</a>($repeat = 0)
+                    <a href="#method_addLineBreak">addLineBreak</a>($repeat)
         
                                             <p>Add a line break (or many)</p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="Page.html#method_addLineBreak">Page</a></small></div>
@@ -1164,7 +1161,7 @@
                     <h3 id="method_generateTabs">
         <div class="location">in <a href="Page.html#method_generateTabs">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L338">line 338</a></div>
         <code>            protected        
-    <strong>generateTabs</strong>($noheader = 0)
+    <strong>generateTabs</strong>($noheader)
         </code>
     </h3>
     <div class="details">
@@ -1538,7 +1535,7 @@
                     <h3 id="method_addLineBreak">
         <div class="location">in <a href="Page.html#method_addLineBreak">Page</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/class/page.php#L539">line 539</a></div>
         <code>                    $this
-    <strong>addLineBreak</strong>($repeat = 0)
+    <strong>addLineBreak</strong>($repeat)
         </code>
     </h3>
     <div class="details">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="index, follow, all" />
-    <title>Index | Dolibase Documentation</title>
+    <title>Index | Dolibase</title>
 
             <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
@@ -11,6 +11,7 @@
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/typeahead.min.js"></script>
+        <script src="js/scroll.js"></script>
         <script src="sami.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
@@ -21,7 +22,15 @@
 
     <body id="doc-index" data-name="" data-root-path="">
             <div id="content">
-        <div id="left-column">
+            <nav id="roadiz-header">
+        <h1 class="roadiz-title"><a id="roadiz-title-link" href="index.html"><span id="roadiz-title-link-text">Dolibase</span></a></h1>
+        <ul id="roadiz-header-links-list" class="hidden-xs">
+            <li class="roadiz-header-link-item active"><a class="roadiz-header-link" href="index.html">Documentation</a></li>
+            <li class="roadiz-header-link-item"><a class="roadiz-header-link social-link roadiz-icon-github" ttarget="_blank" href="https://github.com/AXeL-dev/dolibase"></a></li>
+        </ul>
+    </nav>
+    <nav id="site-nav" class="navbar navbar-default" role="navigation">
+        <div class="control-nav-bar-cont">
                 <div id="control-panel">
                 <script>
             $('option[data-version="'+window.projectVersion+'"]').prop('selected', true);
@@ -35,33 +44,21 @@
         </form>
     </div>
 
+            <ul class="nav navbar-nav hidden-xs" id='navbar-elements'>
+                <li><a href="classes.html">Classes</a></li>
+                                <li><a href="interfaces.html">Interfaces</a></li>
+                <li><a href="traits.html">Traits</a></li>
+                <li><a href="doc-index.html">Index</a></li>
+                <li><a href="search.html">Search</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        <div id="left-column">
                 <div id="api-tree"></div>
 
         </div>
         <div id="right-column">
-                <nav id="site-nav" class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">Dolibase Documentation</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar-elements">
-                <ul class="nav navbar-nav">
-                    <li><a href="classes.html">Classes</a></li>
-                                        <li><a href="interfaces.html">Interfaces</a></li>
-                    <li><a href="traits.html">Traits</a></li>
-                    <li><a href="doc-index.html">Index</a></li>
-                    <li><a href="search.html">Search</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
                         <div id="page-content">
                 
     <div class="page-header">
@@ -99,14 +96,14 @@
 
     <h2 id="letterA">A</h2>
         <dl id="index"><dt><a href="AboutPage.html">AboutPage</a></em></dt>
-                    <dd>AboutPage class</dd><dt>$<a href="AboutPage.html#property_add_extrafields_tab">AboutPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="AboutPage.html">AboutPage</a></em></dt>
-                    <dd></dd><dt>$<a href="AboutPage.html#property_add_changelog_tab">AboutPage#add_changelog_tab</a> &mdash; <em>Property in class <a href="AboutPage.html">AboutPage</a></em></dt>
+                    <dd>AboutPage class</dd><dt>$<a href="AboutPage.html#property_add_extrafields_tab">AboutPage</a> &mdash; <em>Property in class <a href="AboutPage.html">AboutPage</a></em></dt>
+                    <dd></dd><dt>$<a href="AboutPage.html#property_add_changelog_tab">AboutPage</a> &mdash; <em>Property in class <a href="AboutPage.html">AboutPage</a></em></dt>
                     <dd></dd><dt><a href="CalendarPage.html#method_addFilterForm">CalendarPage::addFilterForm</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>Add a filter form</dd><dt><a href="CardPage.html#method_addButton">CardPage::addButton</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Add a button to the page</dd><dt><a href="CardPage.html#method_addConfirmButton">CardPage::addConfirmButton</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Add a confirmation button to the page</dd><dt><a href="CardPage.html#method_addListButton">CardPage::addListButton</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Add a list button to the page</dd><dt><a href="CardPage.html#method_addSaveAsButton">CardPage::addSaveAsButton</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd>Add save as button to the page</dd><dt>$<a href="ChangelogPage.html#property_add_extrafields_tab">ChangelogPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="ChangelogPage.html">ChangelogPage</a></em></dt>
+                    <dd>Add save as button to the page</dd><dt>$<a href="ChangelogPage.html#property_add_extrafields_tab">ChangelogPage</a> &mdash; <em>Property in class <a href="ChangelogPage.html">ChangelogPage</a></em></dt>
                     <dd></dd><dt><a href="CreatePage.html#method_addField">CreatePage::addField</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>Add a table field</dd><dt><a href="CreatePage.html#method_addTextField">CreatePage::addTextField</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>Add a table field with a text input</dd><dt><a href="CreatePage.html#method_addTextAreaField">CreatePage::addTextAreaField</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
@@ -117,8 +114,8 @@
                     <dd>Add a table field with a radio input(s)</dd><dt><a href="CreatePage.html#method_addCheckListField">CreatePage::addCheckListField</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>Add a table field with a checkbox input(s)</dd><dt><a href="CreatePage.html#method_addColorField">CreatePage::addColorField</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
                     <dd>Add a table field with a color picker</dd><dt><a href="CreatePage.html#method_addExtraFields">CreatePage::addExtraFields</a>() &mdash; <em>Method in class <a href="CreatePage.html">CreatePage</a></em></dt>
-                    <dd>Add extra fields</dd><dt>$<a href="CustomStats.html#property_amount_field">CustomStats#amount_field</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
-                    <dd></dd><dt>$<a href="DolibaseModule.html#property_addons">DolibaseModule#addons</a> &mdash; <em>Property in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
+                    <dd>Add extra fields</dd><dt>$<a href="CustomStats.html#property_amount_field">CustomStats</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+                    <dd></dd><dt>$<a href="DolibaseModule.html#property_addons">DolibaseModule</a> &mdash; <em>Property in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd></dd><dt><a href="DolibaseModule.html#method_addConstant">DolibaseModule::addConstant</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Add a constant</dd><dt><a href="DolibaseModule.html#method_addWidget">DolibaseModule::addWidget</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Add a widget</dd><dt><a href="DolibaseModule.html#method_addPermission">DolibaseModule::addPermission</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
@@ -138,7 +135,7 @@
                     <dd>Activate a document model</dd><dt><a href="DolibaseModule.html#method_addCronJob">DolibaseModule::addCronJob</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Add a cron job</dd><dt><a href="DolibaseModule.html#method_addCronCommand">DolibaseModule::addCronCommand</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Add a cron job using a command</dd><dt><a href="DolibaseModule.html#method_addCronMethod">DolibaseModule::addCronMethod</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
-                    <dd>Add a cron job using a method</dd><dt>$<a href="ExtraFieldsPage.html#property_add_changelog_tab">ExtraFieldsPage#add_changelog_tab</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
+                    <dd>Add a cron job using a method</dd><dt>$<a href="ExtraFieldsPage.html#property_add_changelog_tab">ExtraFieldsPage</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
                     <dd></dd><dt><a href="FormPage.html#method_askForConfirmation">FormPage::askForConfirmation</a>() &mdash; <em>Method in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd>Show a confirmation message</dd><dt><a href="FormPage.html#method_appendToBody">FormPage::appendToBody</a>() &mdash; <em>Method in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd>Append a content to page body</dd><dt><a href="ImportExport.html#method_addJsFiles">ImportExport::addJsFiles</a>() &mdash; <em>Method in class <a href="ImportExport.html">ImportExport</a></em></dt>
@@ -147,15 +144,15 @@
                     <dd>Add/print import button</dd><dt><a href="IndexPage.html#method_addSearchForm">IndexPage::addSearchForm</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Add a search form</dd><dt><a href="IndexPage.html#method_addStatsGraph">IndexPage::addStatsGraph</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Add a statistics graph</dd><dt><a href="IndexPage.html#method_addStatsGraphFromData">IndexPage::addStatsGraphFromData</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
-                    <dd>Add a statistics graph from predefined data</dd><dt>$<a href="ListPage.html#property_arrayfields">ListPage#arrayfields</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
+                    <dd>Add a statistics graph from predefined data</dd><dt>$<a href="ListPage.html#property_arrayfields">ListPage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd></dd><dt><a href="ListPage.html#method_addColumn">ListPage::addColumn</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Add a table column</dd><dt><a href="ListPage.html#method_addExtraFields">ListPage::addExtraFields</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Add extrafields columns</dd><dt><a href="ListPage.html#method_addButtons">ListPage::addButtons</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Add buttons to the list</dd><dt><a href="Logs.html#method_add">Logs::add</a>() &mdash; <em>Method in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd>Add log into database</dd><dt>$<a href="Page.html#property_access_permission">Page#access_permission</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_active_tab">Page#active_tab</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_add_fiche_end">Page#add_fiche_end</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_assets">Page#assets</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd>Add log into database</dd><dt>$<a href="Page.html#property_access_permission">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_active_tab">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_add_fiche_end">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_assets">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_appendToHead">Page::appendToHead</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Append content to page head.</dd><dt><a href="Page.html#method_addJsFile">Page::addJsFile</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add JS file to page head.</dd><dt><a href="Page.html#method_addJsFiles">Page::addJsFiles</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
@@ -167,8 +164,8 @@
                     <dd>Add a table column</dd><dt><a href="Page.html#method_addLineBreak">Page::addLineBreak</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Add a line break (or many)</dd><dt><a href="QueryBuilder.html#method_affected">QueryBuilder::affected</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Return affected rows count of an INSERT, UPDATE or DELETE query</dd><dt><a href="QueryBuilder.html#method_addSelect">QueryBuilder::addSelect</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add more options to SELECT statement (multiple calls allowed)</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage#add_extrafields_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_add_changelog_tab">SetupPage#add_changelog_tab</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Add more options to SELECT statement (multiple calls allowed)</dd><dt>$<a href="SetupPage.html#property_add_extrafields_tab">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_add_changelog_tab">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_addOption">SetupPage::addOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new option</dd><dt><a href="SetupPage.html#method_addSwitchOption">SetupPage::addSwitchOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Add a new switch option</dd><dt><a href="SetupPage.html#method_addTextOption">SetupPage::addTextOption</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
@@ -185,17 +182,17 @@
                     <dd>Add content to widget</dd>        </dl><h2 id="letterB">B</h2>
         <dl id="index"><dt><a href="CardPage.html#method_begin">CardPage::begin</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Generate page beginning</dd><dt><a href="DocumentPage.html#method_begin">DocumentPage::begin</a>() &mdash; <em>Method in class <a href="DocumentPage.html">DocumentPage</a></em></dt>
-                    <dd>Generate page beginning + print documents/linked files</dd><dt>$<a href="FormPage.html#property_body">FormPage#body</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
+                    <dd>Generate page beginning + print documents/linked files</dd><dt>$<a href="FormPage.html#property_body">FormPage</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd></dd><dt><a href="IndexPage.html#method_begin">IndexPage::begin</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Generate page beginning</dd><dt><a href="Page.html#method_begin">Page::begin</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Generate page beginning</dd><dt><a href="StatsPage.html#method_begin">StatsPage::begin</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
-                    <dd>Generate page beginning</dd><dt>$<a href="Widget.html#property_boxlabel">Widget#boxlabel</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
-                    <dd></dd><dt>$<a href="Widget.html#property_boximg">Widget#boximg</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
+                    <dd>Generate page beginning</dd><dt>$<a href="Widget.html#property_boxlabel">Widget</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
+                    <dd></dd><dt>$<a href="Widget.html#property_boximg">Widget</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterC">C</h2>
         <dl id="index"><dt><a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>CalendarPage class</dd><dt><a href="CardPage.html">CardPage</a></em></dt>
-                    <dd>CardPage class</dd><dt>$<a href="CardPage.html#property_close_buttons_div">CardPage#close_buttons_div</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CardPage.html#property_const_name_prefix">CardPage#const_name_prefix</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd>CardPage class</dd><dt>$<a href="CardPage.html#property_close_buttons_div">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CardPage.html#property_const_name_prefix">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt><a href="CardPage.html#method_canEdit">CardPage::canEdit</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Return if the current user can edit the page or not</dd><dt><a href="CardPage.html#method_canDelete">CardPage::canDelete</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Return if the current user can delete the object or not</dd><dt><a href="CardPage.html#method_closeButtonsDiv">CardPage::closeButtonsDiv</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -210,68 +207,68 @@
                     <dd>Return a checkbox</dd><dt><a href="CustomForm.html#method_checkList">CustomForm::checkList</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a check list</dd><dt><a href="CustomForm.html#method_colorInput">CustomForm::colorInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a color input</dd><dt><a href="CustomObject.html">CustomObject</a></em></dt>
-                    <dd>CustomObject class</dd><dt>$<a href="CustomObject.html#property_card_url">CustomObject#card_url</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd>CustomObject class</dd><dt>$<a href="CustomObject.html#property_card_url">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd></dd><dt><a href="CustomObject.html#method_clone">CustomObject::clone</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Clone an object</dd><dt><a href="CustomObject.html#method_create">CustomObject::create</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Create object into database</dd><dt><a href="CustomStats.html">CustomStats</a></em></dt>
-                    <dd>CustomStats class</dd><dt>$<a href="DolibaseModule.html#property_config">DolibaseModule#config</a> &mdash; <em>Property in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
+                    <dd>CustomStats class</dd><dt>$<a href="DolibaseModule.html#property_config">DolibaseModule</a> &mdash; <em>Property in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd></dd><dt><a href="DolibaseModule.html#method_checkUpdates">DolibaseModule::checkUpdates</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Function to check module updates.</dd><dt><a href="FormPage.html#method_checkFields">FormPage::checkFields</a>() &mdash; <em>Method in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd>Check page fields</dd><dt><a href="FormPage.html#method_checkField">FormPage::checkField</a>() &mdash; <em>Method in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd>Check specified field</dd><dt><a href="IndexPage.html#method_closeLeftSection">IndexPage::closeLeftSection</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Close a left section</dd><dt><a href="IndexPage.html#method_closeRightSection">IndexPage::closeRightSection</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
-                    <dd>Close a right section</dd><dt>$<a href="ListPage.html#property_contextpage">ListPage#contextpage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
+                    <dd>Close a right section</dd><dt>$<a href="ListPage.html#property_contextpage">ListPage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd></dd><dt><a href="ListPage.html#method_closeList">ListPage::closeList</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Close list</dd><dt><a href="ListPage.html#method_closeRow">ListPage::closeRow</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Close table row</dd><dt><a href="NumModel.html#method_canBeActivated">NumModel::canBeActivated</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
-                    <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelMarbre.html#property_const_name">NumModelMarbre#const_name</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelMarbre.html#property_const_name">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt><a href="NumModelMarbre.html#method_canBeActivated">NumModelMarbre::canBeActivated</a>() &mdash; <em>Method in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
-                    <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelSaphir.html#property_const_name">NumModelSaphir#const_name</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_close_form">Page#close_form</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_close_table">Page#close_table</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd>Check if the numbers already existing in the database doesn't have conflicts with this numbering model</dd><dt>$<a href="NumModelSaphir.html#property_const_name">NumModelSaphir</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_close_form">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_close_table">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_closeForm">Page::closeForm</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Close an opened form</dd><dt><a href="Page.html#method_closeTable">Page::closeTable</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Close an opened html table</dd><dt><a href="Page.html#method_closeRow">Page::closeRow</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Close a table row</dd><dt><a href="QueryBuilder.html#method_count">QueryBuilder::count</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Execute query if not executed &amp; return query result(s) count</dd><dt>$<a href="SetupPage.html#property_const_name_prefix">SetupPage#const_name_prefix</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Execute query if not executed &amp; return query result(s) count</dd><dt>$<a href="SetupPage.html#property_const_name_prefix">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_closeButtonsDiv">SetupPage::closeButtonsDiv</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Close buttons div (if opened)</dd><dt><a href="StatsPage.html#method_closeLeftSection">StatsPage::closeLeftSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Close a left section</dd><dt><a href="StatsPage.html#method_closeRightSection">StatsPage::closeRightSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
-                    <dd>Close a right section</dd><dt>$<a href="pdf_azur.html#property_const_prefix">pdf_azur#const_prefix</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Close a right section</dd><dt>$<a href="pdf_azur.html#property_const_prefix">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterD">D</h2>
-        <dl id="index"><dt>$<a href="CardPage.html#property_delete_permission">CardPage#delete_permission</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+        <dl id="index"><dt>$<a href="CardPage.html#property_delete_permission">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt><a href="Chart.html#method_display">Chart::display</a>() &mdash; <em>Method in class <a href="Chart.html">Chart</a></em></dt>
-                    <dd>Display chart (shortcut for draw &amp; show)</dd><dt>$<a href="CrudObject.html#property_date_fields">CrudObject#date_fields</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>Display chart (shortcut for draw &amp; show)</dd><dt>$<a href="CrudObject.html#property_date_fields">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_delete">CrudObject::delete</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Delete object in database</dd><dt><a href="CrudObject.html#method_deleteWhere">CrudObject::deleteWhere</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Delete row(s) in database (wrapper for deleteAll function)</dd><dt><a href="CrudObject.html#method_deleteAll">CrudObject::deleteAll</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Delete all object rows in database</dd><dt><a href="CrudObject.html#method_deleteAllObjectLinked">CrudObject::deleteAllObjectLinked</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Delete all links between an object $this</dd><dt><a href="CustomForm.html#method_dateInput">CustomForm::dateInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a date input</dd><dt><a href="CustomForm.html#method_datetimeInput">CustomForm::datetimeInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return a datetime input</dd><dt>$<a href="CustomObject.html#property_doc_title">CustomObject#doc_title</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
-                    <dd></dd><dt>$<a href="CustomObject.html#property_doc_lines">CustomObject#doc_lines</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd>Return a datetime input</dd><dt>$<a href="CustomObject.html#property_doc_title">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd></dd><dt>$<a href="CustomObject.html#property_doc_lines">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd></dd><dt><a href="CustomObject.html#method_delete">CustomObject::delete</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Delete object in database</dd><dt><a href="CustomObject.html#method_deleteDocument">CustomObject::deleteDocument</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
-                    <dd>Delete document from disk.</dd><dt>$<a href="CustomStats.html#property_date_field">CustomStats#date_field</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+                    <dd>Delete document from disk.</dd><dt>$<a href="CustomStats.html#property_date_field">CustomStats</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="Dictionary.html">Dictionary</a></em></dt>
                     <dd>Dictionary class</dd><dt><a href="DocModel.html">DocModel</a></em></dt>
                     <dd>DocModel class</dd><dt><a href="DocumentPage.html">DocumentPage</a></em></dt>
                     <dd>DocumentPage class</dd><dt><a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>DolibaseModule class</dd><dt><a href="DolibaseModule.html#method_disableModuleForExternalUsers">DolibaseModule::disableModuleForExternalUsers</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
-                    <dd>Disable module for external users</dd><dt>$<a href="MailObject.html#property_db">MailObject#db</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
-                    <dd></dd><dt>$<a href="QueryBuilder.html#property_db">QueryBuilder#db</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Disable module for external users</dd><dt>$<a href="MailObject.html#property_db">MailObject</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
+                    <dd></dd><dt>$<a href="QueryBuilder.html#property_db">QueryBuilder</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_delete">QueryBuilder::delete</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add DELETE statement to query</dd><dt>$<a href="SetupPage.html#property_doc_model_const_name">SetupPage#doc_model_const_name</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_type">SetupPage#doc_model_type</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_preview_picture">SetupPage#doc_model_preview_picture</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_object_class">SetupPage#doc_object_class</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_object_path">SetupPage#doc_object_path</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="SetupPage.html#property_disable_default_actions">SetupPage#disable_default_actions</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_db">pdf_azur#db</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_description">pdf_azur#description</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Add DELETE statement to query</dd><dt>$<a href="SetupPage.html#property_doc_model_const_name">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_type">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_model_preview_picture">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_object_class">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_doc_object_path">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="SetupPage.html#property_disable_default_actions">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_db">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_description">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterE">E</h2>
-        <dl id="index"><dt>$<a href="CardPage.html#property_edit_permission">CardPage#edit_permission</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CardPage.html#property_enable_mail_delivery_receipt">CardPage#enable_mail_delivery_receipt</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+        <dl id="index"><dt>$<a href="CardPage.html#property_edit_permission">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CardPage.html#property_enable_mail_delivery_receipt">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt><a href="CardPage.html#method_enableMailDeliveryReceipt">CardPage::enableMailDeliveryReceipt</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Enables mail delivery receipt</dd><dt><a href="CardPage.html#method_editField">CardPage::editField</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Edit a field</dd><dt><a href="CardPage.html#method_editTextField">CardPage::editTextField</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -283,45 +280,45 @@
                     <dd>Add a table field with a radio input(s)</dd><dt><a href="CardPage.html#method_editCheckListField">CardPage::editCheckListField</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Add a table field with a checkbox input(s)</dd><dt><a href="CardPage.html#method_editColorField">CardPage::editColorField</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Add a table field with a color picker</dd><dt><a href="CardPage.html#method_end">CardPage::end</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd>Generate page end</dd><dt>$<a href="CreatePage.html#property_extrafields">CreatePage#extrafields</a> &mdash; <em>Property in class <a href="CreatePage.html">CreatePage</a></em></dt>
-                    <dd></dd><dt>$<a href="CrudObject.html#property_element">CrudObject#element</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>Generate page end</dd><dt>$<a href="CreatePage.html#property_extrafields">CreatePage</a> &mdash; <em>Property in class <a href="CreatePage.html">CreatePage</a></em></dt>
+                    <dd></dd><dt>$<a href="CrudObject.html#property_element">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_escape">CrudObject::escape</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd>Escape field value</dd><dt>$<a href="DocModel.html#property_error">DocModel#error</a> &mdash; <em>Property in class <a href="DocModel.html">DocModel</a></em></dt>
+                    <dd>Escape field value</dd><dt>$<a href="DocModel.html#property_error">DocModel</a> &mdash; <em>Property in class <a href="DocModel.html">DocModel</a></em></dt>
                     <dd></dd><dt><a href="DolibaseModule.html#method_enableModuleForExternalUsers">DolibaseModule::enableModuleForExternalUsers</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Enable module for external users</dd><dt><a href="DolibaseModule.html#method_enableHook">DolibaseModule::enableHook</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Enable a hook</dd><dt><a href="DolibaseModule.html#method_enableHooks">DolibaseModule::enableHooks</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Enable an array of hooks</dd><dt><a href="DolibaseModule.html#method_enableTriggers">DolibaseModule::enableTriggers</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Enable triggers</dd><dt><a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
-                    <dd>ExtraFieldsPage class</dd><dt>$<a href="ExtraFieldsPage.html#property_elementtype">ExtraFieldsPage#elementtype</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
-                    <dd></dd><dt>$<a href="ExtraFieldsPage.html#property_extrafields">ExtraFieldsPage#extrafields</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
+                    <dd>ExtraFieldsPage class</dd><dt>$<a href="ExtraFieldsPage.html#property_elementtype">ExtraFieldsPage</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
+                    <dd></dd><dt>$<a href="ExtraFieldsPage.html#property_extrafields">ExtraFieldsPage</a> &mdash; <em>Property in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
                     <dd></dd><dt><a href="IndexPage.html#method_end">IndexPage::end</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
-                    <dd>Generate page end</dd><dt>$<a href="ListPage.html#property_extrafields">ListPage#extrafields</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
-                    <dd></dd><dt>$<a href="ListPage.html#property_extralabels">ListPage#extralabels</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
-                    <dd></dd><dt>$<a href="MailObject.html#property_element">MailObject#element</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModel.html#property_error">NumModel#error</a> &mdash; <em>Property in class <a href="NumModel.html">NumModel</a></em></dt>
+                    <dd>Generate page end</dd><dt>$<a href="ListPage.html#property_extrafields">ListPage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
+                    <dd></dd><dt>$<a href="ListPage.html#property_extralabels">ListPage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
+                    <dd></dd><dt>$<a href="MailObject.html#property_element">MailObject</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModel.html#property_error">NumModel</a> &mdash; <em>Property in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_end">Page::end</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Generate page end.</dd><dt><a href="QueryBuilder.html#method_execute">QueryBuilder::execute</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Execute query</dd><dt><a href="QueryBuilder.html#method_escape">QueryBuilder::escape</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Escape field value</dd><dt><a href="StatsPage.html#method_end">StatsPage::end</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
-                    <dd>Generate page end</dd><dt>$<a href="Widget.html#property_enabled">Widget#enabled</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_emetteur">pdf_azur#emetteur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Generate page end</dd><dt>$<a href="Widget.html#property_enabled">Widget</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_emetteur">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterF">F</h2>
-        <dl id="index"><dt>$<a href="CrudObject.html#property_fetch_fields">CrudObject#fetch_fields</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+        <dl id="index"><dt>$<a href="CrudObject.html#property_fetch_fields">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_fetch">CrudObject::fetch</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Load object in memory from database</dd><dt><a href="CrudObject.html#method_fetchWhere">CrudObject::fetchWhere</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Load object in memory from database (wrapper for fetchAll function)</dd><dt><a href="CrudObject.html#method_fetchAll">CrudObject::fetchAll</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Load all object entries in memory from database</dd><dt><a href="CustomForm.html#method_fileInput">CustomForm::fileInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return a file input</dd><dt>$<a href="CustomStats.html#property_from">CustomStats#from</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+                    <dd>Return a file input</dd><dt>$<a href="CustomStats.html#property_from">CustomStats</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="Field.html">Field</a></em></dt>
                     <dd>Field class</dd><dt><a href="FormPage.html">FormPage</a></em></dt>
-                    <dd>FormPage class</dd><dt>$<a href="FormPage.html#property_form">FormPage#form</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
-                    <dd></dd><dt>$<a href="FormPage.html#property_fields">FormPage#fields</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
+                    <dd>FormPage class</dd><dt>$<a href="FormPage.html#property_form">FormPage</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
+                    <dd></dd><dt>$<a href="FormPage.html#property_fields">FormPage</a> &mdash; <em>Property in class <a href="FormPage.html">FormPage</a></em></dt>
                     <dd></dd><dt><a href="ListPage.html#method_fetchExtraFields">ListPage::fetchExtraFields</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd>Fetch extrafields</dd><dt><a href="MailObject.html#method_fetch">MailObject::fetch</a>() &mdash; <em>Method in class <a href="MailObject.html">MailObject</a></em></dt>
-                    <dd>Load object in memory from database</dd><dt>$<a href="NumModelMarbre.html#property_field_name">NumModelMarbre#field_name</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_field_name">NumModelSaphir#field_name</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
+                    <dd>Load object in memory from database</dd><dt>$<a href="NumModelMarbre.html#property_field_name">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_field_name">NumModelSaphir</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_from">QueryBuilder::from</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add FROM clause to query</dd><dt>$<a href="pdf_azur.html#property_format">pdf_azur#format</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Add FROM clause to query</dd><dt>$<a href="pdf_azur.html#property_format">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterG">G</h2>
         <dl id="index"><dt><a href="AboutPage.html#method_generate">AboutPage::generate</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
                     <dd>Generate page body</dd><dt><a href="AboutPage.html#method_generateTabs">AboutPage::generateTabs</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
@@ -370,23 +367,24 @@ defined into MODULE_RIGHTS_CLASS_ADDON</dd><dt><a href="CustomObject.html#method
                     <dd>Generate page body</dd><dt><a href="SetupPage.html#method_generateTabs">SetupPage::generateTabs</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Generate tabs</dd><dt><a href="StatsPage.html#method_generateTabs">StatsPage::generateTabs</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Generate tabs</dd>        </dl><h2 id="letterH">H</h2>
-        <dl id="index"><dt>$<a href="Page.html#property_head">Page#head</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+        <dl id="index"><dt>$<a href="Page.html#property_head">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterI">I</h2>
         <dl id="index"><dt><a href="DolibaseModule.html#method_init">DolibaseModule::init</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Function called when module is enabled.</dd><dt><a href="ImportExport.html">ImportExport</a></em></dt>
                     <dd>ImportExport class</dd><dt><a href="IndexPage.html">IndexPage</a></em></dt>
-                    <dd>IndexPage class</dd><dt>$<a href="MailObject.html#property_id">MailObject#id</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
+                    <dd>IndexPage class</dd><dt>$<a href="MailObject.html#property_id">MailObject</a> &mdash; <em>Property in class <a href="MailObject.html">MailObject</a></em></dt>
                     <dd></dd><dt><a href="NumModel.html#method_isEnabled">NumModel::isEnabled</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd>Return if a model can be used or not</dd><dt><a href="NumModel.html#method_info">NumModel::info</a>() &mdash; <em>Method in class <a href="NumModel.html">NumModel</a></em></dt>
                     <dd>Return the default description of the numbering model</dd><dt><a href="NumModelMarbre.html#method_info">NumModelMarbre::info</a>() &mdash; <em>Method in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd>Return description of numbering model</dd><dt><a href="NumModelSaphir.html#method_info">NumModelSaphir::info</a>() &mdash; <em>Method in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd>Return description of numbering model</dd><dt>$<a href="QueryBuilder.html#property_instance">QueryBuilder#instance</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Return description of numbering model</dd><dt>$<a href="QueryBuilder.html#property_instance">QueryBuilder</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_insert">QueryBuilder::insert</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add INSERT statement to query</dd>        </dl><h2 id="letterJ">J</h2>
-        <dl id="index"><dt>$<a href="CustomStats.html#property_join">CustomStats#join</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+        <dl id="index"><dt>$<a href="CustomStats.html#property_join">CustomStats</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_join">QueryBuilder::join</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add JOIN clause to query (multiple calls allowed)</dd>        </dl><h2 id="letterL">L</h2>
-        <dl id="index"><dt><a href="CustomForm.html#method_listInput">CustomForm::listInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
+        <dl id="index"><dt><a href="AboutPage.html#method_loadDefaultActions">AboutPage::loadDefaultActions</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
+                    <dd>Load default actions</dd><dt><a href="CustomForm.html#method_listInput">CustomForm::listInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a list</dd><dt><a href="DolibaseModule.html#method_loadSettings">DolibaseModule::loadSettings</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Function called after module configuration.</dd><dt><a href="DolibaseModule.html#method_loadTables">DolibaseModule::loadTables</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Create tables, keys and data required by module
@@ -405,35 +403,35 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Return last id after an INSERT query</dd><dt><a href="QueryBuilder.html#method_limit">QueryBuilder::limit</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add LIMIT clause to query</dd><dt><a href="SetupPage.html#method_loadDefaultActions">SetupPage::loadDefaultActions</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Load default actions</dd>        </dl><h2 id="letterM">M</h2>
-        <dl id="index"><dt>$<a href="CardPage.html#property_mail_subject">CardPage#mail_subject</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CardPage.html#property_mail_template">CardPage#mail_template</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CardPage.html#property_mail_substitutions">CardPage#mail_substitutions</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+        <dl id="index"><dt>$<a href="CardPage.html#property_mail_subject">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CardPage.html#property_mail_template">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CardPage.html#property_mail_substitutions">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt><a href="CustomForm.html#method_multiSelectListInput">CustomForm::multiSelectListInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return a multi select list</dd><dt>$<a href="CustomObject.html#property_modulepart">CustomObject#modulepart</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd>Return a multi select list</dd><dt>$<a href="CustomObject.html#property_modulepart">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd></dd><dt><a href="MailObject.html">MailObject</a></em></dt>
-                    <dd>MailObject class</dd><dt>$<a href="Page.html#property_main_subtitle">Page#main_subtitle</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_modulepart">Page#modulepart</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_gauche">pdf_azur#marge_gauche</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_droite">pdf_azur#marge_droite</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_haute">pdf_azur#marge_haute</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_basse">pdf_azur#marge_basse</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_modulepart">pdf_azur#modulepart</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>MailObject class</dd><dt>$<a href="Page.html#property_main_subtitle">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_modulepart">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_gauche">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_droite">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_haute">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_marge_basse">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_modulepart">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterN">N</h2>
         <dl id="index"><dt><a href="CustomForm.html#method_numberInput">CustomForm::numberInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return a number input</dd><dt>$<a href="Field.html#property_name">Field#name</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
+                    <dd>Return a number input</dd><dt>$<a href="Field.html#property_name">Field</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
                     <dd></dd><dt><a href="NumModel.html">NumModel</a></em></dt>
                     <dd>NumModel class</dd><dt><a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
-                    <dd>NumModelMarbre class</dd><dt>$<a href="NumModelMarbre.html#property_nom">NumModelMarbre#nom</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd>NumModelMarbre class</dd><dt>$<a href="NumModelMarbre.html#property_nom">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt><a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd>NumModelSaphir class</dd><dt>$<a href="NumModelSaphir.html#property_nom">NumModelSaphir#nom</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
+                    <dd>NumModelSaphir class</dd><dt>$<a href="NumModelSaphir.html#property_nom">NumModelSaphir</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_notFound">Page::notFound</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Show page_not_found template (only once)</dd><dt>$<a href="SetupPage.html#property_num_model_const_name">SetupPage#num_model_const_name</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Show page_not_found template (only once)</dd><dt>$<a href="SetupPage.html#property_num_model_const_name">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_newOptionsTable">SetupPage::newOptionsTable</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Create a new table for options</dd><dt><a href="Widget.html#method_newLine">Widget::newLine</a>() &mdash; <em>Method in class <a href="Widget.html">Widget</a></em></dt>
-                    <dd>Add a new line to widget</dd><dt>$<a href="pdf_azur.html#property_name">pdf_azur#name</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Add a new line to widget</dd><dt>$<a href="pdf_azur.html#property_name">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterO">O</h2>
         <dl id="index"><dt><a href="CardPage.html#method_openButtonsDiv">CardPage::openButtonsDiv</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd>Open buttons div (if not already opened)</dd><dt>$<a href="CustomForm.html#property_other">CustomForm#other</a> &mdash; <em>Property in class <a href="CustomForm.html">CustomForm</a></em></dt>
+                    <dd>Open buttons div (if not already opened)</dd><dt>$<a href="CustomForm.html#property_other">CustomForm</a> &mdash; <em>Property in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd></dd><dt><a href="IndexPage.html#method_openLeftSection">IndexPage::openLeftSection</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Opens a left section</dd><dt><a href="IndexPage.html#method_openRightSection">IndexPage::openRightSection</a>() &mdash; <em>Method in class <a href="IndexPage.html">IndexPage</a></em></dt>
                     <dd>Opens a right section</dd><dt><a href="ListPage.html#method_openList">ListPage::openList</a>() &mdash; <em>Method in class <a href="ListPage.html">ListPage</a></em></dt>
@@ -442,56 +440,56 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Opens a new html table</dd><dt><a href="Page.html#method_openRow">Page::openRow</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Open a table row</dd><dt><a href="QueryBuilder.html#method_orWhere">QueryBuilder::orWhere</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add OR to WHERE clause (multiple calls allowed)</dd><dt><a href="QueryBuilder.html#method_orderBy">QueryBuilder::orderBy</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add ORDER BY clause to query</dd><dt>$<a href="SetupPage.html#property_odd">SetupPage#odd</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Add ORDER BY clause to query</dd><dt>$<a href="SetupPage.html#property_odd">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_openButtonsDiv">SetupPage::openButtonsDiv</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Open buttons div (if not already opened)</dd><dt><a href="StatsPage.html#method_openLeftSection">StatsPage::openLeftSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Opens a left section</dd><dt><a href="StatsPage.html#method_openRightSection">StatsPage::openRightSection</a>() &mdash; <em>Method in class <a href="StatsPage.html">StatsPage</a></em></dt>
                     <dd>Opens a right section</dd>        </dl><h2 id="letterP">P</h2>
         <dl id="index"><dt><a href="AboutPage.html#method_printModuleInformations">AboutPage::printModuleInformations</a>() &mdash; <em>Method in class <a href="AboutPage.html">AboutPage</a></em></dt>
-                    <dd>Print module informations</dd><dt>$<a href="CalendarPage.html#property_params">CalendarPage#params</a> &mdash; <em>Property in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
+                    <dd>Print module informations</dd><dt>$<a href="CalendarPage.html#property_params">CalendarPage</a> &mdash; <em>Property in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd></dd><dt><a href="CalendarPage.html#method_printCalendar">CalendarPage::printCalendar</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>Print a calendar</dd><dt><a href="CardPage.html#method_printRelatedObjects">CardPage::printRelatedObjects</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Print related objects block.</dd><dt><a href="CardPage.html#method_printDocuments">CardPage::printDocuments</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Print documents block</dd><dt><a href="CardPage.html#method_printMailForm">CardPage::printMailForm</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Print mail form</dd><dt><a href="ChangelogPage.html#method_printChangelog">ChangelogPage::printChangelog</a>() &mdash; <em>Method in class <a href="ChangelogPage.html">ChangelogPage</a></em></dt>
-                    <dd>Print module changelog</dd><dt>$<a href="CrudObject.html#property_pk_name">CrudObject#pk_name</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd>Print module changelog</dd><dt>$<a href="CrudObject.html#property_pk_name">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CustomForm.html#method_productList">CustomForm::productList</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return products list</dd><dt>$<a href="CustomObject.html#property_picto">CustomObject#picto</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd>Return products list</dd><dt>$<a href="CustomObject.html#property_picto">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd></dd><dt><a href="DocumentPage.html#method_printDocuments">DocumentPage::printDocuments</a>() &mdash; <em>Method in class <a href="DocumentPage.html">DocumentPage</a></em></dt>
                     <dd>Print documents/linked files</dd><dt><a href="ExtraFieldsPage.html#method_printExtraFields">ExtraFieldsPage::printExtraFields</a>() &mdash; <em>Method in class <a href="ExtraFieldsPage.html">ExtraFieldsPage</a></em></dt>
                     <dd>Print extra fields table</dd><dt><a href="LogPage.html#method_printLogs">LogPage::printLogs</a>() &mdash; <em>Method in class <a href="LogPage.html">LogPage</a></em></dt>
-                    <dd>Print logs</dd><dt>$<a href="Logs.html#property_pk_name">Logs#pk_name</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_prefix">NumModelMarbre#prefix</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd>Print logs</dd><dt>$<a href="Logs.html#property_pk_name">Logs</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_prefix">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
                     <dd></dd><dt><a href="Page.html">Page</a></em></dt>
                     <dd>Page class</dd><dt><a href="SetupPage.html#method_printNumModels">SetupPage::printNumModels</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Print numbering models</dd><dt><a href="SetupPage.html#method_printDocModels">SetupPage::printDocModels</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd>Print document models</dd><dt>$<a href="Widget.html#property_position">Widget#position</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
+                    <dd>Print document models</dd><dt>$<a href="Widget.html#property_position">Widget</a> &mdash; <em>Property in class <a href="Widget.html">Widget</a></em></dt>
                     <dd></dd><dt><a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd>pdf_azur class</dd><dt>$<a href="pdf_azur.html#property_phpmin">pdf_azur#phpmin</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_page_largeur">pdf_azur#page_largeur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_page_hauteur">pdf_azur#page_hauteur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>pdf_azur class</dd><dt>$<a href="pdf_azur.html#property_phpmin">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_page_largeur">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_page_hauteur">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd><dt><a href="pdf_azur.html#method_print_line">pdf_azur::print_line</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd>Function to print table line</dd><dt><a href="pdf_crabe.html">pdf_crabe</a></em></dt>
                     <dd>pdf_crabe class</dd><dt><a href="pdf_crabe.html#method_print_column">pdf_crabe::print_column</a>() &mdash; <em>Method in class <a href="pdf_crabe.html">pdf_crabe</a></em></dt>
                     <dd>Function to print table line</dd>        </dl><h2 id="letterQ">Q</h2>
         <dl id="index"><dt><a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>QueryBuilder class</dd>        </dl><h2 id="letterR">R</h2>
-        <dl id="index"><dt>$<a href="CrudObject.html#property_ref_field_name">CrudObject#ref_field_name</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd></dd><dt>$<a href="CrudObject.html#property_rows">CrudObject#rows</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+        <dl id="index"><dt>$<a href="CrudObject.html#property_ref_field_name">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd></dd><dt>$<a href="CrudObject.html#property_rows">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CrudObject.html#method_run_triggers">CrudObject::run_triggers</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd>Run Dolibarr triggers (from other modules)</dd><dt><a href="CustomForm.html#method_rangeInput">CustomForm::rangeInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a range input</dd><dt><a href="CustomForm.html#method_radioList">CustomForm::radioList</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a radio list</dd><dt><a href="DolibaseModule.html#method_remove">DolibaseModule::remove</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
-                    <dd>Function called when module is disabled.</dd><dt>$<a href="Page.html#property_rights_class">Page#rights_class</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd>Function called when module is disabled.</dd><dt>$<a href="Page.html#property_rights_class">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt><a href="Page.html#method_redirect">Page::redirect</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
-                    <dd>Redirect to a url (alias for dolibase_redirect function).</dd><dt>$<a href="QueryBuilder.html#property_result">QueryBuilder#result</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
+                    <dd>Redirect to a url (alias for dolibase_redirect function).</dd><dt>$<a href="QueryBuilder.html#property_result">QueryBuilder</a> &mdash; <em>Property in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_reset">QueryBuilder::reset</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Reset Query Builder</dd><dt><a href="QueryBuilder.html#method_result">QueryBuilder::result</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Execute query if not executed &amp; return an array of result(s)</dd>        </dl><h2 id="letterS">S</h2>
         <dl id="index"><dt><a href="CalendarPage.html#method_showNavBar">CalendarPage::showNavBar</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
                     <dd>Show navigation bar</dd><dt><a href="CalendarPage.html#method_showEvents">CalendarPage::showEvents</a>() &mdash; <em>Method in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
-                    <dd>Show calendar events</dd><dt>$<a href="CardPage.html#property_show_documents">CardPage#show_documents</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CardPage.html#property_sub_permission">CardPage#sub_permission</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd>Show calendar events</dd><dt>$<a href="CardPage.html#property_show_documents">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CardPage.html#property_sub_permission">CardPage</a> &mdash; <em>Property in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd></dd><dt><a href="CardPage.html#method_setMailSubject">CardPage::setMailSubject</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Set mail subject</dd><dt><a href="CardPage.html#method_setMailTemplate">CardPage::setMailTemplate</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Set mail template</dd><dt><a href="CardPage.html#method_setMailSubstitutions">CardPage::setMailSubstitutions</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
@@ -503,8 +501,8 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Set table name</dd><dt><a href="DocumentPage.html#method_showBanner">DocumentPage::showBanner</a>() &mdash; <em>Method in class <a href="DocumentPage.html">DocumentPage</a></em></dt>
                     <dd>Show banner</dd><dt><a href="DolibaseModule.html#method_setAddons">DolibaseModule::setAddons</a>() &mdash; <em>Method in class <a href="DolibaseModule.html">DolibaseModule</a></em></dt>
                     <dd>Set/Activate addons required by module</dd><dt><a href="FormPage.html#method_setFields">FormPage::setFields</a>() &mdash; <em>Method in class <a href="FormPage.html">FormPage</a></em></dt>
-                    <dd>Set page fields</dd><dt>$<a href="IndexPage.html#property_stats_id">IndexPage#stats_id</a> &mdash; <em>Property in class <a href="IndexPage.html">IndexPage</a></em></dt>
-                    <dd></dd><dt>$<a href="ListPage.html#property_search_array_options">ListPage#search_array_options</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
+                    <dd>Set page fields</dd><dt>$<a href="IndexPage.html#property_stats_id">IndexPage</a> &mdash; <em>Property in class <a href="IndexPage.html">IndexPage</a></em></dt>
+                    <dd></dd><dt>$<a href="ListPage.html#property_search_array_options">ListPage</a> &mdash; <em>Property in class <a href="ListPage.html">ListPage</a></em></dt>
                     <dd></dd><dt><a href="LogPage.html#method_showBanner">LogPage::showBanner</a>() &mdash; <em>Method in class <a href="LogPage.html">LogPage</a></em></dt>
                     <dd>Show banner</dd><dt><a href="Page.html#method_setTitle">Page::setTitle</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Set page title.</dd><dt><a href="Page.html#method_setMainSubtitle">Page::setMainSubtitle</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
@@ -521,24 +519,24 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Set widget title</dd><dt><a href="Widget.html#method_setLink">Widget::setLink</a>() &mdash; <em>Method in class <a href="Widget.html">Widget</a></em></dt>
                     <dd>Set widget link</dd><dt><a href="Widget.html#method_showBox">Widget::showBox</a>() &mdash; <em>Method in class <a href="Widget.html">Widget</a></em></dt>
                     <dd>Method to show box. Called by Dolibarr eatch time it wants to display the box.</dd>        </dl><h2 id="letterT">T</h2>
-        <dl id="index"><dt>$<a href="CalendarPage.html#property_template_files">CalendarPage#template_files</a> &mdash; <em>Property in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
-                    <dd></dd><dt>$<a href="CrudObject.html#property_table_element">CrudObject#table_element</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
-                    <dd></dd><dt>$<a href="CrudObject.html#property_triggers_prefix">CrudObject#triggers_prefix</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+        <dl id="index"><dt>$<a href="CalendarPage.html#property_template_files">CalendarPage</a> &mdash; <em>Property in class <a href="CalendarPage.html">CalendarPage</a></em></dt>
+                    <dd></dd><dt>$<a href="CrudObject.html#property_table_element">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
+                    <dd></dd><dt>$<a href="CrudObject.html#property_triggers_prefix">CrudObject</a> &mdash; <em>Property in class <a href="CrudObject.html">CrudObject</a></em></dt>
                     <dd></dd><dt><a href="CustomForm.html#method_textInput">CustomForm::textInput</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a text input</dd><dt><a href="CustomForm.html#method_textArea">CustomForm::textArea</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
                     <dd>Return a text area</dd><dt><a href="CustomForm.html#method_textEditor">CustomForm::textEditor</a>() &mdash; <em>Method in class <a href="CustomForm.html">CustomForm</a></em></dt>
-                    <dd>Return a text area with editor (if WYSIWYG editor module is activated)</dd><dt>$<a href="CustomObject.html#property_tooltip_details">CustomObject#tooltip_details</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
-                    <dd></dd><dt>$<a href="Field.html#property_trans">Field#trans</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
-                    <dd></dd><dt>$<a href="Logs.html#property_table_element">Logs#table_element</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_table_name">NumModelMarbre#table_name</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_table_name">NumModelSaphir#table_name</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_title">Page#title</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_tabs">Page#tabs</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_tabs_picture">Page#tabs_picture</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
-                    <dd></dd><dt>$<a href="Page.html#property_tabs_title">Page#tabs_title</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd>Return a text area with editor (if WYSIWYG editor module is activated)</dd><dt>$<a href="CustomObject.html#property_tooltip_details">CustomObject</a> &mdash; <em>Property in class <a href="CustomObject.html">CustomObject</a></em></dt>
+                    <dd></dd><dt>$<a href="Field.html#property_trans">Field</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
+                    <dd></dd><dt>$<a href="Logs.html#property_table_element">Logs</a> &mdash; <em>Property in class <a href="Logs.html">Logs</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_table_name">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_table_name">NumModelSaphir</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_title">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_tabs">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_tabs_picture">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
+                    <dd></dd><dt>$<a href="Page.html#property_tabs_title">Page</a> &mdash; <em>Property in class <a href="Page.html">Page</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_truncate">QueryBuilder::truncate</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add TRUNCATE statement to query</dd><dt>$<a href="SetupPage.html#property_title_link">SetupPage#title_link</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_type">pdf_azur#type</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Add TRUNCATE statement to query</dd><dt>$<a href="SetupPage.html#property_title_link">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_type">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterU">U</h2>
         <dl id="index"><dt><a href="CardPage.html#method_updateExtraFields">CardPage::updateExtraFields</a>() &mdash; <em>Method in class <a href="CardPage.html">CardPage</a></em></dt>
                     <dd>Update extra fields</dd><dt><a href="CrudObject.html#method_update">CrudObject::update</a>() &mdash; <em>Method in class <a href="CrudObject.html">CrudObject</a></em></dt>
@@ -547,18 +545,18 @@ This function is called by this->init</dd><dt><a href="ExtraFieldsPage.html#meth
                     <dd>Update all object rows into database</dd><dt><a href="CustomObject.html#method_update">CustomObject::update</a>() &mdash; <em>Method in class <a href="CustomObject.html">CustomObject</a></em></dt>
                     <dd>Update object into database</dd><dt><a href="Page.html#method_underConstruction">Page::underConstruction</a>() &mdash; <em>Method in class <a href="Page.html">Page</a></em></dt>
                     <dd>Show page_under_construction template (only once)</dd><dt><a href="QueryBuilder.html#method_update">QueryBuilder::update</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
-                    <dd>Add UPDATE statement to query</dd><dt>$<a href="SetupPage.html#property_use_ajax_to_switch_on_off">SetupPage#use_ajax_to_switch_on_off</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
+                    <dd>Add UPDATE statement to query</dd><dt>$<a href="SetupPage.html#property_use_ajax_to_switch_on_off">SetupPage</a> &mdash; <em>Property in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd></dd><dt><a href="SetupPage.html#method_useAjaxToSwitchOnOff">SetupPage::useAjaxToSwitchOnOff</a>() &mdash; <em>Method in class <a href="SetupPage.html">SetupPage</a></em></dt>
                     <dd>Set $use_ajax_to_switch_on_off attribute to true</dd>        </dl><h2 id="letterV">V</h2>
-        <dl id="index"><dt>$<a href="Field.html#property_validation_rules">Field#validation_rules</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_version">NumModelMarbre#version</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
-                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_version">NumModelSaphir#version</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
-                    <dd></dd><dt>$<a href="pdf_azur.html#property_version">pdf_azur#version</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+        <dl id="index"><dt>$<a href="Field.html#property_validation_rules">Field</a> &mdash; <em>Property in class <a href="Field.html">Field</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelMarbre.html#property_version">NumModelMarbre</a> &mdash; <em>Property in class <a href="NumModelMarbre.html">NumModelMarbre</a></em></dt>
+                    <dd></dd><dt>$<a href="NumModelSaphir.html#property_version">NumModelSaphir</a> &mdash; <em>Property in class <a href="NumModelSaphir.html">NumModelSaphir</a></em></dt>
+                    <dd></dd><dt>$<a href="pdf_azur.html#property_version">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd>        </dl><h2 id="letterW">W</h2>
-        <dl id="index"><dt>$<a href="CustomStats.html#property_where">CustomStats#where</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
+        <dl id="index"><dt>$<a href="CustomStats.html#property_where">CustomStats</a> &mdash; <em>Property in class <a href="CustomStats.html">CustomStats</a></em></dt>
                     <dd></dd><dt><a href="QueryBuilder.html#method_where">QueryBuilder::where</a>() &mdash; <em>Method in class <a href="QueryBuilder.html">QueryBuilder</a></em></dt>
                     <dd>Add WHERE clause to query (multiple calls allowed)</dd><dt><a href="Widget.html">Widget</a></em></dt>
-                    <dd>Widget class</dd><dt>$<a href="pdf_azur.html#property_watermark_text">pdf_azur#watermark_text</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
+                    <dd>Widget class</dd><dt>$<a href="pdf_azur.html#property_watermark_text">pdf_azur</a> &mdash; <em>Property in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd></dd><dt><a href="pdf_azur.html#method_write_file">pdf_azur::write_file</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd>Function to build pdf onto disk</dd><dt><a href="pdf_azur.html#method_write_content">pdf_azur::write_content</a>() &mdash; <em>Method in class <a href="pdf_azur.html">pdf_azur</a></em></dt>
                     <dd>Function to write pdf content</dd><dt><a href="pdf_crabe.html#method_write_content">pdf_crabe::write_content</a>() &mdash; <em>Method in class <a href="pdf_crabe.html">pdf_crabe</a></em></dt>

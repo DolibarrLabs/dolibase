@@ -22,6 +22,7 @@ window.projectVersion = 'master';
             
             {"type": "Class",  "link": "AboutPage.html", "name": "AboutPage", "doc": "&quot;AboutPage class&quot;"},
                                                         {"type": "Method", "fromName": "AboutPage", "fromLink": "AboutPage.html", "link": "AboutPage.html#method___construct", "name": "AboutPage::__construct", "doc": "&quot;Constructor&quot;"},
+                    {"type": "Method", "fromName": "AboutPage", "fromLink": "AboutPage.html", "link": "AboutPage.html#method_loadDefaultActions", "name": "AboutPage::loadDefaultActions", "doc": "&quot;Load default actions&quot;"},
                     {"type": "Method", "fromName": "AboutPage", "fromLink": "AboutPage.html", "link": "AboutPage.html#method_generate", "name": "AboutPage::generate", "doc": "&quot;Generate page body&quot;"},
                     {"type": "Method", "fromName": "AboutPage", "fromLink": "AboutPage.html", "link": "AboutPage.html#method_generateTabs", "name": "AboutPage::generateTabs", "doc": "&quot;Generate tabs&quot;"},
                     {"type": "Method", "fromName": "AboutPage", "fromLink": "AboutPage.html", "link": "AboutPage.html#method_printModuleInformations", "name": "AboutPage::printModuleInformations", "doc": "&quot;Print module informations&quot;"},
