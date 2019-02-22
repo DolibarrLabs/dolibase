@@ -54,7 +54,7 @@ class pdf_crabe extends pdf_azur
 	 */
 	protected function write_content(&$pdf, $object, $outputlangs, $default_font_size, $tab_top, $heightforinfotot, $heightforfreetext, $heightforfooter)
 	{
-		global $conf;
+		global $conf, $langs;
 
 		// Columns background color
 		$cols_width = $this->page_largeur - $this->marge_gauche - $this->marge_droite;
@@ -77,7 +77,8 @@ class pdf_crabe extends pdf_azur
 			foreach ($object->doc_lines as $line)
 			{
 				$add_separator = ($i == $cols_count - 1 ? 0 : 1);
-				$curX = $this->print_column($pdf, $line['name'], $curX, $curY, $nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size, $add_separator);
+				$col_name = $langs->trans($line['name']);
+				$curX = $this->print_column($pdf, $col_name, $curX, $curY, $nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size, $add_separator);
 				$i++;
 			}
 
@@ -111,8 +112,6 @@ class pdf_crabe extends pdf_azur
 	 */
 	protected function print_column(&$pdf, $text, $curX, $curY, &$nexY, $col_width, $tab_top, $tab_height, $outputlangs, $default_font_size, $add_separator=0)
 	{
-		global $langs;
-
 		$pdf->SetFont('', '', $default_font_size - 1); // Into loop to work with multipage
 		$pdf->SetTextColor(0, 0, 0);
 
@@ -120,8 +119,7 @@ class pdf_crabe extends pdf_azur
 		//$pdf->setPageOrientation('', 1, 0); // The only function to edit the bottom margin of current page to set it.
 
 		// Column
-		$col = $langs->trans($text);
-		$pdf->writeHTMLCell($col_width-1, 3, $curX, $curY, $outputlangs->convToOutputCharset($col), 0, 1, false, true, 'L',true);
+		$pdf->writeHTMLCell($col_width-1, 3, $curX, $curY, $outputlangs->convToOutputCharset($text), 0, 1, false, true, 'L',true);
 		$nextY = $pdf->GetY();
 		if ($nextY > $nexY) $nexY = $nextY;
 
