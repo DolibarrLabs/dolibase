@@ -220,9 +220,11 @@ class MyWidget extends Widget
 
 :tada: So simple isn't it ?!
 
-Find more module examples in the [test](test) folder or check the [documentation](https://axel-dev.github.io/dolibase/).
+Find more module examples in the [test](test) folder.
 
-## Useful links
+## Documentation
+
+Before consulting the [documentation](https://axel-dev.github.io/dolibase/) you must have some knowledge about how dolibarr works and how to develop a module, otherwise you can check the links below:
 
 * [Dolibarr documentation](https://www.dolibarr.org/documentation-home).
 * [Developer documentation](https://wiki.dolibarr.org/index.php/Developer_documentation).
