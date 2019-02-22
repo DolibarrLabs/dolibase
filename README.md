@@ -45,8 +45,10 @@ dolibarr module                                         dolibase module
 │   └── *.css                                           │   └── *.key.sql
 ├── js                                                  ├── css
 │   └── *.js                                            │   └── *.css
-└── myfirstpage.php                                     ├── js
-                                                        │   └── *.js
+├── tpl                                                 ├── js
+│   └── *.tpl.php                                       │   └── *.js
+└── myfirstpage.php                                     ├── tpl
+                                                        │   └── *.tpl.php
                                                         ├── myfirstpage.php
                                                         ├── config.php (mandatory)
                                                         └── autoload.php (mandatory)
