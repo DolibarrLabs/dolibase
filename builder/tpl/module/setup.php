@@ -1,7 +1,7 @@
 <?php
 
 // Load Dolibase
-include_once '../autoload.php';
+require_once '../autoload.php';
 
 // Load Dolibase SetupPage class
 dolibase_include_once('core/pages/setup.php');
