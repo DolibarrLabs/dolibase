@@ -17,4 +17,6 @@ ModuleVersion = Versión del módulo
 PHPVersion = Versión PHP
 DatabaseVersion = Versión de base de datos
 WebServerVersion = Versión del servidor web
-ReportBugNote = Nota: Proporcione esas informaciones en su correo (con algunas capturas de pantalla) cuando encuentre un error.
+ReportBugNotice = La información técnica a continuación se debe proporcionar en su informe de error, además del archivo %s para aumentar la posibilidad de solucionar el error rápidamente.
+EnableLogModule = El módulo de registros de depuración no está habilitado %s
+ClickToEnable = Haga clic para habilitar

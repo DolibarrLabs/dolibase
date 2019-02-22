@@ -17,4 +17,6 @@ ModuleVersion = Modulversion
 PHPVersion = PHP version
 DatabaseVersion = Datenbankversion
 WebServerVersion = Web server version
-ReportBugNote = Hinweis: Bitte geben Sie diese Informationen in Ihrer E-Mail (mit einigen Screenshots) an, wenn Sie auf einen Fehler stoßen.
+ReportBugNotice = Die folgenden technischen Informationen sollten in Ihrem Fehlerbericht enthalten sein, zusätzlich zu Datei %s um die Wahrscheinlichkeit einer schnellen Behebung des Fehlers zu erhöhen.
+EnableLogModule = Debug Logs-Modul ist nicht aktiviert %s
+ClickToEnable = Klicken Sie zum Aktivieren

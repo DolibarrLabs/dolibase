@@ -60,6 +60,28 @@ class AboutPage extends Page
 	}
 
 	/**
+	 * Load default actions
+	 *
+	 */
+	protected function loadDefaultActions()
+	{
+		global $conf;
+
+		// Libraries
+		require_once DOL_DOCUMENT_ROOT . '/core/lib/admin.lib.php';
+
+		// Parameters
+		$action = GETPOST('action', 'alpha');
+
+		// Enable log module
+		if ($action == 'enable_log' && ! $conf->syslog->enabled)
+		{
+			activateModule('modSyslog');
+			dolibase_redirect($_SERVER["PHP_SELF"].'?mainmenu=home&action=report_bug');
+		}
+	}
+
+	/**
 	 * Generate page body
 	 *
 	 */

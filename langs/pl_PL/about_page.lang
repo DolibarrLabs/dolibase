@@ -17,4 +17,6 @@ ModuleVersion = Wersja modułu
 PHPVersion = Wersja PHP
 DatabaseVersion = Wersja bazy danych
 WebServerVersion = Wersja serwera WWW
-ReportBugNote = Uwaga: Proszę podać te informacje w swojej poczcie (wraz z niektórymi zrzutami ekranu) po napotkaniu błędu.
+ReportBugNotice = Poniższe informacje techniczne powinny być dostarczone w raporcie o błędach, oprócz pliku %s aby zwiększyć szansę na szybkie naprawienie błędu.
+EnableLogModule = Moduł debugowania dzienników nie jest włączony %s
+ClickToEnable = Kliknij, aby włączyć

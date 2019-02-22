@@ -15,7 +15,7 @@
  * 
  */
 
-global $langs, $dolibase_config, $db;
+global $langs, $conf, $dolibase_config, $db;
 
 if (empty($picture)) {
 	$picture = 'object_'.$dolibase_config['module']['picture'];
@@ -63,35 +63,42 @@ $action = GETPOST('action', 'alpha');
 if ($action == 'report_bug')
 {
 
+$log_file_link = '<a href="'.DOL_URL_ROOT.'/document.php?modulepart=logs&file=dolibarr.log" title="'.$langs->transnoentities('Download').'">dolibarr.log</a>';
+echo $langs->trans('ReportBugNotice', $log_file_link);
+
+if (! $conf->syslog->enabled) {
+	$enable_log_link = '<a href="'.dol_buildpath($dolibase_config['module']['folder'].'/admin/'.$dolibase_config['other']['about_page'].'?mainmenu=home&action=enable_log', 1).'">'.img_picto($langs->trans('ClickToEnable'), 'switch_off').'</a>';
+	echo img_warning().'&nbsp;'.$langs->trans('EnableLogModule', $enable_log_link);
+}
+
 ?>
+
+<br><br>
 
 <table class="noborder allwidth">
 	<tr class="liste_titre">
-		<td width="20%"><?php echo $langs->trans("TechnicalInformations"); ?></td>
-		<td><?php echo $langs->trans("Value"); ?></td>
+		<td width="20%"><?php echo $langs->trans('TechnicalInformations'); ?></td>
+		<td><?php echo $langs->trans('Value'); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $langs->trans("DolibarrVersion"); ?></td>
+		<td><?php echo $langs->trans('DolibarrVersion'); ?></td>
 		<td><?php echo DOL_VERSION; ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $langs->trans("ModuleVersion"); ?></td>
+		<td><?php echo $langs->trans('ModuleVersion'); ?></td>
 		<td><?php echo $dolibase_config['module']['version']; ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $langs->trans("PHPVersion"); ?></td>
+		<td><?php echo $langs->trans('PHPVersion'); ?></td>
 		<td><?php echo phpversion(); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $langs->trans("DatabaseVersion"); ?></td>
+		<td><?php echo $langs->trans('DatabaseVersion'); ?></td>
 		<td><?php echo $db->getVersion(); ?></td>
 	</tr>
 	<tr>
-		<td><?php echo $langs->trans("WebServerVersion"); ?></td>
-		<td><?php echo $_SERVER["SERVER_SOFTWARE"]; ?></td>
-	</tr>
-	<tr>
-		<td colspan="2"><br><i><?php echo $langs->trans("ReportBugNote"); ?></i></td>
+		<td><?php echo $langs->trans('WebServerVersion'); ?></td>
+		<td><?php echo $_SERVER['SERVER_SOFTWARE']; ?></td>
 	</tr>
 </table>
 

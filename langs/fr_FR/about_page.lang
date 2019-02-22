@@ -17,4 +17,6 @@ ModuleVersion = Version du module
 PHPVersion = Version PHP
 DatabaseVersion = Version de la base de données
 WebServerVersion = Version du serveur web
-ReportBugNote = Remarque: Veuillez fournir ces informations dans votre courrier (avec quelques captures d'écran) lorsque vous rencontrez un bug.
+ReportBugNotice = Les informations techniques ci-dessous devraient être fournies dans votre rapport de bug, en plus du fichier %s pour augmenter les chances de corriger le bug rapidement.
+EnableLogModule = Le module Journaux de débogage n'est pas activé %s
+ClickToEnable = Cliquez pour activer

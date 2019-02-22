@@ -17,4 +17,6 @@ ModuleVersion = Module version
 PHPVersion = PHP version
 DatabaseVersion = Database version
 WebServerVersion = Web server version
-ReportBugNote = Note: Please provide those informations in your mail (with some screenshots) when you encounter a bug.
+ReportBugNotice = The technical informations below should be provided in your bug report, in addition of file %s to increase the chance of fixing the bug quickly.
+EnableLogModule = Debug Logs module is not enabled %s
+ClickToEnable = Click to enable

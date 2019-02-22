@@ -17,4 +17,6 @@ ModuleVersion = Versione del modulo
 PHPVersion = Versione PHP
 DatabaseVersion = Versione del database
 WebServerVersion = Versione del server Web
-ReportBugNote = Nota: fornire tali informazioni nella propria posta (con alcuni screenshot) quando si incontra un bug.
+ReportBugNotice = Le informazioni tecniche di seguito dovrebbero essere fornite nella segnalazione del bug, oltre al file %s per aumentare la possibilità di correggere rapidamente il bug.
+EnableLogModule = Il modulo Registri debug non è abilitato %s
+ClickToEnable = Clicca per abilitare
