@@ -97,6 +97,11 @@ if (($id > 0 || ! empty($ref)) && $book->fetch($id, $ref))
 			array('name' => 'Price', 'value' => price_with_currency($book->price))
 		);
 
+		// Add extrafields
+		foreach ($book->getExtraFields() as $name => $value) {
+			$book->doc_lines[] = array('name' => $name, 'value' => $value);
+		}
+
 		$book->doc_title = 'Book';
 		$book->generateDocument($model);
 	}
