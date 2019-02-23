@@ -9,8 +9,8 @@ Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](h
 ## Why to use it?
 
 - **Module builder**: Dolibase has its own module builder that you can use to speed up your developments.
-- **Ready-to-use components**: Many components are available like pages, pdf models, classes & functions.
-- **Open source**: Check the source code & contribute to the project if you want :+1:.
+- **Easy installation**: Install in 1 click using the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
+- **Ready-to-use components**: Several components are available like pages, pdf models, classes & functions.
 - **Ensure backward compatibility**: Your module(s) will work even on old Dolibarr versions (starting from version 3.8).
 - **Less & clean code**: Write less code in a clean way & reduce repetitive code frequency.
 
@@ -287,6 +287,10 @@ Check my own modules collection on [Dolistore](https://www.dolistore.com/en/sear
 ## Changelog
 
 See [changelog](changelog.md).
+
+## Contributing
+
+Follow [contributing guidelines](https://github.com/AXeL-dev/contributing/blob/master/README.md).
 
 ## License
 
