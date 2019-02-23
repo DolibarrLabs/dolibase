@@ -9,7 +9,7 @@ Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](h
 ## Why to use it?
 
 - **Module builder**: Dolibase has its own module builder that you can use to speed up your developments.
-- **Ready-to-use components**: Many components are already available like pages, classes & functions. You can even create your own page class if you wish so.
+- **Ready-to-use components**: Many components are available like pages, pdf models, classes & functions.
 - **Open source**: Check the source code & contribute to the project if you want :+1:.
 - **Ensure backward compatibility**: Your module(s) will work even on old Dolibarr versions (starting from version 3.8).
 - **Less & clean code**: Write less code in a clean way & reduce repetitive code frequency.
@@ -234,7 +234,7 @@ Before consulting the [documentation](https://axel-dev.github.io/dolibase/) you 
 
 ## Advanced features
 
-With dolibase & [debugbar module](https://github.com/AXeL-dev/dolibarr-debugbar-module) you can:
+With dolibase & [debugbar module](https://github.com/AXeL-dev/dolibarr-debugbar-module) you get a bunch of benefits:
 
 **1)** Easily debug your modules.
 
@@ -250,11 +250,11 @@ dolibase_debug('your message');
 
 ![config](https://www.dolistore.com/4087/Debug-bar.jpg)
 
-**3)** Get all the executed sql queries even after a page redirection.
+**3)** Get all the executed queries even after a page redirection.
 
 ![database](https://www.dolistore.com/4084/Debug-bar.jpg)
 
-To save sql queries on page redirection use the `dolibase_redirect` function:
+To save queries on page redirection use the `dolibase_redirect` function:
 
 ```php
 dolibase_redirect('page.php');

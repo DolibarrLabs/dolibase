@@ -1,6 +1,15 @@
 ### Dolibase Framework
 ------
 
+#### 3.0.2 - FEB19
+
+*   NEW: better skin for documentation.
+*   NEW: report bug section updated in AboutPage template.
+*   NEW: `getExtraFields` function added to CustomObject class.
+*   FIX: translation issue on crabe document model.
+
+---
+
 #### 3.0.1 - FEB19
 
 *   NEW: `import_export` class added to lite version.
