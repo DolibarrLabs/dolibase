@@ -15,15 +15,16 @@
  * 
  */
 
-dolibase_include_once('core/pages/create.php');
+dolibase_include_once('core/class/form_page.php');
 dolibase_include_once('core/lib/related_objects.php');
 dolibase_include_once('core/lib/mailing.php');
+require_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 
 /**
  * CardPage class
  */
 
-class CardPage extends CreatePage
+class CardPage extends FormPage
 {
 	/**
 	 * @var string Edit permission
@@ -65,6 +66,10 @@ class CardPage extends CreatePage
 	 * @var boolean Enable mail delivery receipt
 	 */
 	protected $enable_mail_delivery_receipt = false;
+	/**
+	 * @var object extrafields
+	 */
+	protected $extrafields;
 
 
 	/**
@@ -81,7 +86,7 @@ class CardPage extends CreatePage
 	 */
 	public function __construct($page_title, $access_perm = '', $edit_perm = '', $delete_perm = '', $show_documents = false, $enable_save_as = false, $const_name_prefix = '', $sub_permission = '')
 	{
-		global $langs, $dolibase_config;
+		global $db, $langs, $dolibase_config;
 
 		// Set page attributes
 		$this->edit_permission   = $edit_perm;
@@ -89,6 +94,7 @@ class CardPage extends CreatePage
 		$this->show_documents    = $show_documents;
 		$this->const_name_prefix = (! empty($const_name_prefix) ? $const_name_prefix : get_rights_class(true));
 		$this->sub_permission    = $sub_permission;
+		$this->extrafields       = new ExtraFields($db);
 
 		// Load lang files
 		$langs->load('card_page@'.$dolibase_config['main']['path']);
