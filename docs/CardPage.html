@@ -69,7 +69,7 @@
     </div>
 
     <p>    class
-    <strong>CardPage</strong>        extends <a href="CreatePage.html">CreatePage</a>        (<a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php">View source</a>)
+    <strong>CardPage</strong>        extends <a href="FormPage.html">FormPage</a>        (<a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php">View source</a>)
 </p>
 
         
@@ -220,14 +220,6 @@
                 <td><small>from&nbsp;<a href="FormPage.html#property_fields">FormPage</a></small></td>
             </tr>
                     <tr>
-                <td class="type" id="property_extrafields">
-                                        protected                                        object
-                </td>
-                <td>$extrafields</td>
-                <td class="last"></td>
-                <td><small>from&nbsp;<a href="CreatePage.html#property_extrafields">CreatePage</a></small></td>
-            </tr>
-                    <tr>
                 <td class="type" id="property_edit_permission">
                                         protected                                        string
                 </td>
@@ -304,6 +296,14 @@
                                         protected                                        boolean
                 </td>
                 <td>$enable_mail_delivery_receipt</td>
+                <td class="last"></td>
+                <td></td>
+            </tr>
+                    <tr>
+                <td class="type" id="property_extrafields">
+                                        protected                                        object
+                </td>
+                <td>$extrafields</td>
                 <td class="last"></td>
                 <td></td>
             </tr>
@@ -698,126 +698,6 @@
                     boolean
                 </div>
                 <div class="col-md-8 type">
-                    <a href="#method_checkExtraFields">checkExtraFields</a>($object)
-        
-                                            <p>Check page extrafields</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_checkExtraFields">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addField">addField</a>($field_name, $field_content, $is_required = false, $field_summary = &#039;&#039;, $more_attr = &#039;&#039;)
-        
-                                            <p>Add a table field</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addTextField">addTextField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $input_size = 20)
-        
-                                            <p>Add a table field with a text input</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addTextField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addTextAreaField">addTextAreaField</a>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $valign = &#039;top&#039;)
-        
-                                            <p>Add a table field with a text area</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addTextAreaField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addNumberField">addNumberField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $min, $max = 100)
-        
-                                            <p>Add a table field with a number input</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addNumberField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addDateField">addDateField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
-        
-                                            <p>Add a table field with a date picker</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addDateField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addListField">addListField</a>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $show_empty)
-        
-                                            <p>Add a table field with a list</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addListField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addRadioListField">addRadioListField</a>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
-        
-                                            <p>Add a table field with a radio input(s)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addRadioListField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addCheckListField">addCheckListField</a>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
-        
-                                            <p>Add a table field with a checkbox input(s)</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addCheckListField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addColorField">addColorField</a>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
-        
-                                            <p>Add a table field with a color picker</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addColorField">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_addExtraFields">addExtraFields</a>($object)
-        
-                                            <p>Add extra fields</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_addExtraFields">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    $this
-                </div>
-                <div class="col-md-8 type">
-                    <a href="#method_generateFormButtons">generateFormButtons</a>()
-        
-                                            <p>Generate form buttons</p>                </div>
-                <div class="col-md-2"><small>from&nbsp;<a href="CreatePage.html#method_generateFormButtons">CreatePage</a></small></div>
-            </div>
-                    <div class="row">
-                <div class="col-md-2 type">
-                    boolean
-                </div>
-                <div class="col-md-8 type">
                     <a href="#method_canEdit">canEdit</a>()
         
                                             <p>Return if the current user can edit the page or not</p>                </div>
@@ -1111,7 +991,7 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L82">line 82</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L87">line 87</a></div>
         <code>                    
     <strong>__construct</strong>($page_title, $access_perm = &#039;&#039;, $edit_perm = &#039;&#039;, $delete_perm = &#039;&#039;, $show_documents = false, $enable_save_as = false, $const_name_prefix = &#039;&#039;, $sub_permission = &#039;&#039;)
         </code>
@@ -2277,7 +2157,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_begin">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L785">line 785</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L791">line 791</a></div>
         <code>                    $this
     <strong>begin</strong>()
         </code>
@@ -2359,7 +2239,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_end">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L800">line 800</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L806">line 806</a></div>
         <code>                    
     <strong>end</strong>($object = null)
         </code>
@@ -2659,718 +2539,8 @@
 
             </div>
                     <div class="method-item">
-                    <h3 id="method_checkExtraFields">
-        <div class="location">in <a href="CreatePage.html#method_checkExtraFields">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L54">line 54</a></div>
-        <code>                    boolean
-    <strong>checkExtraFields</strong>($object)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Check page extrafields</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$object</td>
-                <td>Object</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>boolean</td>
-            <td>true or false</td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addField">
-        <div class="location">in <a href="CreatePage.html#method_addField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L75">line 75</a></div>
-        <code>                    $this
-    <strong>addField</strong>($field_name, $field_content, $is_required = false, $field_summary = &#039;&#039;, $more_attr = &#039;&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_content</td>
-                <td>field content</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$more_attr</td>
-                <td>more attributes to add</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addTextField">
-        <div class="location">in <a href="CreatePage.html#method_addTextField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L100">line 100</a></div>
-        <code>                    $this
-    <strong>addTextField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $input_size = 20)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a text input</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_name</td>
-                <td>input name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_value</td>
-                <td>input value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_size</td>
-                <td>input size</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addTextAreaField">
-        <div class="location">in <a href="CreatePage.html#method_addTextAreaField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L122">line 122</a></div>
-        <code>                    $this
-    <strong>addTextAreaField</strong>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $valign = &#039;top&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a text area</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$text_area_name</td>
-                <td>text area name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$text_area_value</td>
-                <td>text area value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$toolbarname</td>
-                <td>Editor toolbar name, values: 'Full', dolibarr_details', 'dolibarr_notes', 'dolibarr_mailings', 'dolibarr_readonly'</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$height</td>
-                <td>text area height</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$valign</td>
-                <td>field vertical align</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addNumberField">
-        <div class="location">in <a href="CreatePage.html#method_addNumberField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L145">line 145</a></div>
-        <code>                    $this
-    <strong>addNumberField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $min, $max = 100)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a number input</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_name</td>
-                <td>input name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_value</td>
-                <td>input value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$min</td>
-                <td>input minimum number</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$max</td>
-                <td>input maximum number</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addDateField">
-        <div class="location">in <a href="CreatePage.html#method_addDateField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L166">line 166</a></div>
-        <code>                    $this
-    <strong>addDateField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a date picker</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_name</td>
-                <td>input name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_value</td>
-                <td>input value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addListField">
-        <div class="location">in <a href="CreatePage.html#method_addListField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L187">line 187</a></div>
-        <code>                    $this
-    <strong>addListField</strong>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $show_empty)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a list</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$list_name</td>
-                <td>list name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$list_choices</td>
-                <td>list choices, e.: array('choice_1' => 'Choice 1', 'choice_2' => 'Choice 2')</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$selected_choice</td>
-                <td>selected choice</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$show_empty</td>
-                <td>show empty value</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addRadioListField">
-        <div class="location">in <a href="CreatePage.html#method_addRadioListField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L208">line 208</a></div>
-        <code>                    $this
-    <strong>addRadioListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a radio input(s)</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$radio_name</td>
-                <td>radio inputs name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$radio_list</td>
-                <td>list of radio inputs, e.: array('radio_1' => 'Radio 1', 'radio_2' => 'Radio 2')</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$selected</td>
-                <td>selected radio input</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$valign</td>
-                <td>field vertical align</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addCheckListField">
-        <div class="location">in <a href="CreatePage.html#method_addCheckListField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L231">line 231</a></div>
-        <code>                    $this
-    <strong>addCheckListField</strong>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;, $valign = &#039;middle&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a checkbox input(s)</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$check_name</td>
-                <td>checkbox inputs name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$check_list</td>
-                <td>list of checkbox inputs, e.: array('check_1' => 'Checkbox 1', 'check_2' => 'Checkbox 2')</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$selected</td>
-                <td>selected checkbox input</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$valign</td>
-                <td>field vertical align</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addColorField">
-        <div class="location">in <a href="CreatePage.html#method_addColorField">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L252">line 252</a></div>
-        <code>                    $this
-    <strong>addColorField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $is_required = false, $field_summary = &#039;&#039;)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add a table field with a color picker</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$field_name</td>
-                <td>field name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_name</td>
-                <td>input name</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$input_value</td>
-                <td>input value</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$is_required</td>
-                <td>is field required or not</td>
-            </tr>
-                    <tr>
-                <td></td>
-                <td>$field_summary</td>
-                <td>field summary</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_addExtraFields">
-        <div class="location">in <a href="CreatePage.html#method_addExtraFields">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L267">line 267</a></div>
-        <code>                    $this
-    <strong>addExtraFields</strong>($object)
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Add extra fields</p>                                                </div>
-                <div class="tags">
-                            <h4>Parameters</h4>
-
-                    <table class="table table-condensed">
-                    <tr>
-                <td></td>
-                <td>$object</td>
-                <td>Object</td>
-            </tr>
-            </table>
-
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
-                    <h3 id="method_generateFormButtons">
-        <div class="location">in <a href="CreatePage.html#method_generateFormButtons">CreatePage</a> at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/create.php#L290">line 290</a></div>
-        <code>                    $this
-    <strong>generateFormButtons</strong>()
-        </code>
-    </h3>
-    <div class="details">
-            
-    
-
-                    <div class="method-description">
-                                    <p>Generate form buttons</p>                                                </div>
-                <div class="tags">
-            
-                            <h4>Return Value</h4>
-
-                    <table class="table table-condensed">
-        <tr>
-            <td>$this</td>
-            <td></td>
-        </tr>
-    </table>
-
-            
-            
-                    </div>
-    </div>
-
-            </div>
-                    <div class="method-item">
                     <h3 id="method_canEdit">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L121">line 121</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L127">line 127</a></div>
         <code>                    boolean
     <strong>canEdit</strong>()
         </code>
@@ -3400,7 +2570,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_canDelete">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L131">line 131</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L137">line 137</a></div>
         <code>                    boolean
     <strong>canDelete</strong>()
         </code>
@@ -3430,7 +2600,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMailSubject">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L142">line 142</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L148">line 148</a></div>
         <code>                    $this
     <strong>setMailSubject</strong>($mail_subject)
         </code>
@@ -3470,7 +2640,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMailTemplate">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L155">line 155</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L161">line 161</a></div>
         <code>                    $this
     <strong>setMailTemplate</strong>($mail_template)
         </code>
@@ -3510,7 +2680,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_enableMailDeliveryReceipt">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L167">line 167</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L173">line 173</a></div>
         <code>                    $this
     <strong>enableMailDeliveryReceipt</strong>()
         </code>
@@ -3540,7 +2710,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_setMailSubstitutions">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L180">line 180</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L186">line 186</a></div>
         <code>                    $this
     <strong>setMailSubstitutions</strong>($mail_substitutions_array)
         </code>
@@ -3580,7 +2750,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_openButtonsDiv">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L191">line 191</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L197">line 197</a></div>
         <code>            protected        
     <strong>openButtonsDiv</strong>()
         </code>
@@ -3601,7 +2771,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_closeButtonsDiv">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L205">line 205</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L211">line 211</a></div>
         <code>            protected        
     <strong>closeButtonsDiv</strong>()
         </code>
@@ -3622,7 +2792,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L223">line 223</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L229">line 229</a></div>
         <code>                    $this
     <strong>addButton</strong>($name, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3682,7 +2852,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addConfirmButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L249">line 249</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L255">line 255</a></div>
         <code>                    $this
     <strong>addConfirmButton</strong>($name, $id, $href = &#039;#&#039;, $target = &#039;_self&#039;, $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3747,7 +2917,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addListButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L280">line 280</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L286">line 286</a></div>
         <code>                    $this
     <strong>addListButton</strong>($name, $buttons = array(), $class = &#039;butAction&#039;, $close_parent_div = false)
         </code>
@@ -3802,7 +2972,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_addSaveAsButton">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L323">line 323</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L329">line 329</a></div>
         <code>                    $this
     <strong>addSaveAsButton</strong>($close_parent_div = false)
         </code>
@@ -3842,7 +3012,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L345">line 345</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L351">line 351</a></div>
         <code>                    $this
     <strong>showField</strong>($field_name, $field_content, $is_editable = false, $edit_link = &#039;&#039;, $attr = &#039;&#039;)
         </code>
@@ -3902,7 +3072,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showRefField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L370">line 370</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L376">line 376</a></div>
         <code>                    $this
     <strong>showRefField</strong>($field_name, $object, $list_link = &#039;&#039;)
         </code>
@@ -3952,7 +3122,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L388">line 388</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L394">line 394</a></div>
         <code>                    $this
     <strong>showExtraFields</strong>($object)
         </code>
@@ -3992,7 +3162,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_updateExtraFields">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L414">line 414</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L420">line 420</a></div>
         <code>                    int
     <strong>updateExtraFields</strong>($object)
         </code>
@@ -4035,7 +3205,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_showBanner">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L444">line 444</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L450">line 450</a></div>
         <code>                    $this
     <strong>showBanner</strong>($object, $list_link = &#039;&#039;, $morehtmlleft = &#039;&#039;)
         </code>
@@ -4085,7 +3255,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L465">line 465</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L471">line 471</a></div>
         <code>                    $this
     <strong>editField</strong>($field_name, $field_content, $action_name)
         </code>
@@ -4135,7 +3305,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editTextField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L496">line 496</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L502">line 502</a></div>
         <code>                    $this
     <strong>editTextField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $input_size = 20, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4195,7 +3365,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editTextAreaField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L516">line 516</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L522">line 522</a></div>
         <code>                    $this
     <strong>editTextAreaField</strong>($field_name, $text_area_name, $text_area_value = &#039;&#039;, $toolbarname = &#039;dolibarr_details&#039;, $height = 100, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4260,7 +3430,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editNumberField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L536">line 536</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L542">line 542</a></div>
         <code>                    $this
     <strong>editNumberField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $min, $max = 100, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4325,7 +3495,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editDateField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L556">line 556</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L562">line 562</a></div>
         <code>                    $this
     <strong>editDateField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_date_&#039;)
         </code>
@@ -4380,7 +3550,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L576">line 576</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L582">line 582</a></div>
         <code>                    $this
     <strong>editListField</strong>($field_name, $list_name, $list_choices, $selected_choice = &#039;&#039;, $show_empty, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4445,7 +3615,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editRadioListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L595">line 595</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L601">line 601</a></div>
         <code>                    $this
     <strong>editRadioListField</strong>($field_name, $radio_name, $radio_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4505,7 +3675,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editCheckListField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L614">line 614</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L620">line 620</a></div>
         <code>                    $this
     <strong>editCheckListField</strong>($field_name, $check_name, $check_list, $selected = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4565,7 +3735,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_editColorField">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L632">line 632</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L638">line 638</a></div>
         <code>                    $this
     <strong>editColorField</strong>($field_name, $input_name, $input_value = &#039;&#039;, $action_prefix = &#039;set_&#039;)
         </code>
@@ -4620,7 +3790,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_printRelatedObjects">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L647">line 647</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L653">line 653</a></div>
         <code>            protected        
     <strong>printRelatedObjects</strong>($object)
         </code>
@@ -4651,7 +3821,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_printDocuments">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L687">line 687</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L693">line 693</a></div>
         <code>            protected        
     <strong>printDocuments</strong>($object)
         </code>
@@ -4682,7 +3852,7 @@
             </div>
                     <div class="method-item">
                     <h3 id="method_printMailForm">
-        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L725">line 725</a></div>
+        <div class="location">at         <a href="https://github.com/AXeL-dev/dolibase/blob/master/core/pages/card.php#L731">line 731</a></div>
         <code>            protected        
     <strong>printMailForm</strong>($object)
         </code>
