@@ -1,6 +1,12 @@
 ### Dolibase Framework
 ------
 
+#### 3.0.3 - APR19
+
+*   NEW: bump version.
+
+---
+
 #### 3.0.2 - FEB19
 
 *   NEW: better skin for documentation.
