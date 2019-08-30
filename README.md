@@ -4,9 +4,9 @@
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-blue.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
-> **WARNING**: Dolibase is discontinued, for its lack of flexibility & simplicity. If you like the project you can still use it, otherwise you may check [DAMB](https://github.com/AXeL-dev/damb) for a better, suitable & flexible alternative.
-
 Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
+
+> **WARNING**: Dolibase is **discontinued** for its lack of flexibility & simplicity. If you like the project you can still use it, otherwise you can check [DAMB](https://github.com/AXeL-dev/damb) for a better, suitable & flexible alternative.
 
 ## Why to use it?
 
@@ -77,7 +77,7 @@ dolibarr module                                         dolibase module
 ## Installation
 
 Dolibase can act in 2 different ways:
- - **Globally**: this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
+ - **Globally** (recommended): this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
  - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those using a new one.
 
 So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory or use the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
