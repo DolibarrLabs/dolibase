@@ -6,7 +6,7 @@
 
 Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
 
-> **WARNING**: Dolibase is **discontinued** for its lack of flexibility & simplicity. If you like the project you can still use it, otherwise you can check [DAMB](https://github.com/AXeL-dev/damb) for a better, suitable & flexible alternative.
+> **WARNING**: This project is **no longer maintained**, feel free to fork and use it. Or try [DAMB](https://github.com/AXeL-dev/damb).
 
 ## Why to use it?
 
@@ -208,7 +208,8 @@ class MyWidget extends Widget
         $qb = QueryBuilder::getInstance()
                           ->select('login, firstname, lastname')
                           ->from('user')
-                          ->orderBy('rowid', 'ASC');
+                          ->orderBy('rowid', 'ASC')
+                          ->limit($max);
 
         // Show users
         foreach ($qb->result() as $row) {
