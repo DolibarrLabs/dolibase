@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 3.0.4 - OCT19
+
+*   NEW: better config file structure.
+*   FIX: keep compatibility with PHP versions < 5.3.
+
+---
+
 #### 3.0.3 - APR19
 
 *   NEW: bump version.
