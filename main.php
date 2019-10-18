@@ -15,6 +15,8 @@
  * 
  */
 
+global $dolibase_config;
+
 // Dolibarr detection
 if (! defined('DOL_VERSION')) die('DolibaseError: Dolibarr detection failed.');
 
@@ -22,4 +24,4 @@ if (! defined('DOL_VERSION')) die('DolibaseError: Dolibarr detection failed.');
 require_once __DIR__ . '/core/lib/functions.php';
 
 // Load Dolibase config
-require_once __DIR__ . '/config.php';
+$dolibase_config = array_merge($dolibase_config, @include(__DIR__ . '/config.php'));

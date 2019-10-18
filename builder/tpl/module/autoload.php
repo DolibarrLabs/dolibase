@@ -1,7 +1,9 @@
 <?php
 
+global $dolibase_config;
+
 // Load module configuration (mandatory)
-require __DIR__ . '/config.php';
+$dolibase_config = @include(__DIR__ . '/config.php');
 
 // Load Dolibarr environment (mandatory)
 if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs directory
