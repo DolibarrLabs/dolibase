@@ -99,7 +99,7 @@ Check this [demonstration video](https://youtu.be/BmbAXGRQqyA) for a quick examp
 
 ## Examples
 
-1. Module class:
+- Module class:
 
 ```php
 <?php
@@ -136,7 +136,7 @@ class modMyModule extends DolibaseModule
 
 ```
 
-2. Module page:
+- Module page:
 
 ```php
 <?php
@@ -160,7 +160,7 @@ $page->end();
 
 ```
 
-3. Widget class:
+- Widget class:
 
 ```php
 <?php
@@ -232,7 +232,7 @@ Find more module examples in the [test](test) folder.
 
 With dolibase & [debugbar module](https://github.com/AXeL-dev/dolibarr-debugbar-module) you get a bunch of benefits:
 
-**1)** Easily debug your modules.
+- **Easily debug your modules**.
 
 ![debug](https://www.dolistore.com/4086/Debug-bar.jpg)
 
@@ -242,11 +242,11 @@ To add a message to debug bar simply call the `dolibase_debug` function:
 dolibase_debug('your message');
 ```
 
-**2)** Access to dolibarr configuration variables & constants.
+- **Access to dolibarr configuration variables & constants**.
 
 ![config](https://www.dolistore.com/4087/Debug-bar.jpg)
 
-**3)** Get all the executed queries even after a page redirection.
+- **Get all the executed queries** ~ even after a page redirection.
 
 ![database](https://www.dolistore.com/4084/Debug-bar.jpg)
 
@@ -256,7 +256,7 @@ To save queries on page redirection use the `dolibase_redirect` function:
 dolibase_redirect('page.php');
 ```
 
-**4)** Optimise load & response time of your modules.
+- **Optimise load & response time of your modules**.
 
 ![timeline](https://www.dolistore.com/4083/Debug-bar.jpg)
 
@@ -272,7 +272,7 @@ To stop the time measuring call the `stop_time_measure` function with your measu
 stop_time_measure('measure_1');
 ```
 
-**5)** Check dolibarr logs instantly (logs module should be enabled).
+- **Check dolibarr logs instantly** (logs module should be enabled).
 
 ![logs](https://www.dolistore.com/4085/Debug-bar.jpg)
 
