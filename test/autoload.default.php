@@ -2,14 +2,14 @@
 
 global $dolibase_config;
 
-if (!defined(__DIR__)) define(__DIR__, dirname(__FILE__));
+$__DIR__ = dirname(__FILE__); // should not be defined as a constant 'cause many autoload files may be included at once by dolibarr
 
 // Load module configuration (mandatory)
-$dolibase_config = @include(__DIR__ . '/config.php');
+$dolibase_config = @include($__DIR__ . '/config.php');
 
 // Load Dolibarr environment (mandatory)
-if (false === (@include_once __DIR__ . '/../main.inc.php')) { // From htdocs directory
-	require_once __DIR__ . '/../../main.inc.php'; // From "custom" directory
+if (false === (@include_once $__DIR__ . '/../main.inc.php')) { // From htdocs directory
+	require_once $__DIR__ . '/../../main.inc.php'; // From "custom" directory
 }
 
 // Load Dolibase
