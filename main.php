@@ -27,3 +27,8 @@ require_once $__DIR__ . '/core/lib/functions.php';
 
 // Load Dolibase config
 $dolibase_config = array_merge($dolibase_config, @include($__DIR__ . '/config.php'));
+
+// Disable PHP warnings in production
+if (! isset($dolibase_config['main']['env']) || $dolibase_config['main']['env'] == 'prod') {
+	error_reporting(E_ERROR);
+}

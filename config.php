@@ -24,6 +24,7 @@ $dolibase_path = get_dolibase_path();
 return array(
 	'main' => array(
 		'version'             => '3.0.4', // possible values: a.b.c-alpha, a.b.c-beta, a.b.c-rcX or a.b.c
+		'env'                 => 'prod', // environment: dev or prod
 		'link'                => 'https://github.com/AXeL-dev/dolibase',
 		'path'                => $dolibase_path,
 		'tables'              => array('logs'),

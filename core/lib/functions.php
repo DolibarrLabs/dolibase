@@ -89,7 +89,7 @@ if (! function_exists('dolibase_include_once'))
 	function dolibase_include_once($component_path, $class_name = '')
 	{
 		if (empty($class_name) || ! class_exists($class_name)) {
-			@include_once dolibase_buildpath($component_path); // @ is used to skip warnings..
+			include_once dolibase_buildpath($component_path);
 		}
 	}
 }
