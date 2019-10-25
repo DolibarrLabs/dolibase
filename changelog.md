@@ -1,6 +1,13 @@
 ### Dolibase Framework
 ------
 
+#### 3.0.5 - OCT19
+
+*   NEW: Add environment var to main config (to allow displaying PHP warnings in dev mode).
+*   FIX: doc models.
+
+---
+
 #### 3.0.4 - OCT19
 
 *   NEW: better config file structure.
