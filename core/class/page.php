@@ -449,6 +449,7 @@ class Page
 		}
 
 		// Open table
+		echo '<div class="div-table-responsive-no-min">';
 		echo '<table '.$attr.'>'."\n";
 		if (! empty($header_columns))
 		{
@@ -475,7 +476,7 @@ class Page
 		if ($this->close_table)
 		{
 			// Close table
-			echo "</table>\n";
+			echo "</table></div>\n";
 
 			// Print dolibarr fiche end
 			if ($print_fiche_end) {

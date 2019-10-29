@@ -128,6 +128,7 @@ class IndexPage extends FormPage
 
 		echo '<form method="post" action="'.dol_buildpath($url, 1).'">';
 		echo '<input type="hidden" name="token" value="'.$_SESSION['newtoken'].'">';
+		echo '<div class="div-table-responsive-no-min">';
 		echo '<table class="noborder nohover" width="100%">';
 		echo '<tr class="liste_titre"><td colspan="3">';
 		$title = $langs->trans($title);
@@ -144,7 +145,7 @@ class IndexPage extends FormPage
 			echo '</tr>';
 			$count++;
 		}
-		echo "</table></form><br>\n";
+		echo "</table></div></form><br>\n";
 
 		return $this;
 	}
@@ -193,6 +194,7 @@ class IndexPage extends FormPage
 			}
 			$db->free($resql);
 
+			echo '<div class="div-table-responsive-no-min">';
 			echo '<table class="noborder nohover" width="100%">';
 			echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
 			$var = true;
@@ -233,7 +235,7 @@ class IndexPage extends FormPage
 			}
 
 			echo '<tr class="liste_total"><td>'.$langs->trans('Total').'</td><td align="right">'.$total.'</td></tr>';
-			echo '</table><br>';
+			echo '</table></div><br>';
 		}
 		else
 		{
@@ -256,6 +258,7 @@ class IndexPage extends FormPage
 	{
 		global $langs;
 
+		echo '<div class="div-table-responsive-no-min">';
 		echo '<table class="noborder nohover" width="100%">';
 		echo '<tr class="liste_titre"><td colspan="2">'.$langs->trans($graph_title).'</td></tr>'."\n";
 		echo '<tr class="impair"><td align="center" colspan="2">';
@@ -267,7 +270,7 @@ class IndexPage extends FormPage
 		$graph->display('stats_'.($this->stats_id++));
 
 		echo '</td></tr>';
-		echo "</table><br>";
+		echo "</table></div><br>";
 
 		return $this;
 	}
