@@ -23,11 +23,11 @@ Dolibase is following the main design pattern of dolibarr with some few adjustme
 
 Below a simple graph that demonstrate the directory structure differences between a basic dolibarr module & a dolibase module.
 
-```bash
-dolibarr module                                         dolibase module
+<pre>
+<strong>dolibarr module</strong>                                         <strong>dolibase module</strong>
 ├── admin                                               ├── admin
 │   └── setup.php                                       │   ├── setup.php
-├── core                                                │   └── about.php
+├── core                                                <span style="color:#22863a;background-color:#f0fff4;">│   └── about.php</span>
 │   ├── modules                                         ├── core
 │   │   └── modMyModule.class.php                       │   ├── modules
 │   ├── boxes                                           │   │   └── modMyModule.class.php
@@ -37,7 +37,7 @@ dolibarr module                                         dolibase module
 ├── class                                               │       └── interface_**_modMyModule_*.class.php
 │   └── *.class.php                                     ├── class
 ├── img                                                 │   └── *.class.php
-│   └── object_mypicture.png                            ├── dolibase
+│   └── object_mypicture.png                            <span style="color:#22863a;background-color:#f0fff4;">├── dolibase</span>
 ├── langs                                               ├── img
 │   ├── en_US                                           │   └── object_mypicture.png
 │   │   └── mymodule.lang                               ├── langs
@@ -55,9 +55,9 @@ dolibarr module                                         dolibase module
 └── myfirstpage.php                                     ├── tpl
                                                         │   └── *.tpl.php
                                                         ├── myfirstpage.php
-                                                        ├── config.php (mandatory)
-                                                        └── autoload.php (mandatory)
-```
+                                                        <span style="color:#22863a;background-color:#f0fff4;">├── config.php (mandatory)</span>
+                                                        <span style="color:#22863a;background-color:#f0fff4;">└── autoload.php (mandatory)</span>
+</pre>
 
 **Explanation:**
 - `admin/setup.php` and `admin/about.php` contains the module settings & the author informations (they can only be consulted by an administrator).
