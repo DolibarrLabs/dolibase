@@ -7,7 +7,7 @@
 
 Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
 
-> **WARNING**: This project is **no longer maintained**, feel free to fork and use or try [DAMB](https://github.com/AXeL-dev/damb).
+> **WARNING**: This project is **no longer under active development**, feel free to fork and use or try [DAMB](https://github.com/AXeL-dev/damb) as an alternative.
 
 ## Why to use it?
 
