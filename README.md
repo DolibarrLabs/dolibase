@@ -23,41 +23,41 @@ Dolibase is following the main design pattern of dolibarr with some few adjustme
 
 Below a simple graph that demonstrate the directory structure differences between a basic dolibarr module & a dolibase module.
 
-<pre>
-<strong>dolibarr module</strong>                                         <strong>dolibase module</strong>
-├── admin                                               ├── admin
-│   └── setup.php                                       │   ├── setup.php
-├── core                                                <span style="color:#22863a;background-color:#f0fff4;">│   └── about.php</span>
-│   ├── modules                                         ├── core
-│   │   └── modMyModule.class.php                       │   ├── modules
-│   ├── boxes                                           │   │   └── modMyModule.class.php
-│   │   └── mywidget.php                                │   ├── boxes
-│   └── triggers                                        │   │   └── mywidget.php
-│       └── interface_**_modMyModule_*.class.php        │   └── triggers
-├── class                                               │       └── interface_**_modMyModule_*.class.php
-│   └── *.class.php                                     ├── class
-├── img                                                 │   └── *.class.php
-│   └── object_mypicture.png                            <span style="color:#22863a;background-color:#f0fff4;">├── dolibase</span>
-├── langs                                               ├── img
-│   ├── en_US                                           │   └── object_mypicture.png
-│   │   └── mymodule.lang                               ├── langs
-│   └── **_**                                           │   ├── en_US
-│       └── mymodule.lang                               │   │   └── mymodule.lang
-├── sql                                                 │   └── **_**
-│   ├── *.sql                                           │       └── mymodule.lang
-│   └── *.key.sql                                       ├── sql
-├── css                                                 │   ├── *.sql
-│   └── *.css                                           │   └── *.key.sql
-├── js                                                  ├── css
-│   └── *.js                                            │   └── *.css
-├── tpl                                                 ├── js
-│   └── *.tpl.php                                       │   └── *.js
-└── myfirstpage.php                                     ├── tpl
-                                                        │   └── *.tpl.php
-                                                        ├── myfirstpage.php
-                                                        <span style="color:#22863a;background-color:#f0fff4;">├── config.php (mandatory)</span>
-                                                        <span style="color:#22863a;background-color:#f0fff4;">└── autoload.php (mandatory)</span>
-</pre>
+```diff
+  dolibase module                                         dolibarr module
+  ├── admin                                               ├── admin
+  │   ├── setup.php                                       │   └── setup.php
++ │   └── about.php                                       ├── core
+  ├── core                                                │   ├── modules
+  │   ├── modules                                         │   │   └── modMyModule.class.php
+  │   │   └── modMyModule.class.php                       │   ├── boxes
+  │   ├── boxes                                           │   │   └── mywidget.php
+  │   │   └── mywidget.php                                │   └── triggers
+  │   └── triggers                                        │       └── interface_**_modMyModule_*.class.php
+  │       └── interface_**_modMyModule_*.class.php        ├── class
+  ├── class                                               │   └── *.class.php
+  │   └── *.class.php                                     ├── img
++ ├── dolibase                                            │   └── object_mypicture.png
+  ├── img                                                 ├── langs
+  │   └── object_mypicture.png                            │   ├── en_US
+  ├── langs                                               │   │   └── mymodule.lang
+  │   ├── en_US                                           │   └── **_**
+  │   │   └── mymodule.lang                               │       └── mymodule.lang
+  │   └── **_**                                           ├── sql
+  │       └── mymodule.lang                               │   ├── *.sql
+  ├── sql                                                 │   └── *.key.sql
+  │   ├── *.sql                                           ├── css
+  │   └── *.key.sql                                       │   └── *.css
+  ├── css                                                 ├── js
+  │   └── *.css                                           │   └── *.js
+  ├── js                                                  ├── tpl
+  │   └── *.js                                            │   └── *.tpl.php
+  ├── tpl                                                 └── myfirstpage.php
+  │   └── *.tpl.php
+  ├── myfirstpage.php
++ ├── config.php (mandatory)
++ └── autoload.php (mandatory)
+```
 
 **Explanation:**
 - `admin/setup.php` and `admin/about.php` contains the module settings & the author informations (they can only be consulted by an administrator).
