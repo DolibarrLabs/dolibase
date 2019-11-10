@@ -24,35 +24,35 @@ Dolibase is following the main design pattern of dolibarr with some few adjustme
 Below a simple graph that demonstrate the directory structure differences between a basic dolibarr module & a dolibase module.
 
 ```diff
-  dolibase module                                         dolibarr module
-  ├── admin                                               ├── admin
-  │   ├── setup.php                                       │   └── setup.php
-+ │   └── about.php                                       ├── core
-  ├── core                                                │   ├── modules
-  │   ├── modules                                         │   │   └── modMyModule.class.php
-  │   │   └── modMyModule.class.php                       │   ├── boxes
-  │   ├── boxes                                           │   │   └── mywidget.php
-  │   │   └── mywidget.php                                │   └── triggers
-  │   └── triggers                                        │       └── interface_**_modMyModule_*.class.php
-  │       └── interface_**_modMyModule_*.class.php        ├── class
-  ├── class                                               │   └── *.class.php
-  │   └── *.class.php                                     ├── img
-+ ├── dolibase                                            │   └── object_mypicture.png
-  ├── img                                                 ├── langs
-  │   └── object_mypicture.png                            │   ├── en_US
-  ├── langs                                               │   │   └── mymodule.lang
-  │   ├── en_US                                           │   └── **_**
-  │   │   └── mymodule.lang                               │       └── mymodule.lang
-  │   └── **_**                                           ├── sql
-  │       └── mymodule.lang                               │   ├── *.sql
-  ├── sql                                                 │   └── *.key.sql
-  │   ├── *.sql                                           ├── css
-  │   └── *.key.sql                                       │   └── *.css
-  ├── css                                                 ├── js
-  │   └── *.css                                           │   └── *.js
-  ├── js                                                  ├── tpl
-  │   └── *.js                                            │   └── *.tpl.php
-  ├── tpl                                                 └── myfirstpage.php
+  dolibase module                                       dolibarr module
+  ├── admin                                             ├── admin
+  │   ├── setup.php                                     │   └── setup.php
++ │   └── about.php                                     ├── core
+  ├── core                                              │   ├── modules
+  │   ├── modules                                       │   │   └── modMyModule.class.php
+  │   │   └── modMyModule.class.php                     │   ├── boxes
+  │   ├── boxes                                         │   │   └── mywidget.php
+  │   │   └── mywidget.php                              │   └── triggers
+  │   └── triggers                                      │       └── interface_**_modMyModule_*.class.php
+  │       └── interface_**_modMyModule_*.class.php      ├── class
+  ├── class                                             │   └── *.class.php
+  │   └── *.class.php                                   ├── img
++ ├── dolibase                                          │   └── object_mypicture.png
+  ├── img                                               ├── langs
+  │   └── object_mypicture.png                          │   ├── en_US
+  ├── langs                                             │   │   └── mymodule.lang
+  │   ├── en_US                                         │   └── **_**
+  │   │   └── mymodule.lang                             │       └── mymodule.lang
+  │   └── **_**                                         ├── sql
+  │       └── mymodule.lang                             │   ├── *.sql
+  ├── sql                                               │   └── *.key.sql
+  │   ├── *.sql                                         ├── css
+  │   └── *.key.sql                                     │   └── *.css
+  ├── css                                               ├── js
+  │   └── *.css                                         │   └── *.js
+  ├── js                                                ├── tpl
+  │   └── *.js                                          │   └── *.tpl.php
+  ├── tpl                                               └── myfirstpage.php
   │   └── *.tpl.php
   ├── myfirstpage.php
 + ├── config.php (mandatory)
