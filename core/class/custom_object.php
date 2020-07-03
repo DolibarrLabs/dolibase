@@ -67,7 +67,7 @@ class CustomObject extends CrudObject
 	 * @param  $obj  object to clone from
 	 * @return $this
 	 */
-	public function clone($obj)
+	public function _clone($obj)
 	{
 		foreach (get_object_vars($obj) as $key => $value)
 		{
