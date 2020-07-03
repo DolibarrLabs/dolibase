@@ -96,7 +96,7 @@ foreach ($qb->result($limit) as $row)
 	$page->openRow($odd);
 
 	// Ref.
-	$book->clone($row); //$book->fetch($row->rowid);
+	$book->_clone($row); //$book->fetch($row->rowid);
 	$page->addColumn('t.ref', $book->getNomUrl(1));
 
 	// Name

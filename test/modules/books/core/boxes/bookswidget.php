@@ -55,7 +55,7 @@ class BooksWidget extends Widget
 		foreach ($qb->result() as $row)
 		{
 			// Ref
-			$book->clone($row); //$book->fetch($row->rowid);
+			$book->_clone($row); //$book->fetch($row->rowid);
 			$this->addContent($book->getNomUrl(1), 'align="left"');
 
 			// Creation date
