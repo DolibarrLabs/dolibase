@@ -231,7 +231,7 @@ class StatsPage extends FormPage
 		//$graph->SetYLabel($langs->trans('YLabel'));
 		$graph->SetShading(3);
 		$graph->SetHorizTickIncrement(1);
-		$graph->SetPrecisionY(0);
+		//$graph->SetPrecisionY(0); // Throws an error in Dolibarr 12+
 		$graph->mode = 'depth';
 		$graph->display($filename, $fileurl);
 
