@@ -178,7 +178,7 @@ class SetupPage extends FormPage
 			{
 				$code = $reg[1];
 				$type = GETPOST('option_type', 'alpha');
-				$value = (is_submitted($code) ? GETPOST($code) : (in_array($type, array('text', 'multiselect')) ? '' : 1));
+				$value = (is_submitted($code) ? GETPOST($code, 'none') : (in_array($type, array('text', 'multiselect')) ? '' : 1));
 
 				if (is_array($value)) {
 					$value = array_to_string($value);
