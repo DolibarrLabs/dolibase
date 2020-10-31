@@ -1,13 +1,13 @@
 # 🚀 Dolibase
 
 [![Lite Version](https://img.shields.io/badge/lite-version-blue.svg)](lite.md)
-[![Stable Version](https://img.shields.io/badge/stable-v3.0.0-brightgreen.svg)](https://github.com/AXeL-dev/dolibase/releases/tag/v3.0.0)
+[![Stable Version](https://img.shields.io/badge/stable-v3.0.0-brightgreen.svg)](https://github.com/DolibarrLabs/dolibase/releases/tag/v3.0.0)
 [![PHP Min](https://img.shields.io/badge/PHP-%3E%3D%205.3-yellow.svg)](https://github.com/php)
 [![Dolibarr Min](https://img.shields.io/badge/Dolibarr-%3E%3D%203.8.x-orange.svg)](https://github.com/Dolibarr/dolibarr)
 
 Dolibase is a set of reusable code & architecture that makes coding [Dolibarr](https://github.com/Dolibarr/dolibarr) modules more faster and easier.
 
-:warning: This project is **no longer under active development**, feel free to fork and use or try [DAMB](https://github.com/AXeL-dev/damb) as an alternative.
+:warning: This project is **no longer under active development**, feel free to fork and use or try [DAMB](https://github.com/DolibarrLabs/damb) as an alternative.
 
 ## Why to use it?
 
@@ -81,11 +81,11 @@ Dolibase can act in 2 different ways:
  - **Globally** (recommended): this means that dolibase needs to be installed only once in dolibarr's root directory & then all dolibase modules will use the global version.
  - **Internally**: each module can have its own version of dolibase (inside the module folder), so this method doesn't require any pre-installation, but some conflits may occur between modules using an old dolibase version & those using a new one.
 
-So, to install dolibase globally, just unzip [it](https://github.com/AXeL-dev/dolibase/releases) inside your dolibarr root directory or use the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
+So, to install dolibase globally, just unzip [it](https://github.com/DolibarrLabs/dolibase/releases) inside your dolibarr root directory or use the [Dolibase Installer](https://www.dolistore.com/en/modules/1060-Dolibase-Installer.html) module.
 
 ## Quick start
 
-Starting from version [2.4.0](https://github.com/AXeL-dev/dolibase/releases/tag/v2.4.0), you can easily generate your modules & widgets using Dolibase Builder.
+Starting from version [2.4.0](https://github.com/DolibarrLabs/dolibase/releases/tag/v2.4.0), you can easily generate your modules & widgets using Dolibase Builder.
 
 To create a new module, simply go to the dolibase builder page & follow the instructions:
 
@@ -230,7 +230,7 @@ Find more module examples in the [test](test) folder.
 
 ## Advanced features
 
-With dolibase & [debugbar module](https://github.com/AXeL-dev/dolibarr-debugbar-module) you get a bunch of benefits:
+With dolibase & [debugbar module](https://github.com/DolibarrLabs/dolibarr-debugbar-module) you get a bunch of benefits:
 
 - **Easily debug your modules**.
 
@@ -278,7 +278,7 @@ stop_time_measure('measure_1');
 
 ## Documentation
 
-Before consulting the [documentation](https://axel-dev.github.io/dolibase/) you must have some knowledge about how dolibarr works and how to develop a module, otherwise you are invited to check the links below:
+Before consulting the [documentation](https://dolibarrlabs.github.io/dolibase/) you must have some knowledge about how dolibarr works and how to develop a module, otherwise you are invited to check the links below:
 
 * [Dolibarr documentation](https://www.dolibarr.org/documentation-home).
 * [Developer documentation](https://wiki.dolibarr.org/index.php/Developer_documentation).
@@ -290,7 +290,7 @@ See [changelog](changelog.md).
 
 ## Contributing
 
-Follow [contributing guidelines](https://github.com/AXeL-dev/contributing/blob/master/README.md).
+Follow [contributing guidelines](https://github.com/DolibarrLabs/contributing/blob/master/README.md).
 
 ## License
 
