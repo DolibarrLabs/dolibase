@@ -290,7 +290,7 @@ See [changelog](changelog.md).
 
 ## Contributing
 
-Follow [contributing guidelines](https://github.com/DolibarrLabs/contributing/blob/master/README.md).
+Follow [contributing guidelines](https://github.com/axel-dev/contributing/blob/master/README.md).
 
 ## License
 
