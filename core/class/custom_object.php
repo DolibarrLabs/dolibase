@@ -400,6 +400,29 @@ class CustomObject extends CrudObject
 	}
 
 	/**
+	 * Return incoterms informations for pdf display
+	 *
+	 * @return     string     incoterms info
+	 */
+	public function getIncotermsForPDF()
+	{
+		$sql = 'SELECT code FROM '.MAIN_DB_PREFIX.'c_incoterms WHERE rowid = '.(int) $this->fk_incoterms;
+		$resql = $this->db->query($sql);
+		if ($resql) {
+			$num = $this->db->num_rows($resql);
+			if ($num > 0) {
+				$res = $this->db->fetch_object($resql);
+				return 'Incoterm : '.$res->code.' - '.$this->location_incoterms;
+			} else {
+				return '';
+			}
+		} else {
+			$this->errors[] = $this->db->lasterror();
+			return false;
+		}
+	}
+
+	/**
 	 * Delete document from disk.
 	 *
 	 * @return     int     0 if KO, 1 if OK
